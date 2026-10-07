@@ -1,4 +1,4 @@
-#import "base.typ": *
+#import "style.typ": *
 
 #let theorem(title: none, body) = {
   block(

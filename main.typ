@@ -1,8 +1,8 @@
-#import "content/meta.typ": meta
+#import "content/metadata.typ": metadata
 #import "thesis.typ": thesis
 
 #set document(
-  title: meta.title,
-  author: meta.author,
+  title: metadata.title,
+  author: metadata.author,
 )
 #thesis()

@@ -1,4 +1,4 @@
-#let meta = (
+#let metadata = (
   title: "High Performance Petri Net Model Checker",
   german-title: "Hochleistungs-Petri-Netz-Modellprüfer",
   author: "Michael Dyer",
@@ -10,7 +10,7 @@
   examiner: "Prof. Dr. Stefanie Rinderle-Ma",
   supervisor: "Dr. Jürgen Mangler",
   supervisor-2: none,
-  matriculation-number: none,
-  hood: "Garching",
+  matriculation-number: 03726484,
+  submission-place: "Garching",
   submission-date: "02.11.2026",
 )

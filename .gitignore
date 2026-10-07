@@ -1,4 +1,4 @@
-out/
+target/
 .typst-cache/
 .DS_Store
 tex/

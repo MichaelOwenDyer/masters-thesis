@@ -6,26 +6,24 @@
   outputs = { self, nixpkgs }:
     let
       supportedSystems = [ "aarch64-darwin" "x86_64-darwin" "x86_64-linux" ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      mkPkgs = system: nixpkgs.legacyPackages.${system};
     in
     {
-      devShells = forAllSystems (system:
+      devShells = nixpkgs.lib.genAttrs supportedSystems (system:
         let
-          pkgs = mkPkgs system;
+          pkgs = nixpkgs.legacyPackages.${system};
         in
         {
           default = pkgs.mkShell {
             packages = with pkgs; [
               typst
               texliveBasic
-              tex-gyre
+              tex-gyre.termes
             ];
             shellHook = ''
-              export TYPST_FONT_PATHS="${pkgs.tex-gyre}/opentype"
-              mkdir -p out
+              export TYPST_FONT_PATHS="${pkgs.tex-gyre.termes}/share/fonts"
+              mkdir -p target
               echo "Typst thesis shell ready."
-              echo "  make        # compile to out/thesis.pdf"
+              echo "  make        # compile to target/thesis.pdf"
               echo "  make watch  # live reload"
             '';
           };
