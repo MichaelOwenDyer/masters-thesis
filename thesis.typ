@@ -191,7 +191,7 @@
     justify: true,
   )
 
-  show math.equation: set text(font: body-font, weight: 400)
+  show math.equation: set text(font: "TeX Gyre Termes Math", weight: 400)
 
   show bibliography: set heading(
     outlined: true,
@@ -199,7 +199,7 @@
     numbering: none,
   )
 
-  set heading(numbering: none, bookmarked: true, outlined: true)
+  set heading(numbering: "1.", bookmarked: true, outlined: true)
   show heading.where(level: 1): set text(
     font: body-font,
     size: 17pt,
@@ -226,6 +226,10 @@
     ]
   }
   show figure.where(kind: table): set figure.caption(position: top)
+  show figure.where(kind: table): set block(breakable: true, above: 1.5em, below: 1.5em)
+  show figure.where(kind: table): set par(justify: false, leading: 0.45em)
+  show figure.where(kind: table): set text(hyphenate: false)
+
   show figure.caption: set text(size: 10pt)
   show figure.caption: it => {
     let supplement = it.supplement

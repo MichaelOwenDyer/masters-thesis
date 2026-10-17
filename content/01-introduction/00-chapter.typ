@@ -1,0 +1,8 @@
+#include "01-introduction.typ"
+#include "02-motivation.typ"
+#include "03-research-questions.typ"
+#include "04-contribution.typ"
+#include "05-methodology.typ"
+#include "06-background.typ"
+#include "07-evaluation.typ"
+#include "08-structure.typ"

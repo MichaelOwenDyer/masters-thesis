@@ -1,4 +1,4 @@
-= Solution Design
+= Solution Design <solution-design>
 
 == Design Goals
 
@@ -35,8 +35,6 @@ At the same time, it should do so in a way which is transparent to the user, so 
 - The tool must support manual simulation of Petri net models: transition firing.
 - The tool must support automatic state space exploration and generation of the reachability and Karp-Miller coverability graphs.
 
-== Non-Functional Requirements
+== Non-Functional Requirements and Pseudo-Requirements
 
-- The API of the tool must be decoupled from the underlying implementation via an internal translation layer,
-allowing for future extensibility and maintainability.
--
+- The tool must be implemented in a modern programming language with a strong type system and support for functional programming paradigms.

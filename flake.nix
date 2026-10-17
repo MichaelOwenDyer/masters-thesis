@@ -18,9 +18,10 @@
               typst
               texliveBasic
               tex-gyre.termes
+              tex-gyre-math.termes
             ];
             shellHook = ''
-              export TYPST_FONT_PATHS="${pkgs.tex-gyre.termes}/share/fonts"
+              export TYPST_FONT_PATHS="${pkgs.tex-gyre.termes}/share/fonts:${pkgs.tex-gyre-math.termes}/share/fonts"
               mkdir -p target
               echo "Typst thesis shell ready."
               echo "  make        # compile to target/thesis.pdf"
