@@ -1,4 +1,4 @@
-==== (K-)Boundedness
+== (K-)Boundedness
 
 A place is said to be _k-bounded_ for some finite integer `k` if the place never
 contains more than `k` tokens in any reachable marking.
@@ -122,7 +122,7 @@ Operation:
 Together with the efficiency restriction dimension, this yields 2 x 3 x 2 = 12 different variants
 for checking (k-)boundedness, which `petrivet` provides as methods on `PetriNet`:
 
-#grid(
+#table(
   columns: (auto, auto, auto),
   [Method], [Returns], [Description],
   [`pn.is_bounded()`], [`bool`], [Check if the Petri net is bounded.],

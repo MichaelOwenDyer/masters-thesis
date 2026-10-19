@@ -1,3 +1,5 @@
+== Simulation
+
 === Tokens and Markings
 
 Up until now, we have only discussed the static structure of a Petri net: the places and transitions and arcs between them.

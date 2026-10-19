@@ -5,7 +5,7 @@
 #let map  = $op("map")$
 #let zip  = $op("zip")$
 
-=== Commoner-Hack Criterion <chc>
+== Commoner-Hack Criterion <chc>
 
 The Commoner-Hack Criterion (CHC), also called the Siphon-Trap Criterion, states that every siphon contains a marked trap.
 This is a characteristic which yields powerful insights into the behavior of even the most general Petri nets.
@@ -90,21 +90,21 @@ The maximal trap $D_n$ of $D$ is unmarked, or empty, so $phi_"unmarked"$ holds. 
 
 When $phi$ is satisfiable, the assignment gives a counterexample: the siphon $D$ and its maximal trap $D_n$ (possibly empty).
 
-The following pseudocode mirrors the implementation of the above encoding in petrivet.
+The following pseudocode mirrors the implementation of the above encoding in petrivet,
+which returns a counterexample if one exists, or $bot$ if the CHC holds.
 
 #figure(
   kind: "algorithm",
   supplement: "Algorithm",
   caption: [Counterexample search for the CHC as a Boolean formula.],
-  pseudocode-list(numbered-title: [`FindSiphonWithUnmarkedMaxTrap`$(N, M_0)$])[
+  pseudocode-list(numbered-title: [`FindSiphonWithUnmarkedMaximalTrap`$(N, M_0)$])[
     + $n <- |P|$
     + *for each* $p in P$: introduce a fresh Boolean variable $x_p$
     + $bold(x)^((0)) <- (x_p)_(p in P)$ #h(1em) // `in_siphon`
     + *assert* $or.big_(p in P) x^((0))_p$ #h(1em) // proper siphon
     + *for each* $t in T$:
       + *assert* $(or.big_(p in post(t)) x^((0))_p) -> (or.big_(p in pre(t)) x^((0))_p)$
-    + *define* $"Step"(bold(x)) := zip(P, bold(x))$ followed by
-      $map((p, x_p) |-> x_p and and.big_(t in post(p)) or.big_(q in post(t)) x_q)$
+    + *define* $"Step"(bold(x)) := zip(P, bold(x)) pipe map((p, x_p) |-> x_p and and.big_(t in post(p)) or.big_(q in post(t)) x_q)$
     + $bold(x)^((n)) <- fold(bold(x)^((0)), thin n "times", "Step")$ #h(1em) // `in_trap`
     + *for each* $p in P$ *with* $M_0(p) > 0$:
       + *assert* $not x^((n))_p$

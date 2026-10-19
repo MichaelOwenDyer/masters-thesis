@@ -1,5 +1,5 @@
 
-=== Reachability
+== Reachability & Coverability
 
 The reachability problem asks whether it is possible to reach a target marking $M$ from the initial marking $M_0$ by firing a sequence of transitions.
 It was shown to be Ackermann-hard in the general case in 2021 @czerwinski_reachability_2022.
@@ -57,6 +57,8 @@ This is will never terminate in the unreachable case for unbounded nets.
 
 The current implementation is more sophisticated than the brute-force approach.
 
+=== CEGAR Engine
+
 The engine is based on the paradigm of counterexample-guided abstraction refinement (CEGAR) clarke_counterexample-guided_2000,
 a well-known technique in formal verification and model checking that has been applied to Petri nets @wimmel_applying_2011, @hajdu_new_2015, @thierry-mieg_structural_2020.
 
@@ -66,9 +68,10 @@ If the property holds in the abstraction, then it yields a potential solution fo
 Simulating the potential solution in the original system either confirms the solution or produces a counterexample,
 which is then used to refine the abstraction, and the process repeats until a definitive answer is found.
 
-#figure(kind: image, caption: [Counterexample-guided abstraction refinement (CEGAR) paradigm.])[
-  #image: "../figures/cegar/diagram.svg"
-]
+#figure(
+  image("../../figures/cegar/diagram.svg"),
+  caption: [Counterexample-guided abstraction refinement (CEGAR) paradigm.],
+)
 
 CEGAR offers a way to decide properties while largely avoiding the state space explosion problem.
 The abstraction can be in the form of an SMT problem definition, and checking the property becomes a satisfiability

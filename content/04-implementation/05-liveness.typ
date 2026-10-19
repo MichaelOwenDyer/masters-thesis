@@ -1,5 +1,8 @@
+#import "@preview/lovelace:0.3.0": *
+#import "../lib.typ": *
+#import "../../lib/tum/elements.typ": *
 
-=== Liveness
+== Liveness
 
 A transition is said to be _live_ if, from every reachable marking, it is possible to eventually fire it again;
 that is, there is no reachable marking from which the transition can never be fired again.
@@ -123,4 +126,76 @@ A major limitation of the current implementation is the general procedure for ch
 which is prohibitively expensive for all but the smallest bounded nets.
 Future work will improve upon this. // TODO: Discuss possibilities.
 
-// TODO: Implementation breakdown for specific liveness levels of all transitions.
+=== Liveness Levels of State Machines
+
+The algorithm makes two linear passes over the condensation graph of the net
+(the directed acyclic graph of strongly connected components, or SCCs).
+A pass in topological order finds all SCCs reachable from a marked SCC.
+A pass in reverse topological order computes for every SCC whether it reaches exactly one terminal SCC
+using the following reduction $union.sq$:
+
+$ "One"(a) union.sq "One"(b) := cases("One"(a) & "if" a = b, "Multiple" & "otherwise"), quad "Multiple" union.sq x := "Multiple" =: x union.sq "Multiple". $
+
+Reachable trivial SCCs are $lv(1)$, reachable nontrivial ones $lv(3)$, and a nontrivial SCC that is the unique terminal
+SCC reachable from some marked SCC is upgraded to $lv(4)$.
+
+#figure(
+  kind: "algorithm",
+  supplement: [Algorithm],
+  caption: [Liveness levels of a state machine.],
+  pseudocode-list(numbered-title: [`LivenessViaMarkedSCCs`$(N, M_0)$])[
+    + $cal(C) <- op("condensation")(G)$; #h(0.5em) $pi <- op("toposort")(cal(C))$
+    + $m[K] <- (M_0(K) > 0)$ for all $K in cal(C)$; #h(0.5em) $r <- m$
+    + *for each* $K in pi$ *with* $r[K]$:
+      + *for each* successor $K'$ of $K$: $r[K'] <- top$
+    + *for each* $K in op("rev")(pi)$:
+      + *if* $K$ has no successor: $sigma[K] <- "One"(K)$
+      + *else* $sigma[K] <- op("succ")(K) pipe op("map")(K' |-> sigma[K']) pipe op("reduce")(union.sq)$
+    + $Sigma <- {K' | exists K in cal(C): m[K] and sigma[K] = "One"(K')}$
+    + $ell <- cal(C) pipe op("map")(K |-> cases(lv(0) & "if" not r[K], lv(1) & "if" |K| = 1, lv(4) & "if" K in Sigma, lv(3) & "otherwise"))$
+    + *return* $cal(C) pipe op("flat_map")(K |-> K pipe op("filter_map")(v |-> (v, ell[K]) "if" v in T))$
+  ]
+) <algorithm-state-machine-liveness>
+
+A formal proof of correctness is given in @proof-state-machine-liveness.
+
+=== Liveness Levels of Marked Graphs
+
+I present an efficient algorithm (running in $O(|P| + |T| + |F|)$) for computing the liveness levels of all transitions
+in a marked graph, based on the work of @murata_petri_1989, @esparza_petri_2026, and @tarjan_depth-first_1972.
+To my knowledge this is an original contribution.
+The algorithm first sets the liveness level of all transitions to L4.
+Then it then identifies all unmarked circuits using Tarjan's SCC algorithm @tarjan_depth-first_1972 on the subnet
+induced by the unmarked places and all transitions.
+By @murata_petri_1989, all transitions in unmarked circuits are dead (L0).
+Then, for each dead transition, the algorithm performs a depth-first search to mark downstream
+transitions as L1 if all paths from the dead transitions to them pass through a marked place,
+and L0 otherwise.
+
+#figure(
+  kind: "algorithm",
+  supplement: [Algorithm],
+  caption: [Liveness levels of a marked graph.],
+  pseudocode-list(numbered-title: [`MarkedGraphLiveness`$(N, M_0)$])[
+    + $G_0 <- G[T union {p in P | M_0(p) = 0}]$
+    + $Z <-$ #h(0.3em) $op("SCC")(G_0)$
+      $pipe op("filter")(|C| > 1)$
+      $pipe op("flat_map")(C |-> C)$
+      $pipe op("filter_map")(v |-> v "if" v in T)$ #h(1em) // `tarjan_scc` ... `collect`
+    + $ell <- (lv(4))_(t in T)$
+    + *for each* $z in Z$:
+      + $"Dfs"(z, bot)$
+    + *return* $op("zip")(T, ell)$
+    +
+    + *procedure* $"Dfs"(t, b)$:
+      + *match* $ell[t]$:
+        + $lv(0)$: *return*
+        + $lv(1)$ *if* $b$: *return*
+        + _otherwise_: $ell[t] <- cases(lv(1) & "if" b, lv(0) & "otherwise")$
+      + *for each* $p in post(t)$:
+        + $b' <- b or M_0(p) > 0$
+        + $"Dfs"(v_p, b')$ #h(1em) // `postset_p[p].first()`
+  ]
+) <algorithm-marked-graph-liveness>
+
+A formal proof of correctness is given in @proof-marked-graph-liveness.

@@ -1,4 +1,4 @@
-=== Builder API
+== Builder API
 
 The builder API serves as the entry point for constructing Petri net models programmatically.
 It allows users to add and remove places, transitions, and arcs, and returns simple handles to these elements with a

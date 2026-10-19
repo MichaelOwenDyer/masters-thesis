@@ -184,12 +184,6 @@
     number-align: right + top,
   )
   set text(font: body-font, size: body-size, lang: "en")
-  set par(
-    leading: body-leading,
-    spacing: body-par-spacing,
-    first-line-indent: 0pt,
-    justify: true,
-  )
 
   show math.equation: set text(font: "TeX Gyre Termes Math", weight: 400)
 
@@ -200,55 +194,6 @@
   )
 
   set heading(numbering: "1.", bookmarked: true, outlined: true)
-  show heading.where(level: 1): set text(
-    font: body-font,
-    size: 17pt,
-    weight: "bold",
-  )
-  show heading.where(level: 2): set text(
-    font: body-font,
-    size: body-size,
-    weight: "bold",
-  )
-//  show heading.where(level: 3): set text(
-//    font: body-font,
-//    size: body-size,
-//    weight: "bold",
-//    style: "italic",
-//  )
-  show heading.where(level: 1): set block(above: 12pt, below: 0pt)
-  show heading.where(level: 2): set block(above: 12pt, below: 0pt)
-  show heading.where(level: 3): set block(above: 12pt, below: 0pt)
-  show heading.where(level: 4): it => {
-    box(width: 100%, inset: (left: 1.27cm))[
-      #text(weight: "bold")[#it.body.]
-      #v(-1.2em)
-    ]
-  }
-  show figure.where(kind: table): set figure.caption(position: top)
-  show figure.where(kind: table): set block(breakable: true, above: 1.5em, below: 1.5em)
-  show figure.where(kind: table): set par(justify: false, leading: 0.45em)
-  show figure.where(kind: table): set text(hyphenate: false)
-
-  show figure.caption: set text(size: 10pt)
-  show figure.caption: it => {
-    let supplement = it.supplement
-    let number = context {
-      let kind = it.kind
-      let ctr = counter(figure.where(kind: kind))
-      ctr.display(it.numbering, at: it.location())
-    }
-    block(width: 100%, spacing: 15pt)[
-      #align(left)[
-        #text(weight: "bold")[#supplement #number]
-        #linebreak()
-        #text(style: "italic")[#it.body]
-      ]
-    ]
-  }
-  show outline.entry.where(level: 1): set text(weight: "bold")
-  show outline.entry.where(level: 1): set block(above: 2em, below: 0pt)
-  show outline.entry.where(level: 2): set block(above: 0.5em, below: 0pt)
 
   content.introduction
   content.related-work
@@ -262,7 +207,6 @@
   bibliography("content/bibliography.bib", style: "ieee")
 
   pagebreak()
-  heading(outlined: true, bookmarked: true)[Appendix]
   content.appendix
 
   pagebreak()

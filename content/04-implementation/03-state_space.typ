@@ -1,4 +1,4 @@
-=== State Space Exploration
+== State Space Exploration
 
 The natural successor to manual transition firing is automatic state space exploration.
 For small, bounded Petri nets, it is feasible to enumerate all reachable markings and construct the reachability graph,

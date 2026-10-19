@@ -8,5 +8,5 @@
   evaluation: include "05-evaluation.typ",
   discussion: include "06-discussion.typ",
   conclusion: include "07-conclusion.typ",
-  appendix: include "10-appendix.typ",
+  appendix: include "99-appendix/chapter.typ",
 )
