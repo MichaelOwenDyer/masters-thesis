@@ -1,0 +1,2478 @@
+{
+  "summary": {
+    "small_target": 90,
+    "small_target_reached": true,
+    "small_pass1": 67,
+    "small_pass2": 23,
+    "families_contributing_1": 44,
+    "families_contributing_2": 23,
+    "small_families_in_pool": 92,
+    "max_per_family": 2,
+    "large_shortfall": {},
+    "counts": {
+      "large:L": {
+        "drawn": 12,
+        "accepted": 5,
+        "rejected": {
+          "arc weight": 2,
+          "too large": 5
+        }
+      },
+      "large:OS": {
+        "drawn": 11,
+        "accepted": 5,
+        "rejected": {
+          "arc weight": 3,
+          "too large": 3
+        }
+      },
+      "large:QL": {
+        "drawn": 13,
+        "accepted": 5,
+        "rejected": {
+          "arc weight": 3,
+          "too large": 5
+        }
+      },
+      "large:RD": {
+        "drawn": 13,
+        "accepted": 5,
+        "rejected": {
+          "arc weight": 1,
+          "not connected": 5,
+          "too large": 2
+        }
+      },
+      "small": {
+        "drawn": 134,
+        "accepted": 90,
+        "rejected": {
+          "arc weight": 22,
+          "not connected": 22
+        }
+      }
+    }
+  },
+  "models": [
+    {
+      "id": "AirplaneLD-PT-0010",
+      "family": "AirplaneLD",
+      "stratum": "small",
+      "pass": 2,
+      "states": 43463,
+      "states_raw": "43463",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "c8b8cd792dcc0e9235e5ef44381f31f97fdb77607ac85f88578d1876ff167c4b",
+      "pnml_bytes": 48636,
+      "changed_since_2025": false
+    },
+    {
+      "id": "AirplaneLD-PT-0020",
+      "family": "AirplaneLD",
+      "stratum": "small",
+      "pass": 1,
+      "states": 308303,
+      "states_raw": "308303",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "85e3672ac64ecf35641df9b1dd61df9d9ade99cb7a48173441538a59be526131",
+      "pnml_bytes": 92410,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Anderson-PT-05",
+      "family": "Anderson",
+      "stratum": "small",
+      "pass": 1,
+      "states": 689901,
+      "states_raw": "689901",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "eb7c30c67e84f9b9c674b10f14a740e38935473eb98571204deafb254825ccb0",
+      "pnml_bytes": 189119,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Angiogenesis-PT-01",
+      "family": "Angiogenesis",
+      "stratum": "small",
+      "pass": 1,
+      "states": 110,
+      "states_raw": "110",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "777245b1c8771b91cb3b11de8ecc51ce47b73f4d07dec2aa02751ae97cd2b346",
+      "pnml_bytes": 34633,
+      "changed_since_2025": false
+    },
+    {
+      "id": "AutoFlight-PT-02a",
+      "family": "AutoFlight",
+      "stratum": "small",
+      "pass": 1,
+      "states": 6949,
+      "states_raw": "6949",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "9da26c822c0e2ae7917958d607bffd0f22d3f943ab173205a109e61413fc4ee7",
+      "pnml_bytes": 15705,
+      "changed_since_2025": false
+    },
+    {
+      "id": "AutonomousCar-PT-02a",
+      "family": "AutonomousCar",
+      "stratum": "small",
+      "pass": 2,
+      "states": 2314,
+      "states_raw": "2314",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "91d49239f6d1a3c71f7d67be3ad5b4da751a3be59334455d5d81716d185bf9b9",
+      "pnml_bytes": 22726,
+      "changed_since_2025": false
+    },
+    {
+      "id": "AutonomousCar-PT-03a",
+      "family": "AutonomousCar",
+      "stratum": "small",
+      "pass": 1,
+      "states": 22521,
+      "states_raw": "22521",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "9e60451bdcc558917924ea2e82f1f0118dc292d6add151dd6ee20ed1eeea0196",
+      "pnml_bytes": 42784,
+      "changed_since_2025": false
+    },
+    {
+      "id": "BART-PT-002",
+      "family": "BART",
+      "stratum": "small",
+      "pass": 1,
+      "states": 17424,
+      "states_raw": "17424",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "26c3f7fe56b0e3758172a2db9def176c0343093a5e3e2b89707625db12d151f5",
+      "pnml_bytes": 545838,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CANConstruction-PT-005",
+      "family": "CANConstruction",
+      "stratum": "small",
+      "pass": 1,
+      "states": 97527,
+      "states_raw": "97527",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "8ce1ef2d3f82178cf9002bf238d8d360b03d414fdd5f43618e30f8eb54710194",
+      "pnml_bytes": 170915,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CANInsertWithFailure-PT-005",
+      "family": "CANInsertWithFailure",
+      "stratum": "small",
+      "pass": 1,
+      "states": 200157,
+      "states_raw": "200157",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "77e6c711d5c6a2bdd770c4178136542f55df1f1f9abac16983224c26d5e02bfd",
+      "pnml_bytes": 206316,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CSRepetitions-PT-02",
+      "family": "CSRepetitions",
+      "stratum": "small",
+      "pass": 1,
+      "states": 7424,
+      "states_raw": "7424",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "d814e4b957080f7a3bc32b4099b634d44fde4f91af6ce93513dde89458c1707e",
+      "pnml_bytes": 25748,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CircadianClock-PT-000001",
+      "family": "CircadianClock",
+      "stratum": "small",
+      "pass": 2,
+      "states": 128,
+      "states_raw": "128",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "b1b47268ea7dda9491b3ade247c56f5c1eab88cf87e3800f4983fc13e25d2bcb",
+      "pnml_bytes": 11502,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CircadianClock-PT-000010",
+      "family": "CircadianClock",
+      "stratum": "small",
+      "pass": 1,
+      "states": 644204,
+      "states_raw": "644204",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "173fccb6d17d3f1a9a0bb6114b708bca789cfe8fc614ccfcb9ef7535e6191c5b",
+      "pnml_bytes": 10579,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CircularTrains-PT-012",
+      "family": "CircularTrains",
+      "stratum": "small",
+      "pass": 2,
+      "states": 195,
+      "states_raw": "195",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "bcda9c38e8eb0e2dd2fd19b4aeda9c5a6051d85cc1e93e3d854df7bcbad6c25b",
+      "pnml_bytes": 9347,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CircularTrains-PT-024",
+      "family": "CircularTrains",
+      "stratum": "small",
+      "pass": 1,
+      "states": 86515,
+      "states_raw": "86515",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "ab9afcb82deefbeb1cebf083ce75b11fd7f313211c9a44d90dc2197473faae50",
+      "pnml_bytes": 18609,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ClientsAndServers-PT-N0001P0",
+      "family": "ClientsAndServers",
+      "stratum": "small",
+      "pass": 1,
+      "states": 27576,
+      "states_raw": "27576",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "38fdfd3b28c1a9e014273ffa17729b4e773abd152865d6471877bafcc18b53ea",
+      "pnml_bytes": 9345,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CloudDeployment-PT-3a",
+      "family": "CloudDeployment",
+      "stratum": "small",
+      "pass": 1,
+      "states": 190102,
+      "states_raw": "190102",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "1951d0170ef1effcc175241d6e860b620eab17429bc18caeb3f52e31993b82af",
+      "pnml_bytes": 98543,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CloudOpsManagement-PT-00002by00001",
+      "family": "CloudOpsManagement",
+      "stratum": "small",
+      "pass": 1,
+      "states": 3857,
+      "states_raw": "3857",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "23de3aba936294cc3ee91ada5d05be29081a1b537a1596ad5d05af094dece623",
+      "pnml_bytes": 16422,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CopsAndRobbers-PT-KFL010N005K002X001",
+      "family": "CopsAndRobbers",
+      "stratum": "small",
+      "pass": 1,
+      "states": 620,
+      "states_raw": "620",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "3aa793136c9a9fc3a023586b224fa6478891cc1122de9c6139eb29909f1f2b47",
+      "pnml_bytes": 76585,
+      "changed_since_2025": true
+    },
+    {
+      "id": "CryptoMiner-PT-D03N010",
+      "family": "CryptoMiner",
+      "stratum": "small",
+      "pass": 1,
+      "states": 10636,
+      "states_raw": "10636",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "cf2ceb6c20c883c34da7f9ea84e76f6d6d3174b7e995f1e87c195d1368c08f83",
+      "pnml_bytes": 5388,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DatabaseWithMutex-PT-02",
+      "family": "DatabaseWithMutex",
+      "stratum": "small",
+      "pass": 1,
+      "states": 153,
+      "states_raw": "153",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "ef2b1e5a62f91153c1351ba084e0d70fd4ef5441d072b3f6f7d508b4802672b0",
+      "pnml_bytes": 14851,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Dekker-PT-010",
+      "family": "Dekker",
+      "stratum": "small",
+      "pass": 2,
+      "states": 6144,
+      "states_raw": "6144",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "96c58b542578b7a37f1d2b27ed4d41b55e30e466357435a62f5dc2f81a101422",
+      "pnml_bytes": 65784,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Dekker-PT-015",
+      "family": "Dekker",
+      "stratum": "small",
+      "pass": 1,
+      "states": 278528,
+      "states_raw": "278528",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "fade8747e0bf34582bef5d677bdc9c5ce51c751d0d6d6d6efc3bc2fd60c59287",
+      "pnml_bytes": 144094,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DoubleExponent-PT-001",
+      "family": "DoubleExponent",
+      "stratum": "small",
+      "pass": 2,
+      "states": 149,
+      "states_raw": "149",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "805ba4fc20773d1377966c351d04b6c51cfc5560ecbaf3960c48ef09eabdf890",
+      "pnml_bytes": 16758,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DoubleExponent-PT-002",
+      "family": "DoubleExponent",
+      "stratum": "small",
+      "pass": 1,
+      "states": 3708,
+      "states_raw": "3708",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "1b9e9357907b47477aeba79289d5d3d996d5cbd4923f768849299e1c6b6a8682",
+      "pnml_bytes": 33572,
+      "changed_since_2025": false
+    },
+    {
+      "id": "EGFr-PT-02010",
+      "family": "EGFr",
+      "stratum": "small",
+      "pass": 1,
+      "states": 4200,
+      "states_raw": "4200",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "9f3d413d6edd63d66dac2e63f1c6353a70a420ddf538a3a49a3176ff61717453",
+      "pnml_bytes": 59466,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ERK-PT-000001",
+      "family": "ERK",
+      "stratum": "small",
+      "pass": 2,
+      "states": 13,
+      "states_raw": "13",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "c71d172d2e8484feeaf5d3952ef07b5d196617127e7bd186e1d456b05f267c75",
+      "pnml_bytes": 7554,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ERK-PT-000010",
+      "family": "ERK",
+      "stratum": "small",
+      "pass": 1,
+      "states": 47047,
+      "states_raw": "47047",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "b1e76741a7468a11275f494c40fd82f42653998a25867fed5b08749d82cf750d",
+      "pnml_bytes": 6769,
+      "changed_since_2025": false
+    },
+    {
+      "id": "EisenbergMcGuire-PT-03",
+      "family": "EisenbergMcGuire",
+      "stratum": "small",
+      "pass": 1,
+      "states": 31265,
+      "states_raw": "31265",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "7808f3ea25d617530bb0784773bd0e95488fc48aa37c499384500b4137f8400f",
+      "pnml_bytes": 123718,
+      "changed_since_2025": false
+    },
+    {
+      "id": "FMS-PT-00002",
+      "family": "FMS",
+      "stratum": "small",
+      "pass": 1,
+      "states": 3444,
+      "states_raw": "3444",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "47e455192c65da3265a5274a1c892af6ef58a290aa27b20d43a651a612bc7ca5",
+      "pnml_bytes": 16346,
+      "changed_since_2025": false
+    },
+    {
+      "id": "FlexibleBarrier-PT-04a",
+      "family": "FlexibleBarrier",
+      "stratum": "small",
+      "pass": 1,
+      "states": 20737,
+      "states_raw": "20737",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "9c33531a3f001fd8136944b561dee783a740e81e6c01cd2539b1ebac436718eb",
+      "pnml_bytes": 22544,
+      "changed_since_2025": false
+    },
+    {
+      "id": "GPUForwardProgress-PT-04a",
+      "family": "GPUForwardProgress",
+      "stratum": "small",
+      "pass": 2,
+      "states": 1373,
+      "states_raw": "1373",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "825b59b064bc4fc5ceadb7dd58930588270d0716fe6dae83e52c0513d06e3c45",
+      "pnml_bytes": 8262,
+      "changed_since_2025": false
+    },
+    {
+      "id": "GPUForwardProgress-PT-08a",
+      "family": "GPUForwardProgress",
+      "stratum": "small",
+      "pass": 1,
+      "states": 380093,
+      "states_raw": "380093",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "24146733bb0ff2bb61b3aaf190d7a1b3df2edafdbc6000eb9981416270f291ba",
+      "pnml_bytes": 14129,
+      "changed_since_2025": false
+    },
+    {
+      "id": "HexagonalGrid-PT-110",
+      "family": "HexagonalGrid",
+      "stratum": "small",
+      "pass": 1,
+      "states": 40193,
+      "states_raw": "40193",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "9423b3ca59751612b7786c1624397688367f4033d3b37fed722369279ab1851f",
+      "pnml_bytes": 28784,
+      "changed_since_2025": false
+    },
+    {
+      "id": "HouseConstruction-PT-00002",
+      "family": "HouseConstruction",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1501,
+      "states_raw": "1501",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "fd680dc9fc930cfaa3010ff9f3351ace965a190cb14a2be52b69e1977b2475a4",
+      "pnml_bytes": 13056,
+      "changed_since_2025": false
+    },
+    {
+      "id": "HypertorusGrid-PT-d2k1p8b00",
+      "family": "HypertorusGrid",
+      "stratum": "small",
+      "pass": 1,
+      "states": 87552,
+      "states_raw": "87552",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "f1b74527d11082544672602d977ed205303b52094fd090a62229dbf195215e3d",
+      "pnml_bytes": 9070,
+      "changed_since_2025": false
+    },
+    {
+      "id": "IBM319-PT-none",
+      "family": "IBM319",
+      "stratum": "small",
+      "pass": 1,
+      "states": 2482,
+      "states_raw": "2482",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "120ac91ef4b7887cf2413affa3c2eafa506c6883e78afcf99fbb7d0fa73a11fb",
+      "pnml_bytes": 188280,
+      "changed_since_2025": false
+    },
+    {
+      "id": "IBM5964-PT-none",
+      "family": "IBM5964",
+      "stratum": "small",
+      "pass": 1,
+      "states": 15546,
+      "states_raw": "15546",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "7bcf8bc45bf062a5a7f2304834a5c6121f961d20c7cd767355c307826b0705e4",
+      "pnml_bytes": 174950,
+      "changed_since_2025": false
+    },
+    {
+      "id": "IBM703-PT-none",
+      "family": "IBM703",
+      "stratum": "small",
+      "pass": 1,
+      "states": 8370,
+      "states_raw": "8370",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "744beb00cbe87e58d5e112b6ea77485fb2aee8ad835e72b9aee513a4c0fe11f1",
+      "pnml_bytes": 207317,
+      "changed_since_2025": false
+    },
+    {
+      "id": "IOTPpurchase-PT-C01M01P01D01",
+      "family": "IOTPpurchase",
+      "stratum": "small",
+      "pass": 2,
+      "states": 204,
+      "states_raw": "204",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "5072d8748768985b22c65c4bb93d4078c704cf15d12c269dfc6e6d44d8700dea",
+      "pnml_bytes": 63760,
+      "changed_since_2025": false
+    },
+    {
+      "id": "IOTPpurchase-PT-C03M03P03D03",
+      "family": "IOTPpurchase",
+      "stratum": "small",
+      "pass": 1,
+      "states": 354176,
+      "states_raw": "354176",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "15f521b57c2854da31fe00411b2129a521b924ce7d16e4205d54dfa57585e1f8",
+      "pnml_bytes": 60495,
+      "changed_since_2025": false
+    },
+    {
+      "id": "LamportFastMutEx-PT-3",
+      "family": "LamportFastMutEx",
+      "stratum": "small",
+      "pass": 1,
+      "states": 19742,
+      "states_raw": "19742",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "5e665fbd0c5777e199694a0db0a9592548fc05bbfe61d565d2b3ef8e69d8f234",
+      "pnml_bytes": 78566,
+      "changed_since_2025": false
+    },
+    {
+      "id": "LeafsetExtension-PT-S08C2",
+      "family": "LeafsetExtension",
+      "stratum": "small",
+      "pass": 1,
+      "states": 172248,
+      "states_raw": "172248",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "6a08f275c9102896bbb5daca4c9383c538f0d82600028d3b503798d5eaa489da",
+      "pnml_bytes": 662158,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MultiCrashLeafsetExtension-PT-S24C02",
+      "family": "MultiCrashLeafsetExtension",
+      "stratum": "small",
+      "pass": 2,
+      "states": 108020,
+      "states_raw": "108020",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "6fa639dfd3b6794d1e8c04f9dbd0631755bb9368372fef903ba0fe54f08fd322",
+      "pnml_bytes": 7950778,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MultiCrashLeafsetExtension-PT-S32C02",
+      "family": "MultiCrashLeafsetExtension",
+      "stratum": "small",
+      "pass": 1,
+      "states": 249308,
+      "states_raw": "249308",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "6e8740229823e2d21a75e15b7b54616c8e8913a86b953e5279f5ac7583294bc6",
+      "pnml_bytes": 16159522,
+      "changed_since_2025": false
+    },
+    {
+      "id": "NeighborGrid-PT-d2n3m1t12",
+      "family": "NeighborGrid",
+      "stratum": "small",
+      "pass": 1,
+      "states": 24310,
+      "states_raw": "24310",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "d83f5206fee0b604c44fc087ab47ea7ba6df67c8fb7a5b7948c63361d915d291",
+      "pnml_bytes": 18819,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ParamProductionCell-PT-1",
+      "family": "ParamProductionCell",
+      "stratum": "small",
+      "pass": 2,
+      "states": 25632,
+      "states_raw": "25632",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "3afd11d98b0e3a9283948418a5130618ac4f8dd9c446f40c04412c91174eec4d",
+      "pnml_bytes": 177406,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ParamProductionCell-PT-2",
+      "family": "ParamProductionCell",
+      "stratum": "small",
+      "pass": 1,
+      "states": 349874,
+      "states_raw": "349874",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "0025b38ae12c74dbae0a6b6550b52354ed1e4630833089f0b57bf7cddc900365",
+      "pnml_bytes": 177232,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Parking-PT-104",
+      "family": "Parking",
+      "stratum": "small",
+      "pass": 1,
+      "states": 31745,
+      "states_raw": "31745",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "631d907c248aeb1a56a973f71d52403c18380d483e381dccef83e4dc3b515ef7",
+      "pnml_bytes": 23321,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Peterson-PT-2",
+      "family": "Peterson",
+      "stratum": "small",
+      "pass": 1,
+      "states": 20754,
+      "states_raw": "20754",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "547e7251422820c52b6e788537e68a1bc1348f2f3e554a07c69559dac86ccc89",
+      "pnml_bytes": 101982,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Philosophers-PT-000005",
+      "family": "Philosophers",
+      "stratum": "small",
+      "pass": 2,
+      "states": 243,
+      "states_raw": "243",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "add07262588b389aa8677a247f5b8b95bfcc2f1fb374221199f9c7c23fc14930",
+      "pnml_bytes": 22254,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Philosophers-PT-000010",
+      "family": "Philosophers",
+      "stratum": "small",
+      "pass": 1,
+      "states": 59049,
+      "states_raw": "59049",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "a7596b0db9fac3d13fd1370038173ded15c49e5a46167b8488f9a4c374602453",
+      "pnml_bytes": 22244,
+      "changed_since_2025": false
+    },
+    {
+      "id": "QuasiCertifProtocol-PT-02",
+      "family": "QuasiCertifProtocol",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1029,
+      "states_raw": "1029",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "dd023d0a2a2cd01b528d60f0fcff4a072dd085003c6aafa0676b91542539fcfe",
+      "pnml_bytes": 58971,
+      "changed_since_2025": false
+    },
+    {
+      "id": "RERS2020-PT-pb101",
+      "family": "RERS2020",
+      "stratum": "small",
+      "pass": 1,
+      "states": 345421,
+      "states_raw": "345421",
+      "verdicts": {
+        "L": "false",
+        "QL": "?",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "81d274bf2f687fbb7777ee6c2808c9cb381b3c4044143dd7e8682f894eae5d0e",
+      "pnml_bytes": 86980060,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Raft-PT-02",
+      "family": "Raft",
+      "stratum": "small",
+      "pass": 1,
+      "states": 7381,
+      "states_raw": "7381",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "9ac884bc9a2ada6ce6f8747ca49abc30cb55a042125c577adbfed6879753f195",
+      "pnml_bytes": 12431,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Referendum-PT-0010",
+      "family": "Referendum",
+      "stratum": "small",
+      "pass": 1,
+      "states": 59050,
+      "states_raw": "59050",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "2b8659274cbb2a40c1ab50f14a7948d2f85d6f562feab0b211be900e77289098",
+      "pnml_bytes": 12149,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ResAllocation-PT-R003C005",
+      "family": "ResAllocation",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1200,
+      "states_raw": "1200",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "8081be558ff84e428046cef907aa271a83c90ad631cbc4aae28bc93af04c0c01",
+      "pnml_bytes": 35791,
+      "changed_since_2025": false
+    },
+    {
+      "id": "RobotManipulation-PT-00002",
+      "family": "RobotManipulation",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1430,
+      "states_raw": "1430",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "31e85520962feba2c10d2cdf25e179c319d382a640e861f879e048541464326d",
+      "pnml_bytes": 6439,
+      "changed_since_2025": false
+    },
+    {
+      "id": "RwMutex-PT-r0010w0050",
+      "family": "RwMutex",
+      "stratum": "small",
+      "pass": 2,
+      "states": 1074,
+      "states_raw": "1074",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "f737e7697bc88ca167dc34aa8e278f10bedb085fef00fdc3c739368b29adbd85",
+      "pnml_bytes": 96724,
+      "changed_since_2025": false
+    },
+    {
+      "id": "RwMutex-PT-r0010w0100",
+      "family": "RwMutex",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1124,
+      "states_raw": "1124",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "07ca5ce15ce40c46d422a2b5b701cb25ef907f5845a47378500d42910c750bf3",
+      "pnml_bytes": 187332,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SafeBus-PT-03",
+      "family": "SafeBus",
+      "stratum": "small",
+      "pass": 1,
+      "states": 4650,
+      "states_raw": "4650",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "3d885338cf3e8364bd84edfd32b140b363785fe42c6647e4a5cfb2b31a187593",
+      "pnml_bytes": 96648,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ServersAndClients-PT-100160",
+      "family": "ServersAndClients",
+      "stratum": "small",
+      "pass": 2,
+      "states": 16201,
+      "states_raw": "16201",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "a7dfe1aea530ed1bc0cd30942e738b7a2253cde8b26b38dccbee25adef407988",
+      "pnml_bytes": 10241933,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ServersAndClients-PT-200080",
+      "family": "ServersAndClients",
+      "stratum": "small",
+      "pass": 1,
+      "states": 16401,
+      "states_raw": "16401",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "6435b4b9795fea0d52a74a3b0cce3a56ae49c4162a8575c7976f2b8ec850d61f",
+      "pnml_bytes": 10376633,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SharedMemory-PT-000005",
+      "family": "SharedMemory",
+      "stratum": "small",
+      "pass": 1,
+      "states": 1863,
+      "states_raw": "1863",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "0a99477d2aef48d5b5d90e97fd4aaab4f24dcf26d8f3573e27d5d17ba7028e6b",
+      "pnml_bytes": 84936,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldIIPs-PT-001B",
+      "family": "ShieldIIPs",
+      "stratum": "small",
+      "pass": 1,
+      "states": 863505,
+      "states_raw": "863505",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "467c484405b7e08bae7ccb44f3470a57bb3b07347d40fcbb23ee214e1b57f691",
+      "pnml_bytes": 16953,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldIIPt-PT-001A",
+      "family": "ShieldIIPt",
+      "stratum": "small",
+      "pass": 2,
+      "states": 1281,
+      "states_raw": "1281",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "a81e5d4259183391991d1a18d1443778c4a4672f27c1a008e0961c1b5e491185",
+      "pnml_bytes": 6178,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldIIPt-PT-002A",
+      "family": "ShieldIIPt",
+      "stratum": "small",
+      "pass": 1,
+      "states": 819201,
+      "states_raw": "819201",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "dbd1bd26ad343a18d6732f41144644fee5e6e510270ce38d73424e53aabb2ef7",
+      "pnml_bytes": 11298,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldPPPs-PT-001A",
+      "family": "ShieldPPPs",
+      "stratum": "small",
+      "pass": 1,
+      "states": 61496,
+      "states_raw": "61496",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "42d0b5777e385d61d0defe91e6de2a7001255414904f16e6984cec676e5aedc5",
+      "pnml_bytes": 9573,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldPPPt-PT-001A",
+      "family": "ShieldPPPt",
+      "stratum": "small",
+      "pass": 1,
+      "states": 8001,
+      "states_raw": "8001",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "ce5f7c04c93b7cc4eb2c4cb22c5061e9b805175dd93ec7357644d9d6f680c4f6",
+      "pnml_bytes": 7533,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldRVs-PT-001B",
+      "family": "ShieldRVs",
+      "stratum": "small",
+      "pass": 1,
+      "states": 3596,
+      "states_raw": "3596",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "13545d21917bfe79b496e7158891e23f484b620258b91bdcca22c05d6f54d861",
+      "pnml_bytes": 12556,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ShieldRVt-PT-003A",
+      "family": "ShieldRVt",
+      "stratum": "small",
+      "pass": 1,
+      "states": 8193,
+      "states_raw": "8193",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "7547bd1d08e8d8aff2903ef2f414806de30649dcf837414f0f0a8b3a9504c300",
+      "pnml_bytes": 8972,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SimpleLoadBal-PT-05",
+      "family": "SimpleLoadBal",
+      "stratum": "small",
+      "pass": 1,
+      "states": 116176,
+      "states_raw": "116176",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "bbc2bc4c65df2ceef9c918b9dcc882cccc3eb86a81a6894d27edbf77a310e574",
+      "pnml_bytes": 158472,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SmallOperatingSystem-PT-MT0016DC0008",
+      "family": "SmallOperatingSystem",
+      "stratum": "small",
+      "pass": 2,
+      "states": 16587,
+      "states_raw": "16587",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "f968c3b23b007a95d04affea17261acb64132848ec74eab802c833a34fec37b0",
+      "pnml_bytes": 8301,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SmallOperatingSystem-PT-MT0032DC0008",
+      "family": "SmallOperatingSystem",
+      "stratum": "small",
+      "pass": 1,
+      "states": 166515,
+      "states_raw": "166515",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "a83dfa77737fa33d8618562f228d1dc14cc0484076b3e118cededdc1e6004026",
+      "pnml_bytes": 8301,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SmartHome-PT-01",
+      "family": "SmartHome",
+      "stratum": "small",
+      "pass": 2,
+      "states": 43201,
+      "states_raw": "43201",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "cd200326b306ebe27c7e40fb519968c6a6d7d6f76c514816867536418d413be8",
+      "pnml_bytes": 24691,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SmartHome-PT-02",
+      "family": "SmartHome",
+      "stratum": "small",
+      "pass": 1,
+      "states": 86401,
+      "states_raw": "86401",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "d10460f9255ae525d06a28649a9942f3cdab9166cb200e164676c9425be315d7",
+      "pnml_bytes": 27588,
+      "changed_since_2025": false
+    },
+    {
+      "id": "StigmergyCommit-PT-03a",
+      "family": "StigmergyCommit",
+      "stratum": "small",
+      "pass": 2,
+      "states": 4055,
+      "states_raw": "4055",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "567d3d29fc4fe973fd15658062ab9addd687305065a2553c21f7eb03e491fccc",
+      "pnml_bytes": 99611,
+      "changed_since_2025": false
+    },
+    {
+      "id": "StigmergyCommit-PT-04a",
+      "family": "StigmergyCommit",
+      "stratum": "small",
+      "pass": 1,
+      "states": 25867,
+      "states_raw": "25867",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "a4fb6fab5fd1e4c0b873c72a8785e65ff99fb6bca4242f228c8867125d025a25",
+      "pnml_bytes": 231800,
+      "changed_since_2025": false
+    },
+    {
+      "id": "StigmergyElection-PT-06a",
+      "family": "StigmergyElection",
+      "stratum": "small",
+      "pass": 1,
+      "states": 20473,
+      "states_raw": "20473",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "27a654f8c29fd9aea7df66e7a67838d39e68556eefb1cdc8c84923a966a6dd6d",
+      "pnml_bytes": 577914,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Sudoku-PT-AN02",
+      "family": "Sudoku",
+      "stratum": "small",
+      "pass": 1,
+      "states": 35,
+      "states_raw": "35",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "4070bcf5617b2ba1c7b1462add7636c2c054357edf824812798a06c6ac432876",
+      "pnml_bytes": 7543,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Sudoku-PT-BN01",
+      "family": "Sudoku",
+      "stratum": "small",
+      "pass": 2,
+      "states": 2,
+      "states_raw": "2",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "525303744eeeabee2e5feb39f235784a51b7b3699493f38b0e7909005bba9720",
+      "pnml_bytes": 2230,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SwimmingPool-PT-01",
+      "family": "SwimmingPool",
+      "stratum": "small",
+      "pass": 1,
+      "states": 89621,
+      "states_raw": "89621",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "62feeb02b1b770e8a6211e9dce5d9a663072eb494573165527f8279bc53a774a",
+      "pnml_bytes": 3947,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TokenRing-PT-005",
+      "family": "TokenRing",
+      "stratum": "small",
+      "pass": 2,
+      "states": 166,
+      "states_raw": "166",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "0030002ff0fdfe4803e8b26ed54904de8219c05a358bd3f9db76965b99437604",
+      "pnml_bytes": 121164,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TokenRing-PT-010",
+      "family": "TokenRing",
+      "stratum": "small",
+      "pass": 1,
+      "states": 58905,
+      "states_raw": "58905",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "f038512fa74dd5d099abfa59fe48da30eb7401082f881f99f4d96fbcda661a67",
+      "pnml_bytes": 531325,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TriangularGrid-PT-1200",
+      "family": "TriangularGrid",
+      "stratum": "small",
+      "pass": 2,
+      "states": 109552,
+      "states_raw": "109552",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "06f2f4c1a991853f5baaf323496097b9976100d7a1a9df9747939f0e9e7846fd",
+      "pnml_bytes": 9929,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TriangularGrid-PT-1500",
+      "family": "TriangularGrid",
+      "stratum": "small",
+      "pass": 1,
+      "states": 705712,
+      "states_raw": "705712",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "918972256950243f2a374c4d5ea5a4871416ff649da5ad476d2d9f68680279be",
+      "pnml_bytes": 9929,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TwoPhaseLocking-PT-nC00010vN",
+      "family": "TwoPhaseLocking",
+      "stratum": "small",
+      "pass": 2,
+      "states": 624,
+      "states_raw": "624",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "3fe61475504e6bfdda3bab5ca7ad554b85c1d89295baed2a2bbf349efc02cf19",
+      "pnml_bytes": 4683,
+      "changed_since_2025": false
+    },
+    {
+      "id": "TwoPhaseLocking-PT-nC00020vD",
+      "family": "TwoPhaseLocking",
+      "stratum": "small",
+      "pass": 1,
+      "states": 7006,
+      "states_raw": "7006",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "7e1cec8b1eff77d17277f6ed21cb5c0143ccac164aad69fbac8c496b51c2331a",
+      "pnml_bytes": 4685,
+      "changed_since_2025": false
+    },
+    {
+      "id": "UtilityControlRoom-PT-Z2T3N04",
+      "family": "UtilityControlRoom",
+      "stratum": "small",
+      "pass": 1,
+      "states": 208341,
+      "states_raw": "208341",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "76b623d2c39dfbf93932e050be815cd32ab7cdc532474149c1c2c7789cb07d8c",
+      "pnml_bytes": 47729,
+      "changed_since_2025": false
+    },
+    {
+      "id": "UtilityControlRoom-PT-Z4T4N02",
+      "family": "UtilityControlRoom",
+      "stratum": "small",
+      "pass": 2,
+      "states": 57040,
+      "states_raw": "57040",
+      "verdicts": {
+        "L": "true",
+        "QL": "true",
+        "RD": "false",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "c5a413222e7b4cd9348ccc70b37bd581cb5d12cadf665be3478aaf15bb733b99",
+      "pnml_bytes": 65847,
+      "changed_since_2025": false
+    },
+    {
+      "id": "BusinessProcesses-PT-09",
+      "family": "BusinessProcesses",
+      "stratum": "large:L",
+      "pass": null,
+      "states": 7522568986194230709,
+      "states_raw": "7522568986194230709",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "31d6b8adcac7bf636b192ed3b7000f964673e1fd5044f8f34be63d62a59c203e",
+      "pnml_bytes": 106147,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DiscoveryGPU-PT-14b",
+      "family": "DiscoveryGPU",
+      "stratum": "large:L",
+      "pass": null,
+      "states": null,
+      "states_raw": "?",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "e9ab6c96743a0e134e29f4c72b7dbbe3e61cd83e3e007adb5223c9e4fdfb5d2d",
+      "pnml_bytes": 105998,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MAPKbis-PT-5320",
+      "family": "MAPKbis",
+      "stratum": "large:L",
+      "pass": null,
+      "states": 8126465,
+      "states_raw": "8126465",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "3c638e81065ca9bcc9e6af355163a6a9472a03bb9bf4a6e8ebbe25906fa45392",
+      "pnml_bytes": 174036,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MedleyB-PT-B01",
+      "family": "MedleyB",
+      "stratum": "large:L",
+      "pass": null,
+      "states": 190039737,
+      "states_raw": "190039737",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "667e1e1969d63542dd0d24fca616a6df5729fdc7892225b2d9c2e8c9eb2af04e",
+      "pnml_bytes": 235731,
+      "changed_since_2025": true
+    },
+    {
+      "id": "ProductionCell-PT-none",
+      "family": "ProductionCell",
+      "stratum": "large:L",
+      "pass": null,
+      "states": 11329291100161,
+      "states_raw": "11329291100161",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "b1d59121db17cdc8b230cf11682ae64cd2ada4b6e7aa5f60e5eb0ac298a5baba",
+      "pnml_bytes": 43926,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Champagne-PT-H05T2O",
+      "family": "Champagne",
+      "stratum": "large:OS",
+      "pass": null,
+      "states": null,
+      "states_raw": "?",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "c73914b78a2f1f9036c8da6b5587694ffe848d73972ef67f9436b763256bc624",
+      "pnml_bytes": 152132,
+      "changed_since_2025": true
+    },
+    {
+      "id": "Medical-PT-02",
+      "family": "Medical",
+      "stratum": "large:OS",
+      "pass": null,
+      "states": null,
+      "states_raw": "+inf",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "09cea87656240ff4e50766036fc499c9b206d3b55c5b64641e328ebfdf93f873",
+      "pnml_bytes": 3208890,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MultiwaySync-PT-none",
+      "family": "MultiwaySync",
+      "stratum": "large:OS",
+      "pass": null,
+      "states": null,
+      "states_raw": "?",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "0826d17c82112d01e16a6d274a9ff031a7da7dd6e969bfba371a5e2e31ce2790",
+      "pnml_bytes": 113132,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Ring-PT-none",
+      "family": "Ring",
+      "stratum": "large:OS",
+      "pass": null,
+      "states": 902651904000,
+      "states_raw": "902651904000",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "fd3945a9935ef0e1db00c6418392c9665b220001aaa65bfd7a61bb8d7f15daee",
+      "pnml_bytes": 47620,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ViralEpidemic-PT-S04D1C1A03",
+      "family": "ViralEpidemic",
+      "stratum": "large:OS",
+      "pass": null,
+      "states": null,
+      "states_raw": "?",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "3d36a64773db583a9bfe38ff00d9375fcaa7bfafa0c53c97e5a4acd3cce6f3ed",
+      "pnml_bytes": 290025,
+      "changed_since_2025": false
+    },
+    {
+      "id": "CO4-PT-02",
+      "family": "CO4",
+      "stratum": "large:QL",
+      "pass": null,
+      "states": 2392106,
+      "states_raw": "2392106",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "49ac2110d9a187f5128729860158070573b62c58fb5184c886155adb9b36d404",
+      "pnml_bytes": 74867,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DES-PT-01a",
+      "family": "DES",
+      "stratum": "large:QL",
+      "pass": null,
+      "states": 108580356,
+      "states_raw": "108580356",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "ce88b3494d30b55c2536a0671f591cf0b0c4534584f172b44bb1511b8d89d8c9",
+      "pnml_bytes": 31882,
+      "changed_since_2025": false
+    },
+    {
+      "id": "DLCflexbar-PT-6a",
+      "family": "DLCflexbar",
+      "stratum": "large:QL",
+      "pass": null,
+      "states": null,
+      "states_raw": "?",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "e7840c898a0662226dced969ae2285c947bab84d71162e1d438d7ad9e41a692e",
+      "pnml_bytes": 4388287,
+      "changed_since_2025": false
+    },
+    {
+      "id": "MedleyA-PT-07",
+      "family": "MedleyA",
+      "stratum": "large:QL",
+      "pass": null,
+      "states": 63107002,
+      "states_raw": "63107002",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "true",
+        "SM": "true"
+      },
+      "pnml_sha256": "ca6fb2b3e0f1b05afdd80feed258d7581a98bba6d0ce1bd75fa8f1420c1da4a3",
+      "pnml_bytes": 83403,
+      "changed_since_2025": false
+    },
+    {
+      "id": "Solitaire-PT-FrnCT7x7",
+      "family": "Solitaire",
+      "stratum": "large:QL",
+      "pass": null,
+      "states": null,
+      "states_raw": "absent",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "ec117d465d0764531e4208961fd69b4041e4267fee44cd98f74dd88ab8543061",
+      "pnml_bytes": 93574,
+      "changed_since_2025": false
+    },
+    {
+      "id": "ErlangenMainframeV0-PT-0404",
+      "family": "ErlangenMainframeV0",
+      "stratum": "large:RD",
+      "pass": null,
+      "states": 90874498192,
+      "states_raw": "90874498192",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "false",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "bd35e7ff70fb59d60376b5d7739f2e3d07e44ddc13990bd22d2faf985b16150a",
+      "pnml_bytes": 191324,
+      "changed_since_2025": true
+    },
+    {
+      "id": "FamilyReunion-PT-L00050M0005C002P002G001",
+      "family": "FamilyReunion",
+      "stratum": "large:RD",
+      "pass": null,
+      "states": null,
+      "states_raw": "absent",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "f5b700b1705f40af14dc80b64963879e7c0a6a206b68ab46c37c17c85b0d05d9",
+      "pnml_bytes": 4908527,
+      "changed_since_2025": false
+    },
+    {
+      "id": "NoC3x3-PT-6B",
+      "family": "NoC3x3",
+      "stratum": "large:RD",
+      "pass": null,
+      "states": null,
+      "states_raw": "absent",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "true",
+        "SM": "false"
+      },
+      "pnml_sha256": "dcfd644f790558bd46bd2fbb6c0de446fcf59f12c1efe3ecdfe7361b9cddbd63",
+      "pnml_bytes": 565202,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SemanticWebServices-PT-S064P12",
+      "family": "SemanticWebServices",
+      "stratum": "large:RD",
+      "pass": null,
+      "states": null,
+      "states_raw": "+inf",
+      "verdicts": {
+        "L": "false",
+        "QL": "false",
+        "RD": "true",
+        "OS": "false",
+        "SM": "true"
+      },
+      "pnml_sha256": "b57ec5c6b77dc68c6cac6fb4270493ffa50b3b0aae60fb17572999aa913b95b3",
+      "pnml_bytes": 119412,
+      "changed_since_2025": false
+    },
+    {
+      "id": "SquareGrid-PT-020102",
+      "family": "SquareGrid",
+      "stratum": "large:RD",
+      "pass": null,
+      "states": 2085423232578,
+      "states_raw": "2085423232578",
+      "verdicts": {
+        "L": "false",
+        "QL": "true",
+        "RD": "true",
+        "OS": "false",
+        "SM": "false"
+      },
+      "pnml_sha256": "8174b0a768b05e5ea3a84ce97a787fcc89e89acd323a5a9b3f46fb8065dd5811",
+      "pnml_bytes": 55639,
+      "changed_since_2025": false
+    }
+  ],
+  "skipped": [
+    {
+      "id": "ARMCacheCoherence-PT-none",
+      "stratum": "large:L",
+      "reason": "too large",
+      "detail": "14176985 bytes"
+    },
+    {
+      "id": "MedleyB-PT-B08",
+      "stratum": "large:L",
+      "reason": "too large",
+      "detail": "11625232 bytes"
+    },
+    {
+      "id": "PolyORBNT-PT-S05J20",
+      "stratum": "large:L",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId30797551969987637053617' has weight 3, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBNT-PT-S05J80",
+      "stratum": "large:L",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-80794688701218049868655' has weight 3, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBNT-PT-S10J40",
+      "stratum": "large:L",
+      "reason": "too large",
+      "detail": "13827963 bytes"
+    },
+    {
+      "id": "PolyORBNT-PT-S10J60",
+      "stratum": "large:L",
+      "reason": "too large",
+      "detail": "14176540 bytes"
+    },
+    {
+      "id": "PolyORBNT-PT-S10J80",
+      "stratum": "large:L",
+      "reason": "too large",
+      "detail": "14527960 bytes"
+    },
+    {
+      "id": "ARMCacheCoherence-PT-none",
+      "stratum": "large:OS",
+      "reason": "too large",
+      "detail": "14176985 bytes"
+    },
+    {
+      "id": "PolyORBLF-PT-S02J04T08",
+      "stratum": "large:OS",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-43568552001679293676376' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S04J04T08",
+      "stratum": "large:OS",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId86366918618922485476072' has weight 10, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S04J06T08",
+      "stratum": "large:OS",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-451370954053964736717424' has weight 4, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S06J06T04",
+      "stratum": "large:OS",
+      "reason": "too large",
+      "detail": "7193952 bytes"
+    },
+    {
+      "id": "PolyORBLF-PT-S06J06T08",
+      "stratum": "large:OS",
+      "reason": "too large",
+      "detail": "14549992 bytes"
+    },
+    {
+      "id": "ARMCacheCoherence-PT-none",
+      "stratum": "large:QL",
+      "reason": "too large",
+      "detail": "14176985 bytes"
+    },
+    {
+      "id": "DLCflexbar-PT-6b",
+      "stratum": "large:QL",
+      "reason": "too large",
+      "detail": "10058197 bytes"
+    },
+    {
+      "id": "DLCflexbar-PT-8b",
+      "stratum": "large:QL",
+      "reason": "too large",
+      "detail": "19942819 bytes"
+    },
+    {
+      "id": "PolyORBLF-PT-S02J06T10",
+      "stratum": "large:QL",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-16219284569984791308657' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S04J04T10",
+      "stratum": "large:QL",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId694957157159478705931571' has weight 4, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S04J06T10",
+      "stratum": "large:QL",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId192271541453351212018958' has weight 3, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PolyORBLF-PT-S06J06T06",
+      "stratum": "large:QL",
+      "reason": "too large",
+      "detail": "10821600 bytes"
+    },
+    {
+      "id": "PolyORBLF-PT-S06J06T08",
+      "stratum": "large:QL",
+      "reason": "too large",
+      "detail": "14549992 bytes"
+    },
+    {
+      "id": "Election2020-PT-none",
+      "stratum": "large:RD",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'arcid_1_1' has weight 9, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "ErlangenMainframeV0-PT-0707",
+      "stratum": "large:RD",
+      "reason": "too large",
+      "detail": "5894918 bytes"
+    },
+    {
+      "id": "ErlangenMainframeV0-PT-1301",
+      "stratum": "large:RD",
+      "reason": "too large",
+      "detail": "55879487 bytes"
+    },
+    {
+      "id": "FunctionPointer-PT-a032",
+      "stratum": "large:RD",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FunctionPointer-PT-a064",
+      "stratum": "large:RD",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FunctionPointer-PT-b004",
+      "stratum": "large:RD",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FunctionPointer-PT-b064",
+      "stratum": "large:RD",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FunctionPointer-PT-c002",
+      "stratum": "large:RD",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "BridgeAndVehicles-PT-V04P05N02",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId5580132773477370803130' has weight 5, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "BridgeAndVehicles-PT-V10P10N10",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId2846924334785947440474' has weight 10, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "DBSingleClientW-PT-d0m04",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "DBSingleClientW-PT-d0m05",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "DBSingleClientW-PT-d1m04",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "DNAwalker-PT-01track12Block1",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'A_97' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "DNAwalker-PT-02track12Block2",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'A_102' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "DNAwalker-PT-03track12BlockBoth",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'A_102' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "DrinkVendingMachine-PT-02",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId545616211651969532519' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "Eratosthenes-PT-010",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "Eratosthenes-PT-020",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FileSystem-PT-N02I05B05",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "FileSystem-PT-N02I10B10",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "GPPP-PT-C0001N0000000001",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'a38' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "GlobalResAllocation-PT-03",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-47770188494593952544886' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "JoinFreeModules-PT-0003",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-1-1' has weight 5, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "LastZero-PT-N08",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "LastZero-PT-N10",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "Murphy-PT-D1N010",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 't2p-0-0' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "NQueens-PT-05",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "NQueens-PT-08",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "NeoElection-PT-2",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "NeoElection-PT-3",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "PGCD-PT-D02N005",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 't2p-0-0' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PGCD-PT-D02N006",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 't2p-0-0' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PermAdmissibility-PT-01",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-6880404976991252536766' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PhaseVariation-PT-D02CS010",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'a59' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PhilosophersDyn-PT-03",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId3313964498731038968403' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "PhilosophersDyn-PT-10",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'cId-180390990783531957811671' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "Railroad-PT-005",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "RefineWMG-PT-002002",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-1' has weight 3, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "RefineWMG-PT-002003",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-1' has weight 3, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "RingSingleMessageInMbox-PT-d0m005",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "RingSingleMessageInMbox-PT-d0m010",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "SatelliteMemory-PT-X00100Y0003",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-9194-53508-25' has weight 94, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "SieveSingleMsgMbox-PT-d0m04",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "SieveSingleMsgMbox-PT-d0m06",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "SieveSingleMsgMbox-PT-d1m04",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "SieveSingleMsgMbox-PT-d2m04",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "SupplyChain-PT-00002",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-326E-5C309-21' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "SupplyChain-PT-00005",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 'e-3270-6111A-55' has weight 2, but only ordinary nets (weight 1) are supported"
+    },
+    {
+      "id": "Szymanski-PT-a02",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "Szymanski-PT-b02",
+      "stratum": "small",
+      "reason": "not connected",
+      "detail": "PNML conversion error: invalid net topology: the net must be connected (every node reachable from every other node ignoring arc directions)"
+    },
+    {
+      "id": "ZombiesAndSurvivors-PT-Circular04005005",
+      "stratum": "small",
+      "reason": "arc weight",
+      "detail": "PNML conversion error: arc 't2p-bite_n1-undead_n1' has weight 2, but only ordinary nets (weight 1) are supported"
+    }
+  ]
+}

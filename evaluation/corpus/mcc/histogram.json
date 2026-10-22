@@ -1,0 +1,81 @@
+{
+  "large": {
+    "models": 20,
+    "parsed": 20,
+    "parse_failures": [],
+    "classes": {
+      "AsymmetricChoice": 2,
+      "General": 18
+    },
+    "places": {
+      "min": 68,
+      "median": 222,
+      "max": 12194
+    },
+    "transitions": {
+      "min": 72,
+      "median": 434,
+      "max": 16077
+    },
+    "arcs": {
+      "min": 288,
+      "median": 1240,
+      "max": 63325
+    },
+    "models_with_weighted_arcs": 0,
+    "models_with_weighted_arcs_pct": 0.0,
+    "max_arc_weight": 1,
+    "marked_places": {
+      "min": 1,
+      "median": 1,
+      "max": 171
+    },
+    "total_initial_tokens": {
+      "min": 1,
+      "median": 1,
+      "max": 171
+    },
+    "models_with_initial_tokens": 20
+  },
+  "small": {
+    "models": 90,
+    "parsed": 90,
+    "parse_failures": [],
+    "classes": {
+      "AsymmetricChoice": 22,
+      "FreeChoice": 6,
+      "General": 59,
+      "MarkedGraph": 2,
+      "StateMachine": 1
+    },
+    "places": {
+      "min": 5,
+      "median": 48,
+      "max": 16881
+    },
+    "transitions": {
+      "min": 1,
+      "median": 64,
+      "max": 149363
+    },
+    "arcs": {
+      "min": 5,
+      "median": 224,
+      "max": 595952
+    },
+    "models_with_weighted_arcs": 0,
+    "models_with_weighted_arcs_pct": 0.0,
+    "max_arc_weight": 1,
+    "marked_places": {
+      "min": 1,
+      "median": 7,
+      "max": 281
+    },
+    "total_initial_tokens": {
+      "min": 1,
+      "median": 10,
+      "max": 281
+    },
+    "models_with_initial_tokens": 90
+  }
+}

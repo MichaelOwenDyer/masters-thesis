@@ -4,6 +4,5 @@
 #let lv(i) = $upright(L)_#i$
 #let reach = $arrow.r.squiggly$
 #let reachz = $scripts(arrow.r.squiggly)_0$
-#let fw(x) = $upright("Fw")(#x)$
-#let bw(x) = $upright("Bw")(#x)$
 #let prestar(x) = $upright("Pre")^*(#x)$
+#let poststar(x) = $upright("Post")^*(#x)$

@@ -1,0 +1,36 @@
+# All parameters of the evaluation pipeline. Relative paths are resolved against the directory of this file.
+# The --config flag of petrivet-eval may override the path of this file only.
+
+[paths]
+# MCC 2026 oracle verdict files, one directory per model (<ModelId>/<ModelId>-<EXAM>.out).
+oracle_dir = "/Users/michael.dyer/RustroverProjects/petrivet-mcc/mcc-tests/oracle/models"
+# MCC 2025 archive, read only to compare model files (never used as a download source).
+oracle_2025_zip = "/Users/michael.dyer/RustroverProjects/petrivet-mcc/mcc-tests/oracle.zip"
+# Output directory of the MCC stage (selection.json, selected.json, histogram.json, models/).
+corpus_dir = "corpus/mcc"
+
+[select]
+seed = 20261022
+# mcc-small: definite state count at most this
+small_max_states = 1000000
+# number of alternative models kept per family in each ranked candidate list (fallbacks if one is too large or not readable by petrivet)
+models_per_candidate = 5
+# mcc-small drawing rule (applied by `fetch`, deterministic). A model counts as drawn only if petrivet parses it
+# (connected, ordinary), it is not colored, and (large only) its PNML is within the size cap.
+# Per family the candidates are ordered by distance of their state-count rank from the family median
+# (median first, then the nearest neighbours alternately, lower before upper). Families are visited in the order
+# of blake3(seed || family).
+# Pass 1: per family the first parsing candidate (at most 1 per family; all pass-1 models are kept even if they
+#   exceed the target).
+# Pass 2 (only if pass 1 yields fewer than small_target): per family, in the same order, the next parsing candidate
+#   among the remaining ones, until small_target is reached or the pool is exhausted.
+# The quality bar is never lowered; if the target is not reached the shortfall is reported.
+small_target = 90
+
+[fetch]
+base_url = "https://yanntm.github.io/pnmcc-models-2026/INPUTS"
+# mcc-large models per examination (a family counts once across examinations)
+quota_per_exam = 5
+# mcc-large candidates with a larger model.pnml are skipped
+max_pnml_bytes = 5000000
+curl_max_time_secs = 180

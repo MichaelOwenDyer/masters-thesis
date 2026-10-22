@@ -1,0 +1,3202 @@
+{
+  "parameters": {
+    "seed": 20261022,
+    "small_max_states": 1000000,
+    "models_per_candidate": 5,
+    "small_target": 90
+  },
+  "pool": {
+    "total": 1953,
+    "non_colored": 1681,
+    "pool": 1681,
+    "small_pool": 199,
+    "small_pool_families": 92,
+    "large_pool": 1482,
+    "large_pool_families": 142
+  },
+  "small_candidates": [
+    {
+      "family": "Angiogenesis",
+      "models": [
+        {
+          "id": "Angiogenesis-PT-01",
+          "states": 110
+        }
+      ]
+    },
+    {
+      "family": "NQueens",
+      "models": [
+        {
+          "id": "NQueens-PT-08",
+          "states": 118969
+        },
+        {
+          "id": "NQueens-PT-05",
+          "states": 462
+        }
+      ]
+    },
+    {
+      "family": "Dekker",
+      "models": [
+        {
+          "id": "Dekker-PT-015",
+          "states": 278528
+        },
+        {
+          "id": "Dekker-PT-010",
+          "states": 6144
+        }
+      ]
+    },
+    {
+      "family": "CSRepetitions",
+      "models": [
+        {
+          "id": "CSRepetitions-PT-02",
+          "states": 7424
+        }
+      ]
+    },
+    {
+      "family": "SmartHome",
+      "models": [
+        {
+          "id": "SmartHome-PT-02",
+          "states": 86401
+        },
+        {
+          "id": "SmartHome-PT-01",
+          "states": 43201
+        },
+        {
+          "id": "SmartHome-PT-03",
+          "states": 259201
+        }
+      ]
+    },
+    {
+      "family": "LeafsetExtension",
+      "models": [
+        {
+          "id": "LeafsetExtension-PT-S08C2",
+          "states": 172248
+        }
+      ]
+    },
+    {
+      "family": "HypertorusGrid",
+      "models": [
+        {
+          "id": "HypertorusGrid-PT-d2k1p8b00",
+          "states": 87552
+        }
+      ]
+    },
+    {
+      "family": "TwoPhaseLocking",
+      "models": [
+        {
+          "id": "TwoPhaseLocking-PT-nC00020vD",
+          "states": 7006
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00010vN",
+          "states": 624
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00020vN",
+          "states": 7997
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00010vD",
+          "states": 503
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00050vD",
+          "states": 380015
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00004vN",
+          "states": 45
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00050vN",
+          "states": 403741
+        },
+        {
+          "id": "TwoPhaseLocking-PT-nC00004vD",
+          "states": 32
+        }
+      ]
+    },
+    {
+      "family": "ERK",
+      "models": [
+        {
+          "id": "ERK-PT-000010",
+          "states": 47047
+        },
+        {
+          "id": "ERK-PT-000001",
+          "states": 13
+        }
+      ]
+    },
+    {
+      "family": "DoubleExponent",
+      "models": [
+        {
+          "id": "DoubleExponent-PT-002",
+          "states": 3708
+        },
+        {
+          "id": "DoubleExponent-PT-001",
+          "states": 149
+        }
+      ]
+    },
+    {
+      "family": "HouseConstruction",
+      "models": [
+        {
+          "id": "HouseConstruction-PT-00002",
+          "states": 1501
+        }
+      ]
+    },
+    {
+      "family": "ShieldIIPt",
+      "models": [
+        {
+          "id": "ShieldIIPt-PT-002A",
+          "states": 819201
+        },
+        {
+          "id": "ShieldIIPt-PT-001A",
+          "states": 1281
+        }
+      ]
+    },
+    {
+      "family": "Sudoku",
+      "models": [
+        {
+          "id": "Sudoku-PT-AN02",
+          "states": 35
+        },
+        {
+          "id": "Sudoku-PT-BN01",
+          "states": 2
+        },
+        {
+          "id": "Sudoku-PT-AN03",
+          "states": 11776
+        },
+        {
+          "id": "Sudoku-PT-AN01",
+          "states": 2
+        }
+      ]
+    },
+    {
+      "family": "Philosophers",
+      "models": [
+        {
+          "id": "Philosophers-PT-000010",
+          "states": 59049
+        },
+        {
+          "id": "Philosophers-PT-000005",
+          "states": 243
+        }
+      ]
+    },
+    {
+      "family": "Szymanski",
+      "models": [
+        {
+          "id": "Szymanski-PT-b02",
+          "states": 277943
+        },
+        {
+          "id": "Szymanski-PT-a02",
+          "states": 62187
+        }
+      ]
+    },
+    {
+      "family": "EGFr",
+      "models": [
+        {
+          "id": "EGFr-PT-02010",
+          "states": 4200
+        }
+      ]
+    },
+    {
+      "family": "ServersAndClients",
+      "models": [
+        {
+          "id": "ServersAndClients-PT-200080",
+          "states": 16401
+        },
+        {
+          "id": "ServersAndClients-PT-100160",
+          "states": 16201
+        },
+        {
+          "id": "ServersAndClients-PT-100320",
+          "states": 32201
+        },
+        {
+          "id": "ServersAndClients-PT-200040",
+          "states": 8401
+        },
+        {
+          "id": "ServersAndClients-PT-200160",
+          "states": 32401
+        },
+        {
+          "id": "ServersAndClients-PT-100080",
+          "states": 8201
+        },
+        {
+          "id": "ServersAndClients-PT-400080",
+          "states": 32801
+        },
+        {
+          "id": "ServersAndClients-PT-100040",
+          "states": 4201
+        },
+        {
+          "id": "ServersAndClients-PT-200320",
+          "states": 64401
+        },
+        {
+          "id": "ServersAndClients-PT-100020",
+          "states": 2201
+        },
+        {
+          "id": "ServersAndClients-PT-400160",
+          "states": 64801
+        }
+      ]
+    },
+    {
+      "family": "GPUForwardProgress",
+      "models": [
+        {
+          "id": "GPUForwardProgress-PT-08a",
+          "states": 380093
+        },
+        {
+          "id": "GPUForwardProgress-PT-04a",
+          "states": 1373
+        }
+      ]
+    },
+    {
+      "family": "ParamProductionCell",
+      "models": [
+        {
+          "id": "ParamProductionCell-PT-2",
+          "states": 349874
+        },
+        {
+          "id": "ParamProductionCell-PT-1",
+          "states": 25632
+        }
+      ]
+    },
+    {
+      "family": "AutonomousCar",
+      "models": [
+        {
+          "id": "AutonomousCar-PT-03a",
+          "states": 22521
+        },
+        {
+          "id": "AutonomousCar-PT-02a",
+          "states": 2314
+        },
+        {
+          "id": "AutonomousCar-PT-01b",
+          "states": 117338
+        },
+        {
+          "id": "AutonomousCar-PT-01a",
+          "states": 227
+        },
+        {
+          "id": "AutonomousCar-PT-04a",
+          "states": 206492
+        }
+      ]
+    },
+    {
+      "family": "CryptoMiner",
+      "models": [
+        {
+          "id": "CryptoMiner-PT-D03N010",
+          "states": 10636
+        }
+      ]
+    },
+    {
+      "family": "RefineWMG",
+      "models": [
+        {
+          "id": "RefineWMG-PT-002003",
+          "states": 184320
+        },
+        {
+          "id": "RefineWMG-PT-002002",
+          "states": 58320
+        }
+      ]
+    },
+    {
+      "family": "UtilityControlRoom",
+      "models": [
+        {
+          "id": "UtilityControlRoom-PT-Z2T3N04",
+          "states": 208341
+        },
+        {
+          "id": "UtilityControlRoom-PT-Z4T4N02",
+          "states": 57040
+        },
+        {
+          "id": "UtilityControlRoom-PT-Z2T4N04",
+          "states": 210432
+        },
+        {
+          "id": "UtilityControlRoom-PT-Z2T4N02",
+          "states": 1092
+        }
+      ]
+    },
+    {
+      "family": "ClientsAndServers",
+      "models": [
+        {
+          "id": "ClientsAndServers-PT-N0001P0",
+          "states": 27576
+        }
+      ]
+    },
+    {
+      "family": "ZombiesAndSurvivors",
+      "models": [
+        {
+          "id": "ZombiesAndSurvivors-PT-Circular04005005",
+          "states": 29812
+        }
+      ]
+    },
+    {
+      "family": "PermAdmissibility",
+      "models": [
+        {
+          "id": "PermAdmissibility-PT-01",
+          "states": 52537
+        }
+      ]
+    },
+    {
+      "family": "Parking",
+      "models": [
+        {
+          "id": "Parking-PT-104",
+          "states": 31745
+        }
+      ]
+    },
+    {
+      "family": "SmallOperatingSystem",
+      "models": [
+        {
+          "id": "SmallOperatingSystem-PT-MT0032DC0008",
+          "states": 166515
+        },
+        {
+          "id": "SmallOperatingSystem-PT-MT0016DC0008",
+          "states": 16587
+        },
+        {
+          "id": "SmallOperatingSystem-PT-MT0032DC0016",
+          "states": 354501
+        }
+      ]
+    },
+    {
+      "family": "IOTPpurchase",
+      "models": [
+        {
+          "id": "IOTPpurchase-PT-C03M03P03D03",
+          "states": 354176
+        },
+        {
+          "id": "IOTPpurchase-PT-C01M01P01D01",
+          "states": 204
+        }
+      ]
+    },
+    {
+      "family": "SafeBus",
+      "models": [
+        {
+          "id": "SafeBus-PT-03",
+          "states": 4650
+        }
+      ]
+    },
+    {
+      "family": "GPPP",
+      "models": [
+        {
+          "id": "GPPP-PT-C0001N0000000001",
+          "states": 10380
+        }
+      ]
+    },
+    {
+      "family": "TokenRing",
+      "models": [
+        {
+          "id": "TokenRing-PT-010",
+          "states": 58905
+        },
+        {
+          "id": "TokenRing-PT-005",
+          "states": 166
+        }
+      ]
+    },
+    {
+      "family": "SatelliteMemory",
+      "models": [
+        {
+          "id": "SatelliteMemory-PT-X00100Y0003",
+          "states": 76358
+        }
+      ]
+    },
+    {
+      "family": "BART",
+      "models": [
+        {
+          "id": "BART-PT-002",
+          "states": 17424
+        }
+      ]
+    },
+    {
+      "family": "AirplaneLD",
+      "models": [
+        {
+          "id": "AirplaneLD-PT-0020",
+          "states": 308303
+        },
+        {
+          "id": "AirplaneLD-PT-0010",
+          "states": 43463
+        }
+      ]
+    },
+    {
+      "family": "CircularTrains",
+      "models": [
+        {
+          "id": "CircularTrains-PT-024",
+          "states": 86515
+        },
+        {
+          "id": "CircularTrains-PT-012",
+          "states": 195
+        }
+      ]
+    },
+    {
+      "family": "TriangularGrid",
+      "models": [
+        {
+          "id": "TriangularGrid-PT-1500",
+          "states": 705712
+        },
+        {
+          "id": "TriangularGrid-PT-1200",
+          "states": 109552
+        }
+      ]
+    },
+    {
+      "family": "RwMutex",
+      "models": [
+        {
+          "id": "RwMutex-PT-r0010w0100",
+          "states": 1124
+        },
+        {
+          "id": "RwMutex-PT-r0010w0050",
+          "states": 1074
+        },
+        {
+          "id": "RwMutex-PT-r0010w0500",
+          "states": 1524
+        },
+        {
+          "id": "RwMutex-PT-r0010w0020",
+          "states": 1044
+        },
+        {
+          "id": "RwMutex-PT-r0010w1000",
+          "states": 2024
+        },
+        {
+          "id": "RwMutex-PT-r0010w0010",
+          "states": 1034
+        },
+        {
+          "id": "RwMutex-PT-r0010w2000",
+          "states": 3024
+        }
+      ]
+    },
+    {
+      "family": "Raft",
+      "models": [
+        {
+          "id": "Raft-PT-02",
+          "states": 7381
+        }
+      ]
+    },
+    {
+      "family": "HexagonalGrid",
+      "models": [
+        {
+          "id": "HexagonalGrid-PT-110",
+          "states": 40193
+        }
+      ]
+    },
+    {
+      "family": "CircadianClock",
+      "models": [
+        {
+          "id": "CircadianClock-PT-000010",
+          "states": 644204
+        },
+        {
+          "id": "CircadianClock-PT-000001",
+          "states": 128
+        }
+      ]
+    },
+    {
+      "family": "DrinkVendingMachine",
+      "models": [
+        {
+          "id": "DrinkVendingMachine-PT-02",
+          "states": 1024
+        }
+      ]
+    },
+    {
+      "family": "JoinFreeModules",
+      "models": [
+        {
+          "id": "JoinFreeModules-PT-0003",
+          "states": 35937
+        }
+      ]
+    },
+    {
+      "family": "MultiCrashLeafsetExtension",
+      "models": [
+        {
+          "id": "MultiCrashLeafsetExtension-PT-S32C02",
+          "states": 249308
+        },
+        {
+          "id": "MultiCrashLeafsetExtension-PT-S24C02",
+          "states": 108020
+        },
+        {
+          "id": "MultiCrashLeafsetExtension-PT-S16C03",
+          "states": 268068
+        },
+        {
+          "id": "MultiCrashLeafsetExtension-PT-S16C02",
+          "states": 33708
+        }
+      ]
+    },
+    {
+      "family": "Referendum",
+      "models": [
+        {
+          "id": "Referendum-PT-0010",
+          "states": 59050
+        }
+      ]
+    },
+    {
+      "family": "FlexibleBarrier",
+      "models": [
+        {
+          "id": "FlexibleBarrier-PT-04a",
+          "states": 20737
+        }
+      ]
+    },
+    {
+      "family": "FileSystem",
+      "models": [
+        {
+          "id": "FileSystem-PT-N02I10B10",
+          "states": 714375
+        },
+        {
+          "id": "FileSystem-PT-N02I05B05",
+          "states": 1632
+        }
+      ]
+    },
+    {
+      "family": "EisenbergMcGuire",
+      "models": [
+        {
+          "id": "EisenbergMcGuire-PT-03",
+          "states": 31265
+        }
+      ]
+    },
+    {
+      "family": "IBM703",
+      "models": [
+        {
+          "id": "IBM703-PT-none",
+          "states": 8370
+        }
+      ]
+    },
+    {
+      "family": "RingSingleMessageInMbox",
+      "models": [
+        {
+          "id": "RingSingleMessageInMbox-PT-d0m010",
+          "states": 62547
+        },
+        {
+          "id": "RingSingleMessageInMbox-PT-d0m005",
+          "states": 2662
+        }
+      ]
+    },
+    {
+      "family": "StigmergyCommit",
+      "models": [
+        {
+          "id": "StigmergyCommit-PT-04a",
+          "states": 25867
+        },
+        {
+          "id": "StigmergyCommit-PT-03a",
+          "states": 4055
+        },
+        {
+          "id": "StigmergyCommit-PT-05a",
+          "states": 171115
+        },
+        {
+          "id": "StigmergyCommit-PT-02a",
+          "states": 695
+        }
+      ]
+    },
+    {
+      "family": "CANInsertWithFailure",
+      "models": [
+        {
+          "id": "CANInsertWithFailure-PT-005",
+          "states": 200157
+        }
+      ]
+    },
+    {
+      "family": "PGCD",
+      "models": [
+        {
+          "id": "PGCD-PT-D02N006",
+          "states": 15670
+        },
+        {
+          "id": "PGCD-PT-D02N005",
+          "states": 8484
+        }
+      ]
+    },
+    {
+      "family": "Railroad",
+      "models": [
+        {
+          "id": "Railroad-PT-005",
+          "states": 1838
+        }
+      ]
+    },
+    {
+      "family": "FMS",
+      "models": [
+        {
+          "id": "FMS-PT-00002",
+          "states": 3444
+        }
+      ]
+    },
+    {
+      "family": "ShieldRVt",
+      "models": [
+        {
+          "id": "ShieldRVt-PT-003A",
+          "states": 8193
+        },
+        {
+          "id": "ShieldRVt-PT-002A",
+          "states": 513
+        },
+        {
+          "id": "ShieldRVt-PT-001B",
+          "states": 21947
+        },
+        {
+          "id": "ShieldRVt-PT-001A",
+          "states": 33
+        },
+        {
+          "id": "ShieldRVt-PT-004A",
+          "states": 131073
+        }
+      ]
+    },
+    {
+      "family": "CloudDeployment",
+      "models": [
+        {
+          "id": "CloudDeployment-PT-3a",
+          "states": 190102
+        },
+        {
+          "id": "CloudDeployment-PT-2a",
+          "states": 4807
+        }
+      ]
+    },
+    {
+      "family": "Murphy",
+      "models": [
+        {
+          "id": "Murphy-PT-D1N010",
+          "states": 39780
+        }
+      ]
+    },
+    {
+      "family": "ShieldRVs",
+      "models": [
+        {
+          "id": "ShieldRVs-PT-001B",
+          "states": 3596
+        },
+        {
+          "id": "ShieldRVs-PT-001A",
+          "states": 171
+        },
+        {
+          "id": "ShieldRVs-PT-002A",
+          "states": 16021
+        }
+      ]
+    },
+    {
+      "family": "DNAwalker",
+      "models": [
+        {
+          "id": "DNAwalker-PT-03track12BlockBoth",
+          "states": 5248
+        },
+        {
+          "id": "DNAwalker-PT-01track12Block1",
+          "states": 3795
+        },
+        {
+          "id": "DNAwalker-PT-02track12Block2",
+          "states": 5459
+        }
+      ]
+    },
+    {
+      "family": "LastZero",
+      "models": [
+        {
+          "id": "LastZero-PT-N10",
+          "states": 738761
+        },
+        {
+          "id": "LastZero-PT-N08",
+          "states": 52919
+        }
+      ]
+    },
+    {
+      "family": "NeoElection",
+      "models": [
+        {
+          "id": "NeoElection-PT-3",
+          "states": 974325
+        },
+        {
+          "id": "NeoElection-PT-2",
+          "states": 241
+        }
+      ]
+    },
+    {
+      "family": "RobotManipulation",
+      "models": [
+        {
+          "id": "RobotManipulation-PT-00002",
+          "states": 1430
+        },
+        {
+          "id": "RobotManipulation-PT-00001",
+          "states": 110
+        },
+        {
+          "id": "RobotManipulation-PT-00005",
+          "states": 184756
+        }
+      ]
+    },
+    {
+      "family": "StigmergyElection",
+      "models": [
+        {
+          "id": "StigmergyElection-PT-06a",
+          "states": 20473
+        },
+        {
+          "id": "StigmergyElection-PT-05a",
+          "states": 4411
+        },
+        {
+          "id": "StigmergyElection-PT-07a",
+          "states": 96723
+        },
+        {
+          "id": "StigmergyElection-PT-04a",
+          "states": 977
+        },
+        {
+          "id": "StigmergyElection-PT-02b",
+          "states": 216668
+        },
+        {
+          "id": "StigmergyElection-PT-03a",
+          "states": 227
+        },
+        {
+          "id": "StigmergyElection-PT-08a",
+          "states": 462753
+        },
+        {
+          "id": "StigmergyElection-PT-02a",
+          "states": 57
+        }
+      ]
+    },
+    {
+      "family": "PhaseVariation",
+      "models": [
+        {
+          "id": "PhaseVariation-PT-D02CS010",
+          "states": 7716
+        }
+      ]
+    },
+    {
+      "family": "GlobalResAllocation",
+      "models": [
+        {
+          "id": "GlobalResAllocation-PT-03",
+          "states": 6320
+        }
+      ]
+    },
+    {
+      "family": "PhilosophersDyn",
+      "models": [
+        {
+          "id": "PhilosophersDyn-PT-10",
+          "states": 199051
+        },
+        {
+          "id": "PhilosophersDyn-PT-03",
+          "states": 325
+        }
+      ]
+    },
+    {
+      "family": "CopsAndRobbers",
+      "models": [
+        {
+          "id": "CopsAndRobbers-PT-KFL010N005K002X001",
+          "states": 620
+        },
+        {
+          "id": "CopsAndRobbers-PT-CRL005X001",
+          "states": 166
+        },
+        {
+          "id": "CopsAndRobbers-PT-HRL014X002",
+          "states": 17158
+        }
+      ]
+    },
+    {
+      "family": "LamportFastMutEx",
+      "models": [
+        {
+          "id": "LamportFastMutEx-PT-3",
+          "states": 19742
+        },
+        {
+          "id": "LamportFastMutEx-PT-2",
+          "states": 380
+        }
+      ]
+    },
+    {
+      "family": "RERS2020",
+      "models": [
+        {
+          "id": "RERS2020-PT-pb101",
+          "states": 345421
+        }
+      ]
+    },
+    {
+      "family": "AutoFlight",
+      "models": [
+        {
+          "id": "AutoFlight-PT-02a",
+          "states": 6949
+        },
+        {
+          "id": "AutoFlight-PT-01a",
+          "states": 253
+        },
+        {
+          "id": "AutoFlight-PT-03a",
+          "states": 157681
+        }
+      ]
+    },
+    {
+      "family": "SwimmingPool",
+      "models": [
+        {
+          "id": "SwimmingPool-PT-01",
+          "states": 89621
+        }
+      ]
+    },
+    {
+      "family": "DatabaseWithMutex",
+      "models": [
+        {
+          "id": "DatabaseWithMutex-PT-02",
+          "states": 153
+        }
+      ]
+    },
+    {
+      "family": "ShieldPPPt",
+      "models": [
+        {
+          "id": "ShieldPPPt-PT-001A",
+          "states": 8001
+        }
+      ]
+    },
+    {
+      "family": "IBM319",
+      "models": [
+        {
+          "id": "IBM319-PT-none",
+          "states": 2482
+        }
+      ]
+    },
+    {
+      "family": "NeighborGrid",
+      "models": [
+        {
+          "id": "NeighborGrid-PT-d2n3m1t12",
+          "states": 24310
+        },
+        {
+          "id": "NeighborGrid-PT-d2n3m1c12",
+          "states": 24310
+        }
+      ]
+    },
+    {
+      "family": "IBM5964",
+      "models": [
+        {
+          "id": "IBM5964-PT-none",
+          "states": 15546
+        }
+      ]
+    },
+    {
+      "family": "BridgeAndVehicles",
+      "models": [
+        {
+          "id": "BridgeAndVehicles-PT-V10P10N10",
+          "states": 259556
+        },
+        {
+          "id": "BridgeAndVehicles-PT-V04P05N02",
+          "states": 2874
+        }
+      ]
+    },
+    {
+      "family": "SimpleLoadBal",
+      "models": [
+        {
+          "id": "SimpleLoadBal-PT-05",
+          "states": 116176
+        },
+        {
+          "id": "SimpleLoadBal-PT-02",
+          "states": 832
+        }
+      ]
+    },
+    {
+      "family": "CloudOpsManagement",
+      "models": [
+        {
+          "id": "CloudOpsManagement-PT-00002by00001",
+          "states": 3857
+        }
+      ]
+    },
+    {
+      "family": "ShieldPPPs",
+      "models": [
+        {
+          "id": "ShieldPPPs-PT-001A",
+          "states": 61496
+        }
+      ]
+    },
+    {
+      "family": "SharedMemory",
+      "models": [
+        {
+          "id": "SharedMemory-PT-000005",
+          "states": 1863
+        }
+      ]
+    },
+    {
+      "family": "SupplyChain",
+      "models": [
+        {
+          "id": "SupplyChain-PT-00005",
+          "states": 14258
+        },
+        {
+          "id": "SupplyChain-PT-00002",
+          "states": 50
+        }
+      ]
+    },
+    {
+      "family": "DBSingleClientW",
+      "models": [
+        {
+          "id": "DBSingleClientW-PT-d1m04",
+          "states": 219181
+        },
+        {
+          "id": "DBSingleClientW-PT-d0m04",
+          "states": 13654
+        },
+        {
+          "id": "DBSingleClientW-PT-d0m05",
+          "states": 236174
+        }
+      ]
+    },
+    {
+      "family": "ShieldIIPs",
+      "models": [
+        {
+          "id": "ShieldIIPs-PT-001B",
+          "states": 863505
+        },
+        {
+          "id": "ShieldIIPs-PT-001A",
+          "states": 9143
+        }
+      ]
+    },
+    {
+      "family": "SieveSingleMsgMbox",
+      "models": [
+        {
+          "id": "SieveSingleMsgMbox-PT-d2m04",
+          "states": 3601
+        },
+        {
+          "id": "SieveSingleMsgMbox-PT-d1m04",
+          "states": 3262
+        },
+        {
+          "id": "SieveSingleMsgMbox-PT-d0m06",
+          "states": 26057
+        },
+        {
+          "id": "SieveSingleMsgMbox-PT-d0m04",
+          "states": 702
+        }
+      ]
+    },
+    {
+      "family": "CANConstruction",
+      "models": [
+        {
+          "id": "CANConstruction-PT-005",
+          "states": 97527
+        }
+      ]
+    },
+    {
+      "family": "QuasiCertifProtocol",
+      "models": [
+        {
+          "id": "QuasiCertifProtocol-PT-02",
+          "states": 1029
+        }
+      ]
+    },
+    {
+      "family": "ResAllocation",
+      "models": [
+        {
+          "id": "ResAllocation-PT-R003C005",
+          "states": 1200
+        },
+        {
+          "id": "ResAllocation-PT-R005C002",
+          "states": 112
+        },
+        {
+          "id": "ResAllocation-PT-R010C002",
+          "states": 6144
+        },
+        {
+          "id": "ResAllocation-PT-R003C003",
+          "states": 92
+        },
+        {
+          "id": "ResAllocation-PT-R015C002",
+          "states": 278528
+        },
+        {
+          "id": "ResAllocation-PT-R003C002",
+          "states": 20
+        },
+        {
+          "id": "ResAllocation-PT-R003C010",
+          "states": 823552
+        },
+        {
+          "id": "ResAllocation-PT-R002C002",
+          "states": 8
+        }
+      ]
+    },
+    {
+      "family": "Eratosthenes",
+      "models": [
+        {
+          "id": "Eratosthenes-PT-020",
+          "states": 2048
+        },
+        {
+          "id": "Eratosthenes-PT-010",
+          "states": 32
+        }
+      ]
+    },
+    {
+      "family": "Anderson",
+      "models": [
+        {
+          "id": "Anderson-PT-05",
+          "states": 689901
+        },
+        {
+          "id": "Anderson-PT-04",
+          "states": 29641
+        }
+      ]
+    },
+    {
+      "family": "Peterson",
+      "models": [
+        {
+          "id": "Peterson-PT-2",
+          "states": 20754
+        }
+      ]
+    }
+  ],
+  "large_candidates": {
+    "L": [
+      {
+        "family": "BusinessProcesses",
+        "models": [
+          "BusinessProcesses-PT-09",
+          "BusinessProcesses-PT-17",
+          "BusinessProcesses-PT-11",
+          "BusinessProcesses-PT-12",
+          "BusinessProcesses-PT-04"
+        ]
+      },
+      {
+        "family": "MedleyB",
+        "models": [
+          "MedleyB-PT-B08",
+          "MedleyB-PT-B01",
+          "MedleyB-PT-B06",
+          "MedleyB-PT-B13",
+          "MedleyB-PT-B07"
+        ]
+      },
+      {
+        "family": "PolyORBNT",
+        "models": [
+          "PolyORBNT-PT-S10J40",
+          "PolyORBNT-PT-S10J80",
+          "PolyORBNT-PT-S10J60",
+          "PolyORBNT-PT-S05J80",
+          "PolyORBNT-PT-S05J20"
+        ]
+      },
+      {
+        "family": "DiscoveryGPU",
+        "models": [
+          "DiscoveryGPU-PT-14b",
+          "DiscoveryGPU-PT-13a",
+          "DiscoveryGPU-PT-11a",
+          "DiscoveryGPU-PT-12a",
+          "DiscoveryGPU-PT-11b"
+        ]
+      },
+      {
+        "family": "ARMCacheCoherence",
+        "models": [
+          "ARMCacheCoherence-PT-none"
+        ]
+      },
+      {
+        "family": "MAPKbis",
+        "models": [
+          "MAPKbis-PT-5320",
+          "MAPKbis-PT-5310"
+        ]
+      },
+      {
+        "family": "ProductionCell",
+        "models": [
+          "ProductionCell-PT-none"
+        ]
+      },
+      {
+        "family": "Planning",
+        "models": [
+          "Planning-PT-none"
+        ]
+      },
+      {
+        "family": "Vasy2003",
+        "models": [
+          "Vasy2003-PT-none"
+        ]
+      },
+      {
+        "family": "NoC3x3",
+        "models": [
+          "NoC3x3-PT-6B",
+          "NoC3x3-PT-8B",
+          "NoC3x3-PT-7B",
+          "NoC3x3-PT-7A",
+          "NoC3x3-PT-3A"
+        ]
+      },
+      {
+        "family": "PolyORBLF",
+        "models": [
+          "PolyORBLF-PT-S04J04T06",
+          "PolyORBLF-PT-S06J04T08",
+          "PolyORBLF-PT-S02J04T10",
+          "PolyORBLF-PT-S06J06T04",
+          "PolyORBLF-PT-S04J04T08"
+        ]
+      },
+      {
+        "family": "ResIsolation",
+        "models": [
+          "ResIsolation-PT-N08P5",
+          "ResIsolation-PT-N09P2",
+          "ResIsolation-PT-N08P1",
+          "ResIsolation-PT-N10P3",
+          "ResIsolation-PT-N10P4"
+        ]
+      },
+      {
+        "family": "FamilyReunion",
+        "models": [
+          "FamilyReunion-PT-L00100M0010C005P005G002",
+          "FamilyReunion-PT-L00050M0005C002P002G001",
+          "FamilyReunion-PT-L00200M0020C010P010G005",
+          "FamilyReunion-PT-L00400M0040C020P020G001",
+          "FamilyReunion-PT-L00010M0001C001P001G001"
+        ]
+      },
+      {
+        "family": "Ring",
+        "models": [
+          "Ring-PT-none"
+        ]
+      },
+      {
+        "family": "DLCshifumi",
+        "models": [
+          "DLCshifumi-PT-2a",
+          "DLCshifumi-PT-4b",
+          "DLCshifumi-PT-5b",
+          "DLCshifumi-PT-3a",
+          "DLCshifumi-PT-3b"
+        ]
+      },
+      {
+        "family": "UtahNoC",
+        "models": [
+          "UtahNoC-PT-none"
+        ]
+      },
+      {
+        "family": "HospitalTriage",
+        "models": [
+          "HospitalTriage-PT-none"
+        ]
+      },
+      {
+        "family": "Medical",
+        "models": [
+          "Medical-PT-04",
+          "Medical-PT-18",
+          "Medical-PT-08",
+          "Medical-PT-02",
+          "Medical-PT-24"
+        ]
+      },
+      {
+        "family": "MedleyA",
+        "models": [
+          "MedleyA-PT-07",
+          "MedleyA-PT-18",
+          "MedleyA-PT-01",
+          "MedleyA-PT-21",
+          "MedleyA-PT-04"
+        ]
+      },
+      {
+        "family": "Election2020",
+        "models": [
+          "Election2020-PT-none"
+        ]
+      },
+      {
+        "family": "DES",
+        "models": [
+          "DES-PT-20a",
+          "DES-PT-50a",
+          "DES-PT-05a",
+          "DES-PT-50b",
+          "DES-PT-00b"
+        ]
+      },
+      {
+        "family": "RERS17pb113",
+        "models": [
+          "RERS17pb113-PT-3",
+          "RERS17pb113-PT-5",
+          "RERS17pb113-PT-2",
+          "RERS17pb113-PT-7",
+          "RERS17pb113-PT-9"
+        ]
+      },
+      {
+        "family": "ASLink",
+        "models": [
+          "ASLink-PT-04a",
+          "ASLink-PT-03b",
+          "ASLink-PT-10b",
+          "ASLink-PT-01a",
+          "ASLink-PT-08b"
+        ]
+      },
+      {
+        "family": "PaceMaker",
+        "models": [
+          "PaceMaker-PT-none"
+        ]
+      },
+      {
+        "family": "MAPK",
+        "models": [
+          "MAPK-PT-02560",
+          "MAPK-PT-00080",
+          "MAPK-PT-00008",
+          "MAPK-PT-00020",
+          "MAPK-PT-00040"
+        ]
+      },
+      {
+        "family": "TCPcondis",
+        "models": [
+          "TCPcondis-PT-10",
+          "TCPcondis-PT-05"
+        ]
+      },
+      {
+        "family": "RERS17pb114",
+        "models": [
+          "RERS17pb114-PT-3",
+          "RERS17pb114-PT-1",
+          "RERS17pb114-PT-7",
+          "RERS17pb114-PT-6",
+          "RERS17pb114-PT-4"
+        ]
+      },
+      {
+        "family": "CO4",
+        "models": [
+          "CO4-PT-13",
+          "CO4-PT-09",
+          "CO4-PT-16",
+          "CO4-PT-07",
+          "CO4-PT-04"
+        ]
+      },
+      {
+        "family": "IBMB2S565S3960",
+        "models": [
+          "IBMB2S565S3960-PT-none"
+        ]
+      },
+      {
+        "family": "BugTracking",
+        "models": [
+          "BugTracking-PT-q8m004",
+          "BugTracking-PT-q8m032",
+          "BugTracking-PT-q3m004",
+          "BugTracking-PT-q3m064",
+          "BugTracking-PT-q3m032"
+        ]
+      },
+      {
+        "family": "HealthRecord",
+        "models": [
+          "HealthRecord-PT-16",
+          "HealthRecord-PT-15",
+          "HealthRecord-PT-01",
+          "HealthRecord-PT-03",
+          "HealthRecord-PT-17"
+        ]
+      },
+      {
+        "family": "SquareGrid",
+        "models": [
+          "SquareGrid-PT-040204",
+          "SquareGrid-PT-130613",
+          "SquareGrid-PT-080408",
+          "SquareGrid-PT-020102",
+          "SquareGrid-PT-100510"
+        ]
+      },
+      {
+        "family": "FunctionPointer",
+        "models": [
+          "FunctionPointer-PT-c032",
+          "FunctionPointer-PT-b032",
+          "FunctionPointer-PT-a002",
+          "FunctionPointer-PT-b064",
+          "FunctionPointer-PT-b004"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV2",
+        "models": [
+          "ErlangenMainframeV2-PT-bP13C02",
+          "ErlangenMainframeV2-PT-bP02C02",
+          "ErlangenMainframeV2-PT-bP12C04",
+          "ErlangenMainframeV2-PT-aP11C06",
+          "ErlangenMainframeV2-PT-bP14C01"
+        ]
+      },
+      {
+        "family": "DLCround",
+        "models": [
+          "DLCround-PT-08b",
+          "DLCround-PT-12a",
+          "DLCround-PT-04b",
+          "DLCround-PT-11a",
+          "DLCround-PT-10b"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV0",
+        "models": [
+          "ErlangenMainframeV0-PT-1005",
+          "ErlangenMainframeV0-PT-0808",
+          "ErlangenMainframeV0-PT-1301",
+          "ErlangenMainframeV0-PT-0707",
+          "ErlangenMainframeV0-PT-1201"
+        ]
+      },
+      {
+        "family": "HypercubeGrid",
+        "models": [
+          "HypercubeGrid-PT-C4K3P3B12",
+          "HypercubeGrid-PT-C3K4P4B12"
+        ]
+      },
+      {
+        "family": "EnergyBus",
+        "models": [
+          "EnergyBus-PT-none"
+        ]
+      },
+      {
+        "family": "FireWire",
+        "models": [
+          "FireWire-PT-14",
+          "FireWire-PT-01",
+          "FireWire-PT-05",
+          "FireWire-PT-02",
+          "FireWire-PT-09"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV1",
+        "models": [
+          "ErlangenMainframeV1-PT-bP04C04",
+          "ErlangenMainframeV1-PT-bP05C05",
+          "ErlangenMainframeV1-PT-aP09C09",
+          "ErlangenMainframeV1-PT-bP13C02",
+          "ErlangenMainframeV1-PT-aP14C01"
+        ]
+      },
+      {
+        "family": "BlocksWorld",
+        "models": [
+          "BlocksWorld-PT-07",
+          "BlocksWorld-PT-10",
+          "BlocksWorld-PT-15",
+          "BlocksWorld-PT-18",
+          "BlocksWorld-PT-09"
+        ]
+      },
+      {
+        "family": "Solitaire",
+        "models": [
+          "Solitaire-PT-SqrNC5x5",
+          "Solitaire-PT-EngNC7x7",
+          "Solitaire-PT-FrnNC7x7",
+          "Solitaire-PT-FrnCT7x7",
+          "Solitaire-PT-SqrCT5x5"
+        ]
+      },
+      {
+        "family": "Diffusion2D",
+        "models": [
+          "Diffusion2D-PT-D10N100",
+          "Diffusion2D-PT-D05N150",
+          "Diffusion2D-PT-D30N100",
+          "Diffusion2D-PT-D20N050",
+          "Diffusion2D-PT-D05N050"
+        ]
+      },
+      {
+        "family": "DoubleLock",
+        "models": [
+          "DoubleLock-PT-p3s3",
+          "DoubleLock-PT-p1s3",
+          "DoubleLock-PT-p3s1",
+          "DoubleLock-PT-p2s1",
+          "DoubleLock-PT-p3s2"
+        ]
+      },
+      {
+        "family": "Champagne",
+        "models": [
+          "Champagne-PT-H10T2O",
+          "Champagne-PT-H04T0R",
+          "Champagne-PT-H08T0R",
+          "Champagne-PT-H09T1U",
+          "Champagne-PT-H10T0R"
+        ]
+      },
+      {
+        "family": "ViralEpidemic",
+        "models": [
+          "ViralEpidemic-PT-S03D1C1A04",
+          "ViralEpidemic-PT-S04D1C1A04",
+          "ViralEpidemic-PT-S02D1C1A10",
+          "ViralEpidemic-PT-S03D1C1A06",
+          "ViralEpidemic-PT-S03D1C1A08"
+        ]
+      },
+      {
+        "family": "SemanticWebServices",
+        "models": [
+          "SemanticWebServices-PT-S064P18",
+          "SemanticWebServices-PT-S128P15",
+          "SemanticWebServices-PT-S128P09",
+          "SemanticWebServices-PT-S256P18",
+          "SemanticWebServices-PT-S064P09"
+        ]
+      },
+      {
+        "family": "Echo",
+        "models": [
+          "Echo-PT-d05r03",
+          "Echo-PT-d02r09",
+          "Echo-PT-d04r03",
+          "Echo-PT-d02r19",
+          "Echo-PT-d03r07"
+        ]
+      },
+      {
+        "family": "DLCflexbar",
+        "models": [
+          "DLCflexbar-PT-4a",
+          "DLCflexbar-PT-7a",
+          "DLCflexbar-PT-6b",
+          "DLCflexbar-PT-6a",
+          "DLCflexbar-PT-5a"
+        ]
+      },
+      {
+        "family": "Kanban",
+        "models": [
+          "Kanban-PT-01000",
+          "Kanban-PT-00010",
+          "Kanban-PT-00050",
+          "Kanban-PT-00005",
+          "Kanban-PT-00100"
+        ]
+      },
+      {
+        "family": "RERS17pb115",
+        "models": [
+          "RERS17pb115-PT-6",
+          "RERS17pb115-PT-5",
+          "RERS17pb115-PT-8",
+          "RERS17pb115-PT-1",
+          "RERS17pb115-PT-2"
+        ]
+      },
+      {
+        "family": "MultiwaySync",
+        "models": [
+          "MultiwaySync-PT-none"
+        ]
+      },
+      {
+        "family": "HirschbergSinclair",
+        "models": [
+          "HirschbergSinclair-PT-35",
+          "HirschbergSinclair-PT-50",
+          "HirschbergSinclair-PT-10",
+          "HirschbergSinclair-PT-45",
+          "HirschbergSinclair-PT-20"
+        ]
+      },
+      {
+        "family": "CloudReconfiguration",
+        "models": [
+          "CloudReconfiguration-PT-401",
+          "CloudReconfiguration-PT-313",
+          "CloudReconfiguration-PT-306",
+          "CloudReconfiguration-PT-309",
+          "CloudReconfiguration-PT-402"
+        ]
+      }
+    ],
+    "QL": [
+      {
+        "family": "NoC3x3",
+        "models": [
+          "NoC3x3-PT-2B",
+          "NoC3x3-PT-5B",
+          "NoC3x3-PT-3A",
+          "NoC3x3-PT-8B",
+          "NoC3x3-PT-7A"
+        ]
+      },
+      {
+        "family": "ARMCacheCoherence",
+        "models": [
+          "ARMCacheCoherence-PT-none"
+        ]
+      },
+      {
+        "family": "PolyORBLF",
+        "models": [
+          "PolyORBLF-PT-S04J06T10",
+          "PolyORBLF-PT-S04J04T10",
+          "PolyORBLF-PT-S06J06T08",
+          "PolyORBLF-PT-S06J06T06",
+          "PolyORBLF-PT-S02J06T10"
+        ]
+      },
+      {
+        "family": "Solitaire",
+        "models": [
+          "Solitaire-PT-FrnCT7x7",
+          "Solitaire-PT-FrnNC7x7",
+          "Solitaire-PT-SqrNC5x5",
+          "Solitaire-PT-EngNC7x7",
+          "Solitaire-PT-SqrCT5x5"
+        ]
+      },
+      {
+        "family": "DiscoveryGPU",
+        "models": [
+          "DiscoveryGPU-PT-14b",
+          "DiscoveryGPU-PT-14a",
+          "DiscoveryGPU-PT-13b",
+          "DiscoveryGPU-PT-11a",
+          "DiscoveryGPU-PT-06a"
+        ]
+      },
+      {
+        "family": "DES",
+        "models": [
+          "DES-PT-01a",
+          "DES-PT-10b",
+          "DES-PT-05b",
+          "DES-PT-50a",
+          "DES-PT-02b"
+        ]
+      },
+      {
+        "family": "DLCflexbar",
+        "models": [
+          "DLCflexbar-PT-8b",
+          "DLCflexbar-PT-6b",
+          "DLCflexbar-PT-6a",
+          "DLCflexbar-PT-3b",
+          "DLCflexbar-PT-8a"
+        ]
+      },
+      {
+        "family": "MedleyA",
+        "models": [
+          "MedleyA-PT-07",
+          "MedleyA-PT-17",
+          "MedleyA-PT-06",
+          "MedleyA-PT-18",
+          "MedleyA-PT-14"
+        ]
+      },
+      {
+        "family": "MedleyB",
+        "models": [
+          "MedleyB-PT-B08",
+          "MedleyB-PT-B01",
+          "MedleyB-PT-B09",
+          "MedleyB-PT-B05",
+          "MedleyB-PT-B04"
+        ]
+      },
+      {
+        "family": "SquareGrid",
+        "models": [
+          "SquareGrid-PT-080408",
+          "SquareGrid-PT-100510",
+          "SquareGrid-PT-130613",
+          "SquareGrid-PT-020102",
+          "SquareGrid-PT-040204"
+        ]
+      },
+      {
+        "family": "CO4",
+        "models": [
+          "CO4-PT-02",
+          "CO4-PT-20",
+          "CO4-PT-08",
+          "CO4-PT-09",
+          "CO4-PT-19"
+        ]
+      },
+      {
+        "family": "FireWire",
+        "models": [
+          "FireWire-PT-16",
+          "FireWire-PT-12",
+          "FireWire-PT-14",
+          "FireWire-PT-01",
+          "FireWire-PT-02"
+        ]
+      },
+      {
+        "family": "PolyORBNT",
+        "models": [
+          "PolyORBNT-PT-S10J20",
+          "PolyORBNT-PT-S05J40",
+          "PolyORBNT-PT-S05J80",
+          "PolyORBNT-PT-S05J30",
+          "PolyORBNT-PT-S10J80"
+        ]
+      },
+      {
+        "family": "FamilyReunion",
+        "models": [
+          "FamilyReunion-PT-L00020M0002C001P001G001",
+          "FamilyReunion-PT-L00010M0001C001P001G001",
+          "FamilyReunion-PT-L00100M0010C005P005G002",
+          "FamilyReunion-PT-L00200M0020C010P010G005",
+          "FamilyReunion-PT-L00050M0005C002P002G001"
+        ]
+      },
+      {
+        "family": "Election2020",
+        "models": [
+          "Election2020-PT-none"
+        ]
+      },
+      {
+        "family": "CloudReconfiguration",
+        "models": [
+          "CloudReconfiguration-PT-302",
+          "CloudReconfiguration-PT-311",
+          "CloudReconfiguration-PT-301",
+          "CloudReconfiguration-PT-320",
+          "CloudReconfiguration-PT-308"
+        ]
+      },
+      {
+        "family": "EnergyBus",
+        "models": [
+          "EnergyBus-PT-none"
+        ]
+      },
+      {
+        "family": "RERS17pb114",
+        "models": [
+          "RERS17pb114-PT-1"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV2",
+        "models": [
+          "ErlangenMainframeV2-PT-bP06C06",
+          "ErlangenMainframeV2-PT-bP01C01",
+          "ErlangenMainframeV2-PT-bP04C04",
+          "ErlangenMainframeV2-PT-bP08C08",
+          "ErlangenMainframeV2-PT-bP05C05"
+        ]
+      },
+      {
+        "family": "ASLink",
+        "models": [
+          "ASLink-PT-08b",
+          "ASLink-PT-01a",
+          "ASLink-PT-06a",
+          "ASLink-PT-09b",
+          "ASLink-PT-01b"
+        ]
+      },
+      {
+        "family": "Diffusion2D",
+        "models": [
+          "Diffusion2D-PT-D20N150",
+          "Diffusion2D-PT-D05N350",
+          "Diffusion2D-PT-D05N200",
+          "Diffusion2D-PT-D50N150",
+          "Diffusion2D-PT-D40N050"
+        ]
+      },
+      {
+        "family": "HospitalTriage",
+        "models": [
+          "HospitalTriage-PT-none"
+        ]
+      },
+      {
+        "family": "DLCround",
+        "models": [
+          "DLCround-PT-10b",
+          "DLCround-PT-11a",
+          "DLCround-PT-08b",
+          "DLCround-PT-10a",
+          "DLCround-PT-12a"
+        ]
+      },
+      {
+        "family": "Ring",
+        "models": [
+          "Ring-PT-none"
+        ]
+      },
+      {
+        "family": "FunctionPointer",
+        "models": [
+          "FunctionPointer-PT-a064",
+          "FunctionPointer-PT-c016",
+          "FunctionPointer-PT-b002",
+          "FunctionPointer-PT-c008",
+          "FunctionPointer-PT-a016"
+        ]
+      },
+      {
+        "family": "ProductionCell",
+        "models": [
+          "ProductionCell-PT-none"
+        ]
+      },
+      {
+        "family": "RERS17pb113",
+        "models": [
+          "RERS17pb113-PT-1"
+        ]
+      },
+      {
+        "family": "SemanticWebServices",
+        "models": [
+          "SemanticWebServices-PT-S064P09",
+          "SemanticWebServices-PT-S256P09",
+          "SemanticWebServices-PT-S256P06",
+          "SemanticWebServices-PT-S256P18",
+          "SemanticWebServices-PT-S064P18"
+        ]
+      },
+      {
+        "family": "TCPcondis",
+        "models": [
+          "TCPcondis-PT-25",
+          "TCPcondis-PT-35",
+          "TCPcondis-PT-05",
+          "TCPcondis-PT-40",
+          "TCPcondis-PT-15"
+        ]
+      },
+      {
+        "family": "Medical",
+        "models": [
+          "Medical-PT-16",
+          "Medical-PT-12",
+          "Medical-PT-20",
+          "Medical-PT-24",
+          "Medical-PT-22"
+        ]
+      },
+      {
+        "family": "MAPKbis",
+        "models": [
+          "MAPKbis-PT-5310",
+          "MAPKbis-PT-5320"
+        ]
+      },
+      {
+        "family": "Vasy2003",
+        "models": [
+          "Vasy2003-PT-none"
+        ]
+      },
+      {
+        "family": "DLCshifumi",
+        "models": [
+          "DLCshifumi-PT-5a",
+          "DLCshifumi-PT-4a",
+          "DLCshifumi-PT-2b",
+          "DLCshifumi-PT-3b",
+          "DLCshifumi-PT-3a"
+        ]
+      },
+      {
+        "family": "ViralEpidemic",
+        "models": [
+          "ViralEpidemic-PT-S04D1C1A03",
+          "ViralEpidemic-PT-S02D1C1A12",
+          "ViralEpidemic-PT-S03D1C1A08",
+          "ViralEpidemic-PT-S03D1C1A02",
+          "ViralEpidemic-PT-S08D1C2A04"
+        ]
+      },
+      {
+        "family": "BugTracking",
+        "models": [
+          "BugTracking-PT-q8m016",
+          "BugTracking-PT-q3m256",
+          "BugTracking-PT-q8m032",
+          "BugTracking-PT-q3m002",
+          "BugTracking-PT-q3m008"
+        ]
+      },
+      {
+        "family": "Champagne",
+        "models": [
+          "Champagne-PT-H06T1U",
+          "Champagne-PT-H10T2O",
+          "Champagne-PT-H08T2O",
+          "Champagne-PT-H06T0R",
+          "Champagne-PT-H10T0R"
+        ]
+      },
+      {
+        "family": "ResIsolation",
+        "models": [
+          "ResIsolation-PT-N08P3",
+          "ResIsolation-PT-N08P2",
+          "ResIsolation-PT-N08P1",
+          "ResIsolation-PT-N10P1",
+          "ResIsolation-PT-N09P1"
+        ]
+      },
+      {
+        "family": "BlocksWorld",
+        "models": [
+          "BlocksWorld-PT-16",
+          "BlocksWorld-PT-04",
+          "BlocksWorld-PT-03",
+          "BlocksWorld-PT-15",
+          "BlocksWorld-PT-19"
+        ]
+      },
+      {
+        "family": "PaceMaker",
+        "models": [
+          "PaceMaker-PT-none"
+        ]
+      },
+      {
+        "family": "Planning",
+        "models": [
+          "Planning-PT-none"
+        ]
+      },
+      {
+        "family": "HirschbergSinclair",
+        "models": [
+          "HirschbergSinclair-PT-40",
+          "HirschbergSinclair-PT-50",
+          "HirschbergSinclair-PT-35",
+          "HirschbergSinclair-PT-25",
+          "HirschbergSinclair-PT-05"
+        ]
+      },
+      {
+        "family": "HealthRecord",
+        "models": [
+          "HealthRecord-PT-05",
+          "HealthRecord-PT-01",
+          "HealthRecord-PT-09",
+          "HealthRecord-PT-02",
+          "HealthRecord-PT-04"
+        ]
+      },
+      {
+        "family": "UtahNoC",
+        "models": [
+          "UtahNoC-PT-none"
+        ]
+      },
+      {
+        "family": "MultiwaySync",
+        "models": [
+          "MultiwaySync-PT-none"
+        ]
+      },
+      {
+        "family": "DoubleLock",
+        "models": [
+          "DoubleLock-PT-p3s2",
+          "DoubleLock-PT-p1s1",
+          "DoubleLock-PT-p2s2",
+          "DoubleLock-PT-p3s3",
+          "DoubleLock-PT-p2s1"
+        ]
+      },
+      {
+        "family": "RERS17pb115",
+        "models": [
+          "RERS17pb115-PT-1"
+        ]
+      },
+      {
+        "family": "Echo",
+        "models": [
+          "Echo-PT-d02r19",
+          "Echo-PT-d04r03",
+          "Echo-PT-d02r09",
+          "Echo-PT-d03r07",
+          "Echo-PT-d03r03"
+        ]
+      },
+      {
+        "family": "HypercubeGrid",
+        "models": [
+          "HypercubeGrid-PT-C5K3P3B15",
+          "HypercubeGrid-PT-C4K3P3B12",
+          "HypercubeGrid-PT-C3K4P4B12"
+        ]
+      },
+      {
+        "family": "BusinessProcesses",
+        "models": [
+          "BusinessProcesses-PT-13",
+          "BusinessProcesses-PT-01",
+          "BusinessProcesses-PT-19",
+          "BusinessProcesses-PT-14",
+          "BusinessProcesses-PT-18"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV1",
+        "models": [
+          "ErlangenMainframeV1-PT-bP05C05",
+          "ErlangenMainframeV1-PT-bP01C01",
+          "ErlangenMainframeV1-PT-bP08C08",
+          "ErlangenMainframeV1-PT-bP04C04",
+          "ErlangenMainframeV1-PT-bP07C07"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV0",
+        "models": [
+          "ErlangenMainframeV0-PT-0404",
+          "ErlangenMainframeV0-PT-1400",
+          "ErlangenMainframeV0-PT-0808",
+          "ErlangenMainframeV0-PT-0606",
+          "ErlangenMainframeV0-PT-0707"
+        ]
+      },
+      {
+        "family": "IBMB2S565S3960",
+        "models": [
+          "IBMB2S565S3960-PT-none"
+        ]
+      },
+      {
+        "family": "MAPK",
+        "models": [
+          "MAPK-PT-00040",
+          "MAPK-PT-02560",
+          "MAPK-PT-05120",
+          "MAPK-PT-10240",
+          "MAPK-PT-00080"
+        ]
+      },
+      {
+        "family": "Kanban",
+        "models": [
+          "Kanban-PT-00200",
+          "Kanban-PT-10000",
+          "Kanban-PT-20000",
+          "Kanban-PT-00020",
+          "Kanban-PT-00005"
+        ]
+      }
+    ],
+    "RD": [
+      {
+        "family": "ErlangenMainframeV0",
+        "models": [
+          "ErlangenMainframeV0-PT-1301",
+          "ErlangenMainframeV0-PT-0707",
+          "ErlangenMainframeV0-PT-0404",
+          "ErlangenMainframeV0-PT-1104",
+          "ErlangenMainframeV0-PT-1006"
+        ]
+      },
+      {
+        "family": "FunctionPointer",
+        "models": [
+          "FunctionPointer-PT-b064",
+          "FunctionPointer-PT-c002",
+          "FunctionPointer-PT-b004",
+          "FunctionPointer-PT-a032",
+          "FunctionPointer-PT-a064"
+        ]
+      },
+      {
+        "family": "NoC3x3",
+        "models": [
+          "NoC3x3-PT-6B",
+          "NoC3x3-PT-4B",
+          "NoC3x3-PT-7B",
+          "NoC3x3-PT-2B",
+          "NoC3x3-PT-1B"
+        ]
+      },
+      {
+        "family": "SemanticWebServices",
+        "models": [
+          "SemanticWebServices-PT-S064P12",
+          "SemanticWebServices-PT-S256P12",
+          "SemanticWebServices-PT-S256P15",
+          "SemanticWebServices-PT-S128P18",
+          "SemanticWebServices-PT-S256P09"
+        ]
+      },
+      {
+        "family": "FamilyReunion",
+        "models": [
+          "FamilyReunion-PT-L00050M0005C002P002G001",
+          "FamilyReunion-PT-L00010M0001C001P001G001",
+          "FamilyReunion-PT-L00200M0020C010P010G005",
+          "FamilyReunion-PT-L00400M0040C020P020G001",
+          "FamilyReunion-PT-L00100M0010C005P005G002"
+        ]
+      },
+      {
+        "family": "Election2020",
+        "models": [
+          "Election2020-PT-none"
+        ]
+      },
+      {
+        "family": "SquareGrid",
+        "models": [
+          "SquareGrid-PT-020102",
+          "SquareGrid-PT-100510",
+          "SquareGrid-PT-040204",
+          "SquareGrid-PT-130613",
+          "SquareGrid-PT-080408"
+        ]
+      },
+      {
+        "family": "Solitaire",
+        "models": [
+          "Solitaire-PT-FrnNC7x7",
+          "Solitaire-PT-SqrCT5x5",
+          "Solitaire-PT-SqrNC5x5",
+          "Solitaire-PT-FrnCT7x7",
+          "Solitaire-PT-EngNC7x7"
+        ]
+      },
+      {
+        "family": "RERS17pb113",
+        "models": [
+          "RERS17pb113-PT-1"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV2",
+        "models": [
+          "ErlangenMainframeV2-PT-bP06C06",
+          "ErlangenMainframeV2-PT-bP07C07",
+          "ErlangenMainframeV2-PT-bP09C09",
+          "ErlangenMainframeV2-PT-bP03C03",
+          "ErlangenMainframeV2-PT-aP11C06"
+        ]
+      },
+      {
+        "family": "DLCflexbar",
+        "models": [
+          "DLCflexbar-PT-2b",
+          "DLCflexbar-PT-4b",
+          "DLCflexbar-PT-2a",
+          "DLCflexbar-PT-6b",
+          "DLCflexbar-PT-3b"
+        ]
+      },
+      {
+        "family": "DLCround",
+        "models": [
+          "DLCround-PT-11b",
+          "DLCround-PT-05b",
+          "DLCround-PT-08b",
+          "DLCround-PT-08a",
+          "DLCround-PT-07a"
+        ]
+      },
+      {
+        "family": "PaceMaker",
+        "models": [
+          "PaceMaker-PT-none"
+        ]
+      },
+      {
+        "family": "Vasy2003",
+        "models": [
+          "Vasy2003-PT-none"
+        ]
+      },
+      {
+        "family": "Echo",
+        "models": [
+          "Echo-PT-d04r03",
+          "Echo-PT-d05r03",
+          "Echo-PT-d02r19",
+          "Echo-PT-d02r15",
+          "Echo-PT-d03r03"
+        ]
+      },
+      {
+        "family": "HospitalTriage",
+        "models": [
+          "HospitalTriage-PT-none"
+        ]
+      },
+      {
+        "family": "EnergyBus",
+        "models": [
+          "EnergyBus-PT-none"
+        ]
+      },
+      {
+        "family": "HirschbergSinclair",
+        "models": [
+          "HirschbergSinclair-PT-35",
+          "HirschbergSinclair-PT-20",
+          "HirschbergSinclair-PT-45",
+          "HirschbergSinclair-PT-40",
+          "HirschbergSinclair-PT-05"
+        ]
+      },
+      {
+        "family": "ASLink",
+        "models": [
+          "ASLink-PT-09a",
+          "ASLink-PT-08a",
+          "ASLink-PT-07b",
+          "ASLink-PT-05a",
+          "ASLink-PT-01b"
+        ]
+      },
+      {
+        "family": "TCPcondis",
+        "models": [
+          "TCPcondis-PT-05",
+          "TCPcondis-PT-30",
+          "TCPcondis-PT-20",
+          "TCPcondis-PT-50",
+          "TCPcondis-PT-35"
+        ]
+      },
+      {
+        "family": "BlocksWorld",
+        "models": [
+          "BlocksWorld-PT-01",
+          "BlocksWorld-PT-04",
+          "BlocksWorld-PT-09",
+          "BlocksWorld-PT-03",
+          "BlocksWorld-PT-08"
+        ]
+      },
+      {
+        "family": "UtahNoC",
+        "models": [
+          "UtahNoC-PT-none"
+        ]
+      },
+      {
+        "family": "ProductionCell",
+        "models": [
+          "ProductionCell-PT-none"
+        ]
+      },
+      {
+        "family": "PolyORBNT",
+        "models": [
+          "PolyORBNT-PT-S10J60",
+          "PolyORBNT-PT-S05J30",
+          "PolyORBNT-PT-S10J30",
+          "PolyORBNT-PT-S10J80",
+          "PolyORBNT-PT-S05J80"
+        ]
+      },
+      {
+        "family": "PolyORBLF",
+        "models": [
+          "PolyORBLF-PT-S04J06T06",
+          "PolyORBLF-PT-S04J06T08",
+          "PolyORBLF-PT-S02J06T08",
+          "PolyORBLF-PT-S02J06T10",
+          "PolyORBLF-PT-S06J06T04"
+        ]
+      },
+      {
+        "family": "MAPK",
+        "models": [
+          "MAPK-PT-00008",
+          "MAPK-PT-00320",
+          "MAPK-PT-00640",
+          "MAPK-PT-00160",
+          "MAPK-PT-01280"
+        ]
+      },
+      {
+        "family": "MedleyB",
+        "models": [
+          "MedleyB-PT-B11",
+          "MedleyB-PT-B02",
+          "MedleyB-PT-B07",
+          "MedleyB-PT-B01",
+          "MedleyB-PT-B04"
+        ]
+      },
+      {
+        "family": "Ring",
+        "models": [
+          "Ring-PT-none"
+        ]
+      },
+      {
+        "family": "DoubleLock",
+        "models": [
+          "DoubleLock-PT-p2s1",
+          "DoubleLock-PT-p2s2",
+          "DoubleLock-PT-p3s1",
+          "DoubleLock-PT-p3s3",
+          "DoubleLock-PT-p3s2"
+        ]
+      },
+      {
+        "family": "MultiwaySync",
+        "models": [
+          "MultiwaySync-PT-none"
+        ]
+      },
+      {
+        "family": "CloudReconfiguration",
+        "models": [
+          "CloudReconfiguration-PT-401",
+          "CloudReconfiguration-PT-308",
+          "CloudReconfiguration-PT-304",
+          "CloudReconfiguration-PT-312",
+          "CloudReconfiguration-PT-305"
+        ]
+      },
+      {
+        "family": "Diffusion2D",
+        "models": [
+          "Diffusion2D-PT-D05N200",
+          "Diffusion2D-PT-D50N100",
+          "Diffusion2D-PT-D50N150",
+          "Diffusion2D-PT-D05N250",
+          "Diffusion2D-PT-D05N350"
+        ]
+      },
+      {
+        "family": "BugTracking",
+        "models": [
+          "BugTracking-PT-q8m016",
+          "BugTracking-PT-q8m032",
+          "BugTracking-PT-q8m008",
+          "BugTracking-PT-q3m064",
+          "BugTracking-PT-q8m002"
+        ]
+      },
+      {
+        "family": "ARMCacheCoherence",
+        "models": [
+          "ARMCacheCoherence-PT-none"
+        ]
+      },
+      {
+        "family": "Medical",
+        "models": [
+          "Medical-PT-20",
+          "Medical-PT-22",
+          "Medical-PT-16",
+          "Medical-PT-02",
+          "Medical-PT-08"
+        ]
+      },
+      {
+        "family": "MAPKbis",
+        "models": [
+          "MAPKbis-PT-5320",
+          "MAPKbis-PT-5310"
+        ]
+      },
+      {
+        "family": "IBMB2S565S3960",
+        "models": [
+          "IBMB2S565S3960-PT-none"
+        ]
+      },
+      {
+        "family": "MedleyA",
+        "models": [
+          "MedleyA-PT-23",
+          "MedleyA-PT-19",
+          "MedleyA-PT-01",
+          "MedleyA-PT-13",
+          "MedleyA-PT-21"
+        ]
+      },
+      {
+        "family": "BusinessProcesses",
+        "models": [
+          "BusinessProcesses-PT-19",
+          "BusinessProcesses-PT-06",
+          "BusinessProcesses-PT-18",
+          "BusinessProcesses-PT-02",
+          "BusinessProcesses-PT-20"
+        ]
+      },
+      {
+        "family": "Planning",
+        "models": [
+          "Planning-PT-none"
+        ]
+      },
+      {
+        "family": "RERS17pb114",
+        "models": [
+          "RERS17pb114-PT-8",
+          "RERS17pb114-PT-3",
+          "RERS17pb114-PT-1",
+          "RERS17pb114-PT-7",
+          "RERS17pb114-PT-9"
+        ]
+      },
+      {
+        "family": "DES",
+        "models": [
+          "DES-PT-00a",
+          "DES-PT-05b",
+          "DES-PT-10b",
+          "DES-PT-01b",
+          "DES-PT-20b"
+        ]
+      },
+      {
+        "family": "ResIsolation",
+        "models": [
+          "ResIsolation-PT-N08P3",
+          "ResIsolation-PT-N09P5",
+          "ResIsolation-PT-N09P2",
+          "ResIsolation-PT-N08P4",
+          "ResIsolation-PT-N12P1"
+        ]
+      },
+      {
+        "family": "Kanban",
+        "models": [
+          "Kanban-PT-00500",
+          "Kanban-PT-50000",
+          "Kanban-PT-00005",
+          "Kanban-PT-00020",
+          "Kanban-PT-00010"
+        ]
+      },
+      {
+        "family": "ViralEpidemic",
+        "models": [
+          "ViralEpidemic-PT-S08D1C2A04",
+          "ViralEpidemic-PT-S08D1C2A02",
+          "ViralEpidemic-PT-S03D1C1A04",
+          "ViralEpidemic-PT-S16D2C4A03",
+          "ViralEpidemic-PT-S16D2C4A01"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV1",
+        "models": [
+          "ErlangenMainframeV1-PT-bP12C04",
+          "ErlangenMainframeV1-PT-bP11C06",
+          "ErlangenMainframeV1-PT-aP11C06",
+          "ErlangenMainframeV1-PT-bP10C08",
+          "ErlangenMainframeV1-PT-bP07C07"
+        ]
+      },
+      {
+        "family": "Champagne",
+        "models": [
+          "Champagne-PT-H06T0R",
+          "Champagne-PT-H10T1U",
+          "Champagne-PT-H08T1U",
+          "Champagne-PT-H07T1U",
+          "Champagne-PT-H06T2O"
+        ]
+      },
+      {
+        "family": "FireWire",
+        "models": [
+          "FireWire-PT-02",
+          "FireWire-PT-16",
+          "FireWire-PT-17",
+          "FireWire-PT-15",
+          "FireWire-PT-04"
+        ]
+      },
+      {
+        "family": "HypercubeGrid",
+        "models": [
+          "HypercubeGrid-PT-C4K3P3B12",
+          "HypercubeGrid-PT-C3K4P4B12"
+        ]
+      },
+      {
+        "family": "DiscoveryGPU",
+        "models": [
+          "DiscoveryGPU-PT-10a",
+          "DiscoveryGPU-PT-11a",
+          "DiscoveryGPU-PT-11b",
+          "DiscoveryGPU-PT-14a",
+          "DiscoveryGPU-PT-08b"
+        ]
+      },
+      {
+        "family": "HealthRecord",
+        "models": [
+          "HealthRecord-PT-15",
+          "HealthRecord-PT-08",
+          "HealthRecord-PT-10",
+          "HealthRecord-PT-07",
+          "HealthRecord-PT-03"
+        ]
+      },
+      {
+        "family": "CO4",
+        "models": [
+          "CO4-PT-01",
+          "CO4-PT-16",
+          "CO4-PT-18",
+          "CO4-PT-20",
+          "CO4-PT-04"
+        ]
+      },
+      {
+        "family": "DLCshifumi",
+        "models": [
+          "DLCshifumi-PT-2b",
+          "DLCshifumi-PT-4b",
+          "DLCshifumi-PT-3b",
+          "DLCshifumi-PT-6a",
+          "DLCshifumi-PT-2a"
+        ]
+      }
+    ],
+    "OS": [
+      {
+        "family": "MedleyB",
+        "models": [
+          "MedleyB-PT-B07",
+          "MedleyB-PT-B05",
+          "MedleyB-PT-B13",
+          "MedleyB-PT-B11",
+          "MedleyB-PT-B09"
+        ]
+      },
+      {
+        "family": "ViralEpidemic",
+        "models": [
+          "ViralEpidemic-PT-S04D1C1A03",
+          "ViralEpidemic-PT-S02D1C1A12",
+          "ViralEpidemic-PT-S03D1C1A06",
+          "ViralEpidemic-PT-S08D1C2A02",
+          "ViralEpidemic-PT-S04D1C1A06"
+        ]
+      },
+      {
+        "family": "SquareGrid",
+        "models": [
+          "SquareGrid-PT-040204",
+          "SquareGrid-PT-020102",
+          "SquareGrid-PT-080408",
+          "SquareGrid-PT-130613",
+          "SquareGrid-PT-100510"
+        ]
+      },
+      {
+        "family": "Ring",
+        "models": [
+          "Ring-PT-none"
+        ]
+      },
+      {
+        "family": "Medical",
+        "models": [
+          "Medical-PT-02",
+          "Medical-PT-24",
+          "Medical-PT-22",
+          "Medical-PT-06",
+          "Medical-PT-04"
+        ]
+      },
+      {
+        "family": "Champagne",
+        "models": [
+          "Champagne-PT-H05T2O",
+          "Champagne-PT-H08T1U",
+          "Champagne-PT-H10T1U",
+          "Champagne-PT-H06T0R",
+          "Champagne-PT-H04T2O"
+        ]
+      },
+      {
+        "family": "PolyORBLF",
+        "models": [
+          "PolyORBLF-PT-S02J04T08",
+          "PolyORBLF-PT-S06J06T04",
+          "PolyORBLF-PT-S04J06T08",
+          "PolyORBLF-PT-S06J06T08",
+          "PolyORBLF-PT-S04J04T08"
+        ]
+      },
+      {
+        "family": "ARMCacheCoherence",
+        "models": [
+          "ARMCacheCoherence-PT-none"
+        ]
+      },
+      {
+        "family": "NoC3x3",
+        "models": [
+          "NoC3x3-PT-2B",
+          "NoC3x3-PT-5A",
+          "NoC3x3-PT-1B",
+          "NoC3x3-PT-4A",
+          "NoC3x3-PT-2A"
+        ]
+      },
+      {
+        "family": "MultiwaySync",
+        "models": [
+          "MultiwaySync-PT-none"
+        ]
+      },
+      {
+        "family": "DLCflexbar",
+        "models": [
+          "DLCflexbar-PT-3b",
+          "DLCflexbar-PT-8a",
+          "DLCflexbar-PT-6a",
+          "DLCflexbar-PT-2a",
+          "DLCflexbar-PT-3a"
+        ]
+      },
+      {
+        "family": "IBMB2S565S3960",
+        "models": [
+          "IBMB2S565S3960-PT-none"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV0",
+        "models": [
+          "ErlangenMainframeV0-PT-1008",
+          "ErlangenMainframeV0-PT-1302",
+          "ErlangenMainframeV0-PT-0909",
+          "ErlangenMainframeV0-PT-1301",
+          "ErlangenMainframeV0-PT-1005"
+        ]
+      },
+      {
+        "family": "UtahNoC",
+        "models": [
+          "UtahNoC-PT-none"
+        ]
+      },
+      {
+        "family": "BusinessProcesses",
+        "models": [
+          "BusinessProcesses-PT-13",
+          "BusinessProcesses-PT-03",
+          "BusinessProcesses-PT-16",
+          "BusinessProcesses-PT-11",
+          "BusinessProcesses-PT-08"
+        ]
+      },
+      {
+        "family": "PaceMaker",
+        "models": [
+          "PaceMaker-PT-none"
+        ]
+      },
+      {
+        "family": "Diffusion2D",
+        "models": [
+          "Diffusion2D-PT-D40N010",
+          "Diffusion2D-PT-D10N200",
+          "Diffusion2D-PT-D05N250",
+          "Diffusion2D-PT-D20N050",
+          "Diffusion2D-PT-D10N050"
+        ]
+      },
+      {
+        "family": "BugTracking",
+        "models": [
+          "BugTracking-PT-q3m016",
+          "BugTracking-PT-q8m064",
+          "BugTracking-PT-q3m256",
+          "BugTracking-PT-q3m064",
+          "BugTracking-PT-q3m032"
+        ]
+      },
+      {
+        "family": "ProductionCell",
+        "models": [
+          "ProductionCell-PT-none"
+        ]
+      },
+      {
+        "family": "FireWire",
+        "models": [
+          "FireWire-PT-06",
+          "FireWire-PT-12",
+          "FireWire-PT-01",
+          "FireWire-PT-02",
+          "FireWire-PT-18"
+        ]
+      },
+      {
+        "family": "HirschbergSinclair",
+        "models": [
+          "HirschbergSinclair-PT-10",
+          "HirschbergSinclair-PT-20",
+          "HirschbergSinclair-PT-30",
+          "HirschbergSinclair-PT-25",
+          "HirschbergSinclair-PT-40"
+        ]
+      },
+      {
+        "family": "EnergyBus",
+        "models": [
+          "EnergyBus-PT-none"
+        ]
+      },
+      {
+        "family": "DiscoveryGPU",
+        "models": [
+          "DiscoveryGPU-PT-15a",
+          "DiscoveryGPU-PT-06b",
+          "DiscoveryGPU-PT-10b",
+          "DiscoveryGPU-PT-08b",
+          "DiscoveryGPU-PT-13b"
+        ]
+      },
+      {
+        "family": "SemanticWebServices",
+        "models": [
+          "SemanticWebServices-PT-S128P12",
+          "SemanticWebServices-PT-S064P18",
+          "SemanticWebServices-PT-S256P06",
+          "SemanticWebServices-PT-S256P12",
+          "SemanticWebServices-PT-S256P09"
+        ]
+      },
+      {
+        "family": "DoubleLock",
+        "models": [
+          "DoubleLock-PT-p3s1",
+          "DoubleLock-PT-p2s2",
+          "DoubleLock-PT-p1s2",
+          "DoubleLock-PT-p3s3",
+          "DoubleLock-PT-p1s3"
+        ]
+      },
+      {
+        "family": "Solitaire",
+        "models": [
+          "Solitaire-PT-SqrNC5x5",
+          "Solitaire-PT-FrnNC7x7",
+          "Solitaire-PT-EngCT7x7",
+          "Solitaire-PT-EngNC7x7",
+          "Solitaire-PT-SqrCT5x5"
+        ]
+      },
+      {
+        "family": "DLCshifumi",
+        "models": [
+          "DLCshifumi-PT-4a",
+          "DLCshifumi-PT-2a",
+          "DLCshifumi-PT-5b",
+          "DLCshifumi-PT-3a",
+          "DLCshifumi-PT-6b"
+        ]
+      },
+      {
+        "family": "Echo",
+        "models": [
+          "Echo-PT-d02r09",
+          "Echo-PT-d02r19",
+          "Echo-PT-d03r03",
+          "Echo-PT-d03r07",
+          "Echo-PT-d02r15"
+        ]
+      },
+      {
+        "family": "PolyORBNT",
+        "models": [
+          "PolyORBNT-PT-S10J20",
+          "PolyORBNT-PT-S10J30",
+          "PolyORBNT-PT-S05J40",
+          "PolyORBNT-PT-S10J80",
+          "PolyORBNT-PT-S05J30"
+        ]
+      },
+      {
+        "family": "HealthRecord",
+        "models": [
+          "HealthRecord-PT-06",
+          "HealthRecord-PT-09",
+          "HealthRecord-PT-12",
+          "HealthRecord-PT-08",
+          "HealthRecord-PT-14"
+        ]
+      },
+      {
+        "family": "FamilyReunion",
+        "models": [
+          "FamilyReunion-PT-L00200M0020C010P010G005",
+          "FamilyReunion-PT-L00010M0001C001P001G001",
+          "FamilyReunion-PT-L00400M0040C020P020G001",
+          "FamilyReunion-PT-L00020M0002C001P001G001",
+          "FamilyReunion-PT-L00050M0005C002P002G001"
+        ]
+      },
+      {
+        "family": "HospitalTriage",
+        "models": [
+          "HospitalTriage-PT-none"
+        ]
+      },
+      {
+        "family": "Vasy2003",
+        "models": [
+          "Vasy2003-PT-none"
+        ]
+      },
+      {
+        "family": "MedleyA",
+        "models": [
+          "MedleyA-PT-23",
+          "MedleyA-PT-10",
+          "MedleyA-PT-05",
+          "MedleyA-PT-13",
+          "MedleyA-PT-16"
+        ]
+      },
+      {
+        "family": "DES",
+        "models": [
+          "DES-PT-00a",
+          "DES-PT-02a",
+          "DES-PT-60a",
+          "DES-PT-30a",
+          "DES-PT-50b"
+        ]
+      },
+      {
+        "family": "RERS17pb113",
+        "models": [
+          "RERS17pb113-PT-1",
+          "RERS17pb113-PT-5",
+          "RERS17pb113-PT-6",
+          "RERS17pb113-PT-7",
+          "RERS17pb113-PT-3"
+        ]
+      },
+      {
+        "family": "ASLink",
+        "models": [
+          "ASLink-PT-10b",
+          "ASLink-PT-07a",
+          "ASLink-PT-05a",
+          "ASLink-PT-06b",
+          "ASLink-PT-03a"
+        ]
+      },
+      {
+        "family": "MAPKbis",
+        "models": [
+          "MAPKbis-PT-5320",
+          "MAPKbis-PT-5310"
+        ]
+      },
+      {
+        "family": "MAPK",
+        "models": [
+          "MAPK-PT-00320",
+          "MAPK-PT-10240",
+          "MAPK-PT-01280",
+          "MAPK-PT-00040",
+          "MAPK-PT-00008"
+        ]
+      },
+      {
+        "family": "RERS17pb115",
+        "models": [
+          "RERS17pb115-PT-1",
+          "RERS17pb115-PT-8",
+          "RERS17pb115-PT-4",
+          "RERS17pb115-PT-9",
+          "RERS17pb115-PT-7"
+        ]
+      },
+      {
+        "family": "CloudReconfiguration",
+        "models": [
+          "CloudReconfiguration-PT-302",
+          "CloudReconfiguration-PT-304",
+          "CloudReconfiguration-PT-401",
+          "CloudReconfiguration-PT-318",
+          "CloudReconfiguration-PT-307"
+        ]
+      },
+      {
+        "family": "BlocksWorld",
+        "models": [
+          "BlocksWorld-PT-01",
+          "BlocksWorld-PT-12",
+          "BlocksWorld-PT-06",
+          "BlocksWorld-PT-11",
+          "BlocksWorld-PT-20"
+        ]
+      },
+      {
+        "family": "DLCround",
+        "models": [
+          "DLCround-PT-08b",
+          "DLCround-PT-10b",
+          "DLCround-PT-04b",
+          "DLCround-PT-06a",
+          "DLCround-PT-11b"
+        ]
+      },
+      {
+        "family": "TCPcondis",
+        "models": [
+          "TCPcondis-PT-10",
+          "TCPcondis-PT-35",
+          "TCPcondis-PT-25",
+          "TCPcondis-PT-30",
+          "TCPcondis-PT-50"
+        ]
+      },
+      {
+        "family": "FunctionPointer",
+        "models": [
+          "FunctionPointer-PT-a128",
+          "FunctionPointer-PT-a008",
+          "FunctionPointer-PT-c064",
+          "FunctionPointer-PT-a004",
+          "FunctionPointer-PT-c008"
+        ]
+      },
+      {
+        "family": "Election2020",
+        "models": [
+          "Election2020-PT-none"
+        ]
+      },
+      {
+        "family": "CO4",
+        "models": [
+          "CO4-PT-14",
+          "CO4-PT-06",
+          "CO4-PT-19",
+          "CO4-PT-09",
+          "CO4-PT-08"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV2",
+        "models": [
+          "ErlangenMainframeV2-PT-aP13C02",
+          "ErlangenMainframeV2-PT-aP12C04",
+          "ErlangenMainframeV2-PT-bP07C07",
+          "ErlangenMainframeV2-PT-bP02C02",
+          "ErlangenMainframeV2-PT-aP14C01"
+        ]
+      },
+      {
+        "family": "ResIsolation",
+        "models": [
+          "ResIsolation-PT-N09P3",
+          "ResIsolation-PT-N13P1",
+          "ResIsolation-PT-N11P2",
+          "ResIsolation-PT-N08P3",
+          "ResIsolation-PT-N10P3"
+        ]
+      },
+      {
+        "family": "ErlangenMainframeV1",
+        "models": [
+          "ErlangenMainframeV1-PT-aP10C08",
+          "ErlangenMainframeV1-PT-bP13C02",
+          "ErlangenMainframeV1-PT-bP07C07",
+          "ErlangenMainframeV1-PT-aP13C02",
+          "ErlangenMainframeV1-PT-bP01C01"
+        ]
+      },
+      {
+        "family": "Kanban",
+        "models": [
+          "Kanban-PT-50000",
+          "Kanban-PT-05000",
+          "Kanban-PT-00020",
+          "Kanban-PT-10000",
+          "Kanban-PT-00100"
+        ]
+      },
+      {
+        "family": "Planning",
+        "models": [
+          "Planning-PT-none"
+        ]
+      },
+      {
+        "family": "HypercubeGrid",
+        "models": [
+          "HypercubeGrid-PT-C5K3P3B15",
+          "HypercubeGrid-PT-C4K3P3B12",
+          "HypercubeGrid-PT-C3K4P4B12"
+        ]
+      },
+      {
+        "family": "RERS17pb114",
+        "models": [
+          "RERS17pb114-PT-7",
+          "RERS17pb114-PT-9",
+          "RERS17pb114-PT-2",
+          "RERS17pb114-PT-4",
+          "RERS17pb114-PT-3"
+        ]
+      }
+    ]
+  }
+}

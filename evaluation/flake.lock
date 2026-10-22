@@ -1,0 +1,48 @@
+{
+  "nodes": {
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1792502884,
+        "narHash": "sha256-IoNisKcGbUjdd45qCqywGMCYmZ5EnkxezvLII0FWwNA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "02c087f3fe673c9e317f206a627cb6b910336dbe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "petrivet": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792687920,
+        "narHash": "sha256-vaqYFKjfRlG7fgOQsKow7ujrkK/aT9NG787fE4Mm7Rg=",
+        "owner": "MichaelOwenDyer",
+        "repo": "petrivet",
+        "rev": "50d1e4d07379d4026e21456321fbdc367fffd481",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MichaelOwenDyer",
+        "repo": "petrivet",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "petrivet": "petrivet"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
