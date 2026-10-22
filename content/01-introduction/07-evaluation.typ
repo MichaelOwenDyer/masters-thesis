@@ -9,3 +9,5 @@ The evaluation will also include a comparison with existing Petri net model chec
 The goal is NOT to best existing model checkers which have had sometimes decades to mature; this project represents
 merely a starting point for a new library in the Rust ecosystem. I will continue to improve the library over time,
 adding new procedures and optimizations. It is clear to me that in its current state, the library has no chance of outperforming existing model checkers in several areas.
+
+example api design evaluation; implement the same thing in other libraries

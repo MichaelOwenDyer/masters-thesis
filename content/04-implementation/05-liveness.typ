@@ -4,16 +4,7 @@
 
 == Liveness
 
-A transition is said to be _live_ if, from every reachable marking, it is possible to eventually fire it again;
-that is, there is no reachable marking from which the transition can never be fired again.
-A Petri net is said to be live if all of its transitions are live.
 
-We can further specify liveness by classifying it into four levels, L0 through L4 @murata_petri_1989, which I explain here in my own words:
-- L0 ("dead"): No firing sequence contains the transition. The transition is not enabled in any reachable marking.
-- L1 ("not dead"): There exists a firing sequence containing the transition. The transition is enabled in at least one reachable marking.
-- L2 (implies L1): For any finite integer k, there exists a firing sequence containing the transition k times.
-- L3 (implies L2): There exists an infinite firing sequence containing the transition infinitely many times. The transition can be fired infinitely often, but there may be reachable markings where this is no longer possible.
-- L4 ("live", implies L3): From every reachable marking, there exists a firing sequence containing the transition. The transition can always be fired again.
 
 #figure(
   kind: table,
@@ -83,18 +74,8 @@ Operation:
 - Determine the precise liveness level -> LivenessLevel.
 
 Scope:
-- Check the aggregate liveness of the entire net.
 - Check an individual transition.
 - Check all transitions.
-
-These scopes are not mutually exclusive; sometimes their results are interdependent, and sometimes they are not.
-For example, for certain subclasses we have a procedure which can guarantee that the entire net is L4, which implies that all transitions are L4.
-Checking all transitions individually is therefore unnecessary.
-// TODO: Further discussion of the interdependence of these scopes.
-
-Efficiency:
-- Use any known procedure, even if it is inefficient.
-- Use only efficient procedures if possible, and return `None` if no efficient procedure is known.
 
 For time reasons, I have selectively implemented only the four combinations which appear most useful to me,
 with the rest being left as future work.
@@ -143,7 +124,7 @@ SCC reachable from some marked SCC is upgraded to $lv(4)$.
   kind: "algorithm",
   supplement: [Algorithm],
   caption: [Liveness levels of a state machine.],
-  pseudocode-list(numbered-title: [`LivenessViaMarkedSCCs`$(N, M_0)$])[
+  pseudocode-list(numbered-title: [`StateMachineLiveness`$(N, M_0)$])[
     + $cal(C) <- op("condensation")(G)$; #h(0.5em) $pi <- op("toposort")(cal(C))$
     + $m[K] <- (M_0(K) > 0)$ for all $K in cal(C)$; #h(0.5em) $r <- m$
     + *for each* $K in pi$ *with* $r[K]$:
@@ -162,7 +143,7 @@ A formal proof of correctness is given in @proof-state-machine-liveness.
 === Liveness Levels of Marked Graphs
 
 I present an efficient algorithm (running in $O(|P| + |T| + |F|)$) for computing the liveness levels of all transitions
-in a marked graph, based on the work of @murata_petri_1989, @esparza_petri_2026, and @tarjan_depth-first_1972.
+in a marked graph, based on the work of @murata_petri_1989 @esparza_petri_2026, and @tarjan_depth-first_1972.
 To my knowledge this is an original contribution.
 The algorithm first sets the liveness level of all transitions to L4.
 Then it then identifies all unmarked circuits using Tarjan's SCC algorithm @tarjan_depth-first_1972 on the subnet
@@ -193,8 +174,9 @@ and L0 otherwise.
         + $lv(1)$ *if* $b$: *return*
         + _otherwise_: $ell[t] <- cases(lv(1) & "if" b, lv(0) & "otherwise")$
       + *for each* $p in post(t)$:
+        + ${t'} <- post(p)$
         + $b' <- b or M_0(p) > 0$
-        + $"Dfs"(v_p, b')$ #h(1em) // `postset_p[p].first()`
+        + $"Dfs"(t', b')$
   ]
 ) <algorithm-marked-graph-liveness>
 

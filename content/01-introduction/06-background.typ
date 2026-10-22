@@ -16,6 +16,8 @@ Define important concepts here:
 - subclasses of nets: circuit, state machine, marked graph, free choice, extended free choice, asymmetric choice, general nets
 - traps and siphons, Commoner/Hack Criterion
 
+==== Structure
+
 A net $N = (S, T, F)$ is a bipartite directed graph consisting of a finite set of places $S$,
 a finite set of transitions $T$ disjoint from $S$, and a flow relation $F ⊆ (S × T) ∪ (T × S)$.
 The places and transitions form the nodes of the graph,
@@ -34,6 +36,43 @@ and the preset and postset of a place $s$ as the _input transitions_ and _output
 Let $N = (P, T, F)$ be a net with $n = |P|$ places and let $M_0$ be the initial marking.
 For $X subset.eq P$ write $M_0(X) = sum_(p in X) M_0(p)$;
 $X$ is _marked_ iff $M_0(X) > 0$.
+
+==== Deadlock-freedom <background-deadlock-freedom>
+
+A Petri net is said to be _deadlock-free_ if every reachable marking enables at least one transition.
+
+==== K-Boundedness <background-boundedness>
+
+A place is said to be _k-bounded_ for some finite integer `k` if the place never
+contains more than `k` tokens in any reachable marking.
+
+A place is _bounded_ if it is k-bounded for some finite `k`, and _unbounded_ otherwise.
+The Petri net as a whole is said to be (k-)bounded if all of its places are (k-)bounded,
+and unbounded if at least one of its places is unbounded.
+
+==== Liveness <background-liveness>
+
+A transition is said to be _live_ if, from every reachable marking, it is possible to eventually fire it again;
+that is, there is no reachable marking from which the transition can never be fired again.
+A Petri net is said to be live if all of its transitions are live.
+
+We can further specify liveness by classifying it into four levels, L0 through L4 @murata_petri_1989, which I explain here in my own words:
+- L0 ("dead"): No firing sequence contains the transition. The transition is not enabled in any reachable marking.
+- L1 ("not dead"): There exists a firing sequence containing the transition. The transition is enabled in at least one reachable marking.
+- L2 (implies L1): For any finite integer k, there exists a firing sequence containing the transition k times.
+- L3 (implies L2): There exists an infinite firing sequence containing the transition infinitely many times. The transition can be fired infinitely often, but there may be reachable markings where this is no longer possible.
+- L4 ("live", implies L3): From every reachable marking, there exists a firing sequence containing the transition. The transition can always be fired again.
+
+==== Reachability <background-reachability>
+
+The reachability problem asks whether it is possible to reach a target marking $M$ from the initial marking $M_0$ by firing a sequence of transitions.
+
+==== Coverability <background-coverability>
+
+The coverability problem asks whether it is possible to reach a marking $M'$ from the initial marking $M_0$
+such that $M'(p) ≥ M(p)$ for all places $p$ in the net.
+
+==== Structural Subclasses of Petri Nets
 
 Nets can be classified into various subclasses based on their structural layout.
 These subclasses imply various behavioral properties, which can be exploited to improve the efficiency of analysis algorithms.
@@ -57,11 +96,15 @@ Some notable net subclasses include, in order of increasing specialization:
   - Every place and every transition has exactly one input and one output.
   - The entire net forms a single directed circuit.
 
+==== Traps and Siphons <background-traps-siphons>
+
 A *trap* is a nonempty $Q subset.eq P$ with $post(Q) subset.eq pre(Q)$.
 A *trap* is a set of places such that every transition which consumes a token from a place in the trap also produces
 a token in some place in the trap. A trap is _marked_ if at least one place in the trap has a token in the current marking.
 Once a trap is marked, it is impossible to completely unmark it through transition firings.
 Once marked, forever marked.
+
+Traps
 
 A *siphon* is a nonempty $D subset.eq P$ with $pre(D) subset.eq post(D)$.
 A *siphon* is a set of places such that every transition which produces a token in a place in the siphon also consumes
@@ -69,20 +112,8 @@ a token from some place in the siphon. A siphon is _unmarked_ if all places in t
 Once a siphon is unmarked, it is impossible to mark it again through transition firings.
 Once empty, forever empty.
 
-==== Model Checking
+Siphons have a strong conceptual connection to deadlocks.
+Indeed, the set of unmarked places in any deadlock marking forms a siphon:
+every transition is dead because it has an input place in the siphon, and therefore cannot mark any place in the siphon again.
 
-Model checking is a formal verification technique that systematically explores the state space of a system to verify
-whether certain properties hold. It involves constructing a model of the system, specifying properties in a formal
-language (such as temporal logic), and using algorithms to check if the model satisfies these properties.
-Model checking can be applied to various types of systems, including hardware circuits, software programs, and
-concurrent systems modeled by Petri nets.
-
-Mention the breadth of model checking and its subtopics:
-- LTL and CTL formula checking
-- Partial Order Reduction
-- Binary Decision Diagrams / Hierarchical Set Decision Diagrams for state space representation
-Many of these topics are in the scope of future work for petrivet.
-Within the scope of this thesis, we will focus on the fundamental theory of Petri nets and the implementation
-of a library that provides a foundation for future work in these areas.
-
-==== Rust Programming Language
+// TODO: Add figures

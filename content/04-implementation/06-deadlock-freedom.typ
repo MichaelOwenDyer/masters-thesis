@@ -4,11 +4,6 @@
 
 == Deadlock-Freedom
 
-A Petri net is said to be _deadlock-free_ if, from every reachable marking, there exists at least one enabled transition;
-that is, the system can always make progress and never reaches a state where it is stuck.
-
-Deadlock-freedom is Ackermann-hard in general, but there are efficient procedures for certain subclasses of nets.
-
 The following is a summary of known results for deadlock-freedom and their implementation status in petrivet.
 
 #figure(
@@ -43,6 +38,15 @@ The following is a summary of known results for deadlock-freedom and their imple
   ),
 )
 
+Dimensions:
+
+Operation:
+- check whether deadlock free or not -> bool
+- enumerate deadlocks -> Iterator<Deadlock>
+
+Scope:
+- entire Petri net
+
 petrivet's API provides the following methods for checking deadlock-freedom:
 
 #grid(
@@ -65,6 +69,7 @@ and reports deadlock-freedom iff some marked place is not among them.
   supplement: [Algorithm],
   caption: [Deadlock-freedom of a state machine.],
   pseudocode-list(numbered-title: [`DeadlockFreeStateMachine`$(N, M_0)$])[
+    + $P_0 <- P pipe op("filter")(p |-> M_0(p) > 0)$
     + $Sigma <- P pipe op("filter")(p |-> post(p) = emptyset)$
     + $B <- "PreStar"(Sigma)$
     + *return* $P_0 subset.eq.not B$
@@ -78,6 +83,8 @@ and reports deadlock-freedom iff some marked place is not among them.
       + *return* $X$
   ]
 ) <algorithm-state-machine-deadlock-freedom>
+
+A proof of correctness is given in @proof-state-machine-deadlock-freedom.
 
 === Deadlock-Freedom of Marked Graphs
 
@@ -102,7 +109,7 @@ firing forever. The criterion is therefore that some transition is _not_ downstr
       + *if* $not d[t]$:
         + $d[t] <- top$
         + *for each* $p in post(t)$: #h(0.3em) $op("extend")(W, post(p))$
-    + *return* $exists t in T: not d[t]$
+    + #line-label(<algorithm-marked-graph-deadlock-freedom-return>) *return* $exists t in T: not d[t]$
   ]
 ) <algorithm-marked-graph-deadlock-freedom>
 

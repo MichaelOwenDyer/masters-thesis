@@ -1,8 +1,6 @@
 
 == Reachability & Coverability
 
-The reachability problem asks whether it is possible to reach a target marking $M$ from the initial marking $M_0$ by firing a sequence of transitions.
-It was shown to be Ackermann-hard in the general case in 2021 @czerwinski_reachability_2022.
 The following is a summary of known results for reachability and their implementation status in petrivet.
 
 #figure(
@@ -60,7 +58,7 @@ The current implementation is more sophisticated than the brute-force approach.
 === CEGAR Engine
 
 The engine is based on the paradigm of counterexample-guided abstraction refinement (CEGAR) clarke_counterexample-guided_2000,
-a well-known technique in formal verification and model checking that has been applied to Petri nets @wimmel_applying_2011, @hajdu_new_2015, @thierry-mieg_structural_2020.
+a well-known technique in formal verification and model checking that has been applied to Petri nets @wimmel_applying_2011 @hajdu_new_2015 @thierry-mieg_structural_2020.
 
 In general, the paradigm operates by constructing and iteratively refining an overapproximated abstraction of the original system.
 If the property of interest does not hold in the abstraction, then by construction it does not hold in the original system either.

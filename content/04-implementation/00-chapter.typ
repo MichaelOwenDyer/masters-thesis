@@ -1,7 +1,7 @@
 = Implementation <implementation>
 
-This section discusses the implementation of the petrivet Rust crate, including its architecture, design decisions,
-and the rationale behind them.
+This section discusses the implementation of the _petrivet_ #footnote[https://github.com/MichaelOwenDyer/petrivet] Rust
+crate, including arch
 
 #include "01-builder.typ"
 #include "02-simulation.typ"
