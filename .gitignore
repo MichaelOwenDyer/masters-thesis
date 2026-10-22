@@ -2,3 +2,6 @@ target/
 .typst-cache/
 .DS_Store
 tex/
+evaluation/corpus/mcc
+related-work-survey
+.idea
