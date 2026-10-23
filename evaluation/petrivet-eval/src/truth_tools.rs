@@ -433,7 +433,9 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
                 continue;
             }
             let (l, t) = (tool_result(&records, inst, q, tid.as_deref(), "lola"), tool_result(&records, inst, q, tid.as_deref(), "tina"));
-            out.runner_errors += [&l, &t].iter().filter(|r| r.outcome == Verdict::RunnerError).count();
+            // a skipped TINA has no record by design; that is not an infrastructure failure
+            let tina_absent = tina_skipped(q, q2) && !records.contains_key(&t.run_id);
+            out.runner_errors += [&l, &t].iter().filter(|r| r.outcome == Verdict::RunnerError && !(tina_absent && r.tool == "tina")).count();
             let key = (inst.instance_id.clone(), q.as_str().to_owned(), tid.clone());
             // a skipped TINA that has a definite answer anyway (an earlier run) still counts, so a disagreement is not hidden;
             // a recorded TIMEOUT or other non-answer does not, which keeps the label independent of earlier runs
@@ -770,6 +772,7 @@ mod tests {
         assert!(!calls.lines().any(|c| c.contains("gen-b") && (c.contains("DEADLOCK") || c.contains("FIREABLE") || c.contains("AG ("))), "{calls}");
         assert!(calls.lines().any(|c| c.contains("gen-a") && c.contains("DEADLOCK")));
         assert_eq!(l.rows.iter().filter(|r| r.status == Status::OutOfScope).count(), 3);
+        assert_eq!(l.runner_errors, 0, "a skipped TINA is not a runner error");
         assert_eq!(l.ran, 20, "Q2 for both (4 runs), gen-a: 4 QR/QC targets and Q1, Q3, Q4 with two tools each (14), gen-b: 2 targets with LoLA only (2)");
         // files
         write_excluded(&results, &l.excluded).unwrap();
