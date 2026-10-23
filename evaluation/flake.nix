@@ -15,9 +15,9 @@
       # TINA ships only as an x86-64 Linux binary and has no stated redistribution licence,
       # so it is unfree. Allow exactly that one package here so users of this flake do not need
       # NIXPKGS_ALLOW_UNFREE or a global allowUnfree.
-      evalSystem = "x86_64-linux";
-      unfreePkgs = import nixpkgs {
-        system = evalSystem;
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
         config.allowUnfreePredicate = p: nixpkgs.lib.hasPrefix "tina" (nixpkgs.lib.getName p);
       };
     in
@@ -28,19 +28,24 @@
           lola = pkgs.callPackage ./nix/lola.nix { };
         }))
         {
-          ${evalSystem} = {
-            tina = unfreePkgs.callPackage ./nix/tina.nix { };
-            tina-large = unfreePkgs.callPackage ./nix/tina.nix { large = true; };
+          ${system} = {
+            tina = pkgs.callPackage ./nix/tina.nix { };
+            tina-large = pkgs.callPackage ./nix/tina.nix { large = true; };
           };
         };
 
       # The shell the evaluation runs in: petrivet, LoLA and TINA on PATH (ndrio comes with TINA).
-      devShells.${evalSystem}.default = unfreePkgs.mkShell {
+      devShells.${system}.default = pkgs.mkShell {
+        # building petrivet-eval compiles the petrivet library, which needs Z3 and libclang (via the package's inputs)
+        inputsFrom = [ self.packages.${system}.petrivet ];
         # not `with self.packages...`: the flake input named `petrivet` would shadow the package
         packages = [
-          self.packages.${evalSystem}.petrivet
-          self.packages.${evalSystem}.lola
-          self.packages.${evalSystem}.tina
+          self.packages.${system}.petrivet
+          self.packages.${system}.lola
+          self.packages.${system}.tina
+          pkgs.cargo
+          pkgs.rustc
+          pkgs.clippy
         ];
       };
     };

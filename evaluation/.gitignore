@@ -1,2 +1,5 @@
 target/
 corpus/mcc/models/
+corpus/mcc/oracle/
+corpus/mcc/oracle.tar.gz
+.cargo/
