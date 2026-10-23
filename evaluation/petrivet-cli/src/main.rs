@@ -63,7 +63,8 @@ enum Property {
     Live,
     /// Every transition is enabled in some reachable marking (L1)
     QuasiLive,
-    /// Number of reachable markings and edges (bounded nets only; general mode only)
+    /// Number of reachable markings and edges (general mode only; an unbounded net has no finite state space and
+    /// the exploration runs until the deadline or the external limit)
     #[value(name = "statespace")]
     StateSpace,
     /// Every reachable marking has at most one token per place
@@ -93,7 +94,6 @@ enum Verdict {
     False,
     Unknown,
     NotSupported,
-    Unbounded,
 }
 
 impl Verdict {
@@ -103,7 +103,6 @@ impl Verdict {
             Verdict::False => "false",
             Verdict::Unknown => "unknown",
             Verdict::NotSupported => "not_supported",
-            Verdict::Unbounded => "unbounded",
         }
     }
 }
@@ -137,23 +136,22 @@ impl Outcome {
     }
 }
 
-/// The general procedure for properties that need every reachable marking: explore with the Karp-Miller
-/// coverability graph, which stops at the first omega, and read the answer off the finished reachability graph.
-/// `on_unbounded` is the verdict for a net that turns out to be unbounded.
-fn via_reachability_graph(
+/// The complete reachability graph, explored directly, or `None` if the deadline passed first.
+/// The coverability exploration is not used here: its acceleration check makes every step much more expensive.
+/// So on an unbounded net this does not complete on its own; it runs until the deadline or the external limit.
+fn complete_graph<'a>(sys: &'a PetriNet<Net>, deadline: Option<Instant>) -> Option<ReachabilityGraph<'a>> {
+    sys.explore_reachability_graph(ExplorationOrder::BreadthFirst).build_graph_until(deadline).ok()
+}
+
+/// The outcome of a property read off the complete reachability graph, `unknown` if the deadline passed first.
+fn on_complete_graph(
     sys: &PetriNet<Net>,
     deadline: Option<Instant>,
-    on_unbounded: Verdict,
     answer: impl FnOnce(&ReachabilityGraph<'_>) -> Verdict,
 ) -> Outcome {
-    match sys.explore_coverability_graph(ExplorationOrder::BreadthFirst).try_build_reachability_graph_until(deadline) {
-        Ok(rg) => Outcome {
-            verdict: answer(&rg),
-            states: Some(rg.marking_count()),
-            edges: Some(rg.transition_count()),
-        },
-        Err(stopped) if stopped.reason == StopReason::Unbounded => Outcome::new(on_unbounded),
-        Err(_) => Outcome::new(Verdict::Unknown),
+    match complete_graph(sys, deadline) {
+        Some(rg) => Outcome { verdict: answer(&rg), states: Some(rg.marking_count()), edges: Some(rg.transition_count()) },
+        None => Outcome::new(Verdict::Unknown),
     }
 }
 
@@ -178,7 +176,8 @@ struct Params {
 /// Runs one procedure. The three modes mean:
 /// - `dispatch`: the library's choice of the cheapest applicable procedure;
 /// - `poly`: only the library's polynomial-time procedures, `unknown` if none applies;
-/// - `general`: explicit-state exploration, no structural shortcuts.
+/// - `general`: explicit-state exploration, no structural shortcuts. Searches stop at the first witness; properties of
+///   the whole state space use the plainly explored reachability graph.
 fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params) -> Outcome {
     let timeout = params.timeout;
     let deadline = timeout.and_then(|t| Instant::now().checked_add(t));
@@ -205,8 +204,17 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
         (Property::Bounded, Mode::Poly) => Outcome::decided(
             sys.is_bounded().effort(BoundednessEffort::Efficient).maybe_timeout(timeout).call()
         ),
+        // the omega-checking exploration is the only way to learn unboundedness; it stops at the first omega
         (Property::Bounded, Mode::General) => {
-            via_reachability_graph(sys, deadline, Verdict::False, |_| Verdict::True)
+            match sys.explore_coverability_graph(ExplorationOrder::BreadthFirst).try_build_reachability_graph_until(deadline) {
+                Ok(rg) => Outcome {
+                    verdict: Verdict::True,
+                    states: Some(rg.marking_count()),
+                    edges: Some(rg.transition_count()),
+                },
+                Err(stopped) if stopped.reason == StopReason::Unbounded => Outcome::new(Verdict::False),
+                Err(_) => Outcome::new(Verdict::Unknown),
+            }
         }
 
         (Property::OneSafe, Mode::Dispatch) => {
@@ -228,7 +236,7 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
             sys.liveness().effort(LivenessEffort::Efficient).maybe_timeout(timeout).call().map(|l| l.is_live()),
         ),
         (Property::Live, Mode::General) => {
-            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.transition_liveness().is_live().into())
+            on_complete_graph(sys, deadline, |rg| rg.transition_liveness().is_live().into())
         }
 
         (Property::QuasiLive, Mode::Dispatch) => Outcome::decided(
@@ -238,16 +246,16 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
             sys.liveness().effort(LivenessEffort::Efficient).maybe_timeout(timeout).call().map(|l| l >= LivenessLevel::L1)
         ),
         (Property::QuasiLive, Mode::General) => {
-            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.transition_liveness().is_quasi_live().into())
+            on_complete_graph(sys, deadline, |rg| rg.transition_liveness().is_quasi_live().into())
         }
 
         (Property::StateSpace, Mode::General) => {
-            via_reachability_graph(sys, deadline, Verdict::Unbounded, |_| Verdict::True)
+            on_complete_graph(sys, deadline, |_| Verdict::True)
         }
         (Property::StateSpace, _) => Outcome::new(Verdict::NotSupported),
 
         (Property::Stable, Mode::General) => {
-            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.has_stable_place().into())
+            on_complete_graph(sys, deadline, |rg| rg.has_stable_place().into())
         }
         (Property::Stable, _) => Outcome::new(Verdict::NotSupported),
 
