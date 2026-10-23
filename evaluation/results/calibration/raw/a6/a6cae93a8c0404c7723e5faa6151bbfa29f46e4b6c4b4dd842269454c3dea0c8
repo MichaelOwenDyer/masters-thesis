@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-08-sm-once-then-loop.pnml","property":"onesafe","mode":"general","verdict":"true","class":"StateMachine","places":3,"transitions":3,"arcs":6,"parse_ms":0.116,"analyze_ms":0.006,"timeout_ms":null}

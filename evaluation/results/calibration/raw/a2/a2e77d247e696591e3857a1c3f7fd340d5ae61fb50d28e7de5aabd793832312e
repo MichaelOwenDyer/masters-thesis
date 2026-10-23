@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-18-efc-fork-no-join.pnml","property":"bounded","mode":"poly","verdict":"true","class":"FreeChoice","places":5,"transitions":3,"arcs":7,"parse_ms":0.102,"analyze_ms":0.029,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-02-circuit-no-token.pnml","property":"quasi-live","mode":"poly","verdict":"false","class":"Circuit","places":2,"transitions":2,"arcs":4,"parse_ms":0.100,"analyze_ms":0.003,"timeout_ms":null}

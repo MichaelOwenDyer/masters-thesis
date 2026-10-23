@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-15-efc-resource-leak.pnml","property":"onesafe","mode":"dispatch","verdict":"true","class":"FreeChoice","places":4,"transitions":4,"arcs":11,"parse_ms":0.121,"analyze_ms":0.057,"timeout_ms":null}

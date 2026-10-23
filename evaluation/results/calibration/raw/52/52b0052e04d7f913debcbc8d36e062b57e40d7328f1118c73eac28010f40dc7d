@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-19-efc-unbounded-selfloop.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"FreeChoice","places":2,"transitions":1,"arcs":3,"parse_ms":0.102,"analyze_ms":5.995,"timeout_ms":null}

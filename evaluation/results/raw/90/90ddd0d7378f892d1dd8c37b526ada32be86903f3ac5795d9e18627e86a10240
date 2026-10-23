@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {}
+
+4 places, 8 transitions, 16 arcs
+
+0.000s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+1 marking(s), 1 transition(s)
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+reversible
+
+0 dead marking(s), 1 live marking(s)
+7 dead transition(s), 1 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {}, 4 places, 8 transitions, 16 arcs                             #
+# bounded, not live, reversible                                        #
+# abstraction        count      props      psets       dead       live #
+#      states            1          4          ?          0          1 # 
+# transitions            1          8          ?          7          1 #

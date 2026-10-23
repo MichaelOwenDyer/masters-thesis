@@ -1,0 +1,21 @@
+PLACE
+	p0, p1;
+
+MARKING
+	p1: 2,p0: 2;
+
+TRANSITION t3
+	CONSUME p0: 1,p1: 1;
+	PRODUCE p0: 1,p1: 1;
+
+TRANSITION t2
+	CONSUME p0: 1,p1: 1;
+	PRODUCE p0: 1,p1: 1;
+
+TRANSITION t1
+	CONSUME p0: 1,p1: 1;
+	PRODUCE p0: 1,p1: 1;
+
+TRANSITION t0
+	CONSUME p1: 1;
+	PRODUCE p0: 1,p1: 1;

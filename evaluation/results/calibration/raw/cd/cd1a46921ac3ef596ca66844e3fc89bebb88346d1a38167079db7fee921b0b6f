@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-03-circuit-two-tokens.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"Circuit","places":3,"transitions":3,"arcs":6,"parse_ms":0.111,"analyze_ms":0.003,"timeout_ms":null}

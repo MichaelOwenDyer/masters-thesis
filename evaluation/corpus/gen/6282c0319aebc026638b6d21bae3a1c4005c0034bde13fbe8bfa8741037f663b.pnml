@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml>
+  <net id="net0" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="page0">
+      <place id="p0"/>
+      <place id="p1"/>
+      <place id="p2"/>
+      <place id="p3"/>
+      <place id="p4"/>
+      <place id="p5">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="p6"/>
+      <place id="p7"/>
+      <place id="p8"/>
+      <place id="p9"/>
+      <place id="p10">
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <transition id="t0"/>
+      <transition id="t1"/>
+      <transition id="t2"/>
+      <transition id="t3"/>
+      <transition id="t4"/>
+      <transition id="t5"/>
+      <transition id="t6"/>
+      <transition id="t7"/>
+      <transition id="t8"/>
+      <transition id="t9"/>
+      <transition id="t10"/>
+      <transition id="t11"/>
+      <transition id="t12"/>
+      <transition id="t13"/>
+      <transition id="t14"/>
+      <transition id="t15"/>
+      <transition id="t16"/>
+      <transition id="t17"/>
+      <transition id="t18"/>
+      <transition id="t19"/>
+      <transition id="t20"/>
+      <arc id="a0" source="p0" target="t0"/>
+      <arc id="a1" source="p0" target="t2"/>
+      <arc id="a2" source="p0" target="t3"/>
+      <arc id="a3" source="p0" target="t4"/>
+      <arc id="a4" source="p0" target="t5"/>
+      <arc id="a5" source="p0" target="t6"/>
+      <arc id="a6" source="p0" target="t7"/>
+      <arc id="a7" source="p0" target="t9"/>
+      <arc id="a8" source="p0" target="t10"/>
+      <arc id="a9" source="p0" target="t12"/>
+      <arc id="a10" source="p0" target="t13"/>
+      <arc id="a11" source="p0" target="t14"/>
+      <arc id="a12" source="p0" target="t15"/>
+      <arc id="a13" source="p0" target="t16"/>
+      <arc id="a14" source="p0" target="t17"/>
+      <arc id="a15" source="p0" target="t18"/>
+      <arc id="a16" source="p0" target="t20"/>
+      <arc id="a17" source="p1" target="t7"/>
+      <arc id="a18" source="p1" target="t14"/>
+      <arc id="a19" source="p2" target="t5"/>
+      <arc id="a20" source="p2" target="t10"/>
+      <arc id="a21" source="p2" target="t12"/>
+      <arc id="a22" source="p2" target="t13"/>
+      <arc id="a23" source="p3" target="t0"/>
+      <arc id="a24" source="p3" target="t4"/>
+      <arc id="a25" source="p3" target="t9"/>
+      <arc id="a26" source="p3" target="t16"/>
+      <arc id="a27" source="p3" target="t18"/>
+      <arc id="a28" source="p3" target="t20"/>
+      <arc id="a29" source="p4" target="t0"/>
+      <arc id="a30" source="p4" target="t2"/>
+      <arc id="a31" source="p4" target="t3"/>
+      <arc id="a32" source="p4" target="t4"/>
+      <arc id="a33" source="p4" target="t5"/>
+      <arc id="a34" source="p4" target="t6"/>
+      <arc id="a35" source="p4" target="t7"/>
+      <arc id="a36" source="p4" target="t9"/>
+      <arc id="a37" source="p4" target="t10"/>
+      <arc id="a38" source="p4" target="t12"/>
+      <arc id="a39" source="p4" target="t13"/>
+      <arc id="a40" source="p4" target="t14"/>
+      <arc id="a41" source="p4" target="t15"/>
+      <arc id="a42" source="p4" target="t16"/>
+      <arc id="a43" source="p4" target="t17"/>
+      <arc id="a44" source="p4" target="t18"/>
+      <arc id="a45" source="p4" target="t20"/>
+      <arc id="a46" source="p5" target="t0"/>
+      <arc id="a47" source="p5" target="t1"/>
+      <arc id="a48" source="p5" target="t2"/>
+      <arc id="a49" source="p5" target="t3"/>
+      <arc id="a50" source="p5" target="t4"/>
+      <arc id="a51" source="p5" target="t5"/>
+      <arc id="a52" source="p5" target="t6"/>
+      <arc id="a53" source="p5" target="t7"/>
+      <arc id="a54" source="p5" target="t8"/>
+      <arc id="a55" source="p5" target="t9"/>
+      <arc id="a56" source="p5" target="t10"/>
+      <arc id="a57" source="p5" target="t11"/>
+      <arc id="a58" source="p5" target="t12"/>
+      <arc id="a59" source="p5" target="t13"/>
+      <arc id="a60" source="p5" target="t14"/>
+      <arc id="a61" source="p5" target="t15"/>
+      <arc id="a62" source="p5" target="t16"/>
+      <arc id="a63" source="p5" target="t17"/>
+      <arc id="a64" source="p5" target="t18"/>
+      <arc id="a65" source="p5" target="t19"/>
+      <arc id="a66" source="p5" target="t20"/>
+      <arc id="a67" source="p6" target="t5"/>
+      <arc id="a68" source="p6" target="t10"/>
+      <arc id="a69" source="p6" target="t12"/>
+      <arc id="a70" source="p6" target="t13"/>
+      <arc id="a71" source="p7" target="t0"/>
+      <arc id="a72" source="p7" target="t3"/>
+      <arc id="a73" source="p7" target="t4"/>
+      <arc id="a74" source="p7" target="t5"/>
+      <arc id="a75" source="p7" target="t7"/>
+      <arc id="a76" source="p7" target="t9"/>
+      <arc id="a77" source="p7" target="t10"/>
+      <arc id="a78" source="p7" target="t12"/>
+      <arc id="a79" source="p7" target="t13"/>
+      <arc id="a80" source="p7" target="t14"/>
+      <arc id="a81" source="p7" target="t15"/>
+      <arc id="a82" source="p7" target="t16"/>
+      <arc id="a83" source="p7" target="t18"/>
+      <arc id="a84" source="p7" target="t20"/>
+      <arc id="a85" source="p8" target="t0"/>
+      <arc id="a86" source="p8" target="t2"/>
+      <arc id="a87" source="p8" target="t3"/>
+      <arc id="a88" source="p8" target="t4"/>
+      <arc id="a89" source="p8" target="t5"/>
+      <arc id="a90" source="p8" target="t6"/>
+      <arc id="a91" source="p8" target="t7"/>
+      <arc id="a92" source="p8" target="t9"/>
+      <arc id="a93" source="p8" target="t10"/>
+      <arc id="a94" source="p8" target="t12"/>
+      <arc id="a95" source="p8" target="t13"/>
+      <arc id="a96" source="p8" target="t14"/>
+      <arc id="a97" source="p8" target="t15"/>
+      <arc id="a98" source="p8" target="t16"/>
+      <arc id="a99" source="p8" target="t17"/>
+      <arc id="a100" source="p8" target="t18"/>
+      <arc id="a101" source="p8" target="t20"/>
+      <arc id="a102" source="p9" target="t0"/>
+      <arc id="a103" source="p9" target="t2"/>
+      <arc id="a104" source="p9" target="t3"/>
+      <arc id="a105" source="p9" target="t4"/>
+      <arc id="a106" source="p9" target="t5"/>
+      <arc id="a107" source="p9" target="t6"/>
+      <arc id="a108" source="p9" target="t7"/>
+      <arc id="a109" source="p9" target="t9"/>
+      <arc id="a110" source="p9" target="t10"/>
+      <arc id="a111" source="p9" target="t12"/>
+      <arc id="a112" source="p9" target="t13"/>
+      <arc id="a113" source="p9" target="t14"/>
+      <arc id="a114" source="p9" target="t15"/>
+      <arc id="a115" source="p9" target="t16"/>
+      <arc id="a116" source="p9" target="t17"/>
+      <arc id="a117" source="p9" target="t18"/>
+      <arc id="a118" source="p9" target="t20"/>
+      <arc id="a119" source="p10" target="t0"/>
+      <arc id="a120" source="p10" target="t1"/>
+      <arc id="a121" source="p10" target="t2"/>
+      <arc id="a122" source="p10" target="t3"/>
+      <arc id="a123" source="p10" target="t4"/>
+      <arc id="a124" source="p10" target="t5"/>
+      <arc id="a125" source="p10" target="t6"/>
+      <arc id="a126" source="p10" target="t7"/>
+      <arc id="a127" source="p10" target="t8"/>
+      <arc id="a128" source="p10" target="t9"/>
+      <arc id="a129" source="p10" target="t10"/>
+      <arc id="a130" source="p10" target="t11"/>
+      <arc id="a131" source="p10" target="t12"/>
+      <arc id="a132" source="p10" target="t13"/>
+      <arc id="a133" source="p10" target="t14"/>
+      <arc id="a134" source="p10" target="t15"/>
+      <arc id="a135" source="p10" target="t16"/>
+      <arc id="a136" source="p10" target="t17"/>
+      <arc id="a137" source="p10" target="t18"/>
+      <arc id="a138" source="p10" target="t19"/>
+      <arc id="a139" source="p10" target="t20"/>
+      <arc id="a140" source="t0" target="p0"/>
+      <arc id="a141" source="t0" target="p4"/>
+      <arc id="a142" source="t0" target="p5"/>
+      <arc id="a143" source="t0" target="p8"/>
+      <arc id="a144" source="t0" target="p10"/>
+      <arc id="a145" source="t1" target="p2"/>
+      <arc id="a146" source="t2" target="p4"/>
+      <arc id="a147" source="t2" target="p7"/>
+      <arc id="a148" source="t2" target="p8"/>
+      <arc id="a149" source="t2" target="p9"/>
+      <arc id="a150" source="t3" target="p3"/>
+      <arc id="a151" source="t4" target="p9"/>
+      <arc id="a152" source="t5" target="p3"/>
+      <arc id="a153" source="t6" target="p3"/>
+      <arc id="a154" source="t6" target="p4"/>
+      <arc id="a155" source="t6" target="p7"/>
+      <arc id="a156" source="t6" target="p10"/>
+      <arc id="a157" source="t7" target="p2"/>
+      <arc id="a158" source="t7" target="p9"/>
+      <arc id="a159" source="t8" target="p5"/>
+      <arc id="a160" source="t9" target="p4"/>
+      <arc id="a161" source="t10" target="p5"/>
+      <arc id="a162" source="t10" target="p9"/>
+      <arc id="a163" source="t10" target="p10"/>
+      <arc id="a164" source="t11" target="p4"/>
+      <arc id="a165" source="t12" target="p0"/>
+      <arc id="a166" source="t12" target="p1"/>
+      <arc id="a167" source="t12" target="p2"/>
+      <arc id="a168" source="t12" target="p3"/>
+      <arc id="a169" source="t13" target="p1"/>
+      <arc id="a170" source="t13" target="p7"/>
+      <arc id="a171" source="t13" target="p10"/>
+      <arc id="a172" source="t14" target="p0"/>
+      <arc id="a173" source="t14" target="p3"/>
+      <arc id="a174" source="t14" target="p6"/>
+      <arc id="a175" source="t15" target="p0"/>
+      <arc id="a176" source="t15" target="p1"/>
+      <arc id="a177" source="t15" target="p6"/>
+      <arc id="a178" source="t16" target="p4"/>
+      <arc id="a179" source="t16" target="p6"/>
+      <arc id="a180" source="t16" target="p8"/>
+      <arc id="a181" source="t16" target="p9"/>
+      <arc id="a182" source="t16" target="p10"/>
+      <arc id="a183" source="t17" target="p0"/>
+      <arc id="a184" source="t17" target="p7"/>
+      <arc id="a185" source="t18" target="p0"/>
+      <arc id="a186" source="t19" target="p0"/>
+      <arc id="a187" source="t19" target="p2"/>
+      <arc id="a188" source="t19" target="p9"/>
+      <arc id="a189" source="t19" target="p10"/>
+      <arc id="a190" source="t20" target="p4"/>
+    </page>
+  </net>
+</pnml>

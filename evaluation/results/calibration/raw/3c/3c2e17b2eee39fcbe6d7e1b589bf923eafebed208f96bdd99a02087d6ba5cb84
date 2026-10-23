@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-26-general-overlap-live.pnml","property":"statespace","mode":"dispatch","verdict":"not_supported","class":"General","places":5,"transitions":6,"arcs":14,"parse_ms":0.143,"analyze_ms":0.000,"timeout_ms":null}

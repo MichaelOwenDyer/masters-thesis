@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-16-efc-join-starved.pnml","property":"df","mode":"dispatch","verdict":"false","class":"FreeChoice","places":3,"transitions":1,"arcs":3,"parse_ms":0.102,"analyze_ms":0.001,"timeout_ms":null}

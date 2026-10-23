@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-04-sm-choice-live.pnml","property":"bounded","mode":"poly","verdict":"true","class":"StateMachine","places":3,"transitions":4,"arcs":8,"parse_ms":0.115,"analyze_ms":0.002,"timeout_ms":null}

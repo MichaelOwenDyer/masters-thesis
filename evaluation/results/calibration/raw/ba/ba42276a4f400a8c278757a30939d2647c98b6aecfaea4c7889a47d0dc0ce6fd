@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-25-ac-fork-choice-join.pnml","property":"stable","mode":"general","verdict":"false","class":"AsymmetricChoice","places":5,"transitions":5,"arcs":13,"parse_ms":0.131,"analyze_ms":0.006,"timeout_ms":null,"states":4,"edges":5}

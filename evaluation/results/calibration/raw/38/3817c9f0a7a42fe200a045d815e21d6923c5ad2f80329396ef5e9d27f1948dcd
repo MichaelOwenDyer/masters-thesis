@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-09-sm-chain-two-tokens-sink.pnml","property":"live","mode":"dispatch","verdict":"false","class":"StateMachine","places":3,"transitions":2,"arcs":4,"parse_ms":0.110,"analyze_ms":0.006,"timeout_ms":null}

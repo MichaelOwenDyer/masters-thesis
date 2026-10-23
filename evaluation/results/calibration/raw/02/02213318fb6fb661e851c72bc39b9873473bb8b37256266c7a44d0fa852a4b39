@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-27-general-overlap-dead.pnml","property":"live","mode":"dispatch","verdict":"false","class":"General","places":5,"transitions":3,"arcs":7,"parse_ms":0.121,"analyze_ms":0.012,"timeout_ms":null}

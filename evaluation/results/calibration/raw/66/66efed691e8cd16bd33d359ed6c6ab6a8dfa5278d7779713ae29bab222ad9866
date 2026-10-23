@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-21-efc-unbounded-choice.pnml","property":"reach","mode":"dispatch","verdict":"false","class":"FreeChoice","places":3,"transitions":2,"arcs":5,"parse_ms":0.127,"analyze_ms":7.778,"timeout_ms":null}

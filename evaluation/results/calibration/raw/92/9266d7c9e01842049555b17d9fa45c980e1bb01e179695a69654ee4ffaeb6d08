@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-29-mg-fork-join-extra-token.pnml","property":"df","mode":"dispatch","verdict":"true","class":"MarkedGraph","places":5,"transitions":4,"arcs":10,"parse_ms":0.143,"analyze_ms":0.003,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-10-mg-fork-join-live.pnml","property":"quasi-live","mode":"poly","verdict":"true","class":"MarkedGraph","places":5,"transitions":4,"arcs":10,"parse_ms":0.119,"analyze_ms":0.004,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-05-sm-sink-deadlock.pnml","property":"live","mode":"general","verdict":"false","class":"StateMachine","places":3,"transitions":2,"arcs":4,"parse_ms":0.128,"analyze_ms":0.008,"timeout_ms":null,"states":3,"edges":2}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/calibration/cal-28-general-unbounded-conflict.pnml","property":"reach","mode":"dispatch","verdict":"false","class":"General","places":4,"transitions":3,"arcs":8,"parse_ms":0.136,"analyze_ms":8.789,"timeout_ms":null}
