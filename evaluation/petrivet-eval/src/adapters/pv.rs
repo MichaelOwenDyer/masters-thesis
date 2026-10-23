@@ -78,8 +78,9 @@ impl Adapter for Pv {
     }
 
     fn supports(&self, query: Query) -> bool {
-        // Poly mode has no procedures for statespace, stable, reach and cover.
-        self.mode != "poly" || matches!(query, Query::Q1 | Query::Q2 | Query::Q3 | Query::Q4 | Query::Q5)
+        // Poly mode has no procedures for statespace and stable; reach and cover answer where an efficient
+        // procedure applies (circuits, strongly connected state machines, trap refutation) and `unknown` otherwise.
+        self.mode != "poly" || !matches!(query, Query::Q0 | Query::Q6)
     }
 
     fn command(&self, req: &Request) -> CommandSpec {
@@ -256,7 +257,8 @@ mod tests {
     #[test]
     fn poly_support() {
         let p = pv("pv-poly");
-        assert!(p.supports(Query::Q3) && !p.supports(Query::QR) && !p.supports(Query::Q0) && !p.supports(Query::Q6));
+        assert!(p.supports(Query::Q3) && p.supports(Query::QR) && p.supports(Query::QC));
+        assert!(!p.supports(Query::Q0) && !p.supports(Query::Q6));
         assert!(pv("pv-dispatch").supports(Query::QC));
     }
 

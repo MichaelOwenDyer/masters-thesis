@@ -11,7 +11,7 @@
 //!   tool-incompleteness note, not a failure). NOT_SUPPORTED (declared by the tool or by the adapter) only shows in
 //!   the table, never in a block; every DISAGREE and every other non-answer (INPUT_REJECTED,
 //!   CRASH, TIMEOUT/MEMOUT, RUNNER_ERROR) gets the full block.
-//! * Queries a solver does not support at all (`supports` false, `pv-poly` on Q0, Q6, QR, QC) are counted as
+//! * Queries a solver does not support at all (`supports` false, `pv-poly` on Q0 and Q6) are counted as
 //!   not_supported without running anything and get no block.
 
 use crate::adapters::{self, Adapter, Query};

@@ -105,8 +105,9 @@ petrivet analyze FILE -p df|bounded|live|quasi-live|statespace|onesafe|stable|re
           [-m dispatch|poly|general] [--timeout-ms N] [--target FILE.json] --json
 ```
 
-- Modes: `dispatch` = library default effort; `poly` = efficient effort only (may answer `unknown`); `general` = explicit-state procedure only.
-  For `reach` and `cover`: `dispatch` = the library's CEGAR pipeline, `general` = explicit-state search; `poly` is not applicable.
+- Modes: `dispatch` = library default effort; `poly` = efficient effort only (may answer `unknown`); `general` = explicit-state procedure only, no structural shortcuts.
+  General mode stops as early as the property allows: deadlock-freedom, 1-safety and reachability stop at the first witness (`find_until` on the reachability explorer); coverability is one pass over the Karp-Miller coverability graph; bounded and state space use the coverability exploration, which stops at the first omega, so an unbounded net answers `false` / `unbounded` quickly; liveness, quasi-liveness and stable need the complete graph. `--timeout-ms` applies in every mode.
+  For `reach` and `cover`: `dispatch` = the efficient check (circuits, strongly connected state machines, trap refutation), then the library's CEGAR pipeline; `poly` = the efficient check only (`unknown` otherwise); `general` as above.
 - `--target`: JSON map from place id to token count.
 - JSON fields: tool, version, file, property, mode, verdict, class, places, transitions, arcs, parse_ms, analyze_ms, timeout_ms, optional states, edges.
 - Verdict `unknown` means the library gave up (deadline or no applicable procedure). A kill by the runner is recorded by the runner as `TIMEOUT`, never by the CLI.

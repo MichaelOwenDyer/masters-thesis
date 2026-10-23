@@ -5,12 +5,12 @@
 
 use clap::{Parser, Subcommand, ValueEnum};
 use petrivet::net::{Net, Place};
-use petrivet::state_space::Omega;
+use petrivet::state_space::{DeadlineExceeded, ExplorationOrder, Omega, ReachabilityGraph, StopReason};
 use petrivet::system::PetriNet;
 use petrivet::system::marking::Marking;
 use petrivet::system::boundedness::BoundednessEffort;
 use petrivet::system::deadlock_freedom::DeadlockFreedomEffort;
-use petrivet::system::reachability::{CoverabilityResult, ReachabilityResult};
+use petrivet::system::reachability::ReachabilityEffort;
 use petrivet::system::liveness::{LivenessEffort, LivenessLevel};
 use std::fmt::Write as _;
 use std::panic::{AssertUnwindSafe, catch_unwind};
@@ -38,8 +38,8 @@ enum Command {
         /// Which procedures may be used
         #[arg(short, long, value_enum, default_value_t = Mode::Dispatch)]
         mode: Mode,
-        /// Give up (verdict `unknown`) after this many milliseconds, where the library supports a
-        /// deadline (dispatch and poly modes). General mode has no deadline; use an external limit.
+        /// Give up (verdict `unknown`) after this many milliseconds. The deadline is checked periodically, so a
+        /// run may end slightly later (and a single uninterruptible step, such as one LP solve, delays it further).
         #[arg(long, value_name = "N")]
         timeout_ms: Option<u64>,
         /// JSON object mapping PNML place ids to token counts (unlisted places are 0); required
@@ -83,7 +83,7 @@ enum Mode {
     Dispatch,
     /// Only polynomial-time procedures; `unknown` if none applies
     Poly,
-    /// The general state-space procedure, no structural shortcuts
+    /// Explicit-state exploration, no structural shortcuts, stopping as early as the property allows
     General,
 }
 
@@ -137,34 +137,51 @@ impl Outcome {
     }
 }
 
-/// The general procedure: build the full reachability graph and read the answer off it.
-/// Unbounded systems have no finite reachability graph, so the answer is `unknown`.
+/// The general procedure for properties that need every reachable marking: explore with the Karp-Miller
+/// coverability graph, which stops at the first omega, and read the answer off the finished reachability graph.
+/// `on_unbounded` is the verdict for a net that turns out to be unbounded.
 fn via_reachability_graph(
     sys: &PetriNet<Net>,
-    answer: impl FnOnce(&petrivet::state_space::ReachabilityGraph<'_>) -> Verdict,
+    deadline: Option<Instant>,
+    on_unbounded: Verdict,
+    answer: impl FnOnce(&ReachabilityGraph<'_>) -> Verdict,
 ) -> Outcome {
-    match sys.try_build_reachability_graph() {
+    match sys.explore_coverability_graph(ExplorationOrder::BreadthFirst).try_build_reachability_graph_until(deadline) {
         Ok(rg) => Outcome {
             verdict: answer(&rg),
             states: Some(rg.marking_count()),
             edges: Some(rg.transition_count()),
         },
+        Err(stopped) if stopped.reason == StopReason::Unbounded => Outcome::new(on_unbounded),
         Err(_) => Outcome::new(Verdict::Unknown),
     }
 }
 
+/// The verdict of a search for a marking: `hit` if one was found, `exhausted` if the whole reachability set was
+/// explored without one, and `unknown` if the deadline passed first.
+fn search_verdict<M>(found: Result<Option<M>, DeadlineExceeded>, hit: Verdict, exhausted: Verdict) -> Outcome {
+    Outcome::new(match found {
+        Ok(Some(_)) => hit,
+        Ok(None) => exhausted,
+        Err(DeadlineExceeded) => Verdict::Unknown,
+    })
+}
+
 /// Inputs shared by all procedures.
 struct Params {
-    /// Deadline passed to the library wherever it accepts one. `None` means no deadline.
+    /// Deadline for every procedure. `None` means no deadline.
     timeout: Option<Duration>,
     /// Target marking for `reach` and `cover`.
     target: Option<Marking<u32>>,
 }
 
+/// Runs one procedure. The three modes mean:
+/// - `dispatch`: the library's choice of the cheapest applicable procedure;
+/// - `poly`: only the library's polynomial-time procedures, `unknown` if none applies;
+/// - `general`: explicit-state exploration, no structural shortcuts.
 fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params) -> Outcome {
     let timeout = params.timeout;
-    // `Duration::MAX` overflows `Instant::checked_add` inside the library, which means "no deadline".
-    let long_timeout = timeout.unwrap_or(Duration::MAX);
+    let deadline = timeout.and_then(|t| Instant::now().checked_add(t));
     match (property, mode) {
         (Property::DeadlockFreedom, Mode::Dispatch) => {
             Outcome::decided(sys.is_deadlock_free().maybe_timeout(timeout).call())
@@ -172,10 +189,14 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
         (Property::DeadlockFreedom, Mode::Poly) => Outcome::decided(
             sys.is_deadlock_free().effort(DeadlockFreedomEffort::Efficient).maybe_timeout(timeout).call(),
         ),
-        // The explicit-state procedures below have no deadline in the library; the external
-        // runner's limit applies.
+        // stops at the first deadlock; deadlock-free once the whole reachability set has been explored
         (Property::DeadlockFreedom, Mode::General) => {
-            via_reachability_graph(sys, |rg| rg.is_deadlock_free().into())
+            let mut explorer = sys.explore_reachability_graph(ExplorationOrder::BreadthFirst);
+            search_verdict(
+                explorer.find_deadlock_until(deadline),
+                Verdict::False,
+                Verdict::True,
+            )
         }
 
         (Property::Bounded, Mode::Dispatch) => {
@@ -185,7 +206,7 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
             sys.is_bounded().effort(BoundednessEffort::Efficient).maybe_timeout(timeout).call()
         ),
         (Property::Bounded, Mode::General) => {
-            Outcome::new(sys.build_coverability_graph().is_bounded())
+            via_reachability_graph(sys, deadline, Verdict::False, |_| Verdict::True)
         }
 
         (Property::OneSafe, Mode::Dispatch) => {
@@ -194,15 +215,11 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
         (Property::OneSafe, Mode::Poly) => Outcome::decided(
             sys.is_bounded().k(1).effort(BoundednessEffort::Efficient).maybe_timeout(timeout).call()
         ),
-        // An unbounded net is in particular not 1-safe.
-        (Property::OneSafe, Mode::General) => match sys.try_build_reachability_graph() {
-            Ok(rg) => Outcome {
-                verdict: rg.is_one_safe().into(),
-                states: Some(rg.marking_count()),
-                edges: Some(rg.transition_count()),
-            },
-            Err(_) => Outcome::new(Verdict::False),
-        },
+        // stops at the first marking with two tokens on a place (an unbounded net has one sooner or later)
+        (Property::OneSafe, Mode::General) => {
+            let mut explorer = sys.explore_reachability_graph(ExplorationOrder::BreadthFirst);
+            search_verdict(explorer.find_until(|m| m.max_token_count() > 1, deadline), Verdict::False, Verdict::True)
+        }
 
         (Property::Live, Mode::Dispatch) => Outcome::decided(
             sys.liveness().maybe_timeout(timeout).call().map(|l| l.is_live())
@@ -211,7 +228,7 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
             sys.liveness().effort(LivenessEffort::Efficient).maybe_timeout(timeout).call().map(|l| l.is_live()),
         ),
         (Property::Live, Mode::General) => {
-            via_reachability_graph(sys, |rg| rg.transition_liveness().is_live().into())
+            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.transition_liveness().is_live().into())
         }
 
         (Property::QuasiLive, Mode::Dispatch) => Outcome::decided(
@@ -221,69 +238,49 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
             sys.liveness().effort(LivenessEffort::Efficient).maybe_timeout(timeout).call().map(|l| l >= LivenessLevel::L1)
         ),
         (Property::QuasiLive, Mode::General) => {
-            via_reachability_graph(sys, |rg| rg.transition_liveness().is_quasi_live().into())
+            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.transition_liveness().is_quasi_live().into())
         }
 
-        (Property::StateSpace, Mode::General) => match sys.try_build_reachability_graph() {
-            Ok(rg) => Outcome {
-                verdict: Verdict::True,
-                states: Some(rg.marking_count()),
-                edges: Some(rg.transition_count()),
-            },
-            Err(_) => Outcome::new(Verdict::Unbounded),
-        },
+        (Property::StateSpace, Mode::General) => {
+            via_reachability_graph(sys, deadline, Verdict::Unbounded, |_| Verdict::True)
+        }
         (Property::StateSpace, _) => Outcome::new(Verdict::NotSupported),
 
         (Property::Stable, Mode::General) => {
-            via_reachability_graph(sys, |rg| rg.has_stable_place().into())
+            via_reachability_graph(sys, deadline, Verdict::Unknown, |rg| rg.has_stable_place().into())
         }
         (Property::Stable, _) => Outcome::new(Verdict::NotSupported),
 
         (Property::Reach, Mode::Dispatch) => {
             let target = params.target.clone().expect("target checked in run");
-            Outcome::new(match sys.analyze_reachability_within(target, long_timeout, None) {
-                ReachabilityResult::Reachable { .. } => Verdict::True,
-                ReachabilityResult::Unreachable { .. } => Verdict::False,
-                ReachabilityResult::Inconclusive => Verdict::Unknown,
-            })
+            Outcome::decided(sys.is_reachable().target(target).maybe_timeout(timeout).call())
         }
-        // Reachability in an unbounded net is not decided by the coverability graph: `unknown`.
+        (Property::Reach, Mode::Poly) => {
+            let target = params.target.clone().expect("target checked in run");
+            Outcome::decided(sys.is_reachable().target(target).effort(ReachabilityEffort::Efficient).call())
+        }
+        // stops at the target; on an unbounded net an unreachable target means a search until the deadline
         (Property::Reach, Mode::General) => {
             let target = params.target.clone().expect("target checked in run");
-            via_reachability_graph(sys, |rg| rg.contains_marking(target).into())
+            let mut explorer = sys.explore_reachability_graph(ExplorationOrder::BreadthFirst);
+            search_verdict(explorer.reaches_marking_until(target, deadline).map(Some), Verdict::True, Verdict::False)
         }
-        (Property::Reach | Property::Cover, Mode::Poly) => Outcome::new(Verdict::NotSupported),
 
         (Property::Cover, Mode::Dispatch) => {
             let target = params.target.clone().expect("target checked in run");
-            Outcome::new(match sys.analyze_coverability_within(target, long_timeout, None) {
-                CoverabilityResult::Coverable { .. } => Verdict::True,
-                CoverabilityResult::Uncoverable { .. } => Verdict::False,
-                CoverabilityResult::Inconclusive => Verdict::Unknown,
-            })
+            Outcome::decided(sys.is_coverable().target(target).maybe_timeout(timeout).call())
         }
+        (Property::Cover, Mode::Poly) => {
+            let target = params.target.clone().expect("target checked in run");
+            Outcome::decided(sys.is_coverable().target(target).effort(ReachabilityEffort::Efficient).call())
+        }
+        // One pass over the Karp-Miller coverability graph, which terminates on unbounded nets too, stopping at the
+        // first marking that covers the target.
         (Property::Cover, Mode::General) => {
             let target = params.target.clone().expect("target checked in run");
-            match sys.try_build_reachability_graph() {
-                Ok(rg) => Outcome {
-                    verdict: rg.cover(target).is_some().into(),
-                    states: Some(rg.marking_count()),
-                    edges: Some(rg.transition_count()),
-                },
-                // Unbounded: the Karp-Miller coverability graph decides coverability exactly.
-                Err(_) => {
-                    let cg = sys.build_coverability_graph();
-                    let omega_target: Marking<Omega> = target
-                        .into_iter()
-                        .map(|(p, n)| (p, Omega::from(n)))
-                        .collect();
-                    Outcome {
-                        verdict: cg.cover(omega_target).is_some().into(),
-                        states: Some(cg.marking_count()),
-                        edges: Some(cg.transition_count()),
-                    }
-                }
-            }
+            let omega_target: Marking<Omega> = target.into_iter().map(|(p, n)| (p, Omega::from(n))).collect();
+            let mut explorer = sys.explore_coverability_graph(ExplorationOrder::BreadthFirst);
+            search_verdict(explorer.find_cover_until(omega_target, deadline), Verdict::True, Verdict::False)
         }
     }
 }
