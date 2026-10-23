@@ -1,0 +1,39 @@
+//! One-off generator for evaluation/calibration: reads nets.json and answers.json, writes
+//! cal-NN-<name>.pnml (via petrivet's exporter, the dialect the testkit writes) and the target files
+//! cal-NN-<name>.target-K.json ({place id: tokens}, all places listed). Usage: gen_calibration <calibration dir>
+use petrivet::net::{Net, Place};
+use petrivet::system::PetriNet;
+use petrivet::system::marking::Marking;
+use serde_json::Value;
+use std::collections::BTreeMap;
+
+fn main() {
+    let dir = std::path::PathBuf::from(std::env::args().nth(1).expect("calibration dir"));
+    let nets: BTreeMap<String, Value> = serde_json::from_str(&std::fs::read_to_string(dir.join("nets.json")).unwrap()).unwrap();
+    let answers: BTreeMap<String, Value> = serde_json::from_str(&std::fs::read_to_string(dir.join("answers.json")).unwrap()).unwrap();
+    let idx = |v: &Value| -> Vec<usize> { v.as_array().unwrap().iter().map(|x| x.as_u64().unwrap() as usize).collect() };
+    for (name, n) in nets.iter().filter(|(k, _)| !k.starts_with('_')) {
+        let places = n["places"].as_u64().unwrap() as usize;
+        let pre: Vec<Vec<usize>> = n["pre"].as_array().unwrap().iter().map(idx).collect();
+        let post: Vec<Vec<usize>> = n["post"].as_array().unwrap().iter().map(idx).collect();
+        let m0 = idx(&n["m0"]);
+        assert_eq!(m0.len(), places, "{name}");
+        let mut b = Net::builder();
+        let ps: Vec<Place> = (0..places).map(|_| b.add_place()).collect();
+        for t in 0..pre.len() {
+            let tr = b.add_transition();
+            pre[t].iter().for_each(|&p| { b.add_arc((ps[p], tr)); });
+            post[t].iter().for_each(|&p| { b.add_arc((tr, ps[p])); });
+        }
+        let net = b.build().unwrap_or_else(|e| panic!("{name}: {e}"));
+        let marking: Marking<u32> = ps.iter().zip(&m0).map(|(&p, &k)| (p, k as u32)).collect();
+        let pnml = PetriNet::new(net, marking).to_pnml().unwrap();
+        std::fs::write(dir.join(format!("{name}.pnml")), pnml).unwrap();
+        for (k, t) in answers[name]["targets"].as_array().unwrap().iter().enumerate() {
+            let m = idx(&t["marking"]);
+            assert_eq!(m.len(), places, "{name} target {k}");
+            let map: BTreeMap<String, usize> = m.iter().enumerate().map(|(i, &v)| (format!("p{i}"), v)).collect();
+            std::fs::write(dir.join(format!("{name}.target-{}.json", k + 1)), serde_json::to_string(&map).unwrap() + "\n").unwrap();
+        }
+    }
+}

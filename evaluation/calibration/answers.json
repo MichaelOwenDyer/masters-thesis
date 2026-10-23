@@ -1,0 +1,272 @@
+{
+  "_comment": "Answers derived by hand (reachable markings listed per net, written as vectors over p0..). Q0 edges = pairs (marking, transition enabled there). Q6 is read literally: some place has the same token count in every reachable marking (a never-marked place counts, with 0). For unbounded nets Q1/Q3/Q4 are out of the evaluation scope (SPEC 3) but are decidable here by the explicit reachable family and are given. Targets: marking = token counts per place index; the same marking may appear as QR and QC to separate reachable from coverable.",
+  "cal-01-circuit-live": {
+    "reachable": "(1,0,0) (0,1,0) (0,0,1): the single token walks the ring",
+    "Q0": {"states": 3, "transitions": 3}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "3 markings, one enabled transition in each = 3 edges", "Q1": "the token always enables the next transition", "Q2": "token sum is invariant (1)", "Q3": "every transition fires on every lap", "Q4": "same", "Q5": "token sum 1", "Q6": "each place is 1 in one marking and 0 in another"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,0], "expected": true, "why": "fire t0"},
+      {"kind": "QR", "marking": [1,1,0], "expected": false, "why": "token sum would be 2, invariant is 1"},
+      {"kind": "QC", "marking": [0,0,1], "expected": true, "why": "reachable (t0 t1), so covered"},
+      {"kind": "QC", "marking": [0,1,1], "expected": false, "why": "needs two tokens, sum is 1"}]},
+  "cal-02-circuit-no-token": {
+    "reachable": "(0,0) only",
+    "Q0": {"states": 1, "transitions": 0}, "Q1": false, "Q2": true, "Q3": false, "Q4": false, "Q5": true, "Q6": true,
+    "why": {"Q0": "no transition is enabled in the initial marking", "Q1": "deadlock in M0", "Q2": "single marking", "Q3": "no transition ever enabled", "Q4": "same", "Q5": "no tokens", "Q6": "both places are 0 in the only marking"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0], "expected": true, "why": "M0 itself"},
+      {"kind": "QC", "marking": [1,0], "expected": false, "why": "no token ever appears"},
+      {"kind": "QC", "marking": [0,0], "expected": true, "why": "M0 covers the zero marking"}]},
+  "cal-03-circuit-two-tokens": {
+    "reachable": "all 6 distributions of 2 tokens over 3 places: (2,0,0) (1,1,0) (0,2,0) (1,0,1) (0,1,1) (0,0,2); (2,0,0)-t0->(1,1,0)-t0->(0,2,0); (1,1,0)-t1->(1,0,1); (0,2,0)-t1->(0,1,1)-t1->(0,0,2); (1,0,1)-t2->(2,0,0); (0,1,1)-t2->(1,1,0); (0,0,2)-t2->(1,0,1)",
+    "Q0": {"states": 6, "transitions": 9}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "enabled transitions per marking: 1+2+1+2+2+1 = 9", "Q1": "any token enables its successor", "Q2": "token sum 2", "Q3": "tokens circulate, every transition recurs", "Q4": "same", "Q5": "(2,0,0) has two tokens in p0", "Q6": "every place goes from 0 to 2 somewhere"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,1], "expected": true, "why": "in the list"},
+      {"kind": "QR", "marking": [1,1,1], "expected": false, "why": "sum 3 is not 2"},
+      {"kind": "QC", "marking": [0,0,2], "expected": true, "why": "in the list"},
+      {"kind": "QC", "marking": [1,1,1], "expected": false, "why": "sum 3 exceeds 2"}]},
+  "cal-04-sm-choice-live": {
+    "reachable": "(1,0,0) (0,1,0) (0,0,1); t0,t1 leave p0, t2,t3 return",
+    "Q0": {"states": 3, "transitions": 4}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "edges: (1,0,0) has t0,t1; (0,1,0) has t2; (0,0,1) has t3 = 4", "Q1": "the token is always on a place with an outgoing transition", "Q2": "token sum 1", "Q3": "both branches can be chosen and return to p0", "Q4": "all four fire", "Q5": "sum 1", "Q6": "every place is 1 somewhere and 0 elsewhere"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1], "expected": true, "why": "fire t1"},
+      {"kind": "QR", "marking": [0,1,1], "expected": false, "why": "sum 2"},
+      {"kind": "QC", "marking": [0,1,0], "expected": true, "why": "fire t0"},
+      {"kind": "QC", "marking": [0,1,1], "expected": false, "why": "sum 2"}]},
+  "cal-05-sm-sink-deadlock": {
+    "reachable": "(1,0,0) (0,1,0) (0,0,1)",
+    "Q0": {"states": 3, "transitions": 2}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "t0 at the first, t1 at the second, nothing at the last = 2 edges", "Q1": "(0,0,1) enables nothing (p2 has no output)", "Q2": "sum 1", "Q3": "after the deadlock nothing fires", "Q4": "t0 and t1 each fire once: quasi-live but not live", "Q5": "sum 1", "Q6": "each place is 1 in exactly one marking"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1], "expected": true, "why": "t0 t1"},
+      {"kind": "QR", "marking": [1,0,1], "expected": false, "why": "sum 2"},
+      {"kind": "QC", "marking": [0,0,1], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [1,1,0], "expected": false, "why": "sum 2"}]},
+  "cal-06-sm-dead-branch": {
+    "reachable": "(1,0,0) (0,1,0); t2 needs p2 which is never marked",
+    "Q0": {"states": 2, "transitions": 2}, "Q1": true, "Q2": true, "Q3": false, "Q4": false, "Q5": true, "Q6": true,
+    "why": {"Q0": "t0 at (1,0,0), t1 at (0,1,0) = 2 edges", "Q1": "t0 and t1 alternate forever: deadlock-free but not live", "Q2": "sum 1", "Q3": "t2 never enabled", "Q4": "t2 never enabled", "Q5": "sum 1", "Q6": "p2 is 0 in every reachable marking (a never-marked place is stable)"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,0], "expected": true, "why": "fire t0"},
+      {"kind": "QR", "marking": [0,0,1], "expected": false, "why": "nothing outputs to p2"},
+      {"kind": "QC", "marking": [0,0,1], "expected": false, "why": "p2 is always 0"},
+      {"kind": "QC", "marking": [0,1,0], "expected": true, "why": "reachable"}]},
+  "cal-07-sm-two-tokens-choice": {
+    "reachable": "all 6 distributions of 2 tokens: (2,0,0) (1,1,0) (1,0,1) (0,2,0) (0,1,1) (0,0,2); each token independently leaves p0 via t0 or t2 and returns via t1 or t3",
+    "Q0": {"states": 6, "transitions": 12}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "enabled: (2,0,0) t0,t2 =2; (1,1,0) t0,t2,t1 =3; (1,0,1) t0,t2,t3 =3; (0,2,0) t1 =1; (0,1,1) t1,t3 =2; (0,0,2) t3 =1; total 12", "Q1": "every marking has a token on a place with an outgoing transition", "Q2": "sum 2", "Q3": "tokens return to p0 and can take either branch", "Q4": "all fire", "Q5": "(2,0,0)", "Q6": "all places vary between 0 and 2"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,1], "expected": true, "why": "t0 then t2"},
+      {"kind": "QR", "marking": [1,1,1], "expected": false, "why": "sum 3"},
+      {"kind": "QC", "marking": [0,0,2], "expected": true, "why": "t2 t2"},
+      {"kind": "QC", "marking": [0,0,3], "expected": false, "why": "sum 3"}]},
+  "cal-08-sm-once-then-loop": {
+    "reachable": "(1,0,0) (0,1,0) (0,0,1); t0 fires once, then t1,t2 alternate",
+    "Q0": {"states": 3, "transitions": 3}, "Q1": true, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "one enabled transition in each marking = 3", "Q1": "always one enabled: deadlock-free", "Q2": "sum 1", "Q3": "t0 is never enabled again once p0 is empty: not live although deadlock-free", "Q4": "t0 fires initially, t1,t2 later", "Q5": "sum 1", "Q6": "each place changes"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1], "expected": true, "why": "t0 t1"},
+      {"kind": "QR", "marking": [1,0,1], "expected": false, "why": "sum 2"},
+      {"kind": "QC", "marking": [1,0,0], "expected": true, "why": "M0"},
+      {"kind": "QC", "marking": [1,1,0], "expected": false, "why": "sum 2"}]},
+  "cal-09-sm-chain-two-tokens-sink": {
+    "reachable": "(2,0,0) (1,1,0) (0,2,0) (1,0,1) (0,1,1) (0,0,2): every distribution of 2 tokens is reached by moving them down the chain",
+    "Q0": {"states": 6, "transitions": 6}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "enabled: (2,0,0) t0; (1,1,0) t0,t1; (0,2,0) t1; (1,0,1) t0; (0,1,1) t1; (0,0,2) none: 1+2+1+1+1+0 = 6", "Q1": "(0,0,2) is a deadlock", "Q2": "sum 2", "Q3": "dead at (0,0,2)", "Q4": "t0 and t1 fire", "Q5": "(2,0,0) has 2 on p0", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,2], "expected": true, "why": "t0 t0 t1 t1"},
+      {"kind": "QR", "marking": [0,1,0], "expected": false, "why": "sum 1, invariant is 2"},
+      {"kind": "QC", "marking": [0,0,2], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [0,0,3], "expected": false, "why": "sum 3"}]},
+  "cal-10-mg-fork-join-live": {
+    "reachable": "s0=(1,0,0,0,0) -t0-> s1=(0,1,1,0,0); s1 -t1-> s2=(0,0,1,1,0); s1 -t2-> s3=(0,1,0,0,1); s2 -t2-> s4=(0,0,0,1,1); s3 -t1-> s4; s4 -t3-> s0",
+    "Q0": {"states": 5, "transitions": 6}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: s0 t0; s1 t1,t2; s2 t2; s3 t1; s4 t3 = 6", "Q1": "every marking enables something", "Q2": "5 markings", "Q3": "the cycle s0..s4 fires every transition and every marking returns to s0", "Q4": "all fire", "Q5": "all entries are 0 or 1", "Q6": "every place is 0 in some marking and 1 in another"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1,1,0], "expected": true, "why": "s2: t0 t1"},
+      {"kind": "QR", "marking": [0,0,0,1,0], "expected": false, "why": "p3 alone is not one of the five markings"},
+      {"kind": "QC", "marking": [0,0,0,1,0], "expected": true, "why": "s2 >= it (QR false, QC true on the same marking)"},
+      {"kind": "QC", "marking": [1,1,0,0,0], "expected": false, "why": "circuit p0-p1-p3 holds 1 token, so p0+p1 <= 1"}]},
+  "cal-11-mg-unbounded-pipe": {
+    "reachable": "family (1,0,0,0,k) and (0,1,0,0,k) for every k >= 0: circuit p0,t0,p1,t1 runs forever and each t1 adds a token to p4; the circuit t2,p3,t3,p2 is unmarked so t2,t3 never fire",
+    "Q0": null, "Q1": true, "Q2": false, "Q3": false, "Q4": false, "Q5": false, "Q6": true,
+    "why": {"Q0": "infinite state space", "Q1": "t0 or t1 is always enabled", "Q2": "p4 grows without bound", "Q3": "t2 and t3 never enabled", "Q4": "same", "Q5": "p4 exceeds 1", "Q6": "p2 and p3 are 0 in every marking"},
+    "targets": [
+      {"kind": "QC", "marking": [0,0,0,0,5], "expected": true, "why": "five laps of t0 t1"},
+      {"kind": "QC", "marking": [0,0,1,0,0], "expected": false, "why": "p2 stays 0 (its circuit has no token)"},
+      {"kind": "QR", "marking": [1,0,0,0,3], "expected": true, "why": "three laps"},
+      {"kind": "QR", "marking": [1,1,0,0,0], "expected": false, "why": "p0+p1 is 1 in every reachable marking"}]},
+  "cal-12-mg-read-place-stable": {
+    "reachable": "(1,0,1) (0,1,1); t0 reads p2 (arc to and from it), t1 returns the token",
+    "Q0": {"states": 2, "transitions": 2}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": true,
+    "why": {"Q0": "one enabled transition per marking", "Q1": "t0 and t1 alternate", "Q2": "2 markings", "Q3": "both recur", "Q4": "both fire", "Q5": "entries 0/1", "Q6": "p2 holds 1 token in both markings (it is consumed and re-produced by t0)"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,1], "expected": true, "why": "fire t0"},
+      {"kind": "QR", "marking": [1,1,1], "expected": false, "why": "p0+p1 is 1"},
+      {"kind": "QC", "marking": [0,1,1], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [1,1,0], "expected": false, "why": "p0 and p1 are never both marked"}]},
+  "cal-13-mg-bounded-buffer": {
+    "reachable": "(1,0,2,1) (1,1,1,1) (1,2,0,1): p1 = items, p2 = free slots, p1+p2 = 2; p0,p3 are read places holding 1",
+    "Q0": {"states": 3, "transitions": 4}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": false, "Q6": true,
+    "why": {"Q0": "enabled: (1,0,2,1) t0; (1,1,1,1) t0,t1; (1,2,0,1) t1 = 4", "Q1": "put or get is always possible", "Q2": "p1<=2", "Q3": "both recur", "Q4": "both fire", "Q5": "p2 holds 2 tokens initially", "Q6": "p0 and p3 are always 1"},
+    "targets": [
+      {"kind": "QR", "marking": [1,2,0,1], "expected": true, "why": "t0 t0"},
+      {"kind": "QR", "marking": [1,1,0,1], "expected": false, "why": "p1+p2 = 2 invariant"},
+      {"kind": "QC", "marking": [0,2,0,0], "expected": true, "why": "(1,2,0,1) >= it"},
+      {"kind": "QC", "marking": [0,1,2,0], "expected": false, "why": "needs p1+p2 >= 3"}]},
+  "cal-14-efc-fork-choice-join-live": {
+    "reachable": "S0=(1,0,0,0,0,0) -t0-> S1=(0,1,1,0,0,0); S1 -t1-> S2=(0,0,1,1,0,0); S1 -t2-> S3=(0,0,1,0,1,0); S2 -t3-> S4=(0,0,1,0,0,1); S3 -t4-> S4; S4 -t5-> S0",
+    "Q0": {"states": 5, "transitions": 6}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: S0 t0; S1 t1,t2; S2 t3; S3 t4; S4 t5 = 6", "Q1": "each marking enables something", "Q2": "5 markings", "Q3": "every marking returns to S0, where the cycle can take either branch", "Q4": "all six fire", "Q5": "entries 0/1", "Q6": "every place is 0 in some marking and 1 in another"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1,0,0,1], "expected": true, "why": "S4"},
+      {"kind": "QR", "marking": [0,0,1,1,1,0], "expected": false, "why": "the two branches are exclusive"},
+      {"kind": "QC", "marking": [0,0,0,1,0,0], "expected": true, "why": "S2 >= it"},
+      {"kind": "QC", "marking": [0,0,0,1,1,0], "expected": false, "why": "p3 and p4 are never both marked"}]},
+  "cal-15-efc-resource-leak": {
+    "reachable": "(1,1,0,0) -t0-> (0,0,1,0) -t2-> (1,0,0,0); (1,1,0,0) -t1-> (0,0,0,1) -t3-> (1,1,0,0)",
+    "Q0": {"states": 4, "transitions": 4}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: (1,1,0,0) t0,t1; (0,0,1,0) t2; (1,0,0,0) none; (0,0,0,1) t3 = 4", "Q1": "(1,0,0,0): t0 and t1 need p1, which t2 did not return", "Q2": "4 markings", "Q3": "dead at (1,0,0,0)", "Q4": "all four fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [1,0,0,0], "expected": true, "why": "t0 t2"},
+      {"kind": "QR", "marking": [0,1,0,0], "expected": false, "why": "p1 is never marked without p0"},
+      {"kind": "QC", "marking": [0,0,1,0], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [1,0,1,0], "expected": false, "why": "p0 and p2 are never both marked"}]},
+  "cal-16-efc-join-starved": {
+    "reachable": "(1,0,0) only: t0 needs p0 and p1 but p1 is empty and has no producer",
+    "Q0": {"states": 1, "transitions": 0}, "Q1": false, "Q2": true, "Q3": false, "Q4": false, "Q5": true, "Q6": true,
+    "why": {"Q0": "no enabled transition", "Q1": "deadlock in M0 although a token is present", "Q2": "single marking", "Q3": "t0 never enabled", "Q4": "same", "Q5": "entries 0/1", "Q6": "nothing ever changes, so every place is stable"},
+    "targets": [
+      {"kind": "QR", "marking": [1,0,0], "expected": true, "why": "M0"},
+      {"kind": "QR", "marking": [0,0,1], "expected": false, "why": "t0 cannot fire"},
+      {"kind": "QC", "marking": [1,0,0], "expected": true, "why": "M0"},
+      {"kind": "QC", "marking": [1,1,0], "expected": false, "why": "p1 is never marked"}]},
+  "cal-17-efc-fork-merge-2bounded": {
+    "reachable": "(1,0,0,0) -t0-> (0,1,1,0); -t1-> (0,0,1,1); -t2-> (0,1,0,1); both -> (0,0,0,2)",
+    "Q0": {"states": 5, "transitions": 5}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "enabled: (1,0,0,0) t0; (0,1,1,0) t1,t2; (0,0,1,1) t2; (0,1,0,1) t1; (0,0,0,2) none = 5", "Q1": "(0,0,0,2) is a deadlock", "Q2": "p3 <= 2", "Q3": "dead at the end, t0 not enabled again", "Q4": "t0,t1,t2 fire", "Q5": "(0,0,0,2) has two tokens on p3", "Q6": "p0 and all others vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,0,2], "expected": true, "why": "t0 t1 t2"},
+      {"kind": "QR", "marking": [0,0,0,1], "expected": false, "why": "tokens are never lost: p3 gets 1 or 2 only with the other in p1/p2 or p3"},
+      {"kind": "QC", "marking": [0,0,0,2], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [0,0,0,3], "expected": false, "why": "only two tokens are ever produced"}]},
+  "cal-18-efc-fork-no-join": {
+    "reachable": "(1,0,0,0,0) -t0-> (0,1,1,0,0); -t1-> (0,0,1,1,0); -t2-> (0,1,0,0,1); both -> (0,0,0,1,1)",
+    "Q0": {"states": 5, "transitions": 5}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: 1+2+1+1+0 = 5", "Q1": "(0,0,0,1,1) is a deadlock", "Q2": "entries <= 1", "Q3": "dead at the end", "Q4": "all three fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,0,1,1], "expected": true, "why": "t0 t1 t2"},
+      {"kind": "QR", "marking": [0,0,0,1,0], "expected": false, "why": "p3 is never marked without p4 or p2"},
+      {"kind": "QC", "marking": [0,0,0,1,0], "expected": true, "why": "(0,0,1,1,0) >= it (QR false, QC true)"},
+      {"kind": "QC", "marking": [0,1,0,1,0], "expected": false, "why": "t1 consumes p1 when it produces p3"}]},
+  "cal-19-efc-unbounded-selfloop": {
+    "reachable": "(1,k) for every k >= 0: t0 reads p0 (loop) and adds a token to p1",
+    "Q0": null, "Q1": true, "Q2": false, "Q3": true, "Q4": true, "Q5": false, "Q6": true,
+    "why": {"Q0": "infinite", "Q1": "t0 always enabled", "Q2": "p1 grows", "Q3": "t0 is always enabled, so it is live", "Q4": "t0 fires", "Q5": "p1 exceeds 1", "Q6": "p0 is 1 in every marking"},
+    "targets": [
+      {"kind": "QC", "marking": [1,5], "expected": true, "why": "five firings"},
+      {"kind": "QC", "marking": [2,0], "expected": false, "why": "p0 stays 1"},
+      {"kind": "QR", "marking": [1,3], "expected": true, "why": "three firings"},
+      {"kind": "QR", "marking": [0,1], "expected": false, "why": "p0 is never emptied"}]},
+  "cal-20-efc-unbounded-pipe": {
+    "reachable": "(1,0,k) and (0,1,k) for k >= 0: t0 moves the token to p1, t1 returns it and adds a token to p2",
+    "Q0": null, "Q1": true, "Q2": false, "Q3": true, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "infinite", "Q1": "t0 or t1 enabled", "Q2": "p2 grows", "Q3": "the ring token alternates, both recur from every marking", "Q4": "both fire", "Q5": "p2 exceeds 1", "Q6": "p0 and p1 alternate and p2 grows, so none is constant"},
+    "targets": [
+      {"kind": "QC", "marking": [0,0,3], "expected": true, "why": "three laps"},
+      {"kind": "QR", "marking": [1,0,2], "expected": true, "why": "two laps"},
+      {"kind": "QR", "marking": [0,1,0], "expected": true, "why": "t0 once"},
+      {"kind": "QC", "marking": [1,1,0], "expected": false, "why": "p0+p1 is 1"}]},
+  "cal-21-efc-unbounded-choice": {
+    "reachable": "(1,k,0) for k >= 0 (t0 repeated) and (0,k,1) for k >= 0 (t1 once, then dead)",
+    "Q0": null, "Q1": false, "Q2": false, "Q3": false, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "infinite", "Q1": "(0,k,1) has no enabled transition", "Q2": "p1 grows", "Q3": "after t1, t0 is dead", "Q4": "both fire at M0", "Q5": "p1 exceeds 1", "Q6": "p0 varies, p1 varies, p2 varies"},
+    "targets": [
+      {"kind": "QR", "marking": [0,2,1], "expected": true, "why": "t0 t0 t1"},
+      {"kind": "QR", "marking": [1,0,1], "expected": false, "why": "p0 and p2 are never both marked"},
+      {"kind": "QC", "marking": [0,3,1], "expected": true, "why": "t0 t0 t0 t1"},
+      {"kind": "QC", "marking": [1,1,1], "expected": false, "why": "t1 empties p0 for good"}]},
+  "cal-22-ac-mutex": {
+    "reachable": "M0=(1,0,1,0,1); A=(0,1,1,0,0) via t0; B=(1,0,0,1,0) via t2; A -t1-> M0; B -t3-> M0",
+    "Q0": {"states": 3, "transitions": 4}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: M0 t0,t2; A t1; B t3 = 4", "Q1": "always an enabled transition", "Q2": "3 markings", "Q3": "every marking returns to M0", "Q4": "all four fire", "Q5": "entries 0/1", "Q6": "all places vary (p4 is 1 only in M0)"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,1,0,0], "expected": true, "why": "A"},
+      {"kind": "QR", "marking": [0,1,0,1,0], "expected": false, "why": "mutual exclusion: both critical sections never at once"},
+      {"kind": "QC", "marking": [0,1,0,1,0], "expected": false, "why": "same reason"},
+      {"kind": "QC", "marking": [0,0,1,0,0], "expected": true, "why": "M0 >= it"}]},
+  "cal-23-ac-conflict-deadlock": {
+    "reachable": "(1,1,0,0) -t0-> (0,1,1,0) -t2-> (1,1,0,0); (1,1,0,0) -t1-> (0,0,0,1) deadlock",
+    "Q0": {"states": 3, "transitions": 3}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: (1,1,0,0) t0,t1; (0,1,1,0) t2; (0,0,0,1) none = 3", "Q1": "(0,0,0,1) has no outgoing transition", "Q2": "3 markings", "Q3": "dead at (0,0,0,1)", "Q4": "all three fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,0,1], "expected": true, "why": "t1"},
+      {"kind": "QR", "marking": [0,1,0,1], "expected": false, "why": "p1 is consumed when p3 is produced"},
+      {"kind": "QC", "marking": [0,1,1,0], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [1,0,1,0], "expected": false, "why": "no marking has p0 and p2 together"}]},
+  "cal-24-ac-conflict-live": {
+    "reachable": "(1,1,0,0) -t0-> (0,1,1,0) -t2-> (1,1,0,0); (1,1,0,0) -t1-> (0,0,0,1) -t3-> (1,1,0,0)",
+    "Q0": {"states": 3, "transitions": 4}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: (1,1,0,0) t0,t1; (0,1,1,0) t2; (0,0,0,1) t3 = 4", "Q1": "each marking enables something", "Q2": "3 markings", "Q3": "every marking returns to M0 where all branches are available", "Q4": "all four fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,0,1], "expected": true, "why": "t1"},
+      {"kind": "QR", "marking": [1,0,0,1], "expected": false, "why": "not among the three markings"},
+      {"kind": "QC", "marking": [0,1,1,0], "expected": true, "why": "reachable"},
+      {"kind": "QC", "marking": [1,0,1,0], "expected": false, "why": "no marking has p0 and p2 together"}]},
+  "cal-25-ac-fork-choice-join": {
+    "reachable": "(1,0,0,0,0) -t0-> (0,1,1,0,0); -t1-> (0,0,1,1,0) -t3-> (1,0,0,0,0); -t2-> (0,0,1,0,1) -t4-> (1,0,0,0,0)",
+    "Q0": {"states": 4, "transitions": 5}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "enabled: 1+2+1+1 = 5", "Q1": "each marking enables something", "Q2": "4 markings", "Q3": "every marking returns to M0, both branches repeat", "Q4": "all five fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1,0,1], "expected": true, "why": "t0 t2"},
+      {"kind": "QR", "marking": [0,0,1,1,1], "expected": false, "why": "one branch result only"},
+      {"kind": "QC", "marking": [0,0,0,1,0], "expected": true, "why": "(0,0,1,1,0) >= it"},
+      {"kind": "QC", "marking": [0,0,0,1,1], "expected": false, "why": "p3 and p4 never both marked"}]},
+  "cal-26-general-overlap-live": {
+    "reachable": "A=(1,1,0,0,0), B=(0,1,1,0,0), C=(0,0,0,1,0), D=(1,0,0,0,1), E=(0,0,1,0,1); A-t0->B, A-t1->C, A-t2->D, B-t2->E, B-t3->A, C-t4->A, D-t0->E, D-t5->A, E-t3->D, E-t5->B",
+    "Q0": {"states": 5, "transitions": 10}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "3+2+1+2+2 = 10 edges", "Q1": "every marking has an enabled transition", "Q2": "5 markings", "Q3": "from every marking A is reachable (B t3, C t4, D t5, E t3 t5) and A enables t0,t1,t2 while t3,t4,t5 fire en route", "Q4": "all six fire", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1,0,1], "expected": true, "why": "E"},
+      {"kind": "QR", "marking": [1,1,1,0,0], "expected": false, "why": "not one of the five markings"},
+      {"kind": "QC", "marking": [0,0,0,1,0], "expected": true, "why": "C"},
+      {"kind": "QC", "marking": [0,0,0,1,1], "expected": false, "why": "p3 and p4 never together"}]},
+  "cal-27-general-overlap-dead": {
+    "reachable": "A=(1,1,0,0,0), B=(0,1,1,0,0), C=(0,0,0,1,0), D=(1,0,0,0,1), E=(0,0,1,0,1); A-t0->B, A-t1->C, A-t2->D, B-t2->E, D-t0->E; C and E are dead",
+    "Q0": {"states": 5, "transitions": 5}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "3+1+0+1+0 = 5", "Q1": "C and E have no enabled transition", "Q2": "5 markings", "Q3": "dead after the conflict is resolved", "Q4": "t0,t1,t2 fire at A", "Q5": "entries 0/1", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,0,1,0,1], "expected": true, "why": "E"},
+      {"kind": "QR", "marking": [0,0,0,1,1], "expected": false, "why": "t1 consumes p1 which t2 needs"},
+      {"kind": "QC", "marking": [1,0,0,0,1], "expected": true, "why": "D"},
+      {"kind": "QC", "marking": [0,1,1,1,0], "expected": false, "why": "t1 needs p0,p1 and leaves no p1/p2"}]},
+  "cal-28-general-unbounded-conflict": {
+    "reachable": "(1,1,k,0) for k>=0 (t0 repeated), (0,0,k,1) for k>=0 (t1 after that, dead), (1,0,k,0) for k>=1 (t2 after that, t0 only)",
+    "Q0": null, "Q1": false, "Q2": false, "Q3": false, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "infinite", "Q1": "(0,0,k,1) has no enabled transition", "Q2": "p2 grows via t0", "Q3": "t1 and t2 die after t1 or t2 fired", "Q4": "all fire at M0 or soon after", "Q5": "p2 exceeds 1", "Q6": "p1 and p3 vary"},
+    "targets": [
+      {"kind": "QC", "marking": [1,0,3,0], "expected": true, "why": "t2 then t0 twice gives (1,0,3,0)"},
+      {"kind": "QR", "marking": [0,0,2,1], "expected": true, "why": "t0 t0 t1"},
+      {"kind": "QR", "marking": [0,1,2,1], "expected": false, "why": "p1+p3 <= 1 always"},
+      {"kind": "QC", "marking": [0,1,0,1], "expected": false, "why": "p1+p3 <= 1 always"}]},
+  "cal-29-mg-fork-join-extra-token": {
+    "reachable": "s0=(1,0,0,1,0) s1=(0,1,1,1,0) s2=(0,0,1,2,0) s3=(0,1,0,1,1) s4=(0,0,0,2,1) s5=(1,1,0,0,0) s7=(0,2,1,0,0) s9=(0,2,0,0,1); s0-t0->s1; s1-t1->s2, s1-t2->s3; s2-t2->s4; s3-t1->s4, s3-t3->s5; s4-t3->s0; s5-t0->s7, s5-t1->s0; s7-t1->s1, s7-t2->s9; s9-t1->s3",
+    "Q0": {"states": 8, "transitions": 12}, "Q1": true, "Q2": true, "Q3": true, "Q4": true, "Q5": false, "Q6": false,
+    "why": {"Q0": "enabled: s0 1; s1 2; s2 1; s3 2; s4 1; s5 2; s7 2; s9 1 = 12", "Q1": "each marking enables something", "Q2": "circuits hold 2 and 1 tokens, so every place <= 2", "Q3": "both circuits are marked (marked-graph liveness theorem) and the listed graph shows every marking returns to s0", "Q4": "all four fire", "Q5": "s2 has 2 tokens on p3", "Q6": "all places vary"},
+    "targets": [
+      {"kind": "QR", "marking": [0,2,1,0,0], "expected": true, "why": "s7"},
+      {"kind": "QR", "marking": [0,1,1,1,1], "expected": false, "why": "p0+p2+p4 = 1 invariant violated"},
+      {"kind": "QC", "marking": [0,0,0,2,1], "expected": true, "why": "s4"},
+      {"kind": "QC", "marking": [0,0,0,3,0], "expected": false, "why": "p0+p1+p3 = 2 invariant"}]},
+  "cal-30-sm-two-sinks": {
+    "reachable": "(1,0,0) (0,1,0) (0,0,1)",
+    "Q0": {"states": 3, "transitions": 2}, "Q1": false, "Q2": true, "Q3": false, "Q4": true, "Q5": true, "Q6": false,
+    "why": {"Q0": "t0 and t1 at (1,0,0); none at the sinks = 2", "Q1": "both sinks are deadlocks", "Q2": "sum 1", "Q3": "dead after one step", "Q4": "both fire", "Q5": "sum 1", "Q6": "each place is 1 in one marking"},
+    "targets": [
+      {"kind": "QR", "marking": [0,1,0], "expected": true, "why": "t0"},
+      {"kind": "QR", "marking": [0,1,1], "expected": false, "why": "sum 2"},
+      {"kind": "QC", "marking": [0,0,1], "expected": true, "why": "t1"},
+      {"kind": "QC", "marking": [0,0,0], "expected": true, "why": "the zero marking is covered by every marking"}]}
+}
