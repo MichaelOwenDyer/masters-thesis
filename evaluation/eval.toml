@@ -42,7 +42,7 @@ curl_max_time_secs = 180
 # Campaign B (subprocess runs). Relative results_dir is resolved against the directory of this file.
 results_dir = "results"
 # external wall-clock cap per run, the process group is killed on expiry (TIMEOUT)
-wall_cap_secs = 60
+wall_cap_secs = 30
 # campaign A (correctness, `run --campaign A`): safety wall cap per run in seconds (not a measurement)
 a_wall_cap_secs = 30
 # memory limit per run (MEMOUT when exceeded and detectable)
@@ -50,7 +50,8 @@ mem_limit_gib = 8
 # at most this many jobs at the same time
 parallel_jobs = 3
 # one core per running job is taken from this list (worker i gets cores[i]); empty: no pinning. On the Linux box
-# use separate physical cores, for example [0, 2, 4] (hyper-thread siblings stay idle).
+# use separate physical cores whose hyper-thread siblings stay idle (check `lscpu -e`: on the i7-4790K box CPUs n and n+4
+# are siblings, so use [0, 1, 2] and leave 3-7 to the system).
 cores = []
 # memory limiter: "auto" (cgroup v2 via systemd-run --user --scope if it works, else setrlimit address space on
 # Linux, else none), "cgroup", "rlimit" or "none"

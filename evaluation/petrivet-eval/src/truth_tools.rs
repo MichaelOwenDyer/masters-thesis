@@ -45,7 +45,7 @@ pub struct TruthArgs {
     #[arg(long, value_delimiter = ',')]
     pub tools: Vec<String>,
     /// Wall-clock limit per labelling run, seconds (no pinning, no memory limit)
-    #[arg(long, default_value_t = 600)]
+    #[arg(long, default_value_t = 60)]
     pub label_limit_secs: u64,
     /// Directory of runs.jsonl, raw/ and truth_excluded.jsonl (default: [run] results_dir of eval.toml)
     #[arg(long)]

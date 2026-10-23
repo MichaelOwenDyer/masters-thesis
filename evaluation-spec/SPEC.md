@@ -295,7 +295,7 @@ Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill i
 - Linux box only (i7-4790K, 32 GB, NixOS). Never measure on the Mac.
 - Governor `performance`, turbo off during runs, jobs pinned with `taskset` to separate physical cores, at most 3 jobs in parallel, hyper-thread siblings idle, 8 GiB memory limit per job.
 - Build: `cargo build --release` from the flake; the exact binary hash is in `env.json`.
-- Wall cap for campaign B: 60 s per run (all sources). Timeouts count as 2 x cap for PAR-2. Campaign A runs as CLI subprocesses with a 30 s cap per run (`[run] a_wall_cap_secs`); its wall times are not analysed.
+- Wall cap for campaigns B and C: 30 s per run (all sources; `[run] wall_cap_secs`). Labelling runs of `truth` use a 60 s limit (`--label-limit-secs`). Timeouts count as 2 x cap for PAR-2. Campaign A runs as CLI subprocesses with a 30 s cap per run (`[run] a_wall_cap_secs`); its wall times are not analysed.
 - Repetitions (campaign B only): 5 if the first run takes under 1 s, 3 if under 10 s, otherwise 1. Timeouts are not repeated. Repetitions double as a determinism check: a verdict that differs between repetitions is flagged as a finding.
 - Order: runs are shuffled with a seed and solvers are interleaved per instance, so thermal and cache drift does not favour a solver. A warm-up pass reads every instance once before measuring (cold-cache effects are a legitimate condition but not what is studied).
 - Startup baseline: every solver gets a no-op run on a trivial net, once per campaign.
