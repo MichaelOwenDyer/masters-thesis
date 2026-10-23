@@ -39,8 +39,9 @@ pub struct Target {
 pub struct KnownAnswer {
     #[serde(default)]
     pub query: String,
+    /// A boolean for yes/no queries, an object for Q0 (state-space size); whatever the manifest writer put there.
     #[serde(default)]
-    pub verdict: String,
+    pub verdict: serde_json::Value,
     #[serde(default)]
     pub origin: String,
 }
@@ -180,7 +181,7 @@ pub fn load_selected(path: &Path) -> Result<Vec<Instance>, String> {
                     "RD" => ("Q1", if v == "TRUE" { "FALSE".to_owned() } else { "TRUE".to_owned() }),
                     _ => return None,
                 };
-                Some(KnownAnswer { query: query.to_owned(), verdict, origin: format!("mcc-oracle:{exam}") })
+                Some(KnownAnswer { query: query.to_owned(), verdict: serde_json::Value::String(verdict), origin: format!("mcc-oracle:{exam}") })
             })
             .collect();
         out.push(Instance {

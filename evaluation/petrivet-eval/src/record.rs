@@ -19,8 +19,12 @@ pub enum Verdict {
     Timeout,
     Memout,
     NotSupported,
-    Error,
-    Panic,
+    /// The tool exited cleanly with a diagnostic: the instance could not be read.
+    InputRejected,
+    /// Abnormal termination we did not cause: signal, exit code 101 (Rust panic), caught panic.
+    Crash,
+    /// Infrastructure failure, counted against no tool.
+    RunnerError,
     ShardFailed,
 }
 
@@ -34,8 +38,9 @@ impl Verdict {
             Verdict::Timeout => "TIMEOUT",
             Verdict::Memout => "MEMOUT",
             Verdict::NotSupported => "NOT_SUPPORTED",
-            Verdict::Error => "ERROR",
-            Verdict::Panic => "PANIC",
+            Verdict::InputRejected => "INPUT_REJECTED",
+            Verdict::Crash => "CRASH",
+            Verdict::RunnerError => "RUNNER_ERROR",
             Verdict::ShardFailed => "SHARD_FAILED",
         }
     }
@@ -50,15 +55,16 @@ impl Verdict {
             "TIMEOUT" => Verdict::Timeout,
             "MEMOUT" => Verdict::Memout,
             "NOT_SUPPORTED" => Verdict::NotSupported,
-            "ERROR" => Verdict::Error,
-            "PANIC" => Verdict::Panic,
+            "INPUT_REJECTED" => Verdict::InputRejected,
+            "CRASH" => Verdict::Crash,
+            "RUNNER_ERROR" => Verdict::RunnerError,
             "SHARD_FAILED" => Verdict::ShardFailed,
             _ => return None,
         })
     }
 
     /// Verdicts that are repeated under the repetition rule (SPEC 8.2): the tool produced an answer or gave up
-    /// by itself. Timeouts, memouts, errors and unsupported queries are not repeated.
+    /// by itself. Timeouts, memouts, crashes, rejected inputs, runner errors and unsupported queries are not repeated.
     pub fn repeatable(self) -> bool {
         matches!(self, Verdict::True | Verdict::False | Verdict::Count | Verdict::Unknown)
     }
@@ -106,6 +112,10 @@ pub struct RunRecord {
     pub mem_limiter: String,
     #[serde(default)]
     pub note: Option<String>,
+    /// CRASH: `panic`, `signal:<NAME>`, `abort`, `exit:<code>`, `internal`; INPUT_REJECTED: first line of the
+    /// diagnostic (at most 200 characters); RUNNER_ERROR: the reason.
+    #[serde(default)]
+    pub detail: Option<String>,
     /// Display form of the command line (not re-parsed).
     #[serde(default)]
     pub cmd: String,
@@ -233,6 +243,7 @@ mod tests {
             pinned_core: None,
             mem_limiter: "none".into(),
             note: None,
+            detail: None,
             cmd: String::new(),
             started_unix_ms: 0,
         }

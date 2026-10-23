@@ -112,3 +112,37 @@ Facts that follow from the manuals:
 4. Equivalence of the single-formula variants of Q2, Q3, Q5 with the per-place/per-transition loops in LoLA.
 5. Whether `scan` and `selt` accept omega-weighted ktz from `tina -C` (QC on unbounded nets).
 6. TINA `-R -s 1` can stop a marking graph on an "unbounded" sufficient test; for Q0 and exhaustive QR on a bounded net use `-s 0` with `-c`/`-t` limits so the run cannot silently stop early.
+
+## Verified on the NixOS box (2026-10-23)
+
+Real runs of LoLA 2.0 and TINA 4.0.0 on two tiny nets (`cyc`, `dead`) and the MCC model Anderson-PT-04; verbatim outputs are in
+`evaluation/petrivet-eval/testdata/tools/` and are the test inputs of the parsers (`adapters/lola.rs`, `adapters/tina.rs`).
+
+Verified:
+- `ndrio -PNML -lola in.pnml out.lola` produces a file LoLA 2.0 accepts unchanged; place ids are kept as names; exit 0. On invalid XML ndrio prints
+  `unexpected error in pnml parser (...)` on stderr, exits 1 and leaves an EMPTY output file (tina and sift behave the same on stdout/stderr). A failed
+  conversion is therefore "non-zero exit or empty or missing output file" (`adapters/convert.rs`).
+- LoLA: `--check=full --stubborn=off --quiet --json=/dev/stdout` gives `analysis.stats.states` and `.edges` (Q0). `--formula="EF DEADLOCK"` gives
+  `analysis.result` true iff a deadlock is reachable (Q1 is its negation). `--formula="AGEF FIREABLE(t0)"` works. The exit code is 0 for every completed
+  analysis, yes or no. On an invalid net: exit 1, stderr `lola: syntax error -- aborting [#01]` (preceded by an echo of the offending line, so the
+  adapter takes the first line starting with `lola:`) and a JSON object WITHOUT an `analysis` key.
+- TINA: `tina -R -q net.pnml` prints a text report: lines `bounded`, `N marking(s), M transition(s)` (states and edges), `live` or `not live`,
+  `N dead marking(s), K live marking(s)`, `N dead transition(s), K live transition(s)`. `sift -R -dead -q net.pnml` prints
+  `some state violates condition -f:` (plus lines) only if a deadlock exists. `sift -R -rs -k net.pnml net.ktz` followed by
+  `scan net.ktz -r "p0 = 0 /\ p1 = 1" -b` prints `TRUE` or `FALSE`. Every TINA tool exits 0 on completed runs and 1 on parse errors.
+- Anderson-PT-04: LoLA and TINA both give 29641 states and 97516 edges (matches the oracle), no deadlock, live.
+
+Still UNVERIFIED (implemented as described above, each marked `UNVERIFIED: settled by calibrate on the box` in the code):
+- Q2 on unbounded nets: LoLA `IMPOSSIBLE (... = oo)` with `--search=cover` (and whether a null result occurs), and what `tina -R -q` prints for an unbounded
+  net (the adapter reads `bounded` / `not bounded`; any other text is UNKNOWN with the raw line as detail).
+- Q5 and Q6 on TINA: `sift -R -f safe -q` and its violation line; `sift -R -k` plus `scan -n "p = m" -b` (TRUE iff the place has that value everywhere).
+  Place names that are not plain identifiers are written `{name}` in selt formulas (also unverified).
+- QC: LoLA `EF (p >= a AND ...)` on unbounded nets (termination), TINA `scan -r "p >= a /\ ..." -b` on the marking graph.
+- Behaviour on limit hits (there are no tool-side limits; the external wall limit applies) and exit code 2 of LoLA (mapped to UNKNOWN).
+- The combined LoLA formulas of Q2, Q3 and Q5 (parse and agree with the per-place / per-transition loops).
+- Q4 and Q6 on LoLA as one `sh -c` script with early exit.
+
+`petrivet-eval calibrate` settles all of these: it runs every solver on the 30 hand-checked nets in `evaluation/calibration/` and prints, per solver, a
+table (agree / disagree / unknown / not_supported / input_rejected / crash / timeout / runner_error per query) and a block with command line and output
+prefixes for every disagreement and every failure. A disagreement or a failure on a net in scope means the formula or the reading above is wrong and is
+fixed before RUN; a query that a tool cannot answer in the sense of the spec becomes `NOT_SUPPORTED` for it.

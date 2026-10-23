@@ -1,0 +1,9 @@
+(lines matching: ^(bounded|not bounded|live|not live|reversible)|marking|transition; the full report has the same layout as tina_R_cyc.txt)
+105 places, 200 transitions, 752 arcs
+bounded
+29641 marking(s), 97516 transition(s)
+live
+0 dead marking(s), 29640 live marking(s)
+0 dead transition(s), 200 live transition(s)
+# net {Anderson-PT-04}, 105 places, 200 transitions, 752 arcs          #
+# transitions        97516        200          ?          0        200 #

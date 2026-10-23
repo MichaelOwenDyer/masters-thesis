@@ -260,7 +260,7 @@ Truth file: `results/truth.jsonl`, one line per (instance, query, target?): valu
 | run_id | string | blake3(campaign, instance_id, query, target_id, solver_id, rep) |
 | campaign | enum | A, B, C, D |
 | instance_id, query, target_id?, solver_id, rep | | |
-| verdict | enum | TRUE, FALSE, COUNT(states,edges), UNKNOWN (gave up), TIMEOUT (killed), MEMOUT, NOT_SUPPORTED, ERROR, PANIC, SHARD_FAILED |
+| verdict | enum | TRUE, FALSE, COUNT(states,edges), UNKNOWN, NOT_SUPPORTED, TIMEOUT, MEMOUT, INPUT_REJECTED, CRASH, RUNNER_ERROR, SHARD_FAILED (see Outcomes below) |
 | raw_hash, stderr_hash | string | raw output stored by hash under `results/raw/` |
 | wall_ms | float | spawn to exit (subprocess runs) |
 | cpu_user_ms, cpu_sys_ms, peak_rss_kib | | from wait4 rusage of the child |
@@ -271,6 +271,19 @@ Truth file: `results/truth.jsonl`, one line per (instance, query, target?): valu
 | states, edges | int? | Q0 |
 | convert_ms | float? | outside timing |
 | env_id | string | key into `env.json` |
+
+**detail** (optional string): for CRASH one of `panic`, `abort`, `signal:<NAME>`, `exit:<code>`, `internal`; for INPUT_REJECTED the first line of the diagnostic (at most 200 characters); for RUNNER_ERROR the reason. `signal` and `exit_code` are kept as recorded.
+
+#### Outcomes
+
+Every non-answer settles three questions: did the tool decline, did we stop it, or did it fail?
+- Answers: TRUE, FALSE, COUNT.
+- Declined by the tool, no fault: UNKNOWN (ran to completion and gave up or has no applicable procedure, including its own internal timeout), NOT_SUPPORTED (query not offered for this tool or instance).
+- Stopped by us: TIMEOUT (our wall-clock kill), MEMOUT (our memory limit).
+- Failed, the tool did not answer and we did not stop it: INPUT_REJECTED (clean error exit with a diagnostic: the instance could not be read; for petrivet the importer errors such as a disconnected net or a weighted arc; for reference tools conversion or parse errors), CRASH (abnormal termination: a signal we did not send such as SIGSEGV, SIGABRT, SIGBUS, SIGILL, SIGFPE; exit code 101, an uncaught Rust panic; the CLI's caught panic).
+- Infrastructure, counted against no tool: RUNNER_ERROR (we could not spawn the tool, disk full, output unparseable although the exit was clean, adapter bug), SHARD_FAILED (campaign A, a dead shard).
+
+Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill is TIMEOUT; memory limit hit is MEMOUT; a signal we did not send is CRASH; exit code 101 is CRASH(panic); the tool-specific rule for any other nonzero exit (petrivet: a JSON error line with `error_kind` panic or internal is CRASH, input is INPUT_REJECTED; otherwise INPUT_REJECTED if there is a diagnostic, CRASH(`exit:<code>`) if not); exit 0 with unreadable output is RUNNER_ERROR; otherwise the tool's verdict. Only TRUE, FALSE, COUNT and UNKNOWN are repeated.
 
 `env.json`: CPU model, pinned cores, governor, turbo state, kernel, RAM, versions and hashes of every solver, rustc/cargo versions, git sha of the workspace, hash of `eval.toml`, hash of the corpus, timestamp.
 
@@ -287,7 +300,7 @@ Truth file: `results/truth.jsonl`, one line per (instance, query, target?): valu
 ## 9. Campaigns
 
 ### A: correctness (in-process, `gen`)
-- For each net, query, and mode in {dispatch, general, effort-limited}: parse the PNML, build a fresh `PetriNet`, call the library inside `catch_unwind`, append a run (`pv-inproc`). A panic is recorded as `PANIC` with its message (a finding, never discarded).
+- For each net, query, and mode in {dispatch, general, effort-limited}: parse the PNML, build a fresh `PetriNet`, call the library inside `catch_unwind`, append a run (`pv-inproc`). A panic is recorded as `CRASH` with detail `panic` and its message (a finding, never discarded).
 - Fresh object per call: the library caches boundedness, liveness and deadlock results per `PetriNet`, so reuse would make results order-dependent.
 - Cache-coherence pass: one `PetriNet` per net, all queries in sequence and in a shuffled order; verdicts must equal the fresh results. Any difference is a finding.
 - Sharding: nets are processed in shards of about 100 by child processes with a safety timeout. A dead shard is `SHARD_FAILED` and is bisected on resume. This protects against abort, stack overflow, and hangs, which in-process execution would otherwise turn into a lost run.
@@ -316,7 +329,7 @@ Output of the pilot: the H3b threshold (or a decision to report only the distrib
 
 ## 10. Adjudication (`results/adjudication.jsonl`)
 
-One line per run joined with truth. Outcomes: AGREE, DISAGREE, UNKNOWN, TIMEOUT, MEMOUT, ERROR, PANIC, NOT_SUPPORTED, INCONCLUSIVE_TRUTH.
+One line per run joined with truth. Outcomes: AGREE, DISAGREE, UNKNOWN, TIMEOUT, MEMOUT, INPUT_REJECTED, CRASH, RUNNER_ERROR, NOT_SUPPORTED, INCONCLUSIVE_TRUTH.
 Only two opposite definite verdicts can disagree. UNKNOWN, TIMEOUT and the rest never count as disagreement and are reported as coverage.
 
 The pipeline does not determine the cause of a disagreement. It classifies the pattern automatically:

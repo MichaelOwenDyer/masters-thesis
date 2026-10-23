@@ -401,6 +401,19 @@ fn ms(start: Instant) -> f64 {
     start.elapsed().as_secs_f64() * 1000.0
 }
 
+/// An error with its kind, reported as `error_kind` in the JSON error line: `input` (the net, the target file or
+/// the arguments could not be used), `panic` (the caught panic) or `internal` (anything else).
+struct CliError {
+    kind: &'static str,
+    message: String,
+}
+
+impl CliError {
+    fn input(message: impl Into<String>) -> Self {
+        CliError { kind: "input", message: message.into() }
+    }
+}
+
 fn run(
     file: &PathBuf,
     property: Property,
@@ -408,13 +421,13 @@ fn run(
     timeout_ms: Option<u64>,
     target_file: Option<&PathBuf>,
     json: bool,
-) -> Result<(), String> {
+) -> Result<(), CliError> {
     let start = Instant::now();
-    let pnml = std::fs::read_to_string(file).map_err(|e| format!("cannot read {}: {e}", file.display()))?;
-    let sys = PetriNet::from_pnml(&pnml).map_err(|e| e.to_string())?;
+    let pnml = std::fs::read_to_string(file).map_err(|e| CliError::input(format!("cannot read {}: {e}", file.display())))?;
+    let sys = PetriNet::from_pnml(&pnml).map_err(|e| CliError::input(e.to_string()))?;
     let target = match (property, target_file) {
-        (Property::Reach | Property::Cover, None) => return Err("--target is required for reach and cover".to_owned()),
-        (Property::Reach | Property::Cover, Some(f)) => Some(load_target(&sys, f)?),
+        (Property::Reach | Property::Cover, None) => return Err(CliError::input("--target is required for reach and cover")),
+        (Property::Reach | Property::Cover, Some(f)) => Some(load_target(&sys, f).map_err(CliError::input)?),
         _ => None,
     };
     let parse_ms = ms(start);
@@ -422,7 +435,7 @@ fn run(
 
     let start = Instant::now();
     let outcome = catch_unwind(AssertUnwindSafe(|| analyze(&sys, property, mode, &params)))
-        .map_err(|_| "analysis panicked".to_owned())?;
+        .map_err(|_| CliError { kind: "panic", message: "analysis panicked".to_owned() })?;
     let analyze_ms = ms(start);
 
     let class = format!("{:?}", sys.class());
@@ -467,10 +480,10 @@ fn main() -> ExitCode {
     let Command::Analyze { file, property, mode, timeout_ms, target, json } = Cli::parse().command;
     match run(&file, property, mode, timeout_ms, target.as_ref(), json) {
         Ok(()) => ExitCode::SUCCESS,
-        Err(message) => {
+        Err(CliError { kind, message }) => {
             if json {
                 println!(
-                    "{{\"tool\":\"petrivet\",\"file\":{},\"property\":{},\"mode\":{},\"verdict\":\"error\",\"error\":{}}}",
+                    "{{\"tool\":\"petrivet\",\"file\":{},\"property\":{},\"mode\":{},\"verdict\":\"error\",\"error_kind\":\"{kind}\",\"error\":{}}}",
                     json_str(&file.display().to_string()),
                     json_str(&name(&property)),
                     json_str(&name(&mode)),

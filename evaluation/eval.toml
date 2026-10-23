@@ -61,3 +61,17 @@ out_cap_kib = 1024
 [solvers.pv]
 # petrivet CLI; looked up on PATH. The environment variable PETRIVET_BIN overrides it (local testing).
 command = "petrivet"
+
+[solvers.lola]
+# LoLA 2.0; looked up on PATH. The environment variable LOLA_BIN overrides it.
+command = "lola"
+
+[solvers.ndrio]
+# TINA's net converter, used for PNML to LoLA (`ndrio -PNML -lola`). The environment variable NDRIO_BIN overrides it.
+command = "ndrio"
+
+[solvers.tina]
+# TINA 4.0.0 programs (TINA_BIN, SIFT_BIN, SCAN_BIN override).
+tina = "tina"
+sift = "sift"
+scan = "scan"

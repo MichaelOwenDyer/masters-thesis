@@ -62,6 +62,14 @@ struct CliOut {
     edges: Option<u64>,
     #[serde(default)]
     error: Option<String>,
+    #[serde(default)]
+    error_kind: Option<String>,
+}
+
+/// The last JSON line of stdout, if it parses as CLI output.
+fn cli_json(stdout: &str) -> Option<CliOut> {
+    let line = stdout.lines().rev().find(|l| l.trim_start().starts_with('{'))?;
+    serde_json::from_str(line).ok()
 }
 
 impl Adapter for Pv {
@@ -95,21 +103,16 @@ impl Adapter for Pv {
         CommandSpec { program: self.program.clone(), args, env: Vec::new() }
     }
 
-    fn parse(&self, stdout: &str, exit_code: i32) -> Parsed {
-        let Some(line) = stdout.lines().rev().find(|l| l.trim_start().starts_with('{')) else {
-            return Parsed::error(format!("no JSON on stdout (exit code {exit_code})"));
-        };
-        let out: CliOut = match serde_json::from_str(line) {
-            Ok(o) => o,
-            Err(e) => return Parsed::error(format!("bad JSON: {e}")),
+    fn parse(&self, stdout: &str, _exit_code: i32) -> Parsed {
+        let Some(out) = cli_json(stdout) else {
+            return Parsed::runner_error("unparseable output");
         };
         let mut p = Parsed {
-            verdict: Verdict::Error,
             parse_ms: out.parse_ms,
             analyze_ms: out.analyze_ms,
             states: out.states,
             edges: out.edges,
-            note: out.error.clone(),
+            ..Parsed::verdict(Verdict::Unknown)
         };
         p.verdict = match out.verdict.as_str() {
             "true" if out.property == "statespace" && out.states.is_some() => Verdict::Count,
@@ -121,14 +124,30 @@ impl Adapter for Pv {
                 p.note = Some("unbounded".into());
                 Verdict::Unknown
             }
-            "error" if out.error.as_deref().is_some_and(|e| e.contains("panicked")) => Verdict::Panic,
-            _ => Verdict::Error,
+            // A clean exit with an error verdict, or a verdict we do not know, is not something the CLI does.
+            other => return Parsed::runner_error(format!("unexpected verdict {other:?} with exit 0")),
         };
-        if exit_code != 0 && !matches!(p.verdict, Verdict::Error | Verdict::Panic) {
-            p.note = Some(format!("exit code {exit_code} with verdict {}", out.verdict));
-            p.verdict = Verdict::Error;
-        }
         p
+    }
+
+    /// Exit 1 with a JSON error line: `error_kind` `panic` or `internal` is CRASH with that detail, `input` is
+    /// INPUT_REJECTED. Without `error_kind` (older CLI) a message containing "panicked" is CRASH(panic), anything
+    /// else INPUT_REJECTED. Other cases use the default rule.
+    fn nonzero_exit(&self, stdout: &str, stderr: &str, exit_code: i32) -> Parsed {
+        if exit_code == 1
+            && let Some(out) = cli_json(stdout)
+            && out.verdict == "error"
+        {
+            let msg = out.error.as_deref().unwrap_or("");
+            return match out.error_kind.as_deref() {
+                Some(k @ ("panic" | "internal")) => Parsed::crash(k),
+                Some(_) => Parsed::input_rejected(msg),
+                None if msg.contains("panicked") => Parsed::crash("panic"),
+                None => Parsed::input_rejected(msg),
+            };
+        }
+        let diag = if stderr.trim().is_empty() { stdout } else { stderr };
+        if diag.trim().is_empty() { Parsed::crash(format!("exit:{exit_code}")) } else { Parsed::input_rejected(diag) }
     }
 
     fn tool(&self) -> Option<ToolInfo> {
@@ -185,6 +204,7 @@ pub fn target_json(inst: &Instance, marking: &TargetMarking, pnml: &str) -> Resu
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::adapters::Finished;
 
     fn pv(id: &str) -> Pv {
         Pv { id: id.into(), mode: if id == "pv-poly" { "poly" } else { "dispatch" }, program: "petrivet".into() }
@@ -198,9 +218,39 @@ mod tests {
         assert_eq!(p.analyze_ms, Some(2.5));
         let p = a.parse("{\"property\":\"statespace\",\"verdict\":\"true\",\"states\":10,\"edges\":20}", 0);
         assert_eq!((p.verdict, p.states, p.edges), (Verdict::Count, Some(10), Some(20)));
-        let p = a.parse("{\"verdict\":\"error\",\"error\":\"analysis panicked\"}", 1);
-        assert_eq!(p.verdict, Verdict::Panic);
-        assert_eq!(a.parse("garbage", 1).verdict, Verdict::Error);
+        assert_eq!(a.parse("{\"verdict\":\"unbounded\"}", 0).verdict, Verdict::Unknown);
+        assert_eq!(a.parse("{\"verdict\":\"not_supported\"}", 0).verdict, Verdict::NotSupported);
+        let p = a.parse("garbage", 0);
+        assert_eq!((p.verdict, p.detail.as_deref()), (Verdict::RunnerError, Some("unparseable output")));
+        assert_eq!(a.parse("{\"verdict\":\"error\"}", 0).verdict, Verdict::RunnerError);
+    }
+
+    fn classify(stdout: &str, code: i32) -> Parsed {
+        let a = pv("pv-dispatch");
+        a.classify(&Finished { spawn_error: None, timed_out: false, memout: false, exit_code: Some(code), signal: None, stdout, stderr: "" })
+    }
+
+    #[test]
+    fn cli_error_json_classification() {
+        let case = |line: &str| {
+            let p = classify(line, 1);
+            (p.verdict, p.detail)
+        };
+        let d = |s: &str| Some(s.to_owned());
+        assert_eq!(case(r#"{"verdict":"error","error_kind":"input","error":"net is not connected\nsecond line"}"#), (Verdict::InputRejected, d("net is not connected")));
+        assert_eq!(case(r#"{"verdict":"error","error_kind":"panic","error":"analysis panicked"}"#), (Verdict::Crash, d("panic")));
+        assert_eq!(case(r#"{"verdict":"error","error_kind":"internal","error":"x"}"#), (Verdict::Crash, d("internal")));
+        // older CLI without error_kind
+        assert_eq!(case(r#"{"verdict":"error","error":"analysis panicked"}"#), (Verdict::Crash, d("panic")));
+        assert_eq!(case(r#"{"verdict":"error","error":"arc a1 has weight 3"}"#), (Verdict::InputRejected, d("arc a1 has weight 3")));
+        // long diagnostics are cut
+        let long = format!(r#"{{"verdict":"error","error_kind":"input","error":"{}"}}"#, "x".repeat(500));
+        assert_eq!(case(&long).1.unwrap().len(), 200);
+        // exit 1 without JSON and no diagnostic is not an input rejection
+        assert_eq!(case("").0, Verdict::Crash);
+        // exit 0 through the same entry point reads the verdict
+        assert_eq!(classify(r#"{"property":"df","verdict":"true"}"#, 0).verdict, Verdict::True);
+        assert_eq!(classify("", 101).detail.as_deref(), Some("panic"));
     }
 
     #[test]

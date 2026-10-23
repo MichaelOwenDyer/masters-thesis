@@ -7,7 +7,8 @@
 //! hold the further repetitions in the same order. A run is skipped if its run_id is already in runs.jsonl,
 //! and a repetition-0 record found there is used for the rule, so an interrupted run resumes cleanly.
 
-use crate::adapters::{self, Adapter, Query, Request, SolversCfg};
+use crate::adapters::convert::{self, ConvertError};
+use crate::adapters::{self, Adapter, Finished, Parsed, Query, Request, SolversCfg};
 use crate::config::Config;
 use crate::env::{self, EnvInput};
 use crate::instance::{self, Instance};
@@ -63,7 +64,7 @@ struct Sections {
     solvers: SolversCfg,
 }
 
-fn load_sections(config_path: &Path) -> Result<(RunCfg, SolversCfg), String> {
+pub(crate) fn load_sections(config_path: &Path) -> Result<(RunCfg, SolversCfg), String> {
     let text = std::fs::read_to_string(config_path).map_err(|e| format!("{}: {e}", config_path.display()))?;
     let mut s: Sections = toml::from_str(&text).map_err(|e| format!("{}: {e}", config_path.display()))?;
     if s.run.results_dir.is_relative() {
@@ -99,18 +100,18 @@ pub struct RunArgs {
 }
 
 /// One (instance, query, target) and the solvers that run on it, in execution order.
-struct Unit {
-    inst: usize,
-    query: Query,
-    target: Option<usize>,
-    solvers: Vec<usize>,
+pub(crate) struct Unit {
+    pub(crate) inst: usize,
+    pub(crate) query: Query,
+    pub(crate) target: Option<usize>,
+    pub(crate) solvers: Vec<usize>,
 }
 
 #[derive(Clone, Copy)]
-struct Job {
-    unit: usize,
-    solver: usize,
-    rep: u32,
+pub(crate) struct Job {
+    pub(crate) unit: usize,
+    pub(crate) solver: usize,
+    pub(crate) rep: u32,
 }
 
 const BASELINE_PNML: &str = r#"<?xml version="1.0" encoding="UTF-8"?>
@@ -155,18 +156,18 @@ fn target_text(inst: &Instance, target: &instance::Target) -> Result<String, Str
     adapters::pv::target_json(inst, &target.marking, &pnml)
 }
 
-struct Ctx<'a> {
-    campaign: &'a str,
-    instances: &'a [Instance],
-    units: &'a [Unit],
-    adapters: &'a [Box<dyn Adapter>],
-    results_dir: &'a Path,
-    env_id: &'a str,
-    wall: Duration,
-    mem_kib: u64,
-    out_cap: usize,
-    limiter: Limiter,
-    cores: &'a [usize],
+pub(crate) struct Ctx<'a> {
+    pub(crate) campaign: &'a str,
+    pub(crate) instances: &'a [Instance],
+    pub(crate) units: &'a [Unit],
+    pub(crate) adapters: &'a [Box<dyn Adapter>],
+    pub(crate) results_dir: &'a Path,
+    pub(crate) env_id: &'a str,
+    pub(crate) wall: Duration,
+    pub(crate) mem_kib: u64,
+    pub(crate) out_cap: usize,
+    pub(crate) limiter: Limiter,
+    pub(crate) cores: &'a [usize],
 }
 
 impl Ctx<'_> {
@@ -178,7 +179,7 @@ impl Ctx<'_> {
     }
 
     /// Runs one job and builds its record (the caller sets `verdict_differs` and appends).
-    fn execute(&self, job: &Job, worker: usize) -> RunRecord {
+    pub(crate) fn execute(&self, job: &Job, worker: usize) -> RunRecord {
         let u = &self.units[job.unit];
         let inst = &self.instances[u.inst];
         let adapter = &self.adapters[job.solver];
@@ -201,31 +202,51 @@ impl Ctx<'_> {
             }
         }
         let path = inst.abs_path();
-        let req = Request { instance_path: &path, query: u.query, target_file: target_file.as_deref(), internal_timeout_ms: None };
+        // Conversion step (LoLA: ndrio), cached and outside the timed run. A failed conversion is this run's
+        // INPUT_REJECTED outcome; it does not stop the campaign.
+        let mut forced: Option<Parsed> = None;
+        let mut convert_ms = None;
+        let mut converted: Option<PathBuf> = None;
+        if let Some(ndrio) = adapter.converter() {
+            match convert::ensure_lola(&ndrio, &path, self.results_dir, &inst.instance_id) {
+                Ok(c) => {
+                    convert_ms = Some(c.ms);
+                    converted = Some(c.path);
+                }
+                Err(ConvertError::Failed { msg, ms }) => {
+                    convert_ms = Some(ms);
+                    forced = Some(Parsed::with_detail(Verdict::InputRejected, format!("conversion failed: {msg}")));
+                }
+                Err(ConvertError::Infra(e)) => forced = Some(Parsed::runner_error(format!("conversion: {e}"))),
+            }
+        }
+        let req = Request { instance_path: &path, query: u.query, target_file: target_file.as_deref(), internal_timeout_ms: None, converted: converted.as_deref() };
         let spec = adapter.command(&req);
         let core = (!self.cores.is_empty()).then(|| self.cores[worker % self.cores.len()]);
         let limits = Limits { wall: self.wall, mem_kib: self.mem_kib, core, out_cap: self.out_cap, limiter: self.limiter };
         let started = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_millis() as u64);
-        let res = if note.is_some() { runner::RunResult { spawn_error: note.clone(), ..Default::default() } } else { runner::run_command(&spec, &limits) };
+        let res = if note.is_some() || forced.is_some() { runner::RunResult { spawn_error: note.clone(), ..Default::default() } } else { runner::run_command(&spec, &limits) };
 
-        let mut parsed = None;
-        let verdict = if let Some(e) = &res.spawn_error {
-            note = Some(e.clone());
-            Verdict::Error
-        } else if res.timed_out {
-            Verdict::Timeout
-        } else if res.memout {
-            Verdict::Memout
-        } else if let Some(code) = res.exit_code {
-            let p = adapter.parse(&String::from_utf8_lossy(&res.stdout), code);
-            let v = p.verdict;
-            note = p.note.clone();
-            parsed = Some(p);
-            v
-        } else {
-            note = Some(format!("killed by signal {}", res.signal.unwrap_or(0)));
-            Verdict::Error
-        };
+        let stdout_text = String::from_utf8_lossy(&res.stdout);
+        let stderr_text = String::from_utf8_lossy(&res.stderr);
+        let parsed = forced.unwrap_or_else(|| {
+            adapter.classify_for(
+                u.query,
+                &Finished {
+                    spawn_error: res.spawn_error.as_deref(),
+                    timed_out: res.timed_out,
+                    memout: res.memout,
+                    exit_code: res.exit_code,
+                    signal: res.signal,
+                    stdout: &stdout_text,
+                    stderr: &stderr_text,
+                },
+            )
+        });
+        let verdict = parsed.verdict;
+        let detail = parsed.detail.clone();
+        note = parsed.note.clone();
+        let parsed = Some(parsed);
         if res.truncated {
             note = Some(format!("{}output truncated at {} bytes", note.map(|n| n + "; ").unwrap_or_default(), self.out_cap));
         }
@@ -254,12 +275,13 @@ impl Ctx<'_> {
             signal: res.signal,
             states: parsed.as_ref().and_then(|p| p.states),
             edges: parsed.as_ref().and_then(|p| p.edges),
-            convert_ms: None,
+            convert_ms,
             env_id: self.env_id.to_owned(),
             verdict_differs: false,
             pinned_core: core,
             mem_limiter: self.limiter.name().to_owned(),
             note,
+            detail,
             cmd: spec.display(),
             started_unix_ms: started,
         }
@@ -360,7 +382,7 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
                 let inst = &instances[u.inst];
                 let path = inst.abs_path();
                 let tf = u.target.and_then(|t| target_text(inst, &inst.targets[t]).ok()).map(|t| target_path(&results_dir, &t));
-                let spec = adapters[s].command(&Request { instance_path: &path, query: u.query, target_file: tf.as_deref(), internal_timeout_ms: None });
+                let spec = adapters[s].command(&Request { instance_path: &path, query: u.query, target_file: tf.as_deref(), internal_timeout_ms: None, converted: None });
                 let id = dummy.run_id(&Job { unit: ui, solver: s, rep: 0 });
                 println!("  {} {} {} {}  [{}]", adapters[s].solver_id(), u.query.as_str(), inst.mcc_model_id.as_deref().unwrap_or(&inst.instance_id[..inst.instance_id.len().min(12)]), spec.display(), &id[..12]);
                 shown += 1;
@@ -486,7 +508,7 @@ fn run_rounds(ctx: &Ctx, parallel: usize, log: &mut RunLog, done: &mut HashMap<S
                 "[r{round} {finished}/{total}] {} {} {} rep{} -> {} {:.1} ms{}{}",
                 rec.solver_id, rec.query, inst.mcc_model_id.as_deref().unwrap_or(&inst.path), rec.rep, rec.verdict.as_str(), rec.wall_ms,
                 if rec.verdict_differs { "  DIFFERS FROM REP 0" } else { "" },
-                rec.note.as_deref().filter(|_| matches!(rec.verdict, Verdict::Error | Verdict::Panic)).map(|n| format!("  ({n})")).unwrap_or_default(),
+                rec.detail.as_deref().map(|d| format!("  ({d})")).unwrap_or_default(),
             );
             *st.summary.entry(rec.solver_id.clone()).or_default().entry(rec.verdict).or_default() += 1;
             st.written += 1;
@@ -594,6 +616,57 @@ mod tests {
         assert_eq!(st.differing, 4);
     }
 
+    /// Classification table: real processes through runner + mock adapter + default rules.
+    #[test]
+    fn classification_table() {
+        let l = Limits { wall: Duration::from_millis(500), mem_kib: 1 << 20, core: None, out_cap: 4096, limiter: Limiter::None };
+        let classify = |shell: &str, program: Option<&str>| {
+            let m = Mock::new("mock", shell);
+            let mut spec = m.command(&Request { instance_path: Path::new("x"), query: Query::Q1, target_file: None, internal_timeout_ms: None, converted: None });
+            if let Some(p) = program {
+                spec.program = p.to_owned();
+            }
+            let res = runner::run_command(&spec, &l);
+            let (o, e) = (String::from_utf8_lossy(&res.stdout).into_owned(), String::from_utf8_lossy(&res.stderr).into_owned());
+            let p = m.classify_for(Query::Q1, &Finished {
+                spawn_error: res.spawn_error.as_deref(), timed_out: res.timed_out, memout: res.memout,
+                exit_code: res.exit_code, signal: res.signal, stdout: &o, stderr: &e,
+            });
+            (p.verdict, p.detail)
+        };
+        let d = |s: &str| Some(s.to_owned());
+        assert_eq!(classify("echo TRUE", None), (Verdict::True, None));
+        assert_eq!(classify("echo UNKNOWN", None), (Verdict::Unknown, None));
+        assert_eq!(classify("kill -SEGV $$", None), (Verdict::Crash, d("signal:SIGSEGV")));
+        assert_eq!(classify("kill -ABRT $$", None), (Verdict::Crash, d("abort")));
+        assert_eq!(classify("kill -KILL $$", None), (Verdict::Crash, d("signal:SIGKILL")));
+        assert_eq!(classify("exit 101", None), (Verdict::Crash, d("panic")));
+        assert_eq!(classify("echo bad >&2; exit 1", None), (Verdict::InputRejected, d("bad")));
+        assert_eq!(classify("exit 3", None), (Verdict::Crash, d("exit:3")));
+        assert_eq!(classify("echo garbage", None), (Verdict::RunnerError, d("unparseable output")));
+        assert_eq!(classify("sleep 30", None).0, Verdict::Timeout);
+        let (v, detail) = classify("", Some("/nonexistent/binary"));
+        assert_eq!(v, Verdict::RunnerError);
+        assert!(detail.unwrap().contains("/nonexistent/binary"));
+    }
+
+    #[test]
+    fn classification_order() {
+        let m = Mock::new("mock", "");
+        let base = Finished { spawn_error: None, timed_out: false, memout: false, exit_code: Some(0), signal: None, stdout: "TRUE", stderr: "" };
+        // spawn error beats everything, timeout beats memout beats signal beats exit code
+        let f = Finished { spawn_error: Some("boom"), timed_out: true, memout: true, signal: Some(11), ..base };
+        assert_eq!(m.classify(&f).verdict, Verdict::RunnerError);
+        let f = Finished { timed_out: true, memout: true, signal: Some(9), exit_code: None, ..base };
+        assert_eq!(m.classify(&f).verdict, Verdict::Timeout);
+        let f = Finished { memout: true, signal: Some(9), exit_code: None, ..base };
+        assert_eq!(m.classify(&f).verdict, Verdict::Memout);
+        let f = Finished { signal: Some(9), exit_code: None, ..base };
+        assert_eq!(m.classify(&f).detail.as_deref(), Some("signal:SIGKILL"));
+        let f = Finished { exit_code: Some(101), stdout: "TRUE", ..base };
+        assert_eq!(m.classify(&f).verdict, Verdict::Crash);
+    }
+
     #[test]
     fn repetition_rule() {
         let b = |v, w| Brief { run_id: String::new(), verdict: v, wall_ms: w, states: None, edges: None };
@@ -601,7 +674,9 @@ mod tests {
         assert_eq!(reps_wanted(&b(Verdict::False, 1000.0)), 3);
         assert_eq!(reps_wanted(&b(Verdict::Unknown, 10_000.0)), 1);
         assert_eq!(reps_wanted(&b(Verdict::Timeout, 1.0)), 1);
-        assert_eq!(reps_wanted(&b(Verdict::Error, 1.0)), 1);
+        for v in [Verdict::Crash, Verdict::InputRejected, Verdict::RunnerError, Verdict::Memout, Verdict::NotSupported] {
+            assert_eq!(reps_wanted(&b(v, 1.0)), 1);
+        }
     }
 
     /// End to end with the real petrivet binary (`PETRIVET_BIN` or the local release build); run with --ignored.

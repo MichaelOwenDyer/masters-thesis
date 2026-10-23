@@ -1,5 +1,5 @@
 //! Mock adapter for tests: runs an arbitrary shell command and reads the first word of its stdout as
-//! the verdict (`TRUE`, `FALSE`, ...). A non-zero exit is `ERROR`. Not reachable from the CLI.
+//! the verdict (`TRUE`, `FALSE`, ...). Exit codes are classified by the default rules. Not reachable from the CLI.
 
 use super::{Adapter, CommandSpec, Parsed, Query, Request};
 use crate::record::Verdict;
@@ -25,14 +25,11 @@ impl Adapter for Mock {
     fn command(&self, _req: &Request) -> CommandSpec {
         CommandSpec::new("sh", ["-c", self.shell.as_str()])
     }
-    fn parse(&self, stdout: &str, exit_code: i32) -> Parsed {
-        if exit_code != 0 {
-            return Parsed::error(format!("exit code {exit_code}"));
-        }
+    fn parse(&self, stdout: &str, _exit_code: i32) -> Parsed {
         let word = stdout.split_whitespace().next().unwrap_or("");
         match Verdict::from_name(word) {
             Some(v) => Parsed::verdict(v),
-            None => Parsed::error(format!("unparsable output {word:?}")),
+            None => Parsed::runner_error("unparseable output"),
         }
     }
 }

@@ -1,4 +1,5 @@
 mod adapters;
+mod calibrate;
 mod config;
 mod doctor;
 mod env;
@@ -69,6 +70,8 @@ enum Cmd {
     },
     /// Run solvers on instances as subprocesses and append run records (campaign B)
     Run(run::RunArgs),
+    /// Run the solvers on the hand-checked calibration nets and compare with the hand answers
+    Calibrate(calibrate::CalibrateArgs),
 }
 
 fn main() {
@@ -82,6 +85,7 @@ fn main() {
             Cmd::Histogram => histogram::run(&cfg),
             Cmd::Oracle => oracle_dl::run(&cfg),
             Cmd::Run(args) => run::run(&cfg, &cli.config, args),
+            Cmd::Calibrate(args) => calibrate::run(&cfg, &cli.config, args),
             Cmd::Manifest { source, out, dir } => match source.as_str() {
                 "mcc" => manifest_mcc::run_mcc(&cfg, out.as_deref()),
                 "calibration" => manifest_mcc::run_calibration(&dir, out.as_deref()),
