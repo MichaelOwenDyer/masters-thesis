@@ -11,7 +11,9 @@ pub struct Config {
 #[derive(Debug, Deserialize)]
 pub struct Paths {
     pub oracle_dir: PathBuf,
-    pub oracle_2025_zip: PathBuf,
+    /// Optional: when absent or missing, the 2025 comparison is skipped.
+    #[serde(default)]
+    pub oracle_2025_zip: Option<PathBuf>,
     pub corpus_dir: PathBuf,
 }
 
@@ -26,6 +28,7 @@ pub struct SelectCfg {
 #[derive(Debug, Deserialize)]
 pub struct FetchCfg {
     pub base_url: String,
+    pub oracle_url: String,
     pub quota_per_exam: usize,
     pub max_pnml_bytes: u64,
     pub curl_max_time_secs: u64,
@@ -42,11 +45,10 @@ impl Config {
             .parent()
             .unwrap()
             .to_path_buf();
-        for p in [
-            &mut cfg.paths.oracle_dir,
-            &mut cfg.paths.oracle_2025_zip,
-            &mut cfg.paths.corpus_dir,
-        ] {
+        for p in [Some(&mut cfg.paths.oracle_dir), cfg.paths.oracle_2025_zip.as_mut(), Some(&mut cfg.paths.corpus_dir)]
+            .into_iter()
+            .flatten()
+        {
             if p.is_relative() {
                 *p = base.join(&*p);
             }
@@ -62,6 +64,9 @@ impl Config {
     }
     pub fn histogram_path(&self) -> PathBuf {
         self.paths.corpus_dir.join("histogram.json")
+    }
+    pub fn oracle_tarball(&self) -> PathBuf {
+        self.paths.corpus_dir.join("oracle.tar.gz")
     }
     pub fn models_dir(&self) -> PathBuf {
         self.paths.corpus_dir.join("models")

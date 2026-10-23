@@ -2,10 +2,11 @@
 # The --config flag of petrivet-eval may override the path of this file only.
 
 [paths]
-# MCC 2026 oracle verdict files, one directory per model (<ModelId>/<ModelId>-<EXAM>.out).
-oracle_dir = "/Users/michael.dyer/RustroverProjects/petrivet-mcc/mcc-tests/oracle/models"
-# MCC 2025 archive, read only to compare model files (never used as a download source).
-oracle_2025_zip = "/Users/michael.dyer/RustroverProjects/petrivet-mcc/mcc-tests/oracle.zip"
+# MCC 2026 oracle verdict files, one directory per model (<ModelId>/<ModelId>-<EXAM>.out); filled by `petrivet-eval oracle`.
+oracle_dir = "corpus/mcc/oracle"
+# Optional: MCC 2025 archive, read only to compare model files (never a download source). Absent or missing file:
+# the comparison is skipped and the values recorded in selected.json are kept. Example: "/path/to/oracle.zip"
+# oracle_2025_zip = ""
 # Output directory of the MCC stage (selection.json, selected.json, histogram.json, models/).
 corpus_dir = "corpus/mcc"
 
@@ -28,6 +29,8 @@ models_per_candidate = 5
 small_target = 90
 
 [fetch]
+# MCC oracle verdict archive (cached as <corpus_dir>/oracle.tar.gz)
+oracle_url = "https://yanntm.github.io/pnmcc-models-2026/oracle.tar.gz"
 base_url = "https://yanntm.github.io/pnmcc-models-2026/INPUTS"
 # mcc-large models per examination (a family counts once across examinations)
 quota_per_exam = 5

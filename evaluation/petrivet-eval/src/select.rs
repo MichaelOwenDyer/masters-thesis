@@ -187,24 +187,53 @@ pub fn select(models: &[ModelOracle], p: &Parameters) -> Selection {
     }
 }
 
+/// Canonical JSON text of a record (pretty, trailing newline). All maps are BTreeMaps and all lists are sorted
+/// or seeded, so the text does not depend on platform, locale or hash order.
+pub fn to_json<T: Serialize>(v: &T) -> Result<String, String> {
+    let mut s = serde_json::to_string_pretty(v).map_err(|e| e.to_string())?;
+    s.push('\n');
+    Ok(s)
+}
+
 pub fn write_json<T: Serialize>(path: &std::path::Path, v: &T) -> Result<(), String> {
     if let Some(d) = path.parent() {
         std::fs::create_dir_all(d).map_err(|e| e.to_string())?;
     }
-    let mut s = serde_json::to_string_pretty(v).map_err(|e| e.to_string())?;
-    s.push('\n');
-    std::fs::write(path, s).map_err(|e| format!("{}: {e}", path.display()))
+    std::fs::write(path, to_json(v)?).map_err(|e| format!("{}: {e}", path.display()))
 }
 
-pub fn run(cfg: &Config) -> Result<(), String> {
+pub fn compute(cfg: &Config) -> Result<(Selection, Vec<ModelOracle>), String> {
     let models = oracle::load_all(&cfg.paths.oracle_dir)?;
+    if models.is_empty() {
+        return Err(format!("no oracle models in {} (run `petrivet-eval oracle` first)", cfg.paths.oracle_dir.display()));
+    }
     let params = Parameters {
         seed: cfg.select.seed,
         small_max_states: cfg.select.small_max_states,
         models_per_candidate: cfg.select.models_per_candidate,
         small_target: cfg.select.small_target,
     };
-    let sel = select(&models, &params);
+    Ok((select(&models, &params), models))
+}
+
+/// Ok(true) when the freshly computed selection equals the file on disk byte for byte.
+pub fn check(cfg: &Config) -> Result<bool, String> {
+    let (sel, _) = compute(cfg)?;
+    let fresh = to_json(&sel)?;
+    let disk = std::fs::read_to_string(cfg.selection_path()).map_err(|e| format!("{}: {e}", cfg.selection_path().display()))?;
+    Ok(fresh == disk)
+}
+
+pub fn run(cfg: &Config, check_only: bool) -> Result<(), String> {
+    if check_only {
+        return if check(cfg)? {
+            println!("selection check: OK, {} is reproduced byte for byte", cfg.selection_path().display());
+            Ok(())
+        } else {
+            Err(format!("selection check FAILED: the freshly computed selection differs from {}", cfg.selection_path().display()))
+        };
+    }
+    let (sel, models) = compute(cfg)?;
     write_json(&cfg.selection_path(), &sel)?;
     let first: Vec<&ModelOracle> = sel
         .small_candidates
@@ -218,9 +247,9 @@ pub fn run(cfg: &Config) -> Result<(), String> {
     println!("  models total              {:>5}", p.total);
     println!("  non-colored (no -COL-)    {:>5}", p.non_colored);
     println!("  pool (>=1 definite)       {:>5}", p.pool);
-    println!("  small pool (<= {:.0e} st.)  {:>5}  in {} families", params.small_max_states as f64, p.small_pool, p.small_pool_families);
+    println!("  small pool (<= {:.0e} st.)  {:>5}  in {} families", sel.parameters.small_max_states as f64, p.small_pool, p.small_pool_families);
     println!("  large pool                {:>5}  in {} families", p.large_pool, p.large_pool_families);
-    println!("mcc-small: {} families, {} candidate models, target {} (drawn by `fetch`, two passes)", sel.small_candidates.len(), sel.small_candidates.iter().map(|f| f.models.len()).sum::<usize>(), params.small_target);
+    println!("mcc-small: {} families, {} candidate models, target {} (drawn by `fetch`, two passes)", sel.small_candidates.len(), sel.small_candidates.iter().map(|f| f.models.len()).sum::<usize>(), sel.parameters.small_target);
     println!("  verdict balance among the first-choice (median) models, before parse filtering");
     println!("  {:<4} {:>5} {:>5} {:>5}", "exam", "true", "false", "?");
     for e in [Exam::L, Exam::QL, Exam::RD, Exam::OS, Exam::SM] {

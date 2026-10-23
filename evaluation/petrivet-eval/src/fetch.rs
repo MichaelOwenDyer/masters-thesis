@@ -227,12 +227,12 @@ fn hex(bytes: &[u8]) -> String {
 struct Zip2025(Option<zip::ZipArchive<std::fs::File>>);
 
 impl Zip2025 {
-    fn open(path: &Path) -> Self {
-        let z = std::fs::File::open(path).ok().and_then(|f| zip::ZipArchive::new(f).ok());
-        if z.is_none() {
-            eprintln!("warning: cannot open 2025 archive {}; changed_since_2025 will be null", path.display());
-        }
+    fn open(path: Option<&Path>) -> Self {
+        let z = path.and_then(|p| std::fs::File::open(p).ok()).and_then(|f| zip::ZipArchive::new(f).ok());
         Zip2025(z)
+    }
+    fn available(&self) -> bool {
+        self.0.is_some()
     }
     fn pnml(&mut self, id: &str) -> Option<Vec<u8>> {
         let z = self.0.as_mut()?;
@@ -243,10 +243,16 @@ impl Zip2025 {
     }
 }
 
-fn describe(cfg: &Config, o: &ModelOracle, stratum: &str, pass: Option<u8>, zip: &mut Zip2025) -> Result<SelectedModel, String> {
+fn describe(cfg: &Config, o: &ModelOracle, stratum: &str, pass: Option<u8>, zip: &mut Zip2025, prev: Option<&SelectedModel>) -> Result<SelectedModel, String> {
     let path: PathBuf = cfg.models_dir().join(&o.id).join("model.pnml");
     let data = std::fs::read(&path).map_err(|e| format!("{}: {e}", path.display()))?;
-    let changed = zip.pnml(&o.id).map(|old| old != data);
+    let sha = hex(&Sha256::digest(&data));
+    let changed = if zip.available() {
+        zip.pnml(&o.id).map(|old| old != data)
+    } else {
+        // comparison skipped: keep the recorded value only if the file is the one it was recorded for
+        prev.filter(|p| p.pnml_sha256 == sha).and_then(|p| p.changed_since_2025)
+    };
     Ok(SelectedModel {
         id: o.id.clone(),
         family: family(&o.id).to_string(),
@@ -255,7 +261,7 @@ fn describe(cfg: &Config, o: &ModelOracle, stratum: &str, pass: Option<u8>, zip:
         states: o.states.known(),
         states_raw: o.states.raw(),
         verdicts: o.verdicts.clone(),
-        pnml_sha256: hex(&Sha256::digest(&data)),
+        pnml_sha256: sha,
         pnml_bytes: data.len() as u64,
         changed_since_2025: changed,
     })
@@ -278,8 +284,9 @@ pub fn print_skip_table(sel: &Selected) {
     }
 }
 
-pub fn run(cfg: &Config) -> Result<(), String> {
+pub fn run(cfg: &Config, accept_changes: bool) -> Result<(), String> {
     let t0 = Instant::now();
+    let previous: Option<Selected> = std::fs::read_to_string(cfg.selected_path()).ok().and_then(|t| serde_json::from_str(&t).ok());
     let sel: Selection = serde_json::from_str(
         &std::fs::read_to_string(cfg.selection_path()).map_err(|e| format!("{} (run `select` first): {e}", cfg.selection_path().display()))?,
     )
@@ -341,11 +348,15 @@ pub fn run(cfg: &Config) -> Result<(), String> {
     }
 
     // describe
-    let mut zip = Zip2025::open(&cfg.paths.oracle_2025_zip);
+    let mut zip = Zip2025::open(cfg.paths.oracle_2025_zip.as_deref());
+    if !zip.available() {
+        println!("2025 comparison skipped (no oracle_2025_zip configured or file missing); keeping recorded changed_since_2025 values for unchanged files");
+    }
     let mut models = Vec::new();
     for (id, stratum, pass) in &picked {
         let o = oracle::load_model(&cfg.paths.oracle_dir, id);
-        models.push(describe(cfg, &o, stratum, *pass, &mut zip)?);
+        let prev = previous.as_ref().and_then(|p| p.models.iter().find(|m| m.id == *id));
+        models.push(describe(cfg, &o, stratum, *pass, &mut zip, prev)?);
     }
     let order = |s: &str| if s == "small" { "0".to_string() } else { format!("1{s}") };
     models.sort_by(|a, b| (order(&a.stratum), &a.id).cmp(&(order(&b.stratum), &b.id)));
@@ -375,7 +386,22 @@ pub fn run(cfg: &Config) -> Result<(), String> {
         counts,
     };
     let out = Selected { summary, models, skipped };
-    write_json(&cfg.selected_path(), &out)?;
+    // verification against the previously recorded selected.json
+    let mut mismatched: Vec<String> = Vec::new();
+    let mut dropped: Vec<String> = Vec::new();
+    if let Some(prev) = &previous {
+        for p in &prev.models {
+            match out.models.iter().find(|m| m.id == p.id) {
+                Some(m) if m.pnml_sha256 != p.pnml_sha256 => mismatched.push(p.id.clone()),
+                Some(_) => {}
+                None => dropped.push(p.id.clone()),
+            }
+        }
+    }
+    let diverged = !mismatched.is_empty() || !dropped.is_empty();
+    if !diverged || accept_changes {
+        write_json(&cfg.selected_path(), &out)?;
+    }
 
     let count = |p: &dyn Fn(&SelectedModel) -> bool| out.models.iter().filter(|m| p(m)).count();
     let su = &out.summary;
@@ -406,7 +432,25 @@ pub fn run(cfg: &Config) -> Result<(), String> {
         count(&|m| m.changed_since_2025.is_none()),
     );
     print_skip_table(&out);
-    println!("wrote {}", cfg.selected_path().display());
+    if diverged && !accept_changes {
+        println!("!!! VERIFICATION FAILED: the fetched models differ from the recorded {}", cfg.selected_path().display());
+        for id in &mismatched {
+            println!("!!!   pnml sha256 changed: {id}");
+        }
+        for id in &dropped {
+            println!("!!!   recorded model no longer drawn: {id}");
+        }
+        return Err(format!(
+            "{} model(s) changed upstream and {} recorded model(s) are no longer drawn; selected.json NOT rewritten (use --accept-changes)",
+            mismatched.len(),
+            dropped.len()
+        ));
+    }
+    if diverged {
+        println!("accepted changes ({} changed, {} dropped); wrote {}", mismatched.len(), dropped.len(), cfg.selected_path().display());
+    } else {
+        println!("verified against previous selected.json: no mismatch; wrote {}", cfg.selected_path().display());
+    }
     Ok(())
 }
 
