@@ -13,7 +13,7 @@
 let
   variant = if large then "large-amd64-linux" else "amd64-linux";
   hashes = {
-    amd64-linux = "sha256-IvC0he+grA0+ueqUhA7OG2Ru69dr1vdZMdkZI0lbC+g=";
+    amd64-linux = "sha256-Xhy9fC4ENBkDej0mWRQEL955VWMJTzjd2ItCRE1K+ow=";
     large-amd64-linux = "sha256-Ij+s9JN7e9BbMT6AA8QDwaodd1ZVU3ITsnDJ8WKPXA8=";
   };
 in
