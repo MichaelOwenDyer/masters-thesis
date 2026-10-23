@@ -37,3 +37,27 @@ quota_per_exam = 5
 # mcc-large candidates with a larger model.pnml are skipped
 max_pnml_bytes = 5000000
 curl_max_time_secs = 180
+
+[run]
+# Campaign B (subprocess runs). Relative results_dir is resolved against the directory of this file.
+results_dir = "results"
+# external wall-clock cap per run, the process group is killed on expiry (TIMEOUT)
+wall_cap_secs = 60
+# memory limit per run (MEMOUT when exceeded and detectable)
+mem_limit_gib = 8
+# at most this many jobs at the same time
+parallel_jobs = 3
+# one core per running job is taken from this list (worker i gets cores[i]); empty: no pinning. On the Linux box
+# use separate physical cores, for example [0, 2, 4] (hyper-thread siblings stay idle).
+cores = []
+# memory limiter: "auto" (cgroup v2 via systemd-run --user --scope if it works, else setrlimit address space on
+# Linux, else none), "cgroup", "rlimit" or "none"
+mem_limiter = "auto"
+# bytes of stdout and stderr kept per run, in KiB
+out_cap_kib = 1024
+# shuffle seed; if absent [select] seed is used
+# seed = 20261022
+
+[solvers.pv]
+# petrivet CLI; looked up on PATH. The environment variable PETRIVET_BIN overrides it (local testing).
+command = "petrivet"

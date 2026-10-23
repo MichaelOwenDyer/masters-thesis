@@ -1,4 +1,5 @@
 //! `gen --master-seed N --per-cell K --out DIR`: writes the `gen` corpus and prints statistics.
+//! `gen --families --out DIR [--min-exp A] [--max-exp B]`: writes the `fam` corpus (n = 2^A ..= 2^B).
 
 use petrivet_testkit::corpus::write_corpus;
 use petrivet_testkit::{Bucket, Class, Instance, Regime, consistent, detected_name, generate_instance};
@@ -8,6 +9,9 @@ use std::path::PathBuf;
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let get = |flag: &str| args.iter().position(|a| a == flag).and_then(|i| args.get(i + 1)).cloned();
+    if args.iter().any(|a| a == "--families") {
+        return families_main(&get);
+    }
     let (Some(seed), Some(k), Some(out)) = (get("--master-seed"), get("--per-cell"), get("--out")) else {
         eprintln!("usage: gen --master-seed N --per-cell K --out DIR");
         std::process::exit(2);
@@ -48,4 +52,27 @@ fn main() {
     let report = write_corpus(&out, &all).expect("write corpus");
     println!("\ninconsistent instances: {mismatches}");
     println!("wrote {} PNML files ({} duplicate PNML dropped) to {}", report.written, report.duplicates_dropped, out.display());
+}
+
+fn families_main(get: &dyn Fn(&str) -> Option<String>) {
+    use petrivet_testkit::corpus::write_family_corpus;
+    use petrivet_testkit::families::{DEFAULT_MAX_EXP, DEFAULT_MIN_EXP, detected, generate_all};
+    let Some(out) = get("--out") else {
+        eprintln!("usage: gen --families --out DIR [--min-exp A] [--max-exp B]");
+        std::process::exit(2);
+    };
+    let exp = |flag: &str, default: u32| get(flag).map_or(default, |v| v.parse().expect("exponent"));
+    let (lo, hi) = (exp("--min-exp", DEFAULT_MIN_EXP), exp("--max-exp", DEFAULT_MAX_EXP));
+    let all = generate_all(lo, hi);
+    println!("family            n   places transitions  tokens detected  declared verdicts");
+    for i in &all {
+        let verdicts: Vec<String> =
+            i.known.iter().map(|k| format!("{:?}={}", k.query, if k.verdict { "T" } else { "F" })).collect();
+        println!(
+            "{:<16} {:>5} {:>7} {:>11} {:>7} {:<9} {}",
+            i.family, i.n, i.raw.places, i.raw.transitions(), i.raw.tokens_total(), detected(i), verdicts.join(" ")
+        );
+    }
+    let report = write_family_corpus(&PathBuf::from(&out), &all).expect("write corpus");
+    println!("wrote {} PNML files ({} duplicate PNML dropped) to {out}", report.written, report.duplicates_dropped);
 }

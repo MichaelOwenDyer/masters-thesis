@@ -1,10 +1,18 @@
+mod adapters;
 mod config;
 mod doctor;
+mod env;
 mod fetch;
 mod histogram;
+mod instance;
+mod manifest_mcc;
 mod oracle;
 mod oracle_dl;
+mod record;
+mod run;
+mod runner;
 mod select;
+mod truth;
 
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
@@ -39,6 +47,28 @@ enum Cmd {
     Oracle,
     /// Check prerequisites: config, oracle, selection, selected models, external tools
     Doctor,
+    /// Write the instance manifest of a source whose truth is known without tools (mcc: corpus/mcc/manifest.jsonl)
+    Manifest {
+        /// mcc or calibration
+        #[arg(long)]
+        source: String,
+        /// Output file (default: <corpus_dir>/manifest.jsonl for mcc, <dir>/manifest.jsonl for calibration)
+        #[arg(long)]
+        out: Option<PathBuf>,
+        /// Calibration directory (source calibration only)
+        #[arg(long, default_value = "calibration")]
+        dir: PathBuf,
+    },
+    /// Write truth lines from the known answers of manifests (mcc oracle, construction, hand); gen is skipped
+    Truth {
+        /// Manifest files (jsonl), one or more
+        #[arg(long, required = true, num_args = 1..)]
+        manifest: Vec<PathBuf>,
+        #[arg(long, default_value = "results/truth.jsonl")]
+        out: PathBuf,
+    },
+    /// Run solvers on instances as subprocesses and append run records (campaign B)
+    Run(run::RunArgs),
 }
 
 fn main() {
@@ -51,6 +81,13 @@ fn main() {
             Cmd::Fetch { accept_changes } => fetch::run(&cfg, accept_changes),
             Cmd::Histogram => histogram::run(&cfg),
             Cmd::Oracle => oracle_dl::run(&cfg),
+            Cmd::Run(args) => run::run(&cfg, &cli.config, args),
+            Cmd::Manifest { source, out, dir } => match source.as_str() {
+                "mcc" => manifest_mcc::run_mcc(&cfg, out.as_deref()),
+                "calibration" => manifest_mcc::run_calibration(&dir, out.as_deref()),
+                other => Err(format!("--source {other}: expected mcc or calibration")),
+            },
+            Cmd::Truth { manifest, out } => truth::run(&manifest, &out),
             Cmd::Doctor => unreachable!(),
         })
     };

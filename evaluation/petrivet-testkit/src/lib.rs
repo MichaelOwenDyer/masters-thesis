@@ -9,10 +9,12 @@
 
 pub mod classes;
 pub mod corpus;
+pub mod families;
 pub mod raw;
 pub mod targets;
 
 pub use classes::{Bucket, Class};
+pub use families::{FamilyInstance, KnownAnswer, Query};
 use petrivet::net::class::NetClass;
 use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha8Rng;

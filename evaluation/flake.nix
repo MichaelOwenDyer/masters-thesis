@@ -3,11 +3,7 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  # petrivet has a flake of its own; its CLI package is what the evaluation runs.
-  inputs.petrivet.url = "github:MichaelOwenDyer/petrivet";
-  inputs.petrivet.inputs.nixpkgs.follows = "nixpkgs";
-
-  outputs = { self, nixpkgs, petrivet }:
+  outputs = { self, nixpkgs }:
     let
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f nixpkgs.legacyPackages.${system});
@@ -24,7 +20,7 @@
     {
       packages = nixpkgs.lib.recursiveUpdate
         (forAllSystems (pkgs: {
-          petrivet = petrivet.packages.${pkgs.system}.default;
+          petrivet = pkgs.callPackage ./nix/petrivet-cli.nix { };
           lola = pkgs.callPackage ./nix/lola.nix { };
         }))
         {
@@ -38,7 +34,6 @@
       devShells.${system}.default = pkgs.mkShell {
         # building petrivet-eval compiles the petrivet library, which needs Z3 and libclang (via the package's inputs)
         inputsFrom = [ self.packages.${system}.petrivet ];
-        # not `with self.packages...`: the flake input named `petrivet` would shadow the package
         packages = [
           self.packages.${system}.petrivet
           self.packages.${system}.lola
