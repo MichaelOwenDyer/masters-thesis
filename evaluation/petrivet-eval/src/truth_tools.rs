@@ -16,8 +16,9 @@
 //! counted separately). QC and QR targets are run and labelled by the same rule, with one exception: on a net whose
 //! Q2 truth is FALSE TINA is not run on them (its enumeration timed out on every unbounded calibration net and each
 //! such run costs the full labelling limit), and a definite LoLA answer alone becomes a label with source `lola-only`
-//! (tools `["lola"]`). The two tiers are never merged downstream. If a TINA record exists for such a cell anyway (an
-//! earlier run), the normal two-tool rule applies, so a disagreement is not hidden.
+//! (tools `["lola"]`). The two tiers are never merged downstream. If TINA has a definite answer for such a cell anyway
+//! (an earlier run), the normal two-tool rule applies, so a disagreement is not hidden; a recorded non-answer of TINA
+//! is ignored.
 //!
 //! Runs go through the same machinery as `run`/`calibrate` (`Ctx::execute`, campaign `TRUTH`, one repetition, no
 //! pinning, no memory limit, wall limit = labelling limit) and are appended to `<results_dir>/runs.jsonl`; a rerun
@@ -434,8 +435,9 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
             let (l, t) = (tool_result(&records, inst, q, tid.as_deref(), "lola"), tool_result(&records, inst, q, tid.as_deref(), "tina"));
             out.runner_errors += [&l, &t].iter().filter(|r| r.outcome == Verdict::RunnerError).count();
             let key = (inst.instance_id.clone(), q.as_str().to_owned(), tid.clone());
-            let tina_run = records.contains_key(&t.run_id);
-            let decision = if tina_skipped(q, q2) && !tina_run { decide_lola_only(&l) } else { decide(&l, &t) };
+            // a skipped TINA that has a definite answer anyway (an earlier run) still counts, so a disagreement is not hidden;
+            // a recorded TIMEOUT or other non-answer does not, which keeps the label independent of earlier runs
+            let decision = if tina_skipped(q, q2) && t.definite().is_none() { decide_lola_only(&l) } else { decide(&l, &t) };
             match decision {
                 Decision::Label(_) | Decision::LabelSingle(_) => {
                     let (b, single) = match decision {
@@ -779,6 +781,39 @@ mod tests {
         assert!(text.contains("DISAGREE instance=gen-a") && text.contains("query=QC") && text.contains("lola: FALSE") && text.contains("tina: TRUE") && text.contains("cmd:"));
         let sum = render_summary(&l.rows);
         assert!(sum.contains("mg") && sum.contains("free"));
+    }
+
+    /// Appends a TINA record for gen-b's QR target `b-qr1` (a cell where TINA is skipped) with the given verdict, copied from
+    /// an existing TINA record so that every field is well formed.
+    fn add_tina_record(results: &Path, verdict: &str) {
+        let text = std::fs::read_to_string(record::runs_path(results)).unwrap();
+        let line = text.lines().find(|l| l.contains("\"solver_id\":\"tina\"") && l.contains("\"query\":\"QR\"")).unwrap();
+        let mut v: Value = serde_json::from_str(line).unwrap();
+        v["instance_id"] = "gen-b".into();
+        v["target_id"] = "b-qr1".into();
+        v["verdict"] = verdict.into();
+        v["run_id"] = record::run_id(CAMPAIGN, "gen-b", "QR", Some("b-qr1"), "tina", 0).into();
+        let mut f = std::fs::OpenOptions::new().append(true).open(record::runs_path(results)).unwrap();
+        std::io::Write::write_all(&mut f, format!("{v}\n").as_bytes()).unwrap();
+    }
+
+    #[test]
+    fn earlier_tina_records_on_skipped_cells() {
+        let e = setup("skipped");
+        let results = e.dir.join("results");
+        let ms = [e.manifest.clone()];
+        let first = label(&cfg(&e, &ms, &results, None)).unwrap();
+        let reason = |l: &Labelled| l.excluded.iter().find(|x| x.target_id.as_deref() == Some("b-qr1")).map(|x| x.reason.clone());
+        assert_eq!(reason(&first).as_deref(), Some("lola_only:inconclusive"));
+        // a recorded non-answer of TINA changes nothing
+        add_tina_record(&results, "TIMEOUT");
+        let l = label(&cfg(&e, &ms, &results, None)).unwrap();
+        assert_eq!(reason(&l).as_deref(), Some("lola_only:inconclusive"));
+        assert_eq!(keys(&l), keys(&first));
+        // a definite TINA answer takes part: LoLA gives no answer on this target, so the cell is inconclusive for LoLA, not single-tool
+        add_tina_record(&results, "TRUE");
+        let l = label(&cfg(&e, &ms, &results, None)).unwrap();
+        assert_eq!(reason(&l).as_deref(), Some("inconclusive:lola"));
     }
 
     #[test]
