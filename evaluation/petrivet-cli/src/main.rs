@@ -271,7 +271,12 @@ fn analyze(sys: &PetriNet<Net>, property: Property, mode: Mode, params: &Params)
         (Property::Reach, Mode::General) => {
             let target = params.target.clone().expect("target checked in run");
             let mut explorer = sys.explore_reachability_graph(ExplorationOrder::BreadthFirst);
-            search_verdict(explorer.reaches_marking_until(target, deadline).map(Some), Verdict::True, Verdict::False)
+            // `reaches_marking_until` already answers yes or no; only the deadline makes the answer unknown
+            Outcome::new(match explorer.reaches_marking_until(target, deadline) {
+                Ok(true) => Verdict::True,
+                Ok(false) => Verdict::False,
+                Err(DeadlineExceeded) => Verdict::Unknown,
+            })
         }
 
         (Property::Cover, Mode::Dispatch) => {
