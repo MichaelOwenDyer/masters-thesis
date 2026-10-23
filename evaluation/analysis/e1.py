@@ -62,6 +62,10 @@ def run(ctx: Ctx) -> None:
         ctx.skip("e1", "truth file is empty")
         return
     adj = with_truth_only(adj)
+    # labels that rest on LoLA alone (TINA skipped on unbounded nets) are their own rows, never pooled with the two-tool labels
+    adj = adj.with_columns(
+        pl.when(pl.col("truth_source") == "lola-only").then(pl.col("source") + pl.lit("-lola-only")).otherwise(pl.col("source")).alias("source")
+    )
     tab = agreement_table(adj, ["solver_id", "source", "cls", "query"])
     ctx.csv("e1", tab)
     sub = adj.filter(pl.col("solver_id") == ctx.subject)

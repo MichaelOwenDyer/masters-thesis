@@ -13,7 +13,11 @@
 //! Rule per (instance, query, target): value = the common answer if both tools gave a definite TRUE/FALSE and agree;
 //! otherwise excluded with reason `disagree`, `inconclusive:<tool>` or `both_inconclusive`.
 //! Scope: if the Q2 truth of an instance is FALSE (unbounded), Q1, Q3 and Q4 are out of scope (not run, not labelled,
-//! counted separately). QC and QR targets are always run and labelled by the same rule.
+//! counted separately). QC and QR targets are run and labelled by the same rule, with one exception: on a net whose
+//! Q2 truth is FALSE TINA is not run on them (its enumeration timed out on every unbounded calibration net and each
+//! such run costs the full labelling limit), and a definite LoLA answer alone becomes a label with source `lola-only`
+//! (tools `["lola"]`). The two tiers are never merged downstream. If a TINA record exists for such a cell anyway (an
+//! earlier run), the normal two-tool rule applies, so a disagreement is not hidden.
 //!
 //! Runs go through the same machinery as `run`/`calibrate` (`Ctx::execute`, campaign `TRUTH`, one repetition, no
 //! pinning, no memory limit, wall limit = labelling limit) and are appended to `<results_dir>/runs.jsonl`; a rerun
@@ -87,6 +91,8 @@ pub enum Reason {
     /// The named tool gave no definite answer while the other one did.
     Inconclusive(String),
     BothInconclusive,
+    /// TINA was skipped (unbounded net) and LoLA gave no definite answer.
+    LolaOnlyInconclusive,
 }
 
 impl Reason {
@@ -95,6 +101,7 @@ impl Reason {
             Reason::Disagree => "disagree".into(),
             Reason::Inconclusive(t) => format!("inconclusive:{t}"),
             Reason::BothInconclusive => "both_inconclusive".into(),
+            Reason::LolaOnlyInconclusive => "lola_only:inconclusive".into(),
         }
     }
 }
@@ -102,6 +109,8 @@ impl Reason {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Decision {
     Label(bool),
+    /// Label from LoLA alone (see [`decide_lola_only`]).
+    LabelSingle(bool),
     Excluded(Reason),
 }
 
@@ -118,6 +127,22 @@ pub fn decide(lola: &ToolResult, tina: &ToolResult) -> Decision {
     }
 }
 
+/// Source of labels that rest on LoLA alone.
+pub const SINGLE_TOOL_SOURCE: &str = "lola-only";
+
+/// QR and QC on a net whose Q2 truth is FALSE (unbounded): TINA is not run.
+pub fn tina_skipped(query: Query, q2_truth: Option<bool>) -> bool {
+    matches!(query, Query::QR | Query::QC) && q2_truth == Some(false)
+}
+
+/// The decision when TINA was skipped: a definite LoLA answer is a single-tool label, anything else is excluded.
+pub fn decide_lola_only(lola: &ToolResult) -> Decision {
+    match lola.definite() {
+        Some(b) => Decision::LabelSingle(b),
+        None => Decision::Excluded(Reason::LolaOnlyInconclusive),
+    }
+}
+
 /// Scope rule of SPEC section 3: on a net whose Q2 truth is FALSE, Q1, Q3 and Q4 are out of scope.
 pub fn out_of_scope(query: Query, q2_truth: Option<bool>) -> bool {
     matches!(query, Query::Q1 | Query::Q3 | Query::Q4) && q2_truth == Some(false)
@@ -126,6 +151,7 @@ pub fn out_of_scope(query: Query, q2_truth: Option<bool>) -> bool {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Status {
     Labelled(bool),
+    LabelledSingle(bool),
     Excluded(Reason),
     OutOfScope,
 }
@@ -362,27 +388,25 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
     let mut done: HashSet<String> = read_tool_records(cfg.results_dir).into_iter().filter(|(_, r)| r.verdict != Verdict::RunnerError).map(|(k, _)| k).collect();
     let mut log = RunLog::open(cfg.results_dir)?;
 
-    // Phase 1: Q2 and every QR/QC target.
-    let mut units = Vec::new();
-    for (ii, inst) in instances.iter().enumerate() {
-        units.push(Unit { inst: ii, query: Query::Q2, target: None, solvers: both.clone() });
-        for (q, ti) in target_units(inst) {
-            units.push(Unit { inst: ii, query: q, target: Some(ti), solvers: both.clone() });
-        }
-    }
+    // Phase 1: Q2 with both tools.
+    let units: Vec<Unit> = (0..instances.len()).map(|ii| Unit { inst: ii, query: Query::Q2, target: None, solvers: both.clone() }).collect();
     let (r, s) = ex.execute(units, &mut done, &mut log)?;
     out.ran += r;
     out.skipped += s;
 
-    // Phase 2: Q1, Q3, Q4 unless Q2 truth is FALSE.
+    // Phase 2: every QR/QC target (LoLA only where Q2 truth is FALSE), then Q1, Q3, Q4 unless Q2 truth is FALSE.
     let records = read_tool_records(cfg.results_dir);
     let q2_of = |inst: &Instance, records: &HashMap<String, RunRecord>| match decide(&tool_result(records, inst, Query::Q2, None, "lola"), &tool_result(records, inst, Query::Q2, None, "tina")) {
-        Decision::Label(b) => Some(b),
+        Decision::Label(b) | Decision::LabelSingle(b) => Some(b),
         Decision::Excluded(_) => None,
     };
     let mut units = Vec::new();
     for (ii, inst) in instances.iter().enumerate() {
         let q2 = q2_of(inst, &records);
+        for (q, ti) in target_units(inst) {
+            let solvers = if tina_skipped(q, q2) { vec![0] } else { both.clone() };
+            units.push(Unit { inst: ii, query: q, target: Some(ti), solvers });
+        }
         for q in [Query::Q1, Query::Q3, Query::Q4] {
             if !out_of_scope(q, q2) {
                 units.push(Unit { inst: ii, query: q, target: None, solvers: both.clone() });
@@ -410,8 +434,15 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
             let (l, t) = (tool_result(&records, inst, q, tid.as_deref(), "lola"), tool_result(&records, inst, q, tid.as_deref(), "tina"));
             out.runner_errors += [&l, &t].iter().filter(|r| r.outcome == Verdict::RunnerError).count();
             let key = (inst.instance_id.clone(), q.as_str().to_owned(), tid.clone());
-            match decide(&l, &t) {
-                Decision::Label(b) => {
+            let tina_run = records.contains_key(&t.run_id);
+            let decision = if tina_skipped(q, q2) && !tina_run { decide_lola_only(&l) } else { decide(&l, &t) };
+            match decision {
+                Decision::Label(_) | Decision::LabelSingle(_) => {
+                    let (b, single) = match decision {
+                        Decision::Label(b) => (b, false),
+                        Decision::LabelSingle(b) => (b, true),
+                        Decision::Excluded(_) => unreachable!(),
+                    };
                     truth.insert(
                         key,
                         TruthLine {
@@ -419,12 +450,12 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
                             query: q.as_str().into(),
                             target_id: tid.clone(),
                             value: Value::Bool(b),
-                            source: "lola+tina".into(),
+                            source: if single { SINGLE_TOOL_SOURCE.into() } else { "lola+tina".into() },
                             corpus_source: "gen".into(),
-                            tools: TOOLS.iter().map(|s| (*s).to_owned()).collect(),
+                            tools: if single { vec!["lola".to_owned()] } else { TOOLS.iter().map(|s| (*s).to_owned()).collect() },
                         },
                     );
-                    out.rows.push(row(Status::Labelled(b)));
+                    out.rows.push(row(if single { Status::LabelledSingle(b) } else { Status::Labelled(b) }));
                 }
                 Decision::Excluded(reason) => {
                     let entry = |r: &ToolResult| ToolEntry { tool: r.tool.clone(), outcome: r.outcome.as_str().into(), detail: r.detail.clone(), cmd: r.cmd.clone(), run_id: r.run_id.clone() };
@@ -439,7 +470,7 @@ pub fn label(cfg: &LabelCfg) -> Result<Labelled, String> {
                             target_id: tid.clone(),
                             target: tid.as_deref().and_then(|t| target_text(inst, t)),
                             reason: reason.text(),
-                            results: vec![entry(&l), entry(&t)],
+                            results: if reason == Reason::LolaOnlyInconclusive { vec![entry(&l)] } else { vec![entry(&l), entry(&t)] },
                         },
                     );
                     out.rows.push(row(Status::Excluded(reason)));
@@ -496,6 +527,9 @@ pub struct Counts {
     pub inc_tina: usize,
     pub both_inc: usize,
     pub out_of_scope: usize,
+    /// Labelled by LoLA alone (TINA skipped), and the cells of that kind without a definite LoLA answer.
+    pub single: usize,
+    pub single_inc: usize,
 }
 
 impl Counts {
@@ -503,6 +537,8 @@ impl Counts {
         self.considered += 1;
         match s {
             Status::Labelled(_) => self.labelled += 1,
+            Status::LabelledSingle(_) => self.single += 1,
+            Status::Excluded(Reason::LolaOnlyInconclusive) => self.single_inc += 1,
             Status::OutOfScope => self.out_of_scope += 1,
             Status::Excluded(Reason::Disagree) => self.disagree += 1,
             Status::Excluded(Reason::BothInconclusive) => self.both_inc += 1,
@@ -518,6 +554,8 @@ impl Counts {
         self.inc_tina += o.inc_tina;
         self.both_inc += o.both_inc;
         self.out_of_scope += o.out_of_scope;
+        self.single += o.single;
+        self.single_inc += o.single_inc;
     }
 }
 
@@ -535,20 +573,20 @@ pub fn render_summary(rows: &[Row]) -> String {
     use std::fmt::Write;
     let mut o = String::new();
     let _ = writeln!(o, "\ngen labelling by LoLA+TINA (units = instance x query x target)");
-    let _ = writeln!(o, "{:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8}", "query", "class", "considered", "labelled", "disagree", "inc:lola", "inc:tina", "both_inc", "out_scope");
+    let _ = writeln!(o, "{:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8} {:>9} {:>7}", "query", "class", "considered", "labelled", "disagree", "inc:lola", "inc:tina", "both_inc", "out_scope", "lola_only", "lo_inc");
     let mut totals: BTreeMap<usize, Counts> = BTreeMap::new();
     for ((qi, class), c) in summarize(rows) {
         let q = QUERY_ORDER.get(qi).map_or("?", |q| q.as_str());
-        let _ = writeln!(o, "{q:<5} {class:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8}", c.considered, c.labelled, c.disagree, c.inc_lola, c.inc_tina, c.both_inc, c.out_of_scope);
+        let _ = writeln!(o, "{q:<5} {class:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8} {:>9} {:>7}", c.considered, c.labelled, c.disagree, c.inc_lola, c.inc_tina, c.both_inc, c.out_of_scope, c.single, c.single_inc);
         totals.entry(qi).or_default().plus(&c);
     }
     let mut all = Counts::default();
     for (qi, c) in &totals {
         let q = QUERY_ORDER.get(*qi).map_or("?", |q| q.as_str());
-        let _ = writeln!(o, "{q:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8}", "(all classes)", c.considered, c.labelled, c.disagree, c.inc_lola, c.inc_tina, c.both_inc, c.out_of_scope);
+        let _ = writeln!(o, "{q:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8} {:>9} {:>7}", "(all classes)", c.considered, c.labelled, c.disagree, c.inc_lola, c.inc_tina, c.both_inc, c.out_of_scope, c.single, c.single_inc);
         all.plus(c);
     }
-    let _ = writeln!(o, "{:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8}", "ALL", "", all.considered, all.labelled, all.disagree, all.inc_lola, all.inc_tina, all.both_inc, all.out_of_scope);
+    let _ = writeln!(o, "{:<5} {:<24} {:>10} {:>8} {:>8} {:>9} {:>9} {:>9} {:>8} {:>9} {:>7}", "ALL", "", all.considered, all.labelled, all.disagree, all.inc_lola, all.inc_tina, all.both_inc, all.out_of_scope, all.single, all.single_inc);
     o
 }
 
@@ -577,6 +615,23 @@ mod tests {
         }
         assert_eq!(Reason::Inconclusive("tina".into()).text(), "inconclusive:tina");
         assert_eq!(Reason::BothInconclusive.text(), "both_inconclusive");
+    }
+
+    #[test]
+    fn single_tool_rule() {
+        use Verdict::*;
+        assert_eq!(decide_lola_only(&tr("lola", True)), Decision::LabelSingle(true));
+        assert_eq!(decide_lola_only(&tr("lola", False)), Decision::LabelSingle(false));
+        for bad in [Unknown, Timeout, Memout, NotSupported, Crash, InputRejected, RunnerError] {
+            assert_eq!(decide_lola_only(&tr("lola", bad)), Decision::Excluded(Reason::LolaOnlyInconclusive), "{bad:?}");
+        }
+        assert_eq!(Reason::LolaOnlyInconclusive.text(), "lola_only:inconclusive");
+        for q in [Query::QR, Query::QC] {
+            assert!(tina_skipped(q, Some(false)) && !tina_skipped(q, Some(true)) && !tina_skipped(q, None), "{q:?}");
+        }
+        for q in [Query::Q1, Query::Q2, Query::Q3, Query::Q4] {
+            assert!(!tina_skipped(q, Some(false)), "{q:?}");
+        }
     }
 
     #[test]
@@ -685,16 +740,26 @@ mod tests {
                 "gen-b Q2 - false", "gen-b QC b-qc2 true"
             ]
         );
-        assert!(l.truth.iter().all(|t| t.source == "lola+tina" && t.corpus_source == "gen" && t.tools == ["lola", "tina"]));
+        // TINA is not run on QR/QC of the unbounded gen-b: its one labelled target rests on LoLA alone
+        assert!(l.truth.iter().all(|t| t.corpus_source == "gen"));
+        for t in &l.truth {
+            let single = t.instance_id == "gen-b" && t.query == "QC";
+            assert_eq!((t.source.as_str(), t.tools.clone()), if single { ("lola-only", vec!["lola".to_owned()]) } else { ("lola+tina", vec!["lola".to_owned(), "tina".to_owned()]) }, "{t:?}");
+        }
         let ex: Vec<(String, String, String)> = l.excluded.iter().map(|x| (x.instance_id.clone(), x.target_id.clone().unwrap_or_default(), x.reason.clone())).collect();
         assert_eq!(
             ex,
             [
                 ("gen-a".into(), "a-qc3".into(), "disagree".into()),
                 ("gen-a".into(), "a-qr4".into(), "both_inconclusive".into()),
-                ("gen-b".into(), "b-qr1".into(), "inconclusive:lola".into()),
+                ("gen-b".into(), "b-qr1".into(), "lola_only:inconclusive".into()),
             ]
         );
+        assert_eq!(l.excluded[2].results.len(), 1, "TINA was skipped, only LoLA's entry is kept");
+        let tina_calls = |id: &str, q: &str| -> usize { std::fs::read_to_string(results.join("runs.jsonl")).unwrap().lines().filter(|r| r.contains(id) && r.contains(q) && r.contains("\"solver_id\":\"tina\"")).count() };
+        assert_eq!((tina_calls("gen-b", "\"QR\""), tina_calls("gen-b", "\"QC\"")), (0, 0));
+        assert!(tina_calls("gen-a", "\"QR\"") > 0);
+        assert_eq!(l.rows.iter().filter(|r| matches!(r.status, Status::LabelledSingle(_))).count(), 1);
         assert_eq!(l.excluded[0].results.len(), 2);
         assert_eq!((l.excluded[0].results[0].outcome.as_str(), l.excluded[0].results[1].outcome.as_str()), ("FALSE", "TRUE"));
         assert!(l.excluded[0].results[0].cmd.contains("lola"));
@@ -703,7 +768,7 @@ mod tests {
         assert!(!calls.lines().any(|c| c.contains("gen-b") && (c.contains("DEADLOCK") || c.contains("FIREABLE") || c.contains("AG ("))), "{calls}");
         assert!(calls.lines().any(|c| c.contains("gen-a") && c.contains("DEADLOCK")));
         assert_eq!(l.rows.iter().filter(|r| r.status == Status::OutOfScope).count(), 3);
-        assert_eq!(l.ran, 22, "phase 1: 8 units, phase 2: 3 units (gen-a only), two tools each");
+        assert_eq!(l.ran, 20, "Q2 for both (4 runs), gen-a: 4 QR/QC targets and Q1, Q3, Q4 with two tools each (14), gen-b: 2 targets with LoLA only (2)");
         // files
         write_excluded(&results, &l.excluded).unwrap();
         assert_eq!(std::fs::read_to_string(excluded_path(&results)).unwrap().lines().count(), 3);

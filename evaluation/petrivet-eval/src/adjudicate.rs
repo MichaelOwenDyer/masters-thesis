@@ -184,6 +184,8 @@ fn oracle_like(source: &str) -> bool {
 /// Pattern of one DISAGREE (SPEC section 10). `others`: definite answers of the other solvers in the same cell.
 ///
 /// pv solver differing from truth:
+///   `petrivet-vs-single-tool` when the truth rests on LoLA alone (source `lola-only`; to be triaged by hand, for
+///   example by running TINA longer on that one cell);
 ///   `petrivet-alone` when lola and tina both answer and both equal the truth;
 ///   `petrivet-with-one-tool` when it agrees with one reference tool and the other reference tool differs from that answer;
 ///   `pv-modes-disagree` when another pv solver gave an opposite answer (and neither rule above applied);
@@ -195,6 +197,9 @@ fn oracle_like(source: &str) -> bool {
 pub fn classify_pattern(solver: &str, ans: &Ans, truth: &Value, truth_source: &str, others: &BTreeMap<String, Ans>) -> &'static str {
     let is_truth = |a: &Ans| compare(a, truth) == Some(true);
     if is_pv(solver) {
+        if truth_source == "lola-only" {
+            return "petrivet-vs-single-tool";
+        }
         let lola = others.get("lola");
         let tina = others.get("tina");
         if let (Some(l), Some(t)) = (lola, tina) {
@@ -435,7 +440,12 @@ pub fn e1_rows(lines: &[Line]) -> Vec<E1Row> {
     let mut m: BTreeMap<(String, String, String), (u64, u64)> = BTreeMap::new();
     for l in lines {
         if l.outcome == "AGREE" || l.outcome == "DISAGREE" {
-            let e = m.entry((l.solver_id.clone(), l.source.clone().unwrap_or_else(|| "unknown".into()), l.query.clone())).or_default();
+            // labels resting on LoLA alone are a separate row, never pooled with the two-tool labels
+            let mut source = l.source.clone().unwrap_or_else(|| "unknown".into());
+            if l.truth_source.as_deref() == Some("lola-only") {
+                source.push_str("-lola-only");
+            }
+            let e = m.entry((l.solver_id.clone(), source, l.query.clone())).or_default();
             if l.outcome == "AGREE" {
                 e.0 += 1;
             } else {
@@ -869,6 +879,7 @@ mod tests {
         assert_eq!(classify_pattern("lola", &f, &t, "mcc-oracle", &others(&[("tina", true)])), "tool-vs-oracle");
         assert_eq!(classify_pattern("tina", &f, &t, "construction", &others(&[])), "tool-vs-oracle");
         assert_eq!(classify_pattern("lola", &f, &t, "lola+tina", &others(&[("tina", true)])), "reference-vs-reference");
+        assert_eq!(classify_pattern("pv-dispatch", &f, &t, "lola-only", &others(&[("lola", true)])), "petrivet-vs-single-tool");
         assert_eq!(classify_pattern("lola", &f, &t, "lola+tina", &others(&[])), "other");
         assert_eq!(classify_pattern("mystery", &f, &t, "hand", &others(&[])), "other");
     }
