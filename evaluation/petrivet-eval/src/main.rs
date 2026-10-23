@@ -1,4 +1,5 @@
 mod adapters;
+mod adjudicate;
 mod calibrate;
 mod config;
 mod doctor;
@@ -14,6 +15,7 @@ mod run;
 mod runner;
 mod select;
 mod truth;
+mod truth_tools;
 
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
@@ -48,6 +50,8 @@ enum Cmd {
     Oracle,
     /// Check prerequisites: config, oracle, selection, selected models, external tools
     Doctor,
+    /// Join runs with truth, classify outcomes and disagreement patterns, write reproducers and the E1 statistics
+    Adjudicate(adjudicate::AdjudicateArgs),
     /// Write the instance manifest of a source whose truth is known without tools (mcc: corpus/mcc/manifest.jsonl)
     Manifest {
         /// mcc or calibration
@@ -67,6 +71,9 @@ enum Cmd {
         manifest: Vec<PathBuf>,
         #[arg(long, default_value = "results/truth.jsonl")]
         out: PathBuf,
+        /// With --tools lola,tina: also label the gen instances by LoLA/TINA agreement
+        #[command(flatten)]
+        tools: truth_tools::TruthArgs,
     },
     /// Run solvers on instances as subprocesses and append run records (campaign B)
     Run(run::RunArgs),
@@ -76,7 +83,9 @@ enum Cmd {
 
 fn main() {
     let cli = Cli::parse();
-    let result = if matches!(cli.cmd, Cmd::Doctor) {
+    let result = if let Cmd::Adjudicate(args) = &cli.cmd {
+        adjudicate::run(args)
+    } else if matches!(cli.cmd, Cmd::Doctor) {
         doctor::run(&cli.config)
     } else {
         config::Config::load(&cli.config).and_then(|cfg| match cli.cmd {
@@ -91,8 +100,8 @@ fn main() {
                 "calibration" => manifest_mcc::run_calibration(&dir, out.as_deref()),
                 other => Err(format!("--source {other}: expected mcc or calibration")),
             },
-            Cmd::Truth { manifest, out } => truth::run(&manifest, &out),
-            Cmd::Doctor => unreachable!(),
+            Cmd::Truth { manifest, out, tools } => truth::run(&cfg, &cli.config, &manifest, &out, &tools),
+            Cmd::Doctor | Cmd::Adjudicate(_) => unreachable!(),
         })
     };
     if let Err(e) = result {

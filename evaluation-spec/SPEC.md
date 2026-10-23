@@ -293,19 +293,17 @@ Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill i
 - Linux box only (i7-4790K, 32 GB, NixOS). Never measure on the Mac.
 - Governor `performance`, turbo off during runs, jobs pinned with `taskset` to separate physical cores, at most 3 jobs in parallel, hyper-thread siblings idle, 8 GiB memory limit per job.
 - Build: `cargo build --release` from the flake; the exact binary hash is in `env.json`.
-- Wall cap for campaign B: 60 s per run (all sources). Timeouts count as 2 x cap for PAR-2. Campaign A has no wall verdicts; shards have a safety cap.
+- Wall cap for campaign B: 60 s per run (all sources). Timeouts count as 2 x cap for PAR-2. Campaign A runs as CLI subprocesses with a 30 s cap per run (`[run] a_wall_cap_secs`); its wall times are not analysed.
 - Repetitions (campaign B only): 5 if the first run takes under 1 s, 3 if under 10 s, otherwise 1. Timeouts are not repeated. Repetitions double as a determinism check: a verdict that differs between repetitions is flagged as a finding.
 - Order: runs are shuffled with a seed and solvers are interleaved per instance, so thermal and cache drift does not favour a solver. A warm-up pass reads every instance once before measuring (cold-cache effects are a legitimate condition but not what is studied).
 - Startup baseline: every solver gets a no-op run on a trivial net, once per campaign.
 
 ## 9. Campaigns
 
-### A: correctness (in-process, `gen`)
-- For each net, query, and mode in {dispatch, general, effort-limited}: parse the PNML, build a fresh `PetriNet`, call the library inside `catch_unwind`, append a run (`pv-inproc`). A panic is recorded as `CRASH` with detail `panic` and its message (a finding, never discarded).
-- Fresh object per call: the library caches boundedness, liveness and deadlock results per `PetriNet`, so reuse would make results order-dependent.
-- Cache-coherence pass: one `PetriNet` per net, all queries in sequence and in a shuffled order; verdicts must equal the fresh results. Any difference is a finding.
-- Sharding: nets are processed in shards of about 100 by child processes with a safety timeout. A dead shard is `SHARD_FAILED` and is bisected on resume. This protects against abort, stack overflow, and hangs, which in-process execution would otherwise turn into a lost run.
-- CLI smoke: 5 percent of the nets (seeded) also run through the CLI; verdicts must equal the in-process ones. This covers the CLI's flag and verdict handling, which in-process does not.
+### A: correctness (subprocess, `gen`)
+- Every `gen` net is run through the CLI like in B (`petrivet-eval run --campaign A`), with campaign label `A`, solvers `pv-dispatch`, `pv-general`, `pv-poly`, and the queries that apply to `gen` (Q1, Q2, Q3, Q4, QR, QC; every QR and QC target of the manifest). One repetition per job, no repetition rule, no startup baseline, no warm-up, no pinning required. Wall cap 30 s per run (`a_wall_cap_secs`), a safety cap and not a measurement. Results go to `results/runs.jsonl`; the run is resumable (existing `run_id`s are skipped) and can be split with `--shard i/n` (stable by instance hash).
+- The CLI is the subject: a panic, abort, stack overflow or hang is a `CRASH` or `TIMEOUT` of one run, classified by the usual rules, and never takes other runs down. Outcomes are compared by adjudication (section 10) against the other modes and, where available, the reference tools; the summary lists per solver the instances with `CRASH` or `INPUT_REJECTED`. This replaces the in-process harness with shards, `SHARD_FAILED` and the separate CLI smoke check: the CLI's flag and verdict handling is now exercised by every run.
+- Fresh process per run: no cache is shared between runs. Whether the answer to one question depends on the questions asked before on the same `PetriNet` object (the library caches boundedness, liveness and deadlock results per object) is a library-level test, the cache-coherence test in the testkit (`petrivet-testkit/tests/cache_coherence.rs`): about 200 generated nets of all classes and size buckets, the six questions asked on a fresh object each and on one object in seeded permutations, answers (including `None` against `Some`) must be identical, and `Some` answers must agree with an explicit-state computation where the reachability graph is small.
 - Not measured here: time and memory.
 
 ### B: performance and comparison (subprocess, `fam`, `mcc-small`, `mcc-large`)
@@ -350,7 +348,7 @@ petrivet-bug, reference-bug, semantics-difference, generator-bug, conversion-bug
 | Id | Question | Method |
 |---|---|---|
 | E1 | Agreement with truth | per source x class x query: n conclusive, n agree, n disagree, inconclusive rate; for zero disagreements the one-sided 95 percent Clopper-Pearson upper bound on the error rate; separate row per source |
-| E1b | Cache coherence and CLI smoke | counts of differences (expected zero) |
+| E1b | Cache coherence | the testkit test `cache_coherence` (answers independent of question order and of the `PetriNet` object); count of differences, expected zero |
 | E2 | Dispatch ablation | `fam` only (`gen` nets are too small for timing): per instance median time of `pv-dispatch` vs `pv-general`, paired; Wilcoxon signed-rank per class, Holm-corrected; Hodges-Lehmann estimate and median ratio with IQR; instances where either times out are censored at the cap, with the count reported and a sensitivity run excluding them; frontier = largest size solved within the cap; peak RSS compared likewise. On `mcc-small`: only the share of instances where dispatch differs from general (class detection and `pv-poly` definite) |
 | E3a | Cost control by effort | share of `pv-poly` runs that are definite and correct, UNKNOWN share, instances where `pv-poly` answers and `pv-general` times out (`fam`, `mcc-large`; `mcc-large` flagged exploratory) |
 | E3b | Cost control by timeout | distribution of overshoot per instance family and procedure; share within the (frozen) threshold; the instances and phases responsible for the largest overshoots; share UNKNOWN vs definite per t |
@@ -434,7 +432,7 @@ Mapping:
 
 - Dropped: WASM; oxiz as an evaluation configuration; SMPT, verifypn, PM4Py; the naive independent oracle (BFS), class detector and invariant checker as testkit components; fixtures as a source; `native` instance format; `method` field; a pipeline stage for the pilot.
 - Added: Q5, Q6, QR, QC; `mcc-large`; E3b; cache-coherence pass; CLI smoke; CALIBRATE as a gate.
-- In-process execution for `gen` (decision 2026-10-22), with sharding and a CLI smoke check as compensation.
+- Campaign A as CLI subprocesses instead of the in-process harness (decision 2026-10-23); the cache-coherence check is a testkit test.
 - Testkit reduction (decision 2026-10-22): truth only from the MCC oracle or from LoLA and TINA agreeing; MCC 2026 instead of 2025; models downloaded fresh for the selected subset only.
 - H3b threshold intentionally open until the pilot.
 
@@ -448,7 +446,7 @@ Ordered by dependency, with gates. Estimated 10 working days; drop order when sh
 4. **Testkit**: generators with construction assertions, target proposer, manifest writer.
 5. **`select` and `truth`**: MCC subsets from the 2026 oracle with the class histogram, fresh model downloads, truth files, CALIBRATE with the 30 hand nets and the LoLA/TINA-against-MCC check.
 6. **Pilot (manual)**: timeout overshoot, family size ranges, cap and repetition counts; freeze `eval.toml`.
-7. **Campaign A**, then adjudicate and triage (bugs found here go back to the library before B).
+7. **Campaign A** (CLI subprocess runs on `gen`; cache-coherence test in the testkit), then adjudicate and triage (bugs found here go back to the library before B).
 8. **Campaigns B and C**, then **D**.
 9. **Analyze and export**, thesis integration, appendix of triaged disagreements.
 

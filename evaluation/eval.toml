@@ -43,6 +43,8 @@ curl_max_time_secs = 180
 results_dir = "results"
 # external wall-clock cap per run, the process group is killed on expiry (TIMEOUT)
 wall_cap_secs = 60
+# campaign A (correctness, `run --campaign A`): safety wall cap per run in seconds (not a measurement)
+a_wall_cap_secs = 30
 # memory limit per run (MEMOUT when exceeded and detectable)
 mem_limit_gib = 8
 # at most this many jobs at the same time

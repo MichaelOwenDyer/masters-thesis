@@ -77,7 +77,8 @@ pub struct Instance {
     #[serde(default)]
     pub size_bucket: Option<String>,
     #[serde(default)]
-    pub seed: Option<u64>,
+    /// The testkit writes the per-net seed as a hex string, other writers may use a number: kept as it is, unused.
+    pub seed: Option<serde_json::Value>,
     #[serde(default)]
     pub gen_version: Option<String>,
     #[serde(default)]

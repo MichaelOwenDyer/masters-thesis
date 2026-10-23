@@ -1,4 +1,5 @@
-//! `petrivet-eval run`: campaign B of SPEC 9 (subprocess runs, performance and comparison).
+//! `petrivet-eval run`: campaign B of SPEC 9 (subprocess runs, performance and comparison) and campaign A
+//! (correctness on generated nets, the same machinery with one repetition, no baseline, no warm-up).
 //!
 //! Plan: units = (instance, query, target) in seeded shuffled order, solvers shuffled inside each unit so that
 //! they run next to each other. Execution is in rounds: round 0 holds repetition 0 of every cell
@@ -27,6 +28,8 @@ use std::time::Duration;
 #[serde(default)]
 pub struct RunCfg {
     pub wall_cap_secs: u64,
+    /// Wall cap per run of campaign A (a safety cap, not a measurement).
+    pub a_wall_cap_secs: u64,
     pub mem_limit_gib: u64,
     pub parallel_jobs: usize,
     /// One core per running job is taken from this list (worker i gets `cores[i]`); empty: no pinning.
@@ -45,6 +48,7 @@ impl Default for RunCfg {
     fn default() -> Self {
         RunCfg {
             wall_cap_secs: 60,
+            a_wall_cap_secs: 30,
             mem_limit_gib: 8,
             parallel_jobs: 3,
             cores: Vec::new(),
@@ -76,18 +80,25 @@ pub(crate) fn load_sections(config_path: &Path) -> Result<(RunCfg, SolversCfg), 
 
 #[derive(clap::Args)]
 pub struct RunArgs {
-    /// Campaign; only B is implemented here
+    /// Campaign: B (performance and comparison, default) or A (correctness on `gen` nets: one repetition per job,
+    /// no startup baseline, no warm-up, cores used only if listed, wall cap `a_wall_cap_secs`)
     #[arg(long, default_value = "B")]
     campaign: String,
     /// Manifest(s): `.jsonl` instance manifests or corpus/mcc/selected.json (default: selected.json of the corpus)
     #[arg(long, num_args = 1..)]
     manifest: Vec<PathBuf>,
-    /// Comma separated solver ids
-    #[arg(long, value_delimiter = ',', default_value = "pv-dispatch,pv-general,pv-poly")]
+    /// Comma separated solver ids (default pv-dispatch,pv-general,pv-poly)
+    #[arg(long, value_delimiter = ',')]
     solvers: Vec<String>,
-    /// Comma separated queries
-    #[arg(long, value_delimiter = ',', default_value = "Q1,Q3")]
+    /// Comma separated queries (default: B Q1,Q3; A Q1,Q2,Q3,Q4,QR,QC, those that apply to the source of each instance)
+    #[arg(long, value_delimiter = ',')]
     queries: Vec<String>,
+    /// Process only the instances of shard I of N (0 <= I < N, `I/N`; stable by a hash of the instance id)
+    #[arg(long)]
+    shard: Option<String>,
+    /// Overrides the wall cap per run ([run] wall_cap_secs for B, a_wall_cap_secs for A)
+    #[arg(long)]
+    wall_cap_secs: Option<u64>,
     /// Use only the first N instances that have at least one job
     #[arg(long)]
     limit: Option<usize>,
@@ -288,10 +299,67 @@ impl Ctx<'_> {
     }
 }
 
-pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String> {
-    if !args.campaign.eq_ignore_ascii_case("B") {
-        return Err(format!("campaign {:?} is not implemented (only B)", args.campaign));
+/// Parses `I/N` (0 <= I < N).
+fn parse_shard(s: &str) -> Result<(u64, u64), String> {
+    let bad = || format!("--shard {s:?}: expected I/N with 0 <= I < N");
+    let (i, n) = s.split_once('/').ok_or_else(bad)?;
+    let (i, n): (u64, u64) = (i.trim().parse().map_err(|_| bad())?, n.trim().parse().map_err(|_| bad())?);
+    if n == 0 || i >= n { Err(bad()) } else { Ok((i, n)) }
+}
+
+/// Whether the instance belongs to shard `i` of `n` (stable: first 8 bytes of blake3(instance_id) mod n).
+fn in_shard(instance_id: &str, (i, n): (u64, u64)) -> bool {
+    let h = blake3::hash(instance_id.as_bytes());
+    u64::from_le_bytes(h.as_bytes()[..8].try_into().unwrap()) % n == i
+}
+
+/// Loads a manifest. The `gen` manifest of the testkit stores `seed` as a hex string while the shared loader
+/// expects a number; on that failure the line is retried without the field (it is not used by the runner).
+fn load_manifest(path: &Path) -> Result<Vec<Instance>, String> {
+    match instance::load(path) {
+        Err(e) if e.contains("invalid type: string") && path.extension().is_none_or(|x| x != "json") => {
+            let text = std::fs::read_to_string(path).map_err(|e| format!("{}: {e}", path.display()))?;
+            let base = path.canonicalize().ok().and_then(|p| p.parent().map(Path::to_path_buf)).unwrap_or_default();
+            let mut out = Vec::new();
+            for (n, line) in text.lines().enumerate().filter(|(_, l)| !l.trim().is_empty()) {
+                let mut v: serde_json::Value = serde_json::from_str(line).map_err(|e| format!("{}:{}: {e}", path.display(), n + 1))?;
+                if let Some(o) = v.as_object_mut()
+                    && o.get("seed").is_some_and(|s| !s.is_number())
+                {
+                    o.remove("seed");
+                }
+                let mut inst: Instance = serde_json::from_value(v).map_err(|e| format!("{}:{}: {e}", path.display(), n + 1))?;
+                if inst.path.is_empty() {
+                    return Err(format!("{}:{}: instance without path", path.display(), n + 1));
+                }
+                if inst.instance_id.is_empty() {
+                    let bytes = std::fs::read(base.join(&inst.path)).map_err(|e| format!("{}: {e}", inst.path))?;
+                    inst.instance_id = blake3::hash(&bytes).to_hex().to_string();
+                }
+                inst.base = base.clone();
+                out.push(inst);
+            }
+            Ok(out)
+        }
+        r => r,
     }
+}
+
+const A_QUERIES: &str = "Q1,Q2,Q3,Q4,QR,QC";
+
+pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), String> {
+    let is_a = args.campaign.eq_ignore_ascii_case("A");
+    if !is_a && !args.campaign.eq_ignore_ascii_case("B") {
+        return Err(format!("campaign {:?} is not implemented (only A and B)", args.campaign));
+    }
+    let campaign: &'static str = if is_a { "A" } else { "B" };
+    if args.solvers.is_empty() {
+        args.solvers = ["pv-dispatch", "pv-general", "pv-poly"].map(String::from).to_vec();
+    }
+    if args.queries.is_empty() {
+        args.queries = (if is_a { A_QUERIES } else { "Q1,Q3" }).split(',').map(String::from).collect();
+    }
+    let shard = args.shard.as_deref().map(parse_shard).transpose()?;
     let (rcfg, scfg) = load_sections(config_path)?;
     let results_dir = args.results_dir.clone().unwrap_or_else(|| rcfg.results_dir.clone());
 
@@ -304,7 +372,7 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
     let mut instances: Vec<Instance> = Vec::new();
     let mut seen = std::collections::HashSet::new();
     for m in &manifests {
-        for i in instance::load(m)? {
+        for i in load_manifest(m)? {
             if seen.insert(i.instance_id.clone()) {
                 instances.push(i);
             }
@@ -317,6 +385,9 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
     let mut units: Vec<Unit> = Vec::new();
     let mut missing = 0;
     for (ii, inst) in instances.iter().enumerate() {
+        if shard.is_some_and(|sh| !in_shard(&inst.instance_id, sh)) {
+            continue;
+        }
         if !inst.abs_path().is_file() {
             missing += 1;
             continue;
@@ -361,7 +432,7 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
 
     let n_instances = units.iter().map(|u| u.inst).collect::<std::collections::BTreeSet<_>>().len();
     let cells: usize = units.iter().map(|u| u.solvers.len()).sum();
-    let wall = Duration::from_secs(rcfg.wall_cap_secs);
+    let wall = Duration::from_secs(args.wall_cap_secs.unwrap_or(if is_a { rcfg.a_wall_cap_secs } else { rcfg.wall_cap_secs }));
     let mem_kib = rcfg.mem_limit_gib * 1024 * 1024;
     let mut parallel = rcfg.parallel_jobs.max(1);
     if !rcfg.cores.is_empty() && rcfg.cores.len() < parallel {
@@ -370,10 +441,14 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
     }
 
     if args.dry_run {
-        println!("campaign B: {n_instances} instances, {} units, {cells} first-run jobs (repetitions add up to 4 per cell after the first run)", units.len());
+        if is_a {
+            println!("campaign A: {n_instances} instances, {} units, {cells} jobs (one repetition each), wall cap {} s{}", units.len(), wall.as_secs(), shard.map_or(String::new(), |(i, n)| format!(", shard {i}/{n}")));
+        } else {
+            println!("campaign B: {n_instances} instances, {} units, {cells} first-run jobs (repetitions add up to 4 per cell after the first run)", units.len());
+        }
         println!("solvers {:?}, queries {:?}, seed {seed}, results {}", args.solvers, args.queries, results_dir.display());
         let dummy = Ctx {
-            campaign: "B", instances: &instances, units: &units, adapters: &adapters, results_dir: &results_dir, env_id: "dry",
+            campaign, instances: &instances, units: &units, adapters: &adapters, results_dir: &results_dir, env_id: "dry",
             wall, mem_kib, out_cap: 0, limiter: Limiter::None, cores: &rcfg.cores,
         };
         let mut shown = 0;
@@ -414,9 +489,16 @@ pub fn run(cfg: &Config, config_path: &Path, args: RunArgs) -> Result<(), String
     let mut done: HashMap<String, Brief> = record::read_existing(&results_dir);
     let mut log = RunLog::open(&results_dir)?;
     let ctx = Ctx {
-        campaign: "B", instances: &instances, units: &units, adapters: &adapters, results_dir: &results_dir, env_id: &env_id,
+        campaign, instances: &instances, units: &units, adapters: &adapters, results_dir: &results_dir, env_id: &env_id,
         wall, mem_kib, out_cap: rcfg.out_cap_kib * 1024, limiter, cores: &rcfg.cores,
     };
+
+    if is_a {
+        let stats = run_rounds_n(&ctx, parallel, &mut log, &mut done, 1)?;
+        println!("\ncampaign A: {} runs written to {}, {} skipped (already recorded)", stats.written, record::runs_path(&results_dir).display(), stats.skipped);
+        print_summary_a(&ctx, &results_dir);
+        return Ok(());
+    }
 
     // Startup baseline: one no-op run per solver on a trivial net.
     let base_dir = results_dir.join("baseline");
@@ -467,8 +549,13 @@ struct Stats {
 
 /// The round loop (see module docs): runs everything not yet in `done`, appends to the log.
 fn run_rounds(ctx: &Ctx, parallel: usize, log: &mut RunLog, done: &mut HashMap<String, Brief>) -> Result<Stats, String> {
+    run_rounds_n(ctx, parallel, log, done, 5)
+}
+
+/// Like [`run_rounds`] with at most `max_rounds` repetitions (campaign A: 1, no repetition rule).
+fn run_rounds_n(ctx: &Ctx, parallel: usize, log: &mut RunLog, done: &mut HashMap<String, Brief>, max_rounds: u32) -> Result<Stats, String> {
     let mut st = Stats::default();
-    for round in 0..5u32 {
+    for round in 0..max_rounds {
         let mut jobs: Vec<Job> = Vec::new();
         for (ui, u) in ctx.units.iter().enumerate() {
             for &s in &u.solvers {
@@ -523,6 +610,49 @@ fn run_rounds(ctx: &Ctx, parallel: usize, log: &mut RunLog, done: &mut HashMap<S
     }
 
     Ok(st)
+}
+
+/// Campaign A summary over every planned job that has a record in runs.jsonl (this invocation and earlier ones):
+/// outcome counts per solver and query, and per solver the instances with CRASH or INPUT_REJECTED outcomes.
+fn print_summary_a(ctx: &Ctx, results_dir: &Path) {
+    let mut planned: HashMap<String, ()> = HashMap::new();
+    for ui in 0..ctx.units.len() {
+        for &s in &ctx.units[ui].solvers {
+            planned.insert(ctx.run_id(&Job { unit: ui, solver: s, rep: 0 }), ());
+        }
+    }
+    let text = std::fs::read_to_string(record::runs_path(results_dir)).unwrap_or_default();
+    let mut counts: BTreeMap<(String, String), BTreeMap<String, usize>> = BTreeMap::new();
+    let mut failed: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    let mut total = 0;
+    for line in text.lines() {
+        let Ok(v) = serde_json::from_str::<serde_json::Value>(line) else { continue };
+        let s = |k: &str| v[k].as_str().unwrap_or("").to_owned();
+        if !planned.contains_key(&s("run_id")) {
+            continue;
+        }
+        total += 1;
+        let verdict = s("verdict");
+        *counts.entry((s("solver_id"), s("query"))).or_default().entry(verdict.clone()).or_default() += 1;
+        if verdict == "CRASH" || verdict == "INPUT_REJECTED" {
+            let note = v["detail"].as_str().map(|d| format!("  ({d})")).unwrap_or_default();
+            failed.entry(s("solver_id")).or_default().push(format!("{} {} {}{note}", verdict, s("query"), s("instance_id")));
+        }
+    }
+    println!("summary ({total} of {} planned runs recorded):", planned.len());
+    for ((solver, query), c) in &counts {
+        let line: Vec<String> = c.iter().map(|(v, n)| format!("{v}={n}")).collect();
+        println!("  {solver:<12} {query:<3} {}", line.join("  "));
+    }
+    for solver in counts.keys().map(|(s, _)| s.clone()).collect::<std::collections::BTreeSet<_>>() {
+        match failed.get(&solver) {
+            None => println!("  {solver}: no CRASH or INPUT_REJECTED"),
+            Some(list) => {
+                println!("  {solver}: {} CRASH/INPUT_REJECTED runs (instance ids)", list.len());
+                list.iter().for_each(|l| println!("    {l}"));
+            }
+        }
+    }
 }
 
 fn to_brief(r: &RunRecord) -> Brief {
@@ -665,6 +795,45 @@ mod tests {
         assert_eq!(m.classify(&f).detail.as_deref(), Some("signal:SIGKILL"));
         let f = Finished { exit_code: Some(101), stdout: "TRUE", ..base };
         assert_eq!(m.classify(&f).verdict, Verdict::Crash);
+    }
+
+    #[test]
+    fn shard_is_a_stable_partition() {
+        assert!(parse_shard("0/0").is_err() && parse_shard("3/3").is_err() && parse_shard("x").is_err());
+        assert_eq!(parse_shard("1/4").unwrap(), (1, 4));
+        for k in 0..200 {
+            let id = format!("inst{k}");
+            let hits = (0..4).filter(|&i| in_shard(&id, (i, 4))).count();
+            assert_eq!(hits, 1);
+        }
+        assert!((0..200).all(|k| in_shard(&format!("i{k}"), (0, 1))));
+    }
+
+    #[test]
+    fn campaign_a_single_repetition_and_resume() {
+        let dir = std::env::temp_dir().join(format!("pe-run-a-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&dir);
+        let (insts, adapters) = setup(&dir, "echo TRUE");
+        let units = [Unit { inst: 0, query: Query::Q1, target: None, solvers: vec![0] }];
+        let c = Ctx { campaign: "A", ..ctx(&insts, &units, &adapters, &dir, 5000) };
+        let mut log = RunLog::open(&dir).unwrap();
+        let mut done = record::read_existing(&dir);
+        let st = run_rounds_n(&c, 2, &mut log, &mut done, 1).unwrap();
+        assert_eq!(st.written, 1);
+        let st = run_rounds_n(&c, 2, &mut log, &mut done, 1).unwrap();
+        assert_eq!((st.written, st.skipped), (0, 1));
+        let rec: serde_json::Value = serde_json::from_str(std::fs::read_to_string(record::runs_path(&dir)).unwrap().lines().next().unwrap()).unwrap();
+        assert_eq!(rec["campaign"], "A");
+    }
+
+    #[test]
+    fn gen_manifest_with_hex_seed_loads() {
+        let dir = std::env::temp_dir().join(format!("pe-run-gm-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        std::fs::write(dir.join("a.pnml"), "x").unwrap();
+        std::fs::write(dir.join("m.jsonl"), "{\"instance_id\":\"i\",\"path\":\"a.pnml\",\"source\":\"gen\",\"seed\":\"21cfad\",\"targets\":[{\"target_id\":\"t\",\"kind\":\"QR\",\"marking\":[0,1]}]}\n").unwrap();
+        let v = load_manifest(&dir.join("m.jsonl")).unwrap();
+        assert_eq!((v.len(), v[0].targets.len(), v[0].seed.clone()), (1, 1, Some(serde_json::json!("21cfad"))));
     }
 
     #[test]

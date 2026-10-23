@@ -4,9 +4,11 @@
 //! Reads manifest lines, emits `results/truth.jsonl`: `{instance_id, query, target_id, value, source, corpus_source, tools}`
 //! where `source` is the origin of the answer (`mcc-oracle`, `construction`, `hand`) and `tools` is empty here.
 //! Output is sorted and deterministic. Instances of source `gen` have no known answers; their truth comes from LoLA
-//! and TINA agreeing (see [`truth_from_tools`], not implemented yet).
+//! and TINA agreeing (see `truth_tools`, enabled by `--tools lola,tina`).
 
+use crate::config::Config;
 use crate::manifest_mcc::KnownAnswer;
+use crate::truth_tools::{self, TruthArgs};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use std::collections::BTreeMap;
@@ -39,14 +41,6 @@ pub struct Skipped {
     pub generated: usize,
     /// instances of other sources that have no known answer at all
     pub no_answers: usize,
-}
-
-/// TODO(truth-from-tools): truth for `gen` instances and for QR/QC targets on `gen` and `mcc-small` is the agreement of
-/// LoLA and TINA, both conclusive within the labelling limit (SPEC section 7); disagreement or an inconclusive tool excludes
-/// the instance or target, decided before any petrivet answer is seen. Not implemented: it needs the LoLA and TINA adapters.
-#[allow(dead_code)]
-pub fn truth_from_tools(_manifest_paths: &[PathBuf], _labelling_limit_secs: u64) -> Result<Vec<TruthLine>, String> {
-    Err("truth from LoLA and TINA is not implemented yet".into())
 }
 
 fn parse_manifest(text: &str, what: &str) -> Result<Vec<ManifestLine>, String> {
@@ -115,7 +109,24 @@ pub fn summarize(lines: &[TruthLine]) -> BTreeMap<(String, String), (usize, usiz
     m
 }
 
-pub fn run(manifests: &[PathBuf], out: &Path) -> Result<(), String> {
+/// Merges two truth line sets (sorted by instance, query, target). Identical answers for the same key collapse; a
+/// contradiction is an error.
+pub fn merge_truth(a: Vec<TruthLine>, b: Vec<TruthLine>) -> Result<Vec<TruthLine>, String> {
+    let mut map: BTreeMap<(String, String, Option<String>), TruthLine> = BTreeMap::new();
+    for t in a.into_iter().chain(b) {
+        let key = (t.instance_id.clone(), t.query.clone(), t.target_id.clone());
+        if let Some(prev) = map.get(&key) {
+            if prev.value != t.value {
+                return Err(format!("{}: contradicting answers for {} ({} from {} versus {} from {})", t.instance_id, t.query, prev.value, prev.source, t.value, t.source));
+            }
+            continue;
+        }
+        map.insert(key, t);
+    }
+    Ok(map.into_values().collect())
+}
+
+pub fn run(cfg: &Config, config_path: &Path, manifests: &[PathBuf], out: &Path, tools: &TruthArgs) -> Result<(), String> {
     if manifests.is_empty() {
         return Err("--manifest needs at least one path".into());
     }
@@ -124,7 +135,33 @@ pub fn run(manifests: &[PathBuf], out: &Path) -> Result<(), String> {
         let text = std::fs::read_to_string(p).map_err(|e| format!("{}: {e}", p.display()))?;
         lines.extend(parse_manifest(&text, &p.display().to_string())?);
     }
-    let (truth, skipped) = build_truth(&lines)?;
+    let (mut truth, skipped) = build_truth(&lines)?;
+
+    let mut labelled: Option<(truth_tools::Labelled, PathBuf)> = None;
+    if !tools.tools.is_empty() {
+        let mut wanted: Vec<&str> = tools.tools.iter().map(String::as_str).collect();
+        wanted.sort_unstable();
+        wanted.dedup();
+        if wanted != truth_tools::TOOLS {
+            return Err(format!("--tools {:?}: gen truth needs exactly the two tools {}", tools.tools.join(","), truth_tools::TOOLS.join(",")));
+        }
+        let (rcfg, scfg) = crate::run::load_sections(config_path)?;
+        let results_dir = tools.results_dir.clone().unwrap_or_else(|| rcfg.results_dir.clone());
+        let l = truth_tools::label(&truth_tools::LabelCfg {
+            manifests,
+            results_dir: &results_dir,
+            wall_secs: tools.label_limit_secs,
+            parallel: tools.jobs.max(1),
+            sample: tools.only_gen_sample,
+            seed: rcfg.seed.unwrap_or(cfg.select.seed),
+            solvers: &scfg,
+            out_cap_kib: rcfg.out_cap_kib,
+        })?;
+        truth_tools::write_excluded(&results_dir, &l.excluded)?;
+        truth = merge_truth(truth, l.truth.clone())?;
+        labelled = Some((l, results_dir));
+    }
+
     let mut text = String::new();
     for t in &truth {
         text.push_str(&serde_json::to_string(t).map_err(|e| e.to_string())?);
@@ -136,10 +173,29 @@ pub fn run(manifests: &[PathBuf], out: &Path) -> Result<(), String> {
     std::fs::write(out, text).map_err(|e| format!("{}: {e}", out.display()))?;
 
     println!("wrote {} ({} truth lines from {} manifest lines)", out.display(), truth.len(), lines.len());
-    println!("skipped: {} gen instances (truth later from LoLA and TINA), {} other instances without known answers", skipped.generated, skipped.no_answers);
+    if labelled.is_none() {
+        println!("skipped: {} gen instances (truth later from LoLA and TINA), {} other instances without known answers", skipped.generated, skipped.no_answers);
+    } else {
+        println!("{} other instances without known answers", skipped.no_answers);
+    }
     println!("{:<12} {:<6} {:>6} {:>6} {:>6} {:>6}", "source", "query", "count", "true", "false", "value");
     for ((src, q), (t, f, o)) in summarize(&truth) {
         println!("{src:<12} {q:<6} {:>6} {t:>6} {f:>6} {o:>6}", t + f + o);
+    }
+    if let Some((l, results_dir)) = labelled {
+        println!(
+            "\ngen labelling: {} instances, {} runs executed, {} skipped (already in runs.jsonl); excluded targets: {} ({})",
+            l.instances,
+            l.ran,
+            l.skipped,
+            l.excluded.len(),
+            truth_tools::excluded_path(&results_dir).display()
+        );
+        print!("{}", truth_tools::render_disagreements(&l.excluded));
+        print!("{}", truth_tools::render_summary(&l.rows));
+        if l.runner_errors > 0 {
+            return Err(format!("{} labelling runs ended in RUNNER_ERROR (infrastructure failure; they are retried on the next invocation)", l.runner_errors));
+        }
     }
     Ok(())
 }
@@ -220,6 +276,16 @@ mod tests {
             known_answers: vec![KnownAnswer { query: "QR".into(), verdict: json!(true), origin: "hand".into(), target_id: None }],
         };
         assert!(build_truth(&[l]).is_err());
+    }
+
+    #[test]
+    fn merge_is_sorted_and_checks_contradictions() {
+        let t = |id: &str, q: &str, v: bool, src: &str| TruthLine {
+            instance_id: id.into(), query: q.into(), target_id: None, value: json!(v), source: src.into(), corpus_source: "gen".into(), tools: vec![],
+        };
+        let m = merge_truth(vec![t("b", "Q1", true, "construction")], vec![t("a", "Q2", false, "lola+tina"), t("b", "Q1", true, "lola+tina")]).unwrap();
+        assert_eq!(m.iter().map(|x| (x.instance_id.as_str(), x.source.as_str())).collect::<Vec<_>>(), [("a", "lola+tina"), ("b", "construction")]);
+        assert!(merge_truth(vec![t("a", "Q1", true, "hand")], vec![t("a", "Q1", false, "lola+tina")]).is_err());
     }
 
     #[test]

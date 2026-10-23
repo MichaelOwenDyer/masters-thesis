@@ -9,7 +9,7 @@
 //! | Q3 | same | the `live` / `not live` line (bounded nets only) |
 //! | Q4 | same | `N dead transition(s)`: 0 means quasi-live |
 //! | Q5 | `sift -R -f safe -q N.pnml` | `some state violates condition` means not 1-safe |
-//! | Q6 | script: `sift -R -k N.pnml N.ktz`, then per place `scan N.ktz -n "p = m0" -b`, stops at the first TRUE | |
+//! | Q6 | script: `sift -R -k N.pnml N.ktz`, then per place `scan N.ktz -n "-(p = m0)" -b` (TRUE iff no state differs), stops at the first TRUE | |
 //! | QR | script: `sift -R -rs -k N.pnml N.ktz`, then `scan N.ktz -r "p1 = a1 /\ ..." -b` over ALL places | `TRUE` / `FALSE` |
 //! | QC | same with `p >= a` over the places with a > 0; all-zero target: trivially true | |
 //!
@@ -48,8 +48,9 @@ impl Tina {
             // UNVERIFIED: settled by calibrate on the box (the atom `safe` and the violation line)
             Query::Q5 => CommandSpec::new(self.sift.as_str(), ["-R", "-f", "safe", "-q", net]),
             Query::Q6 => {
-                // UNVERIFIED: settled by calibrate on the box (`sift -k` profile, `scan -n "p = m" -b`, TRUE iff p = m everywhere)
-                let checks = places.iter().map(|(p, m0)| ("-n", format!("{} = {m0}", place_term(p)))).collect();
+                // verified on the box: `scan -n F -b` is TRUE iff NO state satisfies F, so the stable-place test is the
+                // negation `-(p = m0)`; the unnegated formula (the first version) was TRUE iff p never holds m0
+                let checks = places.iter().map(|(p, m0)| ("-n", format!("-({} = {m0})", place_term(p)))).collect();
                 self.script(net, &["-R", "-k"], checks, true)
             }
             Query::QR => {
@@ -191,6 +192,9 @@ impl Report {
         for line in text.lines().map(str::trim).filter(|l| !l.is_empty() && !l.starts_with('#')) {
             if line == "bounded" || line == "not bounded" {
                 r.bounded = Some(line.to_owned());
+            } else if line == "net unbounded" {
+                // what `tina -R -q` prints for an unbounded net (verified on the box), followed by `unbounded places include: ...`
+                r.bounded = Some("not bounded".to_owned());
             } else if line.contains("bounded") {
                 r.bounded.get_or_insert_with(|| line.to_owned());
             } else if line == "live" || line == "not live" || line == "possibly live" || line.contains("not applicable") {
@@ -319,6 +323,17 @@ mod tests {
         assert_eq!(v(Query::Q6, "PETRIVET_ANSWER other\n"), Verdict::Unknown);
     }
 
+    /// `tina -R -q` on an unbounded net (captured on the box): `net unbounded`, no liveness verdict.
+    #[test]
+    fn unbounded_net_report_from_the_box() {
+        let t = tina();
+        let text = std::fs::read_to_string(concat!(env!("CARGO_MANIFEST_DIR"), "/testdata/tools/tina_R_unbounded_cal11.txt")).unwrap();
+        assert_eq!(t.parse_q(Query::Q2, &text).verdict, Verdict::False);
+        for q in [Query::Q0, Query::Q3] {
+            assert_eq!(t.parse_q(q, &text).verdict, Verdict::Unknown, "{q:?}");
+        }
+    }
+
     #[test]
     fn unbounded_and_odd_reports_are_unknown() {
         let t = tina();
@@ -353,8 +368,8 @@ mod tests {
         let s = &c.args[1];
         assert!(s.contains("\"$sift\" -R -k \"$net\" \"$k\"; rc=$?"));
         assert!(s.contains("d=$(mktemp -d)") && s.contains("trap 'rm -rf \"$d\"' EXIT"));
-        assert!(s.contains("chk -n 'p0 = 1'\n[ \"$res\" = true ] && { echo 'PETRIVET_ANSWER true'; exit 0; }"));
-        assert!(s.contains("chk -n 'p1 = 0'\n") && s.contains("chk -n 'p2 = 2'\n"));
+        assert!(s.contains("chk -n '-(p0 = 1)'\n[ \"$res\" = true ] && { echo 'PETRIVET_ANSWER true'; exit 0; }"));
+        assert!(s.contains("chk -n '-(p1 = 0)'\n") && s.contains("chk -n '-(p2 = 2)'\n"));
         assert!(s.contains("[ \"$rc\" -eq 0 ] || exit \"$rc\""));
         assert!(s.ends_with("else echo 'PETRIVET_ANSWER false'; fi\n"));
         // QR: -rs profile, every place including zeros

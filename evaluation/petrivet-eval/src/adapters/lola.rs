@@ -10,14 +10,14 @@
 //! | Q0 | `--check=full --stubborn=off`, `analysis.stats.{states,edges}` |
 //! | Q1 | `--formula="EF DEADLOCK"`, result inverted (true = a deadlock exists = not deadlock-free) |
 //! | Q2 | `--search=cover --encoder=full --formula="IMPOSSIBLE (p1 = oo OR ...)"` over all places (true = bounded) |
-//! | Q3 | `--formula="AG ((EF FIREABLE(t1)) AND ...)"` over all transitions (true = live) |
+//! | Q3 | script: `AGEF FIREABLE(t)` per transition, stops at the first false (a combined formula over all transitions ran out of memory on tiny nets) |
 //! | Q4 | script: `EF FIREABLE(t)` per transition, stops at the first false |
 //! | Q5 | `--formula="AG (p1 <= 1 AND ...)"` |
 //! | Q6 | script: `AG (p = m0)` per place, stops at the first true |
 //! | QR | `--formula="EF (p1 = a1 AND ...)"` over ALL places, zeros included |
 //! | QC | `--formula="EF (pi >= ai AND ...)"` over places with ai > 0; all-zero target: trivially true |
 //!
-//! Multi-run queries (Q4, Q6) are ONE `sh -c` job (the runner measures the whole script): the sub-runs go in order,
+//! Multi-run queries (Q3, Q4, Q6) are ONE `sh -c` job (the runner measures the whole script): the sub-runs go in order,
 //! each sub-run JSON is echoed, the first non-zero exit code of a sub-run ends the script with that code, and the
 //! last line is `PETRIVET_ANSWER true|false|unknown`.
 //!
@@ -71,9 +71,10 @@ impl Lola {
             }
             Query::Q3 if transitions.is_empty() => constant("true"),
             Query::Q3 => {
-                // UNVERIFIED: settled by calibrate on the box (the combined AG (EF .. AND EF ..) formula parses and agrees)
-                let f = join(transitions.iter().map(|t| format!("(EF FIREABLE({t}))")).collect(), " AND ");
-                self.formula_cmd(net, &[], format!("AG ({f})"))
+                // the combined AG ((EF FIREABLE(t0)) AND ...) formula ran out of memory on nets of six transitions
+                // (calibrate on the box); one verified AGEF run per transition, early exit on the first false
+                let checks = transitions.iter().map(|t| format!("AGEF FIREABLE({t})")).collect();
+                self.script(net, checks, "false", "true")
             }
             Query::Q4 => {
                 // UNVERIFIED: settled by calibrate on the box (early exit on the first false; behaviour on limit hits)
@@ -276,7 +277,6 @@ mod tests {
         assert_eq!(argv(Query::Q0, None), mk(&["--check=full", "--stubborn=off"]));
         assert_eq!(argv(Query::Q1, None), mk(&["--formula=EF DEADLOCK"]));
         assert_eq!(argv(Query::Q2, None), mk(&["--search=cover", "--encoder=full", "--formula=IMPOSSIBLE (p0 = oo OR p1 = oo OR p2 = oo)"]));
-        assert_eq!(argv(Query::Q3, None), mk(&["--formula=AG ((EF FIREABLE(t0)) AND (EF FIREABLE(t1)))"]));
         assert_eq!(argv(Query::Q5, None), mk(&["--formula=AG (p0 <= 1 AND p1 <= 1 AND p2 <= 1)"]));
         // QR lists every place, zeros included
         let tgt: BTreeMap<String, u32> = [("p2".to_owned(), 3)].into();
@@ -303,6 +303,8 @@ mod tests {
         let s = &q4.args[1];
         assert!(s.contains("lola='lola'; net='N.lola'"));
         assert!(s.contains("chk 'EF FIREABLE(t0)' false\nchk 'EF FIREABLE(t1)' false\n"));
+        let q3 = lola().build(Query::Q3, "N.lola", &p, &t, None);
+        assert!(q3.args[1].contains("chk 'AGEF FIREABLE(t0)' false\nchk 'AGEF FIREABLE(t1)' false\n"));
         assert!(s.contains("[ \"$rc\" -eq 0 ] || exit \"$rc\""));
         assert!(s.contains("if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi"));
         assert!(s.ends_with("else echo 'PETRIVET_ANSWER true'; fi\n"));
