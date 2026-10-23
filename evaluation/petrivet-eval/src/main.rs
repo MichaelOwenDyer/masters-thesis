@@ -7,6 +7,7 @@ mod env;
 mod fetch;
 mod histogram;
 mod instance;
+mod latency;
 mod manifest_mcc;
 mod oracle;
 mod oracle_dl;
@@ -79,6 +80,8 @@ enum Cmd {
     Run(run::RunArgs),
     /// Run the solvers on the hand-checked calibration nets and compare with the hand answers
     Calibrate(calibrate::CalibrateArgs),
+    /// Latency campaign D (E6): in-process and subprocess call sequences on small gen nets, startup baselines
+    Latency(latency::LatencyArgs),
 }
 
 fn main() {
@@ -95,6 +98,7 @@ fn main() {
             Cmd::Oracle => oracle_dl::run(&cfg),
             Cmd::Run(args) => run::run(&cfg, &cli.config, args),
             Cmd::Calibrate(args) => calibrate::run(&cfg, &cli.config, args),
+            Cmd::Latency(args) => latency::run(&cfg, &cli.config, args),
             Cmd::Manifest { source, out, dir } => match source.as_str() {
                 "mcc" => manifest_mcc::run_mcc(&cfg, out.as_deref()),
                 "calibration" => manifest_mcc::run_calibration(&dir, out.as_deref()),

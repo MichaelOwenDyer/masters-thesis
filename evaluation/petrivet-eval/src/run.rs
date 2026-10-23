@@ -23,6 +23,9 @@ use std::collections::{BTreeMap, HashMap};
 use std::path::{Path, PathBuf};
 use std::time::Duration;
 
+#[path = "campaign_c.rs"]
+mod campaign_c;
+
 /// `[run]` of eval.toml.
 #[derive(Debug, Deserialize)]
 #[serde(default)]
@@ -42,6 +45,8 @@ pub struct RunCfg {
     pub mem_limiter: String,
     /// Bytes of stdout and stderr kept per run.
     pub out_cap_kib: usize,
+    /// Campaign C: internal timeouts t in milliseconds (SPEC 9, E3b).
+    pub c_timeouts_ms: Vec<u64>,
 }
 
 impl Default for RunCfg {
@@ -56,6 +61,7 @@ impl Default for RunCfg {
             seed: None,
             mem_limiter: "auto".into(),
             out_cap_kib: 1024,
+            c_timeouts_ms: vec![10, 100, 1000],
         }
     }
 }
@@ -80,8 +86,10 @@ pub(crate) fn load_sections(config_path: &Path) -> Result<(RunCfg, SolversCfg), 
 
 #[derive(clap::Args)]
 pub struct RunArgs {
-    /// Campaign: B (performance and comparison, default) or A (correctness on `gen` nets: one repetition per job,
-    /// no startup baseline, no warm-up, cores used only if listed, wall cap `a_wall_cap_secs`)
+    /// Campaign: B (performance and comparison, default), A (correctness on `gen` nets: one repetition per job,
+    /// no startup baseline, no warm-up, cores used only if listed, wall cap `a_wall_cap_secs`) or C (timeout
+    /// sweep of `pv-dispatch` with `--timeout-ms t` for t in `[run] c_timeouts_ms` on the cells of B's runs.jsonl
+    /// that took more than 2 x the largest t)
     #[arg(long, default_value = "B")]
     campaign: String,
     /// Manifest(s): `.jsonl` instance manifests or corpus/mcc/selected.json (default: selected.json of the corpus)
@@ -108,6 +116,14 @@ pub struct RunArgs {
     /// Overrides [run] results_dir
     #[arg(long)]
     results_dir: Option<PathBuf>,
+    /// Campaign C: subdirectory of the results directory that receives the output (for example `pilot`);
+    /// B's runs.jsonl is still read from the results directory itself
+    #[arg(long)]
+    results_subdir: Option<String>,
+    /// Campaign C: comma separated instance ids (or MCC model ids or manifest paths) to run instead of the
+    /// slow cells of B; no B results needed, no time threshold, default queries Q1,Q3 (the pilot)
+    #[arg(long, value_delimiter = ',')]
+    instances: Vec<String>,
 }
 
 /// One (instance, query, target) and the solvers that run on it, in execution order.
@@ -348,9 +364,12 @@ fn load_manifest(path: &Path) -> Result<Vec<Instance>, String> {
 const A_QUERIES: &str = "Q1,Q2,Q3,Q4,QR,QC";
 
 pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), String> {
+    if args.campaign.eq_ignore_ascii_case("C") {
+        return campaign_c::run(cfg, config_path, args);
+    }
     let is_a = args.campaign.eq_ignore_ascii_case("A");
     if !is_a && !args.campaign.eq_ignore_ascii_case("B") {
-        return Err(format!("campaign {:?} is not implemented (only A and B)", args.campaign));
+        return Err(format!("campaign {:?} is not implemented (A, B and C)", args.campaign));
     }
     let campaign: &'static str = if is_a { "A" } else { "B" };
     if args.solvers.is_empty() {

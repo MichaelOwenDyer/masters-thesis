@@ -117,7 +117,9 @@ pub fn looks_like_memout(failed: bool, signal: Option<i32>, peak_rss_kib: Option
         || text.contains("out of memory")
         || text.contains("bad_alloc")
         || text.contains("cannot allocate memory");
-    let killed_big = signal == Some(libc::SIGKILL)
+    // SIGKILL is the kernel OOM killer; SIGTERM is systemd stopping the scope after one of its processes was
+    // OOM-killed (OOMPolicy=stop). Shell wrappers report either as exit status 128+n, mapped by the caller.
+    let killed_big = matches!(signal, Some(libc::SIGKILL | libc::SIGTERM))
         && peak_rss_kib.is_some_and(|r| mem_kib > 0 && r.saturating_mul(10) >= mem_kib.saturating_mul(9));
     (failed && msg) || killed_big
 }
@@ -252,7 +254,12 @@ pub fn run_command(spec: &CommandSpec, limits: &Limits) -> RunResult {
     timed_out &= signal == Some(libc::SIGKILL);
     let maxrss = ru.ru_maxrss.max(0) as u64;
     let peak_rss_kib = Some(if cfg!(target_os = "macos") { maxrss / 1024 } else { maxrss });
-    let memout = !timed_out && looks_like_memout(exit_code != Some(0), signal, peak_rss_kib, limits.mem_kib, &stderr);
+    let shell_signal = signal.or(match exit_code {
+        Some(137) => Some(libc::SIGKILL),
+        Some(143) => Some(libc::SIGTERM),
+        _ => None,
+    });
+    let memout = !timed_out && looks_like_memout(exit_code != Some(0), shell_signal, peak_rss_kib, limits.mem_kib, &stderr);
     RunResult {
         wall_ms: end.duration_since(start).as_secs_f64() * 1000.0,
         cpu_user_ms: tv_ms(ru.ru_utime),
@@ -352,6 +359,9 @@ mod tests {
         assert!(looks_like_memout(true, Some(libc::SIGABRT), None, 1024, b"memory allocation of 99 bytes failed"));
         assert!(looks_like_memout(true, Some(libc::SIGKILL), Some(950), 1000, b""));
         assert!(!looks_like_memout(true, Some(libc::SIGKILL), Some(100), 1000, b""));
+        // systemd stops the scope with SIGTERM after the OOM kill; only near the limit is it a MEMOUT
+        assert!(looks_like_memout(true, Some(libc::SIGTERM), Some(950), 1000, b""));
+        assert!(!looks_like_memout(true, Some(libc::SIGTERM), Some(100), 1000, b""));
         assert!(!looks_like_memout(false, None, Some(2000), 1000, b""));
     }
 

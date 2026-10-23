@@ -24,7 +24,7 @@ Hypotheses are fixed before the first measured run. Changing one afterwards is l
 |---|---|---|---|
 | C1 | Answers are correct (RQ3) | **H1**: zero definite disagreements between `pv-dispatch` and truth, on all conclusive instances of `gen`, `mcc-small`, `mcc-large`, for queries Q0-Q6. **H1b**: same for QR and QC on `gen`. | E1, E5 |
 | C2 | Dispatching to the cheapest applicable procedure pays off (RQ2) | **H2**: on instances of a restricted structural class, `pv-dispatch` is faster than `pv-general`; paired effect positive (Wilcoxon signed-rank, alpha 0.05, Holm-corrected across classes; Hodges-Lehmann estimate reported). | E2 |
-| C3 | The caller can restrict runtime cost (RQ2, R3) | **H3a**: there are instances where `pv-poly` returns a definite, correct verdict within the cap and `pv-general` times out. **H3b**: the library `timeout` returns close to its deadline. The threshold for "close" is NOT fixed yet; it is set from the by-hand pilot (section 9) and frozen in `eval.toml` before E3 runs. | E3 |
+| C3 | The caller can restrict runtime cost (RQ2, R3) | **H3a**: there are instances where `pv-poly` returns a definite, correct verdict within the cap and `pv-general` times out. **H3b**: the library `timeout` returns close to its deadline. The threshold for "close" is provisionally 200 ms (`[e3] overshoot_threshold_ms` in `eval.toml`); the by-hand pilot (section 9) confirms or changes it, and it is frozen before E3 runs. | E3 |
 | C4 | Standing relative to the state of the art, and embedding latency (RQ3, R1, R5) | **H4**: for small nets, in-process latency is lower than any subprocess-based tool. | E4, E6 |
 
 Non-claims (stated in the chapter): petrivet does not outperform LoLA or TINA on large general nets;
@@ -106,7 +106,7 @@ petrivet analyze FILE -p df|bounded|live|quasi-live|statespace|onesafe|stable|re
 ```
 
 - Modes: `dispatch` = library default effort; `poly` = efficient effort only (may answer `unknown`); `general` = explicit-state procedure only, no structural shortcuts.
-  General mode stops as early as the property allows: deadlock-freedom, 1-safety and reachability stop at the first witness (`find_until` on the reachability explorer); coverability is one pass over the Karp-Miller coverability graph; bounded and state space use the coverability exploration, which stops at the first omega, so an unbounded net answers `false` / `unbounded` quickly; liveness, quasi-liveness and stable need the complete graph. `--timeout-ms` applies in every mode.
+  General mode stops as early as the property allows: deadlock-freedom, 1-safety and reachability stop at the first witness (`find_until` on the reachability explorer); coverability is one pass over the Karp-Miller coverability graph; bounded uses the coverability exploration, which stops at the first omega, so an unbounded net answers `false` quickly; state space, liveness, quasi-liveness and stable need the complete reachability graph and use direct reachability exploration (the omega-checking exploration was more than 100 times slower on bounded MCC models), so on unbounded nets they end in TIMEOUT or MEMOUT. `--timeout-ms` applies in every mode.
   For `reach` and `cover`: `dispatch` = the efficient check (circuits, strongly connected state machines, trap refutation), then the library's CEGAR pipeline; `poly` = the efficient check only (`unknown` otherwise); `general` as above.
 - `--target`: JSON map from place id to token count.
 - JSON fields: tool, version, file, property, mode, verdict, class, places, transitions, arcs, parse_ms, analyze_ms, timeout_ms, optional states, edges.
@@ -218,7 +218,9 @@ The testkit only proposes candidate targets. The right answer for each candidate
 | `pv-dispatch` | petrivet CLI, `-m dispatch` | subject |
 | `pv-general` | petrivet CLI, `-m general` | ablation baseline |
 | `pv-poly` | petrivet CLI, `-m poly` (efficient effort) | cost-control claim |
-| `pv-inproc` | the library called from the evaluation process | correctness (A) and latency (D) only, never wall-time comparisons |
+| `pv-inproc-parsed` | the library called from the evaluation process on an already parsed net, a fresh copy per call (the library caches liveness and deadlock results per `PetriNet` object) | latency (D) only, never wall-time comparisons |
+| `pv-inproc-cached` | as above on one object per sequence: the first call computes, later calls are cache hits | latency (D), reported as a caching note, not as the headline |
+| `pv-inproc-parse` | file read, PNML parse and query in each call | latency (D) only |
 | `lola` | LoLA, version pinned | reference, truth for `gen`, comparison |
 | `tina` | TINA toolbox, version pinned | reference, truth for `gen`, comparison |
 
@@ -284,9 +286,9 @@ Every non-answer settles three questions: did the tool decline, did we stop it, 
 - Failed, the tool did not answer and we did not stop it: INPUT_REJECTED (clean error exit with a diagnostic: the instance could not be read; for petrivet the importer errors such as a disconnected net or a weighted arc; for reference tools conversion or parse errors), CRASH (abnormal termination: a signal we did not send such as SIGSEGV, SIGABRT, SIGBUS, SIGILL, SIGFPE; exit code 101, an uncaught Rust panic; the CLI's caught panic).
 - Infrastructure, counted against no tool: RUNNER_ERROR (we could not spawn the tool, disk full, output unparseable although the exit was clean, adapter bug), SHARD_FAILED (campaign A, a dead shard).
 
-Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill is TIMEOUT; memory limit hit is MEMOUT; a signal we did not send is CRASH; exit code 101 is CRASH(panic); the tool-specific rule for any other nonzero exit (petrivet: a JSON error line with `error_kind` panic or internal is CRASH, input is INPUT_REJECTED; otherwise INPUT_REJECTED if there is a diagnostic, CRASH(`exit:<code>`) if not); exit 0 with unreadable output is RUNNER_ERROR; otherwise the tool's verdict. Only TRUE, FALSE, COUNT and UNKNOWN are repeated.
+Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill is TIMEOUT; memory limit hit is MEMOUT (SIGKILL, or SIGTERM when systemd stops the cgroup scope after an OOM kill, including exit status 137 and 143 of shell wrappers, with peak RSS within 10 percent of the limit; or an out-of-memory message); a signal we did not send is CRASH; exit code 101 is CRASH(panic); the tool-specific rule for any other nonzero exit (petrivet: a JSON error line with `error_kind` panic or internal is CRASH, input is INPUT_REJECTED; otherwise INPUT_REJECTED if there is a diagnostic, CRASH(`exit:<code>`) if not); exit 0 with unreadable output is RUNNER_ERROR; otherwise the tool's verdict. Only TRUE, FALSE, COUNT and UNKNOWN are repeated.
 
-`env.json`: CPU model, pinned cores, governor, turbo state, kernel, RAM, versions and hashes of every solver, rustc/cargo versions, git sha of the workspace, hash of `eval.toml`, hash of the corpus, timestamp.
+`env.json`: CPU model, pinned cores, governor, turbo state, kernel, RAM, versions and hashes of every solver, rustc/cargo versions, git sha of the workspace, git revision of the petrivet library as locked in `Cargo.lock` (`petrivet_lib_rev`), hash of `eval.toml`, hash of the corpus, timestamp.
 
 ### 8.2 Machine and limits
 
@@ -311,14 +313,16 @@ Classification, first match wins: spawn failure is RUNNER_ERROR; our wall kill i
 - Expected run count: about 600 (instance, query) pairs x 5 solvers x about 3 repetitions on average; upper bound of runtime if 25 percent of solver-runs hit the cap is about 4 hours with 3 parallel jobs. Recompute after the pilot.
 
 ### C: timeout behaviour (E3b)
-- Instances: from B, those where the unconstrained `pv-dispatch` run took more than 2 x the largest t, so the deadline actually triggers.
-- `pv-dispatch` with `--timeout-ms t`, t in {10, 100, 1000}, one run per cell (3 repetitions where under 1 s).
-- Measures: `overshoot = analyze_ms - t` (absolute, parse excluded and stated), verdict (UNKNOWN vs definite), external wall as a sanity check.
+- Instances: cells (instance, query, target) of B whose median `pv-dispatch` wall time is more than 2 x the largest t, so the deadline actually triggers; a B TIMEOUT counts as slow, CRASH, MEMOUT, INPUT_REJECTED, RUNNER_ERROR and NOT_SUPPORTED cells are left out. `[run] c_timeouts_ms` lists the t.
+- `pv-dispatch` with `--timeout-ms t`, t in {10, 100, 1000}, one run per cell (3 repetitions where the first run is under 1 s and gave TRUE, FALSE, COUNT or UNKNOWN). External wall cap `[run] wall_cap_secs`; no startup baseline or warm-up. The `run_id` hashes the solver as `pv-dispatch@t<t>` (the record's `solver_id` stays `pv-dispatch`), the record has `timeout_ms`.
+- Measures: `overshoot = analyze_ms - t` (absolute, parse excluded and stated; stored in `note` as `overshoot_ms=<value>` and recomputable from `analyze_ms` and `timeout_ms`), verdict (UNKNOWN vs definite), external wall as a sanity check.
+- Pilot: `run --campaign C --instances id1,id2 --results-subdir pilot` runs chosen instances without B results.
 - The by-hand pilot comes first (below), then the threshold is frozen. C itself is then part of the pipeline.
 
 ### D: latency (E6)
 - Instances: 20 small `gen` nets per class (about 120), queries Q1 and Q3.
-- Variants: `pv-inproc` with the net already parsed (cold first call and steady state reported separately), `pv-inproc` including PNML parse, `pv-dispatch` CLI subprocess, `lola`, `tina`; each query repeated in a sequence of 200; startup baseline reported.
+- Command: `petrivet-eval latency <gen manifest>`, output `results/latency.jsonl`. "Small" means `size_bucket` 2-5, 20 nets per class chosen by seeded hash.
+- Variants: `pv-inproc-parsed` (fresh copy of the parsed net per call; cold first call and steady state reported separately; the headline), `pv-inproc-cached` (one object per sequence, cache hits after the first call), `pv-inproc-parse` (file read, parse and query), `pv-dispatch` CLI subprocess, `lola`, `tina`; each query repeated in a sequence of 200 (a sequence stops at its first call that gives no answer); startup baselines (no-op spawn and `petrivet --version`) reported and subtracted from subprocess latencies.
 - Expectation: microseconds in-process, milliseconds for subprocess tools. The result mostly reflects the integration mode (process start, Z3 load), not the algorithm. The chapter says exactly that.
 
 ### The pilot (manual, one-off, not a pipeline stage)
@@ -328,7 +332,7 @@ Output of the pilot: the H3b threshold (or a decision to report only the distrib
 
 ## 10. Adjudication (`results/adjudication.jsonl`)
 
-One line per run joined with truth. Outcomes: AGREE, DISAGREE, UNKNOWN, TIMEOUT, MEMOUT, INPUT_REJECTED, CRASH, RUNNER_ERROR, NOT_SUPPORTED, INCONCLUSIVE_TRUTH.
+One line per run joined with truth. Outcomes: AGREE, DISAGREE, UNKNOWN, TIMEOUT, MEMOUT, INPUT_REJECTED, CRASH, RUNNER_ERROR, NOT_SUPPORTED, NO_TRUTH (no truth for the cell), OUT_OF_SCOPE (for example Q1, Q3, Q4 on a net known to be unbounded).
 Only two opposite definite verdicts can disagree. UNKNOWN, TIMEOUT and the rest never count as disagreement and are reported as coverage.
 
 The pipeline does not determine the cause of a disagreement. It classifies the pattern automatically:
@@ -351,7 +355,7 @@ petrivet-bug, reference-bug, semantics-difference, generator-bug, conversion-bug
 | E1b | Cache coherence | the testkit test `cache_coherence` (answers independent of question order and of the `PetriNet` object); count of differences, expected zero |
 | E2 | Dispatch ablation | `fam` only (`gen` nets are too small for timing): per instance median time of `pv-dispatch` vs `pv-general`, paired; Wilcoxon signed-rank per class, Holm-corrected; Hodges-Lehmann estimate and median ratio with IQR; instances where either times out are censored at the cap, with the count reported and a sensitivity run excluding them; frontier = largest size solved within the cap; peak RSS compared likewise. On `mcc-small`: only the share of instances where dispatch differs from general (class detection and `pv-poly` definite) |
 | E3a | Cost control by effort | share of `pv-poly` runs that are definite and correct, UNKNOWN share, instances where `pv-poly` answers and `pv-general` times out (`fam`, `mcc-large`; `mcc-large` flagged exploratory) |
-| E3b | Cost control by timeout | distribution of overshoot per instance family and procedure; share within the (frozen) threshold; the instances and phases responsible for the largest overshoots; share UNKNOWN vs definite per t |
+| E3b | Cost control by timeout | distribution of overshoot per instance family; share within the (frozen) threshold; the instances responsible for the largest overshoots (`e3b_top_overshoot.csv`; the phase is found by the manual `perf` follow-up, the CLI reports none); share UNKNOWN vs definite per t |
 | E4 | Comparison to reference tools | per query and source: solved count, PAR-2, cactus plot; coverage (supported, definite, unknown, timeout, error) |
 | E5a | QR/QC correctness | `gen`: agreement with truth, split yes / no (section 5.5) |
 | E5b | QR/QC comparison | `mcc-small` targets: solved count and time of `pv-dispatch` vs `pv-general` vs `lola` vs `tina`; with the limitation of section 5.5 stated beside every table |
@@ -460,4 +464,4 @@ Family size ranges per class; wall cap and repetition rule (defaults in section 
 
 - 2026-10-22, selection rule for the MCC subsets (made before any measured run, after the first selection showed that 25 of 92 small models and a similar share of large ones could not be read by petrivet): a model counts as drawn only if petrivet imports it (connected, ordinary arcs, not colored; for `mcc-large` also within the 5 MB cap). Rejected candidates are recorded with their reason in `corpus/mcc/selected.json` and reported as coverage of the drawn sample. For `mcc-small`, per family the first parsing model in order of distance of its state-count rank from the family median is taken (pass 1, at most one per family); if that gives fewer than 90 models, a second parsing model is added per family in a fixed seeded family order (pass 2). Result: 90 models, 67 families contribute (44 with one, 23 with two), 25 families contribute nothing because none of their models parse. `mcc-large`: 5 per examination, 20 in total, no list exhausted. This replaces the rule "no filtering on whether petrivet can parse the model" of section 5.2; the unfiltered draw is still reported in the chapter as the coverage figure.
 - 2026-10-22, the petrivet PNML importer now rejects arc weights other than 1 (`UnsupportedArcWeight`) instead of reading them as weight 1.
-
+- 2026-10-23, campaigns C and D and the analysis package are implemented (`run --campaign C`, `latency`, `evaluation/analysis`). Analysis hashes (`eval.toml`, results files) are sha256; `env.json` uses blake3. The provisional H3b threshold is 200 ms.

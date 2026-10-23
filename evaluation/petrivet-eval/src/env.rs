@@ -132,6 +132,7 @@ pub fn capture(inp: &EnvInput) -> Result<String, String> {
         "cargo": cmd_out("cargo", &["--version"]),
         "git_sha": git(&["rev-parse", "HEAD"]),
         "git_dirty": git(&["status", "--porcelain"]).is_some(),
+        "petrivet_lib_rev": locked_rev(LOCK, "petrivet"),
         "eval_toml_blake3": hash_file(inp.config_path),
         "corpus_manifests_blake3": manifests,
         "pinned_cores": inp.pinned_cores,
@@ -154,4 +155,32 @@ pub fn capture(inp: &EnvInput) -> Result<String, String> {
     let text = serde_json::to_string_pretty(&all).map_err(|e| e.to_string())?;
     std::fs::write(&path, text + "\n").map_err(|e| format!("{}: {e}", path.display()))?;
     Ok(env_id)
+}
+
+/// Cargo.lock of the workspace this binary was built from; the petrivet library revision it was built against.
+const LOCK: &str = include_str!("../../Cargo.lock");
+
+/// The git revision of package `name` in a Cargo.lock text (the part after `#` of its `source`), if it is a git dependency.
+fn locked_rev(lock: &str, name: &str) -> Option<String> {
+    lock.split("[[package]]").find_map(|block| {
+        let field = |key: &str| block.lines().find_map(|l| l.strip_prefix(key)?.strip_prefix(" = \"")?.strip_suffix('"'));
+        if field("name")? != name {
+            return None;
+        }
+        field("source")?.split_once('#').map(|(_, rev)| rev.to_owned())
+    })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn library_revision_is_read_from_the_lock() {
+        let lock = "[[package]]\nname = \"petrivet\"\nversion = \"0.1.0\"\nsource = \"git+https://example/p?branch=main#abc123\"\n\n[[package]]\nname = \"serde\"\nversion = \"1\"\nsource = \"registry+https://x\"\n";
+        assert_eq!(locked_rev(lock, "petrivet").as_deref(), Some("abc123"));
+        assert_eq!(locked_rev(lock, "serde"), None);
+        assert_eq!(locked_rev(lock, "missing"), None);
+        assert!(locked_rev(LOCK, "petrivet").is_some_and(|r| r.len() == 40));
+    }
 }

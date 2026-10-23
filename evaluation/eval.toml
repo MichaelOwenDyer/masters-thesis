@@ -57,6 +57,10 @@ cores = []
 mem_limiter = "auto"
 # bytes of stdout and stderr kept per run, in KiB
 out_cap_kib = 1024
+# campaign C (timeout sweep, `run --campaign C`): internal timeouts t in ms given to pv-dispatch as --timeout-ms.
+# Cells of B whose unconstrained pv-dispatch run took more than 2 x the largest t are run once per t (3 repetitions
+# if the first run is under 1 s).
+c_timeouts_ms = [10, 100, 1000]
 # shuffle seed; if absent [select] seed is used
 # seed = 20261022
 
@@ -77,3 +81,28 @@ command = "ndrio"
 tina = "tina"
 sift = "sift"
 scan = "scan"
+
+[latency]
+# Campaign D (`petrivet-eval latency <gen manifest>`): sequences of back-to-back calls on small gen nets.
+# calls per (variant, query, instance) sequence
+sequence = 200
+# instances per generator class
+per_class = 20
+# size_bucket of the gen manifest that counts as small (the testkit names buckets by place range: 2-5, 6-8, 9-12)
+bucket = "2-5"
+queries = ["Q1", "Q3"]
+# pv-inproc-parsed: fresh parsed copy per call (no cache); pv-inproc-cached: one object, repeated calls (cache hits after the first)
+variants = ["pv-inproc-parsed", "pv-inproc-cached", "pv-inproc-parse", "pv-dispatch", "lola", "tina"]
+# safety cap per subprocess call, not a measurement
+wall_cap_secs = 30
+# calls of each startup baseline (`true`, `petrivet --version`)
+baseline_reps = 200
+# output file in [run] results_dir
+file = "latency.jsonl"
+# shuffle and choice seed; if absent [select] seed is used
+# seed = 20261022
+
+[e3]
+# Campaign C / E3b: largest tolerated deadline overshoot in ms (H3b). Provisional, to be confirmed or changed by the
+# pilot before any campaign runs; the analysis reports the distribution only if this key is absent.
+overshoot_threshold_ms = 200

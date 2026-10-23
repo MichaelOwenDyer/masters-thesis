@@ -16,6 +16,10 @@
         inherit system;
         config.allowUnfreePredicate = p: nixpkgs.lib.hasPrefix "tina" (nixpkgs.lib.getName p);
       };
+
+      # Python environment of analysis/ (SPEC section 12): polars, scipy, numpy, matplotlib (SVG), pytest.
+      # Versions are pinned through flake.lock (nixpkgs).
+      analysisPython = p: p.python3.withPackages (ps: [ ps.polars ps.scipy ps.numpy ps.matplotlib ps.pytest ]);
     in
     {
       packages = nixpkgs.lib.recursiveUpdate
@@ -30,18 +34,25 @@
           };
         };
 
-      # The shell the evaluation runs in: petrivet, LoLA and TINA on PATH (ndrio comes with TINA).
-      devShells.${system}.default = pkgs.mkShell {
-        # building petrivet-eval compiles the petrivet library, which needs Z3 and libclang (via the package's inputs)
-        inputsFrom = [ self.packages.${system}.petrivet ];
-        packages = [
-          self.packages.${system}.petrivet
-          self.packages.${system}.lola
-          self.packages.${system}.tina
-          pkgs.cargo
-          pkgs.rustc
-          pkgs.clippy
-        ];
-      };
+      devShells = nixpkgs.lib.recursiveUpdate
+        # `nix develop .#analysis`: only the Python environment, on every system (LoLA and TINA are not needed to
+        # regenerate export/). From this directory: python -m analysis --results results --truth results/truth.jsonl --out export
+        (forAllSystems (p: { analysis = p.mkShell { packages = [ (analysisPython p) ]; }; }))
+        {
+          # The shell the evaluation runs in: petrivet, LoLA and TINA on PATH (ndrio comes with TINA), plus the Python environment.
+          ${system}.default = pkgs.mkShell {
+            # building petrivet-eval compiles the petrivet library, which needs Z3 and libclang (via the package's inputs)
+            inputsFrom = [ self.packages.${system}.petrivet ];
+            packages = [
+              self.packages.${system}.petrivet
+              self.packages.${system}.lola
+              self.packages.${system}.tina
+              pkgs.cargo
+              pkgs.rustc
+              pkgs.clippy
+              (analysisPython pkgs)
+            ];
+          };
+        };
     };
 }
