@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Philosophers-PT-000005/model.pnml","property":"df","mode":"dispatch","verdict":"false","class":"General","places":25,"transitions":25,"arcs":80,"parse_ms":0.619,"analyze_ms":20.105,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/IBM5964-PT-none/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"FreeChoice","places":263,"transitions":139,"arcs":541,"parse_ms":3.522,"analyze_ms":13.797,"timeout_ms":10}

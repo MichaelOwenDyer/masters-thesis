@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Sudoku-PT-BN01/model.pnml","property":"onesafe","mode":"dispatch","verdict":"true","class":"FreeChoice","places":5,"transitions":1,"arcs":5,"parse_ms":0.222,"analyze_ms":0.047,"timeout_ms":null}

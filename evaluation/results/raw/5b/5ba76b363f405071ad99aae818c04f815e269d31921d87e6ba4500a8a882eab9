@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/HouseConstruction-PT-00002/model.pnml","property":"live","mode":"dispatch","verdict":"false","class":"FreeChoice","places":26,"transitions":18,"arcs":51,"parse_ms":0.798,"analyze_ms":17.042,"timeout_ms":null}

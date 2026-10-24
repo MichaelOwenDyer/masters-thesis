@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CANConstruction-PT-005/model.pnml","property":"onesafe","mode":"dispatch","verdict":"false","class":"General","places":112,"transitions":140,"arcs":400,"parse_ms":3.831,"analyze_ms":20.204,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/SimpleLoadBal-PT-05/model.pnml","property":"df","mode":"dispatch","verdict":"true","class":"General","places":59,"transitions":180,"arcs":1158,"parse_ms":3.398,"analyze_ms":2307.493,"timeout_ms":null}

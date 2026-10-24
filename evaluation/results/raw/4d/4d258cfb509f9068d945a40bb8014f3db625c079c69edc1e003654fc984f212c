@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/RERS2020-PT-pb101/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":906,"transitions":149363,"arcs":595952,"parse_ms":2790.766,"analyze_ms":1194.465,"timeout_ms":1000}

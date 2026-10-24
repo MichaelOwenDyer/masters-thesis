@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/gen/478abe04acf3ec5b32f2fca7013ac1edae5717dc70908d751189e597b4f8953b.pnml","property":"quasi-live","mode":"dispatch","verdict":"false","class":"General","places":8,"transitions":14,"arcs":35,"parse_ms":0.210,"analyze_ms":0.003,"timeout_ms":null}

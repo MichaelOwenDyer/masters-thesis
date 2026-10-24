@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CloudDeployment-PT-3a/model.pnml","property":"df","mode":"dispatch","verdict":"false","class":"General","places":104,"transitions":308,"arcs":1611,"parse_ms":3.974,"analyze_ms":2504.571,"timeout_ms":null}

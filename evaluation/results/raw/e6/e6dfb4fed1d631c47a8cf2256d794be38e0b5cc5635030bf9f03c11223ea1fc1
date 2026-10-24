@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/GPUForwardProgress-PT-08a/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"General","places":40,"transitions":49,"arcs":181,"parse_ms":0.758,"analyze_ms":6590.699,"timeout_ms":null}

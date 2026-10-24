@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/TwoPhaseLocking-PT-nC00020vD/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"AsymmetricChoice","places":8,"transitions":6,"arcs":18,"parse_ms":0.241,"analyze_ms":25.156,"timeout_ms":null}

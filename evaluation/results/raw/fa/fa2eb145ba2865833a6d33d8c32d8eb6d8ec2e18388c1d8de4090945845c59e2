@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/SmartHome-PT-02/model.pnml","property":"df","mode":"dispatch","verdict":"true","class":"General","places":41,"transitions":127,"arcs":359,"parse_ms":1.260,"analyze_ms":1038.087,"timeout_ms":null}

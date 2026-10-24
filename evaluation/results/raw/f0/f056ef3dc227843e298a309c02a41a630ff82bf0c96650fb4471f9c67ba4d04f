@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CANInsertWithFailure-PT-005/model.pnml","property":"live","mode":"dispatch","verdict":"unknown","class":"General","places":114,"transitions":180,"arcs":500,"parse_ms":4.587,"analyze_ms":103.509,"timeout_ms":100}

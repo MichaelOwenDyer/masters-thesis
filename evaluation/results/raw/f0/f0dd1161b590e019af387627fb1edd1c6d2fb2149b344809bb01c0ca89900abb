@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/results/baseline/trivial.pnml","property":"df","mode":"dispatch","verdict":"true","class":"Circuit","places":1,"transitions":1,"arcs":2,"parse_ms":0.104,"analyze_ms":0.000,"timeout_ms":null}

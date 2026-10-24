@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Anderson-PT-05/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"General","places":161,"transitions":365,"arcs":1380,"parse_ms":4.343,"analyze_ms":18448.515,"timeout_ms":null}

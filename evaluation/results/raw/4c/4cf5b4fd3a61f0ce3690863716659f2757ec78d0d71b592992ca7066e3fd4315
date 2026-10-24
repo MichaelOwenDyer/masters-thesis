@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/IBM703-PT-none/model.pnml","property":"statespace","mode":"dispatch","verdict":"not_supported","class":"FreeChoice","places":262,"transitions":284,"arcs":572,"parse_ms":3.950,"analyze_ms":0.000,"timeout_ms":null}

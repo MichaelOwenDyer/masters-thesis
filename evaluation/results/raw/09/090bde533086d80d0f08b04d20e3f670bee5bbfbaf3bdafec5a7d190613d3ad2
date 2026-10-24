@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/AirplaneLD-PT-0020/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":159,"transitions":168,"arcs":638,"parse_ms":2.486,"analyze_ms":110.016,"timeout_ms":100}

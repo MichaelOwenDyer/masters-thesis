@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/BART-PT-002/model.pnml","property":"statespace","mode":"dispatch","verdict":"not_supported","class":"General","places":474,"transitions":404,"arcs":3240,"parse_ms":11.202,"analyze_ms":0.000,"timeout_ms":null}

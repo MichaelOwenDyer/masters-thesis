@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CSRepetitions-PT-02/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"General","places":23,"transitions":28,"arcs":92,"parse_ms":0.646,"analyze_ms":31.362,"timeout_ms":null}
