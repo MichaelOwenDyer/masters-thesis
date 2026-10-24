@@ -104,6 +104,6 @@ file = "latency.jsonl"
 # seed = 20261022
 
 [e3]
-# Campaign C / E3b: largest tolerated deadline overshoot in ms (H3b). Provisional, to be confirmed or changed by the
-# pilot before any campaign runs; the analysis reports the distribution only if this key is absent.
+# Campaign C / E3b: largest tolerated deadline overshoot in ms (H3b). Frozen after the pilot of 2026-10-24 (results/pilot);
+# the analysis reports the distribution only if this key is absent.
 overshoot_threshold_ms = 200
