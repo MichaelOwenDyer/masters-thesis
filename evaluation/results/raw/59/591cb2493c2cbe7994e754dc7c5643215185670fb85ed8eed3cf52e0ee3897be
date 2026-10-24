@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Raft-PT-02/model.pnml","property":"onesafe","mode":"dispatch","verdict":"unknown","class":"General","places":28,"transitions":52,"arcs":159,"parse_ms":0.631,"analyze_ms":19.910,"timeout_ms":10}

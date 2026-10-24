@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/IOTPpurchase-PT-C01M01P01D01/model.pnml","property":"df","mode":"dispatch","verdict":"unknown","class":"AsymmetricChoice","places":111,"transitions":45,"arcs":224,"parse_ms":1.870,"analyze_ms":109.461,"timeout_ms":100}

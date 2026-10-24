@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/FlexibleBarrier-PT-04a/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":51,"transitions":88,"arcs":309,"parse_ms":1.056,"analyze_ms":122.516,"timeout_ms":100}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/DLCflexbar-PT-6a/model.pnml","property":"onesafe","mode":"dispatch","verdict":"unknown","class":"General","places":2069,"transitions":16077,"arcs":63325,"parse_ms":233.679,"analyze_ms":5076.210,"timeout_ms":100}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/MultiCrashLeafsetExtension-PT-S32C02/model.pnml","property":"df","mode":"dispatch","verdict":"unknown","class":"General","places":13544,"transitions":21807,"arcs":93598,"parse_ms":496.185,"analyze_ms":116.960,"timeout_ms":100}

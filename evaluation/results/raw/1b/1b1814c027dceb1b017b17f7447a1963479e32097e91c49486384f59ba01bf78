@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ProductionCell-PT-none/model.pnml","property":"onesafe","mode":"dispatch","verdict":"unknown","class":"General","places":176,"transitions":134,"arcs":513,"parse_ms":1.953,"analyze_ms":11.502,"timeout_ms":10}

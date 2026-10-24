@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ShieldPPPs-PT-001A/model.pnml","property":"onesafe","mode":"dispatch","verdict":"unknown","class":"General","places":34,"transitions":29,"arcs":106,"parse_ms":0.504,"analyze_ms":12.905,"timeout_ms":10}

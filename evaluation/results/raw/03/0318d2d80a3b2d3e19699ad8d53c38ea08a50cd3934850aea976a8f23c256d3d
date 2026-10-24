@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CloudOpsManagement-PT-00002by00001/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":27,"transitions":29,"arcs":94,"parse_ms":0.536,"analyze_ms":122.973,"timeout_ms":100}

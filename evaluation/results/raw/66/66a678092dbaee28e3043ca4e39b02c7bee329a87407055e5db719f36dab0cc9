@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/MultiwaySync-PT-none/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":222,"transitions":472,"arcs":1496,"parse_ms":5.647,"analyze_ms":1014.710,"timeout_ms":1000}
