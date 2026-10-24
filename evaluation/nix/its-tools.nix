@@ -6,8 +6,8 @@
 # (product of 2026-09-11); a changed file makes the build fail instead of silently measuring another tool.
 #
 # What this package changes against the upstream product, and why:
-#  * the bundled z3 is linked against the FHS loader, which NixOS does not have: it is replaced by z3 of nixpkgs
-#    (the tool starts z3 for the SMT-based reductions of its default pipeline);
+#  * the bundled z3 is linked against the FHS loader, which NixOS does not have: it is replaced by a copy of z3 of
+#    nixpkgs (the tool starts z3 for the SMT-based reductions of its default pipeline);
 #  * the launcher script starts with `#! /bin/bash` (NixOS has no /bin/bash): patchShebangs;
 #  * the launcher unpacks the jars nested in plugins into plugins-lib/ on its first run, which a read-only store
 #    cannot do: it is run once at build time;
@@ -50,9 +50,14 @@ stdenv.mkDerivation {
     cp -r product/. $out/share/its-tools/
     chmod -R u+w $out/share/its-tools
 
+    # a copy, not a link: the tool calls setExecutable on its z3 and fails on a link into the read-only store (the SMT
+    # solver is then unavailable and several examinations stall until the cap); the nixpkgs binary finds its libraries
+    # through its own rpath, wherever it is
     for z in $out/share/its-tools/plugins/fr.lip6.smt.z3.binaries_*/bin/z3-linux64; do
       rm "$z"
-      ln -s ${z3}/bin/z3 "$z"
+      cp ${lib.getExe z3} "$z"
+      test -x "$z"
+      "$z" --version
     done
 
     patchShebangs $out/share/its-tools/its-tools-flat.sh
