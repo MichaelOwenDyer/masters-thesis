@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import Ctx, color_map, plt, save_svg
+from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, solver_label, source_label
 from .stats import quantiles
 
 
@@ -38,22 +38,41 @@ def run(ctx: Ctx) -> None:
     ctx.csv("e7_rss", tab)
 
     p = plt()
-    srcs = sorted(cells["source"].unique().to_list())
-    solvers = sorted(cells["solver_id"].unique().to_list())
-    cm = color_map(solvers)
-    fig, axs = p.subplots(1, len(srcs), figsize=(3.4 * len(srcs), 3.2), squeeze=False)
-    for ax, src in zip(axs[0], srcs):
+    from matplotlib.ticker import FuncFormatter
+    order = ["fam", "mcc-small", "mcc-large"]  # calibration: every tool sits at the measuring floor, nothing to show
+    srcs = [x for x in order if x in set(cells["source"].to_list())]
+    solvers = [x for x in SOLVER_COLOR if x in set(cells["solver_id"].to_list())] + sorted(set(cells["solver_id"].to_list()) - set(SOLVER_COLOR))
+    limit_mib = ctx.cfg.get("run", {}).get("mem_limit_gib", 8) * 1024
+    ncols = 2
+    nrows = (len(srcs) + ncols - 1) // ncols
+    fig, axs = p.subplots(nrows, ncols, figsize=(8.6, 3.5 * nrows), squeeze=False, sharey=True)
+    fig.subplots_adjust(top=0.80, bottom=0.08, left=0.08, right=0.98, hspace=0.42, wspace=0.12)
+    for ax, src in zip(axs.ravel(), srcs):
         data, labs = [], []
         for s in solvers:
             v = cells.filter((pl.col("source") == src) & (pl.col("solver_id") == s))["rss"].to_numpy() / 1024.0
             if len(v):
                 data.append(v); labs.append(s)
         if data:
-            bp = ax.boxplot(data, patch_artist=True, showfliers=True)
+            bp = ax.boxplot(data, patch_artist=True, showfliers=True, flierprops={"markersize": 2.5, "markeredgewidth": 0.4, "alpha": 0.6})
             for patch, s in zip(bp["boxes"], labs):
-                patch.set_facecolor(cm[s]); patch.set_alpha(0.6)
-            ax.set_xticks(range(1, len(labs) + 1)); ax.set_xticklabels(labs, rotation=30, ha="right", fontsize=7)
-        ax.set_yscale("log"); ax.set_title(src, fontsize=9); ax.set_ylabel("peak RSS (MiB)")
+                patch.set_facecolor(SOLVER_COLOR.get(s, "#999999")); patch.set_alpha(0.6)
+            for med in bp["medians"]:
+                med.set_color("#000000")
+            ax.set_xticks(range(1, len(labs) + 1)); ax.set_xticklabels([f"{SOLVER_SHORT.get(s, s)}\n(n = {len(v)})" for s, v in zip(labs, data)], fontsize=7)
+        ax.set_yscale("log")
+        ax.yaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}"))
+        ax.axhline(limit_mib, color="#999999", ls="--", lw=0.8)
+        ax.text(0.99, limit_mib * 0.85, "8 GiB limit", transform=ax.get_yaxis_transform(), fontsize=6.5, color="#555555", va="top", ha="right")
+        ax.set_title(source_label(src), fontsize=9, loc="left")
+        ax.set_ylabel("peak memory (MiB, log scale)", fontsize=8)
+        ax.tick_params(labelsize=7)
+    for ax in axs.ravel()[len(srcs):]:
+        ax.axis("off")
+    fig.text(0.01, 0.955, "How much memory does each tool use?", fontsize=10.5, ha="left")
+    fig.text(0.01, 0.925, "One run per question and net (n = number of runs that gave an answer). Box: the middle half of the runs; black line: the median; circles: single runs far from it.\n"
+             "Runs at the dashed 8 GiB line ran out of memory. Values near 7 MiB are the size of the measuring wrapper itself: those runs used almost nothing.",
+             fontsize=7, color="#444444", ha="left", va="top")
     save_svg(fig, ctx.fig_path("e7_rss"))
 
     # bytes per state
@@ -67,7 +86,7 @@ def run(ctx: Ctx) -> None:
         ctx.skip("e7_bytes_per_state", "no BASELINE runs with peak_rss_kib")
         return
     out = []
-    fig, ax = p.subplots(figsize=(4.8, 3.4))
+    fig, ax = p.subplots(figsize=(7.0, 3.8))
     for s in sorted(q0["solver_id"].unique().to_list()):
         if s not in base_map:
             ctx.numbers["e7.bytes_per_state.%s.note" % s.replace("-", "_")] = "no baseline run for this solver"
@@ -78,10 +97,14 @@ def run(ctx: Ctx) -> None:
         out.append({"solver_id": s, "n": g.height, "baseline_kib": base_map[s], "median_bytes_per_state": q[0.5], "p90_bytes_per_state": q[0.9]})
         for k, val in (("n", g.height), ("median", q[0.5]), ("p90", q[0.9]), ("baseline_kib", base_map[s])):
             ctx.num("e7", "bytes_per_state", s, k, val)
-        ax.scatter(g["states"], np.clip(v, 1, None), s=10, label=s, color=cm.get(s), alpha=0.8, linewidths=0)
+        keep = v > 1  # at or below the start-up memory there is nothing to measure
+        ax.scatter(g["states"].to_numpy()[keep], v[keep], s=10, label=solver_label(s), color=SOLVER_COLOR.get(s, "#999999"), alpha=0.8, linewidths=0)
     if out:
         ctx.csv("e7_bytes_per_state", pl.DataFrame(out))
         ax.set_xscale("log"); ax.set_yscale("log")
-        ax.set_xlabel("states (Q0)"); ax.set_ylabel("bytes per state")
-        ax.legend(frameon=False, fontsize=7)
+        ax.set_xlabel("number of states of the net (log scale)"); ax.set_ylabel("memory per state (bytes, log scale)")
+        ax.set_title("How much memory does a tool need per state it explores?", loc="left", fontsize=10.5, pad=22)
+        ax.text(0, 1.02, "Counting all states of a net (question Q0). Memory above the tool's start-up memory, divided by the number of states; nets too small to measure are not drawn. Lower is better.",
+                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path("e7_bytes_per_state"))

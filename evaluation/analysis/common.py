@@ -407,6 +407,16 @@ FAMILY_LABEL = {
 }
 
 
+# short names for tick labels
+SOLVER_SHORT = {
+    "pv-dispatch": "petrivet\nautomatic",
+    "pv-general": "petrivet\nexploration",
+    "pv-poly": "petrivet\nfast only",
+    "lola": "LoLA",
+    "tina": "TINA",
+}
+
+
 def solver_label(s: str) -> str:
     return SOLVER_LABEL.get(s, s)
 
