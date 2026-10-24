@@ -1,0 +1,85 @@
+PLACE
+	p_0_0, p_0_1, p_0_2, p_1_0, p_1_1, p_1_2, p_2_0, p_2_1, p_2_2, p_3_0, p_3_1, p_3_2, p_4_0, p_4_1, p_4_2, r_0_0, r_0_1, r_0_2, r_1_0, r_1_1, r_1_2, r_2_0, r_2_1, r_2_2, r_3_0, r_3_1, r_3_2, r_4_0, r_4_1, r_4_2;
+
+MARKING
+	r_4_2: 1,r_4_1: 1,r_4_0: 1,r_3_2: 1,r_3_1: 1,r_3_0: 1,r_2_2: 1,r_2_1: 1,r_2_0: 1,r_1_2: 1,r_1_1: 1,r_1_0: 1,r_0_2: 1,r_0_1: 1,r_0_0: 1;
+
+TRANSITION t_4_3
+	CONSUME p_4_2: 1;
+	PRODUCE r_4_2: 1,r_3_2: 1;
+
+TRANSITION t_4_2
+	CONSUME p_4_1: 1,r_4_2: 1,r_3_2: 1;
+	PRODUCE r_4_1: 1,p_4_2: 1,r_3_1: 1;
+
+TRANSITION t_4_1
+	CONSUME p_4_0: 1,r_4_1: 1,r_3_1: 1;
+	PRODUCE r_4_0: 1,p_4_1: 1,r_3_0: 1;
+
+TRANSITION t_4_0
+	CONSUME r_4_0: 1,r_3_0: 1;
+	PRODUCE p_4_0: 1;
+
+TRANSITION t_3_3
+	CONSUME r_3_2: 1,r_2_2: 1;
+	PRODUCE p_3_2: 1;
+
+TRANSITION t_3_2
+	CONSUME r_3_1: 1,p_3_2: 1,r_2_1: 1;
+	PRODUCE p_3_1: 1,r_3_2: 1,r_2_2: 1;
+
+TRANSITION t_3_1
+	CONSUME r_3_0: 1,p_3_1: 1,r_2_0: 1;
+	PRODUCE p_3_0: 1,r_3_1: 1,r_2_1: 1;
+
+TRANSITION t_3_0
+	CONSUME p_3_0: 1;
+	PRODUCE r_3_0: 1,r_2_0: 1;
+
+TRANSITION t_2_3
+	CONSUME p_2_2: 1;
+	PRODUCE r_2_2: 1,r_1_2: 1;
+
+TRANSITION t_2_2
+	CONSUME p_2_1: 1,r_2_2: 1,r_1_2: 1;
+	PRODUCE r_2_1: 1,p_2_2: 1,r_1_1: 1;
+
+TRANSITION t_2_1
+	CONSUME p_2_0: 1,r_2_1: 1,r_1_1: 1;
+	PRODUCE r_2_0: 1,p_2_1: 1,r_1_0: 1;
+
+TRANSITION t_2_0
+	CONSUME r_2_0: 1,r_1_0: 1;
+	PRODUCE p_2_0: 1;
+
+TRANSITION t_1_3
+	CONSUME r_1_2: 1,r_0_2: 1;
+	PRODUCE p_1_2: 1;
+
+TRANSITION t_1_2
+	CONSUME r_1_1: 1,p_1_2: 1,r_0_1: 1;
+	PRODUCE p_1_1: 1,r_1_2: 1,r_0_2: 1;
+
+TRANSITION t_1_1
+	CONSUME r_1_0: 1,p_1_1: 1,r_0_0: 1;
+	PRODUCE p_1_0: 1,r_1_1: 1,r_0_1: 1;
+
+TRANSITION t_1_0
+	CONSUME p_1_0: 1;
+	PRODUCE r_1_0: 1,r_0_0: 1;
+
+TRANSITION t_0_3
+	CONSUME p_0_2: 1;
+	PRODUCE r_0_2: 1;
+
+TRANSITION t_0_2
+	CONSUME p_0_1: 1,r_0_2: 1;
+	PRODUCE p_0_2: 1,r_0_1: 1;
+
+TRANSITION t_0_1
+	CONSUME p_0_0: 1,r_0_1: 1;
+	PRODUCE r_0_0: 1,p_0_1: 1;
+
+TRANSITION t_0_0
+	CONSUME r_0_0: 1;
+	PRODUCE p_0_0: 1;

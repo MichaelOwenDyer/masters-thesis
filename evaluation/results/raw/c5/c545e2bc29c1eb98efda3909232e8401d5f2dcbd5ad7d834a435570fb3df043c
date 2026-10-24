@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SmartHome-PT-02}
+
+41 places, 127 transitions, 359 arcs
+
+0.002s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+86401 marking(s), 5642113 transition(s)
+
+8.905s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 1152 live marking(s)
+0 dead transition(s), 114 live transition(s)
+
+0.200s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SmartHome-PT-02}, 41 places, 127 transitions, 359 arcs          #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        86401         41          ?          0       1152 # 
+# transitions      5642113        127          ?          0        114 #

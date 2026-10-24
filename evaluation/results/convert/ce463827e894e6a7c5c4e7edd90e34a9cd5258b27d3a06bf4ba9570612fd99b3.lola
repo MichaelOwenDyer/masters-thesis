@@ -1,0 +1,229 @@
+PLACE
+	Astart, AstopAbort, AstopOK, Cstart_0, Cstart_1, Cstart_2, CstopAbort, CstopOK_0, CstopOK_1, CstopOK_2, Sstart_0, Sstart_1, Sstart_2, SstopAbort, SstopOK_0, SstopOK_1, SstopOK_2, a1, a2, a3, a4, a5, c1_0, c1_1, c1_2, malicious_reservoir, n1_0, n1_1, n1_2, n2_0, n2_1, n2_2, n3_0, n3_1, n3_2, n4_0, n4_1, n4_2, n5_0, n5_1, n5_2, n6_0, n6_1, n6_2, n7_0_0, n7_0_1, n7_0_2, n7_1_0, n7_1_1, n7_1_2, n7_2_0, n7_2_1, n7_2_2, n8_0_0, n8_0_1, n8_0_2, n8_1_0, n8_1_1, n8_1_2, n8_2_0, n8_2_1, n8_2_2, n9_0_0, n9_0_1, n9_0_2, n9_1_0, n9_1_1, n9_1_2, n9_2_0, n9_2_1, n9_2_2, s2_0, s2_1, s2_2, s3_0, s3_1, s3_2, s4_0, s4_1, s4_2, s5_0, s5_1, s5_2, s6_0, s6_1, s6_2;
+
+MARKING
+	malicious_reservoir: 1,Sstart_2: 1,Sstart_1: 1,Sstart_0: 1,Cstart_2: 1,Cstart_1: 1,Cstart_0: 1,Astart: 1;
+
+TRANSITION malS6_2
+	CONSUME s6_2: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS6_1
+	CONSUME s6_1: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS6_0
+	CONSUME s6_0: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS5_2
+	CONSUME s5_2: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS5_1
+	CONSUME malicious_reservoir: 1,s5_1: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS5_0
+	CONSUME s5_0: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS4_2
+	CONSUME malicious_reservoir: 1,s4_2: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS4_1
+	CONSUME s4_1: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS4_0
+	CONSUME s4_0: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS3_2
+	CONSUME malicious_reservoir: 1,s3_2: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS3_1
+	CONSUME s3_1: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS3_0
+	CONSUME s3_0: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS2_2
+	CONSUME s2_2: 1,malicious_reservoir: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS2_1
+	CONSUME malicious_reservoir: 1,s2_1: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS2_0
+	CONSUME malicious_reservoir: 1,s2_0: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS1_2
+	CONSUME malicious_reservoir: 1,Sstart_2: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS1_1
+	CONSUME malicious_reservoir: 1,Sstart_1: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malS1_0
+	CONSUME malicious_reservoir: 1,Sstart_0: 1;
+	PRODUCE SstopAbort: 1;
+
+TRANSITION malC1_2
+	CONSUME malicious_reservoir: 1,c1_2: 1;
+	PRODUCE CstopAbort: 1;
+
+TRANSITION malC1_1
+	CONSUME c1_1: 1,malicious_reservoir: 1;
+	PRODUCE CstopAbort: 1;
+
+TRANSITION malC1_0
+	CONSUME malicious_reservoir: 1,c1_0: 1;
+	PRODUCE CstopAbort: 1;
+
+TRANSITION malA5
+	CONSUME a5: 1;
+	PRODUCE AstopAbort: 1;
+
+TRANSITION malA4
+	CONSUME a4: 1;
+	PRODUCE AstopAbort: 1;
+
+TRANSITION malA3
+	CONSUME a3: 1;
+	PRODUCE AstopAbort: 1;
+
+TRANSITION malA2
+	CONSUME a2: 1;
+	PRODUCE AstopAbort: 1;
+
+TRANSITION malA1
+	CONSUME a1: 1;
+	PRODUCE AstopAbort: 1;
+
+TRANSITION SsendTS_2
+	CONSUME Sstart_2: 1,n1_2: 1;
+	PRODUCE s2_2: 1,n2_2: 1;
+
+TRANSITION SsendTS_1
+	CONSUME n1_1: 1,Sstart_1: 1;
+	PRODUCE s2_1: 1,n2_1: 1;
+
+TRANSITION SsendTS_0
+	CONSUME Sstart_0: 1,n1_0: 1;
+	PRODUCE s2_0: 1,n2_0: 1;
+
+TRANSITION SreqTS_2
+	CONSUME s4_2: 1;
+	PRODUCE n7_2_2: 1,n7_2_1: 1,n7_2_0: 1,s5_2: 1;
+
+TRANSITION SreqTS_1
+	CONSUME s4_1: 1;
+	PRODUCE s5_1: 1,n7_1_0: 1,n7_1_1: 1,n7_1_2: 1;
+
+TRANSITION SreqTS_0
+	CONSUME s4_0: 1;
+	PRODUCE n7_0_0: 1,n7_0_1: 1,s5_0: 1,n7_0_2: 1;
+
+TRANSITION Sperform_2
+	CONSUME s3_2: 1,n5_2: 1;
+	PRODUCE n6_2: 1,s4_2: 1;
+
+TRANSITION Sperform_1
+	CONSUME s3_1: 1,n5_1: 1;
+	PRODUCE n6_1: 1,s4_1: 1;
+
+TRANSITION Sperform_0
+	CONSUME s3_0: 1,n5_0: 1;
+	PRODUCE n6_0: 1,s4_0: 1;
+
+TRANSITION SgetTS_2
+	CONSUME n8_2_2: 1,n8_2_0: 1,n8_2_1: 1,s5_2: 1;
+	PRODUCE s6_2: 1;
+
+TRANSITION SgetTS_1
+	CONSUME n8_1_1: 1,n8_1_2: 1,s5_1: 1,n8_1_0: 1;
+	PRODUCE s6_1: 1;
+
+TRANSITION SgetTS_0
+	CONSUME n8_0_0: 1,n8_0_1: 1,s5_0: 1,n8_0_2: 1;
+	PRODUCE s6_0: 1;
+
+TRANSITION ScertCS_2
+	CONSUME s6_2: 1;
+	PRODUCE SstopOK_2: 1,n9_2_1: 1,n9_2_2: 1,n9_2_0: 1;
+
+TRANSITION ScertCS_1
+	CONSUME s6_1: 1;
+	PRODUCE SstopOK_1: 1,n9_1_2: 1,n9_1_1: 1,n9_1_0: 1;
+
+TRANSITION ScertCS_0
+	CONSUME s6_0: 1;
+	PRODUCE SstopOK_0: 1,n9_0_2: 1,n9_0_1: 1,n9_0_0: 1;
+
+TRANSITION SackCS_2
+	CONSUME s2_2: 1,n3_2: 1;
+	PRODUCE s3_2: 1,n4_2: 1;
+
+TRANSITION SackCS_1
+	CONSUME s2_1: 1,n3_1: 1;
+	PRODUCE s3_1: 1,n4_1: 1;
+
+TRANSITION SackCS_0
+	CONSUME s2_0: 1,n3_0: 1;
+	PRODUCE s3_0: 1,n4_0: 1;
+
+TRANSITION CsendTS1_2
+	CONSUME n7_0_2: 1,Cstart_2: 1,n7_1_2: 1,n7_2_2: 1;
+	PRODUCE n8_2_2: 1,n8_0_2: 1,n8_1_2: 1,c1_2: 1;
+
+TRANSITION CsendTS1_1
+	CONSUME n7_0_1: 1,Cstart_1: 1,n7_1_1: 1,n7_2_1: 1;
+	PRODUCE n8_2_1: 1,n8_0_1: 1,n8_1_1: 1,c1_1: 1;
+
+TRANSITION CsendTS1_0
+	CONSUME n7_0_0: 1,n7_2_0: 1,n7_1_0: 1,Cstart_0: 1;
+	PRODUCE c1_0: 1,n8_1_0: 1,n8_0_0: 1,n8_2_0: 1;
+
+TRANSITION CgenCertif_2
+	CONSUME n9_2_2: 1,n9_1_2: 1,n9_0_2: 1,c1_2: 1;
+	PRODUCE CstopOK_2: 1;
+
+TRANSITION CgenCertif_1
+	CONSUME n9_2_1: 1,n9_1_1: 1,n9_0_1: 1,c1_1: 1;
+	PRODUCE CstopOK_1: 1;
+
+TRANSITION CgenCertif_0
+	CONSUME n9_2_0: 1,n9_1_0: 1,n9_0_0: 1,c1_0: 1;
+	PRODUCE CstopOK_0: 1;
+
+TRANSITION AstartCS
+	CONSUME a4: 1;
+	PRODUCE a5: 1,n5_0: 1,n5_1: 1,n5_2: 1;
+
+TRANSITION AreqTS
+	CONSUME Astart: 1;
+	PRODUCE a1: 1,n1_0: 1,n1_1: 1,n1_2: 1;
+
+TRANSITION AreqCS
+	CONSUME a2: 1;
+	PRODUCE n3_0: 1,n3_1: 1,n3_2: 1,a3: 1;
+
+TRANSITION AgetTS
+	CONSUME n2_0: 1,n2_1: 1,n2_2: 1,a1: 1;
+	PRODUCE a2: 1;
+
+TRANSITION AendCS
+	CONSUME n6_2: 1,n6_1: 1,n6_0: 1,a5: 1;
+	PRODUCE AstopOK: 1;
+
+TRANSITION AackCS
+	CONSUME n4_0: 1,n4_1: 1,n4_2: 1,a3: 1;
+	PRODUCE a4: 1;

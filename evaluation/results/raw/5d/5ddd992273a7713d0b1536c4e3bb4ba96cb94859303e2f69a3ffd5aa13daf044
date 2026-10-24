@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {Dekker-PT-010}
+
+50 places, 120 transitions, 820 arcs
+
+0.003s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+6144 marking(s), 171530 transition(s)
+
+0.240s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 6144 live marking(s)
+0 dead transition(s), 120 live transition(s)
+
+0.008s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {Dekker-PT-010}, 50 places, 120 transitions, 820 arcs            #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states         6144         50          ?          0       6144 # 
+# transitions       171530        120          ?          0        120 #

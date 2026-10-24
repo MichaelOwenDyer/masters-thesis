@@ -1,0 +1,9 @@
+PLACE
+	Board_0_0_0, Cells_0_0, Columns_0_0, Regions_0_0, Rows_0_0;
+
+MARKING
+	Rows_0_0: 1,Regions_0_0: 1,Columns_0_0: 1,Cells_0_0: 1;
+
+TRANSITION select_0_0_0_0
+	CONSUME Columns_0_0: 1,Regions_0_0: 1,Rows_0_0: 1,Cells_0_0: 1;
+	PRODUCE Board_0_0_0: 1;

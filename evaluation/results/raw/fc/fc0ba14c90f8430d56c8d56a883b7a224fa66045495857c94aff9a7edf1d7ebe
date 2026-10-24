@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/LamportFastMutEx-PT-3/model.pnml","property":"live","mode":"poly","verdict":"false","class":"General","places":100,"transitions":156,"arcs":664,"parse_ms":2.146,"analyze_ms":0.029,"timeout_ms":null}

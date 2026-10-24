@@ -1,0 +1,121 @@
+PLACE
+	Bounder1, Bounder2, Container, ContainerDown, ContainerUp, OsAvailable, OsContainer, OsNotInstalled, OsRunning, ScStopped, ScUnavailable, ScWorking, ServerContainer, SwContainer, WSRuntime1, WSRuntime2, WebAppRuntime, WsRuntime3, Wsr1Deployed, Wsr1NotDeployed, Wsr1Started, Wsr2Deployed, Wsr2NotDeployed, Wsr2Started, Wsr3Deployed, Wsr3NotDeployed, Wsr3Started;
+
+MARKING
+	Wsr3NotDeployed: 2,Wsr2NotDeployed: 2,Wsr1NotDeployed: 2,ScUnavailable: 1,OsNotInstalled: 1,ContainerDown: 1,Bounder2: 2,Bounder1: 2;
+
+TRANSITION tlink5
+	CONSUME WSRuntime2: 1,WSRuntime1: 1,WsRuntime3: 1;
+	PRODUCE WebAppRuntime: 1;
+
+TRANSITION tlink4
+	CONSUME WebAppRuntime: 1;
+	PRODUCE WSRuntime2: 1,WSRuntime1: 1,WsRuntime3: 1;
+
+TRANSITION tlink3
+	CONSUME ServerContainer: 1,Bounder1: 1;
+	PRODUCE SwContainer: 1;
+
+TRANSITION tlink2
+	CONSUME SwContainer: 1;
+	PRODUCE ServerContainer: 1,Bounder1: 1;
+
+TRANSITION tlink1
+	CONSUME OsContainer: 1;
+	PRODUCE Container: 1;
+
+TRANSITION tlink0
+	CONSUME Container: 1;
+	PRODUCE OsContainer: 1;
+
+TRANSITION UninstallSc
+	CONSUME ServerContainer: 1,ScStopped: 1;
+	PRODUCE ServerContainer: 1,ScUnavailable: 1;
+
+TRANSITION UninstallOs
+	CONSUME OsContainer: 1,OsAvailable: 1;
+	PRODUCE OsContainer: 1,OsNotInstalled: 1;
+
+TRANSITION UndeployWsr3
+	CONSUME Wsr3Deployed: 1;
+	PRODUCE WsRuntime3: 1,Wsr3NotDeployed: 1;
+
+TRANSITION UndeployWsr2
+	CONSUME Wsr2Deployed: 1;
+	PRODUCE WSRuntime2: 1,Wsr2NotDeployed: 1;
+
+TRANSITION UndeployWsr1
+	CONSUME Wsr1Deployed: 1;
+	PRODUCE WSRuntime1: 1,Wsr1NotDeployed: 1;
+
+TRANSITION StopWsr3
+	CONSUME Wsr3Started: 1;
+	PRODUCE Wsr3Deployed: 1;
+
+TRANSITION StopWsr2
+	CONSUME Wsr2Started: 1;
+	PRODUCE Wsr2Deployed: 1;
+
+TRANSITION StopWsr1
+	CONSUME Wsr1Started: 1;
+	PRODUCE Wsr1Deployed: 1;
+
+TRANSITION StopSc
+	CONSUME ScWorking: 1,WebAppRuntime: 1,Bounder1: 1;
+	PRODUCE ServerContainer: 1,ScStopped: 1;
+
+TRANSITION StopContainer
+	CONSUME Container: 1,ContainerUp: 1;
+	PRODUCE ContainerDown: 1,Bounder2: 1;
+
+TRANSITION StartWsr3
+	CONSUME Wsr3Deployed: 1;
+	PRODUCE Wsr3Started: 1;
+
+TRANSITION StartWsr2
+	CONSUME Wsr2Deployed: 1;
+	PRODUCE Wsr2Started: 1;
+
+TRANSITION StartWsr1
+	CONSUME Wsr1Deployed: 1;
+	PRODUCE Wsr1Started: 1;
+
+TRANSITION StartOs
+	CONSUME OsContainer: 1,OsAvailable: 1;
+	PRODUCE OsRunning: 1,SwContainer: 1,Bounder2: 1;
+
+TRANSITION StartContainer
+	CONSUME ContainerDown: 1,Bounder2: 1;
+	PRODUCE ContainerUp: 1,Container: 1;
+
+TRANSITION ShutdownOs
+	CONSUME OsRunning: 1,SwContainer: 1,Bounder2: 1;
+	PRODUCE OsContainer: 1,OsAvailable: 1;
+
+TRANSITION SetupSc
+	CONSUME ScUnavailable: 1,Bounder1: 1;
+	PRODUCE ScStopped: 1,ServerContainer: 1;
+
+TRANSITION RunSc
+	CONSUME ScStopped: 1,ServerContainer: 1;
+	PRODUCE ScWorking: 1,WebAppRuntime: 1,Bounder1: 1;
+
+TRANSITION InstallOs
+	CONSUME OsNotInstalled: 1,Bounder2: 1;
+	PRODUCE OsAvailable: 1,OsContainer: 1;
+
+TRANSITION DeployWsr3
+	CONSUME Wsr3NotDeployed: 1,WsRuntime3: 1;
+	PRODUCE Wsr3Deployed: 1;
+
+TRANSITION DeployWsr2
+	CONSUME Wsr2NotDeployed: 1,WSRuntime2: 1;
+	PRODUCE Wsr2Deployed: 1;
+
+TRANSITION DeployWsr1
+	CONSUME WSRuntime1: 1,Wsr1NotDeployed: 1;
+	PRODUCE Wsr1Deployed: 1;
+
+TRANSITION ConfigureSc
+	CONSUME ScWorking: 1;
+	PRODUCE ScWorking: 1;

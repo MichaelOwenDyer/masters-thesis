@@ -1,0 +1,5 @@
+some state violates condition -f:
+  Clients*10 resA*5 resB*6
+  firable: lockA
+2 marking(s), 1 transition(s)
+0.000s

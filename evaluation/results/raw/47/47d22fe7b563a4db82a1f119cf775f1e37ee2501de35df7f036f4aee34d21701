@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {NeighborGrid-PT-d2n3m1t12}
+
+9 places, 72 transitions, 144 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+24310 marking(s), 926640 transition(s)
+
+0.819s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 24310 live marking(s)
+0 dead transition(s), 72 live transition(s)
+
+0.061s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {NeighborGrid-PT-d2n3m1t12}, 9 places, 72 transitions, 144 arcs  #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states        24310          9          ?          0      24310 # 
+# transitions       926640         72          ?          0         72 #

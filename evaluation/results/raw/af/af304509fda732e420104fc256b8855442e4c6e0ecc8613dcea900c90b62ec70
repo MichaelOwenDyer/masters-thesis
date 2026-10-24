@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {TriangularGrid-PT-1200}
+
+16 places, 12 transitions, 48 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+109552 marking(s), 566712 transition(s)
+
+0.872s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 109552 live marking(s)
+0 dead transition(s), 12 live transition(s)
+
+0.085s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {TriangularGrid-PT-1200}, 16 places, 12 transitions, 48 arcs     #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states       109552         16          ?          0     109552 # 
+# transitions       566712         12          ?          0         12 #

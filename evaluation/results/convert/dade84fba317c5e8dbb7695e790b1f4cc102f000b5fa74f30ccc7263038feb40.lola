@@ -1,0 +1,293 @@
+PLACE
+	p1i_0, p1i_1_2, p1i_2_1, p1i_2_2, p1il_0, p1il_1_2, p1il_2_1, p1il_2_2, p1o_1_1, p1o_1_2, p1o_2_1, p1o_2_2, p1ol_1_1, p1ol_1_2, p1ol_2_1, p1ol_2_2, p2i_1_2, p2i_2_2, p2il_1_2, p2il_2_2, p2o_1_2, p2o_2_2, p2ol_1_2, p2ol_2_2, p3i_2_1, p3i_2_2, p3il_2_1, p3il_2_2, p3o_2_1, p3o_2_2, p3ol_2_1, p3ol_2_2, p4i_1_1, p4i_1_2, p4i_2_1, p4i_2_2, p4il_1_1, p4il_1_2, p4il_2_1, p4il_2_2, p4o_1_1, p4o_1_2, p4o_2_1, p4o_2_2, p4ol_1_1, p4ol_1_2, p4ol_2_1, p4ol_2_2, pb1_1_1, pb1_1_2, pb1_2_1, pb1_2_2, pb2_1_1, pb2_1_2, pb2_2_1, pb2_2_2, pb3_1_1, pb3_1_2, pb3_2_1, pb3_2_2, pb4_1_1, pb4_1_2, pb4_2_1, pb4_2_2, pbl_1_1, pbl_1_2, pbl_2_1, pbl_2_2;
+
+MARKING
+	pbl_2_2: 2,pbl_2_1: 2,pbl_1_2: 2,pbl_1_1: 2,pb4_2_2: 1,pb4_2_1: 1,pb4_1_2: 1,pb4_1_1: 1,pb3_2_2: 1,pb3_2_1: 1,pb3_1_2: 1,pb3_1_1: 1,pb2_2_2: 1,pb2_2_1: 1,pb2_1_2: 1,pb2_1_1: 1,pb1_2_2: 1,pb1_2_1: 1,pb1_1_2: 1,pb1_1_1: 1,p4ol_2_2: 1,p4ol_2_1: 1,p4ol_1_2: 1,p4ol_1_1: 1,p4il_2_2: 1,p4il_2_1: 1,p4il_1_2: 1,p4il_1_1: 1,p3ol_2_2: 1,p3ol_2_1: 1,p3il_2_2: 1,p3il_2_1: 1,p2ol_2_2: 1,p2ol_1_2: 1,p2il_2_2: 1,p2il_1_2: 1,p1ol_2_2: 1,p1ol_2_1: 1,p1ol_1_2: 1,p1ol_1_1: 1,p1il_2_2: 1,p1il_2_1: 1,p1il_1_2: 1,p1il_0: 1;
+
+TRANSITION tf_u_2
+	CONSUME p1o_1_2: 1,p1il_1_2: 1;
+	PRODUCE p1ol_1_2: 1,p1i_1_2: 1;
+
+TRANSITION tf_u_1
+	CONSUME p1o_1_1: 1,p1il_0: 1;
+	PRODUCE p1ol_1_1: 1,p1i_0: 1;
+
+TRANSITION tf_r_2
+	CONSUME p2o_2_2: 1,p2il_2_2: 1;
+	PRODUCE p2ol_2_2: 1,p2i_2_2: 1;
+
+TRANSITION tf_r_1
+	CONSUME p2o_1_2: 1,p2il_1_2: 1;
+	PRODUCE p2ol_1_2: 1,p2i_1_2: 1;
+
+TRANSITION tf_l_2
+	CONSUME p4il_2_1: 1,p4o_2_1: 1;
+	PRODUCE p4i_2_1: 1,p4ol_2_1: 1;
+
+TRANSITION tf_l_1
+	CONSUME p4o_1_1: 1,p4il_1_1: 1;
+	PRODUCE p4ol_1_1: 1,p4i_1_1: 1;
+
+TRANSITION tf_d_2
+	CONSUME p3o_2_2: 1,p3il_2_2: 1;
+	PRODUCE p3i_2_2: 1,p3ol_2_2: 1;
+
+TRANSITION tf_d_1
+	CONSUME p3o_2_1: 1,p3il_2_1: 1;
+	PRODUCE p3i_2_1: 1,p3ol_2_1: 1;
+
+TRANSITION t4o_2_2
+	CONSUME p4ol_2_2: 1,pb4_2_2: 1;
+	PRODUCE p4o_2_2: 1,pbl_2_2: 1;
+
+TRANSITION t4o_2_1
+	CONSUME p4ol_2_1: 1,pb4_2_1: 1;
+	PRODUCE p4o_2_1: 1,pbl_2_1: 1;
+
+TRANSITION t4o_1_2
+	CONSUME p4ol_1_2: 1,pb4_1_2: 1;
+	PRODUCE p4o_1_2: 1,pbl_1_2: 1;
+
+TRANSITION t4o_1_1
+	CONSUME pb4_1_1: 1,p4ol_1_1: 1;
+	PRODUCE p4o_1_1: 1,pbl_1_1: 1;
+
+TRANSITION t4i3_2_2
+	CONSUME p4i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p4il_2_2: 1,pb3_2_2: 1;
+
+TRANSITION t4i3_2_1
+	CONSUME pbl_2_1: 1,p4i_2_1: 1;
+	PRODUCE pb3_2_1: 1,p4il_2_1: 1;
+
+TRANSITION t4i3_1_2
+	CONSUME p4i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p4il_1_2: 1,pb3_1_2: 1;
+
+TRANSITION t4i3_1_1
+	CONSUME pbl_1_1: 1,p4i_1_1: 1;
+	PRODUCE p4il_1_1: 1,pb3_1_1: 1;
+
+TRANSITION t4i2_2_2
+	CONSUME p4i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p4il_2_2: 1,pb2_2_2: 1;
+
+TRANSITION t4i2_2_1
+	CONSUME pbl_2_1: 1,p4i_2_1: 1;
+	PRODUCE pb2_2_1: 1,p4il_2_1: 1;
+
+TRANSITION t4i2_1_2
+	CONSUME p4i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p4il_1_2: 1,pb2_1_2: 1;
+
+TRANSITION t4i2_1_1
+	CONSUME pbl_1_1: 1,p4i_1_1: 1;
+	PRODUCE p4il_1_1: 1,pb2_1_1: 1;
+
+TRANSITION t4i1_2_2
+	CONSUME p4i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p4il_2_2: 1,pb1_2_2: 1;
+
+TRANSITION t4i1_2_1
+	CONSUME pbl_2_1: 1,p4i_2_1: 1;
+	PRODUCE pb1_2_1: 1,p4il_2_1: 1;
+
+TRANSITION t4i1_1_2
+	CONSUME p4i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p4il_1_2: 1,pb1_1_2: 1;
+
+TRANSITION t4i1_1_1
+	CONSUME pbl_1_1: 1,p4i_1_1: 1;
+	PRODUCE p4il_1_1: 1,pb1_1_1: 1;
+
+TRANSITION t3o_2_2
+	CONSUME pb3_2_2: 1,p3ol_2_2: 1;
+	PRODUCE pbl_2_2: 1,p3o_2_2: 1;
+
+TRANSITION t3o_2_1
+	CONSUME p3ol_2_1: 1,pb3_2_1: 1;
+	PRODUCE p3o_2_1: 1,pbl_2_1: 1;
+
+TRANSITION t3o_1_2
+	CONSUME p1il_2_2: 1,pb3_1_2: 1;
+	PRODUCE p1i_2_2: 1,pbl_1_2: 1;
+
+TRANSITION t3o_1_1
+	CONSUME p1il_2_1: 1,pb3_1_1: 1;
+	PRODUCE p1i_2_1: 1,pbl_1_1: 1;
+
+TRANSITION t3i4_2_2
+	CONSUME pbl_2_2: 1,p3i_2_2: 1;
+	PRODUCE pb4_2_2: 1,p3il_2_2: 1;
+
+TRANSITION t3i4_2_1
+	CONSUME pbl_2_1: 1,p3i_2_1: 1;
+	PRODUCE pb4_2_1: 1,p3il_2_1: 1;
+
+TRANSITION t3i4_1_2
+	CONSUME p1o_2_2: 1,pbl_1_2: 1;
+	PRODUCE p1ol_2_2: 1,pb4_1_2: 1;
+
+TRANSITION t3i4_1_1
+	CONSUME p1o_2_1: 1,pbl_1_1: 1;
+	PRODUCE p1ol_2_1: 1,pb4_1_1: 1;
+
+TRANSITION t3i2_2_2
+	CONSUME pbl_2_2: 1,p3i_2_2: 1;
+	PRODUCE pb2_2_2: 1,p3il_2_2: 1;
+
+TRANSITION t3i2_2_1
+	CONSUME pbl_2_1: 1,p3i_2_1: 1;
+	PRODUCE pb2_2_1: 1,p3il_2_1: 1;
+
+TRANSITION t3i2_1_2
+	CONSUME p1o_2_2: 1,pbl_1_2: 1;
+	PRODUCE p1ol_2_2: 1,pb2_1_2: 1;
+
+TRANSITION t3i2_1_1
+	CONSUME p1o_2_1: 1,pbl_1_1: 1;
+	PRODUCE p1ol_2_1: 1,pb2_1_1: 1;
+
+TRANSITION t3i1_2_2
+	CONSUME pbl_2_2: 1,p3i_2_2: 1;
+	PRODUCE pb1_2_2: 1,p3il_2_2: 1;
+
+TRANSITION t3i1_2_1
+	CONSUME pbl_2_1: 1,p3i_2_1: 1;
+	PRODUCE pb1_2_1: 1,p3il_2_1: 1;
+
+TRANSITION t3i1_1_2
+	CONSUME p1o_2_2: 1,pbl_1_2: 1;
+	PRODUCE p1ol_2_2: 1,pb1_1_2: 1;
+
+TRANSITION t3i1_1_1
+	CONSUME p1o_2_1: 1,pbl_1_1: 1;
+	PRODUCE p1ol_2_1: 1,pb1_1_1: 1;
+
+TRANSITION t2o_2_2
+	CONSUME pb2_2_2: 1,p2ol_2_2: 1;
+	PRODUCE pbl_2_2: 1,p2o_2_2: 1;
+
+TRANSITION t2o_2_1
+	CONSUME p4il_2_2: 1,pb2_2_1: 1;
+	PRODUCE p4i_2_2: 1,pbl_2_1: 1;
+
+TRANSITION t2o_1_2
+	CONSUME p2ol_1_2: 1,pb2_1_2: 1;
+	PRODUCE p2o_1_2: 1,pbl_1_2: 1;
+
+TRANSITION t2o_1_1
+	CONSUME pb2_1_1: 1,p4il_1_2: 1;
+	PRODUCE p4i_1_2: 1,pbl_1_1: 1;
+
+TRANSITION t2i4_2_2
+	CONSUME pbl_2_2: 1,p2i_2_2: 1;
+	PRODUCE pb4_2_2: 1,p2il_2_2: 1;
+
+TRANSITION t2i4_2_1
+	CONSUME pbl_2_1: 1,p4o_2_2: 1;
+	PRODUCE pb4_2_1: 1,p4ol_2_2: 1;
+
+TRANSITION t2i4_1_2
+	CONSUME p2i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p2il_1_2: 1,pb4_1_2: 1;
+
+TRANSITION t2i4_1_1
+	CONSUME pbl_1_1: 1,p4o_1_2: 1;
+	PRODUCE p4ol_1_2: 1,pb4_1_1: 1;
+
+TRANSITION t2i3_2_2
+	CONSUME pbl_2_2: 1,p2i_2_2: 1;
+	PRODUCE pb3_2_2: 1,p2il_2_2: 1;
+
+TRANSITION t2i3_2_1
+	CONSUME pbl_2_1: 1,p4o_2_2: 1;
+	PRODUCE pb3_2_1: 1,p4ol_2_2: 1;
+
+TRANSITION t2i3_1_2
+	CONSUME p2i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p2il_1_2: 1,pb3_1_2: 1;
+
+TRANSITION t2i3_1_1
+	CONSUME pbl_1_1: 1,p4o_1_2: 1;
+	PRODUCE pb3_1_1: 1,p4ol_1_2: 1;
+
+TRANSITION t2i1_2_2
+	CONSUME pbl_2_2: 1,p2i_2_2: 1;
+	PRODUCE pb1_2_2: 1,p2il_2_2: 1;
+
+TRANSITION t2i1_2_1
+	CONSUME pbl_2_1: 1,p4o_2_2: 1;
+	PRODUCE pb1_2_1: 1,p4ol_2_2: 1;
+
+TRANSITION t2i1_1_2
+	CONSUME p2i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p2il_1_2: 1,pb1_1_2: 1;
+
+TRANSITION t2i1_1_1
+	CONSUME pbl_1_1: 1,p4o_1_2: 1;
+	PRODUCE pb1_1_1: 1,p4ol_1_2: 1;
+
+TRANSITION t1o_2_2
+	CONSUME p1ol_2_2: 1,pb1_2_2: 1;
+	PRODUCE p1o_2_2: 1,pbl_2_2: 1;
+
+TRANSITION t1o_2_1
+	CONSUME p1ol_2_1: 1,pb1_2_1: 1;
+	PRODUCE p1o_2_1: 1,pbl_2_1: 1;
+
+TRANSITION t1o_1_2
+	CONSUME p1ol_1_2: 1,pb1_1_2: 1;
+	PRODUCE p1o_1_2: 1,pbl_1_2: 1;
+
+TRANSITION t1o_1_1
+	CONSUME p1ol_1_1: 1,pb1_1_1: 1;
+	PRODUCE pbl_1_1: 1,p1o_1_1: 1;
+
+TRANSITION t1i4_2_2
+	CONSUME p1i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p1il_2_2: 1,pb4_2_2: 1;
+
+TRANSITION t1i4_2_1
+	CONSUME p1i_2_1: 1,pbl_2_1: 1;
+	PRODUCE pb4_2_1: 1,p1il_2_1: 1;
+
+TRANSITION t1i4_1_2
+	CONSUME p1i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p1il_1_2: 1,pb4_1_2: 1;
+
+TRANSITION t1i4_1_1
+	CONSUME pbl_1_1: 1,p1i_0: 1;
+	PRODUCE p1il_0: 1,pb4_1_1: 1;
+
+TRANSITION t1i3_2_2
+	CONSUME p1i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p1il_2_2: 1,pb3_2_2: 1;
+
+TRANSITION t1i3_2_1
+	CONSUME p1i_2_1: 1,pbl_2_1: 1;
+	PRODUCE pb3_2_1: 1,p1il_2_1: 1;
+
+TRANSITION t1i3_1_2
+	CONSUME p1i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p1il_1_2: 1,pb3_1_2: 1;
+
+TRANSITION t1i3_1_1
+	CONSUME pbl_1_1: 1,p1i_0: 1;
+	PRODUCE p1il_0: 1,pb3_1_1: 1;
+
+TRANSITION t1i2_2_2
+	CONSUME p1i_2_2: 1,pbl_2_2: 1;
+	PRODUCE p1il_2_2: 1,pb2_2_2: 1;
+
+TRANSITION t1i2_2_1
+	CONSUME pbl_2_1: 1,p1i_2_1: 1;
+	PRODUCE pb2_2_1: 1,p1il_2_1: 1;
+
+TRANSITION t1i2_1_2
+	CONSUME p1i_1_2: 1,pbl_1_2: 1;
+	PRODUCE p1il_1_2: 1,pb2_1_2: 1;
+
+TRANSITION t1i2_1_1
+	CONSUME p1i_0: 1,pbl_1_1: 1;
+	PRODUCE p1il_0: 1,pb2_1_1: 1;

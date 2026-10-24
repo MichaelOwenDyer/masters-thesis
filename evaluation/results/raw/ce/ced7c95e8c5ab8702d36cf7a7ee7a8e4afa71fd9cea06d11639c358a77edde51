@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {LamportFastMutEx-PT-3}
+
+100 places, 156 transitions, 664 arcs
+
+0.004s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+19742 marking(s), 58272 transition(s)
+
+0.149s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 19734 live marking(s)
+63 dead transition(s), 90 live transition(s)
+
+0.007s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {LamportFastMutEx-PT-3}, 100 places, 156 transitions, 664 arcs   #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        19742        100          ?          0      19734 # 
+# transitions        58272        156          ?         63         90 #

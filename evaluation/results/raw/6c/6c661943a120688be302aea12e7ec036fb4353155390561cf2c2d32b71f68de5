@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {DoubleExponent-PT-001}
+
+57 places, 48 transitions, 135 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+149 marking(s), 148 transition(s)
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+16 dead marking(s), 16 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {DoubleExponent-PT-001}, 57 places, 48 transitions, 135 arcs     #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states          149         57          ?         16         16 # 
+# transitions          148         48          ?          0          0 #

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/fam/c796200809cf9e6a0338a7a854c1d8cfae6f152f92e32d6eaf7d83846e0eb7b7.pnml","property":"bounded","mode":"poly","verdict":"true","class":"Circuit","places":2,"transitions":2,"arcs":4,"parse_ms":0.117,"analyze_ms":0.005,"timeout_ms":null}

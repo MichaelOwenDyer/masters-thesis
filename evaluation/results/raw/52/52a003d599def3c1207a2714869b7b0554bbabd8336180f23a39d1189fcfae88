@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Medical-PT-02/model.pnml","property":"onesafe","mode":"dispatch","verdict":"false","class":"General","places":312,"transitions":5431,"arcs":28790,"parse_ms":111.370,"analyze_ms":0.010,"timeout_ms":null}

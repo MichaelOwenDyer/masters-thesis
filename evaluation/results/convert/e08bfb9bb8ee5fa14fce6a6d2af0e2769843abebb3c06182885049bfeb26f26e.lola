@@ -1,0 +1,677 @@
+PLACE
+	AltitudePossibleVal_1, AltitudePossibleVal_10, AltitudePossibleVal_11, AltitudePossibleVal_12, AltitudePossibleVal_13, AltitudePossibleVal_14, AltitudePossibleVal_15, AltitudePossibleVal_16, AltitudePossibleVal_17, AltitudePossibleVal_18, AltitudePossibleVal_19, AltitudePossibleVal_2, AltitudePossibleVal_20, AltitudePossibleVal_21, AltitudePossibleVal_22, AltitudePossibleVal_23, AltitudePossibleVal_24, AltitudePossibleVal_25, AltitudePossibleVal_26, AltitudePossibleVal_27, AltitudePossibleVal_28, AltitudePossibleVal_29, AltitudePossibleVal_3, AltitudePossibleVal_30, AltitudePossibleVal_31, AltitudePossibleVal_32, AltitudePossibleVal_33, AltitudePossibleVal_34, AltitudePossibleVal_35, AltitudePossibleVal_36, AltitudePossibleVal_37, AltitudePossibleVal_38, AltitudePossibleVal_39, AltitudePossibleVal_4, AltitudePossibleVal_40, AltitudePossibleVal_5, AltitudePossibleVal_6, AltitudePossibleVal_7, AltitudePossibleVal_8, AltitudePossibleVal_9, P1, P2, P3, P4, P5, P6, Plane_On_Ground_Signal_no_F, Plane_On_Ground_Signal_no_T, SpeedPossibleVal_1, SpeedPossibleVal_10, SpeedPossibleVal_11, SpeedPossibleVal_12, SpeedPossibleVal_13, SpeedPossibleVal_14, SpeedPossibleVal_15, SpeedPossibleVal_16, SpeedPossibleVal_17, SpeedPossibleVal_18, SpeedPossibleVal_19, SpeedPossibleVal_2, SpeedPossibleVal_20, SpeedPossibleVal_3, SpeedPossibleVal_4, SpeedPossibleVal_5, SpeedPossibleVal_6, SpeedPossibleVal_7, SpeedPossibleVal_8, SpeedPossibleVal_9, Speed_Left_Wheel_1, Speed_Left_Wheel_10, Speed_Left_Wheel_11, Speed_Left_Wheel_12, Speed_Left_Wheel_13, Speed_Left_Wheel_14, Speed_Left_Wheel_15, Speed_Left_Wheel_16, Speed_Left_Wheel_17, Speed_Left_Wheel_18, Speed_Left_Wheel_19, Speed_Left_Wheel_2, Speed_Left_Wheel_20, Speed_Left_Wheel_3, Speed_Left_Wheel_4, Speed_Left_Wheel_5, Speed_Left_Wheel_6, Speed_Left_Wheel_7, Speed_Left_Wheel_8, Speed_Left_Wheel_9, Speed_Right_Wheel_1, Speed_Right_Wheel_10, Speed_Right_Wheel_11, Speed_Right_Wheel_12, Speed_Right_Wheel_13, Speed_Right_Wheel_14, Speed_Right_Wheel_15, Speed_Right_Wheel_16, Speed_Right_Wheel_17, Speed_Right_Wheel_18, Speed_Right_Wheel_19, Speed_Right_Wheel_2, Speed_Right_Wheel_20, Speed_Right_Wheel_3, Speed_Right_Wheel_4, Speed_Right_Wheel_5, Speed_Right_Wheel_6, Speed_Right_Wheel_7, Speed_Right_Wheel_8, Speed_Right_Wheel_9, TheAltitude_1, TheAltitude_10, TheAltitude_11, TheAltitude_12, TheAltitude_13, TheAltitude_14, TheAltitude_15, TheAltitude_16, TheAltitude_17, TheAltitude_18, TheAltitude_19, TheAltitude_2, TheAltitude_20, TheAltitude_21, TheAltitude_22, TheAltitude_23, TheAltitude_24, TheAltitude_25, TheAltitude_26, TheAltitude_27, TheAltitude_28, TheAltitude_29, TheAltitude_3, TheAltitude_30, TheAltitude_31, TheAltitude_32, TheAltitude_33, TheAltitude_34, TheAltitude_35, TheAltitude_36, TheAltitude_37, TheAltitude_38, TheAltitude_39, TheAltitude_4, TheAltitude_40, TheAltitude_5, TheAltitude_6, TheAltitude_7, TheAltitude_8, TheAltitude_9, WeightPossibleVal_off, WeightPossibleVal_on, Weight_Left_Wheel_off, Weight_Left_Wheel_on, Weight_Right_Wheel_off, Weight_Right_Wheel_on, stp1, stp2, stp3, stp4, stp5;
+
+MARKING
+	stp5: 1,stp4: 1,stp3: 1,stp2: 1,stp1: 1,WeightPossibleVal_on: 1,WeightPossibleVal_off: 1,SpeedPossibleVal_9: 1,SpeedPossibleVal_8: 1,SpeedPossibleVal_7: 1,SpeedPossibleVal_6: 1,SpeedPossibleVal_5: 1,SpeedPossibleVal_4: 1,SpeedPossibleVal_3: 1,SpeedPossibleVal_20: 1,SpeedPossibleVal_2: 1,SpeedPossibleVal_19: 1,SpeedPossibleVal_18: 1,SpeedPossibleVal_17: 1,SpeedPossibleVal_16: 1,SpeedPossibleVal_15: 1,SpeedPossibleVal_14: 1,SpeedPossibleVal_13: 1,SpeedPossibleVal_12: 1,SpeedPossibleVal_11: 1,SpeedPossibleVal_10: 1,SpeedPossibleVal_1: 1,P1: 1,AltitudePossibleVal_9: 1,AltitudePossibleVal_8: 1,AltitudePossibleVal_7: 1,AltitudePossibleVal_6: 1,AltitudePossibleVal_5: 1,AltitudePossibleVal_40: 1,AltitudePossibleVal_4: 1,AltitudePossibleVal_39: 1,AltitudePossibleVal_38: 1,AltitudePossibleVal_37: 1,AltitudePossibleVal_36: 1,AltitudePossibleVal_35: 1,AltitudePossibleVal_34: 1,AltitudePossibleVal_33: 1,AltitudePossibleVal_32: 1,AltitudePossibleVal_31: 1,AltitudePossibleVal_30: 1,AltitudePossibleVal_3: 1,AltitudePossibleVal_29: 1,AltitudePossibleVal_28: 1,AltitudePossibleVal_27: 1,AltitudePossibleVal_26: 1,AltitudePossibleVal_25: 1,AltitudePossibleVal_24: 1,AltitudePossibleVal_23: 1,AltitudePossibleVal_22: 1,AltitudePossibleVal_21: 1,AltitudePossibleVal_20: 1,AltitudePossibleVal_2: 1,AltitudePossibleVal_19: 1,AltitudePossibleVal_18: 1,AltitudePossibleVal_17: 1,AltitudePossibleVal_16: 1,AltitudePossibleVal_15: 1,AltitudePossibleVal_14: 1,AltitudePossibleVal_13: 1,AltitudePossibleVal_12: 1,AltitudePossibleVal_11: 1,AltitudePossibleVal_10: 1,AltitudePossibleVal_1: 1;
+
+TRANSITION t5_2_9
+	CONSUME Speed_Right_Wheel_9: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_8
+	CONSUME Speed_Right_Wheel_8: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_7
+	CONSUME Speed_Right_Wheel_7: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_6
+	CONSUME Speed_Right_Wheel_6: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_5
+	CONSUME Speed_Right_Wheel_5: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_4
+	CONSUME Speed_Right_Wheel_4: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_3
+	CONSUME Speed_Right_Wheel_3: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_20
+	CONSUME Speed_Right_Wheel_20: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_2
+	CONSUME Speed_Right_Wheel_2: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_10
+	CONSUME Speed_Right_Wheel_10: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_2_1
+	CONSUME Speed_Right_Wheel_1: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_F: 1;
+
+TRANSITION t5_1_19
+	CONSUME Speed_Right_Wheel_19: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_18
+	CONSUME Speed_Right_Wheel_18: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_17
+	CONSUME Speed_Right_Wheel_17: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_16
+	CONSUME Speed_Right_Wheel_16: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_15
+	CONSUME Speed_Right_Wheel_15: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_14
+	CONSUME Speed_Right_Wheel_14: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_13
+	CONSUME Speed_Right_Wheel_13: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_12
+	CONSUME Speed_Right_Wheel_12: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t5_1_11
+	CONSUME Speed_Right_Wheel_11: 1,P5: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_2_9
+	CONSUME Speed_Left_Wheel_9: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_8
+	CONSUME Speed_Left_Wheel_8: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_7
+	CONSUME Speed_Left_Wheel_7: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_6
+	CONSUME Speed_Left_Wheel_6: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_5
+	CONSUME Speed_Left_Wheel_5: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_4
+	CONSUME Speed_Left_Wheel_4: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_3
+	CONSUME Speed_Left_Wheel_3: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_20
+	CONSUME Speed_Left_Wheel_20: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_2
+	CONSUME Speed_Left_Wheel_2: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_10
+	CONSUME Speed_Left_Wheel_10: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_2_1
+	CONSUME Speed_Left_Wheel_1: 1,P4: 1;
+	PRODUCE P5: 1;
+
+TRANSITION t4_1_19
+	CONSUME Speed_Left_Wheel_19: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_18
+	CONSUME Speed_Left_Wheel_18: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_17
+	CONSUME Speed_Left_Wheel_17: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_16
+	CONSUME Speed_Left_Wheel_16: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_15
+	CONSUME Speed_Left_Wheel_15: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_14
+	CONSUME Speed_Left_Wheel_14: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_13
+	CONSUME Speed_Left_Wheel_13: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_12
+	CONSUME Speed_Left_Wheel_12: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t4_1_11
+	CONSUME Speed_Left_Wheel_11: 1,P4: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_2_40
+	CONSUME TheAltitude_40: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_39
+	CONSUME TheAltitude_39: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_38
+	CONSUME TheAltitude_38: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_37
+	CONSUME TheAltitude_37: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_36
+	CONSUME TheAltitude_36: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_35
+	CONSUME TheAltitude_35: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_34
+	CONSUME TheAltitude_34: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_33
+	CONSUME TheAltitude_33: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_32
+	CONSUME TheAltitude_32: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_31
+	CONSUME TheAltitude_31: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_30
+	CONSUME TheAltitude_30: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_29
+	CONSUME TheAltitude_29: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_28
+	CONSUME TheAltitude_28: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_27
+	CONSUME TheAltitude_27: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_26
+	CONSUME TheAltitude_26: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_25
+	CONSUME TheAltitude_25: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_24
+	CONSUME TheAltitude_24: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_23
+	CONSUME TheAltitude_23: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_22
+	CONSUME TheAltitude_22: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_21
+	CONSUME TheAltitude_21: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_2_20
+	CONSUME TheAltitude_20: 1,P3: 1;
+	PRODUCE P4: 1;
+
+TRANSITION t3_1_9
+	CONSUME TheAltitude_9: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_8
+	CONSUME TheAltitude_8: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_7
+	CONSUME TheAltitude_7: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_6
+	CONSUME TheAltitude_6: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_5
+	CONSUME TheAltitude_5: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_4
+	CONSUME TheAltitude_4: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_3
+	CONSUME TheAltitude_3: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_2
+	CONSUME TheAltitude_2: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_19
+	CONSUME TheAltitude_19: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_18
+	CONSUME TheAltitude_18: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_17
+	CONSUME TheAltitude_17: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_16
+	CONSUME TheAltitude_16: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_15
+	CONSUME TheAltitude_15: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_14
+	CONSUME TheAltitude_14: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_13
+	CONSUME TheAltitude_13: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_12
+	CONSUME TheAltitude_12: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_11
+	CONSUME TheAltitude_11: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_10
+	CONSUME TheAltitude_10: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t3_1_1
+	CONSUME TheAltitude_1: 1,P3: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t2_2_off
+	CONSUME Weight_Right_Wheel_off: 1,P2: 1;
+	PRODUCE P3: 1;
+
+TRANSITION t2_1_on
+	CONSUME Weight_Right_Wheel_on: 1,P2: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION t1_2_off
+	CONSUME Weight_Left_Wheel_off: 1,P1: 1;
+	PRODUCE P2: 1;
+
+TRANSITION t1_1_on
+	CONSUME Weight_Left_Wheel_on: 1,P1: 1;
+	PRODUCE P6: 1,Plane_On_Ground_Signal_no_T: 1;
+
+TRANSITION getAlt_9
+	CONSUME stp3: 1,AltitudePossibleVal_9: 1;
+	PRODUCE AltitudePossibleVal_9: 1,TheAltitude_9: 1;
+
+TRANSITION getAlt_8
+	CONSUME stp3: 1,AltitudePossibleVal_8: 1;
+	PRODUCE AltitudePossibleVal_8: 1,TheAltitude_8: 1;
+
+TRANSITION getAlt_7
+	CONSUME stp3: 1,AltitudePossibleVal_7: 1;
+	PRODUCE AltitudePossibleVal_7: 1,TheAltitude_7: 1;
+
+TRANSITION getAlt_6
+	CONSUME stp3: 1,AltitudePossibleVal_6: 1;
+	PRODUCE AltitudePossibleVal_6: 1,TheAltitude_6: 1;
+
+TRANSITION getAlt_5
+	CONSUME stp3: 1,AltitudePossibleVal_5: 1;
+	PRODUCE AltitudePossibleVal_5: 1,TheAltitude_5: 1;
+
+TRANSITION getAlt_40
+	CONSUME stp3: 1,AltitudePossibleVal_40: 1;
+	PRODUCE AltitudePossibleVal_40: 1,TheAltitude_40: 1;
+
+TRANSITION getAlt_4
+	CONSUME stp3: 1,AltitudePossibleVal_4: 1;
+	PRODUCE AltitudePossibleVal_4: 1,TheAltitude_4: 1;
+
+TRANSITION getAlt_39
+	CONSUME stp3: 1,AltitudePossibleVal_39: 1;
+	PRODUCE AltitudePossibleVal_39: 1,TheAltitude_39: 1;
+
+TRANSITION getAlt_38
+	CONSUME stp3: 1,AltitudePossibleVal_38: 1;
+	PRODUCE AltitudePossibleVal_38: 1,TheAltitude_38: 1;
+
+TRANSITION getAlt_37
+	CONSUME stp3: 1,AltitudePossibleVal_37: 1;
+	PRODUCE AltitudePossibleVal_37: 1,TheAltitude_37: 1;
+
+TRANSITION getAlt_36
+	CONSUME stp3: 1,AltitudePossibleVal_36: 1;
+	PRODUCE AltitudePossibleVal_36: 1,TheAltitude_36: 1;
+
+TRANSITION getAlt_35
+	CONSUME stp3: 1,AltitudePossibleVal_35: 1;
+	PRODUCE AltitudePossibleVal_35: 1,TheAltitude_35: 1;
+
+TRANSITION getAlt_34
+	CONSUME stp3: 1,AltitudePossibleVal_34: 1;
+	PRODUCE AltitudePossibleVal_34: 1,TheAltitude_34: 1;
+
+TRANSITION getAlt_33
+	CONSUME stp3: 1,AltitudePossibleVal_33: 1;
+	PRODUCE AltitudePossibleVal_33: 1,TheAltitude_33: 1;
+
+TRANSITION getAlt_32
+	CONSUME stp3: 1,AltitudePossibleVal_32: 1;
+	PRODUCE AltitudePossibleVal_32: 1,TheAltitude_32: 1;
+
+TRANSITION getAlt_31
+	CONSUME stp3: 1,AltitudePossibleVal_31: 1;
+	PRODUCE AltitudePossibleVal_31: 1,TheAltitude_31: 1;
+
+TRANSITION getAlt_30
+	CONSUME stp3: 1,AltitudePossibleVal_30: 1;
+	PRODUCE AltitudePossibleVal_30: 1,TheAltitude_30: 1;
+
+TRANSITION getAlt_3
+	CONSUME stp3: 1,AltitudePossibleVal_3: 1;
+	PRODUCE AltitudePossibleVal_3: 1,TheAltitude_3: 1;
+
+TRANSITION getAlt_29
+	CONSUME stp3: 1,AltitudePossibleVal_29: 1;
+	PRODUCE AltitudePossibleVal_29: 1,TheAltitude_29: 1;
+
+TRANSITION getAlt_28
+	CONSUME stp3: 1,AltitudePossibleVal_28: 1;
+	PRODUCE AltitudePossibleVal_28: 1,TheAltitude_28: 1;
+
+TRANSITION getAlt_27
+	CONSUME stp3: 1,AltitudePossibleVal_27: 1;
+	PRODUCE AltitudePossibleVal_27: 1,TheAltitude_27: 1;
+
+TRANSITION getAlt_26
+	CONSUME stp3: 1,AltitudePossibleVal_26: 1;
+	PRODUCE AltitudePossibleVal_26: 1,TheAltitude_26: 1;
+
+TRANSITION getAlt_25
+	CONSUME stp3: 1,AltitudePossibleVal_25: 1;
+	PRODUCE AltitudePossibleVal_25: 1,TheAltitude_25: 1;
+
+TRANSITION getAlt_24
+	CONSUME stp3: 1,AltitudePossibleVal_24: 1;
+	PRODUCE AltitudePossibleVal_24: 1,TheAltitude_24: 1;
+
+TRANSITION getAlt_23
+	CONSUME stp3: 1,AltitudePossibleVal_23: 1;
+	PRODUCE AltitudePossibleVal_23: 1,TheAltitude_23: 1;
+
+TRANSITION getAlt_22
+	CONSUME stp3: 1,AltitudePossibleVal_22: 1;
+	PRODUCE AltitudePossibleVal_22: 1,TheAltitude_22: 1;
+
+TRANSITION getAlt_21
+	CONSUME stp3: 1,AltitudePossibleVal_21: 1;
+	PRODUCE AltitudePossibleVal_21: 1,TheAltitude_21: 1;
+
+TRANSITION getAlt_20
+	CONSUME stp3: 1,AltitudePossibleVal_20: 1;
+	PRODUCE AltitudePossibleVal_20: 1,TheAltitude_20: 1;
+
+TRANSITION getAlt_2
+	CONSUME stp3: 1,AltitudePossibleVal_2: 1;
+	PRODUCE AltitudePossibleVal_2: 1,TheAltitude_2: 1;
+
+TRANSITION getAlt_19
+	CONSUME stp3: 1,AltitudePossibleVal_19: 1;
+	PRODUCE AltitudePossibleVal_19: 1,TheAltitude_19: 1;
+
+TRANSITION getAlt_18
+	CONSUME stp3: 1,AltitudePossibleVal_18: 1;
+	PRODUCE AltitudePossibleVal_18: 1,TheAltitude_18: 1;
+
+TRANSITION getAlt_17
+	CONSUME stp3: 1,AltitudePossibleVal_17: 1;
+	PRODUCE AltitudePossibleVal_17: 1,TheAltitude_17: 1;
+
+TRANSITION getAlt_16
+	CONSUME stp3: 1,AltitudePossibleVal_16: 1;
+	PRODUCE AltitudePossibleVal_16: 1,TheAltitude_16: 1;
+
+TRANSITION getAlt_15
+	CONSUME stp3: 1,AltitudePossibleVal_15: 1;
+	PRODUCE AltitudePossibleVal_15: 1,TheAltitude_15: 1;
+
+TRANSITION getAlt_14
+	CONSUME stp3: 1,AltitudePossibleVal_14: 1;
+	PRODUCE AltitudePossibleVal_14: 1,TheAltitude_14: 1;
+
+TRANSITION getAlt_13
+	CONSUME stp3: 1,AltitudePossibleVal_13: 1;
+	PRODUCE AltitudePossibleVal_13: 1,TheAltitude_13: 1;
+
+TRANSITION getAlt_12
+	CONSUME stp3: 1,AltitudePossibleVal_12: 1;
+	PRODUCE AltitudePossibleVal_12: 1,TheAltitude_12: 1;
+
+TRANSITION getAlt_11
+	CONSUME stp3: 1,AltitudePossibleVal_11: 1;
+	PRODUCE AltitudePossibleVal_11: 1,TheAltitude_11: 1;
+
+TRANSITION getAlt_10
+	CONSUME stp3: 1,AltitudePossibleVal_10: 1;
+	PRODUCE AltitudePossibleVal_10: 1,TheAltitude_10: 1;
+
+TRANSITION getAlt_1
+	CONSUME stp3: 1,AltitudePossibleVal_1: 1;
+	PRODUCE AltitudePossibleVal_1: 1,TheAltitude_1: 1;
+
+TRANSITION SpeedRW_9
+	CONSUME SpeedPossibleVal_9: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_9: 1,Speed_Right_Wheel_9: 1;
+
+TRANSITION SpeedRW_8
+	CONSUME SpeedPossibleVal_8: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_8: 1,Speed_Right_Wheel_8: 1;
+
+TRANSITION SpeedRW_7
+	CONSUME SpeedPossibleVal_7: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_7: 1,Speed_Right_Wheel_7: 1;
+
+TRANSITION SpeedRW_6
+	CONSUME SpeedPossibleVal_6: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_6: 1,Speed_Right_Wheel_6: 1;
+
+TRANSITION SpeedRW_5
+	CONSUME SpeedPossibleVal_5: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_5: 1,Speed_Right_Wheel_5: 1;
+
+TRANSITION SpeedRW_4
+	CONSUME SpeedPossibleVal_4: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_4: 1,Speed_Right_Wheel_4: 1;
+
+TRANSITION SpeedRW_3
+	CONSUME SpeedPossibleVal_3: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_3: 1,Speed_Right_Wheel_3: 1;
+
+TRANSITION SpeedRW_20
+	CONSUME SpeedPossibleVal_20: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_20: 1,Speed_Right_Wheel_20: 1;
+
+TRANSITION SpeedRW_2
+	CONSUME SpeedPossibleVal_2: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_2: 1,Speed_Right_Wheel_2: 1;
+
+TRANSITION SpeedRW_19
+	CONSUME SpeedPossibleVal_19: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_19: 1,Speed_Right_Wheel_19: 1;
+
+TRANSITION SpeedRW_18
+	CONSUME SpeedPossibleVal_18: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_18: 1,Speed_Right_Wheel_18: 1;
+
+TRANSITION SpeedRW_17
+	CONSUME SpeedPossibleVal_17: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_17: 1,Speed_Right_Wheel_17: 1;
+
+TRANSITION SpeedRW_16
+	CONSUME SpeedPossibleVal_16: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_16: 1,Speed_Right_Wheel_16: 1;
+
+TRANSITION SpeedRW_15
+	CONSUME SpeedPossibleVal_15: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_15: 1,Speed_Right_Wheel_15: 1;
+
+TRANSITION SpeedRW_14
+	CONSUME SpeedPossibleVal_14: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_14: 1,Speed_Right_Wheel_14: 1;
+
+TRANSITION SpeedRW_13
+	CONSUME SpeedPossibleVal_13: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_13: 1,Speed_Right_Wheel_13: 1;
+
+TRANSITION SpeedRW_12
+	CONSUME SpeedPossibleVal_12: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_12: 1,Speed_Right_Wheel_12: 1;
+
+TRANSITION SpeedRW_11
+	CONSUME SpeedPossibleVal_11: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_11: 1,Speed_Right_Wheel_11: 1;
+
+TRANSITION SpeedRW_10
+	CONSUME SpeedPossibleVal_10: 1,stp5: 1;
+	PRODUCE SpeedPossibleVal_10: 1,Speed_Right_Wheel_10: 1;
+
+TRANSITION SpeedRW_1
+	CONSUME SpeedPossibleVal_1: 1,stp5: 1;
+	PRODUCE Speed_Right_Wheel_1: 1,SpeedPossibleVal_1: 1;
+
+TRANSITION SpeedLW_9
+	CONSUME stp4: 1,SpeedPossibleVal_9: 1;
+	PRODUCE SpeedPossibleVal_9: 1,Speed_Left_Wheel_9: 1;
+
+TRANSITION SpeedLW_8
+	CONSUME stp4: 1,SpeedPossibleVal_8: 1;
+	PRODUCE SpeedPossibleVal_8: 1,Speed_Left_Wheel_8: 1;
+
+TRANSITION SpeedLW_7
+	CONSUME stp4: 1,SpeedPossibleVal_7: 1;
+	PRODUCE SpeedPossibleVal_7: 1,Speed_Left_Wheel_7: 1;
+
+TRANSITION SpeedLW_6
+	CONSUME stp4: 1,SpeedPossibleVal_6: 1;
+	PRODUCE SpeedPossibleVal_6: 1,Speed_Left_Wheel_6: 1;
+
+TRANSITION SpeedLW_5
+	CONSUME stp4: 1,SpeedPossibleVal_5: 1;
+	PRODUCE SpeedPossibleVal_5: 1,Speed_Left_Wheel_5: 1;
+
+TRANSITION SpeedLW_4
+	CONSUME stp4: 1,SpeedPossibleVal_4: 1;
+	PRODUCE SpeedPossibleVal_4: 1,Speed_Left_Wheel_4: 1;
+
+TRANSITION SpeedLW_3
+	CONSUME stp4: 1,SpeedPossibleVal_3: 1;
+	PRODUCE SpeedPossibleVal_3: 1,Speed_Left_Wheel_3: 1;
+
+TRANSITION SpeedLW_20
+	CONSUME stp4: 1,SpeedPossibleVal_20: 1;
+	PRODUCE SpeedPossibleVal_20: 1,Speed_Left_Wheel_20: 1;
+
+TRANSITION SpeedLW_2
+	CONSUME stp4: 1,SpeedPossibleVal_2: 1;
+	PRODUCE SpeedPossibleVal_2: 1,Speed_Left_Wheel_2: 1;
+
+TRANSITION SpeedLW_19
+	CONSUME stp4: 1,SpeedPossibleVal_19: 1;
+	PRODUCE SpeedPossibleVal_19: 1,Speed_Left_Wheel_19: 1;
+
+TRANSITION SpeedLW_18
+	CONSUME stp4: 1,SpeedPossibleVal_18: 1;
+	PRODUCE SpeedPossibleVal_18: 1,Speed_Left_Wheel_18: 1;
+
+TRANSITION SpeedLW_17
+	CONSUME stp4: 1,SpeedPossibleVal_17: 1;
+	PRODUCE SpeedPossibleVal_17: 1,Speed_Left_Wheel_17: 1;
+
+TRANSITION SpeedLW_16
+	CONSUME stp4: 1,SpeedPossibleVal_16: 1;
+	PRODUCE SpeedPossibleVal_16: 1,Speed_Left_Wheel_16: 1;
+
+TRANSITION SpeedLW_15
+	CONSUME stp4: 1,SpeedPossibleVal_15: 1;
+	PRODUCE SpeedPossibleVal_15: 1,Speed_Left_Wheel_15: 1;
+
+TRANSITION SpeedLW_14
+	CONSUME stp4: 1,SpeedPossibleVal_14: 1;
+	PRODUCE SpeedPossibleVal_14: 1,Speed_Left_Wheel_14: 1;
+
+TRANSITION SpeedLW_13
+	CONSUME stp4: 1,SpeedPossibleVal_13: 1;
+	PRODUCE SpeedPossibleVal_13: 1,Speed_Left_Wheel_13: 1;
+
+TRANSITION SpeedLW_12
+	CONSUME stp4: 1,SpeedPossibleVal_12: 1;
+	PRODUCE SpeedPossibleVal_12: 1,Speed_Left_Wheel_12: 1;
+
+TRANSITION SpeedLW_11
+	CONSUME stp4: 1,SpeedPossibleVal_11: 1;
+	PRODUCE SpeedPossibleVal_11: 1,Speed_Left_Wheel_11: 1;
+
+TRANSITION SpeedLW_10
+	CONSUME stp4: 1,SpeedPossibleVal_10: 1;
+	PRODUCE SpeedPossibleVal_10: 1,Speed_Left_Wheel_10: 1;
+
+TRANSITION SpeedLW_1
+	CONSUME stp4: 1,SpeedPossibleVal_1: 1;
+	PRODUCE SpeedPossibleVal_1: 1,Speed_Left_Wheel_1: 1;
+
+TRANSITION SampleRW_on
+	CONSUME stp2: 1,WeightPossibleVal_on: 1;
+	PRODUCE WeightPossibleVal_on: 1,Weight_Right_Wheel_on: 1;
+
+TRANSITION SampleRW_off
+	CONSUME WeightPossibleVal_off: 1,stp2: 1;
+	PRODUCE WeightPossibleVal_off: 1,Weight_Right_Wheel_off: 1;
+
+TRANSITION SampleLW_on
+	CONSUME WeightPossibleVal_on: 1,stp1: 1;
+	PRODUCE WeightPossibleVal_on: 1,Weight_Left_Wheel_on: 1;
+
+TRANSITION SampleLW_off
+	CONSUME WeightPossibleVal_off: 1,stp1: 1;
+	PRODUCE WeightPossibleVal_off: 1,Weight_Left_Wheel_off: 1;

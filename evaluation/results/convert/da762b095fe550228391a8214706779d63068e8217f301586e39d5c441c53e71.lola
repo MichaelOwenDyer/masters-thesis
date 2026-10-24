@@ -1,0 +1,105 @@
+PLACE
+	Catch1_1, Catch1_2, Catch1_3, Catch1_4, Catch1_5, Catch2_1, Catch2_2, Catch2_3, Catch2_4, Catch2_5, Eat_1, Eat_2, Eat_3, Eat_4, Eat_5, Fork_1, Fork_2, Fork_3, Fork_4, Fork_5, Think_1, Think_2, Think_3, Think_4, Think_5;
+
+MARKING
+	Think_5: 1,Think_4: 1,Think_3: 1,Think_2: 1,Think_1: 1,Fork_5: 1,Fork_4: 1,Fork_3: 1,Fork_2: 1,Fork_1: 1;
+
+TRANSITION FF2b_5
+	CONSUME Fork_4: 1,Catch2_5: 1;
+	PRODUCE Eat_5: 1;
+
+TRANSITION FF2b_4
+	CONSUME Catch2_4: 1,Fork_3: 1;
+	PRODUCE Eat_4: 1;
+
+TRANSITION FF2b_3
+	CONSUME Fork_2: 1,Catch2_3: 1;
+	PRODUCE Eat_3: 1;
+
+TRANSITION FF2b_2
+	CONSUME Fork_1: 1,Catch2_2: 1;
+	PRODUCE Eat_2: 1;
+
+TRANSITION FF2b_1
+	CONSUME Fork_5: 1,Catch2_1: 1;
+	PRODUCE Eat_1: 1;
+
+TRANSITION FF2a_5
+	CONSUME Fork_5: 1,Catch1_5: 1;
+	PRODUCE Eat_5: 1;
+
+TRANSITION FF2a_4
+	CONSUME Catch1_4: 1,Fork_4: 1;
+	PRODUCE Eat_4: 1;
+
+TRANSITION FF2a_3
+	CONSUME Catch1_3: 1,Fork_3: 1;
+	PRODUCE Eat_3: 1;
+
+TRANSITION FF2a_2
+	CONSUME Catch1_2: 1,Fork_2: 1;
+	PRODUCE Eat_2: 1;
+
+TRANSITION FF2a_1
+	CONSUME Catch1_1: 1,Fork_1: 1;
+	PRODUCE Eat_1: 1;
+
+TRANSITION FF1b_5
+	CONSUME Fork_5: 1,Think_5: 1;
+	PRODUCE Catch2_5: 1;
+
+TRANSITION FF1b_4
+	CONSUME Fork_4: 1,Think_4: 1;
+	PRODUCE Catch2_4: 1;
+
+TRANSITION FF1b_3
+	CONSUME Fork_3: 1,Think_3: 1;
+	PRODUCE Catch2_3: 1;
+
+TRANSITION FF1b_2
+	CONSUME Think_2: 1,Fork_2: 1;
+	PRODUCE Catch2_2: 1;
+
+TRANSITION FF1b_1
+	CONSUME Think_1: 1,Fork_1: 1;
+	PRODUCE Catch2_1: 1;
+
+TRANSITION FF1a_5
+	CONSUME Fork_4: 1,Think_5: 1;
+	PRODUCE Catch1_5: 1;
+
+TRANSITION FF1a_4
+	CONSUME Think_4: 1,Fork_3: 1;
+	PRODUCE Catch1_4: 1;
+
+TRANSITION FF1a_3
+	CONSUME Fork_2: 1,Think_3: 1;
+	PRODUCE Catch1_3: 1;
+
+TRANSITION FF1a_2
+	CONSUME Fork_1: 1,Think_2: 1;
+	PRODUCE Catch1_2: 1;
+
+TRANSITION FF1a_1
+	CONSUME Fork_5: 1,Think_1: 1;
+	PRODUCE Catch1_1: 1;
+
+TRANSITION End_5
+	CONSUME Eat_5: 1;
+	PRODUCE Think_5: 1,Fork_5: 1,Fork_4: 1;
+
+TRANSITION End_4
+	CONSUME Eat_4: 1;
+	PRODUCE Fork_3: 1,Think_4: 1,Fork_4: 1;
+
+TRANSITION End_3
+	CONSUME Eat_3: 1;
+	PRODUCE Fork_3: 1,Think_3: 1,Fork_2: 1;
+
+TRANSITION End_2
+	CONSUME Eat_2: 1;
+	PRODUCE Fork_2: 1,Think_2: 1,Fork_1: 1;
+
+TRANSITION End_1
+	CONSUME Eat_1: 1;
+	PRODUCE Fork_1: 1,Think_1: 1,Fork_5: 1;

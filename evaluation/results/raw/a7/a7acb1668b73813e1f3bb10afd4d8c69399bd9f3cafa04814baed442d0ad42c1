@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/QuasiCertifProtocol-PT-02/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"General","places":86,"transitions":56,"arcs":223,"parse_ms":1.607,"analyze_ms":1.776,"timeout_ms":null,"states":1029,"edges":3084}

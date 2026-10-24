@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {RwMutex-PT-r0010w0050}
+
+130 places, 120 transitions, 1260 arcs
+
+0.006s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+1074 marking(s), 10340 transition(s)
+
+0.048s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 1074 live marking(s)
+0 dead transition(s), 120 live transition(s)
+
+0.001s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {RwMutex-PT-r0010w0050}, 130 places, 120 transitions, 1260 arcs  #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states         1074        130          ?          0       1074 # 
+# transitions        10340        120          ?          0        120 #

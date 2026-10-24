@@ -1,0 +1,53 @@
+PLACE
+	capacity_c0, capacity_c1, capacity_c2, capacity_c3, resource_c0, resource_c1, resource_c2, resource_c3, state_c0, state_c1, state_c2, state_c3;
+
+MARKING
+	state_c0: 1,capacity_c0: 10;
+
+TRANSITION Transfer_9
+	CONSUME capacity_c1: 1;
+	PRODUCE capacity_c2: 1;
+
+TRANSITION Transfer_8
+	CONSUME capacity_c0: 1;
+	PRODUCE capacity_c1: 1;
+
+TRANSITION Transfer_11
+	CONSUME capacity_c3: 1;
+	PRODUCE capacity_c0: 1;
+
+TRANSITION Transfer_10
+	CONSUME capacity_c2: 1;
+	PRODUCE capacity_c3: 1;
+
+TRANSITION Go_7
+	CONSUME state_c2: 1;
+	PRODUCE state_c3: 1;
+
+TRANSITION Go_6
+	CONSUME state_c1: 1;
+	PRODUCE state_c2: 1;
+
+TRANSITION Go_5
+	CONSUME state_c0: 1;
+	PRODUCE state_c1: 1;
+
+TRANSITION Exit_4
+	CONSUME state_c3: 1;
+	PRODUCE ;
+
+TRANSITION Compute_2
+	CONSUME capacity_c3: 1,resource_c3: 1,state_c3: 1;
+	PRODUCE resource_c0: 1,state_c3: 1;
+
+TRANSITION Compute_1
+	CONSUME capacity_c2: 1,resource_c2: 1,state_c2: 1;
+	PRODUCE resource_c3: 1,state_c2: 1;
+
+TRANSITION Compute_0
+	CONSUME capacity_c1: 1,resource_c1: 1,state_c1: 1;
+	PRODUCE resource_c2: 1,state_c1: 1;
+
+TRANSITION ComputeFirst_3
+	CONSUME capacity_c0: 1,state_c0: 1;
+	PRODUCE resource_c1: 1,state_c0: 1;

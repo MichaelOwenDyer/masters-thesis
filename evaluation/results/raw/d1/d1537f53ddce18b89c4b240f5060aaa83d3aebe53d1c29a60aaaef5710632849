@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CircularTrains-PT-012/model.pnml","property":"live","mode":"poly","verdict":"true","class":"MarkedGraph","places":24,"transitions":12,"arcs":48,"parse_ms":0.339,"analyze_ms":0.010,"timeout_ms":null}

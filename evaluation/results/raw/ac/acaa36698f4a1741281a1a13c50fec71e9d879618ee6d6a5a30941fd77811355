@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/TokenRing-PT-010/model.pnml","property":"stable","mode":"general","verdict":"false","class":"General","places":121,"transitions":1111,"arcs":4444,"parse_ms":14.038,"analyze_ms":391.807,"timeout_ms":null,"states":58905,"edges":294050}

@@ -1,0 +1,5 @@
+some state violates condition -f:
+  Clients_0 Clients_1 IdleTechs_0 IdleTechs_1 IdleTechs_2 IdleTechs_3 Idles*4
+  firable: calls_0 calls_1
+3 marking(s), 2 transition(s)
+0.000s

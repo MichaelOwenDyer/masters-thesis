@@ -1,0 +1,9 @@
+PLACE
+	p0;
+
+MARKING
+	p0: 1;
+
+TRANSITION t0
+	CONSUME p0: 1;
+	PRODUCE p0: 1;

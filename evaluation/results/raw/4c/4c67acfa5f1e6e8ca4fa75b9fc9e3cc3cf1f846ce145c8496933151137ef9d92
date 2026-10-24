@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/FMS-PT-00002/model.pnml","property":"live","mode":"general","verdict":"true","class":"AsymmetricChoice","places":22,"transitions":20,"arcs":50,"parse_ms":0.532,"analyze_ms":3.704,"timeout_ms":null,"states":3444,"edges":16311}

@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {DLCflexbar-PT-6a}
+
+2069 places, 16077 transitions, 63325 arcs
+
+0.304s

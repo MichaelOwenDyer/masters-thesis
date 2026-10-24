@@ -1,0 +1,5 @@
+some state violates condition -f:
+  ConsumerOffer_p1*3 DeliveryHandlerDelivery_p8_0*3 MerchantOffer_p2*3 OfferResponce_p10 PaymentHandlerPayment_p5_0*3 p10_0 p11_0 p11_11 p11_13 p11_3 p11_4 p11_7 p11_8 p12_0 p12_3 p12_4 p12_7
+  firable: MakeChoice_t1
+2 marking(s), 1 transition(s)
+0.000s

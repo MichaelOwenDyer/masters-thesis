@@ -1,0 +1,697 @@
+PLACE
+	AKT_0, AKT_equals_1, AP1_equals_0, AP1_equals_1, ATF2_equals_0, ATF2_equals_1, ATM_equals_0, ATM_equals_1, Apoptosis_equals_0, Apoptosis_equals_1, BCL2_equals_0, BCL2_equals_1, CREB_equals_0, CREB_equals_1, DNA_damage_equals_0, DNA_damage_equals_1, DUSP1_equals_0, DUSP1_equals_1, EGFR_equals_0, EGFR_equals_1, EGFR_stimulus_equals_0, EGFR_stimulus_equals_1, ELK1_equals_0, ELK1_equals_1, ERK_equals_0, ERK_equals_1, FGFR3_equals_0, FGFR3_equals_1, FGFR3_stimulus_equals_0, FGFR3_stimulus_equals_1, FOS_equals_0, FOS_equals_1, FOXO3_equals_0, FOXO3_equals_1, FRS2_equals_0, FRS2_equals_1, GAB1_equals_0, GAB1_equals_1, GADD45_equals_0, GADD45_equals_1, GRB2_equals_0, GRB2_equals_1, Growth_Arrest_equals_0, Growth_Arrest_equals_1, JNK_equals_0, JNK_equals_1, JUN_equals_0, JUN_equals_1, MAP3K1_3_equals_0, MAP3K1_3_equals_1, MAX_equals_0, MAX_equals_1, MDM2_equals_0, MDM2_equals_1, MEK1_2_equals_0, MEK1_2_equals_1, MSK_equals_0, MSK_equals_1, MTK1_equals_0, MTK1_equals_1, MYC_equals_0, MYC_equals_1, PDK1_equals_0, PDK1_equals_1, PI3K_equals_0, PI3K_equals_1, PKC_equals_0, PKC_equals_1, PLCG_equals_0, PLCG_equals_1, PPP2CA_equals_0, PPP2CA_equals_1, PTEN_equals_0, PTEN_equals_1, Proliferation_equals_0, Proliferation_equals_1, RAF_equals_0, RAF_equals_1, RAS_equals_0, RAS_equals_1, RSK_equals_0, RSK_equals_1, SMAD_equals_0, SMAD_equals_1, SOS_equals_0, SOS_equals_1, SPRY_equals_0, SPRY_equals_1, TAK1_equals_0, TAK1_equals_1, TAOK_equals_0, TAOK_equals_1, TGFBR_equals_0, TGFBR_equals_1, TGFBR_stimulus_equals_0, TGFBR_stimulus_equals_1, p14_equals_0, p14_equals_1, p21_equals_0, p21_equals_1, p38_equals_0, p38_equals_1, p53_equals_0, p53_equals_1, p70_equals_0, p70_equals_1;
+
+MARKING
+	p70_equals_0: 1,p53_equals_0: 1,p38_equals_0: 1,p21_equals_0: 1,p14_equals_0: 1,TGFBR_stimulus_equals_0: 1,TGFBR_equals_0: 1,TAOK_equals_0: 1,TAK1_equals_0: 1,SPRY_equals_0: 1,SOS_equals_0: 1,SMAD_equals_0: 1,RSK_equals_0: 1,RAS_equals_0: 1,RAF_equals_0: 1,Proliferation_equals_0: 1,PTEN_equals_0: 1,PPP2CA_equals_0: 1,PLCG_equals_0: 1,PKC_equals_0: 1,PI3K_equals_0: 1,PDK1_equals_0: 1,MYC_equals_0: 1,MTK1_equals_0: 1,MSK_equals_0: 1,MEK1_2_equals_0: 1,MDM2_equals_0: 1,MAX_equals_0: 1,MAP3K1_3_equals_0: 1,JUN_equals_0: 1,JNK_equals_0: 1,Growth_Arrest_equals_0: 1,GRB2_equals_0: 1,GADD45_equals_0: 1,GAB1_equals_0: 1,FRS2_equals_0: 1,FOXO3_equals_0: 1,FOS_equals_0: 1,FGFR3_stimulus_equals_0: 1,FGFR3_equals_0: 1,ERK_equals_0: 1,ELK1_equals_0: 1,EGFR_stimulus_equals_0: 1,EGFR_equals_0: 1,DUSP1_equals_0: 1,DNA_damage_equals_1: 1,CREB_equals_0: 1,BCL2_equals_0: 1,Apoptosis_equals_0: 1,ATM_equals_0: 1,ATF2_equals_0: 1,AP1_equals_0: 1,AKT_0: 1;
+
+TRANSITION p70_equals_1_to_p70_equals_0_when_PDK1_equals_0
+	CONSUME PDK1_equals_0: 1,p70_equals_1: 1;
+	PRODUCE PDK1_equals_0: 1,p70_equals_0: 1;
+
+TRANSITION p70_equals_1_to_p70_equals_0_when_ERK_equals_0
+	CONSUME ERK_equals_0: 1,p70_equals_1: 1;
+	PRODUCE ERK_equals_0: 1,p70_equals_0: 1;
+
+TRANSITION p70_equals_0_to_p70_equals_1_when_ERK_equals_1_and_PDK1_equals_1
+	CONSUME ERK_equals_1: 1,PDK1_equals_1: 1,p70_equals_0: 1;
+	PRODUCE ERK_equals_1: 1,PDK1_equals_1: 1,p70_equals_1: 1;
+
+TRANSITION p53_equals_1_to_p53_equals_0_when_ATM_equals_1_and_MDM2_equals_1_and_p38_equals_0
+	CONSUME ATM_equals_1: 1,MDM2_equals_1: 1,p38_equals_0: 1,p53_equals_1: 1;
+	PRODUCE ATM_equals_1: 1,MDM2_equals_1: 1,p38_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION p53_equals_1_to_p53_equals_0_when_ATM_equals_0_and_p38_equals_0
+	CONSUME ATM_equals_0: 1,p38_equals_0: 1,p53_equals_1: 1;
+	PRODUCE ATM_equals_0: 1,p38_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION p53_equals_1_to_p53_equals_0_when_ATM_equals_0_and_MDM2_equals_1
+	CONSUME ATM_equals_0: 1,MDM2_equals_1: 1,p53_equals_1: 1;
+	PRODUCE ATM_equals_0: 1,MDM2_equals_1: 1,p53_equals_0: 1;
+
+TRANSITION p53_equals_0_to_p53_equals_1_when_ATM_equals_1_and_p38_equals_1
+	CONSUME ATM_equals_1: 1,p38_equals_1: 1,p53_equals_0: 1;
+	PRODUCE ATM_equals_1: 1,p38_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION p53_equals_0_to_p53_equals_1_when_ATM_equals_1_and_MDM2_equals_0
+	CONSUME ATM_equals_1: 1,MDM2_equals_0: 1,p53_equals_0: 1;
+	PRODUCE ATM_equals_1: 1,MDM2_equals_0: 1,p53_equals_1: 1;
+
+TRANSITION p53_equals_0_to_p53_equals_1_when_ATM_equals_0_and_MDM2_equals_0_and_p38_equals_1
+	CONSUME ATM_equals_0: 1,MDM2_equals_0: 1,p38_equals_1: 1,p53_equals_0: 1;
+	PRODUCE ATM_equals_0: 1,MDM2_equals_0: 1,p38_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION p38_equals_1_to_p38_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_MTK1_equals_0_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION p38_equals_1_to_p38_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION p38_equals_1_to_p38_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION p38_equals_1_to_p38_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_0
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,p38_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION p38_equals_1_to_p38_equals_0_when_DUSP1_equals_0_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_1: 1;
+	PRODUCE DUSP1_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,TAOK_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,TAOK_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_TAK1_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,TAK1_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,TAK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_MTK1_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAOK_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAOK_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAK1_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_1: 1,TAOK_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_1: 1,TAOK_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_0_and_TAOK_equals_1
+	CONSUME DUSP1_equals_0: 1,TAOK_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_0: 1,TAOK_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_0_and_TAK1_equals_1
+	CONSUME DUSP1_equals_0: 1,TAK1_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_0: 1,TAK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_0_and_MTK1_equals_1
+	CONSUME DUSP1_equals_0: 1,MTK1_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_0: 1,MTK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p38_equals_0_to_p38_equals_1_when_DUSP1_equals_0_and_MAP3K1_3_equals_1
+	CONSUME DUSP1_equals_0: 1,MAP3K1_3_equals_1: 1,p38_equals_0: 1;
+	PRODUCE DUSP1_equals_0: 1,MAP3K1_3_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION p21_equals_1_to_p21_equals_0_when_p53_equals_0
+	CONSUME p21_equals_1: 1,p53_equals_0: 1;
+	PRODUCE p21_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION p21_equals_1_to_p21_equals_0_when_AKT_equals_1
+	CONSUME AKT_equals_1: 1,p21_equals_1: 1;
+	PRODUCE AKT_equals_1: 1,p21_equals_0: 1;
+
+TRANSITION p21_equals_0_to_p21_equals_1_when_AKT_equals_0_and_p53_equals_1
+	CONSUME AKT_0: 1,p21_equals_0: 1,p53_equals_1: 1;
+	PRODUCE AKT_0: 1,p21_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION p14_equals_1_to_p14_equals_0_when_MYC_equals_0
+	CONSUME MYC_equals_0: 1,p14_equals_1: 1;
+	PRODUCE MYC_equals_0: 1,p14_equals_0: 1;
+
+TRANSITION p14_equals_0_to_p14_equals_1_when_MYC_equals_1
+	CONSUME MYC_equals_1: 1,p14_equals_0: 1;
+	PRODUCE MYC_equals_1: 1,p14_equals_1: 1;
+
+TRANSITION TGFBR_equals_1_to_TGFBR_equals_0_when_TGFBR_stimulus_equals_0
+	CONSUME TGFBR_equals_1: 1,TGFBR_stimulus_equals_0: 1;
+	PRODUCE TGFBR_equals_0: 1,TGFBR_stimulus_equals_0: 1;
+
+TRANSITION TGFBR_equals_0_to_TGFBR_equals_1_when_TGFBR_stimulus_equals_1
+	CONSUME TGFBR_equals_0: 1,TGFBR_stimulus_equals_1: 1;
+	PRODUCE TGFBR_equals_1: 1,TGFBR_stimulus_equals_1: 1;
+
+TRANSITION TAOK_equals_1_to_TAOK_equals_0_when_ATM_equals_0
+	CONSUME ATM_equals_0: 1,TAOK_equals_1: 1;
+	PRODUCE ATM_equals_0: 1,TAOK_equals_0: 1;
+
+TRANSITION TAOK_equals_0_to_TAOK_equals_1_when_ATM_equals_1
+	CONSUME ATM_equals_1: 1,TAOK_equals_0: 1;
+	PRODUCE ATM_equals_1: 1,TAOK_equals_1: 1;
+
+TRANSITION TAK1_equals_1_to_TAK1_equals_0_when_TGFBR_equals_0
+	CONSUME TAK1_equals_1: 1,TGFBR_equals_0: 1;
+	PRODUCE TAK1_equals_0: 1,TGFBR_equals_0: 1;
+
+TRANSITION TAK1_equals_0_to_TAK1_equals_1_when_TGFBR_equals_1
+	CONSUME TAK1_equals_0: 1,TGFBR_equals_1: 1;
+	PRODUCE TAK1_equals_1: 1,TGFBR_equals_1: 1;
+
+TRANSITION SPRY_equals_1_to_SPRY_equals_0_when_ERK_equals_0
+	CONSUME ERK_equals_0: 1,SPRY_equals_1: 1;
+	PRODUCE ERK_equals_0: 1,SPRY_equals_0: 1;
+
+TRANSITION SPRY_equals_0_to_SPRY_equals_1_when_ERK_equals_1
+	CONSUME ERK_equals_1: 1,SPRY_equals_0: 1;
+	PRODUCE ERK_equals_1: 1,SPRY_equals_1: 1;
+
+TRANSITION SOS_equals_1_to_SOS_equals_0_when_RSK_equals_1
+	CONSUME RSK_equals_1: 1,SOS_equals_1: 1;
+	PRODUCE RSK_equals_1: 1,SOS_equals_0: 1;
+
+TRANSITION SOS_equals_1_to_SOS_equals_0_when_GRB2_equals_0
+	CONSUME GRB2_equals_0: 1,SOS_equals_1: 1;
+	PRODUCE GRB2_equals_0: 1,SOS_equals_0: 1;
+
+TRANSITION SOS_equals_0_to_SOS_equals_1_when_GRB2_equals_1_and_RSK_equals_0
+	CONSUME GRB2_equals_1: 1,RSK_equals_0: 1,SOS_equals_0: 1;
+	PRODUCE GRB2_equals_1: 1,RSK_equals_0: 1,SOS_equals_1: 1;
+
+TRANSITION SMAD_equals_1_to_SMAD_equals_0_when_TGFBR_equals_0
+	CONSUME SMAD_equals_1: 1,TGFBR_equals_0: 1;
+	PRODUCE SMAD_equals_0: 1,TGFBR_equals_0: 1;
+
+TRANSITION SMAD_equals_0_to_SMAD_equals_1_when_TGFBR_equals_1
+	CONSUME SMAD_equals_0: 1,TGFBR_equals_1: 1;
+	PRODUCE SMAD_equals_1: 1,TGFBR_equals_1: 1;
+
+TRANSITION RSK_equals_1_to_RSK_equals_0_when_ERK_equals_0
+	CONSUME ERK_equals_0: 1,RSK_equals_1: 1;
+	PRODUCE ERK_equals_0: 1,RSK_equals_0: 1;
+
+TRANSITION RSK_equals_0_to_RSK_equals_1_when_ERK_equals_1
+	CONSUME ERK_equals_1: 1,RSK_equals_0: 1;
+	PRODUCE ERK_equals_1: 1,RSK_equals_1: 1;
+
+TRANSITION RAS_equals_1_to_RAS_equals_0_when_PLCG_equals_0_and_SOS_equals_0
+	CONSUME PLCG_equals_0: 1,RAS_equals_1: 1,SOS_equals_0: 1;
+	PRODUCE PLCG_equals_0: 1,RAS_equals_0: 1,SOS_equals_0: 1;
+
+TRANSITION RAS_equals_0_to_RAS_equals_1_when_SOS_equals_1
+	CONSUME RAS_equals_0: 1,SOS_equals_1: 1;
+	PRODUCE RAS_equals_1: 1,SOS_equals_1: 1;
+
+TRANSITION RAS_equals_0_to_RAS_equals_1_when_PLCG_equals_1
+	CONSUME PLCG_equals_1: 1,RAS_equals_0: 1;
+	PRODUCE PLCG_equals_1: 1,RAS_equals_1: 1;
+
+TRANSITION RAF_equals_1_to_RAF_equals_0_when_PKC_equals_0_and_RAS_equals_0
+	CONSUME PKC_equals_0: 1,RAF_equals_1: 1,RAS_equals_0: 1;
+	PRODUCE PKC_equals_0: 1,RAF_equals_0: 1,RAS_equals_0: 1;
+
+TRANSITION RAF_equals_1_to_RAF_equals_0_when_ERK_equals_1
+	CONSUME ERK_equals_1: 1,RAF_equals_1: 1;
+	PRODUCE ERK_equals_1: 1,RAF_equals_0: 1;
+
+TRANSITION RAF_equals_1_to_RAF_equals_0_when_AKT_equals_1
+	CONSUME AKT_equals_1: 1,RAF_equals_1: 1;
+	PRODUCE AKT_equals_1: 1,RAF_equals_0: 1;
+
+TRANSITION RAF_equals_0_to_RAF_equals_1_when_AKT_equals_0_and_ERK_equals_0_and_RAS_equals_1
+	CONSUME AKT_0: 1,ERK_equals_0: 1,RAF_equals_0: 1,RAS_equals_1: 1;
+	PRODUCE AKT_0: 1,ERK_equals_0: 1,RAF_equals_1: 1,RAS_equals_1: 1;
+
+TRANSITION RAF_equals_0_to_RAF_equals_1_when_AKT_equals_0_and_ERK_equals_0_and_PKC_equals_1
+	CONSUME AKT_0: 1,ERK_equals_0: 1,PKC_equals_1: 1,RAF_equals_0: 1;
+	PRODUCE AKT_0: 1,ERK_equals_0: 1,PKC_equals_1: 1,RAF_equals_1: 1;
+
+TRANSITION Proliferation_equals_1_to_Proliferation_equals_0_when_p70_equals_0
+	CONSUME Proliferation_equals_1: 1,p70_equals_0: 1;
+	PRODUCE Proliferation_equals_0: 1,p70_equals_0: 1;
+
+TRANSITION Proliferation_equals_1_to_Proliferation_equals_0_when_p21_equals_1
+	CONSUME Proliferation_equals_1: 1,p21_equals_1: 1;
+	PRODUCE Proliferation_equals_0: 1,p21_equals_1: 1;
+
+TRANSITION Proliferation_equals_1_to_Proliferation_equals_0_when_MYC_equals_0
+	CONSUME MYC_equals_0: 1,Proliferation_equals_1: 1;
+	PRODUCE MYC_equals_0: 1,Proliferation_equals_0: 1;
+
+TRANSITION Proliferation_equals_0_to_Proliferation_equals_1_when_MYC_equals_1_and_p21_equals_0_and_p70_equals_1
+	CONSUME MYC_equals_1: 1,Proliferation_equals_0: 1,p21_equals_0: 1,p70_equals_1: 1;
+	PRODUCE MYC_equals_1: 1,Proliferation_equals_1: 1,p21_equals_0: 1,p70_equals_1: 1;
+
+TRANSITION PTEN_equals_1_to_PTEN_equals_0_when_p53_equals_0
+	CONSUME PTEN_equals_1: 1,p53_equals_0: 1;
+	PRODUCE PTEN_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION PTEN_equals_0_to_PTEN_equals_1_when_p53_equals_1
+	CONSUME PTEN_equals_0: 1,p53_equals_1: 1;
+	PRODUCE PTEN_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION PPP2CA_equals_1_to_PPP2CA_equals_0_when_p38_equals_0
+	CONSUME PPP2CA_equals_1: 1,p38_equals_0: 1;
+	PRODUCE PPP2CA_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION PPP2CA_equals_0_to_PPP2CA_equals_1_when_p38_equals_1
+	CONSUME PPP2CA_equals_0: 1,p38_equals_1: 1;
+	PRODUCE PPP2CA_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION PLCG_equals_1_to_PLCG_equals_0_when_EGFR_equals_0_and_FGFR3_equals_0
+	CONSUME EGFR_equals_0: 1,FGFR3_equals_0: 1,PLCG_equals_1: 1;
+	PRODUCE EGFR_equals_0: 1,FGFR3_equals_0: 1,PLCG_equals_0: 1;
+
+TRANSITION PLCG_equals_0_to_PLCG_equals_1_when_FGFR3_equals_1
+	CONSUME FGFR3_equals_1: 1,PLCG_equals_0: 1;
+	PRODUCE FGFR3_equals_1: 1,PLCG_equals_1: 1;
+
+TRANSITION PLCG_equals_0_to_PLCG_equals_1_when_EGFR_equals_1
+	CONSUME EGFR_equals_1: 1,PLCG_equals_0: 1;
+	PRODUCE EGFR_equals_1: 1,PLCG_equals_1: 1;
+
+TRANSITION PKC_equals_1_to_PKC_equals_0_when_PLCG_equals_0
+	CONSUME PKC_equals_1: 1,PLCG_equals_0: 1;
+	PRODUCE PKC_equals_0: 1,PLCG_equals_0: 1;
+
+TRANSITION PKC_equals_0_to_PKC_equals_1_when_PLCG_equals_1
+	CONSUME PKC_equals_0: 1,PLCG_equals_1: 1;
+	PRODUCE PKC_equals_1: 1,PLCG_equals_1: 1;
+
+TRANSITION PI3K_equals_1_to_PI3K_equals_0_when_GAB1_equals_0_and_SOS_equals_0
+	CONSUME GAB1_equals_0: 1,PI3K_equals_1: 1,SOS_equals_0: 1;
+	PRODUCE GAB1_equals_0: 1,PI3K_equals_0: 1,SOS_equals_0: 1;
+
+TRANSITION PI3K_equals_1_to_PI3K_equals_0_when_GAB1_equals_0_and_RAS_equals_0
+	CONSUME GAB1_equals_0: 1,PI3K_equals_1: 1,RAS_equals_0: 1;
+	PRODUCE GAB1_equals_0: 1,PI3K_equals_0: 1,RAS_equals_0: 1;
+
+TRANSITION PI3K_equals_0_to_PI3K_equals_1_when_RAS_equals_1_and_SOS_equals_1
+	CONSUME PI3K_equals_0: 1,RAS_equals_1: 1,SOS_equals_1: 1;
+	PRODUCE PI3K_equals_1: 1,RAS_equals_1: 1,SOS_equals_1: 1;
+
+TRANSITION PI3K_equals_0_to_PI3K_equals_1_when_GAB1_equals_1
+	CONSUME GAB1_equals_1: 1,PI3K_equals_0: 1;
+	PRODUCE GAB1_equals_1: 1,PI3K_equals_1: 1;
+
+TRANSITION PDK1_equals_1_to_PDK1_equals_0_when_PI3K_equals_0
+	CONSUME PDK1_equals_1: 1,PI3K_equals_0: 1;
+	PRODUCE PDK1_equals_0: 1,PI3K_equals_0: 1;
+
+TRANSITION PDK1_equals_0_to_PDK1_equals_1_when_PI3K_equals_1
+	CONSUME PDK1_equals_0: 1,PI3K_equals_1: 1;
+	PRODUCE PDK1_equals_1: 1,PI3K_equals_1: 1;
+
+TRANSITION MYC_equals_1_to_MYC_equals_0_when_MSK_equals_0
+	CONSUME MSK_equals_0: 1,MYC_equals_1: 1;
+	PRODUCE MSK_equals_0: 1,MYC_equals_0: 1;
+
+TRANSITION MYC_equals_1_to_MYC_equals_0_when_AKT_equals_0_and_MAX_equals_0
+	CONSUME AKT_0: 1,MAX_equals_0: 1,MYC_equals_1: 1;
+	PRODUCE AKT_0: 1,MAX_equals_0: 1,MYC_equals_0: 1;
+
+TRANSITION MYC_equals_0_to_MYC_equals_1_when_AKT_equals_1_and_MSK_equals_1
+	CONSUME AKT_equals_1: 1,MSK_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE AKT_equals_1: 1,MSK_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION MYC_equals_0_to_MYC_equals_1_when_AKT_equals_0_and_MAX_equals_1_and_MSK_equals_1
+	CONSUME AKT_0: 1,MAX_equals_1: 1,MSK_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE AKT_0: 1,MAX_equals_1: 1,MSK_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION MTK1_equals_1_to_MTK1_equals_0_when_GADD45_equals_0
+	CONSUME GADD45_equals_0: 1,MTK1_equals_1: 1;
+	PRODUCE GADD45_equals_0: 1,MTK1_equals_0: 1;
+
+TRANSITION MTK1_equals_0_to_MTK1_equals_1_when_GADD45_equals_1
+	CONSUME GADD45_equals_1: 1,MTK1_equals_0: 1;
+	PRODUCE GADD45_equals_1: 1,MTK1_equals_1: 1;
+
+TRANSITION MSK_equals_1_to_MSK_equals_0_when_ERK_equals_0_and_p38_equals_0
+	CONSUME ERK_equals_0: 1,MSK_equals_1: 1,p38_equals_0: 1;
+	PRODUCE ERK_equals_0: 1,MSK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION MSK_equals_0_to_MSK_equals_1_when_p38_equals_1
+	CONSUME MSK_equals_0: 1,p38_equals_1: 1;
+	PRODUCE MSK_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION MSK_equals_0_to_MSK_equals_1_when_ERK_equals_1
+	CONSUME ERK_equals_1: 1,MSK_equals_0: 1;
+	PRODUCE ERK_equals_1: 1,MSK_equals_1: 1;
+
+TRANSITION MEK1_2_equals_1_to_MEK1_2_equals_0_when_PPP2CA_equals_1
+	CONSUME MEK1_2_equals_1: 1,PPP2CA_equals_1: 1;
+	PRODUCE MEK1_2_equals_0: 1,PPP2CA_equals_1: 1;
+
+TRANSITION MEK1_2_equals_1_to_MEK1_2_equals_0_when_MAP3K1_3_equals_0_and_RAF_equals_0
+	CONSUME MAP3K1_3_equals_0: 1,MEK1_2_equals_1: 1,RAF_equals_0: 1;
+	PRODUCE MAP3K1_3_equals_0: 1,MEK1_2_equals_0: 1,RAF_equals_0: 1;
+
+TRANSITION MEK1_2_equals_1_to_MEK1_2_equals_0_when_AP1_equals_1
+	CONSUME AP1_equals_1: 1,MEK1_2_equals_1: 1;
+	PRODUCE AP1_equals_1: 1,MEK1_2_equals_0: 1;
+
+TRANSITION MEK1_2_equals_0_to_MEK1_2_equals_1_when_AP1_equals_0_and_MAP3K1_3_equals_1_and_PPP2CA_equals_0
+	CONSUME AP1_equals_0: 1,MAP3K1_3_equals_1: 1,MEK1_2_equals_0: 1,PPP2CA_equals_0: 1;
+	PRODUCE AP1_equals_0: 1,MAP3K1_3_equals_1: 1,MEK1_2_equals_1: 1,PPP2CA_equals_0: 1;
+
+TRANSITION MEK1_2_equals_0_to_MEK1_2_equals_1_when_AP1_equals_0_and_MAP3K1_3_equals_0_and_PPP2CA_equals_0_and_RAF_equals_1
+	CONSUME AP1_equals_0: 1,MAP3K1_3_equals_0: 1,MEK1_2_equals_0: 1,PPP2CA_equals_0: 1,RAF_equals_1: 1;
+	PRODUCE AP1_equals_0: 1,MAP3K1_3_equals_0: 1,MEK1_2_equals_1: 1,PPP2CA_equals_0: 1,RAF_equals_1: 1;
+
+TRANSITION MDM2_equals_1_to_MDM2_equals_0_when_p14_equals_1
+	CONSUME MDM2_equals_1: 1,p14_equals_1: 1;
+	PRODUCE MDM2_equals_0: 1,p14_equals_1: 1;
+
+TRANSITION MDM2_equals_1_to_MDM2_equals_0_when_AKT_equals_0_and_p53_equals_0
+	CONSUME AKT_0: 1,MDM2_equals_1: 1,p53_equals_0: 1;
+	PRODUCE AKT_0: 1,MDM2_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION MDM2_equals_0_to_MDM2_equals_1_when_AKT_equals_1_and_p14_equals_0
+	CONSUME AKT_equals_1: 1,MDM2_equals_0: 1,p14_equals_0: 1;
+	PRODUCE AKT_equals_1: 1,MDM2_equals_1: 1,p14_equals_0: 1;
+
+TRANSITION MDM2_equals_0_to_MDM2_equals_1_when_AKT_equals_0_and_p14_equals_0_and_p53_equals_1
+	CONSUME AKT_0: 1,MDM2_equals_0: 1,p14_equals_0: 1,p53_equals_1: 1;
+	PRODUCE AKT_0: 1,MDM2_equals_1: 1,p14_equals_0: 1,p53_equals_1: 1;
+
+TRANSITION MAX_equals_1_to_MAX_equals_0_when_p38_equals_0
+	CONSUME MAX_equals_1: 1,p38_equals_0: 1;
+	PRODUCE MAX_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION MAX_equals_0_to_MAX_equals_1_when_p38_equals_1
+	CONSUME MAX_equals_0: 1,p38_equals_1: 1;
+	PRODUCE MAX_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION MAP3K1_3_equals_1_to_MAP3K1_3_equals_0_when_RAS_equals_0
+	CONSUME MAP3K1_3_equals_1: 1,RAS_equals_0: 1;
+	PRODUCE MAP3K1_3_equals_0: 1,RAS_equals_0: 1;
+
+TRANSITION MAP3K1_3_equals_0_to_MAP3K1_3_equals_1_when_RAS_equals_1
+	CONSUME MAP3K1_3_equals_0: 1,RAS_equals_1: 1;
+	PRODUCE MAP3K1_3_equals_1: 1,RAS_equals_1: 1;
+
+TRANSITION JUN_equals_1_to_JUN_equals_0_when_JNK_equals_0
+	CONSUME JNK_equals_0: 1,JUN_equals_1: 1;
+	PRODUCE JNK_equals_0: 1,JUN_equals_0: 1;
+
+TRANSITION JUN_equals_0_to_JUN_equals_1_when_JNK_equals_1
+	CONSUME JNK_equals_1: 1,JUN_equals_0: 1;
+	PRODUCE JNK_equals_1: 1,JUN_equals_1: 1;
+
+TRANSITION JNK_equals_1_to_JNK_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_MTK1_equals_0_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_1: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+
+TRANSITION JNK_equals_1_to_JNK_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+
+TRANSITION JNK_equals_1_to_JNK_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAOK_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAOK_equals_0: 1;
+
+TRANSITION JNK_equals_1_to_JNK_equals_0_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_0
+	CONSUME DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1;
+
+TRANSITION JNK_equals_1_to_JNK_equals_0_when_DUSP1_equals_0_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_0_and_TAOK_equals_0
+	CONSUME DUSP1_equals_0: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+	PRODUCE DUSP1_equals_0: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_0: 1,TAOK_equals_0: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_1: 1,TAOK_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_1: 1,TAOK_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_TAK1_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_1: 1,TAK1_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_1: 1,TAK1_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_1_and_MTK1_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_1: 1,MTK1_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_1: 1,MTK1_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAOK_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAOK_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_1_and_TAK1_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_1: 1,TAK1_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_1_and_MAP3K1_3_equals_0_and_MTK1_equals_0_and_TAK1_equals_1_and_TAOK_equals_1
+	CONSUME DUSP1_equals_1: 1,JNK_equals_0: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_1: 1,TAOK_equals_1: 1;
+	PRODUCE DUSP1_equals_1: 1,JNK_equals_1: 1,MAP3K1_3_equals_0: 1,MTK1_equals_0: 1,TAK1_equals_1: 1,TAOK_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_0_and_TAOK_equals_1
+	CONSUME DUSP1_equals_0: 1,JNK_equals_0: 1,TAOK_equals_1: 1;
+	PRODUCE DUSP1_equals_0: 1,JNK_equals_1: 1,TAOK_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_0_and_TAK1_equals_1
+	CONSUME DUSP1_equals_0: 1,JNK_equals_0: 1,TAK1_equals_1: 1;
+	PRODUCE DUSP1_equals_0: 1,JNK_equals_1: 1,TAK1_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_0_and_MTK1_equals_1
+	CONSUME DUSP1_equals_0: 1,JNK_equals_0: 1,MTK1_equals_1: 1;
+	PRODUCE DUSP1_equals_0: 1,JNK_equals_1: 1,MTK1_equals_1: 1;
+
+TRANSITION JNK_equals_0_to_JNK_equals_1_when_DUSP1_equals_0_and_MAP3K1_3_equals_1
+	CONSUME DUSP1_equals_0: 1,JNK_equals_0: 1,MAP3K1_3_equals_1: 1;
+	PRODUCE DUSP1_equals_0: 1,JNK_equals_1: 1,MAP3K1_3_equals_1: 1;
+
+TRANSITION Growth_Arrest_equals_1_to_Growth_Arrest_equals_0_when_p21_equals_0
+	CONSUME Growth_Arrest_equals_1: 1,p21_equals_0: 1;
+	PRODUCE Growth_Arrest_equals_0: 1,p21_equals_0: 1;
+
+TRANSITION Growth_Arrest_equals_0_to_Growth_Arrest_equals_1_when_p21_equals_1
+	CONSUME Growth_Arrest_equals_0: 1,p21_equals_1: 1;
+	PRODUCE Growth_Arrest_equals_1: 1,p21_equals_1: 1;
+
+TRANSITION GRB2_equals_1_to_GRB2_equals_0_when_EGFR_equals_0_and_FRS2_equals_0_and_TGFBR_equals_0
+	CONSUME EGFR_equals_0: 1,FRS2_equals_0: 1,GRB2_equals_1: 1,TGFBR_equals_0: 1;
+	PRODUCE EGFR_equals_0: 1,FRS2_equals_0: 1,GRB2_equals_0: 1,TGFBR_equals_0: 1;
+
+TRANSITION GRB2_equals_0_to_GRB2_equals_1_when_TGFBR_equals_1
+	CONSUME GRB2_equals_0: 1,TGFBR_equals_1: 1;
+	PRODUCE GRB2_equals_1: 1,TGFBR_equals_1: 1;
+
+TRANSITION GRB2_equals_0_to_GRB2_equals_1_when_FRS2_equals_1
+	CONSUME FRS2_equals_1: 1,GRB2_equals_0: 1;
+	PRODUCE FRS2_equals_1: 1,GRB2_equals_1: 1;
+
+TRANSITION GRB2_equals_0_to_GRB2_equals_1_when_EGFR_equals_1
+	CONSUME EGFR_equals_1: 1,GRB2_equals_0: 1;
+	PRODUCE EGFR_equals_1: 1,GRB2_equals_1: 1;
+
+TRANSITION GADD45_equals_1_to_GADD45_equals_0_when_SMAD_equals_0_and_p53_equals_0
+	CONSUME GADD45_equals_1: 1,SMAD_equals_0: 1,p53_equals_0: 1;
+	PRODUCE GADD45_equals_0: 1,SMAD_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION GADD45_equals_0_to_GADD45_equals_1_when_p53_equals_1
+	CONSUME GADD45_equals_0: 1,p53_equals_1: 1;
+	PRODUCE GADD45_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION GADD45_equals_0_to_GADD45_equals_1_when_SMAD_equals_1
+	CONSUME GADD45_equals_0: 1,SMAD_equals_1: 1;
+	PRODUCE GADD45_equals_1: 1,SMAD_equals_1: 1;
+
+TRANSITION GAB1_equals_1_to_GAB1_equals_0_when_GRB2_equals_0_and_PI3K_equals_0
+	CONSUME GAB1_equals_1: 1,GRB2_equals_0: 1,PI3K_equals_0: 1;
+	PRODUCE GAB1_equals_0: 1,GRB2_equals_0: 1,PI3K_equals_0: 1;
+
+TRANSITION GAB1_equals_0_to_GAB1_equals_1_when_PI3K_equals_1
+	CONSUME GAB1_equals_0: 1,PI3K_equals_1: 1;
+	PRODUCE GAB1_equals_1: 1,PI3K_equals_1: 1;
+
+TRANSITION GAB1_equals_0_to_GAB1_equals_1_when_GRB2_equals_1
+	CONSUME GAB1_equals_0: 1,GRB2_equals_1: 1;
+	PRODUCE GAB1_equals_1: 1,GRB2_equals_1: 1;
+
+TRANSITION FRS2_equals_1_to_FRS2_equals_0_when_SPRY_equals_1
+	CONSUME FRS2_equals_1: 1,SPRY_equals_1: 1;
+	PRODUCE FRS2_equals_0: 1,SPRY_equals_1: 1;
+
+TRANSITION FRS2_equals_1_to_FRS2_equals_0_when_GRB2_equals_1
+	CONSUME FRS2_equals_1: 1,GRB2_equals_1: 1;
+	PRODUCE FRS2_equals_0: 1,GRB2_equals_1: 1;
+
+TRANSITION FRS2_equals_1_to_FRS2_equals_0_when_FGFR3_equals_0
+	CONSUME FGFR3_equals_0: 1,FRS2_equals_1: 1;
+	PRODUCE FGFR3_equals_0: 1,FRS2_equals_0: 1;
+
+TRANSITION FRS2_equals_0_to_FRS2_equals_1_when_FGFR3_equals_1_and_GRB2_equals_0_and_SPRY_equals_0
+	CONSUME FGFR3_equals_1: 1,FRS2_equals_0: 1,GRB2_equals_0: 1,SPRY_equals_0: 1;
+	PRODUCE FGFR3_equals_1: 1,FRS2_equals_1: 1,GRB2_equals_0: 1,SPRY_equals_0: 1;
+
+TRANSITION FOXO3_equals_1_to_FOXO3_equals_0_when_JNK_equals_0
+	CONSUME FOXO3_equals_1: 1,JNK_equals_0: 1;
+	PRODUCE FOXO3_equals_0: 1,JNK_equals_0: 1;
+
+TRANSITION FOXO3_equals_1_to_FOXO3_equals_0_when_AKT_equals_1
+	CONSUME AKT_equals_1: 1,FOXO3_equals_1: 1;
+	PRODUCE AKT_equals_1: 1,FOXO3_equals_0: 1;
+
+TRANSITION FOXO3_equals_0_to_FOXO3_equals_1_when_AKT_equals_0_and_JNK_equals_1
+	CONSUME AKT_0: 1,FOXO3_equals_0: 1,JNK_equals_1: 1;
+	PRODUCE AKT_0: 1,FOXO3_equals_1: 1,JNK_equals_1: 1;
+
+TRANSITION FOS_equals_1_to_FOS_equals_0_when_RSK_equals_0
+	CONSUME FOS_equals_1: 1,RSK_equals_0: 1;
+	PRODUCE FOS_equals_0: 1,RSK_equals_0: 1;
+
+TRANSITION FOS_equals_1_to_FOS_equals_0_when_ERK_equals_0
+	CONSUME ERK_equals_0: 1,FOS_equals_1: 1;
+	PRODUCE ERK_equals_0: 1,FOS_equals_0: 1;
+
+TRANSITION FOS_equals_1_to_FOS_equals_0_when_CREB_equals_0_and_ELK1_equals_0
+	CONSUME CREB_equals_0: 1,ELK1_equals_0: 1,FOS_equals_1: 1;
+	PRODUCE CREB_equals_0: 1,ELK1_equals_0: 1,FOS_equals_0: 1;
+
+TRANSITION FOS_equals_0_to_FOS_equals_1_when_CREB_equals_1_and_ERK_equals_1_and_RSK_equals_1
+	CONSUME CREB_equals_1: 1,ERK_equals_1: 1,FOS_equals_0: 1,RSK_equals_1: 1;
+	PRODUCE CREB_equals_1: 1,ERK_equals_1: 1,FOS_equals_1: 1,RSK_equals_1: 1;
+
+TRANSITION FOS_equals_0_to_FOS_equals_1_when_CREB_equals_0_and_ELK1_equals_1_and_ERK_equals_1_and_RSK_equals_1
+	CONSUME CREB_equals_0: 1,ELK1_equals_1: 1,ERK_equals_1: 1,FOS_equals_0: 1,RSK_equals_1: 1;
+	PRODUCE CREB_equals_0: 1,ELK1_equals_1: 1,ERK_equals_1: 1,FOS_equals_1: 1,RSK_equals_1: 1;
+
+TRANSITION FGFR3_equals_1_to_FGFR3_equals_0_when_PKC_equals_1
+	CONSUME FGFR3_equals_1: 1,PKC_equals_1: 1;
+	PRODUCE FGFR3_equals_0: 1,PKC_equals_1: 1;
+
+TRANSITION FGFR3_equals_1_to_FGFR3_equals_0_when_GRB2_equals_1
+	CONSUME FGFR3_equals_1: 1,GRB2_equals_1: 1;
+	PRODUCE FGFR3_equals_0: 1,GRB2_equals_1: 1;
+
+TRANSITION FGFR3_equals_1_to_FGFR3_equals_0_when_FGFR3_stimulus_equals_0
+	CONSUME FGFR3_equals_1: 1,FGFR3_stimulus_equals_0: 1;
+	PRODUCE FGFR3_equals_0: 1,FGFR3_stimulus_equals_0: 1;
+
+TRANSITION FGFR3_equals_0_to_FGFR3_equals_1_when_FGFR3_stimulus_equals_1_and_GRB2_equals_0_and_PKC_equals_0
+	CONSUME FGFR3_equals_0: 1,FGFR3_stimulus_equals_1: 1,GRB2_equals_0: 1,PKC_equals_0: 1;
+	PRODUCE FGFR3_equals_1: 1,FGFR3_stimulus_equals_1: 1,GRB2_equals_0: 1,PKC_equals_0: 1;
+
+TRANSITION ERK_equals_1_to_ERK_equals_0_when_MEK1_2_equals_0
+	CONSUME ERK_equals_1: 1,MEK1_2_equals_0: 1;
+	PRODUCE ERK_equals_0: 1,MEK1_2_equals_0: 1;
+
+TRANSITION ERK_equals_0_to_ERK_equals_1_when_MEK1_2_equals_1
+	CONSUME ERK_equals_0: 1,MEK1_2_equals_1: 1;
+	PRODUCE ERK_equals_1: 1,MEK1_2_equals_1: 1;
+
+TRANSITION ELK1_equals_1_to_ELK1_equals_0_when_ERK_equals_0_and_JNK_equals_0_and_p38_equals_0
+	CONSUME ELK1_equals_1: 1,ERK_equals_0: 1,JNK_equals_0: 1,p38_equals_0: 1;
+	PRODUCE ELK1_equals_0: 1,ERK_equals_0: 1,JNK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION ELK1_equals_0_to_ELK1_equals_1_when_p38_equals_1
+	CONSUME ELK1_equals_0: 1,p38_equals_1: 1;
+	PRODUCE ELK1_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION ELK1_equals_0_to_ELK1_equals_1_when_JNK_equals_1
+	CONSUME ELK1_equals_0: 1,JNK_equals_1: 1;
+	PRODUCE ELK1_equals_1: 1,JNK_equals_1: 1;
+
+TRANSITION ELK1_equals_0_to_ELK1_equals_1_when_ERK_equals_1
+	CONSUME ELK1_equals_0: 1,ERK_equals_1: 1;
+	PRODUCE ELK1_equals_1: 1,ERK_equals_1: 1;
+
+TRANSITION EGFR_equals_1_to_EGFR_equals_0_when_PKC_equals_1
+	CONSUME EGFR_equals_1: 1,PKC_equals_1: 1;
+	PRODUCE EGFR_equals_0: 1,PKC_equals_1: 1;
+
+TRANSITION EGFR_equals_1_to_EGFR_equals_0_when_GRB2_equals_1
+	CONSUME EGFR_equals_1: 1,GRB2_equals_1: 1;
+	PRODUCE EGFR_equals_0: 1,GRB2_equals_1: 1;
+
+TRANSITION EGFR_equals_1_to_EGFR_equals_0_when_EGFR_stimulus_equals_0_and_SPRY_equals_0
+	CONSUME EGFR_equals_1: 1,EGFR_stimulus_equals_0: 1,SPRY_equals_0: 1;
+	PRODUCE EGFR_equals_0: 1,EGFR_stimulus_equals_0: 1,SPRY_equals_0: 1;
+
+TRANSITION EGFR_equals_0_to_EGFR_equals_1_when_EGFR_stimulus_equals_1_and_GRB2_equals_0_and_PKC_equals_0
+	CONSUME EGFR_equals_0: 1,EGFR_stimulus_equals_1: 1,GRB2_equals_0: 1,PKC_equals_0: 1;
+	PRODUCE EGFR_equals_1: 1,EGFR_stimulus_equals_1: 1,GRB2_equals_0: 1,PKC_equals_0: 1;
+
+TRANSITION EGFR_equals_0_to_EGFR_equals_1_when_EGFR_stimulus_equals_0_and_GRB2_equals_0_and_PKC_equals_0_and_SPRY_equals_1
+	CONSUME EGFR_equals_0: 1,EGFR_stimulus_equals_0: 1,GRB2_equals_0: 1,PKC_equals_0: 1,SPRY_equals_1: 1;
+	PRODUCE EGFR_equals_1: 1,EGFR_stimulus_equals_0: 1,GRB2_equals_0: 1,PKC_equals_0: 1,SPRY_equals_1: 1;
+
+TRANSITION DUSP1_equals_1_to_DUSP1_equals_0_when_CREB_equals_0
+	CONSUME CREB_equals_0: 1,DUSP1_equals_1: 1;
+	PRODUCE CREB_equals_0: 1,DUSP1_equals_0: 1;
+
+TRANSITION DUSP1_equals_0_to_DUSP1_equals_1_when_CREB_equals_1
+	CONSUME CREB_equals_1: 1,DUSP1_equals_0: 1;
+	PRODUCE CREB_equals_1: 1,DUSP1_equals_1: 1;
+
+TRANSITION CREB_equals_1_to_CREB_equals_0_when_MSK_equals_0
+	CONSUME CREB_equals_1: 1,MSK_equals_0: 1;
+	PRODUCE CREB_equals_0: 1,MSK_equals_0: 1;
+
+TRANSITION CREB_equals_0_to_CREB_equals_1_when_MSK_equals_1
+	CONSUME CREB_equals_0: 1,MSK_equals_1: 1;
+	PRODUCE CREB_equals_1: 1,MSK_equals_1: 1;
+
+TRANSITION BCL2_equals_1_to_BCL2_equals_0_when_CREB_equals_0
+	CONSUME BCL2_equals_1: 1,CREB_equals_0: 1;
+	PRODUCE CREB_equals_0: 1,BCL2_equals_0: 1;
+
+TRANSITION BCL2_equals_1_to_BCL2_equals_0_when_AKT_equals_0
+	CONSUME AKT_0: 1,BCL2_equals_1: 1;
+	PRODUCE AKT_0: 1,BCL2_equals_0: 1;
+
+TRANSITION BCL2_equals_0_to_BCL2_equals_1_when_AKT_equals_1_and_CREB_equals_1
+	CONSUME AKT_equals_1: 1,BCL2_equals_0: 1,CREB_equals_1: 1;
+	PRODUCE AKT_equals_1: 1,BCL2_equals_1: 1,CREB_equals_1: 1;
+
+TRANSITION Apoptosis_equals_1_to_Apoptosis_equals_0_when_p53_equals_0
+	CONSUME Apoptosis_equals_1: 1,p53_equals_0: 1;
+	PRODUCE Apoptosis_equals_0: 1,p53_equals_0: 1;
+
+TRANSITION Apoptosis_equals_1_to_Apoptosis_equals_0_when_FOXO3_equals_0
+	CONSUME Apoptosis_equals_1: 1,FOXO3_equals_0: 1;
+	PRODUCE Apoptosis_equals_0: 1,FOXO3_equals_0: 1;
+
+TRANSITION Apoptosis_equals_1_to_Apoptosis_equals_0_when_ERK_equals_1
+	CONSUME Apoptosis_equals_1: 1,ERK_equals_1: 1;
+	PRODUCE Apoptosis_equals_0: 1,ERK_equals_1: 1;
+
+TRANSITION Apoptosis_equals_1_to_Apoptosis_equals_0_when_BCL2_equals_1
+	CONSUME Apoptosis_equals_1: 1,BCL2_equals_1: 1;
+	PRODUCE Apoptosis_equals_0: 1,BCL2_equals_1: 1;
+
+TRANSITION Apoptosis_equals_0_to_Apoptosis_equals_1_when_BCL2_equals_0_and_ERK_equals_0_and_FOXO3_equals_1_and_p53_equals_1
+	CONSUME Apoptosis_equals_0: 1,BCL2_equals_0: 1,ERK_equals_0: 1,FOXO3_equals_1: 1,p53_equals_1: 1;
+	PRODUCE Apoptosis_equals_1: 1,BCL2_equals_0: 1,ERK_equals_0: 1,FOXO3_equals_1: 1,p53_equals_1: 1;
+
+TRANSITION ATM_equals_1_to_ATM_equals_0_when_DNA_damage_equals_0
+	CONSUME ATM_equals_1: 1,DNA_damage_equals_0: 1;
+	PRODUCE ATM_equals_0: 1,DNA_damage_equals_0: 1;
+
+TRANSITION ATM_equals_0_to_ATM_equals_1_when_DNA_damage_equals_1
+	CONSUME ATM_equals_0: 1,DNA_damage_equals_1: 1;
+	PRODUCE ATM_equals_1: 1,DNA_damage_equals_1: 1;
+
+TRANSITION ATF2_equals_1_to_ATF2_equals_0_when_JNK_equals_0_and_p38_equals_0
+	CONSUME ATF2_equals_1: 1,JNK_equals_0: 1,p38_equals_0: 1;
+	PRODUCE ATF2_equals_0: 1,JNK_equals_0: 1,p38_equals_0: 1;
+
+TRANSITION ATF2_equals_0_to_ATF2_equals_1_when_p38_equals_1
+	CONSUME ATF2_equals_0: 1,p38_equals_1: 1;
+	PRODUCE ATF2_equals_1: 1,p38_equals_1: 1;
+
+TRANSITION ATF2_equals_0_to_ATF2_equals_1_when_JNK_equals_1
+	CONSUME ATF2_equals_0: 1,JNK_equals_1: 1;
+	PRODUCE ATF2_equals_1: 1,JNK_equals_1: 1;
+
+TRANSITION AP1_equals_1_to_AP1_equals_0_when_JUN_equals_0
+	CONSUME AP1_equals_1: 1,JUN_equals_0: 1;
+	PRODUCE AP1_equals_0: 1,JUN_equals_0: 1;
+
+TRANSITION AP1_equals_1_to_AP1_equals_0_when_ATF2_equals_0_and_FOS_equals_0
+	CONSUME AP1_equals_1: 1,ATF2_equals_0: 1,FOS_equals_0: 1;
+	PRODUCE AP1_equals_0: 1,ATF2_equals_0: 1,FOS_equals_0: 1;
+
+TRANSITION AP1_equals_0_to_AP1_equals_1_when_ATF2_equals_1_and_JUN_equals_1
+	CONSUME AP1_equals_0: 1,ATF2_equals_1: 1,JUN_equals_1: 1;
+	PRODUCE AP1_equals_1: 1,ATF2_equals_1: 1,JUN_equals_1: 1;
+
+TRANSITION AP1_equals_0_to_AP1_equals_1_when_ATF2_equals_0_and_FOS_equals_1_and_JUN_equals_1
+	CONSUME AP1_equals_0: 1,ATF2_equals_0: 1,FOS_equals_1: 1,JUN_equals_1: 1;
+	PRODUCE AP1_equals_1: 1,ATF2_equals_0: 1,FOS_equals_1: 1,JUN_equals_1: 1;
+
+TRANSITION AKT_equals_1_to_AKT_equals_0_when_PTEN_equals_1
+	CONSUME AKT_equals_1: 1,PTEN_equals_1: 1;
+	PRODUCE AKT_0: 1,PTEN_equals_1: 1;
+
+TRANSITION AKT_equals_1_to_AKT_equals_0_when_PDK1_equals_0
+	CONSUME AKT_equals_1: 1,PDK1_equals_0: 1;
+	PRODUCE PDK1_equals_0: 1,AKT_0: 1;
+
+TRANSITION AKT_equals_0_to_AKT_equals_1_when_PDK1_equals_1_and_PTEN_equals_0
+	CONSUME AKT_0: 1,PDK1_equals_1: 1,PTEN_equals_0: 1;
+	PRODUCE AKT_equals_1: 1,PDK1_equals_1: 1,PTEN_equals_0: 1;

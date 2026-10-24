@@ -1,0 +1,1025 @@
+PLACE
+	flag_0_0, flag_0_1, flag_0_10, flag_0_11, flag_0_12, flag_0_13, flag_0_14, flag_0_2, flag_0_3, flag_0_4, flag_0_5, flag_0_6, flag_0_7, flag_0_8, flag_0_9, flag_1_0, flag_1_1, flag_1_10, flag_1_11, flag_1_12, flag_1_13, flag_1_14, flag_1_2, flag_1_3, flag_1_4, flag_1_5, flag_1_6, flag_1_7, flag_1_8, flag_1_9, p0_0, p0_1, p0_10, p0_11, p0_12, p0_13, p0_14, p0_2, p0_3, p0_4, p0_5, p0_6, p0_7, p0_8, p0_9, p1_0, p1_1, p1_10, p1_11, p1_12, p1_13, p1_14, p1_2, p1_3, p1_4, p1_5, p1_6, p1_7, p1_8, p1_9, p3_0, p3_1, p3_10, p3_11, p3_12, p3_13, p3_14, p3_2, p3_3, p3_4, p3_5, p3_6, p3_7, p3_8, p3_9;
+
+MARKING
+	p0_9: 1,p0_8: 1,p0_7: 1,p0_6: 1,p0_5: 1,p0_4: 1,p0_3: 1,p0_2: 1,p0_14: 1,p0_13: 1,p0_12: 1,p0_11: 1,p0_10: 1,p0_1: 1,p0_0: 1,flag_0_9: 1,flag_0_8: 1,flag_0_7: 1,flag_0_6: 1,flag_0_5: 1,flag_0_4: 1,flag_0_3: 1,flag_0_2: 1,flag_0_14: 1,flag_0_13: 1,flag_0_12: 1,flag_0_11: 1,flag_0_10: 1,flag_0_1: 1,flag_0_0: 1;
+
+TRANSITION withdraw_9_8
+	CONSUME flag_1_8: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_8: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_7
+	CONSUME flag_1_7: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_7: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_6
+	CONSUME flag_1_6: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_6: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_5
+	CONSUME flag_1_5: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_5: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_4
+	CONSUME flag_1_4: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_4: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_3
+	CONSUME flag_1_3: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_3: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_2
+	CONSUME flag_1_2: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_2: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_14
+	CONSUME flag_1_9: 1,flag_1_14: 1,p1_9: 1;
+	PRODUCE flag_0_9: 1,flag_1_14: 1,p0_9: 1;
+
+TRANSITION withdraw_9_13
+	CONSUME flag_1_9: 1,flag_1_13: 1,p1_9: 1;
+	PRODUCE flag_0_9: 1,flag_1_13: 1,p0_9: 1;
+
+TRANSITION withdraw_9_12
+	CONSUME flag_1_9: 1,flag_1_12: 1,p1_9: 1;
+	PRODUCE flag_0_9: 1,flag_1_12: 1,p0_9: 1;
+
+TRANSITION withdraw_9_11
+	CONSUME flag_1_9: 1,flag_1_11: 1,p1_9: 1;
+	PRODUCE flag_0_9: 1,flag_1_11: 1,p0_9: 1;
+
+TRANSITION withdraw_9_10
+	CONSUME flag_1_9: 1,flag_1_10: 1,p1_9: 1;
+	PRODUCE flag_0_9: 1,flag_1_10: 1,p0_9: 1;
+
+TRANSITION withdraw_9_1
+	CONSUME flag_1_1: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_1: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_9_0
+	CONSUME flag_1_0: 1,flag_1_9: 1,p1_9: 1;
+	PRODUCE flag_1_0: 1,flag_0_9: 1,p0_9: 1;
+
+TRANSITION withdraw_8_9
+	CONSUME flag_1_8: 1,flag_1_9: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_9: 1,p0_8: 1;
+
+TRANSITION withdraw_8_7
+	CONSUME flag_1_7: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_7: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_6
+	CONSUME flag_1_6: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_6: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_5
+	CONSUME flag_1_5: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_5: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_4
+	CONSUME flag_1_4: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_4: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_3
+	CONSUME flag_1_3: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_3: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_2
+	CONSUME flag_1_2: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_2: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_14
+	CONSUME flag_1_8: 1,flag_1_14: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_14: 1,p0_8: 1;
+
+TRANSITION withdraw_8_13
+	CONSUME flag_1_8: 1,flag_1_13: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_13: 1,p0_8: 1;
+
+TRANSITION withdraw_8_12
+	CONSUME flag_1_8: 1,flag_1_12: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_12: 1,p0_8: 1;
+
+TRANSITION withdraw_8_11
+	CONSUME flag_1_8: 1,flag_1_11: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_11: 1,p0_8: 1;
+
+TRANSITION withdraw_8_10
+	CONSUME flag_1_8: 1,flag_1_10: 1,p1_8: 1;
+	PRODUCE flag_0_8: 1,flag_1_10: 1,p0_8: 1;
+
+TRANSITION withdraw_8_1
+	CONSUME flag_1_1: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_1: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_8_0
+	CONSUME flag_1_0: 1,flag_1_8: 1,p1_8: 1;
+	PRODUCE flag_1_0: 1,flag_0_8: 1,p0_8: 1;
+
+TRANSITION withdraw_7_9
+	CONSUME flag_1_7: 1,flag_1_9: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_9: 1,p0_7: 1;
+
+TRANSITION withdraw_7_8
+	CONSUME flag_1_7: 1,flag_1_8: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_8: 1,p0_7: 1;
+
+TRANSITION withdraw_7_6
+	CONSUME flag_1_6: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_6: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_5
+	CONSUME flag_1_5: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_5: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_4
+	CONSUME flag_1_4: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_4: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_3
+	CONSUME flag_1_3: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_3: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_2
+	CONSUME flag_1_2: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_2: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_14
+	CONSUME flag_1_7: 1,flag_1_14: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_14: 1,p0_7: 1;
+
+TRANSITION withdraw_7_13
+	CONSUME flag_1_7: 1,flag_1_13: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_13: 1,p0_7: 1;
+
+TRANSITION withdraw_7_12
+	CONSUME flag_1_7: 1,flag_1_12: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_12: 1,p0_7: 1;
+
+TRANSITION withdraw_7_11
+	CONSUME flag_1_7: 1,flag_1_11: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_11: 1,p0_7: 1;
+
+TRANSITION withdraw_7_10
+	CONSUME flag_1_7: 1,flag_1_10: 1,p1_7: 1;
+	PRODUCE flag_0_7: 1,flag_1_10: 1,p0_7: 1;
+
+TRANSITION withdraw_7_1
+	CONSUME flag_1_1: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_1: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_7_0
+	CONSUME flag_1_0: 1,flag_1_7: 1,p1_7: 1;
+	PRODUCE flag_1_0: 1,flag_0_7: 1,p0_7: 1;
+
+TRANSITION withdraw_6_9
+	CONSUME flag_1_6: 1,flag_1_9: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_9: 1,p0_6: 1;
+
+TRANSITION withdraw_6_8
+	CONSUME flag_1_6: 1,flag_1_8: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_8: 1,p0_6: 1;
+
+TRANSITION withdraw_6_7
+	CONSUME flag_1_6: 1,flag_1_7: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_7: 1,p0_6: 1;
+
+TRANSITION withdraw_6_5
+	CONSUME flag_1_5: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_5: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_6_4
+	CONSUME flag_1_4: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_4: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_6_3
+	CONSUME flag_1_3: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_3: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_6_2
+	CONSUME flag_1_2: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_2: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_6_14
+	CONSUME flag_1_6: 1,flag_1_14: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_14: 1,p0_6: 1;
+
+TRANSITION withdraw_6_13
+	CONSUME flag_1_6: 1,flag_1_13: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_13: 1,p0_6: 1;
+
+TRANSITION withdraw_6_12
+	CONSUME flag_1_6: 1,flag_1_12: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_12: 1,p0_6: 1;
+
+TRANSITION withdraw_6_11
+	CONSUME flag_1_6: 1,flag_1_11: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_11: 1,p0_6: 1;
+
+TRANSITION withdraw_6_10
+	CONSUME flag_1_6: 1,flag_1_10: 1,p1_6: 1;
+	PRODUCE flag_0_6: 1,flag_1_10: 1,p0_6: 1;
+
+TRANSITION withdraw_6_1
+	CONSUME flag_1_1: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_1: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_6_0
+	CONSUME flag_1_0: 1,flag_1_6: 1,p1_6: 1;
+	PRODUCE flag_1_0: 1,flag_0_6: 1,p0_6: 1;
+
+TRANSITION withdraw_5_9
+	CONSUME flag_1_5: 1,flag_1_9: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_9: 1,p0_5: 1;
+
+TRANSITION withdraw_5_8
+	CONSUME flag_1_5: 1,flag_1_8: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_8: 1,p0_5: 1;
+
+TRANSITION withdraw_5_7
+	CONSUME flag_1_5: 1,flag_1_7: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_7: 1,p0_5: 1;
+
+TRANSITION withdraw_5_6
+	CONSUME flag_1_5: 1,flag_1_6: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_6: 1,p0_5: 1;
+
+TRANSITION withdraw_5_4
+	CONSUME flag_1_4: 1,flag_1_5: 1,p1_5: 1;
+	PRODUCE flag_1_4: 1,flag_0_5: 1,p0_5: 1;
+
+TRANSITION withdraw_5_3
+	CONSUME flag_1_3: 1,flag_1_5: 1,p1_5: 1;
+	PRODUCE flag_1_3: 1,flag_0_5: 1,p0_5: 1;
+
+TRANSITION withdraw_5_2
+	CONSUME flag_1_2: 1,flag_1_5: 1,p1_5: 1;
+	PRODUCE flag_1_2: 1,flag_0_5: 1,p0_5: 1;
+
+TRANSITION withdraw_5_14
+	CONSUME flag_1_5: 1,flag_1_14: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_14: 1,p0_5: 1;
+
+TRANSITION withdraw_5_13
+	CONSUME flag_1_5: 1,flag_1_13: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_13: 1,p0_5: 1;
+
+TRANSITION withdraw_5_12
+	CONSUME flag_1_5: 1,flag_1_12: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_12: 1,p0_5: 1;
+
+TRANSITION withdraw_5_11
+	CONSUME flag_1_5: 1,flag_1_11: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_11: 1,p0_5: 1;
+
+TRANSITION withdraw_5_10
+	CONSUME flag_1_5: 1,flag_1_10: 1,p1_5: 1;
+	PRODUCE flag_0_5: 1,flag_1_10: 1,p0_5: 1;
+
+TRANSITION withdraw_5_1
+	CONSUME flag_1_1: 1,flag_1_5: 1,p1_5: 1;
+	PRODUCE flag_1_1: 1,flag_0_5: 1,p0_5: 1;
+
+TRANSITION withdraw_5_0
+	CONSUME flag_1_0: 1,flag_1_5: 1,p1_5: 1;
+	PRODUCE flag_1_0: 1,flag_0_5: 1,p0_5: 1;
+
+TRANSITION withdraw_4_9
+	CONSUME flag_1_4: 1,flag_1_9: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_9: 1,p0_4: 1;
+
+TRANSITION withdraw_4_8
+	CONSUME flag_1_4: 1,flag_1_8: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_8: 1,p0_4: 1;
+
+TRANSITION withdraw_4_7
+	CONSUME flag_1_4: 1,flag_1_7: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_7: 1,p0_4: 1;
+
+TRANSITION withdraw_4_6
+	CONSUME flag_1_4: 1,flag_1_6: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_6: 1,p0_4: 1;
+
+TRANSITION withdraw_4_5
+	CONSUME flag_1_4: 1,flag_1_5: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_5: 1,p0_4: 1;
+
+TRANSITION withdraw_4_3
+	CONSUME flag_1_3: 1,flag_1_4: 1,p1_4: 1;
+	PRODUCE flag_1_3: 1,flag_0_4: 1,p0_4: 1;
+
+TRANSITION withdraw_4_2
+	CONSUME flag_1_2: 1,flag_1_4: 1,p1_4: 1;
+	PRODUCE flag_1_2: 1,flag_0_4: 1,p0_4: 1;
+
+TRANSITION withdraw_4_14
+	CONSUME flag_1_4: 1,flag_1_14: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_14: 1,p0_4: 1;
+
+TRANSITION withdraw_4_13
+	CONSUME flag_1_4: 1,flag_1_13: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_13: 1,p0_4: 1;
+
+TRANSITION withdraw_4_12
+	CONSUME flag_1_4: 1,flag_1_12: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_12: 1,p0_4: 1;
+
+TRANSITION withdraw_4_11
+	CONSUME flag_1_4: 1,flag_1_11: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_11: 1,p0_4: 1;
+
+TRANSITION withdraw_4_10
+	CONSUME flag_1_4: 1,flag_1_10: 1,p1_4: 1;
+	PRODUCE flag_0_4: 1,flag_1_10: 1,p0_4: 1;
+
+TRANSITION withdraw_4_1
+	CONSUME flag_1_1: 1,flag_1_4: 1,p1_4: 1;
+	PRODUCE flag_1_1: 1,flag_0_4: 1,p0_4: 1;
+
+TRANSITION withdraw_4_0
+	CONSUME flag_1_0: 1,flag_1_4: 1,p1_4: 1;
+	PRODUCE flag_1_0: 1,flag_0_4: 1,p0_4: 1;
+
+TRANSITION withdraw_3_9
+	CONSUME flag_1_3: 1,flag_1_9: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_9: 1,p0_3: 1;
+
+TRANSITION withdraw_3_8
+	CONSUME flag_1_3: 1,flag_1_8: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_8: 1,p0_3: 1;
+
+TRANSITION withdraw_3_7
+	CONSUME flag_1_3: 1,flag_1_7: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_7: 1,p0_3: 1;
+
+TRANSITION withdraw_3_6
+	CONSUME flag_1_3: 1,flag_1_6: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_6: 1,p0_3: 1;
+
+TRANSITION withdraw_3_5
+	CONSUME flag_1_3: 1,flag_1_5: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_5: 1,p0_3: 1;
+
+TRANSITION withdraw_3_4
+	CONSUME flag_1_3: 1,flag_1_4: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_4: 1,p0_3: 1;
+
+TRANSITION withdraw_3_2
+	CONSUME flag_1_2: 1,flag_1_3: 1,p1_3: 1;
+	PRODUCE flag_1_2: 1,flag_0_3: 1,p0_3: 1;
+
+TRANSITION withdraw_3_14
+	CONSUME flag_1_3: 1,flag_1_14: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_14: 1,p0_3: 1;
+
+TRANSITION withdraw_3_13
+	CONSUME flag_1_3: 1,flag_1_13: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_13: 1,p0_3: 1;
+
+TRANSITION withdraw_3_12
+	CONSUME flag_1_3: 1,flag_1_12: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_12: 1,p0_3: 1;
+
+TRANSITION withdraw_3_11
+	CONSUME flag_1_3: 1,flag_1_11: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_11: 1,p0_3: 1;
+
+TRANSITION withdraw_3_10
+	CONSUME flag_1_3: 1,flag_1_10: 1,p1_3: 1;
+	PRODUCE flag_0_3: 1,flag_1_10: 1,p0_3: 1;
+
+TRANSITION withdraw_3_1
+	CONSUME flag_1_1: 1,flag_1_3: 1,p1_3: 1;
+	PRODUCE flag_1_1: 1,flag_0_3: 1,p0_3: 1;
+
+TRANSITION withdraw_3_0
+	CONSUME flag_1_0: 1,flag_1_3: 1,p1_3: 1;
+	PRODUCE flag_1_0: 1,flag_0_3: 1,p0_3: 1;
+
+TRANSITION withdraw_2_9
+	CONSUME flag_1_2: 1,flag_1_9: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_9: 1,p0_2: 1;
+
+TRANSITION withdraw_2_8
+	CONSUME flag_1_2: 1,flag_1_8: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_8: 1,p0_2: 1;
+
+TRANSITION withdraw_2_7
+	CONSUME flag_1_2: 1,flag_1_7: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_7: 1,p0_2: 1;
+
+TRANSITION withdraw_2_6
+	CONSUME flag_1_2: 1,flag_1_6: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_6: 1,p0_2: 1;
+
+TRANSITION withdraw_2_5
+	CONSUME flag_1_2: 1,flag_1_5: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_5: 1,p0_2: 1;
+
+TRANSITION withdraw_2_4
+	CONSUME flag_1_2: 1,flag_1_4: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_4: 1,p0_2: 1;
+
+TRANSITION withdraw_2_3
+	CONSUME flag_1_2: 1,flag_1_3: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_3: 1,p0_2: 1;
+
+TRANSITION withdraw_2_14
+	CONSUME flag_1_2: 1,flag_1_14: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_14: 1,p0_2: 1;
+
+TRANSITION withdraw_2_13
+	CONSUME flag_1_2: 1,flag_1_13: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_13: 1,p0_2: 1;
+
+TRANSITION withdraw_2_12
+	CONSUME flag_1_2: 1,flag_1_12: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_12: 1,p0_2: 1;
+
+TRANSITION withdraw_2_11
+	CONSUME flag_1_2: 1,flag_1_11: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_11: 1,p0_2: 1;
+
+TRANSITION withdraw_2_10
+	CONSUME flag_1_2: 1,flag_1_10: 1,p1_2: 1;
+	PRODUCE flag_0_2: 1,flag_1_10: 1,p0_2: 1;
+
+TRANSITION withdraw_2_1
+	CONSUME flag_1_1: 1,flag_1_2: 1,p1_2: 1;
+	PRODUCE flag_1_1: 1,flag_0_2: 1,p0_2: 1;
+
+TRANSITION withdraw_2_0
+	CONSUME flag_1_0: 1,flag_1_2: 1,p1_2: 1;
+	PRODUCE flag_1_0: 1,flag_0_2: 1,p0_2: 1;
+
+TRANSITION withdraw_1_9
+	CONSUME flag_1_1: 1,flag_1_9: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_9: 1,p0_1: 1;
+
+TRANSITION withdraw_1_8
+	CONSUME flag_1_1: 1,flag_1_8: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_8: 1,p0_1: 1;
+
+TRANSITION withdraw_1_7
+	CONSUME flag_1_1: 1,flag_1_7: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_7: 1,p0_1: 1;
+
+TRANSITION withdraw_1_6
+	CONSUME flag_1_1: 1,flag_1_6: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_6: 1,p0_1: 1;
+
+TRANSITION withdraw_1_5
+	CONSUME flag_1_1: 1,flag_1_5: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_5: 1,p0_1: 1;
+
+TRANSITION withdraw_1_4
+	CONSUME flag_1_1: 1,flag_1_4: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_4: 1,p0_1: 1;
+
+TRANSITION withdraw_1_3
+	CONSUME flag_1_1: 1,flag_1_3: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_3: 1,p0_1: 1;
+
+TRANSITION withdraw_1_2
+	CONSUME flag_1_1: 1,flag_1_2: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_2: 1,p0_1: 1;
+
+TRANSITION withdraw_1_14
+	CONSUME flag_1_1: 1,flag_1_14: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_14: 1,p0_1: 1;
+
+TRANSITION withdraw_1_13
+	CONSUME flag_1_1: 1,flag_1_13: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_13: 1,p0_1: 1;
+
+TRANSITION withdraw_1_12
+	CONSUME flag_1_1: 1,flag_1_12: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_12: 1,p0_1: 1;
+
+TRANSITION withdraw_1_11
+	CONSUME flag_1_1: 1,flag_1_11: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_11: 1,p0_1: 1;
+
+TRANSITION withdraw_1_10
+	CONSUME flag_1_1: 1,flag_1_10: 1,p1_1: 1;
+	PRODUCE flag_0_1: 1,flag_1_10: 1,p0_1: 1;
+
+TRANSITION withdraw_1_0
+	CONSUME flag_1_0: 1,flag_1_1: 1,p1_1: 1;
+	PRODUCE flag_1_0: 1,flag_0_1: 1,p0_1: 1;
+
+TRANSITION withdraw_14_9
+	CONSUME flag_1_9: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_9: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_8
+	CONSUME flag_1_8: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_8: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_7
+	CONSUME flag_1_7: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_7: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_6
+	CONSUME flag_1_6: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_6: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_5
+	CONSUME flag_1_5: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_5: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_4
+	CONSUME flag_1_4: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_4: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_3
+	CONSUME flag_1_3: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_3: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_2
+	CONSUME flag_1_2: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_2: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_13
+	CONSUME flag_1_13: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_13: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_12
+	CONSUME flag_1_12: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_12: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_11
+	CONSUME flag_1_11: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_11: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_10
+	CONSUME flag_1_10: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_10: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_1
+	CONSUME flag_1_1: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_1: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_14_0
+	CONSUME flag_1_0: 1,flag_1_14: 1,p1_14: 1;
+	PRODUCE flag_1_0: 1,flag_0_14: 1,p0_14: 1;
+
+TRANSITION withdraw_13_9
+	CONSUME flag_1_9: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_9: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_8
+	CONSUME flag_1_8: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_8: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_7
+	CONSUME flag_1_7: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_7: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_6
+	CONSUME flag_1_6: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_6: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_5
+	CONSUME flag_1_5: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_5: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_4
+	CONSUME flag_1_4: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_4: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_3
+	CONSUME flag_1_3: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_3: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_2
+	CONSUME flag_1_2: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_2: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_14
+	CONSUME flag_1_13: 1,flag_1_14: 1,p1_13: 1;
+	PRODUCE flag_0_13: 1,flag_1_14: 1,p0_13: 1;
+
+TRANSITION withdraw_13_12
+	CONSUME flag_1_12: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_12: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_11
+	CONSUME flag_1_11: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_11: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_10
+	CONSUME flag_1_10: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_10: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_1
+	CONSUME flag_1_1: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_1: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_13_0
+	CONSUME flag_1_0: 1,flag_1_13: 1,p1_13: 1;
+	PRODUCE flag_1_0: 1,flag_0_13: 1,p0_13: 1;
+
+TRANSITION withdraw_12_9
+	CONSUME flag_1_9: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_9: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_8
+	CONSUME flag_1_8: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_8: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_7
+	CONSUME flag_1_7: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_7: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_6
+	CONSUME flag_1_6: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_6: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_5
+	CONSUME flag_1_5: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_5: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_4
+	CONSUME flag_1_4: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_4: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_3
+	CONSUME flag_1_3: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_3: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_2
+	CONSUME flag_1_2: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_2: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_14
+	CONSUME flag_1_12: 1,flag_1_14: 1,p1_12: 1;
+	PRODUCE flag_0_12: 1,flag_1_14: 1,p0_12: 1;
+
+TRANSITION withdraw_12_13
+	CONSUME flag_1_12: 1,flag_1_13: 1,p1_12: 1;
+	PRODUCE flag_0_12: 1,flag_1_13: 1,p0_12: 1;
+
+TRANSITION withdraw_12_11
+	CONSUME flag_1_11: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_11: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_10
+	CONSUME flag_1_10: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_10: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_1
+	CONSUME flag_1_1: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_1: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_12_0
+	CONSUME flag_1_0: 1,flag_1_12: 1,p1_12: 1;
+	PRODUCE flag_1_0: 1,flag_0_12: 1,p0_12: 1;
+
+TRANSITION withdraw_11_9
+	CONSUME flag_1_9: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_9: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_8
+	CONSUME flag_1_8: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_8: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_7
+	CONSUME flag_1_7: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_7: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_6
+	CONSUME flag_1_6: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_6: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_5
+	CONSUME flag_1_5: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_5: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_4
+	CONSUME flag_1_4: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_4: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_3
+	CONSUME flag_1_3: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_3: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_2
+	CONSUME flag_1_2: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_2: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_14
+	CONSUME flag_1_11: 1,flag_1_14: 1,p1_11: 1;
+	PRODUCE flag_0_11: 1,flag_1_14: 1,p0_11: 1;
+
+TRANSITION withdraw_11_13
+	CONSUME flag_1_11: 1,flag_1_13: 1,p1_11: 1;
+	PRODUCE flag_0_11: 1,flag_1_13: 1,p0_11: 1;
+
+TRANSITION withdraw_11_12
+	CONSUME flag_1_11: 1,flag_1_12: 1,p1_11: 1;
+	PRODUCE flag_0_11: 1,flag_1_12: 1,p0_11: 1;
+
+TRANSITION withdraw_11_10
+	CONSUME flag_1_10: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_10: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_1
+	CONSUME flag_1_1: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_1: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_11_0
+	CONSUME flag_1_0: 1,flag_1_11: 1,p1_11: 1;
+	PRODUCE flag_1_0: 1,flag_0_11: 1,p0_11: 1;
+
+TRANSITION withdraw_10_9
+	CONSUME flag_1_9: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_9: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_8
+	CONSUME flag_1_8: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_8: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_7
+	CONSUME flag_1_7: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_7: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_6
+	CONSUME flag_1_6: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_6: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_5
+	CONSUME flag_1_5: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_5: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_4
+	CONSUME flag_1_4: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_4: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_3
+	CONSUME flag_1_3: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_3: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_2
+	CONSUME flag_1_2: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_2: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_14
+	CONSUME flag_1_10: 1,flag_1_14: 1,p1_10: 1;
+	PRODUCE flag_0_10: 1,flag_1_14: 1,p0_10: 1;
+
+TRANSITION withdraw_10_13
+	CONSUME flag_1_10: 1,flag_1_13: 1,p1_10: 1;
+	PRODUCE flag_0_10: 1,flag_1_13: 1,p0_10: 1;
+
+TRANSITION withdraw_10_12
+	CONSUME flag_1_10: 1,flag_1_12: 1,p1_10: 1;
+	PRODUCE flag_0_10: 1,flag_1_12: 1,p0_10: 1;
+
+TRANSITION withdraw_10_11
+	CONSUME flag_1_10: 1,flag_1_11: 1,p1_10: 1;
+	PRODUCE flag_0_10: 1,flag_1_11: 1,p0_10: 1;
+
+TRANSITION withdraw_10_1
+	CONSUME flag_1_1: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_1: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_10_0
+	CONSUME flag_1_0: 1,flag_1_10: 1,p1_10: 1;
+	PRODUCE flag_1_0: 1,flag_0_10: 1,p0_10: 1;
+
+TRANSITION withdraw_0_9
+	CONSUME flag_1_0: 1,flag_1_9: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_9: 1,p0_0: 1;
+
+TRANSITION withdraw_0_8
+	CONSUME flag_1_0: 1,flag_1_8: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_8: 1,p0_0: 1;
+
+TRANSITION withdraw_0_7
+	CONSUME flag_1_0: 1,flag_1_7: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_7: 1,p0_0: 1;
+
+TRANSITION withdraw_0_6
+	CONSUME flag_1_0: 1,flag_1_6: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_6: 1,p0_0: 1;
+
+TRANSITION withdraw_0_5
+	CONSUME flag_1_0: 1,flag_1_5: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_5: 1,p0_0: 1;
+
+TRANSITION withdraw_0_4
+	CONSUME flag_1_0: 1,flag_1_4: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_4: 1,p0_0: 1;
+
+TRANSITION withdraw_0_3
+	CONSUME flag_1_0: 1,flag_1_3: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_3: 1,p0_0: 1;
+
+TRANSITION withdraw_0_2
+	CONSUME flag_1_0: 1,flag_1_2: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_2: 1,p0_0: 1;
+
+TRANSITION withdraw_0_14
+	CONSUME flag_1_0: 1,flag_1_14: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_14: 1,p0_0: 1;
+
+TRANSITION withdraw_0_13
+	CONSUME flag_1_0: 1,flag_1_13: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_13: 1,p0_0: 1;
+
+TRANSITION withdraw_0_12
+	CONSUME flag_1_0: 1,flag_1_12: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_12: 1,p0_0: 1;
+
+TRANSITION withdraw_0_11
+	CONSUME flag_1_0: 1,flag_1_11: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_11: 1,p0_0: 1;
+
+TRANSITION withdraw_0_10
+	CONSUME flag_1_0: 1,flag_1_10: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_10: 1,p0_0: 1;
+
+TRANSITION withdraw_0_1
+	CONSUME flag_1_0: 1,flag_1_1: 1,p1_0: 1;
+	PRODUCE flag_0_0: 1,flag_1_1: 1,p0_0: 1;
+
+TRANSITION try_9
+	CONSUME flag_0_9: 1,p0_9: 1;
+	PRODUCE flag_1_9: 1,p1_9: 1;
+
+TRANSITION try_8
+	CONSUME flag_0_8: 1,p0_8: 1;
+	PRODUCE flag_1_8: 1,p1_8: 1;
+
+TRANSITION try_7
+	CONSUME flag_0_7: 1,p0_7: 1;
+	PRODUCE flag_1_7: 1,p1_7: 1;
+
+TRANSITION try_6
+	CONSUME flag_0_6: 1,p0_6: 1;
+	PRODUCE flag_1_6: 1,p1_6: 1;
+
+TRANSITION try_5
+	CONSUME flag_0_5: 1,p0_5: 1;
+	PRODUCE flag_1_5: 1,p1_5: 1;
+
+TRANSITION try_4
+	CONSUME flag_0_4: 1,p0_4: 1;
+	PRODUCE flag_1_4: 1,p1_4: 1;
+
+TRANSITION try_3
+	CONSUME flag_0_3: 1,p0_3: 1;
+	PRODUCE flag_1_3: 1,p1_3: 1;
+
+TRANSITION try_2
+	CONSUME flag_0_2: 1,p0_2: 1;
+	PRODUCE flag_1_2: 1,p1_2: 1;
+
+TRANSITION try_14
+	CONSUME flag_0_14: 1,p0_14: 1;
+	PRODUCE flag_1_14: 1,p1_14: 1;
+
+TRANSITION try_13
+	CONSUME flag_0_13: 1,p0_13: 1;
+	PRODUCE flag_1_13: 1,p1_13: 1;
+
+TRANSITION try_12
+	CONSUME flag_0_12: 1,p0_12: 1;
+	PRODUCE flag_1_12: 1,p1_12: 1;
+
+TRANSITION try_11
+	CONSUME flag_0_11: 1,p0_11: 1;
+	PRODUCE flag_1_11: 1,p1_11: 1;
+
+TRANSITION try_10
+	CONSUME flag_0_10: 1,p0_10: 1;
+	PRODUCE flag_1_10: 1,p1_10: 1;
+
+TRANSITION try_1
+	CONSUME flag_0_1: 1,p0_1: 1;
+	PRODUCE flag_1_1: 1,p1_1: 1;
+
+TRANSITION try_0
+	CONSUME flag_0_0: 1,p0_0: 1;
+	PRODUCE flag_1_0: 1,p1_0: 1;
+
+TRANSITION exit_9
+	CONSUME flag_1_9: 1,p3_9: 1;
+	PRODUCE flag_0_9: 1,p0_9: 1;
+
+TRANSITION exit_8
+	CONSUME flag_1_8: 1,p3_8: 1;
+	PRODUCE flag_0_8: 1,p0_8: 1;
+
+TRANSITION exit_7
+	CONSUME flag_1_7: 1,p3_7: 1;
+	PRODUCE flag_0_7: 1,p0_7: 1;
+
+TRANSITION exit_6
+	CONSUME flag_1_6: 1,p3_6: 1;
+	PRODUCE flag_0_6: 1,p0_6: 1;
+
+TRANSITION exit_5
+	CONSUME flag_1_5: 1,p3_5: 1;
+	PRODUCE flag_0_5: 1,p0_5: 1;
+
+TRANSITION exit_4
+	CONSUME flag_1_4: 1,p3_4: 1;
+	PRODUCE flag_0_4: 1,p0_4: 1;
+
+TRANSITION exit_3
+	CONSUME flag_1_3: 1,p3_3: 1;
+	PRODUCE flag_0_3: 1,p0_3: 1;
+
+TRANSITION exit_2
+	CONSUME flag_1_2: 1,p3_2: 1;
+	PRODUCE flag_0_2: 1,p0_2: 1;
+
+TRANSITION exit_14
+	CONSUME flag_1_14: 1,p3_14: 1;
+	PRODUCE flag_0_14: 1,p0_14: 1;
+
+TRANSITION exit_13
+	CONSUME flag_1_13: 1,p3_13: 1;
+	PRODUCE flag_0_13: 1,p0_13: 1;
+
+TRANSITION exit_12
+	CONSUME flag_1_12: 1,p3_12: 1;
+	PRODUCE flag_0_12: 1,p0_12: 1;
+
+TRANSITION exit_11
+	CONSUME flag_1_11: 1,p3_11: 1;
+	PRODUCE flag_0_11: 1,p0_11: 1;
+
+TRANSITION exit_10
+	CONSUME flag_1_10: 1,p3_10: 1;
+	PRODUCE flag_0_10: 1,p0_10: 1;
+
+TRANSITION exit_1
+	CONSUME flag_1_1: 1,p3_1: 1;
+	PRODUCE flag_0_1: 1,p0_1: 1;
+
+TRANSITION exit_0
+	CONSUME flag_1_0: 1,p3_0: 1;
+	PRODUCE flag_0_0: 1,p0_0: 1;
+
+TRANSITION enter_9
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_9: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_9: 1;
+
+TRANSITION enter_8
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_8: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_8: 1;
+
+TRANSITION enter_7
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_7: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_7: 1;
+
+TRANSITION enter_6
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_6: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_6: 1;
+
+TRANSITION enter_5
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_5: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_5: 1;
+
+TRANSITION enter_4
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_4: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_4: 1;
+
+TRANSITION enter_3
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_3: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_3: 1;
+
+TRANSITION enter_2
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_2: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_2: 1;
+
+TRANSITION enter_14
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,p1_14: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,p3_14: 1;
+
+TRANSITION enter_13
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_14: 1,p1_13: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_14: 1,p3_13: 1;
+
+TRANSITION enter_12
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_13: 1,flag_0_14: 1,p1_12: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_13: 1,flag_0_14: 1,p3_12: 1;
+
+TRANSITION enter_11
+	CONSUME flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_11: 1,flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_11: 1;
+
+TRANSITION enter_10
+	CONSUME flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_10: 1;
+	PRODUCE flag_0_0: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_10: 1;
+
+TRANSITION enter_1
+	CONSUME flag_0_0: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p1_1: 1;
+	PRODUCE flag_0_0: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_1: 1;
+
+TRANSITION enter_0
+	CONSUME flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,p1_0: 1;
+	PRODUCE flag_0_1: 1,flag_0_2: 1,flag_0_3: 1,flag_0_4: 1,flag_0_5: 1,flag_0_6: 1,flag_0_7: 1,flag_0_8: 1,flag_0_9: 1,flag_0_10: 1,flag_0_11: 1,flag_0_12: 1,flag_0_13: 1,flag_0_14: 1,p3_0: 1;

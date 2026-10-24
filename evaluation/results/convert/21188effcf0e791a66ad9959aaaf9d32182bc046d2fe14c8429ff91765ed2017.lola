@@ -1,0 +1,89 @@
+PLACE
+	ready, voted_no_1, voted_no_10, voted_no_2, voted_no_3, voted_no_4, voted_no_5, voted_no_6, voted_no_7, voted_no_8, voted_no_9, voted_yes_1, voted_yes_10, voted_yes_2, voted_yes_3, voted_yes_4, voted_yes_5, voted_yes_6, voted_yes_7, voted_yes_8, voted_yes_9, voting_1, voting_10, voting_2, voting_3, voting_4, voting_5, voting_6, voting_7, voting_8, voting_9;
+
+MARKING
+	ready: 1;
+
+TRANSITION yes_9
+	CONSUME voting_10: 1;
+	PRODUCE voted_yes_10: 1;
+
+TRANSITION yes_8
+	CONSUME voting_9: 1;
+	PRODUCE voted_yes_9: 1;
+
+TRANSITION yes_7
+	CONSUME voting_8: 1;
+	PRODUCE voted_yes_8: 1;
+
+TRANSITION yes_6
+	CONSUME voting_7: 1;
+	PRODUCE voted_yes_7: 1;
+
+TRANSITION yes_5
+	CONSUME voting_6: 1;
+	PRODUCE voted_yes_6: 1;
+
+TRANSITION yes_4
+	CONSUME voting_5: 1;
+	PRODUCE voted_yes_5: 1;
+
+TRANSITION yes_3
+	CONSUME voting_4: 1;
+	PRODUCE voted_yes_4: 1;
+
+TRANSITION yes_2
+	CONSUME voting_3: 1;
+	PRODUCE voted_yes_3: 1;
+
+TRANSITION yes_1
+	CONSUME voting_2: 1;
+	PRODUCE voted_yes_2: 1;
+
+TRANSITION yes_0
+	CONSUME voting_1: 1;
+	PRODUCE voted_yes_1: 1;
+
+TRANSITION start_0
+	CONSUME ready: 1;
+	PRODUCE voting_1: 1,voting_2: 1,voting_3: 1,voting_4: 1,voting_5: 1,voting_6: 1,voting_7: 1,voting_8: 1,voting_9: 1,voting_10: 1;
+
+TRANSITION no_9
+	CONSUME voting_10: 1;
+	PRODUCE voted_no_10: 1;
+
+TRANSITION no_8
+	CONSUME voting_9: 1;
+	PRODUCE voted_no_9: 1;
+
+TRANSITION no_7
+	CONSUME voting_8: 1;
+	PRODUCE voted_no_8: 1;
+
+TRANSITION no_6
+	CONSUME voting_7: 1;
+	PRODUCE voted_no_7: 1;
+
+TRANSITION no_5
+	CONSUME voting_6: 1;
+	PRODUCE voted_no_6: 1;
+
+TRANSITION no_4
+	CONSUME voting_5: 1;
+	PRODUCE voted_no_5: 1;
+
+TRANSITION no_3
+	CONSUME voting_4: 1;
+	PRODUCE voted_no_4: 1;
+
+TRANSITION no_2
+	CONSUME voting_3: 1;
+	PRODUCE voted_no_3: 1;
+
+TRANSITION no_1
+	CONSUME voting_2: 1;
+	PRODUCE voted_no_2: 1;
+
+TRANSITION no_0
+	CONSUME voting_1: 1;
+	PRODUCE voted_no_1: 1;

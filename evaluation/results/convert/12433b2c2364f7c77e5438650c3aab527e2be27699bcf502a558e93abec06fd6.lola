@@ -1,0 +1,509 @@
+PLACE
+	AskForSection_0_0, AskForSection_0_1, AskForSection_1_0, AskForSection_1_1, AskForSection_2_0, AskForSection_2_1, BeginLoop_0_0_0, BeginLoop_0_0_1, BeginLoop_0_0_2, BeginLoop_0_1_0, BeginLoop_0_1_1, BeginLoop_0_1_2, BeginLoop_1_0_0, BeginLoop_1_0_1, BeginLoop_1_0_2, BeginLoop_1_1_0, BeginLoop_1_1_1, BeginLoop_1_1_2, BeginLoop_2_0_0, BeginLoop_2_0_1, BeginLoop_2_0_2, BeginLoop_2_1_0, BeginLoop_2_1_1, BeginLoop_2_1_2, CS_0, CS_1, CS_2, EndTurn_0_0, EndTurn_0_1, EndTurn_1_0, EndTurn_1_1, EndTurn_2_0, EndTurn_2_1, Idle_0, Idle_1, Idle_2, IsEndLoop_0_0_0, IsEndLoop_0_0_1, IsEndLoop_0_0_2, IsEndLoop_0_1_0, IsEndLoop_0_1_1, IsEndLoop_0_1_2, IsEndLoop_1_0_0, IsEndLoop_1_0_1, IsEndLoop_1_0_2, IsEndLoop_1_1_0, IsEndLoop_1_1_1, IsEndLoop_1_1_2, IsEndLoop_2_0_0, IsEndLoop_2_0_1, IsEndLoop_2_0_2, IsEndLoop_2_1_0, IsEndLoop_2_1_1, IsEndLoop_2_1_2, TestAlone_0_0_1, TestAlone_0_0_2, TestAlone_0_1_1, TestAlone_0_1_2, TestAlone_1_0_0, TestAlone_1_0_2, TestAlone_1_1_0, TestAlone_1_1_2, TestAlone_2_0_0, TestAlone_2_0_1, TestAlone_2_1_0, TestAlone_2_1_1, TestIdentity_0_0_0, TestIdentity_0_0_1, TestIdentity_0_0_2, TestIdentity_0_1_0, TestIdentity_0_1_1, TestIdentity_0_1_2, TestIdentity_1_0_0, TestIdentity_1_0_1, TestIdentity_1_0_2, TestIdentity_1_1_0, TestIdentity_1_1_1, TestIdentity_1_1_2, TestIdentity_2_0_0, TestIdentity_2_0_1, TestIdentity_2_0_2, TestIdentity_2_1_0, TestIdentity_2_1_1, TestIdentity_2_1_2, TestTurn_0_0, TestTurn_0_1, TestTurn_1_0, TestTurn_1_1, TestTurn_2_0, TestTurn_2_1, Turn_0_0, Turn_0_1, Turn_0_2, Turn_1_0, Turn_1_1, Turn_1_2, WantSection_0_F, WantSection_0_T, WantSection_1_F, WantSection_1_T, WantSection_2_F, WantSection_2_T;
+
+MARKING
+	WantSection_2_F: 1,WantSection_1_F: 1,WantSection_0_F: 1,Turn_1_0: 1,Turn_0_0: 1,Idle_2: 1,Idle_1: 1,Idle_0: 1;
+
+TRANSITION UpdateTurn_2_2_1
+	CONSUME Turn_1_2: 1,AskForSection_2_1: 1;
+	PRODUCE Turn_1_2: 1,TestTurn_2_1: 1;
+
+TRANSITION UpdateTurn_2_2_0
+	CONSUME Turn_0_2: 1,AskForSection_2_0: 1;
+	PRODUCE TestTurn_2_0: 1,Turn_0_2: 1;
+
+TRANSITION UpdateTurn_2_1_1
+	CONSUME Turn_1_1: 1,AskForSection_2_1: 1;
+	PRODUCE TestTurn_2_1: 1,Turn_1_2: 1;
+
+TRANSITION UpdateTurn_2_1_0
+	CONSUME AskForSection_2_0: 1,Turn_0_1: 1;
+	PRODUCE Turn_0_2: 1,TestTurn_2_0: 1;
+
+TRANSITION UpdateTurn_2_0_1
+	CONSUME Turn_1_0: 1,AskForSection_2_1: 1;
+	PRODUCE TestTurn_2_1: 1,Turn_1_2: 1;
+
+TRANSITION UpdateTurn_2_0_0
+	CONSUME Turn_0_0: 1,AskForSection_2_0: 1;
+	PRODUCE Turn_0_2: 1,TestTurn_2_0: 1;
+
+TRANSITION UpdateTurn_1_2_1
+	CONSUME AskForSection_1_1: 1,Turn_1_2: 1;
+	PRODUCE Turn_1_1: 1,TestTurn_1_1: 1;
+
+TRANSITION UpdateTurn_1_2_0
+	CONSUME AskForSection_1_0: 1,Turn_0_2: 1;
+	PRODUCE Turn_0_1: 1,TestTurn_1_0: 1;
+
+TRANSITION UpdateTurn_1_1_1
+	CONSUME Turn_1_1: 1,AskForSection_1_1: 1;
+	PRODUCE TestTurn_1_1: 1,Turn_1_1: 1;
+
+TRANSITION UpdateTurn_1_1_0
+	CONSUME Turn_0_1: 1,AskForSection_1_0: 1;
+	PRODUCE Turn_0_1: 1,TestTurn_1_0: 1;
+
+TRANSITION UpdateTurn_1_0_1
+	CONSUME Turn_1_0: 1,AskForSection_1_1: 1;
+	PRODUCE TestTurn_1_1: 1,Turn_1_1: 1;
+
+TRANSITION UpdateTurn_1_0_0
+	CONSUME AskForSection_1_0: 1,Turn_0_0: 1;
+	PRODUCE Turn_0_1: 1,TestTurn_1_0: 1;
+
+TRANSITION UpdateTurn_0_2_1
+	CONSUME Turn_1_2: 1,AskForSection_0_1: 1;
+	PRODUCE TestTurn_0_1: 1,Turn_1_0: 1;
+
+TRANSITION UpdateTurn_0_2_0
+	CONSUME Turn_0_2: 1,AskForSection_0_0: 1;
+	PRODUCE Turn_0_0: 1,TestTurn_0_0: 1;
+
+TRANSITION UpdateTurn_0_1_1
+	CONSUME Turn_1_1: 1,AskForSection_0_1: 1;
+	PRODUCE TestTurn_0_1: 1,Turn_1_0: 1;
+
+TRANSITION UpdateTurn_0_1_0
+	CONSUME AskForSection_0_0: 1,Turn_0_1: 1;
+	PRODUCE Turn_0_0: 1,TestTurn_0_0: 1;
+
+TRANSITION UpdateTurn_0_0_1
+	CONSUME Turn_1_0: 1,AskForSection_0_1: 1;
+	PRODUCE TestTurn_0_1: 1,Turn_1_0: 1;
+
+TRANSITION UpdateTurn_0_0_0
+	CONSUME AskForSection_0_0: 1,Turn_0_0: 1;
+	PRODUCE Turn_0_0: 1,TestTurn_0_0: 1;
+
+TRANSITION TurnEqual_2_1
+	CONSUME TestTurn_2_1: 1,Turn_1_2: 1;
+	PRODUCE Turn_1_2: 1,BeginLoop_2_1_0: 1;
+
+TRANSITION TurnEqual_2_0
+	CONSUME Turn_0_2: 1,TestTurn_2_0: 1;
+	PRODUCE Turn_0_2: 1,BeginLoop_2_0_0: 1;
+
+TRANSITION TurnEqual_1_1
+	CONSUME TestTurn_1_1: 1,Turn_1_1: 1;
+	PRODUCE Turn_1_1: 1,BeginLoop_1_1_0: 1;
+
+TRANSITION TurnEqual_1_0
+	CONSUME Turn_0_1: 1,TestTurn_1_0: 1;
+	PRODUCE Turn_0_1: 1,BeginLoop_1_0_0: 1;
+
+TRANSITION TurnEqual_0_1
+	CONSUME TestTurn_0_1: 1,Turn_1_0: 1;
+	PRODUCE Turn_1_0: 1,BeginLoop_0_1_0: 1;
+
+TRANSITION TurnEqual_0_0
+	CONSUME Turn_0_0: 1,TestTurn_0_0: 1;
+	PRODUCE Turn_0_0: 1,BeginLoop_0_0_0: 1;
+
+TRANSITION TurnDiff_2_1_1
+	CONSUME Turn_1_1: 1,TestTurn_2_1: 1;
+	PRODUCE EndTurn_2_1: 1,Turn_1_1: 1;
+
+TRANSITION TurnDiff_2_1_0
+	CONSUME TestTurn_2_0: 1,Turn_0_1: 1;
+	PRODUCE Turn_0_1: 1,EndTurn_2_0: 1;
+
+TRANSITION TurnDiff_2_0_1
+	CONSUME TestTurn_2_1: 1,Turn_1_0: 1;
+	PRODUCE EndTurn_2_1: 1,Turn_1_0: 1;
+
+TRANSITION TurnDiff_2_0_0
+	CONSUME Turn_0_0: 1,TestTurn_2_0: 1;
+	PRODUCE Turn_0_0: 1,EndTurn_2_0: 1;
+
+TRANSITION TurnDiff_1_2_1
+	CONSUME TestTurn_1_1: 1,Turn_1_2: 1;
+	PRODUCE EndTurn_1_1: 1,Turn_1_2: 1;
+
+TRANSITION TurnDiff_1_2_0
+	CONSUME TestTurn_1_0: 1,Turn_0_2: 1;
+	PRODUCE EndTurn_1_0: 1,Turn_0_2: 1;
+
+TRANSITION TurnDiff_1_0_1
+	CONSUME TestTurn_1_1: 1,Turn_1_0: 1;
+	PRODUCE EndTurn_1_1: 1,Turn_1_0: 1;
+
+TRANSITION TurnDiff_1_0_0
+	CONSUME TestTurn_1_0: 1,Turn_0_0: 1;
+	PRODUCE Turn_0_0: 1,EndTurn_1_0: 1;
+
+TRANSITION TurnDiff_0_2_1
+	CONSUME TestTurn_0_1: 1,Turn_1_2: 1;
+	PRODUCE EndTurn_0_1: 1,Turn_1_2: 1;
+
+TRANSITION TurnDiff_0_2_0
+	CONSUME TestTurn_0_0: 1,Turn_0_2: 1;
+	PRODUCE Turn_0_2: 1,EndTurn_0_0: 1;
+
+TRANSITION TurnDiff_0_1_1
+	CONSUME TestTurn_0_1: 1,Turn_1_1: 1;
+	PRODUCE EndTurn_0_1: 1,Turn_1_1: 1;
+
+TRANSITION TurnDiff_0_1_0
+	CONSUME TestTurn_0_0: 1,Turn_0_1: 1;
+	PRODUCE Turn_0_1: 1,EndTurn_0_0: 1;
+
+TRANSITION ProgressTurn_2_0
+	CONSUME EndTurn_2_0: 1;
+	PRODUCE AskForSection_2_1: 1;
+
+TRANSITION ProgressTurn_1_0
+	CONSUME EndTurn_1_0: 1;
+	PRODUCE AskForSection_1_1: 1;
+
+TRANSITION ProgressTurn_0_0
+	CONSUME EndTurn_0_0: 1;
+	PRODUCE AskForSection_0_1: 1;
+
+TRANSITION NotAlone_2_1_1
+	CONSUME WantSection_1_T: 1,TestAlone_2_1_1: 1;
+	PRODUCE TestTurn_2_1: 1,WantSection_1_T: 1;
+
+TRANSITION NotAlone_2_1_0
+	CONSUME TestAlone_2_0_1: 1,WantSection_1_T: 1;
+	PRODUCE WantSection_1_T: 1,TestTurn_2_0: 1;
+
+TRANSITION NotAlone_2_0_1
+	CONSUME TestAlone_2_1_0: 1,WantSection_0_T: 1;
+	PRODUCE WantSection_0_T: 1,TestTurn_2_1: 1;
+
+TRANSITION NotAlone_2_0_0
+	CONSUME TestAlone_2_0_0: 1,WantSection_0_T: 1;
+	PRODUCE WantSection_0_T: 1,TestTurn_2_0: 1;
+
+TRANSITION NotAlone_1_2_1
+	CONSUME WantSection_2_T: 1,TestAlone_1_1_2: 1;
+	PRODUCE TestTurn_1_1: 1,WantSection_2_T: 1;
+
+TRANSITION NotAlone_1_2_0
+	CONSUME TestAlone_1_0_2: 1,WantSection_2_T: 1;
+	PRODUCE WantSection_2_T: 1,TestTurn_1_0: 1;
+
+TRANSITION NotAlone_1_0_1
+	CONSUME WantSection_0_T: 1,TestAlone_1_1_0: 1;
+	PRODUCE WantSection_0_T: 1,TestTurn_1_1: 1;
+
+TRANSITION NotAlone_1_0_0
+	CONSUME WantSection_0_T: 1,TestAlone_1_0_0: 1;
+	PRODUCE WantSection_0_T: 1,TestTurn_1_0: 1;
+
+TRANSITION NotAlone_0_2_1
+	CONSUME TestAlone_0_1_2: 1,WantSection_2_T: 1;
+	PRODUCE TestTurn_0_1: 1,WantSection_2_T: 1;
+
+TRANSITION NotAlone_0_2_0
+	CONSUME TestAlone_0_0_2: 1,WantSection_2_T: 1;
+	PRODUCE WantSection_2_T: 1,TestTurn_0_0: 1;
+
+TRANSITION NotAlone_0_1_1
+	CONSUME WantSection_1_T: 1,TestAlone_0_1_1: 1;
+	PRODUCE TestTurn_0_1: 1,WantSection_1_T: 1;
+
+TRANSITION NotAlone_0_1_0
+	CONSUME WantSection_1_T: 1,TestAlone_0_0_1: 1;
+	PRODUCE WantSection_1_T: 1,TestTurn_0_0: 1;
+
+TRANSITION NoIdentity_2_1_1
+	CONSUME TestIdentity_2_1_1: 1;
+	PRODUCE TestAlone_2_1_1: 1;
+
+TRANSITION NoIdentity_2_1_0
+	CONSUME TestIdentity_2_0_1: 1;
+	PRODUCE TestAlone_2_0_1: 1;
+
+TRANSITION NoIdentity_2_0_1
+	CONSUME TestIdentity_2_1_0: 1;
+	PRODUCE TestAlone_2_1_0: 1;
+
+TRANSITION NoIdentity_2_0_0
+	CONSUME TestIdentity_2_0_0: 1;
+	PRODUCE TestAlone_2_0_0: 1;
+
+TRANSITION NoIdentity_1_2_1
+	CONSUME TestIdentity_1_1_2: 1;
+	PRODUCE TestAlone_1_1_2: 1;
+
+TRANSITION NoIdentity_1_2_0
+	CONSUME TestIdentity_1_0_2: 1;
+	PRODUCE TestAlone_1_0_2: 1;
+
+TRANSITION NoIdentity_1_0_1
+	CONSUME TestIdentity_1_1_0: 1;
+	PRODUCE TestAlone_1_1_0: 1;
+
+TRANSITION NoIdentity_1_0_0
+	CONSUME TestIdentity_1_0_0: 1;
+	PRODUCE TestAlone_1_0_0: 1;
+
+TRANSITION NoIdentity_0_2_1
+	CONSUME TestIdentity_0_1_2: 1;
+	PRODUCE TestAlone_0_1_2: 1;
+
+TRANSITION NoIdentity_0_2_0
+	CONSUME TestIdentity_0_0_2: 1;
+	PRODUCE TestAlone_0_0_2: 1;
+
+TRANSITION NoIdentity_0_1_1
+	CONSUME TestIdentity_0_1_1: 1;
+	PRODUCE TestAlone_0_1_1: 1;
+
+TRANSITION NoIdentity_0_1_0
+	CONSUME TestIdentity_0_0_1: 1;
+	PRODUCE TestAlone_0_0_1: 1;
+
+TRANSITION Loop_2_1_1
+	CONSUME IsEndLoop_2_1_1: 1;
+	PRODUCE BeginLoop_2_1_2: 1;
+
+TRANSITION Loop_2_1_0
+	CONSUME IsEndLoop_2_0_1: 1;
+	PRODUCE BeginLoop_2_0_2: 1;
+
+TRANSITION Loop_2_0_1
+	CONSUME IsEndLoop_2_1_0: 1;
+	PRODUCE BeginLoop_2_1_1: 1;
+
+TRANSITION Loop_2_0_0
+	CONSUME IsEndLoop_2_0_0: 1;
+	PRODUCE BeginLoop_2_0_1: 1;
+
+TRANSITION Loop_1_1_1
+	CONSUME IsEndLoop_1_1_1: 1;
+	PRODUCE BeginLoop_1_1_2: 1;
+
+TRANSITION Loop_1_1_0
+	CONSUME IsEndLoop_1_0_1: 1;
+	PRODUCE BeginLoop_1_0_2: 1;
+
+TRANSITION Loop_1_0_1
+	CONSUME IsEndLoop_1_1_0: 1;
+	PRODUCE BeginLoop_1_1_1: 1;
+
+TRANSITION Loop_1_0_0
+	CONSUME IsEndLoop_1_0_0: 1;
+	PRODUCE BeginLoop_1_0_1: 1;
+
+TRANSITION Loop_0_1_1
+	CONSUME IsEndLoop_0_1_1: 1;
+	PRODUCE BeginLoop_0_1_2: 1;
+
+TRANSITION Loop_0_1_0
+	CONSUME IsEndLoop_0_0_1: 1;
+	PRODUCE BeginLoop_0_0_2: 1;
+
+TRANSITION Loop_0_0_1
+	CONSUME IsEndLoop_0_1_0: 1;
+	PRODUCE BeginLoop_0_1_1: 1;
+
+TRANSITION Loop_0_0_0
+	CONSUME IsEndLoop_0_0_0: 1;
+	PRODUCE BeginLoop_0_0_1: 1;
+
+TRANSITION Identity_2_1
+	CONSUME TestIdentity_2_1_2: 1;
+	PRODUCE IsEndLoop_2_1_2: 1;
+
+TRANSITION Identity_2_0
+	CONSUME TestIdentity_2_0_2: 1;
+	PRODUCE IsEndLoop_2_0_2: 1;
+
+TRANSITION Identity_1_1
+	CONSUME TestIdentity_1_1_1: 1;
+	PRODUCE IsEndLoop_1_1_1: 1;
+
+TRANSITION Identity_1_0
+	CONSUME TestIdentity_1_0_1: 1;
+	PRODUCE IsEndLoop_1_0_1: 1;
+
+TRANSITION Identity_0_1
+	CONSUME TestIdentity_0_1_0: 1;
+	PRODUCE IsEndLoop_0_1_0: 1;
+
+TRANSITION Identity_0_0
+	CONSUME TestIdentity_0_0_0: 1;
+	PRODUCE IsEndLoop_0_0_0: 1;
+
+TRANSITION EndLoop_2_1
+	CONSUME IsEndLoop_2_1_2: 1;
+	PRODUCE EndTurn_2_1: 1;
+
+TRANSITION EndLoop_2_0
+	CONSUME IsEndLoop_2_0_2: 1;
+	PRODUCE EndTurn_2_0: 1;
+
+TRANSITION EndLoop_1_1
+	CONSUME IsEndLoop_1_1_2: 1;
+	PRODUCE EndTurn_1_1: 1;
+
+TRANSITION EndLoop_1_0
+	CONSUME IsEndLoop_1_0_2: 1;
+	PRODUCE EndTurn_1_0: 1;
+
+TRANSITION EndLoop_0_1
+	CONSUME IsEndLoop_0_1_2: 1;
+	PRODUCE EndTurn_0_1: 1;
+
+TRANSITION EndLoop_0_0
+	CONSUME IsEndLoop_0_0_2: 1;
+	PRODUCE EndTurn_0_0: 1;
+
+TRANSITION ContinueLoop_2_2_1
+	CONSUME BeginLoop_2_1_2: 1;
+	PRODUCE TestIdentity_2_1_2: 1;
+
+TRANSITION ContinueLoop_2_2_0
+	CONSUME BeginLoop_2_0_2: 1;
+	PRODUCE TestIdentity_2_0_2: 1;
+
+TRANSITION ContinueLoop_2_1_1
+	CONSUME BeginLoop_2_1_1: 1;
+	PRODUCE TestIdentity_2_1_1: 1;
+
+TRANSITION ContinueLoop_2_1_0
+	CONSUME BeginLoop_2_0_1: 1;
+	PRODUCE TestIdentity_2_0_1: 1;
+
+TRANSITION ContinueLoop_2_0_1
+	CONSUME BeginLoop_2_1_0: 1;
+	PRODUCE TestIdentity_2_1_0: 1;
+
+TRANSITION ContinueLoop_2_0_0
+	CONSUME BeginLoop_2_0_0: 1;
+	PRODUCE TestIdentity_2_0_0: 1;
+
+TRANSITION ContinueLoop_1_2_1
+	CONSUME BeginLoop_1_1_2: 1;
+	PRODUCE TestIdentity_1_1_2: 1;
+
+TRANSITION ContinueLoop_1_2_0
+	CONSUME BeginLoop_1_0_2: 1;
+	PRODUCE TestIdentity_1_0_2: 1;
+
+TRANSITION ContinueLoop_1_1_1
+	CONSUME BeginLoop_1_1_1: 1;
+	PRODUCE TestIdentity_1_1_1: 1;
+
+TRANSITION ContinueLoop_1_1_0
+	CONSUME BeginLoop_1_0_1: 1;
+	PRODUCE TestIdentity_1_0_1: 1;
+
+TRANSITION ContinueLoop_1_0_1
+	CONSUME BeginLoop_1_1_0: 1;
+	PRODUCE TestIdentity_1_1_0: 1;
+
+TRANSITION ContinueLoop_1_0_0
+	CONSUME BeginLoop_1_0_0: 1;
+	PRODUCE TestIdentity_1_0_0: 1;
+
+TRANSITION ContinueLoop_0_2_1
+	CONSUME BeginLoop_0_1_2: 1;
+	PRODUCE TestIdentity_0_1_2: 1;
+
+TRANSITION ContinueLoop_0_2_0
+	CONSUME BeginLoop_0_0_2: 1;
+	PRODUCE TestIdentity_0_0_2: 1;
+
+TRANSITION ContinueLoop_0_1_1
+	CONSUME BeginLoop_0_1_1: 1;
+	PRODUCE TestIdentity_0_1_1: 1;
+
+TRANSITION ContinueLoop_0_1_0
+	CONSUME BeginLoop_0_0_1: 1;
+	PRODUCE TestIdentity_0_0_1: 1;
+
+TRANSITION ContinueLoop_0_0_1
+	CONSUME BeginLoop_0_1_0: 1;
+	PRODUCE TestIdentity_0_1_0: 1;
+
+TRANSITION ContinueLoop_0_0_0
+	CONSUME BeginLoop_0_0_0: 1;
+	PRODUCE TestIdentity_0_0_0: 1;
+
+TRANSITION BecomeIdle_2
+	CONSUME CS_2: 1,WantSection_2_T: 1;
+	PRODUCE WantSection_2_F: 1,Idle_2: 1;
+
+TRANSITION BecomeIdle_1
+	CONSUME CS_1: 1,WantSection_1_T: 1;
+	PRODUCE WantSection_1_F: 1,Idle_1: 1;
+
+TRANSITION BecomeIdle_0
+	CONSUME CS_0: 1,WantSection_0_T: 1;
+	PRODUCE WantSection_0_F: 1,Idle_0: 1;
+
+TRANSITION Ask_2
+	CONSUME WantSection_2_F: 1,Idle_2: 1;
+	PRODUCE AskForSection_2_0: 1,WantSection_2_T: 1;
+
+TRANSITION Ask_1
+	CONSUME Idle_1: 1,WantSection_1_F: 1;
+	PRODUCE AskForSection_1_0: 1,WantSection_1_T: 1;
+
+TRANSITION Ask_0
+	CONSUME Idle_0: 1,WantSection_0_F: 1;
+	PRODUCE AskForSection_0_0: 1,WantSection_0_T: 1;
+
+TRANSITION Alone1_2_1_1
+	CONSUME WantSection_1_F: 1,TestAlone_2_1_1: 1;
+	PRODUCE IsEndLoop_2_1_1: 1,WantSection_1_F: 1;
+
+TRANSITION Alone1_2_1_0
+	CONSUME WantSection_1_F: 1,TestAlone_2_0_1: 1;
+	PRODUCE WantSection_1_F: 1,IsEndLoop_2_0_1: 1;
+
+TRANSITION Alone1_2_0_1
+	CONSUME WantSection_0_F: 1,TestAlone_2_1_0: 1;
+	PRODUCE IsEndLoop_2_1_0: 1,WantSection_0_F: 1;
+
+TRANSITION Alone1_2_0_0
+	CONSUME WantSection_0_F: 1,TestAlone_2_0_0: 1;
+	PRODUCE WantSection_0_F: 1,IsEndLoop_2_0_0: 1;
+
+TRANSITION Alone1_1_2_1
+	CONSUME WantSection_2_F: 1,TestAlone_1_1_2: 1;
+	PRODUCE IsEndLoop_1_1_2: 1,WantSection_2_F: 1;
+
+TRANSITION Alone1_1_2_0
+	CONSUME WantSection_2_F: 1,TestAlone_1_0_2: 1;
+	PRODUCE IsEndLoop_1_0_2: 1,WantSection_2_F: 1;
+
+TRANSITION Alone1_1_0_1
+	CONSUME TestAlone_1_1_0: 1,WantSection_0_F: 1;
+	PRODUCE IsEndLoop_1_1_0: 1,WantSection_0_F: 1;
+
+TRANSITION Alone1_1_0_0
+	CONSUME TestAlone_1_0_0: 1,WantSection_0_F: 1;
+	PRODUCE WantSection_0_F: 1,IsEndLoop_1_0_0: 1;
+
+TRANSITION Alone1_0_2_1
+	CONSUME TestAlone_0_1_2: 1,WantSection_2_F: 1;
+	PRODUCE IsEndLoop_0_1_2: 1,WantSection_2_F: 1;
+
+TRANSITION Alone1_0_2_0
+	CONSUME WantSection_2_F: 1,TestAlone_0_0_2: 1;
+	PRODUCE IsEndLoop_0_0_2: 1,WantSection_2_F: 1;
+
+TRANSITION Alone1_0_1_1
+	CONSUME TestAlone_0_1_1: 1,WantSection_1_F: 1;
+	PRODUCE IsEndLoop_0_1_1: 1,WantSection_1_F: 1;
+
+TRANSITION Alone1_0_1_0
+	CONSUME TestAlone_0_0_1: 1,WantSection_1_F: 1;
+	PRODUCE IsEndLoop_0_0_1: 1,WantSection_1_F: 1;
+
+TRANSITION AccessCS_2
+	CONSUME EndTurn_2_1: 1;
+	PRODUCE CS_2: 1;
+
+TRANSITION AccessCS_1
+	CONSUME EndTurn_1_1: 1;
+	PRODUCE CS_1: 1;
+
+TRANSITION AccessCS_0
+	CONSUME EndTurn_0_1: 1;
+	PRODUCE CS_0: 1;

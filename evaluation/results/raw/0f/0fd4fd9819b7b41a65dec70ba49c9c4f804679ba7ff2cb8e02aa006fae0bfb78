@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {Referendum-PT-010}
+
+31 places, 21 transitions, 51 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+59050 marking(s), 393661 transition(s)
+
+0.665s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+1024 dead marking(s), 1024 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.029s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {Referendum-PT-010}, 31 places, 21 transitions, 51 arcs          #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        59050         31          ?       1024       1024 # 
+# transitions       393661         21          ?          0          0 #

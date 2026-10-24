@@ -1,0 +1,26 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {3-ont-64-12.net}
+
+104 places, 158 transitions, 863 arcs
+
+0.006s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+net unbounded
+
+unbounded places include: p23 p59 
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+enumeration not completed
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+

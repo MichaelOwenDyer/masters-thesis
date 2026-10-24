@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {QuasiCertifProtocol-PT-02}
+
+86 places, 56 transitions, 223 arcs
+
+0.002s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+1029 marking(s), 3084 transition(s)
+
+0.004s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+47 dead marking(s), 47 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {QuasiCertifProtocol-PT-02}, 86 places, 56 transitions, 223 arcs #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         1029         86          ?         47         47 # 
+# transitions         3084         56          ?          0          0 #

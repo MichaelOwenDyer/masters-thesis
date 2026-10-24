@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {StigmergyCommit-PT-03a}
+
+148 places, 332 transitions, 1538 arcs
+
+0.005s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+4055 marking(s), 17216 transition(s)
+
+0.022s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 4 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.001s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {StigmergyCommit-PT-03a}, 148 places, 332 transitions, 1538 arcs #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         4055        148          ?          0          4 # 
+# transitions        17216        332          ?          0          0 #

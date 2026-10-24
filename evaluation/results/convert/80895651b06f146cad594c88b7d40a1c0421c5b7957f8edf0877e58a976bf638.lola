@@ -1,0 +1,3065 @@
+PLACE
+	PatientZero, cFactor0, cFactor11, cFactor12, cFactor13, cFactor14, cFactor211, cFactor212, cFactor213, cFactor214, cFactor221, cFactor222, cFactor223, cFactor224, cFactor231, cFactor232, cFactor233, cFactor234, cFactor241, cFactor242, cFactor243, cFactor244, cFactor3111, cFactor3112, cFactor3113, cFactor3114, cFactor3121, cFactor3122, cFactor3123, cFactor3124, cFactor3131, cFactor3132, cFactor3133, cFactor3134, cFactor3141, cFactor3142, cFactor3143, cFactor3144, cFactor3211, cFactor3212, cFactor3213, cFactor3214, cFactor3221, cFactor3222, cFactor3223, cFactor3224, cFactor3231, cFactor3232, cFactor3233, cFactor3234, cFactor3241, cFactor3242, cFactor3243, cFactor3244, cFactor3311, cFactor3312, cFactor3313, cFactor3314, cFactor3321, cFactor3322, cFactor3323, cFactor3324, cFactor3331, cFactor3332, cFactor3333, cFactor3334, cFactor3341, cFactor3342, cFactor3343, cFactor3344, cFactor3411, cFactor3412, cFactor3413, cFactor3414, cFactor3421, cFactor3422, cFactor3423, cFactor3424, cFactor3431, cFactor3432, cFactor3433, cFactor3434, cFactor3441, cFactor3442, cFactor3443, cFactor3444, dFactor0, dFactor11, dFactor12, dFactor13, dFactor14, dFactor211, dFactor212, dFactor213, dFactor214, dFactor221, dFactor222, dFactor223, dFactor224, dFactor231, dFactor232, dFactor233, dFactor234, dFactor241, dFactor242, dFactor243, dFactor244, dFactor3111, dFactor3112, dFactor3113, dFactor3114, dFactor3121, dFactor3122, dFactor3123, dFactor3124, dFactor3131, dFactor3132, dFactor3133, dFactor3134, dFactor3141, dFactor3142, dFactor3143, dFactor3144, dFactor3211, dFactor3212, dFactor3213, dFactor3214, dFactor3221, dFactor3222, dFactor3223, dFactor3224, dFactor3231, dFactor3232, dFactor3233, dFactor3234, dFactor3241, dFactor3242, dFactor3243, dFactor3244, dFactor3311, dFactor3312, dFactor3313, dFactor3314, dFactor3321, dFactor3322, dFactor3323, dFactor3324, dFactor3331, dFactor3332, dFactor3333, dFactor3334, dFactor3341, dFactor3342, dFactor3343, dFactor3344, dFactor3411, dFactor3412, dFactor3413, dFactor3414, dFactor3421, dFactor3422, dFactor3423, dFactor3424, dFactor3431, dFactor3432, dFactor3433, dFactor3434, dFactor3441, dFactor3442, dFactor3443, dFactor3444, patient1, patient11, patient111, patient1111, patient1112, patient1113, patient1114, patient112, patient1121, patient1122, patient1123, patient1124, patient113, patient1131, patient1132, patient1133, patient1134, patient114, patient1141, patient1142, patient1143, patient1144, patient12, patient121, patient1211, patient1212, patient1213, patient1214, patient122, patient1221, patient1222, patient1223, patient1224, patient123, patient1231, patient1232, patient1233, patient1234, patient124, patient1241, patient1242, patient1243, patient1244, patient13, patient131, patient1311, patient1312, patient1313, patient1314, patient132, patient1321, patient1322, patient1323, patient1324, patient133, patient1331, patient1332, patient1333, patient1334, patient134, patient1341, patient1342, patient1343, patient1344, patient14, patient141, patient1411, patient1412, patient1413, patient1414, patient142, patient1421, patient1422, patient1423, patient1424, patient143, patient1431, patient1432, patient1433, patient1434, patient144, patient1441, patient1442, patient1443, patient1444, patient2, patient21, patient211, patient2111, patient2112, patient2113, patient2114, patient212, patient2121, patient2122, patient2123, patient2124, patient213, patient2131, patient2132, patient2133, patient2134, patient214, patient2141, patient2142, patient2143, patient2144, patient22, patient221, patient2211, patient2212, patient2213, patient2214, patient222, patient2221, patient2222, patient2223, patient2224, patient223, patient2231, patient2232, patient2233, patient2234, patient224, patient2241, patient2242, patient2243, patient2244, patient23, patient231, patient2311, patient2312, patient2313, patient2314, patient232, patient2321, patient2322, patient2323, patient2324, patient233, patient2331, patient2332, patient2333, patient2334, patient234, patient2341, patient2342, patient2343, patient2344, patient24, patient241, patient2411, patient2412, patient2413, patient2414, patient242, patient2421, patient2422, patient2423, patient2424, patient243, patient2431, patient2432, patient2433, patient2434, patient244, patient2441, patient2442, patient2443, patient2444, patient3, patient31, patient311, patient3111, patient3112, patient3113, patient3114, patient312, patient3121, patient3122, patient3123, patient3124, patient313, patient3131, patient3132, patient3133, patient3134, patient314, patient3141, patient3142, patient3143, patient3144, patient32, patient321, patient3211, patient3212, patient3213, patient3214, patient322, patient3221, patient3222, patient3223, patient3224, patient323, patient3231, patient3232, patient3233, patient3234, patient324, patient3241, patient3242, patient3243, patient3244, patient33, patient331, patient3311, patient3312, patient3313, patient3314, patient332, patient3321, patient3322, patient3323, patient3324, patient333, patient3331, patient3332, patient3333, patient3334, patient334, patient3341, patient3342, patient3343, patient3344, patient34, patient341, patient3411, patient3412, patient3413, patient3414, patient342, patient3421, patient3422, patient3423, patient3424, patient343, patient3431, patient3432, patient3433, patient3434, patient344, patient3441, patient3442, patient3443, patient3444, patient4, patient41, patient411, patient4111, patient4112, patient4113, patient4114, patient412, patient4121, patient4122, patient4123, patient4124, patient413, patient4131, patient4132, patient4133, patient4134, patient414, patient4141, patient4142, patient4143, patient4144, patient42, patient421, patient4211, patient4212, patient4213, patient4214, patient422, patient4221, patient4222, patient4223, patient4224, patient423, patient4231, patient4232, patient4233, patient4234, patient424, patient4241, patient4242, patient4243, patient4244, patient43, patient431, patient4311, patient4312, patient4313, patient4314, patient432, patient4321, patient4322, patient4323, patient4324, patient433, patient4331, patient4332, patient4333, patient4334, patient434, patient4341, patient4342, patient4343, patient4344, patient44, patient441, patient4411, patient4412, patient4413, patient4414, patient442, patient4421, patient4422, patient4423, patient4424, patient443, patient4431, patient4432, patient4433, patient4434, patient444, patient4441, patient4442, patient4443, patient4444;
+
+MARKING
+	dFactor3444: 1,dFactor3443: 1,dFactor3442: 1,dFactor3441: 1,dFactor3434: 1,dFactor3433: 1,dFactor3432: 1,dFactor3431: 1,dFactor3424: 1,dFactor3423: 1,dFactor3422: 1,dFactor3421: 1,dFactor3414: 1,dFactor3413: 1,dFactor3412: 1,dFactor3411: 1,dFactor3344: 1,dFactor3343: 1,dFactor3342: 1,dFactor3341: 1,dFactor3334: 1,dFactor3333: 1,dFactor3332: 1,dFactor3331: 1,dFactor3324: 1,dFactor3323: 1,dFactor3322: 1,dFactor3321: 1,dFactor3314: 1,dFactor3313: 1,dFactor3312: 1,dFactor3311: 1,dFactor3244: 1,dFactor3243: 1,dFactor3242: 1,dFactor3241: 1,dFactor3234: 1,dFactor3233: 1,dFactor3232: 1,dFactor3231: 1,dFactor3224: 1,dFactor3223: 1,dFactor3222: 1,dFactor3221: 1,dFactor3214: 1,dFactor3213: 1,dFactor3212: 1,dFactor3211: 1,dFactor3144: 1,dFactor3143: 1,dFactor3142: 1,dFactor3141: 1,dFactor3134: 1,dFactor3133: 1,dFactor3132: 1,dFactor3131: 1,dFactor3124: 1,dFactor3123: 1,dFactor3122: 1,dFactor3121: 1,dFactor3114: 1,dFactor3113: 1,dFactor3112: 1,dFactor3111: 1,dFactor244: 1,dFactor243: 1,dFactor242: 1,dFactor241: 1,dFactor234: 1,dFactor233: 1,dFactor232: 1,dFactor231: 1,dFactor224: 1,dFactor223: 1,dFactor222: 1,dFactor221: 1,dFactor214: 1,dFactor213: 1,dFactor212: 1,dFactor211: 1,dFactor14: 1,dFactor13: 1,dFactor12: 1,dFactor11: 1,dFactor0: 1,cFactor3444: 1,cFactor3443: 1,cFactor3442: 1,cFactor3441: 1,cFactor3434: 1,cFactor3433: 1,cFactor3432: 1,cFactor3431: 1,cFactor3424: 1,cFactor3423: 1,cFactor3422: 1,cFactor3421: 1,cFactor3414: 1,cFactor3413: 1,cFactor3412: 1,cFactor3411: 1,cFactor3344: 1,cFactor3343: 1,cFactor3342: 1,cFactor3341: 1,cFactor3334: 1,cFactor3333: 1,cFactor3332: 1,cFactor3331: 1,cFactor3324: 1,cFactor3323: 1,cFactor3322: 1,cFactor3321: 1,cFactor3314: 1,cFactor3313: 1,cFactor3312: 1,cFactor3311: 1,cFactor3244: 1,cFactor3243: 1,cFactor3242: 1,cFactor3241: 1,cFactor3234: 1,cFactor3233: 1,cFactor3232: 1,cFactor3231: 1,cFactor3224: 1,cFactor3223: 1,cFactor3222: 1,cFactor3221: 1,cFactor3214: 1,cFactor3213: 1,cFactor3212: 1,cFactor3211: 1,cFactor3144: 1,cFactor3143: 1,cFactor3142: 1,cFactor3141: 1,cFactor3134: 1,cFactor3133: 1,cFactor3132: 1,cFactor3131: 1,cFactor3124: 1,cFactor3123: 1,cFactor3122: 1,cFactor3121: 1,cFactor3114: 1,cFactor3113: 1,cFactor3112: 1,cFactor3111: 1,cFactor244: 1,cFactor243: 1,cFactor242: 1,cFactor241: 1,cFactor234: 1,cFactor233: 1,cFactor232: 1,cFactor231: 1,cFactor224: 1,cFactor223: 1,cFactor222: 1,cFactor221: 1,cFactor214: 1,cFactor213: 1,cFactor212: 1,cFactor211: 1,cFactor14: 1,cFactor13: 1,cFactor12: 1,cFactor11: 1,cFactor0: 1,PatientZero: 1;
+
+TRANSITION spread3444
+	CONSUME patient444: 1;
+	PRODUCE patient4441: 1,patient4442: 1,patient4443: 1,patient4444: 1;
+
+TRANSITION spread3443
+	CONSUME patient443: 1;
+	PRODUCE patient4431: 1,patient4432: 1,patient4433: 1,patient4434: 1;
+
+TRANSITION spread3442
+	CONSUME patient442: 1;
+	PRODUCE patient4421: 1,patient4422: 1,patient4423: 1,patient4424: 1;
+
+TRANSITION spread3441
+	CONSUME patient441: 1;
+	PRODUCE patient4411: 1,patient4412: 1,patient4413: 1,patient4414: 1;
+
+TRANSITION spread3434
+	CONSUME patient434: 1;
+	PRODUCE patient4341: 1,patient4342: 1,patient4343: 1,patient4344: 1;
+
+TRANSITION spread3433
+	CONSUME patient433: 1;
+	PRODUCE patient4331: 1,patient4332: 1,patient4333: 1,patient4334: 1;
+
+TRANSITION spread3432
+	CONSUME patient432: 1;
+	PRODUCE patient4321: 1,patient4322: 1,patient4323: 1,patient4324: 1;
+
+TRANSITION spread3431
+	CONSUME patient431: 1;
+	PRODUCE patient4311: 1,patient4312: 1,patient4313: 1,patient4314: 1;
+
+TRANSITION spread3424
+	CONSUME patient424: 1;
+	PRODUCE patient4241: 1,patient4242: 1,patient4243: 1,patient4244: 1;
+
+TRANSITION spread3423
+	CONSUME patient423: 1;
+	PRODUCE patient4231: 1,patient4232: 1,patient4233: 1,patient4234: 1;
+
+TRANSITION spread3422
+	CONSUME patient422: 1;
+	PRODUCE patient4221: 1,patient4222: 1,patient4223: 1,patient4224: 1;
+
+TRANSITION spread3421
+	CONSUME patient421: 1;
+	PRODUCE patient4211: 1,patient4212: 1,patient4213: 1,patient4214: 1;
+
+TRANSITION spread3414
+	CONSUME patient414: 1;
+	PRODUCE patient4141: 1,patient4142: 1,patient4143: 1,patient4144: 1;
+
+TRANSITION spread3413
+	CONSUME patient413: 1;
+	PRODUCE patient4131: 1,patient4132: 1,patient4133: 1,patient4134: 1;
+
+TRANSITION spread3412
+	CONSUME patient412: 1;
+	PRODUCE patient4121: 1,patient4122: 1,patient4123: 1,patient4124: 1;
+
+TRANSITION spread3411
+	CONSUME patient411: 1;
+	PRODUCE patient4111: 1,patient4112: 1,patient4113: 1,patient4114: 1;
+
+TRANSITION spread3344
+	CONSUME patient344: 1;
+	PRODUCE patient3441: 1,patient3442: 1,patient3443: 1,patient3444: 1;
+
+TRANSITION spread3343
+	CONSUME patient343: 1;
+	PRODUCE patient3431: 1,patient3432: 1,patient3433: 1,patient3434: 1;
+
+TRANSITION spread3342
+	CONSUME patient342: 1;
+	PRODUCE patient3421: 1,patient3422: 1,patient3423: 1,patient3424: 1;
+
+TRANSITION spread3341
+	CONSUME patient341: 1;
+	PRODUCE patient3411: 1,patient3412: 1,patient3413: 1,patient3414: 1;
+
+TRANSITION spread3334
+	CONSUME patient334: 1;
+	PRODUCE patient3341: 1,patient3342: 1,patient3343: 1,patient3344: 1;
+
+TRANSITION spread3333
+	CONSUME patient333: 1;
+	PRODUCE patient3331: 1,patient3332: 1,patient3333: 1,patient3334: 1;
+
+TRANSITION spread3332
+	CONSUME patient332: 1;
+	PRODUCE patient3321: 1,patient3322: 1,patient3323: 1,patient3324: 1;
+
+TRANSITION spread3331
+	CONSUME patient331: 1;
+	PRODUCE patient3311: 1,patient3312: 1,patient3313: 1,patient3314: 1;
+
+TRANSITION spread3324
+	CONSUME patient324: 1;
+	PRODUCE patient3241: 1,patient3242: 1,patient3243: 1,patient3244: 1;
+
+TRANSITION spread3323
+	CONSUME patient323: 1;
+	PRODUCE patient3231: 1,patient3232: 1,patient3233: 1,patient3234: 1;
+
+TRANSITION spread3322
+	CONSUME patient322: 1;
+	PRODUCE patient3221: 1,patient3222: 1,patient3223: 1,patient3224: 1;
+
+TRANSITION spread3321
+	CONSUME patient321: 1;
+	PRODUCE patient3211: 1,patient3212: 1,patient3213: 1,patient3214: 1;
+
+TRANSITION spread3314
+	CONSUME patient314: 1;
+	PRODUCE patient3141: 1,patient3142: 1,patient3143: 1,patient3144: 1;
+
+TRANSITION spread3313
+	CONSUME patient313: 1;
+	PRODUCE patient3131: 1,patient3132: 1,patient3133: 1,patient3134: 1;
+
+TRANSITION spread3312
+	CONSUME patient312: 1;
+	PRODUCE patient3121: 1,patient3122: 1,patient3123: 1,patient3124: 1;
+
+TRANSITION spread3311
+	CONSUME patient311: 1;
+	PRODUCE patient3111: 1,patient3112: 1,patient3113: 1,patient3114: 1;
+
+TRANSITION spread3244
+	CONSUME patient244: 1;
+	PRODUCE patient2441: 1,patient2442: 1,patient2443: 1,patient2444: 1;
+
+TRANSITION spread3243
+	CONSUME patient243: 1;
+	PRODUCE patient2431: 1,patient2432: 1,patient2433: 1,patient2434: 1;
+
+TRANSITION spread3242
+	CONSUME patient242: 1;
+	PRODUCE patient2421: 1,patient2422: 1,patient2423: 1,patient2424: 1;
+
+TRANSITION spread3241
+	CONSUME patient241: 1;
+	PRODUCE patient2411: 1,patient2412: 1,patient2413: 1,patient2414: 1;
+
+TRANSITION spread3234
+	CONSUME patient234: 1;
+	PRODUCE patient2341: 1,patient2342: 1,patient2343: 1,patient2344: 1;
+
+TRANSITION spread3233
+	CONSUME patient233: 1;
+	PRODUCE patient2331: 1,patient2332: 1,patient2333: 1,patient2334: 1;
+
+TRANSITION spread3232
+	CONSUME patient232: 1;
+	PRODUCE patient2321: 1,patient2322: 1,patient2323: 1,patient2324: 1;
+
+TRANSITION spread3231
+	CONSUME patient231: 1;
+	PRODUCE patient2311: 1,patient2312: 1,patient2313: 1,patient2314: 1;
+
+TRANSITION spread3224
+	CONSUME patient224: 1;
+	PRODUCE patient2241: 1,patient2242: 1,patient2243: 1,patient2244: 1;
+
+TRANSITION spread3223
+	CONSUME patient223: 1;
+	PRODUCE patient2231: 1,patient2232: 1,patient2233: 1,patient2234: 1;
+
+TRANSITION spread3222
+	CONSUME patient222: 1;
+	PRODUCE patient2221: 1,patient2222: 1,patient2223: 1,patient2224: 1;
+
+TRANSITION spread3221
+	CONSUME patient221: 1;
+	PRODUCE patient2211: 1,patient2212: 1,patient2213: 1,patient2214: 1;
+
+TRANSITION spread3214
+	CONSUME patient214: 1;
+	PRODUCE patient2141: 1,patient2142: 1,patient2143: 1,patient2144: 1;
+
+TRANSITION spread3213
+	CONSUME patient213: 1;
+	PRODUCE patient2131: 1,patient2132: 1,patient2133: 1,patient2134: 1;
+
+TRANSITION spread3212
+	CONSUME patient212: 1;
+	PRODUCE patient2121: 1,patient2122: 1,patient2123: 1,patient2124: 1;
+
+TRANSITION spread3211
+	CONSUME patient211: 1;
+	PRODUCE patient2111: 1,patient2112: 1,patient2113: 1,patient2114: 1;
+
+TRANSITION spread3144
+	CONSUME patient144: 1;
+	PRODUCE patient1441: 1,patient1442: 1,patient1443: 1,patient1444: 1;
+
+TRANSITION spread3143
+	CONSUME patient143: 1;
+	PRODUCE patient1431: 1,patient1432: 1,patient1433: 1,patient1434: 1;
+
+TRANSITION spread3142
+	CONSUME patient142: 1;
+	PRODUCE patient1421: 1,patient1422: 1,patient1423: 1,patient1424: 1;
+
+TRANSITION spread3141
+	CONSUME patient141: 1;
+	PRODUCE patient1411: 1,patient1412: 1,patient1413: 1,patient1414: 1;
+
+TRANSITION spread3134
+	CONSUME patient134: 1;
+	PRODUCE patient1341: 1,patient1342: 1,patient1343: 1,patient1344: 1;
+
+TRANSITION spread3133
+	CONSUME patient133: 1;
+	PRODUCE patient1331: 1,patient1332: 1,patient1333: 1,patient1334: 1;
+
+TRANSITION spread3132
+	CONSUME patient132: 1;
+	PRODUCE patient1321: 1,patient1322: 1,patient1323: 1,patient1324: 1;
+
+TRANSITION spread3131
+	CONSUME patient131: 1;
+	PRODUCE patient1311: 1,patient1312: 1,patient1313: 1,patient1314: 1;
+
+TRANSITION spread3124
+	CONSUME patient124: 1;
+	PRODUCE patient1241: 1,patient1242: 1,patient1243: 1,patient1244: 1;
+
+TRANSITION spread3123
+	CONSUME patient123: 1;
+	PRODUCE patient1231: 1,patient1232: 1,patient1233: 1,patient1234: 1;
+
+TRANSITION spread3122
+	CONSUME patient122: 1;
+	PRODUCE patient1221: 1,patient1222: 1,patient1223: 1,patient1224: 1;
+
+TRANSITION spread3121
+	CONSUME patient121: 1;
+	PRODUCE patient1211: 1,patient1212: 1,patient1213: 1,patient1214: 1;
+
+TRANSITION spread3114
+	CONSUME patient114: 1;
+	PRODUCE patient1141: 1,patient1142: 1,patient1143: 1,patient1144: 1;
+
+TRANSITION spread3113
+	CONSUME patient113: 1;
+	PRODUCE patient1131: 1,patient1132: 1,patient1133: 1,patient1134: 1;
+
+TRANSITION spread3112
+	CONSUME patient112: 1;
+	PRODUCE patient1121: 1,patient1122: 1,patient1123: 1,patient1124: 1;
+
+TRANSITION spread3111
+	CONSUME patient111: 1;
+	PRODUCE patient1111: 1,patient1112: 1,patient1113: 1,patient1114: 1;
+
+TRANSITION spread244
+	CONSUME patient44: 1;
+	PRODUCE patient441: 1,patient442: 1,patient443: 1,patient444: 1;
+
+TRANSITION spread243
+	CONSUME patient43: 1;
+	PRODUCE patient431: 1,patient432: 1,patient433: 1,patient434: 1;
+
+TRANSITION spread242
+	CONSUME patient42: 1;
+	PRODUCE patient421: 1,patient422: 1,patient423: 1,patient424: 1;
+
+TRANSITION spread241
+	CONSUME patient41: 1;
+	PRODUCE patient411: 1,patient412: 1,patient413: 1,patient414: 1;
+
+TRANSITION spread234
+	CONSUME patient34: 1;
+	PRODUCE patient341: 1,patient342: 1,patient343: 1,patient344: 1;
+
+TRANSITION spread233
+	CONSUME patient33: 1;
+	PRODUCE patient331: 1,patient332: 1,patient333: 1,patient334: 1;
+
+TRANSITION spread232
+	CONSUME patient32: 1;
+	PRODUCE patient321: 1,patient322: 1,patient323: 1,patient324: 1;
+
+TRANSITION spread231
+	CONSUME patient31: 1;
+	PRODUCE patient311: 1,patient312: 1,patient313: 1,patient314: 1;
+
+TRANSITION spread224
+	CONSUME patient24: 1;
+	PRODUCE patient241: 1,patient242: 1,patient243: 1,patient244: 1;
+
+TRANSITION spread223
+	CONSUME patient23: 1;
+	PRODUCE patient231: 1,patient232: 1,patient233: 1,patient234: 1;
+
+TRANSITION spread222
+	CONSUME patient22: 1;
+	PRODUCE patient221: 1,patient222: 1,patient223: 1,patient224: 1;
+
+TRANSITION spread221
+	CONSUME patient21: 1;
+	PRODUCE patient211: 1,patient212: 1,patient213: 1,patient214: 1;
+
+TRANSITION spread214
+	CONSUME patient14: 1;
+	PRODUCE patient141: 1,patient142: 1,patient143: 1,patient144: 1;
+
+TRANSITION spread213
+	CONSUME patient13: 1;
+	PRODUCE patient131: 1,patient132: 1,patient133: 1,patient134: 1;
+
+TRANSITION spread212
+	CONSUME patient12: 1;
+	PRODUCE patient121: 1,patient122: 1,patient123: 1,patient124: 1;
+
+TRANSITION spread211
+	CONSUME patient11: 1;
+	PRODUCE patient111: 1,patient112: 1,patient113: 1,patient114: 1;
+
+TRANSITION spread14
+	CONSUME patient4: 1;
+	PRODUCE patient41: 1,patient42: 1,patient43: 1,patient44: 1;
+
+TRANSITION spread13
+	CONSUME patient3: 1;
+	PRODUCE patient31: 1,patient32: 1,patient33: 1,patient34: 1;
+
+TRANSITION spread12
+	CONSUME patient2: 1;
+	PRODUCE patient21: 1,patient22: 1,patient23: 1,patient24: 1;
+
+TRANSITION spread11
+	CONSUME patient1: 1;
+	PRODUCE patient11: 1,patient12: 1,patient13: 1,patient14: 1;
+
+TRANSITION spread0
+	CONSUME PatientZero: 1;
+	PRODUCE patient1: 1,patient2: 1,patient3: 1,patient4: 1;
+
+TRANSITION dead34444
+	CONSUME cFactor3444: 1,patient4444: 1;
+	PRODUCE ;
+
+TRANSITION dead34443
+	CONSUME cFactor3444: 1,patient4443: 1;
+	PRODUCE ;
+
+TRANSITION dead34442
+	CONSUME cFactor3444: 1,patient4442: 1;
+	PRODUCE ;
+
+TRANSITION dead34441
+	CONSUME cFactor3444: 1,patient4441: 1;
+	PRODUCE ;
+
+TRANSITION dead34434
+	CONSUME cFactor3443: 1,patient4434: 1;
+	PRODUCE ;
+
+TRANSITION dead34433
+	CONSUME cFactor3443: 1,patient4433: 1;
+	PRODUCE ;
+
+TRANSITION dead34432
+	CONSUME cFactor3443: 1,patient4432: 1;
+	PRODUCE ;
+
+TRANSITION dead34431
+	CONSUME cFactor3443: 1,patient4431: 1;
+	PRODUCE ;
+
+TRANSITION dead34424
+	CONSUME cFactor3442: 1,patient4424: 1;
+	PRODUCE ;
+
+TRANSITION dead34423
+	CONSUME cFactor3442: 1,patient4423: 1;
+	PRODUCE ;
+
+TRANSITION dead34422
+	CONSUME cFactor3442: 1,patient4422: 1;
+	PRODUCE ;
+
+TRANSITION dead34421
+	CONSUME cFactor3442: 1,patient4421: 1;
+	PRODUCE ;
+
+TRANSITION dead34414
+	CONSUME cFactor3441: 1,patient4414: 1;
+	PRODUCE ;
+
+TRANSITION dead34413
+	CONSUME cFactor3441: 1,patient4413: 1;
+	PRODUCE ;
+
+TRANSITION dead34412
+	CONSUME cFactor3441: 1,patient4412: 1;
+	PRODUCE ;
+
+TRANSITION dead34411
+	CONSUME cFactor3441: 1,patient4411: 1;
+	PRODUCE ;
+
+TRANSITION dead34344
+	CONSUME cFactor3434: 1,patient4344: 1;
+	PRODUCE ;
+
+TRANSITION dead34343
+	CONSUME cFactor3434: 1,patient4343: 1;
+	PRODUCE ;
+
+TRANSITION dead34342
+	CONSUME cFactor3434: 1,patient4342: 1;
+	PRODUCE ;
+
+TRANSITION dead34341
+	CONSUME cFactor3434: 1,patient4341: 1;
+	PRODUCE ;
+
+TRANSITION dead34334
+	CONSUME cFactor3433: 1,patient4334: 1;
+	PRODUCE ;
+
+TRANSITION dead34333
+	CONSUME cFactor3433: 1,patient4333: 1;
+	PRODUCE ;
+
+TRANSITION dead34332
+	CONSUME cFactor3433: 1,patient4332: 1;
+	PRODUCE ;
+
+TRANSITION dead34331
+	CONSUME cFactor3433: 1,patient4331: 1;
+	PRODUCE ;
+
+TRANSITION dead34324
+	CONSUME cFactor3432: 1,patient4324: 1;
+	PRODUCE ;
+
+TRANSITION dead34323
+	CONSUME cFactor3432: 1,patient4323: 1;
+	PRODUCE ;
+
+TRANSITION dead34322
+	CONSUME cFactor3432: 1,patient4322: 1;
+	PRODUCE ;
+
+TRANSITION dead34321
+	CONSUME cFactor3432: 1,patient4321: 1;
+	PRODUCE ;
+
+TRANSITION dead34314
+	CONSUME cFactor3431: 1,patient4314: 1;
+	PRODUCE ;
+
+TRANSITION dead34313
+	CONSUME cFactor3431: 1,patient4313: 1;
+	PRODUCE ;
+
+TRANSITION dead34312
+	CONSUME cFactor3431: 1,patient4312: 1;
+	PRODUCE ;
+
+TRANSITION dead34311
+	CONSUME cFactor3431: 1,patient4311: 1;
+	PRODUCE ;
+
+TRANSITION dead34244
+	CONSUME cFactor3424: 1,patient4244: 1;
+	PRODUCE ;
+
+TRANSITION dead34243
+	CONSUME cFactor3424: 1,patient4243: 1;
+	PRODUCE ;
+
+TRANSITION dead34242
+	CONSUME cFactor3424: 1,patient4242: 1;
+	PRODUCE ;
+
+TRANSITION dead34241
+	CONSUME cFactor3424: 1,patient4241: 1;
+	PRODUCE ;
+
+TRANSITION dead34234
+	CONSUME cFactor3423: 1,patient4234: 1;
+	PRODUCE ;
+
+TRANSITION dead34233
+	CONSUME cFactor3423: 1,patient4233: 1;
+	PRODUCE ;
+
+TRANSITION dead34232
+	CONSUME cFactor3423: 1,patient4232: 1;
+	PRODUCE ;
+
+TRANSITION dead34231
+	CONSUME cFactor3423: 1,patient4231: 1;
+	PRODUCE ;
+
+TRANSITION dead34224
+	CONSUME cFactor3422: 1,patient4224: 1;
+	PRODUCE ;
+
+TRANSITION dead34223
+	CONSUME cFactor3422: 1,patient4223: 1;
+	PRODUCE ;
+
+TRANSITION dead34222
+	CONSUME cFactor3422: 1,patient4222: 1;
+	PRODUCE ;
+
+TRANSITION dead34221
+	CONSUME cFactor3422: 1,patient4221: 1;
+	PRODUCE ;
+
+TRANSITION dead34214
+	CONSUME cFactor3421: 1,patient4214: 1;
+	PRODUCE ;
+
+TRANSITION dead34213
+	CONSUME cFactor3421: 1,patient4213: 1;
+	PRODUCE ;
+
+TRANSITION dead34212
+	CONSUME cFactor3421: 1,patient4212: 1;
+	PRODUCE ;
+
+TRANSITION dead34211
+	CONSUME cFactor3421: 1,patient4211: 1;
+	PRODUCE ;
+
+TRANSITION dead34144
+	CONSUME cFactor3414: 1,patient4144: 1;
+	PRODUCE ;
+
+TRANSITION dead34143
+	CONSUME cFactor3414: 1,patient4143: 1;
+	PRODUCE ;
+
+TRANSITION dead34142
+	CONSUME cFactor3414: 1,patient4142: 1;
+	PRODUCE ;
+
+TRANSITION dead34141
+	CONSUME cFactor3414: 1,patient4141: 1;
+	PRODUCE ;
+
+TRANSITION dead34134
+	CONSUME cFactor3413: 1,patient4134: 1;
+	PRODUCE ;
+
+TRANSITION dead34133
+	CONSUME cFactor3413: 1,patient4133: 1;
+	PRODUCE ;
+
+TRANSITION dead34132
+	CONSUME cFactor3413: 1,patient4132: 1;
+	PRODUCE ;
+
+TRANSITION dead34131
+	CONSUME cFactor3413: 1,patient4131: 1;
+	PRODUCE ;
+
+TRANSITION dead34124
+	CONSUME cFactor3412: 1,patient4124: 1;
+	PRODUCE ;
+
+TRANSITION dead34123
+	CONSUME cFactor3412: 1,patient4123: 1;
+	PRODUCE ;
+
+TRANSITION dead34122
+	CONSUME cFactor3412: 1,patient4122: 1;
+	PRODUCE ;
+
+TRANSITION dead34121
+	CONSUME cFactor3412: 1,patient4121: 1;
+	PRODUCE ;
+
+TRANSITION dead34114
+	CONSUME cFactor3411: 1,patient4114: 1;
+	PRODUCE ;
+
+TRANSITION dead34113
+	CONSUME cFactor3411: 1,patient4113: 1;
+	PRODUCE ;
+
+TRANSITION dead34112
+	CONSUME cFactor3411: 1,patient4112: 1;
+	PRODUCE ;
+
+TRANSITION dead34111
+	CONSUME cFactor3411: 1,patient4111: 1;
+	PRODUCE ;
+
+TRANSITION dead33444
+	CONSUME cFactor3344: 1,patient3444: 1;
+	PRODUCE ;
+
+TRANSITION dead33443
+	CONSUME cFactor3344: 1,patient3443: 1;
+	PRODUCE ;
+
+TRANSITION dead33442
+	CONSUME cFactor3344: 1,patient3442: 1;
+	PRODUCE ;
+
+TRANSITION dead33441
+	CONSUME cFactor3344: 1,patient3441: 1;
+	PRODUCE ;
+
+TRANSITION dead33434
+	CONSUME cFactor3343: 1,patient3434: 1;
+	PRODUCE ;
+
+TRANSITION dead33433
+	CONSUME cFactor3343: 1,patient3433: 1;
+	PRODUCE ;
+
+TRANSITION dead33432
+	CONSUME cFactor3343: 1,patient3432: 1;
+	PRODUCE ;
+
+TRANSITION dead33431
+	CONSUME cFactor3343: 1,patient3431: 1;
+	PRODUCE ;
+
+TRANSITION dead33424
+	CONSUME cFactor3342: 1,patient3424: 1;
+	PRODUCE ;
+
+TRANSITION dead33423
+	CONSUME cFactor3342: 1,patient3423: 1;
+	PRODUCE ;
+
+TRANSITION dead33422
+	CONSUME cFactor3342: 1,patient3422: 1;
+	PRODUCE ;
+
+TRANSITION dead33421
+	CONSUME cFactor3342: 1,patient3421: 1;
+	PRODUCE ;
+
+TRANSITION dead33414
+	CONSUME cFactor3341: 1,patient3414: 1;
+	PRODUCE ;
+
+TRANSITION dead33413
+	CONSUME cFactor3341: 1,patient3413: 1;
+	PRODUCE ;
+
+TRANSITION dead33412
+	CONSUME cFactor3341: 1,patient3412: 1;
+	PRODUCE ;
+
+TRANSITION dead33411
+	CONSUME cFactor3341: 1,patient3411: 1;
+	PRODUCE ;
+
+TRANSITION dead33344
+	CONSUME cFactor3334: 1,patient3344: 1;
+	PRODUCE ;
+
+TRANSITION dead33343
+	CONSUME cFactor3334: 1,patient3343: 1;
+	PRODUCE ;
+
+TRANSITION dead33342
+	CONSUME cFactor3334: 1,patient3342: 1;
+	PRODUCE ;
+
+TRANSITION dead33341
+	CONSUME cFactor3334: 1,patient3341: 1;
+	PRODUCE ;
+
+TRANSITION dead33334
+	CONSUME cFactor3333: 1,patient3334: 1;
+	PRODUCE ;
+
+TRANSITION dead33333
+	CONSUME cFactor3333: 1,patient3333: 1;
+	PRODUCE ;
+
+TRANSITION dead33332
+	CONSUME cFactor3333: 1,patient3332: 1;
+	PRODUCE ;
+
+TRANSITION dead33331
+	CONSUME cFactor3333: 1,patient3331: 1;
+	PRODUCE ;
+
+TRANSITION dead33324
+	CONSUME cFactor3332: 1,patient3324: 1;
+	PRODUCE ;
+
+TRANSITION dead33323
+	CONSUME cFactor3332: 1,patient3323: 1;
+	PRODUCE ;
+
+TRANSITION dead33322
+	CONSUME cFactor3332: 1,patient3322: 1;
+	PRODUCE ;
+
+TRANSITION dead33321
+	CONSUME cFactor3332: 1,patient3321: 1;
+	PRODUCE ;
+
+TRANSITION dead33314
+	CONSUME cFactor3331: 1,patient3314: 1;
+	PRODUCE ;
+
+TRANSITION dead33313
+	CONSUME cFactor3331: 1,patient3313: 1;
+	PRODUCE ;
+
+TRANSITION dead33312
+	CONSUME cFactor3331: 1,patient3312: 1;
+	PRODUCE ;
+
+TRANSITION dead33311
+	CONSUME cFactor3331: 1,patient3311: 1;
+	PRODUCE ;
+
+TRANSITION dead33244
+	CONSUME cFactor3324: 1,patient3244: 1;
+	PRODUCE ;
+
+TRANSITION dead33243
+	CONSUME cFactor3324: 1,patient3243: 1;
+	PRODUCE ;
+
+TRANSITION dead33242
+	CONSUME cFactor3324: 1,patient3242: 1;
+	PRODUCE ;
+
+TRANSITION dead33241
+	CONSUME cFactor3324: 1,patient3241: 1;
+	PRODUCE ;
+
+TRANSITION dead33234
+	CONSUME cFactor3323: 1,patient3234: 1;
+	PRODUCE ;
+
+TRANSITION dead33233
+	CONSUME cFactor3323: 1,patient3233: 1;
+	PRODUCE ;
+
+TRANSITION dead33232
+	CONSUME cFactor3323: 1,patient3232: 1;
+	PRODUCE ;
+
+TRANSITION dead33231
+	CONSUME cFactor3323: 1,patient3231: 1;
+	PRODUCE ;
+
+TRANSITION dead33224
+	CONSUME cFactor3322: 1,patient3224: 1;
+	PRODUCE ;
+
+TRANSITION dead33223
+	CONSUME cFactor3322: 1,patient3223: 1;
+	PRODUCE ;
+
+TRANSITION dead33222
+	CONSUME cFactor3322: 1,patient3222: 1;
+	PRODUCE ;
+
+TRANSITION dead33221
+	CONSUME cFactor3322: 1,patient3221: 1;
+	PRODUCE ;
+
+TRANSITION dead33214
+	CONSUME cFactor3321: 1,patient3214: 1;
+	PRODUCE ;
+
+TRANSITION dead33213
+	CONSUME cFactor3321: 1,patient3213: 1;
+	PRODUCE ;
+
+TRANSITION dead33212
+	CONSUME cFactor3321: 1,patient3212: 1;
+	PRODUCE ;
+
+TRANSITION dead33211
+	CONSUME cFactor3321: 1,patient3211: 1;
+	PRODUCE ;
+
+TRANSITION dead33144
+	CONSUME cFactor3314: 1,patient3144: 1;
+	PRODUCE ;
+
+TRANSITION dead33143
+	CONSUME cFactor3314: 1,patient3143: 1;
+	PRODUCE ;
+
+TRANSITION dead33142
+	CONSUME cFactor3314: 1,patient3142: 1;
+	PRODUCE ;
+
+TRANSITION dead33141
+	CONSUME cFactor3314: 1,patient3141: 1;
+	PRODUCE ;
+
+TRANSITION dead33134
+	CONSUME cFactor3313: 1,patient3134: 1;
+	PRODUCE ;
+
+TRANSITION dead33133
+	CONSUME cFactor3313: 1,patient3133: 1;
+	PRODUCE ;
+
+TRANSITION dead33132
+	CONSUME cFactor3313: 1,patient3132: 1;
+	PRODUCE ;
+
+TRANSITION dead33131
+	CONSUME cFactor3313: 1,patient3131: 1;
+	PRODUCE ;
+
+TRANSITION dead33124
+	CONSUME cFactor3312: 1,patient3124: 1;
+	PRODUCE ;
+
+TRANSITION dead33123
+	CONSUME cFactor3312: 1,patient3123: 1;
+	PRODUCE ;
+
+TRANSITION dead33122
+	CONSUME cFactor3312: 1,patient3122: 1;
+	PRODUCE ;
+
+TRANSITION dead33121
+	CONSUME cFactor3312: 1,patient3121: 1;
+	PRODUCE ;
+
+TRANSITION dead33114
+	CONSUME cFactor3311: 1,patient3114: 1;
+	PRODUCE ;
+
+TRANSITION dead33113
+	CONSUME cFactor3311: 1,patient3113: 1;
+	PRODUCE ;
+
+TRANSITION dead33112
+	CONSUME cFactor3311: 1,patient3112: 1;
+	PRODUCE ;
+
+TRANSITION dead33111
+	CONSUME cFactor3311: 1,patient3111: 1;
+	PRODUCE ;
+
+TRANSITION dead32444
+	CONSUME cFactor3244: 1,patient2444: 1;
+	PRODUCE ;
+
+TRANSITION dead32443
+	CONSUME cFactor3244: 1,patient2443: 1;
+	PRODUCE ;
+
+TRANSITION dead32442
+	CONSUME cFactor3244: 1,patient2442: 1;
+	PRODUCE ;
+
+TRANSITION dead32441
+	CONSUME cFactor3244: 1,patient2441: 1;
+	PRODUCE ;
+
+TRANSITION dead32434
+	CONSUME cFactor3243: 1,patient2434: 1;
+	PRODUCE ;
+
+TRANSITION dead32433
+	CONSUME cFactor3243: 1,patient2433: 1;
+	PRODUCE ;
+
+TRANSITION dead32432
+	CONSUME cFactor3243: 1,patient2432: 1;
+	PRODUCE ;
+
+TRANSITION dead32431
+	CONSUME cFactor3243: 1,patient2431: 1;
+	PRODUCE ;
+
+TRANSITION dead32424
+	CONSUME cFactor3242: 1,patient2424: 1;
+	PRODUCE ;
+
+TRANSITION dead32423
+	CONSUME cFactor3242: 1,patient2423: 1;
+	PRODUCE ;
+
+TRANSITION dead32422
+	CONSUME cFactor3242: 1,patient2422: 1;
+	PRODUCE ;
+
+TRANSITION dead32421
+	CONSUME cFactor3242: 1,patient2421: 1;
+	PRODUCE ;
+
+TRANSITION dead32414
+	CONSUME cFactor3241: 1,patient2414: 1;
+	PRODUCE ;
+
+TRANSITION dead32413
+	CONSUME cFactor3241: 1,patient2413: 1;
+	PRODUCE ;
+
+TRANSITION dead32412
+	CONSUME cFactor3241: 1,patient2412: 1;
+	PRODUCE ;
+
+TRANSITION dead32411
+	CONSUME cFactor3241: 1,patient2411: 1;
+	PRODUCE ;
+
+TRANSITION dead32344
+	CONSUME cFactor3234: 1,patient2344: 1;
+	PRODUCE ;
+
+TRANSITION dead32343
+	CONSUME cFactor3234: 1,patient2343: 1;
+	PRODUCE ;
+
+TRANSITION dead32342
+	CONSUME cFactor3234: 1,patient2342: 1;
+	PRODUCE ;
+
+TRANSITION dead32341
+	CONSUME cFactor3234: 1,patient2341: 1;
+	PRODUCE ;
+
+TRANSITION dead32334
+	CONSUME cFactor3233: 1,patient2334: 1;
+	PRODUCE ;
+
+TRANSITION dead32333
+	CONSUME cFactor3233: 1,patient2333: 1;
+	PRODUCE ;
+
+TRANSITION dead32332
+	CONSUME cFactor3233: 1,patient2332: 1;
+	PRODUCE ;
+
+TRANSITION dead32331
+	CONSUME cFactor3233: 1,patient2331: 1;
+	PRODUCE ;
+
+TRANSITION dead32324
+	CONSUME cFactor3232: 1,patient2324: 1;
+	PRODUCE ;
+
+TRANSITION dead32323
+	CONSUME cFactor3232: 1,patient2323: 1;
+	PRODUCE ;
+
+TRANSITION dead32322
+	CONSUME cFactor3232: 1,patient2322: 1;
+	PRODUCE ;
+
+TRANSITION dead32321
+	CONSUME cFactor3232: 1,patient2321: 1;
+	PRODUCE ;
+
+TRANSITION dead32314
+	CONSUME cFactor3231: 1,patient2314: 1;
+	PRODUCE ;
+
+TRANSITION dead32313
+	CONSUME cFactor3231: 1,patient2313: 1;
+	PRODUCE ;
+
+TRANSITION dead32312
+	CONSUME cFactor3231: 1,patient2312: 1;
+	PRODUCE ;
+
+TRANSITION dead32311
+	CONSUME cFactor3231: 1,patient2311: 1;
+	PRODUCE ;
+
+TRANSITION dead32244
+	CONSUME cFactor3224: 1,patient2244: 1;
+	PRODUCE ;
+
+TRANSITION dead32243
+	CONSUME cFactor3224: 1,patient2243: 1;
+	PRODUCE ;
+
+TRANSITION dead32242
+	CONSUME cFactor3224: 1,patient2242: 1;
+	PRODUCE ;
+
+TRANSITION dead32241
+	CONSUME cFactor3224: 1,patient2241: 1;
+	PRODUCE ;
+
+TRANSITION dead32234
+	CONSUME cFactor3223: 1,patient2234: 1;
+	PRODUCE ;
+
+TRANSITION dead32233
+	CONSUME cFactor3223: 1,patient2233: 1;
+	PRODUCE ;
+
+TRANSITION dead32232
+	CONSUME cFactor3223: 1,patient2232: 1;
+	PRODUCE ;
+
+TRANSITION dead32231
+	CONSUME cFactor3223: 1,patient2231: 1;
+	PRODUCE ;
+
+TRANSITION dead32224
+	CONSUME cFactor3222: 1,patient2224: 1;
+	PRODUCE ;
+
+TRANSITION dead32223
+	CONSUME cFactor3222: 1,patient2223: 1;
+	PRODUCE ;
+
+TRANSITION dead32222
+	CONSUME cFactor3222: 1,patient2222: 1;
+	PRODUCE ;
+
+TRANSITION dead32221
+	CONSUME cFactor3222: 1,patient2221: 1;
+	PRODUCE ;
+
+TRANSITION dead32214
+	CONSUME cFactor3221: 1,patient2214: 1;
+	PRODUCE ;
+
+TRANSITION dead32213
+	CONSUME cFactor3221: 1,patient2213: 1;
+	PRODUCE ;
+
+TRANSITION dead32212
+	CONSUME cFactor3221: 1,patient2212: 1;
+	PRODUCE ;
+
+TRANSITION dead32211
+	CONSUME cFactor3221: 1,patient2211: 1;
+	PRODUCE ;
+
+TRANSITION dead32144
+	CONSUME cFactor3214: 1,patient2144: 1;
+	PRODUCE ;
+
+TRANSITION dead32143
+	CONSUME cFactor3214: 1,patient2143: 1;
+	PRODUCE ;
+
+TRANSITION dead32142
+	CONSUME cFactor3214: 1,patient2142: 1;
+	PRODUCE ;
+
+TRANSITION dead32141
+	CONSUME cFactor3214: 1,patient2141: 1;
+	PRODUCE ;
+
+TRANSITION dead32134
+	CONSUME patient2134: 1,cFactor3213: 1;
+	PRODUCE ;
+
+TRANSITION dead32133
+	CONSUME cFactor3213: 1,patient2133: 1;
+	PRODUCE ;
+
+TRANSITION dead32132
+	CONSUME cFactor3213: 1,patient2132: 1;
+	PRODUCE ;
+
+TRANSITION dead32131
+	CONSUME cFactor3213: 1,patient2131: 1;
+	PRODUCE ;
+
+TRANSITION dead32124
+	CONSUME cFactor3212: 1,patient2124: 1;
+	PRODUCE ;
+
+TRANSITION dead32123
+	CONSUME cFactor3212: 1,patient2123: 1;
+	PRODUCE ;
+
+TRANSITION dead32122
+	CONSUME cFactor3212: 1,patient2122: 1;
+	PRODUCE ;
+
+TRANSITION dead32121
+	CONSUME cFactor3212: 1,patient2121: 1;
+	PRODUCE ;
+
+TRANSITION dead32114
+	CONSUME cFactor3211: 1,patient2114: 1;
+	PRODUCE ;
+
+TRANSITION dead32113
+	CONSUME cFactor3211: 1,patient2113: 1;
+	PRODUCE ;
+
+TRANSITION dead32112
+	CONSUME cFactor3211: 1,patient2112: 1;
+	PRODUCE ;
+
+TRANSITION dead32111
+	CONSUME cFactor3211: 1,patient2111: 1;
+	PRODUCE ;
+
+TRANSITION dead31444
+	CONSUME cFactor3144: 1,patient1444: 1;
+	PRODUCE ;
+
+TRANSITION dead31443
+	CONSUME cFactor3144: 1,patient1443: 1;
+	PRODUCE ;
+
+TRANSITION dead31442
+	CONSUME cFactor3144: 1,patient1442: 1;
+	PRODUCE ;
+
+TRANSITION dead31441
+	CONSUME cFactor3144: 1,patient1441: 1;
+	PRODUCE ;
+
+TRANSITION dead31434
+	CONSUME cFactor3143: 1,patient1434: 1;
+	PRODUCE ;
+
+TRANSITION dead31433
+	CONSUME cFactor3143: 1,patient1433: 1;
+	PRODUCE ;
+
+TRANSITION dead31432
+	CONSUME cFactor3143: 1,patient1432: 1;
+	PRODUCE ;
+
+TRANSITION dead31431
+	CONSUME cFactor3143: 1,patient1431: 1;
+	PRODUCE ;
+
+TRANSITION dead31424
+	CONSUME cFactor3142: 1,patient1424: 1;
+	PRODUCE ;
+
+TRANSITION dead31423
+	CONSUME cFactor3142: 1,patient1423: 1;
+	PRODUCE ;
+
+TRANSITION dead31422
+	CONSUME cFactor3142: 1,patient1422: 1;
+	PRODUCE ;
+
+TRANSITION dead31421
+	CONSUME cFactor3142: 1,patient1421: 1;
+	PRODUCE ;
+
+TRANSITION dead31414
+	CONSUME cFactor3141: 1,patient1414: 1;
+	PRODUCE ;
+
+TRANSITION dead31413
+	CONSUME cFactor3141: 1,patient1413: 1;
+	PRODUCE ;
+
+TRANSITION dead31412
+	CONSUME cFactor3141: 1,patient1412: 1;
+	PRODUCE ;
+
+TRANSITION dead31411
+	CONSUME cFactor3141: 1,patient1411: 1;
+	PRODUCE ;
+
+TRANSITION dead31344
+	CONSUME cFactor3134: 1,patient1344: 1;
+	PRODUCE ;
+
+TRANSITION dead31343
+	CONSUME cFactor3134: 1,patient1343: 1;
+	PRODUCE ;
+
+TRANSITION dead31342
+	CONSUME cFactor3134: 1,patient1342: 1;
+	PRODUCE ;
+
+TRANSITION dead31341
+	CONSUME cFactor3134: 1,patient1341: 1;
+	PRODUCE ;
+
+TRANSITION dead31334
+	CONSUME cFactor3133: 1,patient1334: 1;
+	PRODUCE ;
+
+TRANSITION dead31333
+	CONSUME cFactor3133: 1,patient1333: 1;
+	PRODUCE ;
+
+TRANSITION dead31332
+	CONSUME cFactor3133: 1,patient1332: 1;
+	PRODUCE ;
+
+TRANSITION dead31331
+	CONSUME cFactor3133: 1,patient1331: 1;
+	PRODUCE ;
+
+TRANSITION dead31324
+	CONSUME cFactor3132: 1,patient1324: 1;
+	PRODUCE ;
+
+TRANSITION dead31323
+	CONSUME cFactor3132: 1,patient1323: 1;
+	PRODUCE ;
+
+TRANSITION dead31322
+	CONSUME cFactor3132: 1,patient1322: 1;
+	PRODUCE ;
+
+TRANSITION dead31321
+	CONSUME cFactor3132: 1,patient1321: 1;
+	PRODUCE ;
+
+TRANSITION dead31314
+	CONSUME cFactor3131: 1,patient1314: 1;
+	PRODUCE ;
+
+TRANSITION dead31313
+	CONSUME cFactor3131: 1,patient1313: 1;
+	PRODUCE ;
+
+TRANSITION dead31312
+	CONSUME cFactor3131: 1,patient1312: 1;
+	PRODUCE ;
+
+TRANSITION dead31311
+	CONSUME cFactor3131: 1,patient1311: 1;
+	PRODUCE ;
+
+TRANSITION dead31244
+	CONSUME cFactor3124: 1,patient1244: 1;
+	PRODUCE ;
+
+TRANSITION dead31243
+	CONSUME cFactor3124: 1,patient1243: 1;
+	PRODUCE ;
+
+TRANSITION dead31242
+	CONSUME cFactor3124: 1,patient1242: 1;
+	PRODUCE ;
+
+TRANSITION dead31241
+	CONSUME cFactor3124: 1,patient1241: 1;
+	PRODUCE ;
+
+TRANSITION dead31234
+	CONSUME cFactor3123: 1,patient1234: 1;
+	PRODUCE ;
+
+TRANSITION dead31233
+	CONSUME cFactor3123: 1,patient1233: 1;
+	PRODUCE ;
+
+TRANSITION dead31232
+	CONSUME cFactor3123: 1,patient1232: 1;
+	PRODUCE ;
+
+TRANSITION dead31231
+	CONSUME cFactor3123: 1,patient1231: 1;
+	PRODUCE ;
+
+TRANSITION dead31224
+	CONSUME cFactor3122: 1,patient1224: 1;
+	PRODUCE ;
+
+TRANSITION dead31223
+	CONSUME cFactor3122: 1,patient1223: 1;
+	PRODUCE ;
+
+TRANSITION dead31222
+	CONSUME cFactor3122: 1,patient1222: 1;
+	PRODUCE ;
+
+TRANSITION dead31221
+	CONSUME cFactor3122: 1,patient1221: 1;
+	PRODUCE ;
+
+TRANSITION dead31214
+	CONSUME cFactor3121: 1,patient1214: 1;
+	PRODUCE ;
+
+TRANSITION dead31213
+	CONSUME cFactor3121: 1,patient1213: 1;
+	PRODUCE ;
+
+TRANSITION dead31212
+	CONSUME cFactor3121: 1,patient1212: 1;
+	PRODUCE ;
+
+TRANSITION dead31211
+	CONSUME cFactor3121: 1,patient1211: 1;
+	PRODUCE ;
+
+TRANSITION dead31144
+	CONSUME cFactor3114: 1,patient1144: 1;
+	PRODUCE ;
+
+TRANSITION dead31143
+	CONSUME cFactor3114: 1,patient1143: 1;
+	PRODUCE ;
+
+TRANSITION dead31142
+	CONSUME cFactor3114: 1,patient1142: 1;
+	PRODUCE ;
+
+TRANSITION dead31141
+	CONSUME cFactor3114: 1,patient1141: 1;
+	PRODUCE ;
+
+TRANSITION dead31134
+	CONSUME cFactor3113: 1,patient1134: 1;
+	PRODUCE ;
+
+TRANSITION dead31133
+	CONSUME cFactor3113: 1,patient1133: 1;
+	PRODUCE ;
+
+TRANSITION dead31132
+	CONSUME cFactor3113: 1,patient1132: 1;
+	PRODUCE ;
+
+TRANSITION dead31131
+	CONSUME cFactor3113: 1,patient1131: 1;
+	PRODUCE ;
+
+TRANSITION dead31124
+	CONSUME cFactor3112: 1,patient1124: 1;
+	PRODUCE ;
+
+TRANSITION dead31123
+	CONSUME cFactor3112: 1,patient1123: 1;
+	PRODUCE ;
+
+TRANSITION dead31122
+	CONSUME cFactor3112: 1,patient1122: 1;
+	PRODUCE ;
+
+TRANSITION dead31121
+	CONSUME cFactor3112: 1,patient1121: 1;
+	PRODUCE ;
+
+TRANSITION dead31114
+	CONSUME cFactor3111: 1,patient1114: 1;
+	PRODUCE ;
+
+TRANSITION dead31113
+	CONSUME cFactor3111: 1,patient1113: 1;
+	PRODUCE ;
+
+TRANSITION dead31112
+	CONSUME cFactor3111: 1,patient1112: 1;
+	PRODUCE ;
+
+TRANSITION dead31111
+	CONSUME cFactor3111: 1,patient1111: 1;
+	PRODUCE ;
+
+TRANSITION dead2444
+	CONSUME cFactor244: 1,patient444: 1;
+	PRODUCE ;
+
+TRANSITION dead2443
+	CONSUME cFactor244: 1,patient443: 1;
+	PRODUCE ;
+
+TRANSITION dead2442
+	CONSUME cFactor244: 1,patient442: 1;
+	PRODUCE ;
+
+TRANSITION dead2441
+	CONSUME cFactor244: 1,patient441: 1;
+	PRODUCE ;
+
+TRANSITION dead2434
+	CONSUME cFactor243: 1,patient434: 1;
+	PRODUCE ;
+
+TRANSITION dead2433
+	CONSUME cFactor243: 1,patient433: 1;
+	PRODUCE ;
+
+TRANSITION dead2432
+	CONSUME cFactor243: 1,patient432: 1;
+	PRODUCE ;
+
+TRANSITION dead2431
+	CONSUME cFactor243: 1,patient431: 1;
+	PRODUCE ;
+
+TRANSITION dead2424
+	CONSUME cFactor242: 1,patient424: 1;
+	PRODUCE ;
+
+TRANSITION dead2423
+	CONSUME cFactor242: 1,patient423: 1;
+	PRODUCE ;
+
+TRANSITION dead2422
+	CONSUME cFactor242: 1,patient422: 1;
+	PRODUCE ;
+
+TRANSITION dead2421
+	CONSUME cFactor242: 1,patient421: 1;
+	PRODUCE ;
+
+TRANSITION dead2414
+	CONSUME cFactor241: 1,patient414: 1;
+	PRODUCE ;
+
+TRANSITION dead2413
+	CONSUME cFactor241: 1,patient413: 1;
+	PRODUCE ;
+
+TRANSITION dead2412
+	CONSUME cFactor241: 1,patient412: 1;
+	PRODUCE ;
+
+TRANSITION dead2411
+	CONSUME cFactor241: 1,patient411: 1;
+	PRODUCE ;
+
+TRANSITION dead2344
+	CONSUME cFactor234: 1,patient344: 1;
+	PRODUCE ;
+
+TRANSITION dead2343
+	CONSUME cFactor234: 1,patient343: 1;
+	PRODUCE ;
+
+TRANSITION dead2342
+	CONSUME cFactor234: 1,patient342: 1;
+	PRODUCE ;
+
+TRANSITION dead2341
+	CONSUME cFactor234: 1,patient341: 1;
+	PRODUCE ;
+
+TRANSITION dead2334
+	CONSUME cFactor233: 1,patient334: 1;
+	PRODUCE ;
+
+TRANSITION dead2333
+	CONSUME cFactor233: 1,patient333: 1;
+	PRODUCE ;
+
+TRANSITION dead2332
+	CONSUME cFactor233: 1,patient332: 1;
+	PRODUCE ;
+
+TRANSITION dead2331
+	CONSUME cFactor233: 1,patient331: 1;
+	PRODUCE ;
+
+TRANSITION dead2324
+	CONSUME cFactor232: 1,patient324: 1;
+	PRODUCE ;
+
+TRANSITION dead2323
+	CONSUME cFactor232: 1,patient323: 1;
+	PRODUCE ;
+
+TRANSITION dead2322
+	CONSUME cFactor232: 1,patient322: 1;
+	PRODUCE ;
+
+TRANSITION dead2321
+	CONSUME cFactor232: 1,patient321: 1;
+	PRODUCE ;
+
+TRANSITION dead2314
+	CONSUME cFactor231: 1,patient314: 1;
+	PRODUCE ;
+
+TRANSITION dead2313
+	CONSUME cFactor231: 1,patient313: 1;
+	PRODUCE ;
+
+TRANSITION dead2312
+	CONSUME cFactor231: 1,patient312: 1;
+	PRODUCE ;
+
+TRANSITION dead2311
+	CONSUME cFactor231: 1,patient311: 1;
+	PRODUCE ;
+
+TRANSITION dead2244
+	CONSUME cFactor224: 1,patient244: 1;
+	PRODUCE ;
+
+TRANSITION dead2243
+	CONSUME cFactor224: 1,patient243: 1;
+	PRODUCE ;
+
+TRANSITION dead2242
+	CONSUME cFactor224: 1,patient242: 1;
+	PRODUCE ;
+
+TRANSITION dead2241
+	CONSUME cFactor224: 1,patient241: 1;
+	PRODUCE ;
+
+TRANSITION dead2234
+	CONSUME cFactor223: 1,patient234: 1;
+	PRODUCE ;
+
+TRANSITION dead2233
+	CONSUME cFactor223: 1,patient233: 1;
+	PRODUCE ;
+
+TRANSITION dead2232
+	CONSUME cFactor223: 1,patient232: 1;
+	PRODUCE ;
+
+TRANSITION dead2231
+	CONSUME cFactor223: 1,patient231: 1;
+	PRODUCE ;
+
+TRANSITION dead2224
+	CONSUME cFactor222: 1,patient224: 1;
+	PRODUCE ;
+
+TRANSITION dead2223
+	CONSUME cFactor222: 1,patient223: 1;
+	PRODUCE ;
+
+TRANSITION dead2222
+	CONSUME cFactor222: 1,patient222: 1;
+	PRODUCE ;
+
+TRANSITION dead2221
+	CONSUME cFactor222: 1,patient221: 1;
+	PRODUCE ;
+
+TRANSITION dead2214
+	CONSUME cFactor221: 1,patient214: 1;
+	PRODUCE ;
+
+TRANSITION dead2213
+	CONSUME cFactor221: 1,patient213: 1;
+	PRODUCE ;
+
+TRANSITION dead2212
+	CONSUME cFactor221: 1,patient212: 1;
+	PRODUCE ;
+
+TRANSITION dead2211
+	CONSUME cFactor221: 1,patient211: 1;
+	PRODUCE ;
+
+TRANSITION dead2144
+	CONSUME cFactor214: 1,patient144: 1;
+	PRODUCE ;
+
+TRANSITION dead2143
+	CONSUME cFactor214: 1,patient143: 1;
+	PRODUCE ;
+
+TRANSITION dead2142
+	CONSUME cFactor214: 1,patient142: 1;
+	PRODUCE ;
+
+TRANSITION dead2141
+	CONSUME cFactor214: 1,patient141: 1;
+	PRODUCE ;
+
+TRANSITION dead2134
+	CONSUME cFactor213: 1,patient134: 1;
+	PRODUCE ;
+
+TRANSITION dead2133
+	CONSUME cFactor213: 1,patient133: 1;
+	PRODUCE ;
+
+TRANSITION dead2132
+	CONSUME cFactor213: 1,patient132: 1;
+	PRODUCE ;
+
+TRANSITION dead2131
+	CONSUME cFactor213: 1,patient131: 1;
+	PRODUCE ;
+
+TRANSITION dead2124
+	CONSUME cFactor212: 1,patient124: 1;
+	PRODUCE ;
+
+TRANSITION dead2123
+	CONSUME cFactor212: 1,patient123: 1;
+	PRODUCE ;
+
+TRANSITION dead2122
+	CONSUME cFactor212: 1,patient122: 1;
+	PRODUCE ;
+
+TRANSITION dead2121
+	CONSUME cFactor212: 1,patient121: 1;
+	PRODUCE ;
+
+TRANSITION dead2114
+	CONSUME cFactor211: 1,patient114: 1;
+	PRODUCE ;
+
+TRANSITION dead2113
+	CONSUME cFactor211: 1,patient113: 1;
+	PRODUCE ;
+
+TRANSITION dead2112
+	CONSUME cFactor211: 1,patient112: 1;
+	PRODUCE ;
+
+TRANSITION dead2111
+	CONSUME cFactor211: 1,patient111: 1;
+	PRODUCE ;
+
+TRANSITION dead144
+	CONSUME cFactor14: 1,patient44: 1;
+	PRODUCE ;
+
+TRANSITION dead143
+	CONSUME cFactor14: 1,patient43: 1;
+	PRODUCE ;
+
+TRANSITION dead142
+	CONSUME cFactor14: 1,patient42: 1;
+	PRODUCE ;
+
+TRANSITION dead141
+	CONSUME cFactor14: 1,patient41: 1;
+	PRODUCE ;
+
+TRANSITION dead134
+	CONSUME cFactor13: 1,patient34: 1;
+	PRODUCE ;
+
+TRANSITION dead133
+	CONSUME cFactor13: 1,patient33: 1;
+	PRODUCE ;
+
+TRANSITION dead132
+	CONSUME cFactor13: 1,patient32: 1;
+	PRODUCE ;
+
+TRANSITION dead131
+	CONSUME cFactor13: 1,patient31: 1;
+	PRODUCE ;
+
+TRANSITION dead124
+	CONSUME cFactor12: 1,patient24: 1;
+	PRODUCE ;
+
+TRANSITION dead123
+	CONSUME cFactor12: 1,patient23: 1;
+	PRODUCE ;
+
+TRANSITION dead122
+	CONSUME cFactor12: 1,patient22: 1;
+	PRODUCE ;
+
+TRANSITION dead121
+	CONSUME cFactor12: 1,patient21: 1;
+	PRODUCE ;
+
+TRANSITION dead114
+	CONSUME cFactor11: 1,patient14: 1;
+	PRODUCE ;
+
+TRANSITION dead113
+	CONSUME cFactor11: 1,patient13: 1;
+	PRODUCE ;
+
+TRANSITION dead112
+	CONSUME cFactor11: 1,patient12: 1;
+	PRODUCE ;
+
+TRANSITION dead111
+	CONSUME cFactor11: 1,patient11: 1;
+	PRODUCE ;
+
+TRANSITION dead04
+	CONSUME cFactor0: 1,patient4: 1;
+	PRODUCE ;
+
+TRANSITION dead03
+	CONSUME cFactor0: 1,patient3: 1;
+	PRODUCE ;
+
+TRANSITION dead02
+	CONSUME cFactor0: 1,patient2: 1;
+	PRODUCE ;
+
+TRANSITION dead01
+	CONSUME cFactor0: 1,patient1: 1;
+	PRODUCE ;
+
+TRANSITION cured34444
+	CONSUME dFactor3444: 1,patient4444: 1;
+	PRODUCE ;
+
+TRANSITION cured34443
+	CONSUME dFactor3444: 1,patient4443: 1;
+	PRODUCE ;
+
+TRANSITION cured34442
+	CONSUME dFactor3444: 1,patient4442: 1;
+	PRODUCE ;
+
+TRANSITION cured34441
+	CONSUME dFactor3444: 1,patient4441: 1;
+	PRODUCE ;
+
+TRANSITION cured34434
+	CONSUME dFactor3443: 1,patient4434: 1;
+	PRODUCE ;
+
+TRANSITION cured34433
+	CONSUME dFactor3443: 1,patient4433: 1;
+	PRODUCE ;
+
+TRANSITION cured34432
+	CONSUME dFactor3443: 1,patient4432: 1;
+	PRODUCE ;
+
+TRANSITION cured34431
+	CONSUME dFactor3443: 1,patient4431: 1;
+	PRODUCE ;
+
+TRANSITION cured34424
+	CONSUME dFactor3442: 1,patient4424: 1;
+	PRODUCE ;
+
+TRANSITION cured34423
+	CONSUME dFactor3442: 1,patient4423: 1;
+	PRODUCE ;
+
+TRANSITION cured34422
+	CONSUME dFactor3442: 1,patient4422: 1;
+	PRODUCE ;
+
+TRANSITION cured34421
+	CONSUME dFactor3442: 1,patient4421: 1;
+	PRODUCE ;
+
+TRANSITION cured34414
+	CONSUME dFactor3441: 1,patient4414: 1;
+	PRODUCE ;
+
+TRANSITION cured34413
+	CONSUME dFactor3441: 1,patient4413: 1;
+	PRODUCE ;
+
+TRANSITION cured34412
+	CONSUME dFactor3441: 1,patient4412: 1;
+	PRODUCE ;
+
+TRANSITION cured34411
+	CONSUME dFactor3441: 1,patient4411: 1;
+	PRODUCE ;
+
+TRANSITION cured34344
+	CONSUME dFactor3434: 1,patient4344: 1;
+	PRODUCE ;
+
+TRANSITION cured34343
+	CONSUME dFactor3434: 1,patient4343: 1;
+	PRODUCE ;
+
+TRANSITION cured34342
+	CONSUME dFactor3434: 1,patient4342: 1;
+	PRODUCE ;
+
+TRANSITION cured34341
+	CONSUME dFactor3434: 1,patient4341: 1;
+	PRODUCE ;
+
+TRANSITION cured34334
+	CONSUME dFactor3433: 1,patient4334: 1;
+	PRODUCE ;
+
+TRANSITION cured34333
+	CONSUME dFactor3433: 1,patient4333: 1;
+	PRODUCE ;
+
+TRANSITION cured34332
+	CONSUME dFactor3433: 1,patient4332: 1;
+	PRODUCE ;
+
+TRANSITION cured34331
+	CONSUME dFactor3433: 1,patient4331: 1;
+	PRODUCE ;
+
+TRANSITION cured34324
+	CONSUME dFactor3432: 1,patient4324: 1;
+	PRODUCE ;
+
+TRANSITION cured34323
+	CONSUME dFactor3432: 1,patient4323: 1;
+	PRODUCE ;
+
+TRANSITION cured34322
+	CONSUME dFactor3432: 1,patient4322: 1;
+	PRODUCE ;
+
+TRANSITION cured34321
+	CONSUME dFactor3432: 1,patient4321: 1;
+	PRODUCE ;
+
+TRANSITION cured34314
+	CONSUME dFactor3431: 1,patient4314: 1;
+	PRODUCE ;
+
+TRANSITION cured34313
+	CONSUME dFactor3431: 1,patient4313: 1;
+	PRODUCE ;
+
+TRANSITION cured34312
+	CONSUME dFactor3431: 1,patient4312: 1;
+	PRODUCE ;
+
+TRANSITION cured34311
+	CONSUME dFactor3431: 1,patient4311: 1;
+	PRODUCE ;
+
+TRANSITION cured34244
+	CONSUME dFactor3424: 1,patient4244: 1;
+	PRODUCE ;
+
+TRANSITION cured34243
+	CONSUME dFactor3424: 1,patient4243: 1;
+	PRODUCE ;
+
+TRANSITION cured34242
+	CONSUME dFactor3424: 1,patient4242: 1;
+	PRODUCE ;
+
+TRANSITION cured34241
+	CONSUME dFactor3424: 1,patient4241: 1;
+	PRODUCE ;
+
+TRANSITION cured34234
+	CONSUME dFactor3423: 1,patient4234: 1;
+	PRODUCE ;
+
+TRANSITION cured34233
+	CONSUME dFactor3423: 1,patient4233: 1;
+	PRODUCE ;
+
+TRANSITION cured34232
+	CONSUME dFactor3423: 1,patient4232: 1;
+	PRODUCE ;
+
+TRANSITION cured34231
+	CONSUME dFactor3423: 1,patient4231: 1;
+	PRODUCE ;
+
+TRANSITION cured34224
+	CONSUME dFactor3422: 1,patient4224: 1;
+	PRODUCE ;
+
+TRANSITION cured34223
+	CONSUME dFactor3422: 1,patient4223: 1;
+	PRODUCE ;
+
+TRANSITION cured34222
+	CONSUME dFactor3422: 1,patient4222: 1;
+	PRODUCE ;
+
+TRANSITION cured34221
+	CONSUME dFactor3422: 1,patient4221: 1;
+	PRODUCE ;
+
+TRANSITION cured34214
+	CONSUME dFactor3421: 1,patient4214: 1;
+	PRODUCE ;
+
+TRANSITION cured34213
+	CONSUME dFactor3421: 1,patient4213: 1;
+	PRODUCE ;
+
+TRANSITION cured34212
+	CONSUME dFactor3421: 1,patient4212: 1;
+	PRODUCE ;
+
+TRANSITION cured34211
+	CONSUME dFactor3421: 1,patient4211: 1;
+	PRODUCE ;
+
+TRANSITION cured34144
+	CONSUME dFactor3414: 1,patient4144: 1;
+	PRODUCE ;
+
+TRANSITION cured34143
+	CONSUME dFactor3414: 1,patient4143: 1;
+	PRODUCE ;
+
+TRANSITION cured34142
+	CONSUME dFactor3414: 1,patient4142: 1;
+	PRODUCE ;
+
+TRANSITION cured34141
+	CONSUME dFactor3414: 1,patient4141: 1;
+	PRODUCE ;
+
+TRANSITION cured34134
+	CONSUME dFactor3413: 1,patient4134: 1;
+	PRODUCE ;
+
+TRANSITION cured34133
+	CONSUME dFactor3413: 1,patient4133: 1;
+	PRODUCE ;
+
+TRANSITION cured34132
+	CONSUME dFactor3413: 1,patient4132: 1;
+	PRODUCE ;
+
+TRANSITION cured34131
+	CONSUME dFactor3413: 1,patient4131: 1;
+	PRODUCE ;
+
+TRANSITION cured34124
+	CONSUME dFactor3412: 1,patient4124: 1;
+	PRODUCE ;
+
+TRANSITION cured34123
+	CONSUME dFactor3412: 1,patient4123: 1;
+	PRODUCE ;
+
+TRANSITION cured34122
+	CONSUME dFactor3412: 1,patient4122: 1;
+	PRODUCE ;
+
+TRANSITION cured34121
+	CONSUME dFactor3412: 1,patient4121: 1;
+	PRODUCE ;
+
+TRANSITION cured34114
+	CONSUME dFactor3411: 1,patient4114: 1;
+	PRODUCE ;
+
+TRANSITION cured34113
+	CONSUME dFactor3411: 1,patient4113: 1;
+	PRODUCE ;
+
+TRANSITION cured34112
+	CONSUME dFactor3411: 1,patient4112: 1;
+	PRODUCE ;
+
+TRANSITION cured34111
+	CONSUME dFactor3411: 1,patient4111: 1;
+	PRODUCE ;
+
+TRANSITION cured33444
+	CONSUME dFactor3344: 1,patient3444: 1;
+	PRODUCE ;
+
+TRANSITION cured33443
+	CONSUME dFactor3344: 1,patient3443: 1;
+	PRODUCE ;
+
+TRANSITION cured33442
+	CONSUME dFactor3344: 1,patient3442: 1;
+	PRODUCE ;
+
+TRANSITION cured33441
+	CONSUME dFactor3344: 1,patient3441: 1;
+	PRODUCE ;
+
+TRANSITION cured33434
+	CONSUME dFactor3343: 1,patient3434: 1;
+	PRODUCE ;
+
+TRANSITION cured33433
+	CONSUME dFactor3343: 1,patient3433: 1;
+	PRODUCE ;
+
+TRANSITION cured33432
+	CONSUME dFactor3343: 1,patient3432: 1;
+	PRODUCE ;
+
+TRANSITION cured33431
+	CONSUME dFactor3343: 1,patient3431: 1;
+	PRODUCE ;
+
+TRANSITION cured33424
+	CONSUME dFactor3342: 1,patient3424: 1;
+	PRODUCE ;
+
+TRANSITION cured33423
+	CONSUME dFactor3342: 1,patient3423: 1;
+	PRODUCE ;
+
+TRANSITION cured33422
+	CONSUME dFactor3342: 1,patient3422: 1;
+	PRODUCE ;
+
+TRANSITION cured33421
+	CONSUME dFactor3342: 1,patient3421: 1;
+	PRODUCE ;
+
+TRANSITION cured33414
+	CONSUME dFactor3341: 1,patient3414: 1;
+	PRODUCE ;
+
+TRANSITION cured33413
+	CONSUME dFactor3341: 1,patient3413: 1;
+	PRODUCE ;
+
+TRANSITION cured33412
+	CONSUME dFactor3341: 1,patient3412: 1;
+	PRODUCE ;
+
+TRANSITION cured33411
+	CONSUME dFactor3341: 1,patient3411: 1;
+	PRODUCE ;
+
+TRANSITION cured33344
+	CONSUME dFactor3334: 1,patient3344: 1;
+	PRODUCE ;
+
+TRANSITION cured33343
+	CONSUME dFactor3334: 1,patient3343: 1;
+	PRODUCE ;
+
+TRANSITION cured33342
+	CONSUME dFactor3334: 1,patient3342: 1;
+	PRODUCE ;
+
+TRANSITION cured33341
+	CONSUME dFactor3334: 1,patient3341: 1;
+	PRODUCE ;
+
+TRANSITION cured33334
+	CONSUME dFactor3333: 1,patient3334: 1;
+	PRODUCE ;
+
+TRANSITION cured33333
+	CONSUME dFactor3333: 1,patient3333: 1;
+	PRODUCE ;
+
+TRANSITION cured33332
+	CONSUME dFactor3333: 1,patient3332: 1;
+	PRODUCE ;
+
+TRANSITION cured33331
+	CONSUME dFactor3333: 1,patient3331: 1;
+	PRODUCE ;
+
+TRANSITION cured33324
+	CONSUME dFactor3332: 1,patient3324: 1;
+	PRODUCE ;
+
+TRANSITION cured33323
+	CONSUME dFactor3332: 1,patient3323: 1;
+	PRODUCE ;
+
+TRANSITION cured33322
+	CONSUME dFactor3332: 1,patient3322: 1;
+	PRODUCE ;
+
+TRANSITION cured33321
+	CONSUME dFactor3332: 1,patient3321: 1;
+	PRODUCE ;
+
+TRANSITION cured33314
+	CONSUME dFactor3331: 1,patient3314: 1;
+	PRODUCE ;
+
+TRANSITION cured33313
+	CONSUME dFactor3331: 1,patient3313: 1;
+	PRODUCE ;
+
+TRANSITION cured33312
+	CONSUME dFactor3331: 1,patient3312: 1;
+	PRODUCE ;
+
+TRANSITION cured33311
+	CONSUME dFactor3331: 1,patient3311: 1;
+	PRODUCE ;
+
+TRANSITION cured33244
+	CONSUME dFactor3324: 1,patient3244: 1;
+	PRODUCE ;
+
+TRANSITION cured33243
+	CONSUME dFactor3324: 1,patient3243: 1;
+	PRODUCE ;
+
+TRANSITION cured33242
+	CONSUME dFactor3324: 1,patient3242: 1;
+	PRODUCE ;
+
+TRANSITION cured33241
+	CONSUME dFactor3324: 1,patient3241: 1;
+	PRODUCE ;
+
+TRANSITION cured33234
+	CONSUME dFactor3323: 1,patient3234: 1;
+	PRODUCE ;
+
+TRANSITION cured33233
+	CONSUME dFactor3323: 1,patient3233: 1;
+	PRODUCE ;
+
+TRANSITION cured33232
+	CONSUME dFactor3323: 1,patient3232: 1;
+	PRODUCE ;
+
+TRANSITION cured33231
+	CONSUME dFactor3323: 1,patient3231: 1;
+	PRODUCE ;
+
+TRANSITION cured33224
+	CONSUME dFactor3322: 1,patient3224: 1;
+	PRODUCE ;
+
+TRANSITION cured33223
+	CONSUME dFactor3322: 1,patient3223: 1;
+	PRODUCE ;
+
+TRANSITION cured33222
+	CONSUME dFactor3322: 1,patient3222: 1;
+	PRODUCE ;
+
+TRANSITION cured33221
+	CONSUME dFactor3322: 1,patient3221: 1;
+	PRODUCE ;
+
+TRANSITION cured33214
+	CONSUME dFactor3321: 1,patient3214: 1;
+	PRODUCE ;
+
+TRANSITION cured33213
+	CONSUME dFactor3321: 1,patient3213: 1;
+	PRODUCE ;
+
+TRANSITION cured33212
+	CONSUME dFactor3321: 1,patient3212: 1;
+	PRODUCE ;
+
+TRANSITION cured33211
+	CONSUME dFactor3321: 1,patient3211: 1;
+	PRODUCE ;
+
+TRANSITION cured33144
+	CONSUME dFactor3314: 1,patient3144: 1;
+	PRODUCE ;
+
+TRANSITION cured33143
+	CONSUME dFactor3314: 1,patient3143: 1;
+	PRODUCE ;
+
+TRANSITION cured33142
+	CONSUME dFactor3314: 1,patient3142: 1;
+	PRODUCE ;
+
+TRANSITION cured33141
+	CONSUME dFactor3314: 1,patient3141: 1;
+	PRODUCE ;
+
+TRANSITION cured33134
+	CONSUME dFactor3313: 1,patient3134: 1;
+	PRODUCE ;
+
+TRANSITION cured33133
+	CONSUME dFactor3313: 1,patient3133: 1;
+	PRODUCE ;
+
+TRANSITION cured33132
+	CONSUME dFactor3313: 1,patient3132: 1;
+	PRODUCE ;
+
+TRANSITION cured33131
+	CONSUME dFactor3313: 1,patient3131: 1;
+	PRODUCE ;
+
+TRANSITION cured33124
+	CONSUME dFactor3312: 1,patient3124: 1;
+	PRODUCE ;
+
+TRANSITION cured33123
+	CONSUME dFactor3312: 1,patient3123: 1;
+	PRODUCE ;
+
+TRANSITION cured33122
+	CONSUME dFactor3312: 1,patient3122: 1;
+	PRODUCE ;
+
+TRANSITION cured33121
+	CONSUME dFactor3312: 1,patient3121: 1;
+	PRODUCE ;
+
+TRANSITION cured33114
+	CONSUME dFactor3311: 1,patient3114: 1;
+	PRODUCE ;
+
+TRANSITION cured33113
+	CONSUME dFactor3311: 1,patient3113: 1;
+	PRODUCE ;
+
+TRANSITION cured33112
+	CONSUME dFactor3311: 1,patient3112: 1;
+	PRODUCE ;
+
+TRANSITION cured33111
+	CONSUME dFactor3311: 1,patient3111: 1;
+	PRODUCE ;
+
+TRANSITION cured32444
+	CONSUME dFactor3244: 1,patient2444: 1;
+	PRODUCE ;
+
+TRANSITION cured32443
+	CONSUME dFactor3244: 1,patient2443: 1;
+	PRODUCE ;
+
+TRANSITION cured32442
+	CONSUME dFactor3244: 1,patient2442: 1;
+	PRODUCE ;
+
+TRANSITION cured32441
+	CONSUME dFactor3244: 1,patient2441: 1;
+	PRODUCE ;
+
+TRANSITION cured32434
+	CONSUME dFactor3243: 1,patient2434: 1;
+	PRODUCE ;
+
+TRANSITION cured32433
+	CONSUME dFactor3243: 1,patient2433: 1;
+	PRODUCE ;
+
+TRANSITION cured32432
+	CONSUME dFactor3243: 1,patient2432: 1;
+	PRODUCE ;
+
+TRANSITION cured32431
+	CONSUME dFactor3243: 1,patient2431: 1;
+	PRODUCE ;
+
+TRANSITION cured32424
+	CONSUME dFactor3242: 1,patient2424: 1;
+	PRODUCE ;
+
+TRANSITION cured32423
+	CONSUME dFactor3242: 1,patient2423: 1;
+	PRODUCE ;
+
+TRANSITION cured32422
+	CONSUME dFactor3242: 1,patient2422: 1;
+	PRODUCE ;
+
+TRANSITION cured32421
+	CONSUME dFactor3242: 1,patient2421: 1;
+	PRODUCE ;
+
+TRANSITION cured32414
+	CONSUME dFactor3241: 1,patient2414: 1;
+	PRODUCE ;
+
+TRANSITION cured32413
+	CONSUME dFactor3241: 1,patient2413: 1;
+	PRODUCE ;
+
+TRANSITION cured32412
+	CONSUME dFactor3241: 1,patient2412: 1;
+	PRODUCE ;
+
+TRANSITION cured32411
+	CONSUME dFactor3241: 1,patient2411: 1;
+	PRODUCE ;
+
+TRANSITION cured32344
+	CONSUME dFactor3234: 1,patient2344: 1;
+	PRODUCE ;
+
+TRANSITION cured32343
+	CONSUME dFactor3234: 1,patient2343: 1;
+	PRODUCE ;
+
+TRANSITION cured32342
+	CONSUME dFactor3234: 1,patient2342: 1;
+	PRODUCE ;
+
+TRANSITION cured32341
+	CONSUME dFactor3234: 1,patient2341: 1;
+	PRODUCE ;
+
+TRANSITION cured32334
+	CONSUME dFactor3233: 1,patient2334: 1;
+	PRODUCE ;
+
+TRANSITION cured32333
+	CONSUME dFactor3233: 1,patient2333: 1;
+	PRODUCE ;
+
+TRANSITION cured32332
+	CONSUME dFactor3233: 1,patient2332: 1;
+	PRODUCE ;
+
+TRANSITION cured32331
+	CONSUME dFactor3233: 1,patient2331: 1;
+	PRODUCE ;
+
+TRANSITION cured32324
+	CONSUME dFactor3232: 1,patient2324: 1;
+	PRODUCE ;
+
+TRANSITION cured32323
+	CONSUME dFactor3232: 1,patient2323: 1;
+	PRODUCE ;
+
+TRANSITION cured32322
+	CONSUME dFactor3232: 1,patient2322: 1;
+	PRODUCE ;
+
+TRANSITION cured32321
+	CONSUME dFactor3232: 1,patient2321: 1;
+	PRODUCE ;
+
+TRANSITION cured32314
+	CONSUME dFactor3231: 1,patient2314: 1;
+	PRODUCE ;
+
+TRANSITION cured32313
+	CONSUME dFactor3231: 1,patient2313: 1;
+	PRODUCE ;
+
+TRANSITION cured32312
+	CONSUME dFactor3231: 1,patient2312: 1;
+	PRODUCE ;
+
+TRANSITION cured32311
+	CONSUME dFactor3231: 1,patient2311: 1;
+	PRODUCE ;
+
+TRANSITION cured32244
+	CONSUME dFactor3224: 1,patient2244: 1;
+	PRODUCE ;
+
+TRANSITION cured32243
+	CONSUME dFactor3224: 1,patient2243: 1;
+	PRODUCE ;
+
+TRANSITION cured32242
+	CONSUME dFactor3224: 1,patient2242: 1;
+	PRODUCE ;
+
+TRANSITION cured32241
+	CONSUME dFactor3224: 1,patient2241: 1;
+	PRODUCE ;
+
+TRANSITION cured32234
+	CONSUME dFactor3223: 1,patient2234: 1;
+	PRODUCE ;
+
+TRANSITION cured32233
+	CONSUME dFactor3223: 1,patient2233: 1;
+	PRODUCE ;
+
+TRANSITION cured32232
+	CONSUME dFactor3223: 1,patient2232: 1;
+	PRODUCE ;
+
+TRANSITION cured32231
+	CONSUME dFactor3223: 1,patient2231: 1;
+	PRODUCE ;
+
+TRANSITION cured32224
+	CONSUME dFactor3222: 1,patient2224: 1;
+	PRODUCE ;
+
+TRANSITION cured32223
+	CONSUME dFactor3222: 1,patient2223: 1;
+	PRODUCE ;
+
+TRANSITION cured32222
+	CONSUME dFactor3222: 1,patient2222: 1;
+	PRODUCE ;
+
+TRANSITION cured32221
+	CONSUME dFactor3222: 1,patient2221: 1;
+	PRODUCE ;
+
+TRANSITION cured32214
+	CONSUME dFactor3221: 1,patient2214: 1;
+	PRODUCE ;
+
+TRANSITION cured32213
+	CONSUME dFactor3221: 1,patient2213: 1;
+	PRODUCE ;
+
+TRANSITION cured32212
+	CONSUME dFactor3221: 1,patient2212: 1;
+	PRODUCE ;
+
+TRANSITION cured32211
+	CONSUME dFactor3221: 1,patient2211: 1;
+	PRODUCE ;
+
+TRANSITION cured32144
+	CONSUME dFactor3214: 1,patient2144: 1;
+	PRODUCE ;
+
+TRANSITION cured32143
+	CONSUME dFactor3214: 1,patient2143: 1;
+	PRODUCE ;
+
+TRANSITION cured32142
+	CONSUME dFactor3214: 1,patient2142: 1;
+	PRODUCE ;
+
+TRANSITION cured32141
+	CONSUME dFactor3214: 1,patient2141: 1;
+	PRODUCE ;
+
+TRANSITION cured32134
+	CONSUME dFactor3213: 1,patient2134: 1;
+	PRODUCE ;
+
+TRANSITION cured32133
+	CONSUME dFactor3213: 1,patient2133: 1;
+	PRODUCE ;
+
+TRANSITION cured32132
+	CONSUME dFactor3213: 1,patient2132: 1;
+	PRODUCE ;
+
+TRANSITION cured32131
+	CONSUME dFactor3213: 1,patient2131: 1;
+	PRODUCE ;
+
+TRANSITION cured32124
+	CONSUME dFactor3212: 1,patient2124: 1;
+	PRODUCE ;
+
+TRANSITION cured32123
+	CONSUME dFactor3212: 1,patient2123: 1;
+	PRODUCE ;
+
+TRANSITION cured32122
+	CONSUME dFactor3212: 1,patient2122: 1;
+	PRODUCE ;
+
+TRANSITION cured32121
+	CONSUME dFactor3212: 1,patient2121: 1;
+	PRODUCE ;
+
+TRANSITION cured32114
+	CONSUME dFactor3211: 1,patient2114: 1;
+	PRODUCE ;
+
+TRANSITION cured32113
+	CONSUME dFactor3211: 1,patient2113: 1;
+	PRODUCE ;
+
+TRANSITION cured32112
+	CONSUME dFactor3211: 1,patient2112: 1;
+	PRODUCE ;
+
+TRANSITION cured32111
+	CONSUME dFactor3211: 1,patient2111: 1;
+	PRODUCE ;
+
+TRANSITION cured31444
+	CONSUME dFactor3144: 1,patient1444: 1;
+	PRODUCE ;
+
+TRANSITION cured31443
+	CONSUME dFactor3144: 1,patient1443: 1;
+	PRODUCE ;
+
+TRANSITION cured31442
+	CONSUME dFactor3144: 1,patient1442: 1;
+	PRODUCE ;
+
+TRANSITION cured31441
+	CONSUME dFactor3144: 1,patient1441: 1;
+	PRODUCE ;
+
+TRANSITION cured31434
+	CONSUME dFactor3143: 1,patient1434: 1;
+	PRODUCE ;
+
+TRANSITION cured31433
+	CONSUME dFactor3143: 1,patient1433: 1;
+	PRODUCE ;
+
+TRANSITION cured31432
+	CONSUME dFactor3143: 1,patient1432: 1;
+	PRODUCE ;
+
+TRANSITION cured31431
+	CONSUME dFactor3143: 1,patient1431: 1;
+	PRODUCE ;
+
+TRANSITION cured31424
+	CONSUME dFactor3142: 1,patient1424: 1;
+	PRODUCE ;
+
+TRANSITION cured31423
+	CONSUME dFactor3142: 1,patient1423: 1;
+	PRODUCE ;
+
+TRANSITION cured31422
+	CONSUME dFactor3142: 1,patient1422: 1;
+	PRODUCE ;
+
+TRANSITION cured31421
+	CONSUME dFactor3142: 1,patient1421: 1;
+	PRODUCE ;
+
+TRANSITION cured31414
+	CONSUME dFactor3141: 1,patient1414: 1;
+	PRODUCE ;
+
+TRANSITION cured31413
+	CONSUME dFactor3141: 1,patient1413: 1;
+	PRODUCE ;
+
+TRANSITION cured31412
+	CONSUME dFactor3141: 1,patient1412: 1;
+	PRODUCE ;
+
+TRANSITION cured31411
+	CONSUME dFactor3141: 1,patient1411: 1;
+	PRODUCE ;
+
+TRANSITION cured31344
+	CONSUME dFactor3134: 1,patient1344: 1;
+	PRODUCE ;
+
+TRANSITION cured31343
+	CONSUME dFactor3134: 1,patient1343: 1;
+	PRODUCE ;
+
+TRANSITION cured31342
+	CONSUME dFactor3134: 1,patient1342: 1;
+	PRODUCE ;
+
+TRANSITION cured31341
+	CONSUME dFactor3134: 1,patient1341: 1;
+	PRODUCE ;
+
+TRANSITION cured31334
+	CONSUME dFactor3133: 1,patient1334: 1;
+	PRODUCE ;
+
+TRANSITION cured31333
+	CONSUME dFactor3133: 1,patient1333: 1;
+	PRODUCE ;
+
+TRANSITION cured31332
+	CONSUME dFactor3133: 1,patient1332: 1;
+	PRODUCE ;
+
+TRANSITION cured31331
+	CONSUME dFactor3133: 1,patient1331: 1;
+	PRODUCE ;
+
+TRANSITION cured31324
+	CONSUME dFactor3132: 1,patient1324: 1;
+	PRODUCE ;
+
+TRANSITION cured31323
+	CONSUME dFactor3132: 1,patient1323: 1;
+	PRODUCE ;
+
+TRANSITION cured31322
+	CONSUME dFactor3132: 1,patient1322: 1;
+	PRODUCE ;
+
+TRANSITION cured31321
+	CONSUME dFactor3132: 1,patient1321: 1;
+	PRODUCE ;
+
+TRANSITION cured31314
+	CONSUME dFactor3131: 1,patient1314: 1;
+	PRODUCE ;
+
+TRANSITION cured31313
+	CONSUME dFactor3131: 1,patient1313: 1;
+	PRODUCE ;
+
+TRANSITION cured31312
+	CONSUME dFactor3131: 1,patient1312: 1;
+	PRODUCE ;
+
+TRANSITION cured31311
+	CONSUME dFactor3131: 1,patient1311: 1;
+	PRODUCE ;
+
+TRANSITION cured31244
+	CONSUME dFactor3124: 1,patient1244: 1;
+	PRODUCE ;
+
+TRANSITION cured31243
+	CONSUME dFactor3124: 1,patient1243: 1;
+	PRODUCE ;
+
+TRANSITION cured31242
+	CONSUME dFactor3124: 1,patient1242: 1;
+	PRODUCE ;
+
+TRANSITION cured31241
+	CONSUME dFactor3124: 1,patient1241: 1;
+	PRODUCE ;
+
+TRANSITION cured31234
+	CONSUME dFactor3123: 1,patient1234: 1;
+	PRODUCE ;
+
+TRANSITION cured31233
+	CONSUME dFactor3123: 1,patient1233: 1;
+	PRODUCE ;
+
+TRANSITION cured31232
+	CONSUME dFactor3123: 1,patient1232: 1;
+	PRODUCE ;
+
+TRANSITION cured31231
+	CONSUME dFactor3123: 1,patient1231: 1;
+	PRODUCE ;
+
+TRANSITION cured31224
+	CONSUME dFactor3122: 1,patient1224: 1;
+	PRODUCE ;
+
+TRANSITION cured31223
+	CONSUME dFactor3122: 1,patient1223: 1;
+	PRODUCE ;
+
+TRANSITION cured31222
+	CONSUME dFactor3122: 1,patient1222: 1;
+	PRODUCE ;
+
+TRANSITION cured31221
+	CONSUME dFactor3122: 1,patient1221: 1;
+	PRODUCE ;
+
+TRANSITION cured31214
+	CONSUME dFactor3121: 1,patient1214: 1;
+	PRODUCE ;
+
+TRANSITION cured31213
+	CONSUME dFactor3121: 1,patient1213: 1;
+	PRODUCE ;
+
+TRANSITION cured31212
+	CONSUME dFactor3121: 1,patient1212: 1;
+	PRODUCE ;
+
+TRANSITION cured31211
+	CONSUME dFactor3121: 1,patient1211: 1;
+	PRODUCE ;
+
+TRANSITION cured31144
+	CONSUME dFactor3114: 1,patient1144: 1;
+	PRODUCE ;
+
+TRANSITION cured31143
+	CONSUME dFactor3114: 1,patient1143: 1;
+	PRODUCE ;
+
+TRANSITION cured31142
+	CONSUME dFactor3114: 1,patient1142: 1;
+	PRODUCE ;
+
+TRANSITION cured31141
+	CONSUME dFactor3114: 1,patient1141: 1;
+	PRODUCE ;
+
+TRANSITION cured31134
+	CONSUME dFactor3113: 1,patient1134: 1;
+	PRODUCE ;
+
+TRANSITION cured31133
+	CONSUME dFactor3113: 1,patient1133: 1;
+	PRODUCE ;
+
+TRANSITION cured31132
+	CONSUME dFactor3113: 1,patient1132: 1;
+	PRODUCE ;
+
+TRANSITION cured31131
+	CONSUME dFactor3113: 1,patient1131: 1;
+	PRODUCE ;
+
+TRANSITION cured31124
+	CONSUME dFactor3112: 1,patient1124: 1;
+	PRODUCE ;
+
+TRANSITION cured31123
+	CONSUME dFactor3112: 1,patient1123: 1;
+	PRODUCE ;
+
+TRANSITION cured31122
+	CONSUME dFactor3112: 1,patient1122: 1;
+	PRODUCE ;
+
+TRANSITION cured31121
+	CONSUME dFactor3112: 1,patient1121: 1;
+	PRODUCE ;
+
+TRANSITION cured31114
+	CONSUME dFactor3111: 1,patient1114: 1;
+	PRODUCE ;
+
+TRANSITION cured31113
+	CONSUME dFactor3111: 1,patient1113: 1;
+	PRODUCE ;
+
+TRANSITION cured31112
+	CONSUME dFactor3111: 1,patient1112: 1;
+	PRODUCE ;
+
+TRANSITION cured31111
+	CONSUME dFactor3111: 1,patient1111: 1;
+	PRODUCE ;
+
+TRANSITION cured2444
+	CONSUME dFactor244: 1,patient444: 1;
+	PRODUCE ;
+
+TRANSITION cured2443
+	CONSUME dFactor244: 1,patient443: 1;
+	PRODUCE ;
+
+TRANSITION cured2442
+	CONSUME dFactor244: 1,patient442: 1;
+	PRODUCE ;
+
+TRANSITION cured2441
+	CONSUME dFactor244: 1,patient441: 1;
+	PRODUCE ;
+
+TRANSITION cured2434
+	CONSUME dFactor243: 1,patient434: 1;
+	PRODUCE ;
+
+TRANSITION cured2433
+	CONSUME dFactor243: 1,patient433: 1;
+	PRODUCE ;
+
+TRANSITION cured2432
+	CONSUME dFactor243: 1,patient432: 1;
+	PRODUCE ;
+
+TRANSITION cured2431
+	CONSUME dFactor243: 1,patient431: 1;
+	PRODUCE ;
+
+TRANSITION cured2424
+	CONSUME dFactor242: 1,patient424: 1;
+	PRODUCE ;
+
+TRANSITION cured2423
+	CONSUME dFactor242: 1,patient423: 1;
+	PRODUCE ;
+
+TRANSITION cured2422
+	CONSUME dFactor242: 1,patient422: 1;
+	PRODUCE ;
+
+TRANSITION cured2421
+	CONSUME dFactor242: 1,patient421: 1;
+	PRODUCE ;
+
+TRANSITION cured2414
+	CONSUME dFactor241: 1,patient414: 1;
+	PRODUCE ;
+
+TRANSITION cured2413
+	CONSUME dFactor241: 1,patient413: 1;
+	PRODUCE ;
+
+TRANSITION cured2412
+	CONSUME dFactor241: 1,patient412: 1;
+	PRODUCE ;
+
+TRANSITION cured2411
+	CONSUME dFactor241: 1,patient411: 1;
+	PRODUCE ;
+
+TRANSITION cured2344
+	CONSUME dFactor234: 1,patient344: 1;
+	PRODUCE ;
+
+TRANSITION cured2343
+	CONSUME dFactor234: 1,patient343: 1;
+	PRODUCE ;
+
+TRANSITION cured2342
+	CONSUME dFactor234: 1,patient342: 1;
+	PRODUCE ;
+
+TRANSITION cured2341
+	CONSUME dFactor234: 1,patient341: 1;
+	PRODUCE ;
+
+TRANSITION cured2334
+	CONSUME dFactor233: 1,patient334: 1;
+	PRODUCE ;
+
+TRANSITION cured2333
+	CONSUME dFactor233: 1,patient333: 1;
+	PRODUCE ;
+
+TRANSITION cured2332
+	CONSUME dFactor233: 1,patient332: 1;
+	PRODUCE ;
+
+TRANSITION cured2331
+	CONSUME dFactor233: 1,patient331: 1;
+	PRODUCE ;
+
+TRANSITION cured2324
+	CONSUME dFactor232: 1,patient324: 1;
+	PRODUCE ;
+
+TRANSITION cured2323
+	CONSUME dFactor232: 1,patient323: 1;
+	PRODUCE ;
+
+TRANSITION cured2322
+	CONSUME dFactor232: 1,patient322: 1;
+	PRODUCE ;
+
+TRANSITION cured2321
+	CONSUME dFactor232: 1,patient321: 1;
+	PRODUCE ;
+
+TRANSITION cured2314
+	CONSUME dFactor231: 1,patient314: 1;
+	PRODUCE ;
+
+TRANSITION cured2313
+	CONSUME dFactor231: 1,patient313: 1;
+	PRODUCE ;
+
+TRANSITION cured2312
+	CONSUME dFactor231: 1,patient312: 1;
+	PRODUCE ;
+
+TRANSITION cured2311
+	CONSUME dFactor231: 1,patient311: 1;
+	PRODUCE ;
+
+TRANSITION cured2244
+	CONSUME dFactor224: 1,patient244: 1;
+	PRODUCE ;
+
+TRANSITION cured2243
+	CONSUME dFactor224: 1,patient243: 1;
+	PRODUCE ;
+
+TRANSITION cured2242
+	CONSUME patient242: 1,dFactor224: 1;
+	PRODUCE ;
+
+TRANSITION cured2241
+	CONSUME dFactor224: 1,patient241: 1;
+	PRODUCE ;
+
+TRANSITION cured2234
+	CONSUME dFactor223: 1,patient234: 1;
+	PRODUCE ;
+
+TRANSITION cured2233
+	CONSUME dFactor223: 1,patient233: 1;
+	PRODUCE ;
+
+TRANSITION cured2232
+	CONSUME dFactor223: 1,patient232: 1;
+	PRODUCE ;
+
+TRANSITION cured2231
+	CONSUME dFactor223: 1,patient231: 1;
+	PRODUCE ;
+
+TRANSITION cured2224
+	CONSUME dFactor222: 1,patient224: 1;
+	PRODUCE ;
+
+TRANSITION cured2223
+	CONSUME dFactor222: 1,patient223: 1;
+	PRODUCE ;
+
+TRANSITION cured2222
+	CONSUME dFactor222: 1,patient222: 1;
+	PRODUCE ;
+
+TRANSITION cured2221
+	CONSUME dFactor222: 1,patient221: 1;
+	PRODUCE ;
+
+TRANSITION cured2214
+	CONSUME dFactor221: 1,patient214: 1;
+	PRODUCE ;
+
+TRANSITION cured2213
+	CONSUME dFactor221: 1,patient213: 1;
+	PRODUCE ;
+
+TRANSITION cured2212
+	CONSUME dFactor221: 1,patient212: 1;
+	PRODUCE ;
+
+TRANSITION cured2211
+	CONSUME dFactor221: 1,patient211: 1;
+	PRODUCE ;
+
+TRANSITION cured2144
+	CONSUME dFactor214: 1,patient144: 1;
+	PRODUCE ;
+
+TRANSITION cured2143
+	CONSUME dFactor214: 1,patient143: 1;
+	PRODUCE ;
+
+TRANSITION cured2142
+	CONSUME dFactor214: 1,patient142: 1;
+	PRODUCE ;
+
+TRANSITION cured2141
+	CONSUME dFactor214: 1,patient141: 1;
+	PRODUCE ;
+
+TRANSITION cured2134
+	CONSUME dFactor213: 1,patient134: 1;
+	PRODUCE ;
+
+TRANSITION cured2133
+	CONSUME dFactor213: 1,patient133: 1;
+	PRODUCE ;
+
+TRANSITION cured2132
+	CONSUME dFactor213: 1,patient132: 1;
+	PRODUCE ;
+
+TRANSITION cured2131
+	CONSUME dFactor213: 1,patient131: 1;
+	PRODUCE ;
+
+TRANSITION cured2124
+	CONSUME dFactor212: 1,patient124: 1;
+	PRODUCE ;
+
+TRANSITION cured2123
+	CONSUME dFactor212: 1,patient123: 1;
+	PRODUCE ;
+
+TRANSITION cured2122
+	CONSUME dFactor212: 1,patient122: 1;
+	PRODUCE ;
+
+TRANSITION cured2121
+	CONSUME dFactor212: 1,patient121: 1;
+	PRODUCE ;
+
+TRANSITION cured2114
+	CONSUME dFactor211: 1,patient114: 1;
+	PRODUCE ;
+
+TRANSITION cured2113
+	CONSUME dFactor211: 1,patient113: 1;
+	PRODUCE ;
+
+TRANSITION cured2112
+	CONSUME dFactor211: 1,patient112: 1;
+	PRODUCE ;
+
+TRANSITION cured2111
+	CONSUME dFactor211: 1,patient111: 1;
+	PRODUCE ;
+
+TRANSITION cured144
+	CONSUME dFactor14: 1,patient44: 1;
+	PRODUCE ;
+
+TRANSITION cured143
+	CONSUME dFactor14: 1,patient43: 1;
+	PRODUCE ;
+
+TRANSITION cured142
+	CONSUME dFactor14: 1,patient42: 1;
+	PRODUCE ;
+
+TRANSITION cured141
+	CONSUME dFactor14: 1,patient41: 1;
+	PRODUCE ;
+
+TRANSITION cured134
+	CONSUME dFactor13: 1,patient34: 1;
+	PRODUCE ;
+
+TRANSITION cured133
+	CONSUME dFactor13: 1,patient33: 1;
+	PRODUCE ;
+
+TRANSITION cured132
+	CONSUME dFactor13: 1,patient32: 1;
+	PRODUCE ;
+
+TRANSITION cured131
+	CONSUME dFactor13: 1,patient31: 1;
+	PRODUCE ;
+
+TRANSITION cured124
+	CONSUME dFactor12: 1,patient24: 1;
+	PRODUCE ;
+
+TRANSITION cured123
+	CONSUME dFactor12: 1,patient23: 1;
+	PRODUCE ;
+
+TRANSITION cured122
+	CONSUME dFactor12: 1,patient22: 1;
+	PRODUCE ;
+
+TRANSITION cured121
+	CONSUME dFactor12: 1,patient21: 1;
+	PRODUCE ;
+
+TRANSITION cured114
+	CONSUME dFactor11: 1,patient14: 1;
+	PRODUCE ;
+
+TRANSITION cured113
+	CONSUME dFactor11: 1,patient13: 1;
+	PRODUCE ;
+
+TRANSITION cured112
+	CONSUME dFactor11: 1,patient12: 1;
+	PRODUCE ;
+
+TRANSITION cured111
+	CONSUME patient11: 1,dFactor11: 1;
+	PRODUCE ;
+
+TRANSITION cured04
+	CONSUME dFactor0: 1,patient4: 1;
+	PRODUCE ;
+
+TRANSITION cured03
+	CONSUME dFactor0: 1,patient3: 1;
+	PRODUCE ;
+
+TRANSITION cured02
+	CONSUME dFactor0: 1,patient2: 1;
+	PRODUCE ;
+
+TRANSITION cured01
+	CONSUME dFactor0: 1,patient1: 1;
+	PRODUCE ;

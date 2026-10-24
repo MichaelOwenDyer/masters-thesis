@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {Raft-PT-02}
+
+28 places, 52 transitions, 159 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+7381 marking(s), 55824 transition(s)
+
+0.048s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 1107 live marking(s)
+0 dead transition(s), 36 live transition(s)
+
+0.003s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {Raft-PT-02}, 28 places, 52 transitions, 159 arcs                #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         7381         28          ?          0       1107 # 
+# transitions        55824         52          ?          0         36 #

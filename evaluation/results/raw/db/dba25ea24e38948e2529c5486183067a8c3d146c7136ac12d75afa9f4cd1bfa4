@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {RERS2020-PT-pb101}
+
+906 places, 149363 transitions, 595952 arcs
+
+4.622s

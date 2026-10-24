@@ -1,0 +1,185 @@
+PLACE
+	BrandList_p11_2, BrandSelection_p11_5, ConsumerDelivery_p6_0, ConsumerOffer_p1, ConsumerPayment_p3, DeliveryHandlerDelivery_p8_0, DeliveryNote_p22_12, DeliveryNote_p22_14, DeliveryRequest_p12_5, DeliveryResponse_p12_6, Delivery_p20, Delivery_p20_10, Delivery_p22_1, Delivery_p22_4, Delivery_p22_8, HowDeliver_p12_2, MerchantDelivery_p4_6, MerchantOffer_p2, MerchantPayment_p4_0, OfferRequest_p10, OfferResponce_p10, Order_p20, Order_p20_8, Order_p22_10, Order_p22_3, Order_p22_6, Organization_p20_2, Organization_p20_7, Organization_p21_2, Organization_p21_4, Organization_p21_8, Organization_p22_2, Organization_p22_5, Organization_p22_9, PaidFor_p11_1, PayReceipt_p21_12, PayReceipt_p21_15, PaySchemeData_p11_10, PaySchemeData_p21_10, PaySchemeData_p21_6, PaymentAmount_p11_6, PaymentHandlerPayment_p5_0, PaymentNote_p21_13, PaymentNote_p21_16, PaymentRequest_p11_9, PaymentResponse_p11_12, Payment_p20, Payment_p20_9, Payment_p21_1, Payment_p21_3, Payment_p21_7, Status_p20, Status_p20_6, Status_p21_11, Status_p21_14, Status_p21_5, Status_p21_9, Status_p22_11, Status_p22_13, Status_p22_7, WhatDeliver_p12_1, p10_0, p10_2, p11_0, p11_11, p11_13, p11_3, p11_4, p11_7, p11_8, p12_0, p12_3, p12_4, p12_7, p1_1, p1_2, p1_3, p2_1, p2_2, p3_1, p3_10, p3_2, p3_3, p3_4, p3_5, p3_6, p3_7, p3_8, p3_9, p4_1, p4_2, p4_3, p4_4, p4_5, p5_1, p5_2, p5_3, p5_4, p6_1, p6_2, p6_3, p6_4, p6_5, p6_6, p6_7, p7_1, p7_2, p7_3, p8_1, p8_2, p8_3;
+
+MARKING
+	p12_7: 1,p12_4: 1,p12_3: 1,p12_0: 1,p11_8: 1,p11_7: 1,p11_4: 1,p11_3: 1,p11_13: 1,p11_11: 1,p11_0: 1,p10_0: 1,PaymentHandlerPayment_p5_0: 1,OfferResponce_p10: 1,MerchantOffer_p2: 1,DeliveryHandlerDelivery_p8_0: 1,ConsumerOffer_p1: 1;
+
+TRANSITION t8_4
+	CONSUME p8_3: 1;
+	PRODUCE DeliveryHandlerDelivery_p8_0: 1;
+
+TRANSITION t7_4
+	CONSUME p7_3: 1;
+	PRODUCE MerchantOffer_p2: 1;
+
+TRANSITION t6_7
+	CONSUME p6_7: 1;
+	PRODUCE ConsumerOffer_p1: 1;
+
+TRANSITION t5_4
+	CONSUME p5_4: 1;
+	PRODUCE PaymentHandlerPayment_p5_0: 1;
+
+TRANSITION WhatDeliverDecision_t6_0
+	CONSUME ConsumerDelivery_p6_0: 1;
+	PRODUCE p6_1: 1;
+
+TRANSITION TradeDecision_t3_0
+	CONSUME ConsumerPayment_p3: 1;
+	PRODUCE p3_1: 1;
+
+TRANSITION SelectBrand_t3_3
+	CONSUME p3_3: 1;
+	PRODUCE p3_4: 1;
+
+TRANSITION PutWhatDeliver_t6_1
+	CONSUME p6_1: 1,p12_0: 1;
+	PRODUCE p6_2: 1,WhatDeliver_p12_1: 1;
+
+TRANSITION PutPaymentRequest_t3_7
+	CONSUME p3_7: 1,Payment_p21_3: 1,Organization_p21_4: 1,Status_p21_5: 1,PaySchemeData_p21_6: 1,p11_8: 1;
+	PRODUCE p3_8: 1,PaymentRequest_p11_9: 1;
+
+TRANSITION PutPaymentAmount_t4_5
+	CONSUME Payment_p21_1: 1,Organization_p21_2: 1,p4_5: 1,p11_7: 1;
+	PRODUCE MerchantDelivery_p4_6: 1,PaymentAmount_p11_6: 1;
+
+TRANSITION PutPaidFor_t3_1
+	CONSUME p3_1: 1,p11_0: 1;
+	PRODUCE p3_2: 1,PaidFor_p11_1: 1;
+
+TRANSITION PutOfferResponse_t2
+	CONSUME Status_p20: 1,Organization_p20_2: 1,Order_p20: 1,Payment_p20: 1,Delivery_p20: 1,p2_2: 1,OfferResponce_p10: 1;
+	PRODUCE p10_2: 1,MerchantPayment_p4_0: 1;
+
+TRANSITION PutOfferRequest_t1
+	CONSUME p1_1: 1,p10_0: 1;
+	PRODUCE p1_2: 1,OfferRequest_p10: 1;
+
+TRANSITION PutHowDeliver_t7_2
+	CONSUME p7_2: 1,p12_3: 1,Delivery_p22_1: 1,Organization_p22_2: 1,Order_p22_3: 1;
+	PRODUCE p7_3: 1,HowDeliver_p12_2: 1;
+
+TRANSITION PutDeliveryResponse_t8_2
+	CONSUME p12_7: 1,DeliveryNote_p22_12: 1,Status_p22_11: 1,p8_2: 1;
+	PRODUCE DeliveryResponse_p12_6: 1,p8_3: 1;
+
+TRANSITION PutDeliveryRequest_t6_4
+	CONSUME Status_p22_7: 1,Order_p22_6: 1,Organization_p22_5: 1,Delivery_p22_4: 1,p6_4: 1,p12_4: 1;
+	PRODUCE p6_5: 1,DeliveryRequest_p12_5: 1;
+
+TRANSITION PutBrandSelection_t3_4
+	CONSUME p3_4: 1,p11_4: 1;
+	PRODUCE p3_5: 1,BrandSelection_p11_5: 1;
+
+TRANSITION PutBrandList_t4_2
+	CONSUME p4_2: 1,p11_3: 1;
+	PRODUCE p4_3: 1,BrandList_p11_2: 1;
+
+TRANSITION PaymentResponse_t5_3
+	CONSUME p11_13: 1,p5_3: 1,Status_p21_11: 1,PayReceipt_p21_12: 1,PaymentNote_p21_13: 1;
+	PRODUCE PaymentResponse_p11_12: 1,p5_4: 1;
+
+TRANSITION PaymentResponse_t3_9
+	CONSUME p3_9: 1,PaymentResponse_p11_12: 1;
+	PRODUCE p3_10: 1,Status_p21_14: 1,PayReceipt_p21_15: 1,PaymentNote_p21_16: 1,p11_13: 1;
+
+TRANSITION PaymentExchange_t5_2
+	CONSUME p5_2: 1,PaySchemeData_p21_10: 1,p11_11: 1;
+	PRODUCE p5_3: 1,Status_p21_11: 1,PayReceipt_p21_12: 1,PaymentNote_p21_13: 1,PaySchemeData_p11_10: 1;
+
+TRANSITION PaymentExchange_t3_8
+	CONSUME p3_8: 1,PaySchemeData_p11_10: 1;
+	PRODUCE p3_9: 1,p11_11: 1;
+
+TRANSITION MakeChoice_t1
+	CONSUME ConsumerOffer_p1: 1;
+	PRODUCE p1_1: 1;
+
+TRANSITION GetWhatDeliver_t7_0
+	CONSUME MerchantDelivery_p4_6: 1,WhatDeliver_p12_1: 1;
+	PRODUCE p7_1: 1,p12_0: 1;
+
+TRANSITION GetPaymentRequest_t5_0
+	CONSUME PaymentHandlerPayment_p5_0: 1,PaymentRequest_p11_9: 1;
+	PRODUCE p5_1: 1,p11_8: 1,Payment_p21_7: 1,Organization_p21_8: 1,Status_p21_9: 1,PaySchemeData_p21_10: 1;
+
+TRANSITION GetPaymentAmount_t3_5
+	CONSUME p3_5: 1,PaymentAmount_p11_6: 1;
+	PRODUCE Payment_p21_3: 1,p3_6: 1,Organization_p21_4: 1,p11_7: 1;
+
+TRANSITION GetPaidFor_t4_0
+	CONSUME MerchantPayment_p4_0: 1,PaidFor_p11_1: 1;
+	PRODUCE p11_0: 1,p4_1: 1;
+
+TRANSITION GetOfferResponse_t1
+	CONSUME p1_2: 1,p10_2: 1;
+	PRODUCE Status_p20_6: 1,Organization_p20_7: 1,Order_p20_8: 1,Payment_p20_9: 1,Delivery_p20_10: 1,p1_3: 1,OfferResponce_p10: 1;
+
+TRANSITION GetOfferRequest_t2
+	CONSUME MerchantOffer_p2: 1,OfferRequest_p10: 1;
+	PRODUCE p10_0: 1,p2_1: 1;
+
+TRANSITION GetHowDeliver_t6_2
+	CONSUME p6_2: 1,HowDeliver_p12_2: 1;
+	PRODUCE p6_3: 1,p12_3: 1,Delivery_p22_4: 1,Organization_p22_5: 1,Order_p22_6: 1;
+
+TRANSITION GetDeliveryResponse_t6_5
+	CONSUME DeliveryResponse_p12_6: 1,p6_5: 1;
+	PRODUCE p12_7: 1,Status_p22_13: 1,DeliveryNote_p22_14: 1,p6_6: 1;
+
+TRANSITION GetDeliveryRequest_t8_0
+	CONSUME DeliveryHandlerDelivery_p8_0: 1,DeliveryRequest_p12_5: 1;
+	PRODUCE Delivery_p22_8: 1,Organization_p22_9: 1,Order_p22_10: 1,Status_p22_11: 1,p8_1: 1,p12_4: 1;
+
+TRANSITION GetBrandSelection_t4_3
+	CONSUME p4_3: 1,BrandSelection_p11_5: 1;
+	PRODUCE p4_4: 1,p11_4: 1;
+
+TRANSITION GetBrandList_t3_2
+	CONSUME p3_2: 1,BrandList_p11_2: 1;
+	PRODUCE p3_3: 1,p11_3: 1;
+
+TRANSITION CheckWhatDeliver_t7_1
+	CONSUME p7_1: 1;
+	PRODUCE p7_2: 1,Delivery_p22_1: 1,Organization_p22_2: 1,Order_p22_3: 1;
+
+TRANSITION CheckRequest_t2
+	CONSUME p2_1: 1;
+	PRODUCE p2_2: 1,Status_p20: 1,Organization_p20_2: 1,Order_p20: 1,Payment_p20: 1,Delivery_p20: 1;
+
+TRANSITION CheckPaymentReseitp_t3_10
+	CONSUME p3_10: 1,PaymentNote_p21_16: 1,PayReceipt_p21_15: 1,Status_p21_14: 1;
+	PRODUCE ConsumerDelivery_p6_0: 1;
+
+TRANSITION CheckPaymentRequest_t5_1
+	CONSUME p5_1: 1,Status_p21_9: 1,Organization_p21_8: 1,Payment_p21_7: 1;
+	PRODUCE p5_2: 1;
+
+TRANSITION CheckPaymentAmount_t3_6
+	CONSUME p3_6: 1;
+	PRODUCE p3_7: 1,Status_p21_5: 1,PaySchemeData_p21_6: 1;
+
+TRANSITION CheckOffer_t3
+	CONSUME Delivery_p20_10: 1,Payment_p20_9: 1,Order_p20_8: 1,Organization_p20_7: 1,Status_p20_6: 1,p1_3: 1;
+	PRODUCE ConsumerPayment_p3: 1;
+
+TRANSITION CheckDeliveryRequest_t8_1
+	CONSUME Order_p22_10: 1,Organization_p22_9: 1,Delivery_p22_8: 1,Status_p22_11: 1,p8_1: 1;
+	PRODUCE DeliveryNote_p22_12: 1,Status_p22_11: 1,p8_2: 1;
+
+TRANSITION CheckDeliveryNote_t6_6
+	CONSUME Status_p22_13: 1,DeliveryNote_p22_14: 1,p6_6: 1;
+	PRODUCE p6_7: 1;
+
+TRANSITION CheckDeliveryInfo_t6_3
+	CONSUME p6_3: 1;
+	PRODUCE Status_p22_7: 1,p6_4: 1;
+
+TRANSITION CheckBrandSelection_t4_4
+	CONSUME p4_4: 1;
+	PRODUCE Payment_p21_1: 1,Organization_p21_2: 1,p4_5: 1;
+
+TRANSITION BrandDecision_t4_1
+	CONSUME p4_1: 1;
+	PRODUCE p4_2: 1;

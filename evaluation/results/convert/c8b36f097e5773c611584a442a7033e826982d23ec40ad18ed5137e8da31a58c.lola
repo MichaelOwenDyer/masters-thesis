@@ -1,0 +1,69 @@
+PLACE
+	a, a_cap, c, c_cap, da, da_a, dr, dr_a, ma, ma_cap, mr, mr_cap, r, r_cap;
+
+MARKING
+	r_cap: 1,mr_cap: 1,ma_cap: 1,dr: 1,da: 1,c_cap: 1,a_cap: 1;
+
+TRANSITION transl_r
+	CONSUME mr: 1,r_cap: 1;
+	PRODUCE r: 1,mr: 1;
+
+TRANSITION transl_a
+	CONSUME ma: 1,a_cap: 1;
+	PRODUCE a: 1,ma: 1;
+
+TRANSITION transc_dr_a
+	CONSUME dr_a: 1,mr_cap: 1;
+	PRODUCE mr: 1,dr_a: 1;
+
+TRANSITION transc_dr
+	CONSUME dr: 1,mr_cap: 1;
+	PRODUCE mr: 1,dr: 1;
+
+TRANSITION transc_da_a
+	CONSUME da_a: 1,ma_cap: 1;
+	PRODUCE ma: 1,da_a: 1;
+
+TRANSITION transc_da
+	CONSUME da: 1,ma_cap: 1;
+	PRODUCE ma: 1,da: 1;
+
+TRANSITION rel_r
+	CONSUME dr_a: 1,a_cap: 1;
+	PRODUCE a: 1,dr: 1;
+
+TRANSITION rel_a
+	CONSUME da_a: 1,a_cap: 1;
+	PRODUCE da: 1,a: 1;
+
+TRANSITION deg_r
+	CONSUME r: 1;
+	PRODUCE r_cap: 1;
+
+TRANSITION deg_mr
+	CONSUME mr: 1;
+	PRODUCE mr_cap: 1;
+
+TRANSITION deg_ma
+	CONSUME ma: 1;
+	PRODUCE ma_cap: 1;
+
+TRANSITION deg_c
+	CONSUME c: 1,r_cap: 1;
+	PRODUCE r: 1,c_cap: 1;
+
+TRANSITION deg_a
+	CONSUME a: 1;
+	PRODUCE a_cap: 1;
+
+TRANSITION deactive
+	CONSUME c_cap: 1,a: 1,r: 1;
+	PRODUCE c: 1,r_cap: 1,a_cap: 1;
+
+TRANSITION bind_r
+	CONSUME a: 1,dr: 1;
+	PRODUCE dr_a: 1,a_cap: 1;
+
+TRANSITION bind_a
+	CONSUME da: 1,a: 1;
+	PRODUCE da_a: 1,a_cap: 1;

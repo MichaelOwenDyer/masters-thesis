@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/AutonomousCar-PT-02a/model.pnml","property":"live","mode":"general","verdict":"false","class":"General","places":33,"transitions":69,"arcs":368,"parse_ms":1.075,"analyze_ms":4.786,"timeout_ms":null,"states":2314,"edges":9593}

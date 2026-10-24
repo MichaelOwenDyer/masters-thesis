@@ -1,0 +1,869 @@
+PLACE
+	critical_section_0, critical_section_1, critical_section_2, flag_0_active, flag_0_idle, flag_0_waiting, flag_1_active, flag_1_idle, flag_1_waiting, flag_2_active, flag_2_idle, flag_2_waiting, p04_0, p04_1, p04_2, p07_0, p07_1, p07_2, p08_0_0, p08_0_1, p08_0_2, p08_1_0, p08_1_1, p08_1_2, p08_2_0, p08_2_1, p08_2_2, p09_0_1, p09_0_2, p09_1_0, p09_1_2, p09_2_0, p09_2_1, p10_0_1, p10_0_2, p10_1_0, p10_1_2, p10_2_0, p10_2_1, p12_0_1, p12_0_2, p12_1_0, p12_1_2, p12_2_0, p12_2_1, p15_0, p15_1, p15_2, p17_0, p17_1, p17_2, p18_0_0, p18_0_1, p18_0_2, p18_0_3, p18_1_0, p18_1_1, p18_1_2, p18_1_3, p18_2_0, p18_2_1, p18_2_2, p18_2_3, p19_0_0, p19_0_1, p19_0_2, p19_1_0, p19_1_1, p19_1_2, p19_2_0, p19_2_1, p19_2_2, p25_0_1, p25_0_2, p25_0_3, p25_1_0, p25_1_2, p25_1_3, p25_2_0, p25_2_1, p25_2_3, p27_0, p27_1, p27_2, p32_0, p32_1, p32_2, p33_0_0, p33_0_1, p33_0_2, p33_1_0, p33_1_1, p33_1_2, p33_2_0, p33_2_1, p33_2_2, p34_0_1, p34_0_2, p34_1_0, p34_1_2, p34_2_0, p34_2_1, p37_0_0, p37_0_1, p37_0_2, p37_1_0, p37_1_1, p37_1_2, p37_2_0, p37_2_1, p37_2_2, p39_0, p39_1, p39_2, turn_0, turn_1, turn_2;
+
+MARKING
+	turn_0: 1,p04_2: 1,p04_1: 1,p04_0: 1,flag_2_idle: 1,flag_1_idle: 1,flag_0_idle: 1;
+
+TRANSITION t39_2
+	CONSUME p39_2: 1,flag_2_active: 1;
+	PRODUCE p04_2: 1,flag_2_idle: 1;
+
+TRANSITION t39_1
+	CONSUME p39_1: 1,flag_1_active: 1;
+	PRODUCE p04_1: 1,flag_1_idle: 1;
+
+TRANSITION t39_0
+	CONSUME p39_0: 1,flag_0_active: 1;
+	PRODUCE p04_0: 1,flag_0_idle: 1;
+
+TRANSITION t37_2_2
+	CONSUME p37_2_2: 1,turn_2: 1;
+	PRODUCE p39_2: 1,turn_2: 1;
+
+TRANSITION t37_2_1
+	CONSUME p37_2_1: 1,turn_2: 1;
+	PRODUCE p39_2: 1,turn_1: 1;
+
+TRANSITION t37_2_0
+	CONSUME p37_2_0: 1,turn_2: 1;
+	PRODUCE p39_2: 1,turn_0: 1;
+
+TRANSITION t37_1_2
+	CONSUME p37_1_2: 1,turn_1: 1;
+	PRODUCE p39_1: 1,turn_2: 1;
+
+TRANSITION t37_1_1
+	CONSUME p37_1_1: 1,turn_1: 1;
+	PRODUCE p39_1: 1,turn_1: 1;
+
+TRANSITION t37_1_0
+	CONSUME p37_1_0: 1,turn_1: 1;
+	PRODUCE p39_1: 1,turn_0: 1;
+
+TRANSITION t37_0_2
+	CONSUME p37_0_2: 1,turn_0: 1;
+	PRODUCE p39_0: 1,turn_2: 1;
+
+TRANSITION t37_0_1
+	CONSUME p37_0_1: 1,turn_0: 1;
+	PRODUCE p39_0: 1,turn_1: 1;
+
+TRANSITION t37_0_0
+	CONSUME p37_0_0: 1,turn_0: 1;
+	PRODUCE p39_0: 1,turn_0: 1;
+
+TRANSITION t34_2_1
+	CONSUME p34_2_1: 1;
+	PRODUCE p33_2_2: 1;
+
+TRANSITION t34_2_0
+	CONSUME p34_2_0: 1;
+	PRODUCE p33_2_1: 1;
+
+TRANSITION t34_1_2
+	CONSUME p34_1_2: 1;
+	PRODUCE p33_1_0: 1;
+
+TRANSITION t34_1_0
+	CONSUME p34_1_0: 1;
+	PRODUCE p33_1_1: 1;
+
+TRANSITION t34_0_2
+	CONSUME p34_0_2: 1;
+	PRODUCE p33_0_0: 1;
+
+TRANSITION t34_0_1
+	CONSUME p34_0_1: 1;
+	PRODUCE p33_0_2: 1;
+
+TRANSITION t33_true_2_1_idle
+	CONSUME p33_2_1: 1,flag_1_idle: 1;
+	PRODUCE p34_2_1: 1,flag_1_idle: 1;
+
+TRANSITION t33_true_2_0_idle
+	CONSUME p33_2_0: 1,flag_0_idle: 1;
+	PRODUCE p34_2_0: 1,flag_0_idle: 1;
+
+TRANSITION t33_true_1_2_idle
+	CONSUME p33_1_2: 1,flag_2_idle: 1;
+	PRODUCE p34_1_2: 1,flag_2_idle: 1;
+
+TRANSITION t33_true_1_0_idle
+	CONSUME p33_1_0: 1,flag_0_idle: 1;
+	PRODUCE p34_1_0: 1,flag_0_idle: 1;
+
+TRANSITION t33_true_0_2_idle
+	CONSUME p33_0_2: 1,flag_2_idle: 1;
+	PRODUCE p34_0_2: 1,flag_2_idle: 1;
+
+TRANSITION t33_true_0_1_idle
+	CONSUME p33_0_1: 1,flag_1_idle: 1;
+	PRODUCE p34_0_1: 1,flag_1_idle: 1;
+
+TRANSITION t33_false_2_2_active
+	CONSUME p33_2_2: 1,flag_2_active: 1;
+	PRODUCE p37_2_2: 1,flag_2_active: 1;
+
+TRANSITION t33_false_2_1_waiting
+	CONSUME p33_2_1: 1,flag_1_waiting: 1;
+	PRODUCE p37_2_1: 1,flag_1_waiting: 1;
+
+TRANSITION t33_false_2_1_active
+	CONSUME p33_2_1: 1,flag_1_active: 1;
+	PRODUCE p37_2_1: 1,flag_1_active: 1;
+
+TRANSITION t33_false_2_0_waiting
+	CONSUME p33_2_0: 1,flag_0_waiting: 1;
+	PRODUCE p37_2_0: 1,flag_0_waiting: 1;
+
+TRANSITION t33_false_2_0_active
+	CONSUME p33_2_0: 1,flag_0_active: 1;
+	PRODUCE p37_2_0: 1,flag_0_active: 1;
+
+TRANSITION t33_false_1_2_waiting
+	CONSUME p33_1_2: 1,flag_2_waiting: 1;
+	PRODUCE p37_1_2: 1,flag_2_waiting: 1;
+
+TRANSITION t33_false_1_2_active
+	CONSUME p33_1_2: 1,flag_2_active: 1;
+	PRODUCE p37_1_2: 1,flag_2_active: 1;
+
+TRANSITION t33_false_1_1_active
+	CONSUME p33_1_1: 1,flag_1_active: 1;
+	PRODUCE p37_1_1: 1,flag_1_active: 1;
+
+TRANSITION t33_false_1_0_waiting
+	CONSUME p33_1_0: 1,flag_0_waiting: 1;
+	PRODUCE p37_1_0: 1,flag_0_waiting: 1;
+
+TRANSITION t33_false_1_0_active
+	CONSUME p33_1_0: 1,flag_0_active: 1;
+	PRODUCE p37_1_0: 1,flag_0_active: 1;
+
+TRANSITION t33_false_0_2_waiting
+	CONSUME p33_0_2: 1,flag_2_waiting: 1;
+	PRODUCE p37_0_2: 1,flag_2_waiting: 1;
+
+TRANSITION t33_false_0_2_active
+	CONSUME p33_0_2: 1,flag_2_active: 1;
+	PRODUCE p37_0_2: 1,flag_2_active: 1;
+
+TRANSITION t33_false_0_1_waiting
+	CONSUME p33_0_1: 1,flag_1_waiting: 1;
+	PRODUCE p37_0_1: 1,flag_1_waiting: 1;
+
+TRANSITION t33_false_0_1_active
+	CONSUME p33_0_1: 1,flag_1_active: 1;
+	PRODUCE p37_0_1: 1,flag_1_active: 1;
+
+TRANSITION t33_false_0_0_active
+	CONSUME p33_0_0: 1,flag_0_active: 1;
+	PRODUCE p37_0_0: 1,flag_0_active: 1;
+
+TRANSITION t32_2
+	CONSUME p32_2: 1,turn_2: 1;
+	PRODUCE p33_2_0: 1,turn_2: 1;
+
+TRANSITION t32_1
+	CONSUME p32_1: 1,turn_1: 1;
+	PRODUCE p33_1_2: 1,turn_1: 1;
+
+TRANSITION t32_0
+	CONSUME p32_0: 1,turn_0: 1;
+	PRODUCE p33_0_1: 1,turn_0: 1;
+
+TRANSITION t27_2_2
+	CONSUME p27_2: 1,turn_2: 1;
+	PRODUCE critical_section_2: 1,turn_2: 1;
+
+TRANSITION t27_2_1
+	CONSUME p27_2: 1,turn_1: 1;
+	PRODUCE critical_section_2: 1,turn_2: 1;
+
+TRANSITION t27_2_0
+	CONSUME p27_2: 1,turn_0: 1;
+	PRODUCE critical_section_2: 1,turn_2: 1;
+
+TRANSITION t27_1_2
+	CONSUME p27_1: 1,turn_2: 1;
+	PRODUCE critical_section_1: 1,turn_1: 1;
+
+TRANSITION t27_1_1
+	CONSUME p27_1: 1,turn_1: 1;
+	PRODUCE critical_section_1: 1,turn_1: 1;
+
+TRANSITION t27_1_0
+	CONSUME p27_1: 1,turn_0: 1;
+	PRODUCE critical_section_1: 1,turn_1: 1;
+
+TRANSITION t27_0_2
+	CONSUME p27_0: 1,turn_2: 1;
+	PRODUCE critical_section_0: 1,turn_0: 1;
+
+TRANSITION t27_0_1
+	CONSUME p27_0: 1,turn_1: 1;
+	PRODUCE critical_section_0: 1,turn_0: 1;
+
+TRANSITION t27_0_0
+	CONSUME p27_0: 1,turn_0: 1;
+	PRODUCE critical_section_0: 1,turn_0: 1;
+
+TRANSITION t25_true_2_3_2_active
+	CONSUME p25_2_3: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p27_2: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_true_2_3_1_idle
+	CONSUME p25_2_3: 1,turn_1: 1,flag_1_idle: 1;
+	PRODUCE p27_2: 1,turn_1: 1,flag_1_idle: 1;
+
+TRANSITION t25_true_2_3_0_idle
+	CONSUME p25_2_3: 1,turn_0: 1,flag_0_idle: 1;
+	PRODUCE p27_2: 1,turn_0: 1,flag_0_idle: 1;
+
+TRANSITION t25_true_1_3_2_idle
+	CONSUME p25_1_3: 1,turn_2: 1,flag_2_idle: 1;
+	PRODUCE p27_1: 1,turn_2: 1,flag_2_idle: 1;
+
+TRANSITION t25_true_1_3_1_active
+	CONSUME p25_1_3: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p27_1: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_true_1_3_0_idle
+	CONSUME p25_1_3: 1,turn_0: 1,flag_0_idle: 1;
+	PRODUCE p27_1: 1,turn_0: 1,flag_0_idle: 1;
+
+TRANSITION t25_true_0_3_2_idle
+	CONSUME p25_0_3: 1,turn_2: 1,flag_2_idle: 1;
+	PRODUCE p27_0: 1,turn_2: 1,flag_2_idle: 1;
+
+TRANSITION t25_true_0_3_1_idle
+	CONSUME p25_0_3: 1,turn_1: 1,flag_1_idle: 1;
+	PRODUCE p27_0: 1,turn_1: 1,flag_1_idle: 1;
+
+TRANSITION t25_true_0_3_0_active
+	CONSUME p25_0_3: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p27_0: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_2_3_1_waiting
+	CONSUME p25_2_3: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_2_3_1_active
+	CONSUME p25_2_3: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_2_3_0_waiting
+	CONSUME p25_2_3: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_2_3_0_active
+	CONSUME p25_2_3: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_2_1_2_active
+	CONSUME p25_2_1: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_2: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_2_1_1_waiting
+	CONSUME p25_2_1: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_2_1_1_active
+	CONSUME p25_2_1: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_2_1_0_waiting
+	CONSUME p25_2_1: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_2_1_0_idle
+	CONSUME p25_2_1: 1,turn_0: 1,flag_0_idle: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_idle: 1;
+
+TRANSITION t25_false_2_1_0_active
+	CONSUME p25_2_1: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_2_0_2_active
+	CONSUME p25_2_0: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_2: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_2_0_1_waiting
+	CONSUME p25_2_0: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_2_0_1_idle
+	CONSUME p25_2_0: 1,turn_1: 1,flag_1_idle: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_idle: 1;
+
+TRANSITION t25_false_2_0_1_active
+	CONSUME p25_2_0: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_2: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_2_0_0_waiting
+	CONSUME p25_2_0: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_2_0_0_active
+	CONSUME p25_2_0: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_2: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_1_3_2_waiting
+	CONSUME p25_1_3: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_1_3_2_active
+	CONSUME p25_1_3: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_1_3_0_waiting
+	CONSUME p25_1_3: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_1_3_0_active
+	CONSUME p25_1_3: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_1_2_2_waiting
+	CONSUME p25_1_2: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_1_2_2_active
+	CONSUME p25_1_2: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_1_2_1_active
+	CONSUME p25_1_2: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_1: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_1_2_0_waiting
+	CONSUME p25_1_2: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_1_2_0_idle
+	CONSUME p25_1_2: 1,turn_0: 1,flag_0_idle: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_idle: 1;
+
+TRANSITION t25_false_1_2_0_active
+	CONSUME p25_1_2: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_1_0_2_waiting
+	CONSUME p25_1_0: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_1_0_2_idle
+	CONSUME p25_1_0: 1,turn_2: 1,flag_2_idle: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_idle: 1;
+
+TRANSITION t25_false_1_0_2_active
+	CONSUME p25_1_0: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_1: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_1_0_1_active
+	CONSUME p25_1_0: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_1: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_1_0_0_waiting
+	CONSUME p25_1_0: 1,turn_0: 1,flag_0_waiting: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_waiting: 1;
+
+TRANSITION t25_false_1_0_0_active
+	CONSUME p25_1_0: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_1: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_0_3_2_waiting
+	CONSUME p25_0_3: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_0_3_2_active
+	CONSUME p25_0_3: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_0_3_1_waiting
+	CONSUME p25_0_3: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_0_3_1_active
+	CONSUME p25_0_3: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_0_2_2_waiting
+	CONSUME p25_0_2: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_0_2_2_active
+	CONSUME p25_0_2: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_0_2_1_waiting
+	CONSUME p25_0_2: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_0_2_1_idle
+	CONSUME p25_0_2: 1,turn_1: 1,flag_1_idle: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_idle: 1;
+
+TRANSITION t25_false_0_2_1_active
+	CONSUME p25_0_2: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_0_2_0_active
+	CONSUME p25_0_2: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_0: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t25_false_0_1_2_waiting
+	CONSUME p25_0_1: 1,turn_2: 1,flag_2_waiting: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_waiting: 1;
+
+TRANSITION t25_false_0_1_2_idle
+	CONSUME p25_0_1: 1,turn_2: 1,flag_2_idle: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_idle: 1;
+
+TRANSITION t25_false_0_1_2_active
+	CONSUME p25_0_1: 1,turn_2: 1,flag_2_active: 1;
+	PRODUCE p04_0: 1,turn_2: 1,flag_2_active: 1;
+
+TRANSITION t25_false_0_1_1_waiting
+	CONSUME p25_0_1: 1,turn_1: 1,flag_1_waiting: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_waiting: 1;
+
+TRANSITION t25_false_0_1_1_active
+	CONSUME p25_0_1: 1,turn_1: 1,flag_1_active: 1;
+	PRODUCE p04_0: 1,turn_1: 1,flag_1_active: 1;
+
+TRANSITION t25_false_0_1_0_active
+	CONSUME p25_0_1: 1,turn_0: 1,flag_0_active: 1;
+	PRODUCE p04_0: 1,turn_0: 1,flag_0_active: 1;
+
+TRANSITION t19_2_2
+	CONSUME p19_2_2: 1;
+	PRODUCE p18_2_3: 1;
+
+TRANSITION t19_2_1
+	CONSUME p19_2_1: 1;
+	PRODUCE p18_2_2: 1;
+
+TRANSITION t19_2_0
+	CONSUME p19_2_0: 1;
+	PRODUCE p18_2_1: 1;
+
+TRANSITION t19_1_2
+	CONSUME p19_1_2: 1;
+	PRODUCE p18_1_3: 1;
+
+TRANSITION t19_1_1
+	CONSUME p19_1_1: 1;
+	PRODUCE p18_1_2: 1;
+
+TRANSITION t19_1_0
+	CONSUME p19_1_0: 1;
+	PRODUCE p18_1_1: 1;
+
+TRANSITION t19_0_2
+	CONSUME p19_0_2: 1;
+	PRODUCE p18_0_3: 1;
+
+TRANSITION t19_0_1
+	CONSUME p19_0_1: 1;
+	PRODUCE p18_0_2: 1;
+
+TRANSITION t19_0_0
+	CONSUME p19_0_0: 1;
+	PRODUCE p18_0_1: 1;
+
+TRANSITION t18_true_2_2_active
+	CONSUME p18_2_2: 1,flag_2_active: 1;
+	PRODUCE p19_2_2: 1,flag_2_active: 1;
+
+TRANSITION t18_true_2_1_waiting
+	CONSUME p18_2_1: 1,flag_1_waiting: 1;
+	PRODUCE p19_2_1: 1,flag_1_waiting: 1;
+
+TRANSITION t18_true_2_1_idle
+	CONSUME p18_2_1: 1,flag_1_idle: 1;
+	PRODUCE p19_2_1: 1,flag_1_idle: 1;
+
+TRANSITION t18_true_2_0_waiting
+	CONSUME p18_2_0: 1,flag_0_waiting: 1;
+	PRODUCE p19_2_0: 1,flag_0_waiting: 1;
+
+TRANSITION t18_true_2_0_idle
+	CONSUME p18_2_0: 1,flag_0_idle: 1;
+	PRODUCE p19_2_0: 1,flag_0_idle: 1;
+
+TRANSITION t18_true_1_2_waiting
+	CONSUME p18_1_2: 1,flag_2_waiting: 1;
+	PRODUCE p19_1_2: 1,flag_2_waiting: 1;
+
+TRANSITION t18_true_1_2_idle
+	CONSUME p18_1_2: 1,flag_2_idle: 1;
+	PRODUCE p19_1_2: 1,flag_2_idle: 1;
+
+TRANSITION t18_true_1_1_active
+	CONSUME p18_1_1: 1,flag_1_active: 1;
+	PRODUCE p19_1_1: 1,flag_1_active: 1;
+
+TRANSITION t18_true_1_0_waiting
+	CONSUME p18_1_0: 1,flag_0_waiting: 1;
+	PRODUCE p19_1_0: 1,flag_0_waiting: 1;
+
+TRANSITION t18_true_1_0_idle
+	CONSUME p18_1_0: 1,flag_0_idle: 1;
+	PRODUCE p19_1_0: 1,flag_0_idle: 1;
+
+TRANSITION t18_true_0_2_waiting
+	CONSUME p18_0_2: 1,flag_2_waiting: 1;
+	PRODUCE p19_0_2: 1,flag_2_waiting: 1;
+
+TRANSITION t18_true_0_2_idle
+	CONSUME p18_0_2: 1,flag_2_idle: 1;
+	PRODUCE p19_0_2: 1,flag_2_idle: 1;
+
+TRANSITION t18_true_0_1_waiting
+	CONSUME p18_0_1: 1,flag_1_waiting: 1;
+	PRODUCE p19_0_1: 1,flag_1_waiting: 1;
+
+TRANSITION t18_true_0_1_idle
+	CONSUME p18_0_1: 1,flag_1_idle: 1;
+	PRODUCE p19_0_1: 1,flag_1_idle: 1;
+
+TRANSITION t18_true_0_0_active
+	CONSUME p18_0_0: 1,flag_0_active: 1;
+	PRODUCE p19_0_0: 1,flag_0_active: 1;
+
+TRANSITION t18_false2_2_1_active
+	CONSUME p18_2_1: 1,flag_1_active: 1;
+	PRODUCE p25_2_1: 1,flag_1_active: 1;
+
+TRANSITION t18_false2_2_0_active
+	CONSUME p18_2_0: 1,flag_0_active: 1;
+	PRODUCE p25_2_0: 1,flag_0_active: 1;
+
+TRANSITION t18_false2_1_2_active
+	CONSUME p18_1_2: 1,flag_2_active: 1;
+	PRODUCE p25_1_2: 1,flag_2_active: 1;
+
+TRANSITION t18_false2_1_0_active
+	CONSUME p18_1_0: 1,flag_0_active: 1;
+	PRODUCE p25_1_0: 1,flag_0_active: 1;
+
+TRANSITION t18_false2_0_2_active
+	CONSUME p18_0_2: 1,flag_2_active: 1;
+	PRODUCE p25_0_2: 1,flag_2_active: 1;
+
+TRANSITION t18_false2_0_1_active
+	CONSUME p18_0_1: 1,flag_1_active: 1;
+	PRODUCE p25_0_1: 1,flag_1_active: 1;
+
+TRANSITION t18_false1_2_3
+	CONSUME p18_2_3: 1;
+	PRODUCE p25_2_3: 1;
+
+TRANSITION t18_false1_1_3
+	CONSUME p18_1_3: 1;
+	PRODUCE p25_1_3: 1;
+
+TRANSITION t18_false1_0_3
+	CONSUME p18_0_3: 1;
+	PRODUCE p25_0_3: 1;
+
+TRANSITION t17_2
+	CONSUME p17_2: 1;
+	PRODUCE p18_2_0: 1;
+
+TRANSITION t17_1
+	CONSUME p17_1: 1;
+	PRODUCE p18_1_0: 1;
+
+TRANSITION t17_0
+	CONSUME p17_0: 1;
+	PRODUCE p18_0_0: 1;
+
+TRANSITION t15_2
+	CONSUME p15_2: 1,flag_2_waiting: 1;
+	PRODUCE p17_2: 1,flag_2_active: 1;
+
+TRANSITION t15_1
+	CONSUME p15_1: 1,flag_1_waiting: 1;
+	PRODUCE p17_1: 1,flag_1_active: 1;
+
+TRANSITION t15_0
+	CONSUME p15_0: 1,flag_0_waiting: 1;
+	PRODUCE p17_0: 1,flag_0_active: 1;
+
+TRANSITION t12_2_1
+	CONSUME p12_2_1: 1;
+	PRODUCE p08_2_2: 1;
+
+TRANSITION t12_2_0
+	CONSUME p12_2_0: 1;
+	PRODUCE p08_2_1: 1;
+
+TRANSITION t12_1_2
+	CONSUME p12_1_2: 1;
+	PRODUCE p08_1_0: 1;
+
+TRANSITION t12_1_0
+	CONSUME p12_1_0: 1;
+	PRODUCE p08_1_1: 1;
+
+TRANSITION t12_0_2
+	CONSUME p12_0_2: 1;
+	PRODUCE p08_0_0: 1;
+
+TRANSITION t12_0_1
+	CONSUME p12_0_1: 1;
+	PRODUCE p08_0_2: 1;
+
+TRANSITION t10_2_1_2
+	CONSUME p10_2_1: 1,turn_2: 1;
+	PRODUCE p08_2_2: 1,turn_2: 1;
+
+TRANSITION t10_2_1_1
+	CONSUME p10_2_1: 1,turn_1: 1;
+	PRODUCE p08_2_1: 1,turn_1: 1;
+
+TRANSITION t10_2_1_0
+	CONSUME p10_2_1: 1,turn_0: 1;
+	PRODUCE p08_2_0: 1,turn_0: 1;
+
+TRANSITION t10_2_0_2
+	CONSUME p10_2_0: 1,turn_2: 1;
+	PRODUCE p08_2_2: 1,turn_2: 1;
+
+TRANSITION t10_2_0_1
+	CONSUME p10_2_0: 1,turn_1: 1;
+	PRODUCE p08_2_1: 1,turn_1: 1;
+
+TRANSITION t10_2_0_0
+	CONSUME p10_2_0: 1,turn_0: 1;
+	PRODUCE p08_2_0: 1,turn_0: 1;
+
+TRANSITION t10_1_2_2
+	CONSUME p10_1_2: 1,turn_2: 1;
+	PRODUCE p08_1_2: 1,turn_2: 1;
+
+TRANSITION t10_1_2_1
+	CONSUME p10_1_2: 1,turn_1: 1;
+	PRODUCE p08_1_1: 1,turn_1: 1;
+
+TRANSITION t10_1_2_0
+	CONSUME p10_1_2: 1,turn_0: 1;
+	PRODUCE p08_1_0: 1,turn_0: 1;
+
+TRANSITION t10_1_0_2
+	CONSUME p10_1_0: 1,turn_2: 1;
+	PRODUCE p08_1_2: 1,turn_2: 1;
+
+TRANSITION t10_1_0_1
+	CONSUME p10_1_0: 1,turn_1: 1;
+	PRODUCE p08_1_1: 1,turn_1: 1;
+
+TRANSITION t10_1_0_0
+	CONSUME p10_1_0: 1,turn_0: 1;
+	PRODUCE p08_1_0: 1,turn_0: 1;
+
+TRANSITION t10_0_2_2
+	CONSUME p10_0_2: 1,turn_2: 1;
+	PRODUCE p08_0_2: 1,turn_2: 1;
+
+TRANSITION t10_0_2_1
+	CONSUME p10_0_2: 1,turn_1: 1;
+	PRODUCE p08_0_1: 1,turn_1: 1;
+
+TRANSITION t10_0_2_0
+	CONSUME p10_0_2: 1,turn_0: 1;
+	PRODUCE p08_0_0: 1,turn_0: 1;
+
+TRANSITION t10_0_1_2
+	CONSUME p10_0_1: 1,turn_2: 1;
+	PRODUCE p08_0_2: 1,turn_2: 1;
+
+TRANSITION t10_0_1_1
+	CONSUME p10_0_1: 1,turn_1: 1;
+	PRODUCE p08_0_1: 1,turn_1: 1;
+
+TRANSITION t10_0_1_0
+	CONSUME p10_0_1: 1,turn_0: 1;
+	PRODUCE p08_0_0: 1,turn_0: 1;
+
+TRANSITION t09_true_2_1_waiting
+	CONSUME p09_2_1: 1,flag_1_waiting: 1;
+	PRODUCE p10_2_1: 1,flag_1_waiting: 1;
+
+TRANSITION t09_true_2_1_active
+	CONSUME p09_2_1: 1,flag_1_active: 1;
+	PRODUCE p10_2_1: 1,flag_1_active: 1;
+
+TRANSITION t09_true_2_0_waiting
+	CONSUME p09_2_0: 1,flag_0_waiting: 1;
+	PRODUCE p10_2_0: 1,flag_0_waiting: 1;
+
+TRANSITION t09_true_2_0_active
+	CONSUME p09_2_0: 1,flag_0_active: 1;
+	PRODUCE p10_2_0: 1,flag_0_active: 1;
+
+TRANSITION t09_true_1_2_waiting
+	CONSUME p09_1_2: 1,flag_2_waiting: 1;
+	PRODUCE p10_1_2: 1,flag_2_waiting: 1;
+
+TRANSITION t09_true_1_2_active
+	CONSUME p09_1_2: 1,flag_2_active: 1;
+	PRODUCE p10_1_2: 1,flag_2_active: 1;
+
+TRANSITION t09_true_1_0_waiting
+	CONSUME p09_1_0: 1,flag_0_waiting: 1;
+	PRODUCE p10_1_0: 1,flag_0_waiting: 1;
+
+TRANSITION t09_true_1_0_active
+	CONSUME p09_1_0: 1,flag_0_active: 1;
+	PRODUCE p10_1_0: 1,flag_0_active: 1;
+
+TRANSITION t09_true_0_2_waiting
+	CONSUME p09_0_2: 1,flag_2_waiting: 1;
+	PRODUCE p10_0_2: 1,flag_2_waiting: 1;
+
+TRANSITION t09_true_0_2_active
+	CONSUME p09_0_2: 1,flag_2_active: 1;
+	PRODUCE p10_0_2: 1,flag_2_active: 1;
+
+TRANSITION t09_true_0_1_waiting
+	CONSUME p09_0_1: 1,flag_1_waiting: 1;
+	PRODUCE p10_0_1: 1,flag_1_waiting: 1;
+
+TRANSITION t09_true_0_1_active
+	CONSUME p09_0_1: 1,flag_1_active: 1;
+	PRODUCE p10_0_1: 1,flag_1_active: 1;
+
+TRANSITION t09_false_2_1_idle
+	CONSUME p09_2_1: 1,flag_1_idle: 1;
+	PRODUCE p12_2_1: 1,flag_1_idle: 1;
+
+TRANSITION t09_false_2_0_idle
+	CONSUME p09_2_0: 1,flag_0_idle: 1;
+	PRODUCE p12_2_0: 1,flag_0_idle: 1;
+
+TRANSITION t09_false_1_2_idle
+	CONSUME p09_1_2: 1,flag_2_idle: 1;
+	PRODUCE flag_2_idle: 1,p12_1_2: 1;
+
+TRANSITION t09_false_1_0_idle
+	CONSUME p09_1_0: 1,flag_0_idle: 1;
+	PRODUCE p12_1_0: 1,flag_0_idle: 1;
+
+TRANSITION t09_false_0_2_idle
+	CONSUME p09_0_2: 1,flag_2_idle: 1;
+	PRODUCE p12_0_2: 1,flag_2_idle: 1;
+
+TRANSITION t09_false_0_1_idle
+	CONSUME p09_0_1: 1,flag_1_idle: 1;
+	PRODUCE p12_0_1: 1,flag_1_idle: 1;
+
+TRANSITION t08_true_2_1
+	CONSUME p08_2_1: 1;
+	PRODUCE p09_2_1: 1;
+
+TRANSITION t08_true_2_0
+	CONSUME p08_2_0: 1;
+	PRODUCE p09_2_0: 1;
+
+TRANSITION t08_true_1_2
+	CONSUME p08_1_2: 1;
+	PRODUCE p09_1_2: 1;
+
+TRANSITION t08_true_1_0
+	CONSUME p08_1_0: 1;
+	PRODUCE p09_1_0: 1;
+
+TRANSITION t08_true_0_2
+	CONSUME p08_0_2: 1;
+	PRODUCE p09_0_2: 1;
+
+TRANSITION t08_true_0_1
+	CONSUME p08_0_1: 1;
+	PRODUCE p09_0_1: 1;
+
+TRANSITION t08_false_2_2
+	CONSUME p08_2_2: 1;
+	PRODUCE p15_2: 1;
+
+TRANSITION t08_false_1_1
+	CONSUME p08_1_1: 1;
+	PRODUCE p15_1: 1;
+
+TRANSITION t08_false_0_0
+	CONSUME p08_0_0: 1;
+	PRODUCE p15_0: 1;
+
+TRANSITION t07_2_2
+	CONSUME p07_2: 1,turn_2: 1;
+	PRODUCE p08_2_2: 1,turn_2: 1;
+
+TRANSITION t07_2_1
+	CONSUME p07_2: 1,turn_1: 1;
+	PRODUCE p08_2_1: 1,turn_1: 1;
+
+TRANSITION t07_2_0
+	CONSUME p07_2: 1,turn_0: 1;
+	PRODUCE p08_2_0: 1,turn_0: 1;
+
+TRANSITION t07_1_2
+	CONSUME p07_1: 1,turn_2: 1;
+	PRODUCE p08_1_2: 1,turn_2: 1;
+
+TRANSITION t07_1_1
+	CONSUME p07_1: 1,turn_1: 1;
+	PRODUCE p08_1_1: 1,turn_1: 1;
+
+TRANSITION t07_1_0
+	CONSUME p07_1: 1,turn_0: 1;
+	PRODUCE p08_1_0: 1,turn_0: 1;
+
+TRANSITION t07_0_2
+	CONSUME p07_0: 1,turn_2: 1;
+	PRODUCE p08_0_2: 1,turn_2: 1;
+
+TRANSITION t07_0_1
+	CONSUME p07_0: 1,turn_1: 1;
+	PRODUCE p08_0_1: 1,turn_1: 1;
+
+TRANSITION t07_0_0
+	CONSUME p07_0: 1,turn_0: 1;
+	PRODUCE p08_0_0: 1,turn_0: 1;
+
+TRANSITION t04_2_idle
+	CONSUME p04_2: 1,flag_2_idle: 1;
+	PRODUCE p07_2: 1,flag_2_waiting: 1;
+
+TRANSITION t04_2_active
+	CONSUME p04_2: 1,flag_2_active: 1;
+	PRODUCE p07_2: 1,flag_2_waiting: 1;
+
+TRANSITION t04_1_idle
+	CONSUME p04_1: 1,flag_1_idle: 1;
+	PRODUCE p07_1: 1,flag_1_waiting: 1;
+
+TRANSITION t04_1_active
+	CONSUME p04_1: 1,flag_1_active: 1;
+	PRODUCE p07_1: 1,flag_1_waiting: 1;
+
+TRANSITION t04_0_idle
+	CONSUME p04_0: 1,flag_0_idle: 1;
+	PRODUCE p07_0: 1,flag_0_waiting: 1;
+
+TRANSITION t04_0_active
+	CONSUME p04_0: 1,flag_0_active: 1;
+	PRODUCE flag_0_waiting: 1,p07_0: 1;
+
+TRANSITION leave_critical_section_2
+	CONSUME critical_section_2: 1;
+	PRODUCE p32_2: 1;
+
+TRANSITION leave_critical_section_1
+	CONSUME critical_section_1: 1;
+	PRODUCE p32_1: 1;
+
+TRANSITION leave_critical_section_0
+	CONSUME critical_section_0: 1;
+	PRODUCE p32_0: 1;

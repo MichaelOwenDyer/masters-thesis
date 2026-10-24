@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {IBM703-PT-none}
+
+262 places, 284 transitions, 572 arcs
+
+0.010s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+8370 marking(s), 20499 transition(s)
+
+0.043s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+9 dead marking(s), 9 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.002s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {IBM703-PT-none}, 262 places, 284 transitions, 572 arcs          #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         8370        262          ?          9          9 # 
+# transitions        20499        284          ?          0          0 #

@@ -1,0 +1,5 @@
+some state violates condition -f:
+  p1il_0 p1il_1_2 p1il_2_1 p1il_2_2 p1ol_1_1 p1ol_1_2 p1ol_2_1 p1ol_2_2 p2il_1_2 p2il_2_2 p2ol_1_2 p2ol_2_2 p3il_2_1 p3il_2_2 p3ol_2_1 p3ol_2_2 p4il_1_1 p4il_1_2 p4il_2_1 p4il_2_2 p4ol_1_1 p4ol_1_2 p4ol_2_1 p4ol_2_2 pb1_1_1 pb1_1_2 pb1_2_1 pb1_2_2 pb2_1_1 pb2_1_2 pb2_2_1 pb2_2_2 pb3_1_1 pb3_1_2 pb3_2_1 pb3_2_2 pb4_1_1 pb4_1_2 pb4_2_1 pb4_2_2 pbl_1_1*2 pbl_1_2*2 pbl_2_1*2 pbl_2_2*2
+  firable: t1o_1_1 t1o_1_2 t1o_2_1 t1o_2_2 t2o_1_1 t2o_1_2 t2o_2_1 t2o_2_2 t3o_1_1 t3o_1_2 t3o_2_1 t3o_2_2 t4o_1_1 t4o_1_2 t4o_2_1 t4o_2_2
+17 marking(s), 16 transition(s)
+0.000s

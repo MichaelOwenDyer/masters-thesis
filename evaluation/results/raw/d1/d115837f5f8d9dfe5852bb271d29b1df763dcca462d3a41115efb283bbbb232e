@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/EisenbergMcGuire-PT-03/model.pnml","property":"statespace","mode":"general","verdict":"true","class":"General","places":117,"transitions":216,"arcs":900,"parse_ms":2.860,"analyze_ms":118.327,"timeout_ms":null,"states":31265,"edges":93795}

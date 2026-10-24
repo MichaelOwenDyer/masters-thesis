@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SmallOperatingSystem-PT-MT0032DC0008}
+
+9 places, 8 transitions, 27 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+166515 marking(s), 1112454 transition(s)
+
+2.103s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 166515 live marking(s)
+0 dead transition(s), 8 live transition(s)
+
+0.158s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SmallOperatingSystem-PT-MT0032DC0008}, 9 places, 8 transitions, 27 arcs#
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states       166515          9          ?          0     166515 # 
+# transitions      1112454          8          ?          0          8 #

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ShieldRVt-PT-003A/model.pnml","property":"statespace","mode":"general","verdict":"true","class":"General","places":27,"transitions":27,"arcs":108,"parse_ms":0.486,"analyze_ms":16.523,"timeout_ms":null,"states":8193,"edges":71681}

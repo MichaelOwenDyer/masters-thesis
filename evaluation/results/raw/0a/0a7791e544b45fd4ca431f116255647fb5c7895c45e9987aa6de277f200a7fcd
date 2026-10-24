@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {TokenRing-PT-010}
+
+121 places, 1111 transitions, 4444 arcs
+
+0.026s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+58905 marking(s), 294050 transition(s)
+
+0.876s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 121 live marking(s)
+771 dead transition(s), 121 live transition(s)
+
+0.031s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {TokenRing-PT-010}, 121 places, 1111 transitions, 4444 arcs      #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        58905        121          ?          0        121 # 
+# transitions       294050       1111          ?        771        121 #

@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SwimmingPool-PT-01}
+
+9 places, 7 transitions, 20 arcs
+
+0.000s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+89621 marking(s), 450003 transition(s)
+
+0.886s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 89621 live marking(s)
+0 dead transition(s), 7 live transition(s)
+
+0.075s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SwimmingPool-PT-01}, 9 places, 7 transitions, 20 arcs           #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states        89621          9          ?          0      89621 # 
+# transitions       450003          7          ?          0          7 #

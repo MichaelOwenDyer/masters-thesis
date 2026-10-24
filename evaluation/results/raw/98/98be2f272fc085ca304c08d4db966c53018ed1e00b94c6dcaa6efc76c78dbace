@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/AutoFlight-PT-02a/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"AsymmetricChoice","places":57,"transitions":55,"arcs":180,"parse_ms":0.890,"analyze_ms":17.453,"timeout_ms":null,"states":6949,"edges":55285}

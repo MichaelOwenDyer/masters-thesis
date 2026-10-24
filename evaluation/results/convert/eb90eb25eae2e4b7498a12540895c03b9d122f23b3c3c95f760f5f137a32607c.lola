@@ -1,0 +1,813 @@
+PLACE
+	A1L_ext_rs, A1L_ext_run, A1L_in, A1L_loaded, A1L_out, A1L_ret_rs, A1L_ret_run, A1L_rot1_in, A1L_rot1_rs, A1L_rot1_run, A1L_rot2_in, A1L_rot2_rs, A1L_rot2_run, A1L_rot3_in, A1L_rot3_rs, A1L_rot3_run, A1L_rotated, A1U_ext_rs, A1U_ext_run, A1U_extendet, A1U_in, A1U_out, A1U_ret_rs, A1U_ret_run, A1U_rot1_in, A1U_rot1_rs, A1U_rot1_run, A1U_rot2_in, A1U_rot2_rs, A1U_rot2_run, A1U_rot3_in, A1U_rot3_rs, A1U_rot3_run, A1U_rotated, A1U_unloadet, A1_extended, A2L_ext_rs, A2L_ext_run, A2L_extended, A2L_in, A2L_loaded, A2L_out, A2L_ret_rs, A2L_ret_run, A2L_rot1_in, A2L_rot1_rs, A2L_rot1_run, A2L_rot2_in, A2L_rot2_rs, A2L_rot2_run, A2L_rot3_in, A2L_rot3_rs, A2L_rot3_run, A2L_rotated, A2U_ext_rs, A2U_ext_run, A2U_extended, A2U_in, A2U_out, A2U_ret_rs, A2U_ret_run, A2U_rot1_in, A2U_rot1_rs, A2U_rot1_run, A2U_rot2_in, A2U_rot2_rs, A2U_rot2_run, A2U_rot3_in, A2U_rot3_rs, A2U_rot3_run, A2U_rotated, A2U_unloaded, CL_in, CL_lift_rs, CL_lift_run, CL_loaded, CL_lower_rs, CL_lower_run, CL_out, CL_ready_to_grasp, CL_ready_to_transport, CL_trans_rs, CL_trans_run, CU_in, CU_lift_rs, CU_lift_run, CU_lower_rs, CU_lower_run, CU_out, CU_ready_to_transport, CU_ready_to_ungrasp, CU_trans_rs, CU_trans_run, CU_unloaded, DB_at_end, DB_deliver_rs, DB_deliver_run, DB_in, DB_out, DB_trans_rs, DB_trans_run, FB_at_end, FB_deliver_rs, FB_deliver_run, FB_in, FB_out, FB_trans_rs, FB_trans_run, PL_in, PL_lower_rs, PL_lower_run, PL_out, PU_in, PU_lower_rs, PU_lower_run, PU_out, TL_in, TL_lower_rs, TL_lower_run, TL_out, TL_rot_rs, TL_rot_run, TU_in, TU_lift_rs, TU_lift_run, TU_out, TU_rot_rs, TU_rot_run, arm1_backward, arm1_forward, arm1_having_swivel_1, arm1_having_swivel_2, arm1_magnet_off, arm1_magnet_on, arm1_pick_up_angle, arm1_pick_up_ext, arm1_release_angle, arm1_release_ext, arm1_retract_ext, arm1_stop, arm1_store_free, arm1_storing, arm1_waiting_for_swivel_1, arm1_waiting_for_swivel_2, arm2_backward, arm2_forward, arm2_having_swivel_1, arm2_having_swivel_2, arm2_magnet_off, arm2_magnet_on, arm2_pick_up_angle, arm2_pick_up_ext, arm2_release_angle, arm2_release_ext, arm2_retract_ext, arm2_stop, arm2_store_free, arm2_storing, arm2_waiting_for_swivel_1, arm2_waiting_for_swivel_2, belt1_light_barrier_false, belt1_light_barrier_true, belt1_start, belt1_stop, belt2_light_barrier_false, belt2_light_barrier_true, belt2_start, belt2_stop, blank_forged, ch_A1P_free, ch_A1P_full, ch_A2D_free, ch_A2D_full, ch_CF_free, ch_CF_full, ch_DC_free, ch_DC_full, ch_FT_free, ch_FT_full, ch_PA2_free, ch_PA2_full, ch_TA1_free, ch_TA1_full, crane_above_deposit_belt, crane_above_feed_belt, crane_lift, crane_lower, crane_mag_off, crane_mag_on, crane_pick_up_height, crane_release_height, crane_stop_h, crane_stop_v, crane_store_free, crane_storing, crane_to_belt1, crane_to_belt2, crane_transport_height, deposit_belt_empty, deposit_belt_idle, deposit_belt_occupied, feed_belt_empty, feed_belt_idle, feed_belt_occupied, forge_rs, forge_run, press_at_lower_pos, press_at_middle_pos, press_at_upper_pos, press_down, press_ready_for_loading, press_ready_for_unloading, press_stop, press_up, press_upward, robot_left, robot_right, robot_stop, swivel, table_at_load_angle, table_at_unload_angle, table_bottom_pos, table_load_angle, table_ready_for_loading, table_ready_for_unloading, table_right, table_stop_h, table_stop_v, table_top_pos, table_unload_angle, table_upward;
+
+MARKING
+	table_stop_v: 1,table_stop_h: 1,table_ready_for_loading: 1,table_load_angle: 1,table_bottom_pos: 1,swivel: 1,robot_stop: 1,press_stop: 1,press_ready_for_loading: 1,press_at_middle_pos: 1,feed_belt_idle: 1,deposit_belt_idle: 1,crane_transport_height: 1,crane_store_free: 1,crane_stop_v: 1,crane_stop_h: 1,crane_mag_off: 1,crane_above_deposit_belt: 1,ch_FT_free: 1,ch_DC_full: 1,ch_CF_free: 1,ch_A2D_free: 1,ch_A1P_free: 1,belt2_stop: 1,belt2_light_barrier_false: 1,belt1_stop: 1,belt1_light_barrier_false: 1,arm2_store_free: 1,arm2_stop: 1,arm2_retract_ext: 1,arm2_release_angle: 1,arm2_magnet_off: 1,arm1_store_free: 1,arm1_stop: 1,arm1_retract_ext: 1,arm1_magnet_off: 1;
+
+TRANSITION table_unlock_output_area
+	CONSUME TU_out: 1;
+	PRODUCE table_ready_for_unloading: 1,ch_TA1_full: 1;
+
+TRANSITION table_unlock_input_area
+	CONSUME TL_out: 1;
+	PRODUCE table_ready_for_loading: 1,ch_FT_free: 1;
+
+TRANSITION table_lock_output_area
+	CONSUME table_ready_for_unloading: 1,ch_TA1_free: 1;
+	PRODUCE TL_in: 1;
+
+TRANSITION table_lock_input_area
+	CONSUME table_ready_for_loading: 1,ch_FT_full: 1;
+	PRODUCE TU_in: 1;
+
+TRANSITION press_unlock_output_area
+	CONSUME PU_out: 1;
+	PRODUCE press_ready_for_unloading: 1,ch_PA2_full: 1;
+
+TRANSITION press_unlock_input_area
+	CONSUME PL_out: 1;
+	PRODUCE press_ready_for_loading: 1,ch_A1P_free: 1;
+
+TRANSITION press_lock_output_area
+	CONSUME press_ready_for_unloading: 1,ch_PA2_free: 1;
+	PRODUCE PL_in: 1;
+
+TRANSITION press_lock_input_area
+	CONSUME press_ready_for_loading: 1,ch_A1P_full: 1;
+	PRODUCE PU_in: 1;
+
+TRANSITION forge_csc
+	CONSUME forge_run: 1,press_at_middle_pos: 1,press_upward: 1;
+	PRODUCE forge_run: 1,press_at_upper_pos: 1,press_upward: 1;
+
+TRANSITION forge_Pstop
+	CONSUME forge_rs: 1,press_upward: 1;
+	PRODUCE blank_forged: 1,press_stop: 1;
+
+TRANSITION forge_Pstart
+	CONSUME PU_in: 1,press_stop: 1;
+	PRODUCE forge_run: 1,press_upward: 1;
+
+TRANSITION forge_Cstop
+	CONSUME forge_run: 1,press_at_upper_pos: 1;
+	PRODUCE forge_rs: 1,press_at_upper_pos: 1;
+
+TRANSITION feed_belt_unlock_output_area
+	CONSUME feed_belt_empty: 1;
+	PRODUCE feed_belt_idle: 1,ch_CF_free: 1;
+
+TRANSITION feed_belt_unlock_input_area
+	CONSUME FB_out: 1;
+	PRODUCE feed_belt_empty: 1,ch_FT_full: 1;
+
+TRANSITION feed_belt_lock_output_area
+	CONSUME feed_belt_occupied: 1,ch_FT_free: 1;
+	PRODUCE FB_in: 1;
+
+TRANSITION feed_belt_lock_input_area
+	CONSUME feed_belt_idle: 1,ch_CF_full: 1;
+	PRODUCE feed_belt_occupied: 1;
+
+TRANSITION deposit_belt_unlock_output_area
+	CONSUME deposit_belt_empty: 1;
+	PRODUCE deposit_belt_idle: 1,ch_A2D_free: 1;
+
+TRANSITION deposit_belt_unlock_input_area
+	CONSUME DB_out: 1;
+	PRODUCE deposit_belt_empty: 1,ch_DC_full: 1;
+
+TRANSITION deposit_belt_lock_output_area
+	CONSUME deposit_belt_occupied: 1,ch_DC_free: 1;
+	PRODUCE DB_in: 1;
+
+TRANSITION deposit_belt_lock_input_area
+	CONSUME deposit_belt_idle: 1,ch_A2D_full: 1;
+	PRODUCE deposit_belt_occupied: 1;
+
+TRANSITION crane_unlock_output_area
+	CONSUME CU_out: 1;
+	PRODUCE crane_store_free: 1,ch_CF_full: 1;
+
+TRANSITION crane_unlock_input_area
+	CONSUME CL_out: 1;
+	PRODUCE crane_storing: 1,ch_DC_free: 1;
+
+TRANSITION crane_lock_output_area
+	CONSUME crane_storing: 1,ch_CF_free: 1;
+	PRODUCE CU_in: 1;
+
+TRANSITION crane_lock_input_area
+	CONSUME crane_store_free: 1,ch_DC_full: 1;
+	PRODUCE CL_in: 1;
+
+TRANSITION arm2_unlock_swivel_2
+	CONSUME arm2_having_swivel_2: 1;
+	PRODUCE arm2_store_free: 1,swivel: 1;
+
+TRANSITION arm2_unlock_swivel_1
+	CONSUME arm2_having_swivel_1: 1;
+	PRODUCE arm2_storing: 1,swivel: 1;
+
+TRANSITION arm2_unlock_output_area
+	CONSUME A2U_out: 1;
+	PRODUCE arm2_having_swivel_2: 1,ch_A2D_full: 1;
+
+TRANSITION arm2_unlock_input_area
+	CONSUME A2L_out: 1;
+	PRODUCE arm2_having_swivel_1: 1,ch_PA2_free: 1;
+
+TRANSITION arm2_lock_swivel_2
+	CONSUME arm2_waiting_for_swivel_2: 1,swivel: 1;
+	PRODUCE A2U_in: 1;
+
+TRANSITION arm2_lock_swivel_1
+	CONSUME arm2_waiting_for_swivel_1: 1,swivel: 1;
+	PRODUCE A2L_in: 1;
+
+TRANSITION arm2_lock_output_area
+	CONSUME arm2_storing: 1,ch_A2D_free: 1;
+	PRODUCE arm2_waiting_for_swivel_2: 1;
+
+TRANSITION arm2_lock_input_area
+	CONSUME arm2_store_free: 1,ch_PA2_full: 1;
+	PRODUCE arm2_waiting_for_swivel_1: 1;
+
+TRANSITION arm1_unlock_swivel_2
+	CONSUME arm1_having_swivel_2: 1;
+	PRODUCE arm1_store_free: 1,swivel: 1;
+
+TRANSITION arm1_unlock_swivel_1
+	CONSUME arm1_having_swivel_1: 1;
+	PRODUCE arm1_storing: 1,swivel: 1;
+
+TRANSITION arm1_unlock_output_area
+	CONSUME A1U_out: 1;
+	PRODUCE arm1_having_swivel_2: 1,ch_A1P_full: 1;
+
+TRANSITION arm1_unlock_input_area
+	CONSUME A1L_out: 1;
+	PRODUCE arm1_having_swivel_1: 1,ch_TA1_free: 1;
+
+TRANSITION arm1_lock_swivel_2
+	CONSUME arm1_waiting_for_swivel_2: 1,swivel: 1;
+	PRODUCE A1U_in: 1;
+
+TRANSITION arm1_lock_swivel_1
+	CONSUME arm1_waiting_for_swivel_1: 1,swivel: 1;
+	PRODUCE A1L_in: 1;
+
+TRANSITION arm1_lock_output_area
+	CONSUME arm1_storing: 1,ch_A1P_free: 1;
+	PRODUCE arm1_waiting_for_swivel_2: 1;
+
+TRANSITION arm1_lock_input_area
+	CONSUME arm1_store_free: 1,ch_TA1_full: 1;
+	PRODUCE arm1_waiting_for_swivel_1: 1;
+
+TRANSITION TU_rot_csc
+	CONSUME TU_rot_run: 1,table_right: 1,table_load_angle: 1;
+	PRODUCE TU_rot_run: 1,table_right: 1,table_unload_angle: 1;
+
+TRANSITION TU_rot_Pstop
+	CONSUME TU_rot_rs: 1,table_right: 1;
+	PRODUCE table_stop_h: 1,table_at_unload_angle: 1;
+
+TRANSITION TU_rot_Pstart
+	CONSUME table_stop_h: 1,TU_in: 1;
+	PRODUCE TU_rot_run: 1,table_right: 1;
+
+TRANSITION TU_rot_Cstop
+	CONSUME TU_rot_run: 1,table_unload_angle: 1;
+	PRODUCE TU_rot_rs: 1,table_unload_angle: 1;
+
+TRANSITION TU_lift_csc
+	CONSUME TU_lift_run: 1,table_upward: 1,table_bottom_pos: 1;
+	PRODUCE TU_lift_run: 1,table_upward: 1,table_top_pos: 1;
+
+TRANSITION TU_lift_Pstop
+	CONSUME TU_lift_rs: 1,table_upward: 1;
+	PRODUCE table_stop_v: 1,TU_out: 1;
+
+TRANSITION TU_lift_Pstart
+	CONSUME table_stop_v: 1,table_at_unload_angle: 1;
+	PRODUCE TU_lift_run: 1,table_upward: 1;
+
+TRANSITION TU_lift_Cstop
+	CONSUME TU_lift_run: 1,table_top_pos: 1;
+	PRODUCE TU_lift_rs: 1,table_top_pos: 1;
+
+TRANSITION TL_rot_csc
+	CONSUME TL_rot_run: 1,table_right: 1,table_unload_angle: 1;
+	PRODUCE TL_rot_run: 1,table_right: 1,table_load_angle: 1;
+
+TRANSITION TL_rot_Pstop
+	CONSUME TL_rot_rs: 1,table_right: 1;
+	PRODUCE table_stop_h: 1,table_at_load_angle: 1;
+
+TRANSITION TL_rot_Pstart
+	CONSUME table_stop_h: 1,TL_in: 1;
+	PRODUCE TL_rot_run: 1,table_right: 1;
+
+TRANSITION TL_rot_Cstop
+	CONSUME TL_rot_run: 1,table_load_angle: 1;
+	PRODUCE TL_rot_rs: 1,table_load_angle: 1;
+
+TRANSITION TL_lower_csc
+	CONSUME TL_lower_run: 1,table_upward: 1,table_top_pos: 1;
+	PRODUCE TL_lower_run: 1,table_upward: 1,table_bottom_pos: 1;
+
+TRANSITION TL_lower_Pstop
+	CONSUME TL_lower_rs: 1,table_upward: 1;
+	PRODUCE table_stop_v: 1,TL_out: 1;
+
+TRANSITION TL_lower_Pstart
+	CONSUME table_stop_v: 1,table_at_load_angle: 1;
+	PRODUCE TL_lower_run: 1,table_upward: 1;
+
+TRANSITION TL_lower_Cstop
+	CONSUME TL_lower_run: 1,table_bottom_pos: 1;
+	PRODUCE TL_lower_rs: 1,table_bottom_pos: 1;
+
+TRANSITION PU_lower_csc
+	CONSUME PU_lower_run: 1,press_at_upper_pos: 1,press_down: 1;
+	PRODUCE PU_lower_run: 1,press_at_lower_pos: 1,press_down: 1;
+
+TRANSITION PU_lower_Pstop
+	CONSUME PU_lower_rs: 1,press_down: 1;
+	PRODUCE PU_out: 1,press_stop: 1;
+
+TRANSITION PU_lower_Pstart
+	CONSUME blank_forged: 1,press_stop: 1;
+	PRODUCE PU_lower_run: 1,press_down: 1;
+
+TRANSITION PU_lower_Cstop
+	CONSUME PU_lower_run: 1,press_at_lower_pos: 1;
+	PRODUCE PU_lower_rs: 1,press_at_lower_pos: 1;
+
+TRANSITION PL_lower_csc
+	CONSUME PL_lower_run: 1,press_at_lower_pos: 1,press_up: 1;
+	PRODUCE PL_lower_run: 1,press_at_middle_pos: 1,press_up: 1;
+
+TRANSITION PL_lower_Pstop
+	CONSUME PL_lower_rs: 1,press_up: 1;
+	PRODUCE PL_out: 1,press_stop: 1;
+
+TRANSITION PL_lower_Pstart
+	CONSUME PL_in: 1,press_stop: 1;
+	PRODUCE PL_lower_run: 1,press_up: 1;
+
+TRANSITION PL_lower_Cstop
+	CONSUME PL_lower_run: 1,press_at_middle_pos: 1;
+	PRODUCE PL_lower_rs: 1,press_at_middle_pos: 1;
+
+TRANSITION FB_trans_csc
+	CONSUME FB_trans_run: 1,belt1_start: 1,belt1_light_barrier_false: 1;
+	PRODUCE FB_trans_run: 1,belt1_start: 1,belt1_light_barrier_true: 1;
+
+TRANSITION FB_trans_Pstop
+	CONSUME FB_trans_rs: 1,belt1_start: 1;
+	PRODUCE belt1_stop: 1,FB_at_end: 1;
+
+TRANSITION FB_trans_Pstart
+	CONSUME belt1_stop: 1,FB_in: 1;
+	PRODUCE FB_trans_run: 1,belt1_start: 1;
+
+TRANSITION FB_trans_Cstop
+	CONSUME FB_trans_run: 1,belt1_light_barrier_true: 1;
+	PRODUCE FB_trans_rs: 1,belt1_light_barrier_true: 1;
+
+TRANSITION FB_deliver_csc
+	CONSUME FB_deliver_run: 1,belt1_start: 1,belt1_light_barrier_true: 1;
+	PRODUCE FB_deliver_run: 1,belt1_start: 1,belt1_light_barrier_false: 1;
+
+TRANSITION FB_deliver_Pstop
+	CONSUME FB_deliver_rs: 1,belt1_start: 1;
+	PRODUCE belt1_stop: 1,FB_out: 1;
+
+TRANSITION FB_deliver_Pstart
+	CONSUME belt1_stop: 1,FB_at_end: 1;
+	PRODUCE FB_deliver_run: 1,belt1_start: 1;
+
+TRANSITION FB_deliver_Cstop
+	CONSUME FB_deliver_run: 1,belt1_light_barrier_false: 1;
+	PRODUCE FB_deliver_rs: 1,belt1_light_barrier_false: 1;
+
+TRANSITION DB_trans_csc
+	CONSUME DB_trans_run: 1,belt2_start: 1,belt2_light_barrier_false: 1;
+	PRODUCE DB_trans_run: 1,belt2_start: 1,belt2_light_barrier_true: 1;
+
+TRANSITION DB_trans_Pstop
+	CONSUME DB_trans_rs: 1,belt2_start: 1;
+	PRODUCE belt2_stop: 1,DB_at_end: 1;
+
+TRANSITION DB_trans_Pstart
+	CONSUME belt2_stop: 1,DB_in: 1;
+	PRODUCE DB_trans_run: 1,belt2_start: 1;
+
+TRANSITION DB_trans_Cstop
+	CONSUME DB_trans_run: 1,belt2_light_barrier_true: 1;
+	PRODUCE DB_trans_rs: 1,belt2_light_barrier_true: 1;
+
+TRANSITION DB_deliver_csc
+	CONSUME DB_deliver_run: 1,belt2_start: 1,belt2_light_barrier_true: 1;
+	PRODUCE DB_deliver_run: 1,belt2_start: 1,belt2_light_barrier_false: 1;
+
+TRANSITION DB_deliver_Pstop
+	CONSUME DB_deliver_rs: 1,belt2_start: 1;
+	PRODUCE belt2_stop: 1,DB_out: 1;
+
+TRANSITION DB_deliver_Pstart
+	CONSUME belt2_stop: 1,DB_at_end: 1;
+	PRODUCE DB_deliver_run: 1,belt2_start: 1;
+
+TRANSITION DB_deliver_Cstop
+	CONSUME DB_deliver_run: 1,belt2_light_barrier_false: 1;
+	PRODUCE DB_deliver_rs: 1,belt2_light_barrier_false: 1;
+
+TRANSITION CU_ungrasp
+	CONSUME crane_mag_on: 1,CU_ready_to_ungrasp: 1;
+	PRODUCE crane_mag_off: 1,CU_unloaded: 1;
+
+TRANSITION CU_trans_csc
+	CONSUME CU_trans_run: 1,crane_to_belt2: 1,crane_above_feed_belt: 1;
+	PRODUCE CU_trans_run: 1,crane_to_belt2: 1,crane_above_deposit_belt: 1;
+
+TRANSITION CU_trans_Pstop
+	CONSUME CU_trans_rs: 1,crane_to_belt2: 1;
+	PRODUCE crane_stop_h: 1,CU_out: 1;
+
+TRANSITION CU_trans_Pstart
+	CONSUME crane_stop_h: 1,CU_ready_to_transport: 1;
+	PRODUCE CU_trans_run: 1,crane_to_belt2: 1;
+
+TRANSITION CU_trans_Cstop
+	CONSUME CU_trans_run: 1,crane_above_deposit_belt: 1;
+	PRODUCE CU_trans_rs: 1,crane_above_deposit_belt: 1;
+
+TRANSITION CU_lower_csc
+	CONSUME CU_lower_run: 1,crane_lower: 1,crane_transport_height: 1;
+	PRODUCE CU_lower_run: 1,crane_lower: 1,crane_release_height: 1;
+
+TRANSITION CU_lower_Pstop
+	CONSUME CU_lower_rs: 1,crane_lower: 1;
+	PRODUCE crane_stop_v: 1,CU_ready_to_ungrasp: 1;
+
+TRANSITION CU_lower_Pstart
+	CONSUME crane_stop_v: 1,CU_in: 1;
+	PRODUCE CU_lower_run: 1,crane_lower: 1;
+
+TRANSITION CU_lower_Cstop
+	CONSUME CU_lower_run: 1,crane_release_height: 1;
+	PRODUCE CU_lower_rs: 1,crane_release_height: 1;
+
+TRANSITION CU_lift_csc
+	CONSUME CU_lift_run: 1,crane_lift: 1,crane_release_height: 1;
+	PRODUCE CU_lift_run: 1,crane_lift: 1,crane_transport_height: 1;
+
+TRANSITION CU_lift_Pstop
+	CONSUME CU_lift_rs: 1,crane_lift: 1;
+	PRODUCE crane_stop_v: 1,CU_ready_to_transport: 1;
+
+TRANSITION CU_lift_Pstart
+	CONSUME crane_stop_v: 1,CU_unloaded: 1;
+	PRODUCE CU_lift_run: 1,crane_lift: 1;
+
+TRANSITION CU_lift_Cstop
+	CONSUME CU_lift_run: 1,crane_transport_height: 1;
+	PRODUCE CU_lift_rs: 1,crane_transport_height: 1;
+
+TRANSITION CL_trans_csc
+	CONSUME CL_trans_run: 1,crane_to_belt1: 1,crane_above_deposit_belt: 1;
+	PRODUCE CL_trans_run: 1,crane_to_belt1: 1,crane_above_feed_belt: 1;
+
+TRANSITION CL_trans_Pstop
+	CONSUME CL_trans_rs: 1,crane_to_belt1: 1;
+	PRODUCE crane_stop_h: 1,CL_out: 1;
+
+TRANSITION CL_trans_Pstart
+	CONSUME crane_stop_h: 1,CL_ready_to_transport: 1;
+	PRODUCE CL_trans_run: 1,crane_to_belt1: 1;
+
+TRANSITION CL_trans_Cstop
+	CONSUME CL_trans_run: 1,crane_above_feed_belt: 1;
+	PRODUCE CL_trans_rs: 1,crane_above_feed_belt: 1;
+
+TRANSITION CL_lower_csc
+	CONSUME CL_lower_run: 1,crane_lower: 1,crane_transport_height: 1;
+	PRODUCE CL_lower_run: 1,crane_lower: 1,crane_pick_up_height: 1;
+
+TRANSITION CL_lower_Pstop
+	CONSUME CL_lower_rs: 1,crane_lower: 1;
+	PRODUCE crane_stop_v: 1,CL_ready_to_grasp: 1;
+
+TRANSITION CL_lower_Pstart
+	CONSUME crane_stop_v: 1,CL_in: 1;
+	PRODUCE CL_lower_run: 1,crane_lower: 1;
+
+TRANSITION CL_lower_Cstop
+	CONSUME CL_lower_run: 1,crane_pick_up_height: 1;
+	PRODUCE CL_lower_rs: 1,crane_pick_up_height: 1;
+
+TRANSITION CL_lift_csc
+	CONSUME CL_lift_run: 1,crane_lift: 1,crane_pick_up_height: 1;
+	PRODUCE CL_lift_run: 1,crane_lift: 1,crane_transport_height: 1;
+
+TRANSITION CL_lift_Pstop
+	CONSUME CL_lift_rs: 1,crane_lift: 1;
+	PRODUCE crane_stop_v: 1,CL_ready_to_transport: 1;
+
+TRANSITION CL_lift_Pstart
+	CONSUME crane_stop_v: 1,CL_loaded: 1;
+	PRODUCE CL_lift_run: 1,crane_lift: 1;
+
+TRANSITION CL_lift_Cstop
+	CONSUME CL_lift_run: 1,crane_transport_height: 1;
+	PRODUCE CL_lift_rs: 1,crane_transport_height: 1;
+
+TRANSITION CL_grasp
+	CONSUME crane_mag_off: 1,CL_ready_to_grasp: 1;
+	PRODUCE crane_mag_on: 1,CL_loaded: 1;
+
+TRANSITION A2U_ungrasp
+	CONSUME A2U_extended: 1,arm2_magnet_on: 1;
+	PRODUCE A2U_unloaded: 1,arm2_magnet_off: 1;
+
+TRANSITION A2U_rot3_csc
+	CONSUME A2U_rot3_run: 1,arm2_pick_up_angle: 1,robot_right: 1;
+	PRODUCE A2U_rot3_run: 1,arm2_release_angle: 1,robot_right: 1;
+
+TRANSITION A2U_rot3_Pstop
+	CONSUME A2U_rot3_rs: 1,robot_right: 1;
+	PRODUCE robot_stop: 1,A2U_rotated: 1;
+
+TRANSITION A2U_rot3_Pstart
+	CONSUME A2U_rot3_in: 1,robot_stop: 1;
+	PRODUCE A2U_rot3_run: 1,robot_right: 1;
+
+TRANSITION A2U_rot3_Cstop
+	CONSUME A2U_rot3_run: 1,arm2_release_angle: 1;
+	PRODUCE A2U_rot3_rs: 1,arm2_release_angle: 1;
+
+TRANSITION A2U_rot2_csc
+	CONSUME A2U_rot2_run: 1,arm1_release_angle: 1,robot_left: 1;
+	PRODUCE A2U_rot2_run: 1,arm2_release_angle: 1,robot_left: 1;
+
+TRANSITION A2U_rot2_Pstop
+	CONSUME A2U_rot2_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A2U_rotated: 1;
+
+TRANSITION A2U_rot2_Pstart
+	CONSUME A2U_rot2_in: 1,robot_stop: 1;
+	PRODUCE A2U_rot2_run: 1,robot_left: 1;
+
+TRANSITION A2U_rot2_Cstop
+	CONSUME A2U_rot2_run: 1,arm2_release_angle: 1;
+	PRODUCE A2U_rot2_rs: 1,arm2_release_angle: 1;
+
+TRANSITION A2U_rot1_csc
+	CONSUME A2U_rot1_run: 1,arm1_pick_up_angle: 1,robot_right: 1;
+	PRODUCE A2U_rot1_run: 1,arm2_release_angle: 1,robot_right: 1;
+
+TRANSITION A2U_rot1_Pstop
+	CONSUME A2U_rot1_rs: 1,robot_right: 1;
+	PRODUCE robot_stop: 1,A2U_rotated: 1;
+
+TRANSITION A2U_rot1_Pstart
+	CONSUME A2U_rot1_in: 1,robot_stop: 1;
+	PRODUCE A2U_rot1_run: 1,robot_right: 1;
+
+TRANSITION A2U_rot1_Cstop
+	CONSUME A2U_rot1_run: 1,arm2_release_angle: 1;
+	PRODUCE A2U_rot1_rs: 1,arm2_release_angle: 1;
+
+TRANSITION A2U_ret_csc
+	CONSUME A2U_ret_run: 1,arm2_release_ext: 1,arm2_backward: 1;
+	PRODUCE A2U_ret_run: 1,arm2_retract_ext: 1,arm2_backward: 1;
+
+TRANSITION A2U_ret_Pstop
+	CONSUME A2U_ret_rs: 1,arm2_backward: 1;
+	PRODUCE arm2_stop: 1,A2U_out: 1;
+
+TRANSITION A2U_ret_Pstart
+	CONSUME A2U_unloaded: 1,arm2_stop: 1;
+	PRODUCE A2U_ret_run: 1,arm2_backward: 1;
+
+TRANSITION A2U_ret_Cstop
+	CONSUME A2U_ret_run: 1,arm2_retract_ext: 1;
+	PRODUCE A2U_ret_rs: 1,arm2_retract_ext: 1;
+
+TRANSITION A2U_ext_csc
+	CONSUME A2U_ext_run: 1,arm2_retract_ext: 1,arm2_forward: 1;
+	PRODUCE A2U_ext_run: 1,arm2_release_ext: 1,arm2_forward: 1;
+
+TRANSITION A2U_ext_Pstop
+	CONSUME A2U_ext_rs: 1,arm2_forward: 1;
+	PRODUCE A2U_extended: 1,arm2_stop: 1;
+
+TRANSITION A2U_ext_Pstart
+	CONSUME arm2_stop: 1,A2U_rotated: 1;
+	PRODUCE A2U_ext_run: 1,arm2_forward: 1;
+
+TRANSITION A2U_ext_Cstop
+	CONSUME A2U_ext_run: 1,arm2_release_ext: 1;
+	PRODUCE A2U_ext_rs: 1,arm2_release_ext: 1;
+
+TRANSITION A2U_c3
+	CONSUME arm2_pick_up_angle: 1,A2U_in: 1;
+	PRODUCE arm2_pick_up_angle: 1,A2U_rot3_in: 1;
+
+TRANSITION A2U_c2
+	CONSUME arm1_release_angle: 1,A2U_in: 1;
+	PRODUCE arm1_release_angle: 1,A2U_rot2_in: 1;
+
+TRANSITION A2U_c1
+	CONSUME arm1_pick_up_angle: 1,A2U_in: 1;
+	PRODUCE arm1_pick_up_angle: 1,A2U_rot1_in: 1;
+
+TRANSITION A2L_rot3_csc
+	CONSUME A2L_rot3_run: 1,arm2_release_angle: 1,robot_left: 1;
+	PRODUCE A2L_rot3_run: 1,arm2_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A2L_rot3_Pstop
+	CONSUME A2L_rot3_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A2L_rotated: 1;
+
+TRANSITION A2L_rot3_Pstart
+	CONSUME A2L_rot3_in: 1,robot_stop: 1;
+	PRODUCE A2L_rot3_run: 1,robot_left: 1;
+
+TRANSITION A2L_rot3_Cstop
+	CONSUME A2L_rot3_run: 1,arm2_pick_up_angle: 1;
+	PRODUCE A2L_rot3_rs: 1,arm2_pick_up_angle: 1;
+
+TRANSITION A2L_rot2_csc
+	CONSUME A2L_rot2_run: 1,arm1_release_angle: 1,robot_left: 1;
+	PRODUCE A2L_rot2_run: 1,arm2_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A2L_rot2_Pstop
+	CONSUME A2L_rot2_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A2L_rotated: 1;
+
+TRANSITION A2L_rot2_Pstart
+	CONSUME A2L_rot2_in: 1,robot_stop: 1;
+	PRODUCE A2L_rot2_run: 1,robot_left: 1;
+
+TRANSITION A2L_rot2_Cstop
+	CONSUME A2L_rot2_run: 1,arm2_pick_up_angle: 1;
+	PRODUCE A2L_rot2_rs: 1,arm2_pick_up_angle: 1;
+
+TRANSITION A2L_rot1_csc
+	CONSUME A2L_rot1_run: 1,arm1_pick_up_angle: 1,robot_left: 1;
+	PRODUCE A2L_rot1_run: 1,arm2_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A2L_rot1_Pstop
+	CONSUME A2L_rot1_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A2L_rotated: 1;
+
+TRANSITION A2L_rot1_Pstart
+	CONSUME A2L_rot1_in: 1,robot_stop: 1;
+	PRODUCE A2L_rot1_run: 1,robot_left: 1;
+
+TRANSITION A2L_rot1_Cstop
+	CONSUME A2L_rot1_run: 1,arm2_pick_up_angle: 1;
+	PRODUCE A2L_rot1_rs: 1,arm2_pick_up_angle: 1;
+
+TRANSITION A2L_ret_csc
+	CONSUME A2L_ret_run: 1,arm2_pick_up_ext: 1,arm2_backward: 1;
+	PRODUCE A2L_ret_run: 1,arm2_retract_ext: 1,arm2_backward: 1;
+
+TRANSITION A2L_ret_Pstop
+	CONSUME A2L_ret_rs: 1,arm2_backward: 1;
+	PRODUCE arm2_stop: 1,A2L_out: 1;
+
+TRANSITION A2L_ret_Pstart
+	CONSUME A2L_loaded: 1,arm2_stop: 1;
+	PRODUCE A2L_ret_run: 1,arm2_backward: 1;
+
+TRANSITION A2L_ret_Cstop
+	CONSUME A2L_ret_run: 1,arm2_retract_ext: 1;
+	PRODUCE A2L_ret_rs: 1,arm2_retract_ext: 1;
+
+TRANSITION A2L_grasp
+	CONSUME arm2_magnet_off: 1,A2L_extended: 1;
+	PRODUCE arm2_magnet_on: 1,A2L_loaded: 1;
+
+TRANSITION A2L_ext_csc
+	CONSUME A2L_ext_run: 1,arm2_retract_ext: 1,arm2_forward: 1;
+	PRODUCE A2L_ext_run: 1,arm2_pick_up_ext: 1,arm2_forward: 1;
+
+TRANSITION A2L_ext_Pstop
+	CONSUME A2L_ext_rs: 1,arm2_forward: 1;
+	PRODUCE A2L_extended: 1,arm2_stop: 1;
+
+TRANSITION A2L_ext_Pstart
+	CONSUME arm2_stop: 1,A2L_rotated: 1;
+	PRODUCE A2L_ext_run: 1,arm2_forward: 1;
+
+TRANSITION A2L_ext_Cstop
+	CONSUME A2L_ext_run: 1,arm2_pick_up_ext: 1;
+	PRODUCE A2L_ext_rs: 1,arm2_pick_up_ext: 1;
+
+TRANSITION A2L_c3
+	CONSUME arm2_release_angle: 1,A2L_in: 1;
+	PRODUCE arm2_release_angle: 1,A2L_rot3_in: 1;
+
+TRANSITION A2L_c2
+	CONSUME arm1_release_angle: 1,A2L_in: 1;
+	PRODUCE arm1_release_angle: 1,A2L_rot2_in: 1;
+
+TRANSITION A2L_c1
+	CONSUME arm1_pick_up_angle: 1,A2L_in: 1;
+	PRODUCE arm1_pick_up_angle: 1,A2L_rot1_in: 1;
+
+TRANSITION A1U_ungrasp
+	CONSUME arm1_magnet_on: 1,A1U_extendet: 1;
+	PRODUCE arm1_magnet_off: 1,A1U_unloadet: 1;
+
+TRANSITION A1U_rot3_csc
+	CONSUME A1U_rot3_run: 1,arm2_release_angle: 1,robot_left: 1;
+	PRODUCE A1U_rot3_run: 1,arm1_release_angle: 1,robot_left: 1;
+
+TRANSITION A1U_rot3_Pstop
+	CONSUME A1U_rot3_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A1U_rotated: 1;
+
+TRANSITION A1U_rot3_Pstart
+	CONSUME A1U_rot3_in: 1,robot_stop: 1;
+	PRODUCE A1U_rot3_run: 1,robot_left: 1;
+
+TRANSITION A1U_rot3_Cstop
+	CONSUME A1U_rot3_run: 1,arm1_release_angle: 1;
+	PRODUCE A1U_rot3_rs: 1,arm1_release_angle: 1;
+
+TRANSITION A1U_rot2_csc
+	CONSUME A1U_rot2_run: 1,arm2_pick_up_angle: 1,robot_right: 1;
+	PRODUCE A1U_rot2_run: 1,arm1_release_angle: 1,robot_right: 1;
+
+TRANSITION A1U_rot2_Pstop
+	CONSUME A1U_rot2_rs: 1,robot_right: 1;
+	PRODUCE robot_stop: 1,A1U_rotated: 1;
+
+TRANSITION A1U_rot2_Pstart
+	CONSUME A1U_rot2_in: 1,robot_stop: 1;
+	PRODUCE A1U_rot2_run: 1,robot_right: 1;
+
+TRANSITION A1U_rot2_Cstop
+	CONSUME A1U_rot2_run: 1,arm1_release_angle: 1;
+	PRODUCE A1U_rot2_rs: 1,arm1_release_angle: 1;
+
+TRANSITION A1U_rot1_csc
+	CONSUME A1U_rot1_run: 1,arm1_pick_up_angle: 1,robot_right: 1;
+	PRODUCE A1U_rot1_run: 1,arm1_release_angle: 1,robot_right: 1;
+
+TRANSITION A1U_rot1_Pstop
+	CONSUME A1U_rot1_rs: 1,robot_right: 1;
+	PRODUCE robot_stop: 1,A1U_rotated: 1;
+
+TRANSITION A1U_rot1_Pstart
+	CONSUME A1U_rot1_in: 1,robot_stop: 1;
+	PRODUCE A1U_rot1_run: 1,robot_right: 1;
+
+TRANSITION A1U_rot1_Cstop
+	CONSUME A1U_rot1_run: 1,arm1_release_angle: 1;
+	PRODUCE A1U_rot1_rs: 1,arm1_release_angle: 1;
+
+TRANSITION A1U_ret_csc
+	CONSUME A1U_ret_run: 1,arm1_release_ext: 1,arm1_backward: 1;
+	PRODUCE A1U_ret_run: 1,arm1_retract_ext: 1,arm1_backward: 1;
+
+TRANSITION A1U_ret_Pstop
+	CONSUME A1U_ret_rs: 1,arm1_backward: 1;
+	PRODUCE arm1_stop: 1,A1U_out: 1;
+
+TRANSITION A1U_ret_Pstart
+	CONSUME A1U_unloadet: 1,arm1_stop: 1;
+	PRODUCE A1U_ret_run: 1,arm1_backward: 1;
+
+TRANSITION A1U_ret_Cstop
+	CONSUME A1U_ret_run: 1,arm1_retract_ext: 1;
+	PRODUCE A1U_ret_rs: 1,arm1_retract_ext: 1;
+
+TRANSITION A1U_ext_csc
+	CONSUME A1U_ext_run: 1,arm1_retract_ext: 1,arm1_forward: 1;
+	PRODUCE A1U_ext_run: 1,arm1_release_ext: 1,arm1_forward: 1;
+
+TRANSITION A1U_ext_Pstop
+	CONSUME A1U_ext_rs: 1,arm1_forward: 1;
+	PRODUCE A1U_extendet: 1,arm1_stop: 1;
+
+TRANSITION A1U_ext_Pstart
+	CONSUME arm1_stop: 1,A1U_rotated: 1;
+	PRODUCE A1U_ext_run: 1,arm1_forward: 1;
+
+TRANSITION A1U_ext_Cstop
+	CONSUME A1U_ext_run: 1,arm1_release_ext: 1;
+	PRODUCE A1U_ext_rs: 1,arm1_release_ext: 1;
+
+TRANSITION A1U_c3
+	CONSUME arm2_release_angle: 1,A1U_in: 1;
+	PRODUCE arm2_release_angle: 1,A1U_rot3_in: 1;
+
+TRANSITION A1U_c2
+	CONSUME arm2_pick_up_angle: 1,A1U_in: 1;
+	PRODUCE arm2_pick_up_angle: 1,A1U_rot2_in: 1;
+
+TRANSITION A1U_c1
+	CONSUME arm1_pick_up_angle: 1,A1U_in: 1;
+	PRODUCE arm1_pick_up_angle: 1,A1U_rot1_in: 1;
+
+TRANSITION A1L_rot3_csc
+	CONSUME A1L_rot3_run: 1,arm2_release_angle: 1,robot_left: 1;
+	PRODUCE A1L_rot3_run: 1,arm1_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A1L_rot3_Pstop
+	CONSUME A1L_rot3_rs: 1,robot_left: 1;
+	PRODUCE A1L_rotated: 1,robot_stop: 1;
+
+TRANSITION A1L_rot3_Pstart
+	CONSUME A1L_rot3_in: 1,robot_stop: 1;
+	PRODUCE A1L_rot3_run: 1,robot_left: 1;
+
+TRANSITION A1L_rot3_Cstop
+	CONSUME A1L_rot3_run: 1,arm1_pick_up_angle: 1;
+	PRODUCE A1L_rot3_rs: 1,arm1_pick_up_angle: 1;
+
+TRANSITION A1L_rot2_csc
+	CONSUME A1L_rot2_run: 1,arm2_pick_up_angle: 1,robot_left: 1;
+	PRODUCE A1L_rot2_run: 1,arm1_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A1L_rot2_Pstop
+	CONSUME A1L_rot2_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A1L_rotated: 1;
+
+TRANSITION A1L_rot2_Pstart
+	CONSUME A1L_rot2_in: 1,robot_stop: 1;
+	PRODUCE A1L_rot2_run: 1,robot_left: 1;
+
+TRANSITION A1L_rot2_Cstop
+	CONSUME A1L_rot2_run: 1,arm1_pick_up_angle: 1;
+	PRODUCE A1L_rot2_rs: 1,arm1_pick_up_angle: 1;
+
+TRANSITION A1L_rot1_csc
+	CONSUME A1L_rot1_run: 1,arm1_release_angle: 1,robot_left: 1;
+	PRODUCE A1L_rot1_run: 1,arm1_pick_up_angle: 1,robot_left: 1;
+
+TRANSITION A1L_rot1_Pstop
+	CONSUME A1L_rot1_rs: 1,robot_left: 1;
+	PRODUCE robot_stop: 1,A1L_rotated: 1;
+
+TRANSITION A1L_rot1_Pstart
+	CONSUME A1L_rot1_in: 1,robot_stop: 1;
+	PRODUCE A1L_rot1_run: 1,robot_left: 1;
+
+TRANSITION A1L_rot1_Cstop
+	CONSUME A1L_rot1_run: 1,arm1_pick_up_angle: 1;
+	PRODUCE A1L_rot1_rs: 1,arm1_pick_up_angle: 1;
+
+TRANSITION A1L_ret_csc
+	CONSUME A1L_ret_run: 1,arm1_pick_up_ext: 1,arm1_backward: 1;
+	PRODUCE A1L_ret_run: 1,arm1_retract_ext: 1,arm1_backward: 1;
+
+TRANSITION A1L_ret_Pstop
+	CONSUME A1L_ret_rs: 1,arm1_backward: 1;
+	PRODUCE arm1_stop: 1,A1L_out: 1;
+
+TRANSITION A1L_ret_Pstart
+	CONSUME A1L_loaded: 1,arm1_stop: 1;
+	PRODUCE A1L_ret_run: 1,arm1_backward: 1;
+
+TRANSITION A1L_ret_Cstop
+	CONSUME A1L_ret_run: 1,arm1_retract_ext: 1;
+	PRODUCE A1L_ret_rs: 1,arm1_retract_ext: 1;
+
+TRANSITION A1L_grasp
+	CONSUME A1_extended: 1,arm1_magnet_off: 1;
+	PRODUCE A1L_loaded: 1,arm1_magnet_on: 1;
+
+TRANSITION A1L_ext_csc
+	CONSUME A1L_ext_run: 1,arm1_retract_ext: 1,arm1_forward: 1;
+	PRODUCE A1L_ext_run: 1,arm1_pick_up_ext: 1,arm1_forward: 1;
+
+TRANSITION A1L_ext_Pstop
+	CONSUME A1L_ext_rs: 1,arm1_forward: 1;
+	PRODUCE A1_extended: 1,arm1_stop: 1;
+
+TRANSITION A1L_ext_Pstart
+	CONSUME arm1_stop: 1,A1L_rotated: 1;
+	PRODUCE A1L_ext_run: 1,arm1_forward: 1;
+
+TRANSITION A1L_ext_Cstop
+	CONSUME A1L_ext_run: 1,arm1_pick_up_ext: 1;
+	PRODUCE A1L_ext_rs: 1,arm1_pick_up_ext: 1;
+
+TRANSITION A1L_c3
+	CONSUME A1L_in: 1,arm2_release_angle: 1;
+	PRODUCE arm2_release_angle: 1,A1L_rot3_in: 1;
+
+TRANSITION A1L_c2
+	CONSUME arm2_pick_up_angle: 1,A1L_in: 1;
+	PRODUCE arm2_pick_up_angle: 1,A1L_rot2_in: 1;
+
+TRANSITION A1L_c1
+	CONSUME arm1_release_angle: 1,A1L_in: 1;
+	PRODUCE arm1_release_angle: 1,A1L_rot1_in: 1;

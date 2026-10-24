@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {AutonomousCar-PT-02a}
+
+33 places, 69 transitions, 368 arcs
+
+0.002s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+2314 marking(s), 9593 transition(s)
+
+0.010s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+46 dead marking(s), 85 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.001s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {AutonomousCar-PT-02a}, 33 places, 69 transitions, 368 arcs      #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         2314         33          ?         46         85 # 
+# transitions         9593         69          ?          0          0 #

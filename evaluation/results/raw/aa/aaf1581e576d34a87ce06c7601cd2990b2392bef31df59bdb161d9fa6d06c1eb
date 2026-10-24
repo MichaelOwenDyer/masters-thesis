@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CopsAndRobbers-PT-KFL010N005K002X001/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"General","places":56,"transitions":93,"arcs":506,"parse_ms":1.811,"analyze_ms":1.404,"timeout_ms":null,"states":620,"edges":980}

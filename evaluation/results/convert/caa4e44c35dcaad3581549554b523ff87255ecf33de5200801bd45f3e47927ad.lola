@@ -1,0 +1,173 @@
+PLACE
+	pb1_1_1, pb2_1_1, pb3_1_1, pb4_1_1, pb5_1_1, pb6_1_1, pbl_1_1, pi1_1_1, pi2_1_1, pi3_1_1, pi4_1_1, pi5_1_1, pi6_1_1, pil1_1_1, pil2_1_1, pil3_1_1, pil4_1_1, pil5_1_1, pil6_1_1, po1_1_1, po2_1_1, po3_1_1, po4_1_1, po5_1_1, po6_1_1, pol1_1_1, pol2_1_1, pol3_1_1, pol4_1_1, pol5_1_1, pol6_1_1;
+
+MARKING
+	pol6_1_1: 1,pol5_1_1: 1,pol4_1_1: 1,pol3_1_1: 1,pol2_1_1: 1,pol1_1_1: 1,pil6_1_1: 1,pil5_1_1: 1,pil4_1_1: 1,pil3_1_1: 1,pil2_1_1: 1,pil1_1_1: 1,pb6_1_1: 1,pb5_1_1: 1,pb4_1_1: 1,pb3_1_1: 1,pb2_1_1: 1,pb1_1_1: 1;
+
+TRANSITION to6_1_1
+	CONSUME pb6_1_1: 1,pol6_1_1: 1;
+	PRODUCE pbl_1_1: 1,po6_1_1: 1;
+
+TRANSITION to5_1_1
+	CONSUME pol5_1_1: 1,pb5_1_1: 1;
+	PRODUCE po5_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to4_1_1
+	CONSUME pol4_1_1: 1,pb4_1_1: 1;
+	PRODUCE po4_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to3_1_1
+	CONSUME pb3_1_1: 1,pol3_1_1: 1;
+	PRODUCE po3_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to2_1_1
+	CONSUME pb2_1_1: 1,pol2_1_1: 1;
+	PRODUCE po2_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to1_1_1
+	CONSUME pb1_1_1: 1,pol1_1_1: 1;
+	PRODUCE po1_1_1: 1,pbl_1_1: 1;
+
+TRANSITION ti6_5_1_1
+	CONSUME pbl_1_1: 1,pi6_1_1: 1;
+	PRODUCE pb5_1_1: 1,pil6_1_1: 1;
+
+TRANSITION ti6_4_1_1
+	CONSUME pbl_1_1: 1,pi6_1_1: 1;
+	PRODUCE pb4_1_1: 1,pil6_1_1: 1;
+
+TRANSITION ti6_3_1_1
+	CONSUME pbl_1_1: 1,pi6_1_1: 1;
+	PRODUCE pb3_1_1: 1,pil6_1_1: 1;
+
+TRANSITION ti6_2_1_1
+	CONSUME pbl_1_1: 1,pi6_1_1: 1;
+	PRODUCE pb2_1_1: 1,pil6_1_1: 1;
+
+TRANSITION ti6_1_1_1
+	CONSUME pbl_1_1: 1,pi6_1_1: 1;
+	PRODUCE pb1_1_1: 1,pil6_1_1: 1;
+
+TRANSITION ti5_6_1_1
+	CONSUME pbl_1_1: 1,pi5_1_1: 1;
+	PRODUCE pb6_1_1: 1,pil5_1_1: 1;
+
+TRANSITION ti5_4_1_1
+	CONSUME pbl_1_1: 1,pi5_1_1: 1;
+	PRODUCE pb4_1_1: 1,pil5_1_1: 1;
+
+TRANSITION ti5_3_1_1
+	CONSUME pbl_1_1: 1,pi5_1_1: 1;
+	PRODUCE pb3_1_1: 1,pil5_1_1: 1;
+
+TRANSITION ti5_2_1_1
+	CONSUME pbl_1_1: 1,pi5_1_1: 1;
+	PRODUCE pb2_1_1: 1,pil5_1_1: 1;
+
+TRANSITION ti5_1_1_1
+	CONSUME pi5_1_1: 1,pbl_1_1: 1;
+	PRODUCE pb1_1_1: 1,pil5_1_1: 1;
+
+TRANSITION ti4_6_1_1
+	CONSUME pi4_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil4_1_1: 1,pb6_1_1: 1;
+
+TRANSITION ti4_5_1_1
+	CONSUME pi4_1_1: 1,pbl_1_1: 1;
+	PRODUCE pb5_1_1: 1,pil4_1_1: 1;
+
+TRANSITION ti4_3_1_1
+	CONSUME pi4_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil4_1_1: 1,pb3_1_1: 1;
+
+TRANSITION ti4_2_1_1
+	CONSUME pi4_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil4_1_1: 1,pb2_1_1: 1;
+
+TRANSITION ti4_1_1_1
+	CONSUME pi4_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil4_1_1: 1,pb1_1_1: 1;
+
+TRANSITION ti3_6_1_1
+	CONSUME pbl_1_1: 1,pi3_1_1: 1;
+	PRODUCE pil3_1_1: 1,pb6_1_1: 1;
+
+TRANSITION ti3_5_1_1
+	CONSUME pbl_1_1: 1,pi3_1_1: 1;
+	PRODUCE pil3_1_1: 1,pb5_1_1: 1;
+
+TRANSITION ti3_4_1_1
+	CONSUME pbl_1_1: 1,pi3_1_1: 1;
+	PRODUCE pil3_1_1: 1,pb4_1_1: 1;
+
+TRANSITION ti3_2_1_1
+	CONSUME pbl_1_1: 1,pi3_1_1: 1;
+	PRODUCE pil3_1_1: 1,pb2_1_1: 1;
+
+TRANSITION ti3_1_1_1
+	CONSUME pbl_1_1: 1,pi3_1_1: 1;
+	PRODUCE pil3_1_1: 1,pb1_1_1: 1;
+
+TRANSITION ti2_6_1_1
+	CONSUME pbl_1_1: 1,pi2_1_1: 1;
+	PRODUCE pil2_1_1: 1,pb6_1_1: 1;
+
+TRANSITION ti2_5_1_1
+	CONSUME pbl_1_1: 1,pi2_1_1: 1;
+	PRODUCE pil2_1_1: 1,pb5_1_1: 1;
+
+TRANSITION ti2_4_1_1
+	CONSUME pbl_1_1: 1,pi2_1_1: 1;
+	PRODUCE pil2_1_1: 1,pb4_1_1: 1;
+
+TRANSITION ti2_3_1_1
+	CONSUME pbl_1_1: 1,pi2_1_1: 1;
+	PRODUCE pil2_1_1: 1,pb3_1_1: 1;
+
+TRANSITION ti2_1_1_1
+	CONSUME pbl_1_1: 1,pi2_1_1: 1;
+	PRODUCE pil2_1_1: 1,pb1_1_1: 1;
+
+TRANSITION ti1_6_1_1
+	CONSUME pbl_1_1: 1,pi1_1_1: 1;
+	PRODUCE pil1_1_1: 1,pb6_1_1: 1;
+
+TRANSITION ti1_5_1_1
+	CONSUME pbl_1_1: 1,pi1_1_1: 1;
+	PRODUCE pil1_1_1: 1,pb5_1_1: 1;
+
+TRANSITION ti1_4_1_1
+	CONSUME pbl_1_1: 1,pi1_1_1: 1;
+	PRODUCE pil1_1_1: 1,pb4_1_1: 1;
+
+TRANSITION ti1_3_1_1
+	CONSUME pi1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil1_1_1: 1,pb3_1_1: 1;
+
+TRANSITION ti1_2_1_1
+	CONSUME pbl_1_1: 1,pi1_1_1: 1;
+	PRODUCE pil1_1_1: 1,pb2_1_1: 1;
+
+TRANSITION t6_1_1
+	CONSUME po6_1_1: 1,pil6_1_1: 1;
+	PRODUCE pol6_1_1: 1,pi6_1_1: 1;
+
+TRANSITION t5_1_1
+	CONSUME po5_1_1: 1,pil5_1_1: 1;
+	PRODUCE pol5_1_1: 1,pi5_1_1: 1;
+
+TRANSITION t4_1_1
+	CONSUME po4_1_1: 1,pil4_1_1: 1;
+	PRODUCE pol4_1_1: 1,pi4_1_1: 1;
+
+TRANSITION t3_1_1
+	CONSUME pil3_1_1: 1,po3_1_1: 1;
+	PRODUCE pol3_1_1: 1,pi3_1_1: 1;
+
+TRANSITION t2_1_1
+	CONSUME po2_1_1: 1,pil2_1_1: 1;
+	PRODUCE pol2_1_1: 1,pi2_1_1: 1;
+
+TRANSITION t1_1_1
+	CONSUME po1_1_1: 1,pil1_1_1: 1;
+	PRODUCE pol1_1_1: 1,pi1_1_1: 1;

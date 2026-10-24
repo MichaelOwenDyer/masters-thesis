@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ParamProductionCell-PT-1/model.pnml","property":"df","mode":"general","verdict":"true","class":"General","places":231,"transitions":202,"arcs":846,"parse_ms":4.509,"analyze_ms":117.771,"timeout_ms":null}

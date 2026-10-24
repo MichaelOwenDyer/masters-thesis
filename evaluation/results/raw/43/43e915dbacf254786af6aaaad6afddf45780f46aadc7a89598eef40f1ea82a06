@@ -1,0 +1,5 @@
+some state violates condition -f:
+  M1*3 M2 M3*2 P1*2 P2*2 P3*2
+  firable: tP1 tP2 tP3
+4 marking(s), 3 transition(s)
+0.000s

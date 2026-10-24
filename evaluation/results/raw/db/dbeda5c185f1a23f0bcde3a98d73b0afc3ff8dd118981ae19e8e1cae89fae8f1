@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {ErlangenMainframeV0-PT-0404}
+
+183 places, 445 transitions, 3331 arcs
+
+0.010s

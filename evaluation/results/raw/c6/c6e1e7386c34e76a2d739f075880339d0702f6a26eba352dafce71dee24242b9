@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SafeBus-PT-03}
+
+57 places, 91 transitions, 541 arcs
+
+0.004s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+4650 marking(s), 12888 transition(s)
+
+0.024s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+reversible
+
+0 dead marking(s), 4650 live marking(s)
+9 dead transition(s), 82 live transition(s)
+
+0.002s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SafeBus-PT-03}, 57 places, 91 transitions, 541 arcs             #
+# bounded, not live, reversible                                        #
+# abstraction        count      props      psets       dead       live #
+#      states         4650         57          ?          0       4650 # 
+# transitions        12888         91          ?          9         82 #

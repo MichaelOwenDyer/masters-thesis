@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SimpleLoadBal-PT-05}
+
+59 places, 180 transitions, 1158 arcs
+
+0.006s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+116176 marking(s), 566332 transition(s)
+
+1.787s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+reversible
+
+0 dead marking(s), 116176 live marking(s)
+52 dead transition(s), 128 live transition(s)
+
+0.099s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SimpleLoadBal-PT-05}, 59 places, 180 transitions, 1158 arcs     #
+# bounded, not live, reversible                                        #
+# abstraction        count      props      psets       dead       live #
+#      states       116176         59          ?          0     116176 # 
+# transitions       566332        180          ?         52        128 #

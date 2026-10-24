@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {CloudDeployment-PT-3a}
+
+104 places, 308 transitions, 1611 arcs
+
+0.006s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+190102 marking(s), 7698055 transition(s)
+
+8.518s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+2 dead marking(s), 3 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.300s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {CloudDeployment-PT-3a}, 104 places, 308 transitions, 1611 arcs  #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states       190102        104          ?          2          3 # 
+# transitions      7698055        308          ?          0          0 #

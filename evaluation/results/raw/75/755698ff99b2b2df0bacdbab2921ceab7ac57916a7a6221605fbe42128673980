@@ -1,0 +1,5 @@
+some state violates condition -f:
+  capacity_c0*10 state_c0
+  firable: ComputeFirst_3 Go_5 Transfer_8
+4 marking(s), 3 transition(s)
+0.000s

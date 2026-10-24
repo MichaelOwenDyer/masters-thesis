@@ -1,0 +1,69 @@
+PLACE
+	pb_d1_n1_1_1, pb_d1_n2_1_1, pb_d2_n1_1_1, pb_d2_n2_1_1, pbl_1_1, pi_d1_n1_1_1, pi_d2_n1_1_1, pil_d1_n1_1_1, pil_d2_n1_1_1, po_d1_n1_1_1, po_d2_n1_1_1, pol_d1_n1_1_1, pol_d2_n1_1_1;
+
+MARKING
+	pol_d2_n1_1_1: 1,pol_d1_n1_1_1: 1,pil_d2_n1_1_1: 1,pil_d1_n1_1_1: 1,pb_d2_n2_1_1: 8,pb_d2_n1_1_1: 8,pb_d1_n2_1_1: 8,pb_d1_n1_1_1: 8;
+
+TRANSITION to_d2_n2_1_1
+	CONSUME pil_d2_n1_1_1: 1,pb_d2_n2_1_1: 1;
+	PRODUCE pi_d2_n1_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to_d2_n1_1_1
+	CONSUME pol_d2_n1_1_1: 1,pb_d2_n1_1_1: 1;
+	PRODUCE po_d2_n1_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to_d1_n2_1_1
+	CONSUME pil_d1_n1_1_1: 1,pb_d1_n2_1_1: 1;
+	PRODUCE pi_d1_n1_1_1: 1,pbl_1_1: 1;
+
+TRANSITION to_d1_n1_1_1
+	CONSUME pol_d1_n1_1_1: 1,pb_d1_n1_1_1: 1;
+	PRODUCE po_d1_n1_1_1: 1,pbl_1_1: 1;
+
+TRANSITION ti_d2_n2_d2_n1_1_1
+	CONSUME po_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d2_n1_1_1: 1,pb_d2_n1_1_1: 1;
+
+TRANSITION ti_d2_n2_d1_n2_1_1
+	CONSUME po_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d2_n1_1_1: 1,pb_d1_n2_1_1: 1;
+
+TRANSITION ti_d2_n2_d1_n1_1_1
+	CONSUME po_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d2_n1_1_1: 1,pb_d1_n1_1_1: 1;
+
+TRANSITION ti_d2_n1_d2_n2_1_1
+	CONSUME pi_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d2_n1_1_1: 1,pb_d2_n2_1_1: 1;
+
+TRANSITION ti_d2_n1_d1_n2_1_1
+	CONSUME pi_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d2_n1_1_1: 1,pb_d1_n2_1_1: 1;
+
+TRANSITION ti_d2_n1_d1_n1_1_1
+	CONSUME pi_d2_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d2_n1_1_1: 1,pb_d1_n1_1_1: 1;
+
+TRANSITION ti_d1_n2_d2_n2_1_1
+	CONSUME po_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d1_n1_1_1: 1,pb_d2_n2_1_1: 1;
+
+TRANSITION ti_d1_n2_d2_n1_1_1
+	CONSUME po_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d1_n1_1_1: 1,pb_d2_n1_1_1: 1;
+
+TRANSITION ti_d1_n2_d1_n1_1_1
+	CONSUME po_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pol_d1_n1_1_1: 1,pb_d1_n1_1_1: 1;
+
+TRANSITION ti_d1_n1_d2_n2_1_1
+	CONSUME pi_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d1_n1_1_1: 1,pb_d2_n2_1_1: 1;
+
+TRANSITION ti_d1_n1_d2_n1_1_1
+	CONSUME pi_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d1_n1_1_1: 1,pb_d2_n1_1_1: 1;
+
+TRANSITION ti_d1_n1_d1_n2_1_1
+	CONSUME pi_d1_n1_1_1: 1,pbl_1_1: 1;
+	PRODUCE pil_d1_n1_1_1: 1,pb_d1_n2_1_1: 1;

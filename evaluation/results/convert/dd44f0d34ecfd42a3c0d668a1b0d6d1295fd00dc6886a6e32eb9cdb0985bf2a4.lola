@@ -1,0 +1,629 @@
+PLACE
+	State_0_0, State_0_1, State_0_2, State_0_3, State_0_4, State_0_5, State_1_0, State_1_1, State_1_2, State_1_3, State_1_4, State_1_5, State_2_0, State_2_1, State_2_2, State_2_3, State_2_4, State_2_5, State_3_0, State_3_1, State_3_2, State_3_3, State_3_4, State_3_5, State_4_0, State_4_1, State_4_2, State_4_3, State_4_4, State_4_5, State_5_0, State_5_1, State_5_2, State_5_3, State_5_4, State_5_5;
+
+MARKING
+	State_5_5: 1,State_4_4: 1,State_3_3: 1,State_2_2: 1,State_1_1: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_5_5_4
+	CONSUME State_5_5: 1,State_4_4: 1;
+	PRODUCE State_5_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_5_5_3
+	CONSUME State_5_5: 1,State_4_3: 1;
+	PRODUCE State_5_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_5_5_2
+	CONSUME State_4_2: 1,State_5_5: 1;
+	PRODUCE State_5_2: 1,State_4_2: 1;
+
+TRANSITION OtherProcess_5_5_1
+	CONSUME State_4_1: 1,State_5_5: 1;
+	PRODUCE State_5_1: 1,State_4_1: 1;
+
+TRANSITION OtherProcess_5_5_0
+	CONSUME State_5_5: 1,State_4_0: 1;
+	PRODUCE State_4_0: 1,State_5_0: 1;
+
+TRANSITION OtherProcess_5_4_5
+	CONSUME State_5_4: 1,State_4_5: 1;
+	PRODUCE State_5_5: 1,State_4_5: 1;
+
+TRANSITION OtherProcess_5_4_3
+	CONSUME State_4_3: 1,State_5_4: 1;
+	PRODUCE State_4_3: 1,State_5_3: 1;
+
+TRANSITION OtherProcess_5_4_2
+	CONSUME State_4_2: 1,State_5_4: 1;
+	PRODUCE State_4_2: 1,State_5_2: 1;
+
+TRANSITION OtherProcess_5_4_1
+	CONSUME State_4_1: 1,State_5_4: 1;
+	PRODUCE State_4_1: 1,State_5_1: 1;
+
+TRANSITION OtherProcess_5_4_0
+	CONSUME State_5_4: 1,State_4_0: 1;
+	PRODUCE State_4_0: 1,State_5_0: 1;
+
+TRANSITION OtherProcess_5_3_5
+	CONSUME State_4_5: 1,State_5_3: 1;
+	PRODUCE State_4_5: 1,State_5_5: 1;
+
+TRANSITION OtherProcess_5_3_4
+	CONSUME State_4_4: 1,State_5_3: 1;
+	PRODUCE State_4_4: 1,State_5_4: 1;
+
+TRANSITION OtherProcess_5_3_2
+	CONSUME State_5_3: 1,State_4_2: 1;
+	PRODUCE State_5_2: 1,State_4_2: 1;
+
+TRANSITION OtherProcess_5_3_1
+	CONSUME State_5_3: 1,State_4_1: 1;
+	PRODUCE State_5_1: 1,State_4_1: 1;
+
+TRANSITION OtherProcess_5_3_0
+	CONSUME State_5_3: 1,State_4_0: 1;
+	PRODUCE State_5_0: 1,State_4_0: 1;
+
+TRANSITION OtherProcess_5_2_5
+	CONSUME State_5_2: 1,State_4_5: 1;
+	PRODUCE State_5_5: 1,State_4_5: 1;
+
+TRANSITION OtherProcess_5_2_4
+	CONSUME State_4_4: 1,State_5_2: 1;
+	PRODUCE State_4_4: 1,State_5_4: 1;
+
+TRANSITION OtherProcess_5_2_3
+	CONSUME State_5_2: 1,State_4_3: 1;
+	PRODUCE State_5_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_5_2_1
+	CONSUME State_5_2: 1,State_4_1: 1;
+	PRODUCE State_4_1: 1,State_5_1: 1;
+
+TRANSITION OtherProcess_5_2_0
+	CONSUME State_4_0: 1,State_5_2: 1;
+	PRODUCE State_4_0: 1,State_5_0: 1;
+
+TRANSITION OtherProcess_5_1_5
+	CONSUME State_4_5: 1,State_5_1: 1;
+	PRODUCE State_5_5: 1,State_4_5: 1;
+
+TRANSITION OtherProcess_5_1_4
+	CONSUME State_5_1: 1,State_4_4: 1;
+	PRODUCE State_5_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_5_1_3
+	CONSUME State_4_3: 1,State_5_1: 1;
+	PRODUCE State_5_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_5_1_2
+	CONSUME State_5_1: 1,State_4_2: 1;
+	PRODUCE State_4_2: 1,State_5_2: 1;
+
+TRANSITION OtherProcess_5_1_0
+	CONSUME State_5_1: 1,State_4_0: 1;
+	PRODUCE State_5_0: 1,State_4_0: 1;
+
+TRANSITION OtherProcess_5_0_5
+	CONSUME State_4_5: 1,State_5_0: 1;
+	PRODUCE State_4_5: 1,State_5_5: 1;
+
+TRANSITION OtherProcess_5_0_4
+	CONSUME State_4_4: 1,State_5_0: 1;
+	PRODUCE State_5_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_5_0_3
+	CONSUME State_5_0: 1,State_4_3: 1;
+	PRODUCE State_4_3: 1,State_5_3: 1;
+
+TRANSITION OtherProcess_5_0_2
+	CONSUME State_5_0: 1,State_4_2: 1;
+	PRODUCE State_5_2: 1,State_4_2: 1;
+
+TRANSITION OtherProcess_5_0_1
+	CONSUME State_4_1: 1,State_5_0: 1;
+	PRODUCE State_5_1: 1,State_4_1: 1;
+
+TRANSITION OtherProcess_4_5_4
+	CONSUME State_4_5: 1,State_3_4: 1;
+	PRODUCE State_3_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_4_5_3
+	CONSUME State_3_3: 1,State_4_5: 1;
+	PRODUCE State_3_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_4_5_2
+	CONSUME State_3_2: 1,State_4_5: 1;
+	PRODUCE State_3_2: 1,State_4_2: 1;
+
+TRANSITION OtherProcess_4_5_1
+	CONSUME State_3_1: 1,State_4_5: 1;
+	PRODUCE State_4_1: 1,State_3_1: 1;
+
+TRANSITION OtherProcess_4_5_0
+	CONSUME State_3_0: 1,State_4_5: 1;
+	PRODUCE State_4_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_4_4_5
+	CONSUME State_3_5: 1,State_4_4: 1;
+	PRODUCE State_4_5: 1,State_3_5: 1;
+
+TRANSITION OtherProcess_4_4_3
+	CONSUME State_4_4: 1,State_3_3: 1;
+	PRODUCE State_3_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_4_4_2
+	CONSUME State_4_4: 1,State_3_2: 1;
+	PRODUCE State_4_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_4_4_1
+	CONSUME State_4_4: 1,State_3_1: 1;
+	PRODUCE State_4_1: 1,State_3_1: 1;
+
+TRANSITION OtherProcess_4_4_0
+	CONSUME State_4_4: 1,State_3_0: 1;
+	PRODUCE State_4_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_4_3_5
+	CONSUME State_4_3: 1,State_3_5: 1;
+	PRODUCE State_3_5: 1,State_4_5: 1;
+
+TRANSITION OtherProcess_4_3_4
+	CONSUME State_3_4: 1,State_4_3: 1;
+	PRODUCE State_4_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_4_3_2
+	CONSUME State_4_3: 1,State_3_2: 1;
+	PRODUCE State_4_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_4_3_1
+	CONSUME State_3_1: 1,State_4_3: 1;
+	PRODUCE State_3_1: 1,State_4_1: 1;
+
+TRANSITION OtherProcess_4_3_0
+	CONSUME State_3_0: 1,State_4_3: 1;
+	PRODUCE State_4_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_4_2_5
+	CONSUME State_4_2: 1,State_3_5: 1;
+	PRODUCE State_4_5: 1,State_3_5: 1;
+
+TRANSITION OtherProcess_4_2_4
+	CONSUME State_3_4: 1,State_4_2: 1;
+	PRODUCE State_4_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_4_2_3
+	CONSUME State_4_2: 1,State_3_3: 1;
+	PRODUCE State_3_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_4_2_1
+	CONSUME State_4_2: 1,State_3_1: 1;
+	PRODUCE State_3_1: 1,State_4_1: 1;
+
+TRANSITION OtherProcess_4_2_0
+	CONSUME State_4_2: 1,State_3_0: 1;
+	PRODUCE State_3_0: 1,State_4_0: 1;
+
+TRANSITION OtherProcess_4_1_5
+	CONSUME State_3_5: 1,State_4_1: 1;
+	PRODUCE State_3_5: 1,State_4_5: 1;
+
+TRANSITION OtherProcess_4_1_4
+	CONSUME State_4_1: 1,State_3_4: 1;
+	PRODUCE State_3_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_4_1_3
+	CONSUME State_3_3: 1,State_4_1: 1;
+	PRODUCE State_3_3: 1,State_4_3: 1;
+
+TRANSITION OtherProcess_4_1_2
+	CONSUME State_4_1: 1,State_3_2: 1;
+	PRODUCE State_3_2: 1,State_4_2: 1;
+
+TRANSITION OtherProcess_4_1_0
+	CONSUME State_4_1: 1,State_3_0: 1;
+	PRODUCE State_4_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_4_0_5
+	CONSUME State_3_5: 1,State_4_0: 1;
+	PRODUCE State_4_5: 1,State_3_5: 1;
+
+TRANSITION OtherProcess_4_0_4
+	CONSUME State_4_0: 1,State_3_4: 1;
+	PRODUCE State_3_4: 1,State_4_4: 1;
+
+TRANSITION OtherProcess_4_0_3
+	CONSUME State_3_3: 1,State_4_0: 1;
+	PRODUCE State_4_3: 1,State_3_3: 1;
+
+TRANSITION OtherProcess_4_0_2
+	CONSUME State_4_0: 1,State_3_2: 1;
+	PRODUCE State_4_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_4_0_1
+	CONSUME State_4_0: 1,State_3_1: 1;
+	PRODUCE State_4_1: 1,State_3_1: 1;
+
+TRANSITION OtherProcess_3_5_4
+	CONSUME State_3_5: 1,State_2_4: 1;
+	PRODUCE State_2_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_3_5_3
+	CONSUME State_2_3: 1,State_3_5: 1;
+	PRODUCE State_2_3: 1,State_3_3: 1;
+
+TRANSITION OtherProcess_3_5_2
+	CONSUME State_2_2: 1,State_3_5: 1;
+	PRODUCE State_2_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_3_5_1
+	CONSUME State_2_1: 1,State_3_5: 1;
+	PRODUCE State_3_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_3_5_0
+	CONSUME State_2_0: 1,State_3_5: 1;
+	PRODUCE State_3_0: 1,State_2_0: 1;
+
+TRANSITION OtherProcess_3_4_5
+	CONSUME State_2_5: 1,State_3_4: 1;
+	PRODUCE State_2_5: 1,State_3_5: 1;
+
+TRANSITION OtherProcess_3_4_3
+	CONSUME State_2_3: 1,State_3_4: 1;
+	PRODUCE State_3_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_3_4_2
+	CONSUME State_2_2: 1,State_3_4: 1;
+	PRODUCE State_3_2: 1,State_2_2: 1;
+
+TRANSITION OtherProcess_3_4_1
+	CONSUME State_3_4: 1,State_2_1: 1;
+	PRODUCE State_3_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_3_4_0
+	CONSUME State_3_4: 1,State_2_0: 1;
+	PRODUCE State_2_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_3_3_5
+	CONSUME State_3_3: 1,State_2_5: 1;
+	PRODUCE State_3_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_3_3_4
+	CONSUME State_3_3: 1,State_2_4: 1;
+	PRODUCE State_2_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_3_3_2
+	CONSUME State_3_3: 1,State_2_2: 1;
+	PRODUCE State_2_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_3_3_1
+	CONSUME State_2_1: 1,State_3_3: 1;
+	PRODUCE State_3_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_3_3_0
+	CONSUME State_2_0: 1,State_3_3: 1;
+	PRODUCE State_2_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_3_2_5
+	CONSUME State_2_5: 1,State_3_2: 1;
+	PRODUCE State_2_5: 1,State_3_5: 1;
+
+TRANSITION OtherProcess_3_2_4
+	CONSUME State_2_4: 1,State_3_2: 1;
+	PRODUCE State_2_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_3_2_3
+	CONSUME State_3_2: 1,State_2_3: 1;
+	PRODUCE State_2_3: 1,State_3_3: 1;
+
+TRANSITION OtherProcess_3_2_1
+	CONSUME State_3_2: 1,State_2_1: 1;
+	PRODUCE State_2_1: 1,State_3_1: 1;
+
+TRANSITION OtherProcess_3_2_0
+	CONSUME State_2_0: 1,State_3_2: 1;
+	PRODUCE State_3_0: 1,State_2_0: 1;
+
+TRANSITION OtherProcess_3_1_5
+	CONSUME State_3_1: 1,State_2_5: 1;
+	PRODUCE State_3_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_3_1_4
+	CONSUME State_2_4: 1,State_3_1: 1;
+	PRODUCE State_2_4: 1,State_3_4: 1;
+
+TRANSITION OtherProcess_3_1_3
+	CONSUME State_3_1: 1,State_2_3: 1;
+	PRODUCE State_3_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_3_1_2
+	CONSUME State_2_2: 1,State_3_1: 1;
+	PRODUCE State_3_2: 1,State_2_2: 1;
+
+TRANSITION OtherProcess_3_1_0
+	CONSUME State_3_1: 1,State_2_0: 1;
+	PRODUCE State_2_0: 1,State_3_0: 1;
+
+TRANSITION OtherProcess_3_0_5
+	CONSUME State_2_5: 1,State_3_0: 1;
+	PRODUCE State_3_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_3_0_4
+	CONSUME State_3_0: 1,State_2_4: 1;
+	PRODUCE State_3_4: 1,State_2_4: 1;
+
+TRANSITION OtherProcess_3_0_3
+	CONSUME State_3_0: 1,State_2_3: 1;
+	PRODUCE State_3_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_3_0_2
+	CONSUME State_3_0: 1,State_2_2: 1;
+	PRODUCE State_2_2: 1,State_3_2: 1;
+
+TRANSITION OtherProcess_3_0_1
+	CONSUME State_3_0: 1,State_2_1: 1;
+	PRODUCE State_2_1: 1,State_3_1: 1;
+
+TRANSITION OtherProcess_2_5_4
+	CONSUME State_2_5: 1,State_1_4: 1;
+	PRODUCE State_1_4: 1,State_2_4: 1;
+
+TRANSITION OtherProcess_2_5_3
+	CONSUME State_2_5: 1,State_1_3: 1;
+	PRODUCE State_1_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_2_5_2
+	CONSUME State_2_5: 1,State_1_2: 1;
+	PRODUCE State_2_2: 1,State_1_2: 1;
+
+TRANSITION OtherProcess_2_5_1
+	CONSUME State_2_5: 1,State_1_1: 1;
+	PRODUCE State_2_1: 1,State_1_1: 1;
+
+TRANSITION OtherProcess_2_5_0
+	CONSUME State_1_0: 1,State_2_5: 1;
+	PRODUCE State_2_0: 1,State_1_0: 1;
+
+TRANSITION OtherProcess_2_4_5
+	CONSUME State_2_4: 1,State_1_5: 1;
+	PRODUCE State_2_5: 1,State_1_5: 1;
+
+TRANSITION OtherProcess_2_4_3
+	CONSUME State_1_3: 1,State_2_4: 1;
+	PRODUCE State_2_3: 1,State_1_3: 1;
+
+TRANSITION OtherProcess_2_4_2
+	CONSUME State_1_2: 1,State_2_4: 1;
+	PRODUCE State_1_2: 1,State_2_2: 1;
+
+TRANSITION OtherProcess_2_4_1
+	CONSUME State_2_4: 1,State_1_1: 1;
+	PRODUCE State_1_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_2_4_0
+	CONSUME State_1_0: 1,State_2_4: 1;
+	PRODUCE State_1_0: 1,State_2_0: 1;
+
+TRANSITION OtherProcess_2_3_5
+	CONSUME State_1_5: 1,State_2_3: 1;
+	PRODUCE State_1_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_2_3_4
+	CONSUME State_1_4: 1,State_2_3: 1;
+	PRODUCE State_1_4: 1,State_2_4: 1;
+
+TRANSITION OtherProcess_2_3_2
+	CONSUME State_2_3: 1,State_1_2: 1;
+	PRODUCE State_1_2: 1,State_2_2: 1;
+
+TRANSITION OtherProcess_2_3_1
+	CONSUME State_1_1: 1,State_2_3: 1;
+	PRODUCE State_2_1: 1,State_1_1: 1;
+
+TRANSITION OtherProcess_2_3_0
+	CONSUME State_2_3: 1,State_1_0: 1;
+	PRODUCE State_2_0: 1,State_1_0: 1;
+
+TRANSITION OtherProcess_2_2_5
+	CONSUME State_2_2: 1,State_1_5: 1;
+	PRODUCE State_1_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_2_2_4
+	CONSUME State_2_2: 1,State_1_4: 1;
+	PRODUCE State_1_4: 1,State_2_4: 1;
+
+TRANSITION OtherProcess_2_2_3
+	CONSUME State_2_2: 1,State_1_3: 1;
+	PRODUCE State_1_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_2_2_1
+	CONSUME State_1_1: 1,State_2_2: 1;
+	PRODUCE State_1_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_2_2_0
+	CONSUME State_2_2: 1,State_1_0: 1;
+	PRODUCE State_2_0: 1,State_1_0: 1;
+
+TRANSITION OtherProcess_2_1_5
+	CONSUME State_2_1: 1,State_1_5: 1;
+	PRODUCE State_1_5: 1,State_2_5: 1;
+
+TRANSITION OtherProcess_2_1_4
+	CONSUME State_1_4: 1,State_2_1: 1;
+	PRODUCE State_2_4: 1,State_1_4: 1;
+
+TRANSITION OtherProcess_2_1_3
+	CONSUME State_1_3: 1,State_2_1: 1;
+	PRODUCE State_2_3: 1,State_1_3: 1;
+
+TRANSITION OtherProcess_2_1_2
+	CONSUME State_1_2: 1,State_2_1: 1;
+	PRODUCE State_2_2: 1,State_1_2: 1;
+
+TRANSITION OtherProcess_2_1_0
+	CONSUME State_2_1: 1,State_1_0: 1;
+	PRODUCE State_1_0: 1,State_2_0: 1;
+
+TRANSITION OtherProcess_2_0_5
+	CONSUME State_1_5: 1,State_2_0: 1;
+	PRODUCE State_2_5: 1,State_1_5: 1;
+
+TRANSITION OtherProcess_2_0_4
+	CONSUME State_1_4: 1,State_2_0: 1;
+	PRODUCE State_1_4: 1,State_2_4: 1;
+
+TRANSITION OtherProcess_2_0_3
+	CONSUME State_1_3: 1,State_2_0: 1;
+	PRODUCE State_1_3: 1,State_2_3: 1;
+
+TRANSITION OtherProcess_2_0_2
+	CONSUME State_2_0: 1,State_1_2: 1;
+	PRODUCE State_1_2: 1,State_2_2: 1;
+
+TRANSITION OtherProcess_2_0_1
+	CONSUME State_2_0: 1,State_1_1: 1;
+	PRODUCE State_1_1: 1,State_2_1: 1;
+
+TRANSITION OtherProcess_1_5_4
+	CONSUME State_0_4: 1,State_1_5: 1;
+	PRODUCE State_1_4: 1,State_0_4: 1;
+
+TRANSITION OtherProcess_1_5_3
+	CONSUME State_0_3: 1,State_1_5: 1;
+	PRODUCE State_0_3: 1,State_1_3: 1;
+
+TRANSITION OtherProcess_1_5_2
+	CONSUME State_0_2: 1,State_1_5: 1;
+	PRODUCE State_0_2: 1,State_1_2: 1;
+
+TRANSITION OtherProcess_1_5_1
+	CONSUME State_0_1: 1,State_1_5: 1;
+	PRODUCE State_1_1: 1,State_0_1: 1;
+
+TRANSITION OtherProcess_1_5_0
+	CONSUME State_0_0: 1,State_1_5: 1;
+	PRODUCE State_1_0: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_1_4_5
+	CONSUME State_1_4: 1,State_0_5: 1;
+	PRODUCE State_1_5: 1,State_0_5: 1;
+
+TRANSITION OtherProcess_1_4_3
+	CONSUME State_0_3: 1,State_1_4: 1;
+	PRODUCE State_1_3: 1,State_0_3: 1;
+
+TRANSITION OtherProcess_1_4_2
+	CONSUME State_1_4: 1,State_0_2: 1;
+	PRODUCE State_1_2: 1,State_0_2: 1;
+
+TRANSITION OtherProcess_1_4_1
+	CONSUME State_1_4: 1,State_0_1: 1;
+	PRODUCE State_0_1: 1,State_1_1: 1;
+
+TRANSITION OtherProcess_1_4_0
+	CONSUME State_1_4: 1,State_0_0: 1;
+	PRODUCE State_1_0: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_1_3_5
+	CONSUME State_0_5: 1,State_1_3: 1;
+	PRODUCE State_0_5: 1,State_1_5: 1;
+
+TRANSITION OtherProcess_1_3_4
+	CONSUME State_1_3: 1,State_0_4: 1;
+	PRODUCE State_1_4: 1,State_0_4: 1;
+
+TRANSITION OtherProcess_1_3_2
+	CONSUME State_1_3: 1,State_0_2: 1;
+	PRODUCE State_0_2: 1,State_1_2: 1;
+
+TRANSITION OtherProcess_1_3_1
+	CONSUME State_0_1: 1,State_1_3: 1;
+	PRODUCE State_1_1: 1,State_0_1: 1;
+
+TRANSITION OtherProcess_1_3_0
+	CONSUME State_0_0: 1,State_1_3: 1;
+	PRODUCE State_1_0: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_1_2_5
+	CONSUME State_1_2: 1,State_0_5: 1;
+	PRODUCE State_1_5: 1,State_0_5: 1;
+
+TRANSITION OtherProcess_1_2_4
+	CONSUME State_1_2: 1,State_0_4: 1;
+	PRODUCE State_0_4: 1,State_1_4: 1;
+
+TRANSITION OtherProcess_1_2_3
+	CONSUME State_1_2: 1,State_0_3: 1;
+	PRODUCE State_1_3: 1,State_0_3: 1;
+
+TRANSITION OtherProcess_1_2_1
+	CONSUME State_0_1: 1,State_1_2: 1;
+	PRODUCE State_1_1: 1,State_0_1: 1;
+
+TRANSITION OtherProcess_1_2_0
+	CONSUME State_0_0: 1,State_1_2: 1;
+	PRODUCE State_1_0: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_1_1_5
+	CONSUME State_1_1: 1,State_0_5: 1;
+	PRODUCE State_0_5: 1,State_1_5: 1;
+
+TRANSITION OtherProcess_1_1_4
+	CONSUME State_0_4: 1,State_1_1: 1;
+	PRODUCE State_1_4: 1,State_0_4: 1;
+
+TRANSITION OtherProcess_1_1_3
+	CONSUME State_0_3: 1,State_1_1: 1;
+	PRODUCE State_0_3: 1,State_1_3: 1;
+
+TRANSITION OtherProcess_1_1_2
+	CONSUME State_0_2: 1,State_1_1: 1;
+	PRODUCE State_0_2: 1,State_1_2: 1;
+
+TRANSITION OtherProcess_1_1_0
+	CONSUME State_0_0: 1,State_1_1: 1;
+	PRODUCE State_1_0: 1,State_0_0: 1;
+
+TRANSITION OtherProcess_1_0_5
+	CONSUME State_0_5: 1,State_1_0: 1;
+	PRODUCE State_0_5: 1,State_1_5: 1;
+
+TRANSITION OtherProcess_1_0_4
+	CONSUME State_0_4: 1,State_1_0: 1;
+	PRODUCE State_0_4: 1,State_1_4: 1;
+
+TRANSITION OtherProcess_1_0_3
+	CONSUME State_1_0: 1,State_0_3: 1;
+	PRODUCE State_0_3: 1,State_1_3: 1;
+
+TRANSITION OtherProcess_1_0_2
+	CONSUME State_0_2: 1,State_1_0: 1;
+	PRODUCE State_1_2: 1,State_0_2: 1;
+
+TRANSITION OtherProcess_1_0_1
+	CONSUME State_1_0: 1,State_0_1: 1;
+	PRODUCE State_0_1: 1,State_1_1: 1;
+
+TRANSITION MainProcess_5
+	CONSUME State_5_5: 1,State_0_5: 1;
+	PRODUCE State_0_0: 1,State_5_5: 1;
+
+TRANSITION MainProcess_4
+	CONSUME State_5_4: 1,State_0_4: 1;
+	PRODUCE State_5_4: 1,State_0_5: 1;
+
+TRANSITION MainProcess_3
+	CONSUME State_0_3: 1,State_5_3: 1;
+	PRODUCE State_0_4: 1,State_5_3: 1;
+
+TRANSITION MainProcess_2
+	CONSUME State_5_2: 1,State_0_2: 1;
+	PRODUCE State_0_3: 1,State_5_2: 1;
+
+TRANSITION MainProcess_1
+	CONSUME State_5_1: 1,State_0_1: 1;
+	PRODUCE State_5_1: 1,State_0_2: 1;
+
+TRANSITION MainProcess_0
+	CONSUME State_0_0: 1,State_5_0: 1;
+	PRODUCE State_5_0: 1,State_0_1: 1;

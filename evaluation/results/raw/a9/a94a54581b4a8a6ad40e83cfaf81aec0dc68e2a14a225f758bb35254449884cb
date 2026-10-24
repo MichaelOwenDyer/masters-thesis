@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {SharedMemory-PT-000005}
+
+41 places, 55 transitions, 200 arcs
+
+0.003s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+1863 marking(s), 10395 transition(s)
+
+0.011s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 1863 live marking(s)
+0 dead transition(s), 55 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {SharedMemory-PT-000005}, 41 places, 55 transitions, 200 arcs    #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states         1863         41          ?          0       1863 # 
+# transitions        10395         55          ?          0         55 #

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/StigmergyElection-PT-06a/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"AsymmetricChoice","places":86,"transitions":1042,"arcs":11192,"parse_ms":24.769,"analyze_ms":444.252,"timeout_ms":null,"states":20473,"edges":215608}

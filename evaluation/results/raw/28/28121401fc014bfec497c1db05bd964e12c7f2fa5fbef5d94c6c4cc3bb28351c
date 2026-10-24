@@ -1,0 +1,5 @@
+some state violates condition -f:
+  BreakDownReservoir*2 LxIsActiveAndNotInTheLeafSet Node0IsActive Node1IsActive Node2IsActive Node3IsActive Node4IsActive Node4isTheNodeMaster Node5IsActive Node6IsActive Node7IsActive Node8IsActive RxIsActiveAndNotInTheLeafSet
+  firable: Node0BreaksDown Node1BreaksDown Node2BreaksDown Node3BreaksDown Node4BreaksDown Node5BreaksDown Node6BreaksDown Node7BreaksDown Node8BreaksDown
+10 marking(s), 9 transition(s)
+0.000s

@@ -1,0 +1,369 @@
+PLACE
+	ACK, AMC_1_1, AMC_1_2, AMC_1_3, AMC_2_1, AMC_2_2, AMC_2_3, AMC_3_1, AMC_3_2, AMC_3_3, Cpt1_1, Cpt1_2, Cpt1_3, Cpt2_1, Cpt2_2, Cpt2_3, FMC_1, FMC_2, FMC_3, FMCb, MSG_1, MSG_2, MSG_3, PMC_1, PMC_2, PMC_3, RMC_1, RMC_2, RMC_3, R_tout, S_tout, T_out, cable_free, cable_used_1, cable_used_2, cable_used_3, listen_1, listen_2, listen_3, loop_em_1, loop_em_2, loop_em_3, msgl_1, msgl_2, msgl_3, wait_ack_1_2, wait_ack_1_3, wait_ack_2_1, wait_ack_2_3, wait_ack_3_1, wait_ack_3_2, wait_cable_1, wait_cable_2, wait_cable_3, wait_msg_1, wait_msg_2, wait_msg_3;
+
+MARKING
+	msgl_3: 1,msgl_2: 1,msgl_1: 1,listen_3: 1,listen_2: 1,listen_1: 1,cable_free: 1,R_tout: 1,FMCb: 1,Cpt2_1: 1,Cpt1_1: 1;
+
+TRANSITION loss_m_3
+	CONSUME R_tout: 1,MSG_3: 1;
+	PRODUCE T_out: 1,S_tout: 1;
+
+TRANSITION loss_m_2
+	CONSUME R_tout: 1,MSG_2: 1;
+	PRODUCE T_out: 1,S_tout: 1;
+
+TRANSITION loss_m_1
+	CONSUME R_tout: 1,MSG_1: 1;
+	PRODUCE T_out: 1,S_tout: 1;
+
+TRANSITION loss_a
+	CONSUME ACK: 1,R_tout: 1;
+	PRODUCE T_out: 1,S_tout: 1;
+
+TRANSITION I_refused_3_3
+	CONSUME RMC_3: 1,wait_cable_3: 1;
+	PRODUCE wait_msg_3: 1;
+
+TRANSITION I_refused_2_2
+	CONSUME RMC_2: 1,wait_cable_2: 1;
+	PRODUCE wait_msg_2: 1;
+
+TRANSITION I_refused_1_1
+	CONSUME RMC_1: 1,wait_cable_1: 1;
+	PRODUCE wait_msg_1: 1;
+
+TRANSITION I_reemit_3_2
+	CONSUME T_out: 1,wait_ack_3_2: 1;
+	PRODUCE wait_ack_3_2: 1,MSG_2: 1;
+
+TRANSITION I_reemit_3_1
+	CONSUME T_out: 1,wait_ack_3_1: 1;
+	PRODUCE wait_ack_3_1: 1,MSG_1: 1;
+
+TRANSITION I_reemit_2_3
+	CONSUME T_out: 1,wait_ack_2_3: 1;
+	PRODUCE wait_ack_2_3: 1,MSG_3: 1;
+
+TRANSITION I_reemit_2_1
+	CONSUME T_out: 1,wait_ack_2_1: 1;
+	PRODUCE wait_ack_2_1: 1,MSG_1: 1;
+
+TRANSITION I_reemit_1_3
+	CONSUME T_out: 1,wait_ack_1_3: 1;
+	PRODUCE wait_ack_1_3: 1,MSG_3: 1;
+
+TRANSITION I_reemit_1_2
+	CONSUME T_out: 1,wait_ack_1_2: 1;
+	PRODUCE wait_ack_1_2: 1,MSG_2: 1;
+
+TRANSITION I_rec2_3_3
+	CONSUME MSG_3: 1,wait_msg_3: 1;
+	PRODUCE ACK: 1,loop_em_3: 1;
+
+TRANSITION I_rec2_2_2
+	CONSUME MSG_2: 1,wait_msg_2: 1;
+	PRODUCE ACK: 1,loop_em_2: 1;
+
+TRANSITION I_rec2_1_1
+	CONSUME MSG_1: 1,wait_msg_1: 1;
+	PRODUCE ACK: 1,loop_em_1: 1;
+
+TRANSITION I_rec1_3_3
+	CONSUME MSG_3: 1,listen_3: 1;
+	PRODUCE ACK: 1,listen_3: 1;
+
+TRANSITION I_rec1_2_2
+	CONSUME MSG_2: 1,listen_2: 1;
+	PRODUCE ACK: 1,listen_2: 1;
+
+TRANSITION I_rec1_1_1
+	CONSUME MSG_1: 1,listen_1: 1;
+	PRODUCE ACK: 1,listen_1: 1;
+
+TRANSITION I_free_3_2
+	CONSUME ACK: 1,wait_ack_3_2: 1,FMCb: 1;
+	PRODUCE FMC_3: 1,listen_3: 1;
+
+TRANSITION I_free_3_1
+	CONSUME ACK: 1,wait_ack_3_1: 1,FMCb: 1;
+	PRODUCE FMC_3: 1,listen_3: 1;
+
+TRANSITION I_free_2_3
+	CONSUME ACK: 1,wait_ack_2_3: 1,FMCb: 1;
+	PRODUCE FMC_2: 1,listen_2: 1;
+
+TRANSITION I_free_2_1
+	CONSUME ACK: 1,wait_ack_2_1: 1,FMCb: 1;
+	PRODUCE FMC_2: 1,listen_2: 1;
+
+TRANSITION I_free_1_3
+	CONSUME ACK: 1,wait_ack_1_3: 1,FMCb: 1;
+	PRODUCE FMC_1: 1,listen_1: 1;
+
+TRANSITION I_free_1_2
+	CONSUME ACK: 1,wait_ack_1_2: 1,FMCb: 1;
+	PRODUCE FMC_1: 1,listen_1: 1;
+
+TRANSITION I_emit_3_3_2
+	CONSUME PMC_3: 1,msgl_2: 1,wait_cable_3: 1;
+	PRODUCE wait_ack_3_2: 1,MSG_2: 1,msgl_2: 1;
+
+TRANSITION I_emit_3_3_1
+	CONSUME PMC_3: 1,msgl_1: 1,wait_cable_3: 1;
+	PRODUCE wait_ack_3_1: 1,MSG_1: 1,msgl_1: 1;
+
+TRANSITION I_emit_2_2_3
+	CONSUME PMC_2: 1,msgl_3: 1,wait_cable_2: 1;
+	PRODUCE wait_ack_2_3: 1,MSG_3: 1,msgl_3: 1;
+
+TRANSITION I_emit_2_2_1
+	CONSUME PMC_2: 1,msgl_1: 1,wait_cable_2: 1;
+	PRODUCE wait_ack_2_1: 1,MSG_1: 1,msgl_1: 1;
+
+TRANSITION I_emit_1_1_3
+	CONSUME PMC_1: 1,msgl_3: 1,wait_cable_1: 1;
+	PRODUCE wait_ack_1_3: 1,MSG_3: 1,msgl_3: 1;
+
+TRANSITION I_emit_1_1_2
+	CONSUME PMC_1: 1,msgl_2: 1,wait_cable_1: 1;
+	PRODUCE wait_ack_1_2: 1,MSG_2: 1,msgl_2: 1;
+
+TRANSITION I_ask2_3_3
+	CONSUME Cpt1_3: 1,loop_em_3: 1;
+	PRODUCE AMC_3_3: 1,wait_cable_3: 1,Cpt1_1: 1;
+
+TRANSITION I_ask2_3_2
+	CONSUME Cpt1_2: 1,loop_em_3: 1;
+	PRODUCE AMC_3_2: 1,wait_cable_3: 1,Cpt1_3: 1;
+
+TRANSITION I_ask2_3_1
+	CONSUME Cpt1_1: 1,loop_em_3: 1;
+	PRODUCE AMC_3_1: 1,wait_cable_3: 1,Cpt1_2: 1;
+
+TRANSITION I_ask2_2_3
+	CONSUME Cpt1_3: 1,loop_em_2: 1;
+	PRODUCE AMC_2_3: 1,wait_cable_2: 1,Cpt1_1: 1;
+
+TRANSITION I_ask2_2_2
+	CONSUME Cpt1_2: 1,loop_em_2: 1;
+	PRODUCE AMC_2_2: 1,wait_cable_2: 1,Cpt1_3: 1;
+
+TRANSITION I_ask2_2_1
+	CONSUME Cpt1_1: 1,loop_em_2: 1;
+	PRODUCE AMC_2_1: 1,wait_cable_2: 1,Cpt1_2: 1;
+
+TRANSITION I_ask2_1_3
+	CONSUME Cpt1_3: 1,loop_em_1: 1;
+	PRODUCE AMC_1_3: 1,wait_cable_1: 1,Cpt1_1: 1;
+
+TRANSITION I_ask2_1_2
+	CONSUME Cpt1_2: 1,loop_em_1: 1;
+	PRODUCE AMC_1_2: 1,wait_cable_1: 1,Cpt1_3: 1;
+
+TRANSITION I_ask2_1_1
+	CONSUME Cpt1_1: 1,loop_em_1: 1;
+	PRODUCE AMC_1_1: 1,wait_cable_1: 1,Cpt1_2: 1;
+
+TRANSITION I_ask1_3_3
+	CONSUME listen_3: 1,Cpt1_3: 1;
+	PRODUCE AMC_3_3: 1,wait_cable_3: 1,Cpt1_1: 1;
+
+TRANSITION I_ask1_3_2
+	CONSUME listen_3: 1,Cpt1_2: 1;
+	PRODUCE AMC_3_2: 1,wait_cable_3: 1,Cpt1_3: 1;
+
+TRANSITION I_ask1_3_1
+	CONSUME listen_3: 1,Cpt1_1: 1;
+	PRODUCE AMC_3_1: 1,wait_cable_3: 1,Cpt1_2: 1;
+
+TRANSITION I_ask1_2_3
+	CONSUME listen_2: 1,Cpt1_3: 1;
+	PRODUCE AMC_2_3: 1,wait_cable_2: 1,Cpt1_1: 1;
+
+TRANSITION I_ask1_2_2
+	CONSUME listen_2: 1,Cpt1_2: 1;
+	PRODUCE AMC_2_2: 1,wait_cable_2: 1,Cpt1_3: 1;
+
+TRANSITION I_ask1_2_1
+	CONSUME listen_2: 1,Cpt1_1: 1;
+	PRODUCE AMC_2_1: 1,wait_cable_2: 1,Cpt1_2: 1;
+
+TRANSITION I_ask1_1_3
+	CONSUME listen_1: 1,Cpt1_3: 1;
+	PRODUCE AMC_1_3: 1,wait_cable_1: 1,Cpt1_1: 1;
+
+TRANSITION I_ask1_1_2
+	CONSUME listen_1: 1,Cpt1_2: 1;
+	PRODUCE AMC_1_2: 1,wait_cable_1: 1,Cpt1_3: 1;
+
+TRANSITION I_ask1_1_1
+	CONSUME listen_1: 1,Cpt1_1: 1;
+	PRODUCE AMC_1_1: 1,wait_cable_1: 1,Cpt1_2: 1;
+
+TRANSITION Gto_3
+	CONSUME S_tout: 1,FMC_3: 1;
+	PRODUCE R_tout: 1,FMC_3: 1;
+
+TRANSITION Gto_2
+	CONSUME S_tout: 1,FMC_2: 1;
+	PRODUCE R_tout: 1,FMC_2: 1;
+
+TRANSITION Gto_1
+	CONSUME S_tout: 1,FMC_1: 1;
+	PRODUCE R_tout: 1,FMC_1: 1;
+
+TRANSITION C_refuse_3_3_3_3
+	CONSUME Cpt2_3: 1,AMC_3_3: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_3: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_3_2_2
+	CONSUME Cpt2_2: 1,AMC_3_2: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_3: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_3_1_1
+	CONSUME Cpt2_1: 1,AMC_3_1: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_3: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_2_3_3
+	CONSUME Cpt2_3: 1,AMC_3_3: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_2: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_2_2_2
+	CONSUME Cpt2_2: 1,AMC_3_2: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_2: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_2_1_1
+	CONSUME Cpt2_1: 1,AMC_3_1: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_2: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_1_3_3
+	CONSUME Cpt2_3: 1,AMC_3_3: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_1: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_1_2_2
+	CONSUME Cpt2_2: 1,AMC_3_2: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_1: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_3_1_1_1
+	CONSUME Cpt2_1: 1,AMC_3_1: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_1: 1,FMCb: 1,RMC_3: 1;
+
+TRANSITION C_refuse_2_3_3_3
+	CONSUME Cpt2_3: 1,AMC_2_3: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_3: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_3_2_2
+	CONSUME Cpt2_2: 1,AMC_2_2: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_3: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_3_1_1
+	CONSUME Cpt2_1: 1,AMC_2_1: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_3: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_2_3_3
+	CONSUME Cpt2_3: 1,AMC_2_3: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_2: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_2_2_2
+	CONSUME Cpt2_2: 1,AMC_2_2: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_2: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_2_1_1
+	CONSUME Cpt2_1: 1,AMC_2_1: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_2: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_1_3_3
+	CONSUME Cpt2_3: 1,AMC_2_3: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_1: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_1_2_2
+	CONSUME Cpt2_2: 1,AMC_2_2: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_1: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_2_1_1_1
+	CONSUME Cpt2_1: 1,AMC_2_1: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_1: 1,FMCb: 1,RMC_2: 1;
+
+TRANSITION C_refuse_1_3_3_3
+	CONSUME Cpt2_3: 1,AMC_1_3: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_3: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_3_2_2
+	CONSUME Cpt2_2: 1,AMC_1_2: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_3: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_3_1_1
+	CONSUME Cpt2_1: 1,AMC_1_1: 1,cable_used_3: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_3: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_2_3_3
+	CONSUME Cpt2_3: 1,AMC_1_3: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_2: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_2_2_2
+	CONSUME Cpt2_2: 1,AMC_1_2: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_3: 1,cable_used_2: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_2_1_1
+	CONSUME Cpt2_1: 1,AMC_1_1: 1,cable_used_2: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_2: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_1_3_3
+	CONSUME Cpt2_3: 1,AMC_1_3: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_1: 1,cable_used_1: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_refuse_1_1_2_2
+	CONSUME Cpt2_2: 1,AMC_1_2: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE cable_used_1: 1,FMCb: 1,RMC_1: 1,Cpt2_3: 1;
+
+TRANSITION C_refuse_1_1_1_1
+	CONSUME Cpt2_1: 1,AMC_1_1: 1,cable_used_1: 1,FMCb: 1;
+	PRODUCE Cpt2_2: 1,cable_used_1: 1,FMCb: 1,RMC_1: 1;
+
+TRANSITION C_provide_3_3_3
+	CONSUME Cpt2_3: 1,AMC_3_3: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_1: 1,cable_used_3: 1,FMCb: 1,PMC_3: 1;
+
+TRANSITION C_provide_3_2_2
+	CONSUME Cpt2_2: 1,AMC_3_2: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_3: 1,cable_used_3: 1,FMCb: 1,PMC_3: 1;
+
+TRANSITION C_provide_3_1_1
+	CONSUME Cpt2_1: 1,AMC_3_1: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_2: 1,cable_used_3: 1,FMCb: 1,PMC_3: 1;
+
+TRANSITION C_provide_2_3_3
+	CONSUME Cpt2_3: 1,AMC_2_3: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_1: 1,cable_used_2: 1,FMCb: 1,PMC_2: 1;
+
+TRANSITION C_provide_2_2_2
+	CONSUME Cpt2_2: 1,AMC_2_2: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_3: 1,cable_used_2: 1,FMCb: 1,PMC_2: 1;
+
+TRANSITION C_provide_2_1_1
+	CONSUME Cpt2_1: 1,AMC_2_1: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_2: 1,cable_used_2: 1,FMCb: 1,PMC_2: 1;
+
+TRANSITION C_provide_1_3_3
+	CONSUME Cpt2_3: 1,AMC_1_3: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_1: 1,cable_used_1: 1,FMCb: 1,PMC_1: 1;
+
+TRANSITION C_provide_1_2_2
+	CONSUME Cpt2_2: 1,AMC_1_2: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_3: 1,cable_used_1: 1,FMCb: 1,PMC_1: 1;
+
+TRANSITION C_provide_1_1_1
+	CONSUME Cpt2_1: 1,AMC_1_1: 1,FMCb: 1,cable_free: 1;
+	PRODUCE Cpt2_2: 1,cable_used_1: 1,FMCb: 1,PMC_1: 1;
+
+TRANSITION C_free_3_3
+	CONSUME FMC_3: 1,cable_used_3: 1;
+	PRODUCE FMCb: 1,cable_free: 1;
+
+TRANSITION C_free_2_2
+	CONSUME cable_used_2: 1,FMC_2: 1;
+	PRODUCE FMCb: 1,cable_free: 1;
+
+TRANSITION C_free_1_1
+	CONSUME cable_used_1: 1,FMC_1: 1;
+	PRODUCE FMCb: 1,cable_free: 1;

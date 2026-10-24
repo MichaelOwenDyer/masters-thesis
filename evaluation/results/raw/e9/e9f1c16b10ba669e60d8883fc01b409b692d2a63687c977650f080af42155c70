@@ -1,0 +1,5 @@
+some state violates condition -f:
+  Bounder1*2 Bounder2*2 ContainerDown OsNotInstalled ScUnavailable Wsr1NotDeployed*2 Wsr2NotDeployed*2 Wsr3NotDeployed*2
+  firable: InstallOs SetupSc StartContainer
+4 marking(s), 3 transition(s)
+0.000s

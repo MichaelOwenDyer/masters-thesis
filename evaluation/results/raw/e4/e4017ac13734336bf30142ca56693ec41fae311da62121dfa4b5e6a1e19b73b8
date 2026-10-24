@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {IOTPpurchase-PT-C01M01P01D01}
+
+111 places, 45 transitions, 224 arcs
+
+0.003s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+204 marking(s), 436 transition(s)
+
+0.000s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 204 live marking(s)
+0 dead transition(s), 45 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {IOTPpurchase-PT-C01M01P01D01}, 111 places, 45 transitions, 224 arcs#
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states          204        111          ?          0        204 # 
+# transitions          436         45          ?          0         45 #

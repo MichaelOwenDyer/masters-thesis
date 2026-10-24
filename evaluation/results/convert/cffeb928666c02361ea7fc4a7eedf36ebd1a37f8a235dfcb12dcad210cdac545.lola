@@ -1,0 +1,37 @@
+PLACE
+	CPUUnit, DiskControllerUnit, ExecutingTask, FreeMemSegment, LoadingMem, TaskOnDisk, TaskReady, TaskSuspended, TransferToDisk;
+
+MARKING
+	TaskOnDisk: 32,FreeMemSegment: 32,DiskControllerUnit: 8,CPUUnit: 16;
+
+TRANSITION suspend
+	CONSUME ExecutingTask: 1;
+	PRODUCE CPUUnit: 1,TaskSuspended: 1;
+
+TRANSITION startUnload
+	CONSUME TaskSuspended: 1,DiskControllerUnit: 1,TaskOnDisk: 1;
+	PRODUCE TransferToDisk: 1;
+
+TRANSITION startNext
+	CONSUME CPUUnit: 1,TaskSuspended: 1;
+	PRODUCE ExecutingTask: 1;
+
+TRANSITION startLoading
+	CONSUME TaskOnDisk: 1,FreeMemSegment: 1,DiskControllerUnit: 1;
+	PRODUCE LoadingMem: 1;
+
+TRANSITION startFirst
+	CONSUME TaskReady: 1,CPUUnit: 1;
+	PRODUCE ExecutingTask: 1;
+
+TRANSITION freeMemory
+	CONSUME TaskReady: 1;
+	PRODUCE FreeMemSegment: 1;
+
+TRANSITION endUnload
+	CONSUME TransferToDisk: 1;
+	PRODUCE TaskOnDisk: 1,DiskControllerUnit: 1,TaskReady: 1;
+
+TRANSITION endLoading
+	CONSUME LoadingMem: 1;
+	PRODUCE TaskReady: 1,DiskControllerUnit: 1,TaskOnDisk: 1;

@@ -1,0 +1,29 @@
+PLACE
+	Clients, haveA, haveA2, haveA2andB, haveAandB, haveB, resA, resB;
+
+MARKING
+	resB: 6,resA: 5,Clients: 10;
+
+TRANSITION relB
+	CONSUME haveA2andB: 1;
+	PRODUCE resB: 1,haveA2: 1;
+
+TRANSITION relA2
+	CONSUME haveA2: 1;
+	PRODUCE Clients: 1,resA: 1;
+
+TRANSITION relA
+	CONSUME haveAandB: 1;
+	PRODUCE resA: 1,haveB: 1;
+
+TRANSITION lockB
+	CONSUME resB: 1,haveA: 1;
+	PRODUCE haveAandB: 1;
+
+TRANSITION lockA2
+	CONSUME resA: 1,haveB: 1;
+	PRODUCE haveA2andB: 1;
+
+TRANSITION lockA
+	CONSUME resA: 1,Clients: 1;
+	PRODUCE haveA: 1;

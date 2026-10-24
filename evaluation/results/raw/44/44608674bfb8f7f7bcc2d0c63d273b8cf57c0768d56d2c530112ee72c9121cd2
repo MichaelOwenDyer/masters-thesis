@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/HexagonalGrid-PT-110/model.pnml","property":"live","mode":"general","verdict":"true","class":"AsymmetricChoice","places":31,"transitions":42,"arcs":168,"parse_ms":1.483,"analyze_ms":162.583,"timeout_ms":null,"states":40193,"edges":430884}

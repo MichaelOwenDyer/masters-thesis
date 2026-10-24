@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {FamilyReunion-PT-L00050M0005C002P002G001}
+
+12194 places, 10560 transitions, 32238 arcs
+
+0.281s

@@ -1,0 +1,377 @@
+PLACE
+	pl_awaiting, pl_cops_n1, pl_cops_n10, pl_cops_n2, pl_cops_n3, pl_cops_n4, pl_cops_n5, pl_cops_n6, pl_cops_n7, pl_cops_n8, pl_cops_n9, pl_end_n1, pl_end_n10, pl_end_n2, pl_end_n3, pl_end_n4, pl_end_n5, pl_end_n6, pl_end_n7, pl_end_n8, pl_end_n9, pl_finalizing, pl_finished_moving, pl_incoming_cops_n1, pl_incoming_cops_n10, pl_incoming_cops_n2, pl_incoming_cops_n3, pl_incoming_cops_n4, pl_incoming_cops_n5, pl_incoming_cops_n6, pl_incoming_cops_n7, pl_incoming_cops_n8, pl_incoming_cops_n9, pl_moved_robber, pl_robber_absent_n1, pl_robber_absent_n10, pl_robber_absent_n2, pl_robber_absent_n3, pl_robber_absent_n4, pl_robber_absent_n5, pl_robber_absent_n6, pl_robber_absent_n7, pl_robber_absent_n8, pl_robber_absent_n9, pl_robber_here_n1, pl_robber_here_n10, pl_robber_here_n2, pl_robber_here_n3, pl_robber_here_n4, pl_robber_here_n5, pl_robber_here_n6, pl_robber_here_n7, pl_robber_here_n8, pl_robber_here_n9, pl_start_cops, pl_start_robber;
+
+MARKING
+	pl_start_cops: 1,pl_robber_here_n1: 1,pl_robber_absent_n9: 1,pl_robber_absent_n8: 1,pl_robber_absent_n7: 1,pl_robber_absent_n6: 1,pl_robber_absent_n5: 1,pl_robber_absent_n4: 1,pl_robber_absent_n3: 1,pl_robber_absent_n2: 1,pl_robber_absent_n10: 1,pl_cops_n6: 1;
+
+TRANSITION tr_start_avoid
+	CONSUME pl_finished_moving: 1;
+	PRODUCE pl_start_robber: 1;
+
+TRANSITION tr_next_turn
+	CONSUME pl_moved_robber: 1;
+	PRODUCE pl_start_cops: 1;
+
+TRANSITION tr_move_robber_n9_n5
+	CONSUME pl_start_robber: 1,pl_robber_absent_n5: 1,pl_robber_here_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n5: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_move_robber_n9_n4
+	CONSUME pl_start_robber: 1,pl_robber_absent_n4: 1,pl_robber_here_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n4: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_move_robber_n9_n1
+	CONSUME pl_start_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_move_robber_n8_n6
+	CONSUME pl_start_robber: 1,pl_robber_absent_n6: 1,pl_robber_here_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n6: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_move_robber_n8_n4
+	CONSUME pl_start_robber: 1,pl_robber_absent_n4: 1,pl_robber_here_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n4: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_move_robber_n8_n2
+	CONSUME pl_start_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_move_robber_n7_n6
+	CONSUME pl_start_robber: 1,pl_robber_absent_n6: 1,pl_robber_here_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n6: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_move_robber_n7_n5
+	CONSUME pl_start_robber: 1,pl_robber_absent_n5: 1,pl_robber_here_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n5: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_move_robber_n7_n3
+	CONSUME pl_start_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_move_robber_n6_n8
+	CONSUME pl_start_robber: 1,pl_robber_here_n6: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n6: 1,pl_robber_here_n8: 1;
+
+TRANSITION tr_move_robber_n6_n7
+	CONSUME pl_start_robber: 1,pl_robber_here_n6: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n6: 1,pl_robber_here_n7: 1;
+
+TRANSITION tr_move_robber_n6_n1
+	CONSUME pl_start_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n6: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n6: 1;
+
+TRANSITION tr_move_robber_n5_n9
+	CONSUME pl_start_robber: 1,pl_robber_here_n5: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n5: 1,pl_robber_here_n9: 1;
+
+TRANSITION tr_move_robber_n5_n7
+	CONSUME pl_start_robber: 1,pl_robber_here_n5: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n5: 1,pl_robber_here_n7: 1;
+
+TRANSITION tr_move_robber_n5_n2
+	CONSUME pl_start_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n5: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n5: 1;
+
+TRANSITION tr_move_robber_n4_n9
+	CONSUME pl_start_robber: 1,pl_robber_here_n4: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n4: 1,pl_robber_here_n9: 1;
+
+TRANSITION tr_move_robber_n4_n8
+	CONSUME pl_start_robber: 1,pl_robber_here_n4: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n4: 1,pl_robber_here_n8: 1;
+
+TRANSITION tr_move_robber_n4_n3
+	CONSUME pl_start_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n4: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n4: 1;
+
+TRANSITION tr_move_robber_n3_n7
+	CONSUME pl_start_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n7: 1;
+
+TRANSITION tr_move_robber_n3_n4
+	CONSUME pl_start_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n4: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n4: 1;
+
+TRANSITION tr_move_robber_n3_n10
+	CONSUME pl_start_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n10: 1;
+
+TRANSITION tr_move_robber_n2_n8
+	CONSUME pl_start_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n8: 1;
+
+TRANSITION tr_move_robber_n2_n5
+	CONSUME pl_start_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n5: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n5: 1;
+
+TRANSITION tr_move_robber_n2_n10
+	CONSUME pl_start_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n10: 1;
+
+TRANSITION tr_move_robber_n1_n9
+	CONSUME pl_start_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n9: 1;
+
+TRANSITION tr_move_robber_n1_n6
+	CONSUME pl_start_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n6: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n6: 1;
+
+TRANSITION tr_move_robber_n1_n10
+	CONSUME pl_start_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n10: 1;
+
+TRANSITION tr_move_robber_n10_n3
+	CONSUME pl_start_robber: 1,pl_robber_absent_n3: 1,pl_robber_here_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n3: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_move_robber_n10_n2
+	CONSUME pl_start_robber: 1,pl_robber_absent_n2: 1,pl_robber_here_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n2: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_move_robber_n10_n1
+	CONSUME pl_start_robber: 1,pl_robber_absent_n1: 1,pl_robber_here_n10: 1;
+	PRODUCE pl_moved_robber: 1,pl_robber_here_n1: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_finalize_move_n9
+	CONSUME pl_finalizing: 1,pl_robber_absent_n9: 1,pl_incoming_cops_n9: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n9: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_finalize_move_n8
+	CONSUME pl_finalizing: 1,pl_robber_absent_n8: 1,pl_incoming_cops_n8: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n8: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_finalize_move_n7
+	CONSUME pl_finalizing: 1,pl_robber_absent_n7: 1,pl_incoming_cops_n7: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n7: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_finalize_move_n6
+	CONSUME pl_finalizing: 1,pl_robber_absent_n6: 1,pl_incoming_cops_n6: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n6: 1,pl_robber_absent_n6: 1;
+
+TRANSITION tr_finalize_move_n5
+	CONSUME pl_finalizing: 1,pl_robber_absent_n5: 1,pl_incoming_cops_n5: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n5: 1,pl_robber_absent_n5: 1;
+
+TRANSITION tr_finalize_move_n4
+	CONSUME pl_finalizing: 1,pl_robber_absent_n4: 1,pl_incoming_cops_n4: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n4: 1,pl_robber_absent_n4: 1;
+
+TRANSITION tr_finalize_move_n3
+	CONSUME pl_finalizing: 1,pl_robber_absent_n3: 1,pl_incoming_cops_n3: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n3: 1,pl_robber_absent_n3: 1;
+
+TRANSITION tr_finalize_move_n2
+	CONSUME pl_finalizing: 1,pl_robber_absent_n2: 1,pl_incoming_cops_n2: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n2: 1,pl_robber_absent_n2: 1;
+
+TRANSITION tr_finalize_move_n10
+	CONSUME pl_finalizing: 1,pl_robber_absent_n10: 1,pl_incoming_cops_n10: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n10: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_finalize_move_n1
+	CONSUME pl_finalizing: 1,pl_robber_absent_n1: 1,pl_incoming_cops_n1: 1;
+	PRODUCE pl_finished_moving: 1,pl_cops_n1: 1,pl_robber_absent_n1: 1;
+
+TRANSITION tr_dispatch_cops_n9_n5
+	CONSUME pl_start_cops: 1,pl_cops_n9: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n5: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_dispatch_cops_n9_n4
+	CONSUME pl_start_cops: 1,pl_cops_n9: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n4: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_dispatch_cops_n9_n1
+	CONSUME pl_start_cops: 1,pl_cops_n9: 1,pl_robber_absent_n9: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n1: 1,pl_robber_absent_n9: 1;
+
+TRANSITION tr_dispatch_cops_n8_n6
+	CONSUME pl_start_cops: 1,pl_cops_n8: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n6: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_dispatch_cops_n8_n4
+	CONSUME pl_start_cops: 1,pl_cops_n8: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n4: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_dispatch_cops_n8_n2
+	CONSUME pl_start_cops: 1,pl_cops_n8: 1,pl_robber_absent_n8: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n2: 1,pl_robber_absent_n8: 1;
+
+TRANSITION tr_dispatch_cops_n7_n6
+	CONSUME pl_start_cops: 1,pl_cops_n7: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n6: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_dispatch_cops_n7_n5
+	CONSUME pl_start_cops: 1,pl_cops_n7: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n5: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_dispatch_cops_n7_n3
+	CONSUME pl_start_cops: 1,pl_cops_n7: 1,pl_robber_absent_n7: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n3: 1,pl_robber_absent_n7: 1;
+
+TRANSITION tr_dispatch_cops_n6_n8
+	CONSUME pl_start_cops: 1,pl_cops_n6: 1,pl_robber_absent_n6: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n6: 1,pl_incoming_cops_n8: 1;
+
+TRANSITION tr_dispatch_cops_n6_n7
+	CONSUME pl_start_cops: 1,pl_cops_n6: 1,pl_robber_absent_n6: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n6: 1,pl_incoming_cops_n7: 1;
+
+TRANSITION tr_dispatch_cops_n6_n1
+	CONSUME pl_start_cops: 1,pl_cops_n6: 1,pl_robber_absent_n6: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n1: 1,pl_robber_absent_n6: 1;
+
+TRANSITION tr_dispatch_cops_n5_n9
+	CONSUME pl_start_cops: 1,pl_cops_n5: 1,pl_robber_absent_n5: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n5: 1,pl_incoming_cops_n9: 1;
+
+TRANSITION tr_dispatch_cops_n5_n7
+	CONSUME pl_start_cops: 1,pl_cops_n5: 1,pl_robber_absent_n5: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n5: 1,pl_incoming_cops_n7: 1;
+
+TRANSITION tr_dispatch_cops_n5_n2
+	CONSUME pl_start_cops: 1,pl_cops_n5: 1,pl_robber_absent_n5: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n2: 1,pl_robber_absent_n5: 1;
+
+TRANSITION tr_dispatch_cops_n4_n9
+	CONSUME pl_start_cops: 1,pl_cops_n4: 1,pl_robber_absent_n4: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n4: 1,pl_incoming_cops_n9: 1;
+
+TRANSITION tr_dispatch_cops_n4_n8
+	CONSUME pl_start_cops: 1,pl_cops_n4: 1,pl_robber_absent_n4: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n4: 1,pl_incoming_cops_n8: 1;
+
+TRANSITION tr_dispatch_cops_n4_n3
+	CONSUME pl_start_cops: 1,pl_cops_n4: 1,pl_robber_absent_n4: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n3: 1,pl_robber_absent_n4: 1;
+
+TRANSITION tr_dispatch_cops_n3_n7
+	CONSUME pl_start_cops: 1,pl_cops_n3: 1,pl_robber_absent_n3: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n3: 1,pl_incoming_cops_n7: 1;
+
+TRANSITION tr_dispatch_cops_n3_n4
+	CONSUME pl_start_cops: 1,pl_cops_n3: 1,pl_robber_absent_n3: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n3: 1,pl_incoming_cops_n4: 1;
+
+TRANSITION tr_dispatch_cops_n3_n10
+	CONSUME pl_start_cops: 1,pl_cops_n3: 1,pl_robber_absent_n3: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n3: 1,pl_incoming_cops_n10: 1;
+
+TRANSITION tr_dispatch_cops_n2_n8
+	CONSUME pl_start_cops: 1,pl_cops_n2: 1,pl_robber_absent_n2: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n2: 1,pl_incoming_cops_n8: 1;
+
+TRANSITION tr_dispatch_cops_n2_n5
+	CONSUME pl_start_cops: 1,pl_cops_n2: 1,pl_robber_absent_n2: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n2: 1,pl_incoming_cops_n5: 1;
+
+TRANSITION tr_dispatch_cops_n2_n10
+	CONSUME pl_start_cops: 1,pl_cops_n2: 1,pl_robber_absent_n2: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n2: 1,pl_incoming_cops_n10: 1;
+
+TRANSITION tr_dispatch_cops_n1_n9
+	CONSUME pl_start_cops: 1,pl_cops_n1: 1,pl_robber_absent_n1: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n1: 1,pl_incoming_cops_n9: 1;
+
+TRANSITION tr_dispatch_cops_n1_n6
+	CONSUME pl_start_cops: 1,pl_cops_n1: 1,pl_robber_absent_n1: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n1: 1,pl_incoming_cops_n6: 1;
+
+TRANSITION tr_dispatch_cops_n1_n10
+	CONSUME pl_start_cops: 1,pl_cops_n1: 1,pl_robber_absent_n1: 1;
+	PRODUCE pl_awaiting: 1,pl_robber_absent_n1: 1,pl_incoming_cops_n10: 1;
+
+TRANSITION tr_dispatch_cops_n10_n3
+	CONSUME pl_start_cops: 1,pl_cops_n10: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_incoming_cops_n3: 1,pl_robber_absent_n10: 1,pl_awaiting: 1;
+
+TRANSITION tr_dispatch_cops_n10_n2
+	CONSUME pl_start_cops: 1,pl_cops_n10: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n2: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_dispatch_cops_n10_n1
+	CONSUME pl_start_cops: 1,pl_cops_n10: 1,pl_robber_absent_n10: 1;
+	PRODUCE pl_awaiting: 1,pl_incoming_cops_n1: 1,pl_robber_absent_n10: 1;
+
+TRANSITION tr_caught_n9
+	CONSUME pl_cops_n9: 1,pl_robber_here_n9: 1;
+	PRODUCE pl_robber_here_n9: 1,pl_end_n9: 1;
+
+TRANSITION tr_caught_n8
+	CONSUME pl_cops_n8: 1,pl_robber_here_n8: 1;
+	PRODUCE pl_robber_here_n8: 1,pl_end_n8: 1;
+
+TRANSITION tr_caught_n7
+	CONSUME pl_cops_n7: 1,pl_robber_here_n7: 1;
+	PRODUCE pl_robber_here_n7: 1,pl_end_n7: 1;
+
+TRANSITION tr_caught_n6
+	CONSUME pl_cops_n6: 1,pl_robber_here_n6: 1;
+	PRODUCE pl_robber_here_n6: 1,pl_end_n6: 1;
+
+TRANSITION tr_caught_n5
+	CONSUME pl_cops_n5: 1,pl_robber_here_n5: 1;
+	PRODUCE pl_robber_here_n5: 1,pl_end_n5: 1;
+
+TRANSITION tr_caught_n4
+	CONSUME pl_cops_n4: 1,pl_robber_here_n4: 1;
+	PRODUCE pl_robber_here_n4: 1,pl_end_n4: 1;
+
+TRANSITION tr_caught_n3
+	CONSUME pl_cops_n3: 1,pl_robber_here_n3: 1;
+	PRODUCE pl_robber_here_n3: 1,pl_end_n3: 1;
+
+TRANSITION tr_caught_n2
+	CONSUME pl_cops_n2: 1,pl_robber_here_n2: 1;
+	PRODUCE pl_robber_here_n2: 1,pl_end_n2: 1;
+
+TRANSITION tr_caught_n10
+	CONSUME pl_cops_n10: 1,pl_robber_here_n10: 1;
+	PRODUCE pl_robber_here_n10: 1,pl_end_n10: 1;
+
+TRANSITION tr_caught_n1
+	CONSUME pl_cops_n1: 1,pl_robber_here_n1: 1;
+	PRODUCE pl_robber_here_n1: 1,pl_end_n1: 1;
+
+TRANSITION tr_caught_incoming_n9
+	CONSUME pl_robber_here_n9: 1,pl_incoming_cops_n9: 1;
+	PRODUCE pl_robber_here_n9: 1,pl_end_n9: 1;
+
+TRANSITION tr_caught_incoming_n8
+	CONSUME pl_robber_here_n8: 1,pl_incoming_cops_n8: 1;
+	PRODUCE pl_robber_here_n8: 1,pl_end_n8: 1;
+
+TRANSITION tr_caught_incoming_n7
+	CONSUME pl_robber_here_n7: 1,pl_incoming_cops_n7: 1;
+	PRODUCE pl_robber_here_n7: 1,pl_end_n7: 1;
+
+TRANSITION tr_caught_incoming_n6
+	CONSUME pl_robber_here_n6: 1,pl_incoming_cops_n6: 1;
+	PRODUCE pl_robber_here_n6: 1,pl_end_n6: 1;
+
+TRANSITION tr_caught_incoming_n5
+	CONSUME pl_robber_here_n5: 1,pl_incoming_cops_n5: 1;
+	PRODUCE pl_robber_here_n5: 1,pl_end_n5: 1;
+
+TRANSITION tr_caught_incoming_n4
+	CONSUME pl_robber_here_n4: 1,pl_incoming_cops_n4: 1;
+	PRODUCE pl_robber_here_n4: 1,pl_end_n4: 1;
+
+TRANSITION tr_caught_incoming_n3
+	CONSUME pl_robber_here_n3: 1,pl_incoming_cops_n3: 1;
+	PRODUCE pl_robber_here_n3: 1,pl_end_n3: 1;
+
+TRANSITION tr_caught_incoming_n2
+	CONSUME pl_robber_here_n2: 1,pl_incoming_cops_n2: 1;
+	PRODUCE pl_robber_here_n2: 1,pl_end_n2: 1;
+
+TRANSITION tr_caught_incoming_n10
+	CONSUME pl_robber_here_n10: 1,pl_incoming_cops_n10: 1;
+	PRODUCE pl_end_n10: 1,pl_robber_here_n10: 1;
+
+TRANSITION tr_caught_incoming_n1
+	CONSUME pl_robber_here_n1: 1,pl_incoming_cops_n1: 1;
+	PRODUCE pl_robber_here_n1: 1,pl_end_n1: 1;
+
+TRANSITION tr_all_moved
+	CONSUME pl_awaiting: 1;
+	PRODUCE pl_finalizing: 1;

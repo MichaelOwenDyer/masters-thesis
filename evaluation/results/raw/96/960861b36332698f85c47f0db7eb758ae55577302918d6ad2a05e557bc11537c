@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ERK-PT-000010/model.pnml","property":"live","mode":"poly","verdict":"unknown","class":"AsymmetricChoice","places":11,"transitions":11,"arcs":34,"parse_ms":0.296,"analyze_ms":0.006,"timeout_ms":null}

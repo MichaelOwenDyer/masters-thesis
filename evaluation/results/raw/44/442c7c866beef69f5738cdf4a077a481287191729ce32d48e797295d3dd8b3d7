@@ -1,0 +1,5 @@
+some state violates condition -f:
+  F1 F10 F11*2 F14 F16 F17 F19 F2 F20 F22 F23 F4 F5 F7 F8 Section_13 Section_15 Section_18 Section_21 Section_24 Section_3 Section_6 Section_9
+  firable: t13_to_14 t15_to_16 t18_to_19 t21_to_22 t24_to_1 t3_to_4 t6_to_7 t9_to_10
+17 marking(s), 16 transition(s)
+0.000s

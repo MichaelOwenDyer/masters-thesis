@@ -1,0 +1,5 @@
+some state violates condition -f:
+  p_0_0*2 p_0_2 p_1_0 p_1_1 p_1_2 p_2_0 p_2_1 p_2_2
+  firable: ti_0_0v_0_2 ti_0_0v_1_0 ti_0_0v_1_1 ti_0_0v_1_2 ti_0_0v_2_0 ti_0_0v_2_1 ti_0_0v_2_2 ti_0_1v_0_2 ti_0_1v_1_0 ti_0_1v_1_1 ti_0_1v_1_2 ti_0_1v_2_0 ti_0_1v_2_1 ti_0_1v_2_2 ti_0_2v_1_0 ti_0_2v_1_1 ti_0_2v_1_2 ti_0_2v_2_0 ti_0_2v_2_1 ti_0_2v_2_2 ti_1_0v_1_1 ti_1_0v_1_2 ti_1_0v_2_0 ti_1_0v_2_1 ti_1_0v_2_2 ti_1_1v_1_2 ti_1_1v_2_0 ti_1_1v_2_1 ti_1_1v_2_2 ti_1_2v_2_0 ti_1_2v_2_1 ti_1_2v_2_2 ti_2_0v_2_1 ti_2_0v_2_2 ti_2_1v_2_2 to_0_0v_0_1 to_0_0v_0_2 to_0_0v_1_0 to_0_0v_1_1 to_0_0v_1_2 to_0_0v_2_0 to_0_0v_2_1 to_0_0v_2_2 to_0_2v_1_0 to_0_2v_1_1 to_0_2v_1_2 to_0_2v_2_0 to_0_2v_2_1 to_0_2v_2_2 to_1_0v_1_1 to_1_0v_1_2 to_1_0v_2_0 to_1_0v_2_1 to_1_0v_2_2 to_1_1v_1_2 to_1_1v_2_0 to_1_1v_2_1 to_1_1v_2_2 to_1_2v_2_0 to_1_2v_2_1 to_1_2v_2_2 to_2_0v_2_1 to_2_0v_2_2 to_2_1v_2_2
+122 marking(s), 136 transition(s)
+0.000s

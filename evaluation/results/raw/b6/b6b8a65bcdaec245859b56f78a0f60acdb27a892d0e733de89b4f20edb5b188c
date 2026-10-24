@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/SharedMemory-PT-000005/model.pnml","property":"onesafe","mode":"general","verdict":"true","class":"General","places":41,"transitions":55,"arcs":200,"parse_ms":1.794,"analyze_ms":3.972,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Dekker-PT-015/model.pnml","property":"live","mode":"general","verdict":"true","class":"General","places":75,"transitions":255,"arcs":1830,"parse_ms":4.840,"analyze_ms":5248.049,"timeout_ms":null,"states":278528,"edges":16834575}

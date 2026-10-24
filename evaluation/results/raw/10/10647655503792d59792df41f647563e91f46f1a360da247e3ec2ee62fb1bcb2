@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/SafeBus-PT-03/model.pnml","property":"stable","mode":"general","verdict":"true","class":"General","places":57,"transitions":91,"arcs":541,"parse_ms":2.219,"analyze_ms":12.910,"timeout_ms":null,"states":4650,"edges":12888}

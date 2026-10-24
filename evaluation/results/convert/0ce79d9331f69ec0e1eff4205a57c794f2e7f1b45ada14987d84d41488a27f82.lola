@@ -1,0 +1,49 @@
+PLACE
+	access, initialize, initialized, move, moved, off, p_i1, p_i2, p_m, p_rdy, p_rel, p_sc, r_active, r_moving, r_stopped;
+
+MARKING
+	r_stopped: 4,p_i1: 5,access: 4;
+
+TRANSITION r_stops
+	CONSUME r_active: 1,off: 1;
+	PRODUCE r_stopped: 1;
+
+TRANSITION r_starts
+	CONSUME r_stopped: 1,initialize: 1;
+	PRODUCE r_active: 1,initialized: 1;
+
+TRANSITION r_end_move
+	CONSUME r_moving: 1;
+	PRODUCE moved: 1,r_active: 1;
+
+TRANSITION r_begin_move
+	CONSUME move: 1,r_active: 1;
+	PRODUCE r_moving: 1;
+
+TRANSITION p_started
+	CONSUME p_i2: 1,initialized: 1;
+	PRODUCE p_rdy: 1;
+
+TRANSITION p_start
+	CONSUME p_i1: 1;
+	PRODUCE initialize: 1,p_i2: 1;
+
+TRANSITION p_sop
+	CONSUME p_rdy: 1;
+	PRODUCE off: 1,p_i1: 1;
+
+TRANSITION p_relSC
+	CONSUME p_rel: 1;
+	PRODUCE access: 1,p_rdy: 1;
+
+TRANSITION p_moved
+	CONSUME p_m: 1,moved: 1;
+	PRODUCE p_rel: 1;
+
+TRANSITION p_move
+	CONSUME p_sc: 1;
+	PRODUCE p_m: 1,move: 1;
+
+TRANSITION p_intoSC
+	CONSUME p_rdy: 1,access: 1;
+	PRODUCE p_sc: 1;

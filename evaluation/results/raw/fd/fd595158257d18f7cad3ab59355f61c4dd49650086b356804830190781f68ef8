@@ -1,0 +1,5 @@
+some state violates condition -f:
+  CPUUnit*16 DiskControllerUnit*8 FreeMemSegment*16 TaskOnDisk*16
+  firable: startLoading
+2 marking(s), 1 transition(s)
+0.000s

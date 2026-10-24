@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {RobotManipulation-PT-00002}
+
+15 places, 11 transitions, 34 arcs
+
+0.000s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+1430 marking(s), 5500 transition(s)
+
+0.006s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 1430 live marking(s)
+0 dead transition(s), 11 live transition(s)
+
+0.000s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {RobotManipulation-PT-00002}, 15 places, 11 transitions, 34 arcs #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states         1430         15          ?          0       1430 # 
+# transitions         5500         11          ?          0         11 #

@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {UtilityControlRoom-COL-Z2T3N04_unfolded}
+
+72 places, 108 transitions, 340 arcs
+
+0.003s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+208341 marking(s), 1393748 transition(s)
+
+2.932s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 208341 live marking(s)
+0 dead transition(s), 108 live transition(s)
+
+0.578s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {UtilityControlRoom-COL-Z2T3N04_unfolded}, 72 places, 108 transitions, 340 arcs#
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states       208341         72          ?          0     208341 # 
+# transitions      1393748        108          ?          0        108 #

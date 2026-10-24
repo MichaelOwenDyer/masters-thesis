@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {CO4-PT-02}
+
+97 places, 299 transitions, 1113 arcs
+
+0.007s

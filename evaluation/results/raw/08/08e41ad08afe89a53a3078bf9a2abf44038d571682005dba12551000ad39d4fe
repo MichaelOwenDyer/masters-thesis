@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {ViralEpidemic-PT-S04D1C1A03}
+
+511 places, 765 transitions, 1785 arcs
+
+0.015s

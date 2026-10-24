@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {ShieldRVt-PT-003A}
+
+27 places, 27 transitions, 108 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+8193 marking(s), 71681 transition(s)
+
+0.123s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 8192 live marking(s)
+0 dead transition(s), 26 live transition(s)
+
+0.005s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {ShieldRVt-PT-003A}, 27 places, 27 transitions, 108 arcs         #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states         8193         27          ?          0       8192 # 
+# transitions        71681         27          ?          0         26 #

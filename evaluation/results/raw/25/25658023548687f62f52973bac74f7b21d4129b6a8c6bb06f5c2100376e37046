@@ -1,0 +1,5 @@
+some state violates condition -f:
+  merge_s00001290_activated*2 merge_s00001290_input_s00000950 merge_s00001292_input_s00000935 merge_s00001292_input_s00000950 process_s00000383__s00005964_input_s00000936 process_s00000383__s00005964_input_s00001431 process_s00000383__s00005964_input_s00001512 process_s00000383__s00005964_input_s00001609
+  firable: fork_s00001537_activate_s00000990 merge_s00001290_fire_s00000953 merge_s00001292_activate_s00000946
+34 marking(s), 50 transition(s)
+0.000s

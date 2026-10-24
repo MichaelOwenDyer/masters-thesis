@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {AirplaneLD-PT-0010}
+
+89 places, 88 transitions, 333 arcs
+
+0.002s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+43463 marking(s), 183664 transition(s)
+
+1.129s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+6112 dead marking(s), 6112 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.019s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {AirplaneLD-PT-0010}, 89 places, 88 transitions, 333 arcs        #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        43463         89          ?       6112       6112 # 
+# transitions       183664         88          ?          0          0 #

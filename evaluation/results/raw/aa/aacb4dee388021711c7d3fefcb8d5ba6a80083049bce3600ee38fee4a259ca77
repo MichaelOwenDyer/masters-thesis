@@ -1,0 +1,5 @@
+some state violates condition -f:
+  InsertedCount*2 Node0IsInserted Node1IsInserted Node2ReadyToInsert Node3ReadyToInsert Node4ReadyToInsert
+  firable: Node2NextInCAN Node3NextInCAN Node4NextInCAN
+3684 marking(s), 10083 transition(s)
+0.009s

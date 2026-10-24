@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ServersAndClients-PT-100160/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"General","places":16561,"transitions":32200,"arcs":96800,"parse_ms":845.400,"analyze_ms":11162.880,"timeout_ms":null,"states":16201,"edges":32200}

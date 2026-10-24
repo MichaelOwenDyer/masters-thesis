@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Peterson-PT-2/model.pnml","property":"df","mode":"general","verdict":"true","class":"General","places":102,"transitions":126,"arcs":384,"parse_ms":2.644,"analyze_ms":50.594,"timeout_ms":null}

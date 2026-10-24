@@ -1,0 +1,133 @@
+PLACE
+	Acknowledge_1_1, Acknowledge_1_2, Acknowledge_2_1, Acknowledge_2_2, Active_1_1, Active_1_2, Active_2_1, Active_2_2, MesBuffReply_1_1, MesBuffReply_1_2, MesBuffReply_2_1, MesBuffReply_2_2, Message_1_1, Message_1_2, Message_2_1, Message_2_2, Modify_1_1, Modify_1_2, Modify_2_1, Modify_2_2, Mutex_1, Mutex_2, RecBuff_1_1, RecBuff_1_2, RecBuff_2_1, RecBuff_2_2, WaitMutex_1_1, WaitMutex_1_2, WaitMutex_2_1, WaitMutex_2_2, all_active_1, all_active_2, all_passive_1, all_passive_2, updating_1_1, updating_1_2, updating_2_1, updating_2_2;
+
+MARKING
+	all_passive_2: 1,all_passive_1: 1,all_active_2: 1,all_active_1: 1,Mutex_2: 1,Mutex_1: 1;
+
+TRANSITION end_update_2_2
+	CONSUME updating_2_2: 1;
+	PRODUCE MesBuffReply_2_2: 1,all_passive_2: 1;
+
+TRANSITION end_update_2_1
+	CONSUME updating_2_1: 1;
+	PRODUCE MesBuffReply_2_1: 1,all_passive_2: 1;
+
+TRANSITION end_update_1_2
+	CONSUME updating_1_2: 1;
+	PRODUCE MesBuffReply_1_2: 1,all_passive_1: 1;
+
+TRANSITION end_update_1_1
+	CONSUME updating_1_1: 1;
+	PRODUCE all_passive_1: 1,MesBuffReply_1_1: 1;
+
+TRANSITION Update_2_2
+	CONSUME all_passive_2: 1,RecBuff_2_2: 1;
+	PRODUCE updating_2_2: 1;
+
+TRANSITION Update_2_1
+	CONSUME all_passive_2: 1,RecBuff_2_1: 1;
+	PRODUCE updating_2_1: 1;
+
+TRANSITION Update_1_2
+	CONSUME all_passive_1: 1,RecBuff_1_2: 1;
+	PRODUCE updating_1_2: 1;
+
+TRANSITION Update_1_1
+	CONSUME all_passive_1: 1,RecBuff_1_1: 1;
+	PRODUCE updating_1_1: 1;
+
+TRANSITION Start_2_2
+	CONSUME all_active_2: 1;
+	PRODUCE WaitMutex_2_2: 1;
+
+TRANSITION Start_2_1
+	CONSUME all_active_2: 1;
+	PRODUCE WaitMutex_2_1: 1;
+
+TRANSITION Start_1_2
+	CONSUME all_active_1: 1;
+	PRODUCE WaitMutex_1_2: 1;
+
+TRANSITION Start_1_1
+	CONSUME all_active_1: 1;
+	PRODUCE WaitMutex_1_1: 1;
+
+TRANSITION SendReply_2_2
+	CONSUME MesBuffReply_2_2: 1;
+	PRODUCE Acknowledge_2_2: 1;
+
+TRANSITION SendReply_2_1
+	CONSUME MesBuffReply_2_1: 1;
+	PRODUCE Acknowledge_2_1: 1;
+
+TRANSITION SendReply_1_2
+	CONSUME MesBuffReply_1_2: 1;
+	PRODUCE Acknowledge_1_2: 1;
+
+TRANSITION SendReply_1_1
+	CONSUME MesBuffReply_1_1: 1;
+	PRODUCE Acknowledge_1_1: 1;
+
+TRANSITION SendMsg_2_2
+	CONSUME Message_2_2: 1;
+	PRODUCE RecBuff_2_2: 1;
+
+TRANSITION SendMsg_2_1
+	CONSUME Message_2_1: 1;
+	PRODUCE RecBuff_2_1: 1;
+
+TRANSITION SendMsg_1_2
+	CONSUME Message_1_2: 1;
+	PRODUCE RecBuff_1_2: 1;
+
+TRANSITION SendMsg_1_1
+	CONSUME Message_1_1: 1;
+	PRODUCE RecBuff_1_1: 1;
+
+TRANSITION Release_2_2
+	CONSUME Active_2_2: 1,Acknowledge_1_2: 1;
+	PRODUCE all_active_2: 1,Mutex_2: 1;
+
+TRANSITION Release_2_1
+	CONSUME Active_2_1: 1,Acknowledge_1_1: 1;
+	PRODUCE all_active_2: 1,Mutex_1: 1;
+
+TRANSITION Release_1_2
+	CONSUME Active_1_2: 1,Acknowledge_2_2: 1;
+	PRODUCE Mutex_2: 1,all_active_1: 1;
+
+TRANSITION Release_1_1
+	CONSUME Active_1_1: 1,Acknowledge_2_1: 1;
+	PRODUCE all_active_1: 1,Mutex_1: 1;
+
+TRANSITION Change_2_2
+	CONSUME Modify_2_2: 1;
+	PRODUCE Active_2_2: 1,Message_1_2: 1;
+
+TRANSITION Change_2_1
+	CONSUME Modify_2_1: 1;
+	PRODUCE Active_2_1: 1,Message_1_1: 1;
+
+TRANSITION Change_1_2
+	CONSUME Modify_1_2: 1;
+	PRODUCE Active_1_2: 1,Message_2_2: 1;
+
+TRANSITION Change_1_1
+	CONSUME Modify_1_1: 1;
+	PRODUCE Message_2_1: 1,Active_1_1: 1;
+
+TRANSITION Acquire_2_2
+	CONSUME Mutex_2: 1,WaitMutex_2_2: 1;
+	PRODUCE Modify_2_2: 1;
+
+TRANSITION Acquire_2_1
+	CONSUME WaitMutex_2_1: 1,Mutex_1: 1;
+	PRODUCE Modify_2_1: 1;
+
+TRANSITION Acquire_1_2
+	CONSUME Mutex_2: 1,WaitMutex_1_2: 1;
+	PRODUCE Modify_1_2: 1;
+
+TRANSITION Acquire_1_1
+	CONSUME WaitMutex_1_1: 1,Mutex_1: 1;
+	PRODUCE Modify_1_1: 1;

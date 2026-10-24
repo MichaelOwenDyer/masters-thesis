@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {FlexibleBarrier-PT-04a}
+
+51 places, 88 transitions, 309 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+20737 marking(s), 121825 transition(s)
+
+0.146s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+0 dead marking(s), 20736 live marking(s)
+0 dead transition(s), 87 live transition(s)
+
+0.017s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {FlexibleBarrier-PT-04a}, 51 places, 88 transitions, 309 arcs    #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states        20737         51          ?          0      20736 # 
+# transitions       121825         88          ?          0         87 #

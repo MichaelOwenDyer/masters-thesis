@@ -1,0 +1,11 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {MAPKbis-PT-5320}
+
+106 places, 173 transitions, 986 arcs
+
+0.006s

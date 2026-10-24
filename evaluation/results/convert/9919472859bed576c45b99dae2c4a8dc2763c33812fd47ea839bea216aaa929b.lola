@@ -1,0 +1,277 @@
+PLACE
+	AKT1_0, AKT1_equals_1, CDK2_equals_0, CDK2_equals_1, CDK4_equals_0, CDK4_equals_1, CDK6_equals_0, CDK6_equals_1, CyclinD1_equals_0, CyclinD1_equals_1, CyclinE1_equals_0, CyclinE1_equals_1, EGF_equals_0, EGF_equals_1, ERBB1_2_equals_0, ERBB1_2_equals_1, ERBB1_3_equals_0, ERBB1_3_equals_1, ERBB1_equals_0, ERBB1_equals_1, ERBB2_3_equals_0, ERBB2_3_equals_1, ERBB2_equals_0, ERBB2_equals_1, ERBB3_equals_0, ERBB3_equals_1, ERalpha_equals_0, ERalpha_equals_1, IGF1R_equals_0, IGF1R_equals_1, MEK1_equals_0, MEK1_equals_1, MYC_equals_0, MYC_equals_1, p21_equals_0, p21_equals_1, p27_equals_0, p27_equals_1, pRB1_equals_0, pRB1_equals_1;
+
+MARKING
+	pRB1_equals_0: 1,p27_equals_0: 1,p21_equals_0: 1,MYC_equals_0: 1,MEK1_equals_0: 1,IGF1R_equals_0: 1,ERalpha_equals_0: 1,ERBB3_equals_0: 1,ERBB2_equals_0: 1,ERBB2_3_equals_0: 1,ERBB1_equals_0: 1,ERBB1_3_equals_0: 1,ERBB1_2_equals_0: 1,EGF_equals_0: 1,CyclinE1_equals_0: 1,CyclinD1_equals_0: 1,CDK6_equals_0: 1,CDK4_equals_0: 1,CDK2_equals_0: 1,AKT1_0: 1;
+
+TRANSITION pRB1_equals_1_to_pRB1_equals_0_when_CDK6_equals_0
+	CONSUME CDK6_equals_0: 1,pRB1_equals_1: 1;
+	PRODUCE CDK6_equals_0: 1,pRB1_equals_0: 1;
+
+TRANSITION pRB1_equals_1_to_pRB1_equals_0_when_CDK4_equals_0
+	CONSUME CDK4_equals_0: 1,pRB1_equals_1: 1;
+	PRODUCE CDK4_equals_0: 1,pRB1_equals_0: 1;
+
+TRANSITION pRB1_equals_0_to_pRB1_equals_1_when_CDK4_equals_1_and_CDK6_equals_1
+	CONSUME CDK4_equals_1: 1,CDK6_equals_1: 1,pRB1_equals_0: 1;
+	PRODUCE CDK4_equals_1: 1,CDK6_equals_1: 1,pRB1_equals_1: 1;
+
+TRANSITION p27_equals_1_to_p27_equals_0_when_MYC_equals_1
+	CONSUME MYC_equals_1: 1,p27_equals_1: 1;
+	PRODUCE MYC_equals_1: 1,p27_equals_0: 1;
+
+TRANSITION p27_equals_1_to_p27_equals_0_when_CDK4_equals_1
+	CONSUME CDK4_equals_1: 1,p27_equals_1: 1;
+	PRODUCE CDK4_equals_1: 1,p27_equals_0: 1;
+
+TRANSITION p27_equals_1_to_p27_equals_0_when_CDK2_equals_1
+	CONSUME CDK2_equals_1: 1,p27_equals_1: 1;
+	PRODUCE CDK2_equals_1: 1,p27_equals_0: 1;
+
+TRANSITION p27_equals_1_to_p27_equals_0_when_AKT1_equals_1
+	CONSUME AKT1_equals_1: 1,p27_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,p27_equals_0: 1;
+
+TRANSITION p27_equals_0_to_p27_equals_1_when_AKT1_equals_0_and_CDK2_equals_0_and_CDK4_equals_0_and_MYC_equals_0
+	CONSUME AKT1_0: 1,CDK2_equals_0: 1,CDK4_equals_0: 1,MYC_equals_0: 1,p27_equals_0: 1;
+	PRODUCE AKT1_0: 1,CDK2_equals_0: 1,CDK4_equals_0: 1,MYC_equals_0: 1,p27_equals_1: 1;
+
+TRANSITION p21_equals_1_to_p21_equals_0_when_MYC_equals_1
+	CONSUME MYC_equals_1: 1,p21_equals_1: 1;
+	PRODUCE MYC_equals_1: 1,p21_equals_0: 1;
+
+TRANSITION p21_equals_1_to_p21_equals_0_when_CDK4_equals_1
+	CONSUME CDK4_equals_1: 1,p21_equals_1: 1;
+	PRODUCE CDK4_equals_1: 1,p21_equals_0: 1;
+
+TRANSITION p21_equals_1_to_p21_equals_0_when_AKT1_equals_1
+	CONSUME AKT1_equals_1: 1,p21_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,p21_equals_0: 1;
+
+TRANSITION p21_equals_0_to_p21_equals_1_when_AKT1_equals_0_and_CDK4_equals_0_and_MYC_equals_0
+	CONSUME AKT1_0: 1,CDK4_equals_0: 1,MYC_equals_0: 1,p21_equals_0: 1;
+	PRODUCE AKT1_0: 1,CDK4_equals_0: 1,MYC_equals_0: 1,p21_equals_1: 1;
+
+TRANSITION MYC_equals_1_to_MYC_equals_0_when_AKT1_equals_0_and_ERalpha_equals_0_and_MEK1_equals_0
+	CONSUME AKT1_0: 1,ERalpha_equals_0: 1,MEK1_equals_0: 1,MYC_equals_1: 1;
+	PRODUCE AKT1_0: 1,ERalpha_equals_0: 1,MEK1_equals_0: 1,MYC_equals_0: 1;
+
+TRANSITION MYC_equals_0_to_MYC_equals_1_when_MEK1_equals_1
+	CONSUME MEK1_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE MEK1_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION MYC_equals_0_to_MYC_equals_1_when_ERalpha_equals_1
+	CONSUME ERalpha_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE ERalpha_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION MYC_equals_0_to_MYC_equals_1_when_AKT1_equals_1
+	CONSUME AKT1_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE AKT1_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION MEK1_equals_1_to_MEK1_equals_0_when_ERBB1_equals_0_and_ERBB1_2_equals_0_and_ERBB1_3_equals_0_and_ERBB2_3_equals_0_and_IGF1R_equals_0
+	CONSUME ERBB1_equals_0: 1,ERBB1_2_equals_0: 1,ERBB1_3_equals_0: 1,ERBB2_3_equals_0: 1,IGF1R_equals_0: 1,MEK1_equals_1: 1;
+	PRODUCE ERBB1_equals_0: 1,ERBB1_2_equals_0: 1,ERBB1_3_equals_0: 1,ERBB2_3_equals_0: 1,IGF1R_equals_0: 1,MEK1_equals_0: 1;
+
+TRANSITION MEK1_equals_0_to_MEK1_equals_1_when_IGF1R_equals_1
+	CONSUME IGF1R_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE IGF1R_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION MEK1_equals_0_to_MEK1_equals_1_when_ERBB2_3_equals_1
+	CONSUME ERBB2_3_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE ERBB2_3_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION MEK1_equals_0_to_MEK1_equals_1_when_ERBB1_equals_1
+	CONSUME ERBB1_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE ERBB1_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION MEK1_equals_0_to_MEK1_equals_1_when_ERBB1_3_equals_1
+	CONSUME ERBB1_3_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE ERBB1_3_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION MEK1_equals_0_to_MEK1_equals_1_when_ERBB1_2_equals_1
+	CONSUME ERBB1_2_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE ERBB1_2_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION IGF1R_equals_1_to_IGF1R_equals_0_when_ERBB2_3_equals_1
+	CONSUME ERBB2_3_equals_1: 1,IGF1R_equals_1: 1;
+	PRODUCE ERBB2_3_equals_1: 1,IGF1R_equals_0: 1;
+
+TRANSITION IGF1R_equals_1_to_IGF1R_equals_0_when_AKT1_equals_0_and_ERalpha_equals_0
+	CONSUME AKT1_0: 1,ERalpha_equals_0: 1,IGF1R_equals_1: 1;
+	PRODUCE AKT1_0: 1,ERalpha_equals_0: 1,IGF1R_equals_0: 1;
+
+TRANSITION IGF1R_equals_0_to_IGF1R_equals_1_when_AKT1_equals_1_and_ERBB2_3_equals_0
+	CONSUME AKT1_equals_1: 1,ERBB2_3_equals_0: 1,IGF1R_equals_0: 1;
+	PRODUCE AKT1_equals_1: 1,ERBB2_3_equals_0: 1,IGF1R_equals_1: 1;
+
+TRANSITION IGF1R_equals_0_to_IGF1R_equals_1_when_AKT1_equals_0_and_ERBB2_3_equals_0_and_ERalpha_equals_1
+	CONSUME AKT1_0: 1,ERBB2_3_equals_0: 1,ERalpha_equals_1: 1,IGF1R_equals_0: 1;
+	PRODUCE AKT1_0: 1,ERBB2_3_equals_0: 1,ERalpha_equals_1: 1,IGF1R_equals_1: 1;
+
+TRANSITION ERalpha_equals_1_to_ERalpha_equals_0_when_AKT1_equals_0_and_MEK1_equals_0
+	CONSUME AKT1_0: 1,ERalpha_equals_1: 1,MEK1_equals_0: 1;
+	PRODUCE AKT1_0: 1,ERalpha_equals_0: 1,MEK1_equals_0: 1;
+
+TRANSITION ERalpha_equals_0_to_ERalpha_equals_1_when_MEK1_equals_1
+	CONSUME ERalpha_equals_0: 1,MEK1_equals_1: 1;
+	PRODUCE ERalpha_equals_1: 1,MEK1_equals_1: 1;
+
+TRANSITION ERalpha_equals_0_to_ERalpha_equals_1_when_AKT1_equals_1
+	CONSUME AKT1_equals_1: 1,ERalpha_equals_0: 1;
+	PRODUCE AKT1_equals_1: 1,ERalpha_equals_1: 1;
+
+TRANSITION ERBB3_equals_1_to_ERBB3_equals_0_when_EGF_equals_0
+	CONSUME EGF_equals_0: 1,ERBB3_equals_1: 1;
+	PRODUCE EGF_equals_0: 1,ERBB3_equals_0: 1;
+
+TRANSITION ERBB3_equals_0_to_ERBB3_equals_1_when_EGF_equals_1
+	CONSUME EGF_equals_1: 1,ERBB3_equals_0: 1;
+	PRODUCE EGF_equals_1: 1,ERBB3_equals_1: 1;
+
+TRANSITION ERBB2_equals_1_to_ERBB2_equals_0_when_EGF_equals_0
+	CONSUME EGF_equals_0: 1,ERBB2_equals_1: 1;
+	PRODUCE EGF_equals_0: 1,ERBB2_equals_0: 1;
+
+TRANSITION ERBB2_equals_0_to_ERBB2_equals_1_when_EGF_equals_1
+	CONSUME EGF_equals_1: 1,ERBB2_equals_0: 1;
+	PRODUCE EGF_equals_1: 1,ERBB2_equals_1: 1;
+
+TRANSITION ERBB2_3_equals_1_to_ERBB2_3_equals_0_when_ERBB3_equals_0
+	CONSUME ERBB2_3_equals_1: 1,ERBB3_equals_0: 1;
+	PRODUCE ERBB2_3_equals_0: 1,ERBB3_equals_0: 1;
+
+TRANSITION ERBB2_3_equals_1_to_ERBB2_3_equals_0_when_ERBB2_equals_0
+	CONSUME ERBB2_equals_0: 1,ERBB2_3_equals_1: 1;
+	PRODUCE ERBB2_equals_0: 1,ERBB2_3_equals_0: 1;
+
+TRANSITION ERBB2_3_equals_0_to_ERBB2_3_equals_1_when_ERBB2_equals_1_and_ERBB3_equals_1
+	CONSUME ERBB2_equals_1: 1,ERBB2_3_equals_0: 1,ERBB3_equals_1: 1;
+	PRODUCE ERBB2_equals_1: 1,ERBB2_3_equals_1: 1,ERBB3_equals_1: 1;
+
+TRANSITION ERBB1_equals_1_to_ERBB1_equals_0_when_EGF_equals_0
+	CONSUME EGF_equals_0: 1,ERBB1_equals_1: 1;
+	PRODUCE EGF_equals_0: 1,ERBB1_equals_0: 1;
+
+TRANSITION ERBB1_equals_0_to_ERBB1_equals_1_when_EGF_equals_1
+	CONSUME EGF_equals_1: 1,ERBB1_equals_0: 1;
+	PRODUCE EGF_equals_1: 1,ERBB1_equals_1: 1;
+
+TRANSITION ERBB1_3_equals_1_to_ERBB1_3_equals_0_when_ERBB3_equals_0
+	CONSUME ERBB1_3_equals_1: 1,ERBB3_equals_0: 1;
+	PRODUCE ERBB1_3_equals_0: 1,ERBB3_equals_0: 1;
+
+TRANSITION ERBB1_3_equals_1_to_ERBB1_3_equals_0_when_ERBB1_equals_0
+	CONSUME ERBB1_equals_0: 1,ERBB1_3_equals_1: 1;
+	PRODUCE ERBB1_equals_0: 1,ERBB1_3_equals_0: 1;
+
+TRANSITION ERBB1_3_equals_0_to_ERBB1_3_equals_1_when_ERBB1_equals_1_and_ERBB3_equals_1
+	CONSUME ERBB1_equals_1: 1,ERBB1_3_equals_0: 1,ERBB3_equals_1: 1;
+	PRODUCE ERBB1_equals_1: 1,ERBB1_3_equals_1: 1,ERBB3_equals_1: 1;
+
+TRANSITION ERBB1_2_equals_1_to_ERBB1_2_equals_0_when_ERBB2_equals_0
+	CONSUME ERBB1_2_equals_1: 1,ERBB2_equals_0: 1;
+	PRODUCE ERBB1_2_equals_0: 1,ERBB2_equals_0: 1;
+
+TRANSITION ERBB1_2_equals_1_to_ERBB1_2_equals_0_when_ERBB1_equals_0
+	CONSUME ERBB1_equals_0: 1,ERBB1_2_equals_1: 1;
+	PRODUCE ERBB1_equals_0: 1,ERBB1_2_equals_0: 1;
+
+TRANSITION ERBB1_2_equals_0_to_ERBB1_2_equals_1_when_ERBB1_equals_1_and_ERBB2_equals_1
+	CONSUME ERBB1_equals_1: 1,ERBB1_2_equals_0: 1,ERBB2_equals_1: 1;
+	PRODUCE ERBB1_equals_1: 1,ERBB1_2_equals_1: 1,ERBB2_equals_1: 1;
+
+TRANSITION EGF_equals_0_to_EGF_equals_1
+	CONSUME EGF_equals_0: 1;
+	PRODUCE EGF_equals_1: 1;
+
+TRANSITION CyclinE1_equals_1_to_CyclinE1_equals_0_when_MYC_equals_0
+	CONSUME CyclinE1_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE CyclinE1_equals_0: 1,MYC_equals_0: 1;
+
+TRANSITION CyclinE1_equals_0_to_CyclinE1_equals_1_when_MYC_equals_1
+	CONSUME CyclinE1_equals_0: 1,MYC_equals_1: 1;
+	PRODUCE CyclinE1_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION CyclinD1_equals_1_to_CyclinD1_equals_0_when_MYC_equals_0
+	CONSUME CyclinD1_equals_1: 1,MYC_equals_0: 1;
+	PRODUCE CyclinD1_equals_0: 1,MYC_equals_0: 1;
+
+TRANSITION CyclinD1_equals_1_to_CyclinD1_equals_0_when_ERalpha_equals_0
+	CONSUME CyclinD1_equals_1: 1,ERalpha_equals_0: 1;
+	PRODUCE CyclinD1_equals_0: 1,ERalpha_equals_0: 1;
+
+TRANSITION CyclinD1_equals_1_to_CyclinD1_equals_0_when_AKT1_equals_0_and_MEK1_equals_0
+	CONSUME MEK1_equals_0: 1,AKT1_0: 1,CyclinD1_equals_1: 1;
+	PRODUCE AKT1_0: 1,CyclinD1_equals_0: 1,MEK1_equals_0: 1;
+
+TRANSITION CyclinD1_equals_0_to_CyclinD1_equals_1_when_AKT1_equals_1_and_ERalpha_equals_1_and_MYC_equals_1
+	CONSUME AKT1_equals_1: 1,CyclinD1_equals_0: 1,ERalpha_equals_1: 1,MYC_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,CyclinD1_equals_1: 1,ERalpha_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION CyclinD1_equals_0_to_CyclinD1_equals_1_when_AKT1_equals_0_and_ERalpha_equals_1_and_MEK1_equals_1_and_MYC_equals_1
+	CONSUME AKT1_0: 1,CyclinD1_equals_0: 1,ERalpha_equals_1: 1,MEK1_equals_1: 1,MYC_equals_1: 1;
+	PRODUCE AKT1_0: 1,CyclinD1_equals_1: 1,ERalpha_equals_1: 1,MEK1_equals_1: 1,MYC_equals_1: 1;
+
+TRANSITION CDK6_equals_1_to_CDK6_equals_0_when_CyclinD1_equals_0
+	CONSUME CDK6_equals_1: 1,CyclinD1_equals_0: 1;
+	PRODUCE CDK6_equals_0: 1,CyclinD1_equals_0: 1;
+
+TRANSITION CDK6_equals_0_to_CDK6_equals_1_when_CyclinD1_equals_1
+	CONSUME CDK6_equals_0: 1,CyclinD1_equals_1: 1;
+	PRODUCE CDK6_equals_1: 1,CyclinD1_equals_1: 1;
+
+TRANSITION CDK4_equals_1_to_CDK4_equals_0_when_p27_equals_1
+	CONSUME CDK4_equals_1: 1,p27_equals_1: 1;
+	PRODUCE CDK4_equals_0: 1,p27_equals_1: 1;
+
+TRANSITION CDK4_equals_1_to_CDK4_equals_0_when_p21_equals_1
+	CONSUME CDK4_equals_1: 1,p21_equals_1: 1;
+	PRODUCE CDK4_equals_0: 1,p21_equals_1: 1;
+
+TRANSITION CDK4_equals_1_to_CDK4_equals_0_when_CyclinD1_equals_0
+	CONSUME CDK4_equals_1: 1,CyclinD1_equals_0: 1;
+	PRODUCE CDK4_equals_0: 1,CyclinD1_equals_0: 1;
+
+TRANSITION CDK4_equals_0_to_CDK4_equals_1_when_CyclinD1_equals_1_and_p21_equals_0_and_p27_equals_0
+	CONSUME CDK4_equals_0: 1,CyclinD1_equals_1: 1,p21_equals_0: 1,p27_equals_0: 1;
+	PRODUCE CDK4_equals_1: 1,CyclinD1_equals_1: 1,p21_equals_0: 1,p27_equals_0: 1;
+
+TRANSITION CDK2_equals_1_to_CDK2_equals_0_when_p27_equals_1
+	CONSUME CDK2_equals_1: 1,p27_equals_1: 1;
+	PRODUCE CDK2_equals_0: 1,p27_equals_1: 1;
+
+TRANSITION CDK2_equals_1_to_CDK2_equals_0_when_p21_equals_1
+	CONSUME CDK2_equals_1: 1,p21_equals_1: 1;
+	PRODUCE CDK2_equals_0: 1,p21_equals_1: 1;
+
+TRANSITION CDK2_equals_1_to_CDK2_equals_0_when_CyclinE1_equals_0
+	CONSUME CDK2_equals_1: 1,CyclinE1_equals_0: 1;
+	PRODUCE CDK2_equals_0: 1,CyclinE1_equals_0: 1;
+
+TRANSITION CDK2_equals_0_to_CDK2_equals_1_when_CyclinE1_equals_1_and_p21_equals_0_and_p27_equals_0
+	CONSUME CDK2_equals_0: 1,CyclinE1_equals_1: 1,p21_equals_0: 1,p27_equals_0: 1;
+	PRODUCE CDK2_equals_1: 1,CyclinE1_equals_1: 1,p21_equals_0: 1,p27_equals_0: 1;
+
+TRANSITION AKT1_equals_1_to_AKT1_equals_0_when_ERBB1_equals_0_and_ERBB1_2_equals_0_and_ERBB1_3_equals_0_and_ERBB2_3_equals_0_and_IGF1R_equals_0
+	CONSUME AKT1_equals_1: 1,ERBB1_equals_0: 1,ERBB1_2_equals_0: 1,ERBB1_3_equals_0: 1,ERBB2_3_equals_0: 1,IGF1R_equals_0: 1;
+	PRODUCE AKT1_0: 1,ERBB1_equals_0: 1,ERBB1_2_equals_0: 1,ERBB1_3_equals_0: 1,ERBB2_3_equals_0: 1,IGF1R_equals_0: 1;
+
+TRANSITION AKT1_equals_0_to_AKT1_equals_1_when_IGF1R_equals_1
+	CONSUME AKT1_0: 1,IGF1R_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,IGF1R_equals_1: 1;
+
+TRANSITION AKT1_equals_0_to_AKT1_equals_1_when_ERBB2_3_equals_1
+	CONSUME AKT1_0: 1,ERBB2_3_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,ERBB2_3_equals_1: 1;
+
+TRANSITION AKT1_equals_0_to_AKT1_equals_1_when_ERBB1_equals_1
+	CONSUME ERBB1_equals_1: 1,AKT1_0: 1;
+	PRODUCE AKT1_equals_1: 1,ERBB1_equals_1: 1;
+
+TRANSITION AKT1_equals_0_to_AKT1_equals_1_when_ERBB1_3_equals_1
+	CONSUME AKT1_0: 1,ERBB1_3_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,ERBB1_3_equals_1: 1;
+
+TRANSITION AKT1_equals_0_to_AKT1_equals_1_when_ERBB1_2_equals_1
+	CONSUME AKT1_0: 1,ERBB1_2_equals_1: 1;
+	PRODUCE AKT1_equals_1: 1,ERBB1_2_equals_1: 1;

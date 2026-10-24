@@ -1,0 +1,725 @@
+PLACE
+	EmptyCAN, InsertedCounter, Node0Bootstrap, Node0DHTinfo, Node0DHTinfo2, Node0GiveAnswer1, Node0GiveAnswer2, Node0GiveAnswer3, Node0GiveAnswer4, Node0ID, Node0ID2, Node0IsInserted, Node0IsNonInsertedNode, Node0JoinMsg, Node0NOshare, Node0OKshare, Node0ReadyToInsert, Node0Request, Node0ResZone, Node0WaitAnswer, Node0requestsent1, Node0requestsent2, Node0requestsent3, Node0requestsent4, Node1Bootstrap, Node1DHTinfo, Node1DHTinfo2, Node1GiveAnswer0, Node1GiveAnswer2, Node1GiveAnswer3, Node1GiveAnswer4, Node1ID, Node1ID2, Node1IsInserted, Node1IsNonInsertedNode, Node1JoinMsg, Node1NOshare, Node1OKshare, Node1ReadyToInsert, Node1Request, Node1ResZone, Node1WaitAnswer, Node1requestsent0, Node1requestsent2, Node1requestsent3, Node1requestsent4, Node2Bootstrap, Node2DHTinfo, Node2DHTinfo2, Node2GiveAnswer0, Node2GiveAnswer1, Node2GiveAnswer3, Node2GiveAnswer4, Node2ID, Node2ID2, Node2IsInserted, Node2IsNonInsertedNode, Node2JoinMsg, Node2NOshare, Node2OKshare, Node2ReadyToInsert, Node2Request, Node2ResZone, Node2WaitAnswer, Node2requestsent0, Node2requestsent1, Node2requestsent3, Node2requestsent4, Node3Bootstrap, Node3DHTinfo, Node3DHTinfo2, Node3GiveAnswer0, Node3GiveAnswer1, Node3GiveAnswer2, Node3GiveAnswer4, Node3ID, Node3ID2, Node3IsInserted, Node3IsNonInsertedNode, Node3JoinMsg, Node3NOshare, Node3OKshare, Node3ReadyToInsert, Node3Request, Node3ResZone, Node3WaitAnswer, Node3requestsent0, Node3requestsent1, Node3requestsent2, Node3requestsent4, Node4Bootstrap, Node4DHTinfo, Node4DHTinfo2, Node4GiveAnswer0, Node4GiveAnswer1, Node4GiveAnswer2, Node4GiveAnswer3, Node4ID, Node4ID2, Node4IsInserted, Node4IsNonInsertedNode, Node4JoinMsg, Node4NOshare, Node4OKshare, Node4ReadyToInsert, Node4Request, Node4ResZone, Node4WaitAnswer, Node4requestsent0, Node4requestsent1, Node4requestsent2, Node4requestsent3, TankCounter, TotalFailure;
+
+MARKING
+	TankCounter: 1,Node4ReadyToInsert: 1,Node3ReadyToInsert: 1,Node2ReadyToInsert: 1,Node1ReadyToInsert: 1,Node0ReadyToInsert: 1,EmptyCAN: 1;
+
+TRANSITION Node4SentFailure3
+	CONSUME Node4requestsent3: 1,TankCounter: 1;
+	PRODUCE Node4NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node4SentFailure2
+	CONSUME Node4requestsent2: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4SentFailure1
+	CONSUME Node4requestsent1: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4SentFailure0
+	CONSUME Node4requestsent0: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4SendRefuse3
+	CONSUME Node4GiveAnswer3: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node4SendRefuse2
+	CONSUME Node4GiveAnswer2: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node4SendRefuse1
+	CONSUME Node4GiveAnswer1: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node4SendRefuse0
+	CONSUME Node4GiveAnswer0: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node4SendOfaJoinMsg
+	CONSUME Node4Bootstrap: 1;
+	PRODUCE Node4JoinMsg: 1;
+
+TRANSITION Node4SendAccept3
+	CONSUME Node4GiveAnswer3: 1;
+	PRODUCE Node3OKshare: 1;
+
+TRANSITION Node4SendAccept2
+	CONSUME Node4GiveAnswer2: 1;
+	PRODUCE Node2OKshare: 1;
+
+TRANSITION Node4SendAccept1
+	CONSUME Node4GiveAnswer1: 1;
+	PRODUCE Node1OKshare: 1;
+
+TRANSITION Node4SendAccept0
+	CONSUME Node4GiveAnswer0: 1;
+	PRODUCE Node0OKshare: 1;
+
+TRANSITION Node4RetryInsertion
+	CONSUME Node4IsNonInsertedNode: 1;
+	PRODUCE Node4DHTinfo2: 1;
+
+TRANSITION Node4ReceiveFailure3
+	CONSUME Node4GiveAnswer3: 1,TankCounter: 1;
+	PRODUCE Node4NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node4ReceiveFailure2
+	CONSUME Node4GiveAnswer2: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4ReceiveFailure1
+	CONSUME Node4GiveAnswer1: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4ReceiveFailure0
+	CONSUME Node4GiveAnswer0: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node4NotInsertNode
+	CONSUME Node4WaitAnswer: 1,Node4NOshare: 1;
+	PRODUCE Node4IsNonInsertedNode: 1;
+
+TRANSITION Node4NextInCAN
+	CONSUME Node4ReadyToInsert: 1,InsertedCounter: 1;
+	PRODUCE Node4DHTinfo2: 1,InsertedCounter: 1;
+
+TRANSITION Node4InsertNode
+	CONSUME Node4WaitAnswer: 1,Node4OKshare: 1;
+	PRODUCE Node4IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node4GetsDHTInfo
+	CONSUME Node4ID: 1;
+	PRODUCE Node4ResZone: 1;
+
+TRANSITION Node4GetRequest3
+	CONSUME Node4IsInserted: 1,Node3requestsent4: 1;
+	PRODUCE Node4IsInserted: 1,Node4GiveAnswer3: 1;
+
+TRANSITION Node4GetRequest2
+	CONSUME Node4IsInserted: 1,Node2requestsent4: 1;
+	PRODUCE Node4IsInserted: 1,Node4GiveAnswer2: 1;
+
+TRANSITION Node4GetRequest1
+	CONSUME Node4IsInserted: 1,Node1requestsent4: 1;
+	PRODUCE Node4IsInserted: 1,Node4GiveAnswer1: 1;
+
+TRANSITION Node4GetRequest0
+	CONSUME Node4IsInserted: 1,Node0requestsent4: 1;
+	PRODUCE Node4IsInserted: 1,Node4GiveAnswer0: 1;
+
+TRANSITION Node4FirstInCAN
+	CONSUME Node4ReadyToInsert: 1,EmptyCAN: 1;
+	PRODUCE Node4DHTinfo: 1;
+
+TRANSITION Node4ChooseID2
+	CONSUME Node4DHTinfo2: 1;
+	PRODUCE Node4ID2: 1;
+
+TRANSITION Node4ChooseID
+	CONSUME Node4DHTinfo: 1;
+	PRODUCE Node4ID: 1;
+
+TRANSITION Node4ChooseBootstrap
+	CONSUME Node4ID2: 1;
+	PRODUCE Node4Bootstrap: 1;
+
+TRANSITION Node4AssociatesDHTInfo
+	CONSUME Node4ResZone: 1;
+	PRODUCE Node4IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node4AsksSharing
+	CONSUME Node4JoinMsg: 1;
+	PRODUCE Node4Request: 1,Node4WaitAnswer: 1;
+
+TRANSITION Node4AskReq3
+	CONSUME Node4Request: 1,Node3IsInserted: 1;
+	PRODUCE Node4requestsent3: 1,Node3IsInserted: 1;
+
+TRANSITION Node4AskReq2
+	CONSUME Node4Request: 1,Node2IsInserted: 1;
+	PRODUCE Node4requestsent2: 1,Node2IsInserted: 1;
+
+TRANSITION Node4AskReq1
+	CONSUME Node4Request: 1,Node1IsInserted: 1;
+	PRODUCE Node4requestsent1: 1,Node1IsInserted: 1;
+
+TRANSITION Node4AskReq0
+	CONSUME Node4Request: 1,Node0IsInserted: 1;
+	PRODUCE Node4requestsent0: 1,Node0IsInserted: 1;
+
+TRANSITION Node3SentFailure4
+	CONSUME Node3requestsent4: 1,TankCounter: 1;
+	PRODUCE Node3NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node3SentFailure2
+	CONSUME Node3requestsent2: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3SentFailure1
+	CONSUME Node3requestsent1: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3SentFailure0
+	CONSUME Node3requestsent0: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3SendRefuse4
+	CONSUME Node3GiveAnswer4: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node3SendRefuse2
+	CONSUME Node3GiveAnswer2: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node3SendRefuse1
+	CONSUME Node3GiveAnswer1: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node3SendRefuse0
+	CONSUME Node3GiveAnswer0: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node3SendOfaJoinMsg
+	CONSUME Node3Bootstrap: 1;
+	PRODUCE Node3JoinMsg: 1;
+
+TRANSITION Node3SendAccept4
+	CONSUME Node3GiveAnswer4: 1;
+	PRODUCE Node4OKshare: 1;
+
+TRANSITION Node3SendAccept2
+	CONSUME Node3GiveAnswer2: 1;
+	PRODUCE Node2OKshare: 1;
+
+TRANSITION Node3SendAccept1
+	CONSUME Node3GiveAnswer1: 1;
+	PRODUCE Node1OKshare: 1;
+
+TRANSITION Node3SendAccept0
+	CONSUME Node3GiveAnswer0: 1;
+	PRODUCE Node0OKshare: 1;
+
+TRANSITION Node3RetryInsertion
+	CONSUME Node3IsNonInsertedNode: 1;
+	PRODUCE Node3DHTinfo2: 1;
+
+TRANSITION Node3ReceiveFailure4
+	CONSUME Node3GiveAnswer4: 1,TankCounter: 1;
+	PRODUCE Node3NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node3ReceiveFailure2
+	CONSUME Node3GiveAnswer2: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3ReceiveFailure1
+	CONSUME Node3GiveAnswer1: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3ReceiveFailure0
+	CONSUME Node3GiveAnswer0: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node3NotInsertNode
+	CONSUME Node3WaitAnswer: 1,Node3NOshare: 1;
+	PRODUCE Node3IsNonInsertedNode: 1;
+
+TRANSITION Node3NextInCAN
+	CONSUME Node3ReadyToInsert: 1,InsertedCounter: 1;
+	PRODUCE Node3DHTinfo2: 1,InsertedCounter: 1;
+
+TRANSITION Node3InsertNode
+	CONSUME Node3WaitAnswer: 1,Node3OKshare: 1;
+	PRODUCE Node3IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node3GetsDHTInfo
+	CONSUME Node3ID: 1;
+	PRODUCE Node3ResZone: 1;
+
+TRANSITION Node3GetRequest4
+	CONSUME Node3IsInserted: 1,Node4requestsent3: 1;
+	PRODUCE Node3IsInserted: 1,Node3GiveAnswer4: 1;
+
+TRANSITION Node3GetRequest2
+	CONSUME Node3IsInserted: 1,Node2requestsent3: 1;
+	PRODUCE Node3IsInserted: 1,Node3GiveAnswer2: 1;
+
+TRANSITION Node3GetRequest1
+	CONSUME Node3IsInserted: 1,Node1requestsent3: 1;
+	PRODUCE Node3IsInserted: 1,Node3GiveAnswer1: 1;
+
+TRANSITION Node3GetRequest0
+	CONSUME Node3IsInserted: 1,Node0requestsent3: 1;
+	PRODUCE Node3IsInserted: 1,Node3GiveAnswer0: 1;
+
+TRANSITION Node3FirstInCAN
+	CONSUME Node3ReadyToInsert: 1,EmptyCAN: 1;
+	PRODUCE Node3DHTinfo: 1;
+
+TRANSITION Node3ChooseID2
+	CONSUME Node3DHTinfo2: 1;
+	PRODUCE Node3ID2: 1;
+
+TRANSITION Node3ChooseID
+	CONSUME Node3DHTinfo: 1;
+	PRODUCE Node3ID: 1;
+
+TRANSITION Node3ChooseBootstrap
+	CONSUME Node3ID2: 1;
+	PRODUCE Node3Bootstrap: 1;
+
+TRANSITION Node3AssociatesDHTInfo
+	CONSUME Node3ResZone: 1;
+	PRODUCE Node3IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node3AsksSharing
+	CONSUME Node3JoinMsg: 1;
+	PRODUCE Node3Request: 1,Node3WaitAnswer: 1;
+
+TRANSITION Node3AskReq4
+	CONSUME Node3Request: 1,Node4IsInserted: 1;
+	PRODUCE Node3requestsent4: 1,Node4IsInserted: 1;
+
+TRANSITION Node3AskReq2
+	CONSUME Node3Request: 1,Node2IsInserted: 1;
+	PRODUCE Node3requestsent2: 1,Node2IsInserted: 1;
+
+TRANSITION Node3AskReq1
+	CONSUME Node3Request: 1,Node1IsInserted: 1;
+	PRODUCE Node3requestsent1: 1,Node1IsInserted: 1;
+
+TRANSITION Node3AskReq0
+	CONSUME Node3Request: 1,Node0IsInserted: 1;
+	PRODUCE Node3requestsent0: 1,Node0IsInserted: 1;
+
+TRANSITION Node2SentFailure4
+	CONSUME Node2requestsent4: 1,TankCounter: 1;
+	PRODUCE Node2NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node2SentFailure3
+	CONSUME Node2requestsent3: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2SentFailure1
+	CONSUME Node2requestsent1: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2SentFailure0
+	CONSUME Node2requestsent0: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2SendRefuse4
+	CONSUME Node2GiveAnswer4: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node2SendRefuse3
+	CONSUME Node2GiveAnswer3: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node2SendRefuse1
+	CONSUME Node2GiveAnswer1: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node2SendRefuse0
+	CONSUME Node2GiveAnswer0: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node2SendOfaJoinMsg
+	CONSUME Node2Bootstrap: 1;
+	PRODUCE Node2JoinMsg: 1;
+
+TRANSITION Node2SendAccept4
+	CONSUME Node2GiveAnswer4: 1;
+	PRODUCE Node4OKshare: 1;
+
+TRANSITION Node2SendAccept3
+	CONSUME Node2GiveAnswer3: 1;
+	PRODUCE Node3OKshare: 1;
+
+TRANSITION Node2SendAccept1
+	CONSUME Node2GiveAnswer1: 1;
+	PRODUCE Node1OKshare: 1;
+
+TRANSITION Node2SendAccept0
+	CONSUME Node2GiveAnswer0: 1;
+	PRODUCE Node0OKshare: 1;
+
+TRANSITION Node2RetryInsertion
+	CONSUME Node2IsNonInsertedNode: 1;
+	PRODUCE Node2DHTinfo2: 1;
+
+TRANSITION Node2ReceiveFailure4
+	CONSUME Node2GiveAnswer4: 1,TankCounter: 1;
+	PRODUCE Node2NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node2ReceiveFailure3
+	CONSUME Node2GiveAnswer3: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2ReceiveFailure1
+	CONSUME Node2GiveAnswer1: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2ReceiveFailure0
+	CONSUME Node2GiveAnswer0: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node2NotInsertNode
+	CONSUME Node2WaitAnswer: 1,Node2NOshare: 1;
+	PRODUCE Node2IsNonInsertedNode: 1;
+
+TRANSITION Node2NextInCAN
+	CONSUME Node2ReadyToInsert: 1,InsertedCounter: 1;
+	PRODUCE Node2DHTinfo2: 1,InsertedCounter: 1;
+
+TRANSITION Node2InsertNode
+	CONSUME Node2WaitAnswer: 1,Node2OKshare: 1;
+	PRODUCE Node2IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node2GetsDHTInfo
+	CONSUME Node2ID: 1;
+	PRODUCE Node2ResZone: 1;
+
+TRANSITION Node2GetRequest4
+	CONSUME Node2IsInserted: 1,Node4requestsent2: 1;
+	PRODUCE Node2IsInserted: 1,Node2GiveAnswer4: 1;
+
+TRANSITION Node2GetRequest3
+	CONSUME Node2IsInserted: 1,Node3requestsent2: 1;
+	PRODUCE Node2IsInserted: 1,Node2GiveAnswer3: 1;
+
+TRANSITION Node2GetRequest1
+	CONSUME Node2IsInserted: 1,Node1requestsent2: 1;
+	PRODUCE Node2IsInserted: 1,Node2GiveAnswer1: 1;
+
+TRANSITION Node2GetRequest0
+	CONSUME Node2IsInserted: 1,Node0requestsent2: 1;
+	PRODUCE Node2IsInserted: 1,Node2GiveAnswer0: 1;
+
+TRANSITION Node2FirstInCAN
+	CONSUME Node2ReadyToInsert: 1,EmptyCAN: 1;
+	PRODUCE Node2DHTinfo: 1;
+
+TRANSITION Node2ChooseID2
+	CONSUME Node2DHTinfo2: 1;
+	PRODUCE Node2ID2: 1;
+
+TRANSITION Node2ChooseID
+	CONSUME Node2DHTinfo: 1;
+	PRODUCE Node2ID: 1;
+
+TRANSITION Node2ChooseBootstrap
+	CONSUME Node2ID2: 1;
+	PRODUCE Node2Bootstrap: 1;
+
+TRANSITION Node2AssociatesDHTInfo
+	CONSUME Node2ResZone: 1;
+	PRODUCE Node2IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node2AsksSharing
+	CONSUME Node2JoinMsg: 1;
+	PRODUCE Node2Request: 1,Node2WaitAnswer: 1;
+
+TRANSITION Node2AskReq4
+	CONSUME Node2Request: 1,Node4IsInserted: 1;
+	PRODUCE Node2requestsent4: 1,Node4IsInserted: 1;
+
+TRANSITION Node2AskReq3
+	CONSUME Node2Request: 1,Node3IsInserted: 1;
+	PRODUCE Node2requestsent3: 1,Node3IsInserted: 1;
+
+TRANSITION Node2AskReq1
+	CONSUME Node2Request: 1,Node1IsInserted: 1;
+	PRODUCE Node2requestsent1: 1,Node1IsInserted: 1;
+
+TRANSITION Node2AskReq0
+	CONSUME Node2Request: 1,Node0IsInserted: 1;
+	PRODUCE Node2requestsent0: 1,Node0IsInserted: 1;
+
+TRANSITION Node1SentFailure4
+	CONSUME Node1requestsent4: 1,TankCounter: 1;
+	PRODUCE Node1NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node1SentFailure3
+	CONSUME Node1requestsent3: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1SentFailure2
+	CONSUME Node1requestsent2: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1SentFailure0
+	CONSUME Node1requestsent0: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1SendRefuse4
+	CONSUME Node1GiveAnswer4: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node1SendRefuse3
+	CONSUME Node1GiveAnswer3: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node1SendRefuse2
+	CONSUME Node1GiveAnswer2: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node1SendRefuse0
+	CONSUME Node1GiveAnswer0: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node1SendOfaJoinMsg
+	CONSUME Node1Bootstrap: 1;
+	PRODUCE Node1JoinMsg: 1;
+
+TRANSITION Node1SendAccept4
+	CONSUME Node1GiveAnswer4: 1;
+	PRODUCE Node4OKshare: 1;
+
+TRANSITION Node1SendAccept3
+	CONSUME Node1GiveAnswer3: 1;
+	PRODUCE Node3OKshare: 1;
+
+TRANSITION Node1SendAccept2
+	CONSUME Node1GiveAnswer2: 1;
+	PRODUCE Node2OKshare: 1;
+
+TRANSITION Node1SendAccept0
+	CONSUME Node1GiveAnswer0: 1;
+	PRODUCE Node0OKshare: 1;
+
+TRANSITION Node1RetryInsertion
+	CONSUME Node1IsNonInsertedNode: 1;
+	PRODUCE Node1DHTinfo2: 1;
+
+TRANSITION Node1ReceiveFailure4
+	CONSUME Node1GiveAnswer4: 1,TankCounter: 1;
+	PRODUCE Node1NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node1ReceiveFailure3
+	CONSUME Node1GiveAnswer3: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1ReceiveFailure2
+	CONSUME Node1GiveAnswer2: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1ReceiveFailure0
+	CONSUME Node1GiveAnswer0: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node1NotInsertNode
+	CONSUME Node1WaitAnswer: 1,Node1NOshare: 1;
+	PRODUCE Node1IsNonInsertedNode: 1;
+
+TRANSITION Node1NextInCAN
+	CONSUME Node1ReadyToInsert: 1,InsertedCounter: 1;
+	PRODUCE Node1DHTinfo2: 1,InsertedCounter: 1;
+
+TRANSITION Node1InsertNode
+	CONSUME Node1WaitAnswer: 1,Node1OKshare: 1;
+	PRODUCE Node1IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node1GetsDHTInfo
+	CONSUME Node1ID: 1;
+	PRODUCE Node1ResZone: 1;
+
+TRANSITION Node1GetRequest4
+	CONSUME Node1IsInserted: 1,Node4requestsent1: 1;
+	PRODUCE Node1IsInserted: 1,Node1GiveAnswer4: 1;
+
+TRANSITION Node1GetRequest3
+	CONSUME Node1IsInserted: 1,Node3requestsent1: 1;
+	PRODUCE Node1IsInserted: 1,Node1GiveAnswer3: 1;
+
+TRANSITION Node1GetRequest2
+	CONSUME Node1IsInserted: 1,Node2requestsent1: 1;
+	PRODUCE Node1IsInserted: 1,Node1GiveAnswer2: 1;
+
+TRANSITION Node1GetRequest0
+	CONSUME Node1IsInserted: 1,Node0requestsent1: 1;
+	PRODUCE Node1IsInserted: 1,Node1GiveAnswer0: 1;
+
+TRANSITION Node1FirstInCAN
+	CONSUME Node1ReadyToInsert: 1,EmptyCAN: 1;
+	PRODUCE Node1DHTinfo: 1;
+
+TRANSITION Node1ChooseID2
+	CONSUME Node1DHTinfo2: 1;
+	PRODUCE Node1ID2: 1;
+
+TRANSITION Node1ChooseID
+	CONSUME Node1DHTinfo: 1;
+	PRODUCE Node1ID: 1;
+
+TRANSITION Node1ChooseBootstrap
+	CONSUME Node1ID2: 1;
+	PRODUCE Node1Bootstrap: 1;
+
+TRANSITION Node1AssociatesDHTInfo
+	CONSUME Node1ResZone: 1;
+	PRODUCE Node1IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node1AsksSharing
+	CONSUME Node1JoinMsg: 1;
+	PRODUCE Node1Request: 1,Node1WaitAnswer: 1;
+
+TRANSITION Node1AskReq4
+	CONSUME Node1Request: 1,Node4IsInserted: 1;
+	PRODUCE Node1requestsent4: 1,Node4IsInserted: 1;
+
+TRANSITION Node1AskReq3
+	CONSUME Node1Request: 1,Node3IsInserted: 1;
+	PRODUCE Node1requestsent3: 1,Node3IsInserted: 1;
+
+TRANSITION Node1AskReq2
+	CONSUME Node1Request: 1,Node2IsInserted: 1;
+	PRODUCE Node1requestsent2: 1,Node2IsInserted: 1;
+
+TRANSITION Node1AskReq0
+	CONSUME Node1Request: 1,Node0IsInserted: 1;
+	PRODUCE Node1requestsent0: 1,Node0IsInserted: 1;
+
+TRANSITION Node0SentFailure4
+	CONSUME Node0requestsent4: 1,TankCounter: 1;
+	PRODUCE TotalFailure: 1,Node0NOshare: 1;
+
+TRANSITION Node0SentFailure3
+	CONSUME Node0requestsent3: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0SentFailure2
+	CONSUME Node0requestsent2: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0SentFailure1
+	CONSUME Node0requestsent1: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0SendRefuse4
+	CONSUME Node0GiveAnswer4: 1;
+	PRODUCE Node4NOshare: 1;
+
+TRANSITION Node0SendRefuse3
+	CONSUME Node0GiveAnswer3: 1;
+	PRODUCE Node3NOshare: 1;
+
+TRANSITION Node0SendRefuse2
+	CONSUME Node0GiveAnswer2: 1;
+	PRODUCE Node2NOshare: 1;
+
+TRANSITION Node0SendRefuse1
+	CONSUME Node0GiveAnswer1: 1;
+	PRODUCE Node1NOshare: 1;
+
+TRANSITION Node0SendOfaJoinMsg
+	CONSUME Node0Bootstrap: 1;
+	PRODUCE Node0JoinMsg: 1;
+
+TRANSITION Node0SendAccept4
+	CONSUME Node0GiveAnswer4: 1;
+	PRODUCE Node4OKshare: 1;
+
+TRANSITION Node0SendAccept3
+	CONSUME Node0GiveAnswer3: 1;
+	PRODUCE Node3OKshare: 1;
+
+TRANSITION Node0SendAccept2
+	CONSUME Node0GiveAnswer2: 1;
+	PRODUCE Node2OKshare: 1;
+
+TRANSITION Node0SendAccept1
+	CONSUME Node0GiveAnswer1: 1;
+	PRODUCE Node1OKshare: 1;
+
+TRANSITION Node0RetryInsertion
+	CONSUME Node0IsNonInsertedNode: 1;
+	PRODUCE Node0DHTinfo2: 1;
+
+TRANSITION Node0ReceiveFailure4
+	CONSUME Node0GiveAnswer4: 1,TankCounter: 1;
+	PRODUCE Node0NOshare: 1,TotalFailure: 1;
+
+TRANSITION Node0ReceiveFailure3
+	CONSUME Node0GiveAnswer3: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0ReceiveFailure2
+	CONSUME Node0GiveAnswer2: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0ReceiveFailure1
+	CONSUME Node0GiveAnswer1: 1;
+	PRODUCE Node0NOshare: 1;
+
+TRANSITION Node0NotInsertNode
+	CONSUME Node0WaitAnswer: 1,Node0NOshare: 1;
+	PRODUCE Node0IsNonInsertedNode: 1;
+
+TRANSITION Node0NextInCAN
+	CONSUME Node0ReadyToInsert: 1,InsertedCounter: 1;
+	PRODUCE Node0DHTinfo2: 1,InsertedCounter: 1;
+
+TRANSITION Node0InsertNode
+	CONSUME Node0WaitAnswer: 1,Node0OKshare: 1;
+	PRODUCE Node0IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node0GetsDHTInfo
+	CONSUME Node0ID: 1;
+	PRODUCE Node0ResZone: 1;
+
+TRANSITION Node0GetRequest4
+	CONSUME Node0IsInserted: 1,Node4requestsent0: 1;
+	PRODUCE Node0IsInserted: 1,Node0GiveAnswer4: 1;
+
+TRANSITION Node0GetRequest3
+	CONSUME Node0IsInserted: 1,Node3requestsent0: 1;
+	PRODUCE Node0IsInserted: 1,Node0GiveAnswer3: 1;
+
+TRANSITION Node0GetRequest2
+	CONSUME Node0IsInserted: 1,Node2requestsent0: 1;
+	PRODUCE Node0IsInserted: 1,Node0GiveAnswer2: 1;
+
+TRANSITION Node0GetRequest1
+	CONSUME Node0IsInserted: 1,Node1requestsent0: 1;
+	PRODUCE Node0IsInserted: 1,Node0GiveAnswer1: 1;
+
+TRANSITION Node0FirstInCAN
+	CONSUME Node0ReadyToInsert: 1,EmptyCAN: 1;
+	PRODUCE Node0DHTinfo: 1;
+
+TRANSITION Node0ChooseID2
+	CONSUME Node0DHTinfo2: 1;
+	PRODUCE Node0ID2: 1;
+
+TRANSITION Node0ChooseID
+	CONSUME Node0DHTinfo: 1;
+	PRODUCE Node0ID: 1;
+
+TRANSITION Node0ChooseBootstrap
+	CONSUME Node0ID2: 1;
+	PRODUCE Node0Bootstrap: 1;
+
+TRANSITION Node0AssociatesDHTInfo
+	CONSUME Node0ResZone: 1;
+	PRODUCE Node0IsInserted: 1,InsertedCounter: 1;
+
+TRANSITION Node0AsksSharing
+	CONSUME Node0JoinMsg: 1;
+	PRODUCE Node0Request: 1,Node0WaitAnswer: 1;
+
+TRANSITION Node0AskReq4
+	CONSUME Node0Request: 1,Node4IsInserted: 1;
+	PRODUCE Node0requestsent4: 1,Node4IsInserted: 1;
+
+TRANSITION Node0AskReq3
+	CONSUME Node3IsInserted: 1,Node0Request: 1;
+	PRODUCE Node0requestsent3: 1,Node3IsInserted: 1;
+
+TRANSITION Node0AskReq2
+	CONSUME Node0Request: 1,Node2IsInserted: 1;
+	PRODUCE Node0requestsent2: 1,Node2IsInserted: 1;
+
+TRANSITION Node0AskReq1
+	CONSUME Node0Request: 1,Node1IsInserted: 1;
+	PRODUCE Node0requestsent1: 1,Node1IsInserted: 1;

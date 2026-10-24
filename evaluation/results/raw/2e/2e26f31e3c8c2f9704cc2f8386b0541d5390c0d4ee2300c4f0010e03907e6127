@@ -1,0 +1,5 @@
+some state violates condition -f:
+  pb1_1_1*20 pb2_1_1*20 pb3_1_1*20 pil1_1_1 pil2_1_1 pil3_1_1 pol1_1_1 pol2_1_1 pol3_1_1
+  firable: to1_1_1 to2_1_1 to3_1_1
+4 marking(s), 3 transition(s)
+0.000s

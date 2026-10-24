@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/DoubleExponent-PT-002/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"true","class":"General","places":110,"transitions":98,"arcs":276,"parse_ms":1.358,"analyze_ms":138.772,"timeout_ms":null}

@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/TriangularGrid-PT-1500/model.pnml","property":"onesafe","mode":"poly","verdict":"false","class":"AsymmetricChoice","places":16,"transitions":12,"arcs":48,"parse_ms":0.393,"analyze_ms":0.005,"timeout_ms":null}

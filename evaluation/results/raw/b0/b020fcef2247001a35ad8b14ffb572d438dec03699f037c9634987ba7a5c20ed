@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {Anderson-PT-05}
+
+161 places, 365 transitions, 1380 arcs
+
+0.008s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+689901 marking(s), 2784245 transition(s)
+
+6.592s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+not reversible
+
+0 dead marking(s), 689900 live marking(s)
+0 dead transition(s), 365 live transition(s)
+
+0.620s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {Anderson-PT-05}, 161 places, 365 transitions, 1380 arcs         #
+# bounded, live, not reversible                                        #
+# abstraction        count      props      psets       dead       live #
+#      states       689901        161          ?          0     689900 # 
+# transitions      2784245        365          ?          0        365 #

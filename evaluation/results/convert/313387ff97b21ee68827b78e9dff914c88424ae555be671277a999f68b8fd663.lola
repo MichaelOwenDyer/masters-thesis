@@ -1,0 +1,437 @@
+PLACE
+	Assigned_0_0, Assigned_0_1, Assigned_1_0, Assigned_1_1, Assigned_2_0, Assigned_2_1, Assigned_3_0, Assigned_3_1, ClientsTimeout_0, ClientsTimeout_1, ClientsTimeout_2, ClientsTimeout_3, ClientsWaiting_0, ClientsWaiting_1, ClientsWaiting_2, ClientsWaiting_3, Clients_0, Clients_1, Clients_2, Clients_3, ControlRoomDispatch_0, ControlRoomDispatch_1, ControlRoomDispatch_2, ControlRoomDispatch_3, DoSecuring_0_0, DoSecuring_0_1, DoSecuring_1_0, DoSecuring_1_1, DoSecuring_2_0, DoSecuring_2_1, DoSecuring_3_0, DoSecuring_3_1, Finished_0, Finished_1, Finished_2, Finished_3, IdleTechs_0, IdleTechs_1, Idles, MovetoZ_0_0_0, MovetoZ_0_0_1, MovetoZ_0_1_0, MovetoZ_0_1_1, MovetoZ_1_0_0, MovetoZ_1_0_1, MovetoZ_1_1_0, MovetoZ_1_1_1, MovetoZ_2_0_0, MovetoZ_2_0_1, MovetoZ_2_1_0, MovetoZ_2_1_1, MovetoZ_3_0_0, MovetoZ_3_0_1, MovetoZ_3_1_0, MovetoZ_3_1_1, NumClientsReq, OpenRequests_0_0, OpenRequests_0_1, OpenRequests_1_0, OpenRequests_1_1, OpenRequests_2_0, OpenRequests_2_1, OpenRequests_3_0, OpenRequests_3_1, StartSecuring_0_0, StartSecuring_0_1, StartSecuring_1_0, StartSecuring_1_1, StartSecuring_2_0, StartSecuring_2_1, StartSecuring_3_0, StartSecuring_3_1;
+
+MARKING
+	Idles: 3,IdleTechs_1: 1,IdleTechs_0: 1,Clients_3: 1,Clients_2: 1,Clients_1: 1,Clients_0: 1;
+
+TRANSITION timeout_3_1
+	CONSUME StartSecuring_3_1: 1,ClientsTimeout_3: 1;
+	PRODUCE DoSecuring_3_1: 1;
+
+TRANSITION timeout_3_0
+	CONSUME StartSecuring_3_0: 1,ClientsTimeout_3: 1;
+	PRODUCE DoSecuring_3_0: 1;
+
+TRANSITION timeout_2_1
+	CONSUME StartSecuring_2_1: 1,ClientsTimeout_2: 1;
+	PRODUCE DoSecuring_2_1: 1;
+
+TRANSITION timeout_2_0
+	CONSUME StartSecuring_2_0: 1,ClientsTimeout_2: 1;
+	PRODUCE DoSecuring_2_0: 1;
+
+TRANSITION timeout_1_1
+	CONSUME StartSecuring_1_1: 1,ClientsTimeout_1: 1;
+	PRODUCE DoSecuring_1_1: 1;
+
+TRANSITION timeout_1_0
+	CONSUME StartSecuring_1_0: 1,ClientsTimeout_1: 1;
+	PRODUCE DoSecuring_1_0: 1;
+
+TRANSITION timeout_0_1
+	CONSUME StartSecuring_0_1: 1,ClientsTimeout_0: 1;
+	PRODUCE DoSecuring_0_1: 1;
+
+TRANSITION timeout_0_0
+	CONSUME StartSecuring_0_0: 1,ClientsTimeout_0: 1;
+	PRODUCE DoSecuring_0_0: 1;
+
+TRANSITION securing_3_1
+	CONSUME DoSecuring_3_1: 1,NumClientsReq: 1;
+	PRODUCE Finished_3: 1,IdleTechs_1: 1;
+
+TRANSITION securing_3_0
+	CONSUME DoSecuring_3_0: 1,NumClientsReq: 1;
+	PRODUCE Finished_3: 1,IdleTechs_0: 1;
+
+TRANSITION securing_2_1
+	CONSUME DoSecuring_2_1: 1,NumClientsReq: 1;
+	PRODUCE Finished_2: 1,IdleTechs_1: 1;
+
+TRANSITION securing_2_0
+	CONSUME DoSecuring_2_0: 1,NumClientsReq: 1;
+	PRODUCE Finished_2: 1,IdleTechs_0: 1;
+
+TRANSITION securing_1_1
+	CONSUME DoSecuring_1_1: 1,NumClientsReq: 1;
+	PRODUCE Finished_1: 1,IdleTechs_1: 1;
+
+TRANSITION securing_1_0
+	CONSUME DoSecuring_1_0: 1,NumClientsReq: 1;
+	PRODUCE Finished_1: 1,IdleTechs_0: 1;
+
+TRANSITION securing_0_1
+	CONSUME DoSecuring_0_1: 1,NumClientsReq: 1;
+	PRODUCE Finished_0: 1,IdleTechs_1: 1;
+
+TRANSITION securing_0_0
+	CONSUME DoSecuring_0_0: 1,NumClientsReq: 1;
+	PRODUCE Finished_0: 1,IdleTechs_0: 1;
+
+TRANSITION securingInTime_3_1
+	CONSUME ClientsWaiting_3: 1,StartSecuring_3_1: 1;
+	PRODUCE DoSecuring_3_1: 1;
+
+TRANSITION securingInTime_3_0
+	CONSUME ClientsWaiting_3: 1,StartSecuring_3_0: 1;
+	PRODUCE DoSecuring_3_0: 1;
+
+TRANSITION securingInTime_2_1
+	CONSUME ClientsWaiting_2: 1,StartSecuring_2_1: 1;
+	PRODUCE DoSecuring_2_1: 1;
+
+TRANSITION securingInTime_2_0
+	CONSUME ClientsWaiting_2: 1,StartSecuring_2_0: 1;
+	PRODUCE DoSecuring_2_0: 1;
+
+TRANSITION securingInTime_1_1
+	CONSUME ClientsWaiting_1: 1,StartSecuring_1_1: 1;
+	PRODUCE DoSecuring_1_1: 1;
+
+TRANSITION securingInTime_1_0
+	CONSUME ClientsWaiting_1: 1,StartSecuring_1_0: 1;
+	PRODUCE DoSecuring_1_0: 1;
+
+TRANSITION securingInTime_0_1
+	CONSUME ClientsWaiting_0: 1,StartSecuring_0_1: 1;
+	PRODUCE DoSecuring_0_1: 1;
+
+TRANSITION securingInTime_0_0
+	CONSUME ClientsWaiting_0: 1,StartSecuring_0_0: 1;
+	PRODUCE DoSecuring_0_0: 1;
+
+TRANSITION reachLocation_3_1
+	CONSUME Assigned_3_1: 1;
+	PRODUCE StartSecuring_3_1: 1;
+
+TRANSITION reachLocation_3_0
+	CONSUME Assigned_3_0: 1;
+	PRODUCE StartSecuring_3_0: 1;
+
+TRANSITION reachLocation_2_1
+	CONSUME Assigned_2_1: 1;
+	PRODUCE StartSecuring_2_1: 1;
+
+TRANSITION reachLocation_2_0
+	CONSUME Assigned_2_0: 1;
+	PRODUCE StartSecuring_2_0: 1;
+
+TRANSITION reachLocation_1_1
+	CONSUME Assigned_1_1: 1;
+	PRODUCE StartSecuring_1_1: 1;
+
+TRANSITION reachLocation_1_0
+	CONSUME Assigned_1_0: 1;
+	PRODUCE StartSecuring_1_0: 1;
+
+TRANSITION reachLocation_0_1
+	CONSUME Assigned_0_1: 1;
+	PRODUCE StartSecuring_0_1: 1;
+
+TRANSITION reachLocation_0_0
+	CONSUME Assigned_0_0: 1;
+	PRODUCE StartSecuring_0_0: 1;
+
+TRANSITION move_between_Municipalities_1_3_1
+	CONSUME MovetoZ_3_1_1: 1;
+	PRODUCE Assigned_3_1: 1;
+
+TRANSITION move_between_Municipalities_1_3_0
+	CONSUME MovetoZ_3_1_0: 1;
+	PRODUCE Assigned_3_0: 1;
+
+TRANSITION move_between_Municipalities_1_2_1
+	CONSUME MovetoZ_2_1_1: 1;
+	PRODUCE Assigned_2_1: 1;
+
+TRANSITION move_between_Municipalities_1_2_0
+	CONSUME MovetoZ_2_1_0: 1;
+	PRODUCE Assigned_2_0: 1;
+
+TRANSITION move_between_Municipalities_1_1_1
+	CONSUME MovetoZ_1_1_1: 1;
+	PRODUCE Assigned_1_1: 1;
+
+TRANSITION move_between_Municipalities_1_1_0
+	CONSUME MovetoZ_1_1_0: 1;
+	PRODUCE Assigned_1_0: 1;
+
+TRANSITION move_between_Municipalities_1_0_1
+	CONSUME MovetoZ_0_1_1: 1;
+	PRODUCE Assigned_0_1: 1;
+
+TRANSITION move_between_Municipalities_1_0_0
+	CONSUME MovetoZ_0_1_0: 1;
+	PRODUCE Assigned_0_0: 1;
+
+TRANSITION move_between_Municipalities_0_3_1
+	CONSUME MovetoZ_3_0_1: 1;
+	PRODUCE Assigned_3_1: 1;
+
+TRANSITION move_between_Municipalities_0_3_0
+	CONSUME MovetoZ_3_0_0: 1;
+	PRODUCE Assigned_3_0: 1;
+
+TRANSITION move_between_Municipalities_0_2_1
+	CONSUME MovetoZ_2_0_1: 1;
+	PRODUCE Assigned_2_1: 1;
+
+TRANSITION move_between_Municipalities_0_2_0
+	CONSUME MovetoZ_2_0_0: 1;
+	PRODUCE Assigned_2_0: 1;
+
+TRANSITION move_between_Municipalities_0_1_1
+	CONSUME MovetoZ_1_0_1: 1;
+	PRODUCE Assigned_1_1: 1;
+
+TRANSITION move_between_Municipalities_0_1_0
+	CONSUME MovetoZ_1_0_0: 1;
+	PRODUCE Assigned_1_0: 1;
+
+TRANSITION move_between_Municipalities_0_0_1
+	CONSUME MovetoZ_0_0_1: 1;
+	PRODUCE Assigned_0_1: 1;
+
+TRANSITION move_between_Municipalities_0_0_0
+	CONSUME MovetoZ_0_0_0: 1;
+	PRODUCE Assigned_0_0: 1;
+
+TRANSITION end_3
+	CONSUME Finished_3: 1;
+	PRODUCE Clients_3: 1,Idles: 1;
+
+TRANSITION end_2
+	CONSUME Finished_2: 1;
+	PRODUCE Clients_2: 1,Idles: 1;
+
+TRANSITION end_1
+	CONSUME Finished_1: 1;
+	PRODUCE Clients_1: 1,Idles: 1;
+
+TRANSITION end_0
+	CONSUME Finished_0: 1;
+	PRODUCE Clients_0: 1,Idles: 1;
+
+TRANSITION calls_3
+	CONSUME Clients_3: 1;
+	PRODUCE NumClientsReq: 1,ClientsWaiting_3: 1,ControlRoomDispatch_3: 1;
+
+TRANSITION calls_2
+	CONSUME Clients_2: 1;
+	PRODUCE NumClientsReq: 1,ClientsWaiting_2: 1,ControlRoomDispatch_2: 1;
+
+TRANSITION calls_1
+	CONSUME Clients_1: 1;
+	PRODUCE NumClientsReq: 1,ClientsWaiting_1: 1,ControlRoomDispatch_1: 1;
+
+TRANSITION calls_0
+	CONSUME Clients_0: 1;
+	PRODUCE NumClientsReq: 1,ClientsWaiting_0: 1,ControlRoomDispatch_0: 1;
+
+TRANSITION assignSameZone_1_3
+	CONSUME IdleTechs_1: 1,OpenRequests_3_1: 1,Idles: 1;
+	PRODUCE Assigned_3_1: 1;
+
+TRANSITION assignSameZone_1_2
+	CONSUME IdleTechs_1: 1,OpenRequests_2_1: 1,Idles: 1;
+	PRODUCE Assigned_2_1: 1;
+
+TRANSITION assignSameZone_1_1
+	CONSUME IdleTechs_1: 1,OpenRequests_1_1: 1,Idles: 1;
+	PRODUCE Assigned_1_1: 1;
+
+TRANSITION assignSameZone_1_0
+	CONSUME IdleTechs_1: 1,OpenRequests_0_1: 1,Idles: 1;
+	PRODUCE Assigned_0_1: 1;
+
+TRANSITION assignSameZone_0_3
+	CONSUME IdleTechs_0: 1,OpenRequests_3_0: 1,Idles: 1;
+	PRODUCE Assigned_3_0: 1;
+
+TRANSITION assignSameZone_0_2
+	CONSUME IdleTechs_0: 1,OpenRequests_2_0: 1,Idles: 1;
+	PRODUCE Assigned_2_0: 1;
+
+TRANSITION assignSameZone_0_1
+	CONSUME IdleTechs_0: 1,OpenRequests_1_0: 1,Idles: 1;
+	PRODUCE Assigned_1_0: 1;
+
+TRANSITION assignSameZone_0_0
+	CONSUME IdleTechs_0: 1,OpenRequests_0_0: 1,Idles: 1;
+	PRODUCE Assigned_0_0: 1;
+
+TRANSITION assignNearZone_1_3_1
+	CONSUME OpenRequests_3_1: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_3_1_1: 1;
+
+TRANSITION assignNearZone_1_3_0
+	CONSUME OpenRequests_3_0: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_3_1_0: 1;
+
+TRANSITION assignNearZone_1_2_1
+	CONSUME OpenRequests_2_1: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_2_1_1: 1;
+
+TRANSITION assignNearZone_1_2_0
+	CONSUME OpenRequests_2_0: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_2_1_0: 1;
+
+TRANSITION assignNearZone_1_1_1
+	CONSUME OpenRequests_1_1: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_1_1_1: 1;
+
+TRANSITION assignNearZone_1_1_0
+	CONSUME OpenRequests_1_0: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_1_1_0: 1;
+
+TRANSITION assignNearZone_1_0_1
+	CONSUME OpenRequests_0_1: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_0_1_1: 1;
+
+TRANSITION assignNearZone_1_0_0
+	CONSUME OpenRequests_0_0: 1,IdleTechs_1: 1,Idles: 1;
+	PRODUCE MovetoZ_0_1_0: 1;
+
+TRANSITION assignNearZone_0_3_1
+	CONSUME OpenRequests_3_1: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_3_0_1: 1;
+
+TRANSITION assignNearZone_0_3_0
+	CONSUME OpenRequests_3_0: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_3_0_0: 1;
+
+TRANSITION assignNearZone_0_2_1
+	CONSUME OpenRequests_2_1: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_2_0_1: 1;
+
+TRANSITION assignNearZone_0_2_0
+	CONSUME OpenRequests_2_0: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_2_0_0: 1;
+
+TRANSITION assignNearZone_0_1_1
+	CONSUME OpenRequests_1_1: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_1_0_1: 1;
+
+TRANSITION assignNearZone_0_1_0
+	CONSUME OpenRequests_1_0: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_1_0_0: 1;
+
+TRANSITION assignNearZone_0_0_1
+	CONSUME OpenRequests_0_1: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_0_0_1: 1;
+
+TRANSITION assignNearZone_0_0_0
+	CONSUME OpenRequests_0_0: 1,IdleTechs_0: 1,Idles: 1;
+	PRODUCE MovetoZ_0_0_0: 1;
+
+TRANSITION assignMunicipality_3_1
+	CONSUME ControlRoomDispatch_3: 1;
+	PRODUCE OpenRequests_3_1: 1;
+
+TRANSITION assignMunicipality_3_0
+	CONSUME ControlRoomDispatch_3: 1;
+	PRODUCE OpenRequests_3_0: 1;
+
+TRANSITION assignMunicipality_2_1
+	CONSUME ControlRoomDispatch_2: 1;
+	PRODUCE OpenRequests_2_1: 1;
+
+TRANSITION assignMunicipality_2_0
+	CONSUME ControlRoomDispatch_2: 1;
+	PRODUCE OpenRequests_2_0: 1;
+
+TRANSITION assignMunicipality_1_1
+	CONSUME ControlRoomDispatch_1: 1;
+	PRODUCE OpenRequests_1_1: 1;
+
+TRANSITION assignMunicipality_1_0
+	CONSUME ControlRoomDispatch_1: 1;
+	PRODUCE OpenRequests_1_0: 1;
+
+TRANSITION assignMunicipality_0_1
+	CONSUME ControlRoomDispatch_0: 1;
+	PRODUCE OpenRequests_0_1: 1;
+
+TRANSITION assignMunicipality_0_0
+	CONSUME ControlRoomDispatch_0: 1;
+	PRODUCE OpenRequests_0_0: 1;
+
+TRANSITION assignFar_1_3_1
+	CONSUME IdleTechs_1: 1,OpenRequests_3_1: 1,Idles: 1;
+	PRODUCE MovetoZ_3_1_1: 1;
+
+TRANSITION assignFar_1_3_0
+	CONSUME IdleTechs_1: 1,OpenRequests_3_0: 1,Idles: 1;
+	PRODUCE MovetoZ_3_1_0: 1;
+
+TRANSITION assignFar_1_2_1
+	CONSUME IdleTechs_1: 1,OpenRequests_2_1: 1,Idles: 1;
+	PRODUCE MovetoZ_2_1_1: 1;
+
+TRANSITION assignFar_1_2_0
+	CONSUME IdleTechs_1: 1,OpenRequests_2_0: 1,Idles: 1;
+	PRODUCE MovetoZ_2_1_0: 1;
+
+TRANSITION assignFar_1_1_1
+	CONSUME IdleTechs_1: 1,OpenRequests_1_1: 1,Idles: 1;
+	PRODUCE MovetoZ_1_1_1: 1;
+
+TRANSITION assignFar_1_1_0
+	CONSUME IdleTechs_1: 1,OpenRequests_1_0: 1,Idles: 1;
+	PRODUCE MovetoZ_1_1_0: 1;
+
+TRANSITION assignFar_1_0_1
+	CONSUME IdleTechs_1: 1,OpenRequests_0_1: 1,Idles: 1;
+	PRODUCE MovetoZ_0_1_1: 1;
+
+TRANSITION assignFar_1_0_0
+	CONSUME IdleTechs_1: 1,OpenRequests_0_0: 1,Idles: 1;
+	PRODUCE MovetoZ_0_1_0: 1;
+
+TRANSITION assignFar_0_3_1
+	CONSUME IdleTechs_0: 1,OpenRequests_3_1: 1,Idles: 1;
+	PRODUCE MovetoZ_3_0_1: 1;
+
+TRANSITION assignFar_0_3_0
+	CONSUME IdleTechs_0: 1,OpenRequests_3_0: 1,Idles: 1;
+	PRODUCE MovetoZ_3_0_0: 1;
+
+TRANSITION assignFar_0_2_1
+	CONSUME IdleTechs_0: 1,OpenRequests_2_1: 1,Idles: 1;
+	PRODUCE MovetoZ_2_0_1: 1;
+
+TRANSITION assignFar_0_2_0
+	CONSUME IdleTechs_0: 1,OpenRequests_2_0: 1,Idles: 1;
+	PRODUCE MovetoZ_2_0_0: 1;
+
+TRANSITION assignFar_0_1_1
+	CONSUME IdleTechs_0: 1,OpenRequests_1_1: 1,Idles: 1;
+	PRODUCE MovetoZ_1_0_1: 1;
+
+TRANSITION assignFar_0_1_0
+	CONSUME IdleTechs_0: 1,OpenRequests_1_0: 1,Idles: 1;
+	PRODUCE MovetoZ_1_0_0: 1;
+
+TRANSITION assignFar_0_0_1
+	CONSUME IdleTechs_0: 1,OpenRequests_0_1: 1,Idles: 1;
+	PRODUCE MovetoZ_0_0_1: 1;
+
+TRANSITION assignFar_0_0_0
+	CONSUME Idles: 1,IdleTechs_0: 1,OpenRequests_0_0: 1;
+	PRODUCE MovetoZ_0_0_0: 1;
+
+TRANSITION Timeout_3
+	CONSUME ClientsWaiting_3: 1;
+	PRODUCE ClientsTimeout_3: 1;
+
+TRANSITION Timeout_2
+	CONSUME ClientsWaiting_2: 1;
+	PRODUCE ClientsTimeout_2: 1;
+
+TRANSITION Timeout_1
+	CONSUME ClientsWaiting_1: 1;
+	PRODUCE ClientsTimeout_1: 1;
+
+TRANSITION Timeout_0
+	CONSUME ClientsWaiting_0: 1;
+	PRODUCE ClientsTimeout_0: 1;

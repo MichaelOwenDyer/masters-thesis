@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ResAllocation-PT-R003C005/model.pnml","property":"quasi-live","mode":"general","verdict":"true","class":"General","places":30,"transitions":20,"arcs":84,"parse_ms":1.210,"analyze_ms":1.591,"timeout_ms":null,"states":1200,"edges":4960}

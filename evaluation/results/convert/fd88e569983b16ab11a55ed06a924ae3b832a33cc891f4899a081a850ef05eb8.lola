@@ -1,0 +1,225 @@
+PLACE
+	Active_1, Active_2, Active_3, Active_4, Active_5, Ext_Bus, Ext_Mem_Acc_1_2, Ext_Mem_Acc_1_3, Ext_Mem_Acc_1_4, Ext_Mem_Acc_1_5, Ext_Mem_Acc_2_1, Ext_Mem_Acc_2_3, Ext_Mem_Acc_2_4, Ext_Mem_Acc_2_5, Ext_Mem_Acc_3_1, Ext_Mem_Acc_3_2, Ext_Mem_Acc_3_4, Ext_Mem_Acc_3_5, Ext_Mem_Acc_4_1, Ext_Mem_Acc_4_2, Ext_Mem_Acc_4_3, Ext_Mem_Acc_4_5, Ext_Mem_Acc_5_1, Ext_Mem_Acc_5_2, Ext_Mem_Acc_5_3, Ext_Mem_Acc_5_4, Memory_1, Memory_2, Memory_3, Memory_4, Memory_5, OwnMemAcc_1, OwnMemAcc_2, OwnMemAcc_3, OwnMemAcc_4, OwnMemAcc_5, Queue_1, Queue_2, Queue_3, Queue_4, Queue_5;
+
+MARKING
+	Memory_5: 1,Memory_4: 1,Memory_3: 1,Memory_2: 1,Memory_1: 1,Ext_Bus: 1,Active_5: 1,Active_4: 1,Active_3: 1,Active_2: 1,Active_1: 1;
+
+TRANSITION Req_Ext_Acc_5
+	CONSUME Active_5: 1;
+	PRODUCE Queue_5: 1;
+
+TRANSITION Req_Ext_Acc_4
+	CONSUME Active_4: 1;
+	PRODUCE Queue_4: 1;
+
+TRANSITION Req_Ext_Acc_3
+	CONSUME Active_3: 1;
+	PRODUCE Queue_3: 1;
+
+TRANSITION Req_Ext_Acc_2
+	CONSUME Active_2: 1;
+	PRODUCE Queue_2: 1;
+
+TRANSITION Req_Ext_Acc_1
+	CONSUME Active_1: 1;
+	PRODUCE Queue_1: 1;
+
+TRANSITION End_Own_Acc_5_5
+	CONSUME OwnMemAcc_5: 1,Memory_5: 1;
+	PRODUCE Memory_5: 1,Active_5: 1;
+
+TRANSITION End_Own_Acc_4_4
+	CONSUME OwnMemAcc_4: 1,Memory_4: 1;
+	PRODUCE Active_4: 1,Memory_4: 1;
+
+TRANSITION End_Own_Acc_3_3
+	CONSUME OwnMemAcc_3: 1,Memory_3: 1;
+	PRODUCE Memory_3: 1,Active_3: 1;
+
+TRANSITION End_Own_Acc_2_2
+	CONSUME OwnMemAcc_2: 1,Memory_2: 1;
+	PRODUCE Active_2: 1,Memory_2: 1;
+
+TRANSITION End_Own_Acc_1_1
+	CONSUME OwnMemAcc_1: 1,Memory_1: 1;
+	PRODUCE Memory_1: 1,Active_1: 1;
+
+TRANSITION End_Ext_Acc_5_4
+	CONSUME Ext_Mem_Acc_5_4: 1;
+	PRODUCE Active_5: 1,Memory_4: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_5_3
+	CONSUME Ext_Mem_Acc_5_3: 1;
+	PRODUCE Active_5: 1,Ext_Bus: 1,Memory_3: 1;
+
+TRANSITION End_Ext_Acc_5_2
+	CONSUME Ext_Mem_Acc_5_2: 1;
+	PRODUCE Active_5: 1,Ext_Bus: 1,Memory_2: 1;
+
+TRANSITION End_Ext_Acc_5_1
+	CONSUME Ext_Mem_Acc_5_1: 1;
+	PRODUCE Active_5: 1,Memory_1: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_4_5
+	CONSUME Ext_Mem_Acc_4_5: 1;
+	PRODUCE Ext_Bus: 1,Memory_5: 1,Active_4: 1;
+
+TRANSITION End_Ext_Acc_4_3
+	CONSUME Ext_Mem_Acc_4_3: 1;
+	PRODUCE Active_4: 1,Ext_Bus: 1,Memory_3: 1;
+
+TRANSITION End_Ext_Acc_4_2
+	CONSUME Ext_Mem_Acc_4_2: 1;
+	PRODUCE Active_4: 1,Ext_Bus: 1,Memory_2: 1;
+
+TRANSITION End_Ext_Acc_4_1
+	CONSUME Ext_Mem_Acc_4_1: 1;
+	PRODUCE Active_4: 1,Memory_1: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_3_5
+	CONSUME Ext_Mem_Acc_3_5: 1;
+	PRODUCE Ext_Bus: 1,Memory_5: 1,Active_3: 1;
+
+TRANSITION End_Ext_Acc_3_4
+	CONSUME Ext_Mem_Acc_3_4: 1;
+	PRODUCE Active_3: 1,Memory_4: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_3_2
+	CONSUME Ext_Mem_Acc_3_2: 1;
+	PRODUCE Active_3: 1,Ext_Bus: 1,Memory_2: 1;
+
+TRANSITION End_Ext_Acc_3_1
+	CONSUME Ext_Mem_Acc_3_1: 1;
+	PRODUCE Active_3: 1,Memory_1: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_2_5
+	CONSUME Ext_Mem_Acc_2_5: 1;
+	PRODUCE Ext_Bus: 1,Memory_5: 1,Active_2: 1;
+
+TRANSITION End_Ext_Acc_2_4
+	CONSUME Ext_Mem_Acc_2_4: 1;
+	PRODUCE Active_2: 1,Memory_4: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_2_3
+	CONSUME Ext_Mem_Acc_2_3: 1;
+	PRODUCE Active_2: 1,Ext_Bus: 1,Memory_3: 1;
+
+TRANSITION End_Ext_Acc_2_1
+	CONSUME Ext_Mem_Acc_2_1: 1;
+	PRODUCE Ext_Bus: 1,Memory_1: 1,Active_2: 1;
+
+TRANSITION End_Ext_Acc_1_5
+	CONSUME Ext_Mem_Acc_1_5: 1;
+	PRODUCE Active_1: 1,Memory_5: 1,Ext_Bus: 1;
+
+TRANSITION End_Ext_Acc_1_4
+	CONSUME Ext_Mem_Acc_1_4: 1;
+	PRODUCE Active_1: 1,Ext_Bus: 1,Memory_4: 1;
+
+TRANSITION End_Ext_Acc_1_3
+	CONSUME Ext_Mem_Acc_1_3: 1;
+	PRODUCE Active_1: 1,Ext_Bus: 1,Memory_3: 1;
+
+TRANSITION End_Ext_Acc_1_2
+	CONSUME Ext_Mem_Acc_1_2: 1;
+	PRODUCE Active_1: 1,Memory_2: 1,Ext_Bus: 1;
+
+TRANSITION Begin_Own_Acc_5
+	CONSUME Active_5: 1;
+	PRODUCE OwnMemAcc_5: 1;
+
+TRANSITION Begin_Own_Acc_4
+	CONSUME Active_4: 1;
+	PRODUCE OwnMemAcc_4: 1;
+
+TRANSITION Begin_Own_Acc_3
+	CONSUME Active_3: 1;
+	PRODUCE OwnMemAcc_3: 1;
+
+TRANSITION Begin_Own_Acc_2
+	CONSUME Active_2: 1;
+	PRODUCE OwnMemAcc_2: 1;
+
+TRANSITION Begin_Own_Acc_1
+	CONSUME Active_1: 1;
+	PRODUCE OwnMemAcc_1: 1;
+
+TRANSITION Begin_Ext_Acc_5_4
+	CONSUME Queue_5: 1,Memory_4: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_5_4: 1;
+
+TRANSITION Begin_Ext_Acc_5_3
+	CONSUME Memory_3: 1,Queue_5: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_5_3: 1;
+
+TRANSITION Begin_Ext_Acc_5_2
+	CONSUME Queue_5: 1,Memory_2: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_5_2: 1;
+
+TRANSITION Begin_Ext_Acc_5_1
+	CONSUME Memory_1: 1,Queue_5: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_5_1: 1;
+
+TRANSITION Begin_Ext_Acc_4_5
+	CONSUME Memory_5: 1,Queue_4: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_4_5: 1;
+
+TRANSITION Begin_Ext_Acc_4_3
+	CONSUME Ext_Bus: 1,Memory_3: 1,Queue_4: 1;
+	PRODUCE Ext_Mem_Acc_4_3: 1;
+
+TRANSITION Begin_Ext_Acc_4_2
+	CONSUME Ext_Bus: 1,Queue_4: 1,Memory_2: 1;
+	PRODUCE Ext_Mem_Acc_4_2: 1;
+
+TRANSITION Begin_Ext_Acc_4_1
+	CONSUME Ext_Bus: 1,Memory_1: 1,Queue_4: 1;
+	PRODUCE Ext_Mem_Acc_4_1: 1;
+
+TRANSITION Begin_Ext_Acc_3_5
+	CONSUME Memory_5: 1,Queue_3: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_3_5: 1;
+
+TRANSITION Begin_Ext_Acc_3_4
+	CONSUME Queue_3: 1,Memory_4: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_3_4: 1;
+
+TRANSITION Begin_Ext_Acc_3_2
+	CONSUME Ext_Bus: 1,Queue_3: 1,Memory_2: 1;
+	PRODUCE Ext_Mem_Acc_3_2: 1;
+
+TRANSITION Begin_Ext_Acc_3_1
+	CONSUME Ext_Bus: 1,Memory_1: 1,Queue_3: 1;
+	PRODUCE Ext_Mem_Acc_3_1: 1;
+
+TRANSITION Begin_Ext_Acc_2_5
+	CONSUME Ext_Bus: 1,Memory_5: 1,Queue_2: 1;
+	PRODUCE Ext_Mem_Acc_2_5: 1;
+
+TRANSITION Begin_Ext_Acc_2_4
+	CONSUME Ext_Bus: 1,Queue_2: 1,Memory_4: 1;
+	PRODUCE Ext_Mem_Acc_2_4: 1;
+
+TRANSITION Begin_Ext_Acc_2_3
+	CONSUME Ext_Bus: 1,Memory_3: 1,Queue_2: 1;
+	PRODUCE Ext_Mem_Acc_2_3: 1;
+
+TRANSITION Begin_Ext_Acc_2_1
+	CONSUME Ext_Bus: 1,Queue_2: 1,Memory_1: 1;
+	PRODUCE Ext_Mem_Acc_2_1: 1;
+
+TRANSITION Begin_Ext_Acc_1_5
+	CONSUME Queue_1: 1,Memory_5: 1,Ext_Bus: 1;
+	PRODUCE Ext_Mem_Acc_1_5: 1;
+
+TRANSITION Begin_Ext_Acc_1_4
+	CONSUME Queue_1: 1,Ext_Bus: 1,Memory_4: 1;
+	PRODUCE Ext_Mem_Acc_1_4: 1;
+
+TRANSITION Begin_Ext_Acc_1_3
+	CONSUME Ext_Bus: 1,Queue_1: 1,Memory_3: 1;
+	PRODUCE Ext_Mem_Acc_1_3: 1;
+
+TRANSITION Begin_Ext_Acc_1_2
+	CONSUME Ext_Bus: 1,Memory_2: 1,Queue_1: 1;
+	PRODUCE Ext_Mem_Acc_1_2: 1;

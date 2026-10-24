@@ -1,0 +1,5 @@
+some state violates condition -f:
+  access*4 p_i1*5 r_stopped*4
+  firable: p_start
+2 marking(s), 1 transition(s)
+0.000s

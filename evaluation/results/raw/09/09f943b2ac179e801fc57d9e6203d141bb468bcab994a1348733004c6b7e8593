@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {EisenbergMcGuire-PT-03}
+
+117 places, 216 transitions, 900 arcs
+
+0.005s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+31265 marking(s), 93795 transition(s)
+
+0.227s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 31265 live marking(s)
+0 dead transition(s), 216 live transition(s)
+
+0.017s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {EisenbergMcGuire-PT-03}, 117 places, 216 transitions, 900 arcs  #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states        31265        117          ?          0      31265 # 
+# transitions        93795        216          ?          0        216 #

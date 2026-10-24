@@ -1,0 +1,629 @@
+PLACE
+	P-CS_21_0, P-CS_21_1, P-CS_21_2, P-CS_21_3, P-await_13_0, P-await_13_1, P-await_13_2, P-await_13_3, P-awaity_0, P-awaity_1, P-awaity_2, P-awaity_3, P-b_0_false, P-b_0_true, P-b_1_false, P-b_1_true, P-b_2_false, P-b_2_true, P-b_3_false, P-b_3_true, P-done_0_0, P-done_0_1, P-done_0_2, P-done_0_3, P-done_1_0, P-done_1_1, P-done_1_2, P-done_1_3, P-done_2_0, P-done_2_1, P-done_2_2, P-done_2_3, P-done_3_0, P-done_3_1, P-done_3_2, P-done_3_3, P-fordo_12_0, P-fordo_12_1, P-fordo_12_2, P-fordo_12_3, P-ifxi_10_0, P-ifxi_10_1, P-ifxi_10_2, P-ifxi_10_3, P-ify0_4_0, P-ify0_4_1, P-ify0_4_2, P-ify0_4_3, P-ifyi_15_0, P-ifyi_15_1, P-ifyi_15_2, P-ifyi_15_3, P-setbi_11_0, P-setbi_11_1, P-setbi_11_2, P-setbi_11_3, P-setbi_24_0, P-setbi_24_1, P-setbi_24_2, P-setbi_24_3, P-setbi_5_0, P-setbi_5_1, P-setbi_5_2, P-setbi_5_3, P-setx_3_0, P-setx_3_1, P-setx_3_2, P-setx_3_3, P-sety_9_0, P-sety_9_1, P-sety_9_2, P-sety_9_3, P-start_1_0, P-start_1_1, P-start_1_2, P-start_1_3, P-wait_0_0, P-wait_0_1, P-wait_0_2, P-wait_0_3, P-wait_1_0, P-wait_1_1, P-wait_1_2, P-wait_1_3, P-wait_2_0, P-wait_2_1, P-wait_2_2, P-wait_2_3, P-wait_3_0, P-wait_3_1, P-wait_3_2, P-wait_3_3, x_0, x_1, x_2, x_3, y_0, y_1, y_2, y_3;
+
+MARKING
+	y_0: 1,x_0: 1,P-start_1_3: 1,P-start_1_2: 1,P-start_1_1: 1,P-b_3_false: 1,P-b_2_false: 1,P-b_1_false: 1;
+
+TRANSITION T-ynei_15_9
+	CONSUME y_0: 1,P-ifyi_15_2: 1;
+	PRODUCE y_0: 1,P-awaity_2: 1;
+
+TRANSITION T-ynei_15_8
+	CONSUME y_3: 1,P-ifyi_15_1: 1;
+	PRODUCE y_3: 1,P-awaity_1: 1;
+
+TRANSITION T-ynei_15_7
+	CONSUME y_2: 1,P-ifyi_15_1: 1;
+	PRODUCE y_2: 1,P-awaity_1: 1;
+
+TRANSITION T-ynei_15_5
+	CONSUME y_0: 1,P-ifyi_15_1: 1;
+	PRODUCE y_0: 1,P-awaity_1: 1;
+
+TRANSITION T-ynei_15_4
+	CONSUME y_3: 1,P-ifyi_15_0: 1;
+	PRODUCE y_3: 1,P-awaity_0: 1;
+
+TRANSITION T-ynei_15_3
+	CONSUME y_2: 1,P-ifyi_15_0: 1;
+	PRODUCE y_2: 1,P-awaity_0: 1;
+
+TRANSITION T-ynei_15_2
+	CONSUME y_1: 1,P-ifyi_15_0: 1;
+	PRODUCE y_1: 1,P-awaity_0: 1;
+
+TRANSITION T-ynei_15_15
+	CONSUME y_2: 1,P-ifyi_15_3: 1;
+	PRODUCE y_2: 1,P-awaity_3: 1;
+
+TRANSITION T-ynei_15_14
+	CONSUME y_1: 1,P-ifyi_15_3: 1;
+	PRODUCE y_1: 1,P-awaity_3: 1;
+
+TRANSITION T-ynei_15_13
+	CONSUME y_0: 1,P-ifyi_15_3: 1;
+	PRODUCE y_0: 1,P-awaity_3: 1;
+
+TRANSITION T-ynei_15_12
+	CONSUME y_3: 1,P-ifyi_15_2: 1;
+	PRODUCE y_3: 1,P-awaity_2: 1;
+
+TRANSITION T-ynei_15_10
+	CONSUME y_1: 1,P-ifyi_15_2: 1;
+	PRODUCE y_1: 1,P-awaity_2: 1;
+
+TRANSITION T-yne0_4_8
+	CONSUME y_3: 1,P-ify0_4_1: 1;
+	PRODUCE y_3: 1,P-setbi_5_1: 1;
+
+TRANSITION T-yne0_4_7
+	CONSUME y_2: 1,P-ify0_4_1: 1;
+	PRODUCE y_2: 1,P-setbi_5_1: 1;
+
+TRANSITION T-yne0_4_6
+	CONSUME y_1: 1,P-ify0_4_1: 1;
+	PRODUCE y_1: 1,P-setbi_5_1: 1;
+
+TRANSITION T-yne0_4_4
+	CONSUME y_3: 1,P-ify0_4_0: 1;
+	PRODUCE y_3: 1,P-setbi_5_0: 1;
+
+TRANSITION T-yne0_4_3
+	CONSUME y_2: 1,P-ify0_4_0: 1;
+	PRODUCE y_2: 1,P-setbi_5_0: 1;
+
+TRANSITION T-yne0_4_2
+	CONSUME y_1: 1,P-ify0_4_0: 1;
+	PRODUCE y_1: 1,P-setbi_5_0: 1;
+
+TRANSITION T-yne0_4_16
+	CONSUME y_3: 1,P-ify0_4_3: 1;
+	PRODUCE y_3: 1,P-setbi_5_3: 1;
+
+TRANSITION T-yne0_4_15
+	CONSUME y_2: 1,P-ify0_4_3: 1;
+	PRODUCE y_2: 1,P-setbi_5_3: 1;
+
+TRANSITION T-yne0_4_14
+	CONSUME y_1: 1,P-ify0_4_3: 1;
+	PRODUCE y_1: 1,P-setbi_5_3: 1;
+
+TRANSITION T-yne0_4_12
+	CONSUME y_3: 1,P-ify0_4_2: 1;
+	PRODUCE y_3: 1,P-setbi_5_2: 1;
+
+TRANSITION T-yne0_4_11
+	CONSUME y_2: 1,P-ify0_4_2: 1;
+	PRODUCE y_2: 1,P-setbi_5_2: 1;
+
+TRANSITION T-yne0_4_10
+	CONSUME y_1: 1,P-ify0_4_2: 1;
+	PRODUCE y_1: 1,P-setbi_5_2: 1;
+
+TRANSITION T-yeqi_15_6
+	CONSUME y_1: 1,P-ifyi_15_1: 1;
+	PRODUCE y_1: 1,P-CS_21_1: 1;
+
+TRANSITION T-yeqi_15_16
+	CONSUME y_3: 1,P-ifyi_15_3: 1;
+	PRODUCE y_3: 1,P-CS_21_3: 1;
+
+TRANSITION T-yeqi_15_11
+	CONSUME y_2: 1,P-ifyi_15_2: 1;
+	PRODUCE y_2: 1,P-CS_21_2: 1;
+
+TRANSITION T-yeqi_15_1
+	CONSUME y_0: 1,P-ifyi_15_0: 1;
+	PRODUCE y_0: 1,P-CS_21_0: 1;
+
+TRANSITION T-yeq0_4_4
+	CONSUME y_0: 1,P-ify0_4_3: 1;
+	PRODUCE y_0: 1,P-sety_9_3: 1;
+
+TRANSITION T-yeq0_4_3
+	CONSUME y_0: 1,P-ify0_4_2: 1;
+	PRODUCE y_0: 1,P-sety_9_2: 1;
+
+TRANSITION T-yeq0_4_2
+	CONSUME y_0: 1,P-ify0_4_1: 1;
+	PRODUCE y_0: 1,P-sety_9_1: 1;
+
+TRANSITION T-yeq0_4_1
+	CONSUME y_0: 1,P-ify0_4_0: 1;
+	PRODUCE y_0: 1,P-sety_9_0: 1;
+
+TRANSITION T-xnei_10_9
+	CONSUME x_0: 1,P-ifxi_10_2: 1;
+	PRODUCE x_0: 1,P-setbi_11_2: 1;
+
+TRANSITION T-xnei_10_8
+	CONSUME x_3: 1,P-ifxi_10_1: 1;
+	PRODUCE x_3: 1,P-setbi_11_1: 1;
+
+TRANSITION T-xnei_10_7
+	CONSUME x_2: 1,P-ifxi_10_1: 1;
+	PRODUCE x_2: 1,P-setbi_11_1: 1;
+
+TRANSITION T-xnei_10_5
+	CONSUME x_0: 1,P-ifxi_10_1: 1;
+	PRODUCE x_0: 1,P-setbi_11_1: 1;
+
+TRANSITION T-xnei_10_4
+	CONSUME x_3: 1,P-ifxi_10_0: 1;
+	PRODUCE x_3: 1,P-setbi_11_0: 1;
+
+TRANSITION T-xnei_10_3
+	CONSUME x_2: 1,P-ifxi_10_0: 1;
+	PRODUCE x_2: 1,P-setbi_11_0: 1;
+
+TRANSITION T-xnei_10_2
+	CONSUME x_1: 1,P-ifxi_10_0: 1;
+	PRODUCE x_1: 1,P-setbi_11_0: 1;
+
+TRANSITION T-xnei_10_15
+	CONSUME x_2: 1,P-ifxi_10_3: 1;
+	PRODUCE x_2: 1,P-setbi_11_3: 1;
+
+TRANSITION T-xnei_10_14
+	CONSUME x_1: 1,P-ifxi_10_3: 1;
+	PRODUCE x_1: 1,P-setbi_11_3: 1;
+
+TRANSITION T-xnei_10_13
+	CONSUME x_0: 1,P-ifxi_10_3: 1;
+	PRODUCE x_0: 1,P-setbi_11_3: 1;
+
+TRANSITION T-xnei_10_12
+	CONSUME x_3: 1,P-ifxi_10_2: 1;
+	PRODUCE x_3: 1,P-setbi_11_2: 1;
+
+TRANSITION T-xnei_10_10
+	CONSUME x_1: 1,P-ifxi_10_2: 1;
+	PRODUCE x_1: 1,P-setbi_11_2: 1;
+
+TRANSITION T-xeqi_10_6
+	CONSUME x_1: 1,P-ifxi_10_1: 1;
+	PRODUCE x_1: 1,P-CS_21_1: 1;
+
+TRANSITION T-xeqi_10_16
+	CONSUME x_3: 1,P-ifxi_10_3: 1;
+	PRODUCE x_3: 1,P-CS_21_3: 1;
+
+TRANSITION T-xeqi_10_11
+	CONSUME x_2: 1,P-ifxi_10_2: 1;
+	PRODUCE x_2: 1,P-CS_21_2: 1;
+
+TRANSITION T-xeqi_10_1
+	CONSUME x_0: 1,P-ifxi_10_0: 1;
+	PRODUCE x_0: 1,P-CS_21_0: 1;
+
+TRANSITION T-sety_9_9
+	CONSUME y_0: 1,P-sety_9_2: 1;
+	PRODUCE y_2: 1,P-ifxi_10_2: 1;
+
+TRANSITION T-sety_9_8
+	CONSUME y_3: 1,P-sety_9_1: 1;
+	PRODUCE y_1: 1,P-ifxi_10_1: 1;
+
+TRANSITION T-sety_9_7
+	CONSUME y_2: 1,P-sety_9_1: 1;
+	PRODUCE y_1: 1,P-ifxi_10_1: 1;
+
+TRANSITION T-sety_9_6
+	CONSUME y_1: 1,P-sety_9_1: 1;
+	PRODUCE y_1: 1,P-ifxi_10_1: 1;
+
+TRANSITION T-sety_9_5
+	CONSUME y_0: 1,P-sety_9_1: 1;
+	PRODUCE y_1: 1,P-ifxi_10_1: 1;
+
+TRANSITION T-sety_9_4
+	CONSUME y_3: 1,P-sety_9_0: 1;
+	PRODUCE y_0: 1,P-ifxi_10_0: 1;
+
+TRANSITION T-sety_9_3
+	CONSUME y_2: 1,P-sety_9_0: 1;
+	PRODUCE y_0: 1,P-ifxi_10_0: 1;
+
+TRANSITION T-sety_9_2
+	CONSUME y_1: 1,P-sety_9_0: 1;
+	PRODUCE y_0: 1,P-ifxi_10_0: 1;
+
+TRANSITION T-sety_9_16
+	CONSUME y_3: 1,P-sety_9_3: 1;
+	PRODUCE y_3: 1,P-ifxi_10_3: 1;
+
+TRANSITION T-sety_9_15
+	CONSUME y_2: 1,P-sety_9_3: 1;
+	PRODUCE y_3: 1,P-ifxi_10_3: 1;
+
+TRANSITION T-sety_9_14
+	CONSUME y_1: 1,P-sety_9_3: 1;
+	PRODUCE y_3: 1,P-ifxi_10_3: 1;
+
+TRANSITION T-sety_9_13
+	CONSUME y_0: 1,P-sety_9_3: 1;
+	PRODUCE y_3: 1,P-ifxi_10_3: 1;
+
+TRANSITION T-sety_9_12
+	CONSUME y_3: 1,P-sety_9_2: 1;
+	PRODUCE y_2: 1,P-ifxi_10_2: 1;
+
+TRANSITION T-sety_9_11
+	CONSUME y_2: 1,P-sety_9_2: 1;
+	PRODUCE y_2: 1,P-ifxi_10_2: 1;
+
+TRANSITION T-sety_9_10
+	CONSUME y_1: 1,P-sety_9_2: 1;
+	PRODUCE y_2: 1,P-ifxi_10_2: 1;
+
+TRANSITION T-sety_9_1
+	CONSUME y_0: 1,P-sety_9_0: 1;
+	PRODUCE y_0: 1,P-ifxi_10_0: 1;
+
+TRANSITION T-sety0_23_9
+	CONSUME y_0: 1,P-CS_21_2: 1;
+	PRODUCE y_0: 1,P-setbi_24_2: 1;
+
+TRANSITION T-sety0_23_8
+	CONSUME y_3: 1,P-CS_21_1: 1;
+	PRODUCE y_0: 1,P-setbi_24_1: 1;
+
+TRANSITION T-sety0_23_7
+	CONSUME y_2: 1,P-CS_21_1: 1;
+	PRODUCE y_0: 1,P-setbi_24_1: 1;
+
+TRANSITION T-sety0_23_6
+	CONSUME y_1: 1,P-CS_21_1: 1;
+	PRODUCE y_0: 1,P-setbi_24_1: 1;
+
+TRANSITION T-sety0_23_5
+	CONSUME y_0: 1,P-CS_21_1: 1;
+	PRODUCE y_0: 1,P-setbi_24_1: 1;
+
+TRANSITION T-sety0_23_4
+	CONSUME y_3: 1,P-CS_21_0: 1;
+	PRODUCE y_0: 1,P-setbi_24_0: 1;
+
+TRANSITION T-sety0_23_3
+	CONSUME y_2: 1,P-CS_21_0: 1;
+	PRODUCE y_0: 1,P-setbi_24_0: 1;
+
+TRANSITION T-sety0_23_2
+	CONSUME y_1: 1,P-CS_21_0: 1;
+	PRODUCE y_0: 1,P-setbi_24_0: 1;
+
+TRANSITION T-sety0_23_16
+	CONSUME y_3: 1,P-CS_21_3: 1;
+	PRODUCE y_0: 1,P-setbi_24_3: 1;
+
+TRANSITION T-sety0_23_15
+	CONSUME y_2: 1,P-CS_21_3: 1;
+	PRODUCE y_0: 1,P-setbi_24_3: 1;
+
+TRANSITION T-sety0_23_14
+	CONSUME y_1: 1,P-CS_21_3: 1;
+	PRODUCE y_0: 1,P-setbi_24_3: 1;
+
+TRANSITION T-sety0_23_13
+	CONSUME y_0: 1,P-CS_21_3: 1;
+	PRODUCE y_0: 1,P-setbi_24_3: 1;
+
+TRANSITION T-sety0_23_12
+	CONSUME y_3: 1,P-CS_21_2: 1;
+	PRODUCE y_0: 1,P-setbi_24_2: 1;
+
+TRANSITION T-sety0_23_11
+	CONSUME y_2: 1,P-CS_21_2: 1;
+	PRODUCE y_0: 1,P-setbi_24_2: 1;
+
+TRANSITION T-sety0_23_10
+	CONSUME y_1: 1,P-CS_21_2: 1;
+	PRODUCE y_0: 1,P-setbi_24_2: 1;
+
+TRANSITION T-sety0_23_1
+	CONSUME y_0: 1,P-CS_21_0: 1;
+	PRODUCE y_0: 1,P-setbi_24_0: 1;
+
+TRANSITION T-setx_3_9
+	CONSUME x_0: 1,P-setx_3_2: 1;
+	PRODUCE x_2: 1,P-ify0_4_2: 1;
+
+TRANSITION T-setx_3_8
+	CONSUME x_3: 1,P-setx_3_1: 1;
+	PRODUCE x_1: 1,P-ify0_4_1: 1;
+
+TRANSITION T-setx_3_7
+	CONSUME x_2: 1,P-setx_3_1: 1;
+	PRODUCE x_1: 1,P-ify0_4_1: 1;
+
+TRANSITION T-setx_3_6
+	CONSUME x_1: 1,P-setx_3_1: 1;
+	PRODUCE x_1: 1,P-ify0_4_1: 1;
+
+TRANSITION T-setx_3_5
+	CONSUME x_0: 1,P-setx_3_1: 1;
+	PRODUCE x_1: 1,P-ify0_4_1: 1;
+
+TRANSITION T-setx_3_4
+	CONSUME x_3: 1,P-setx_3_0: 1;
+	PRODUCE x_0: 1,P-ify0_4_0: 1;
+
+TRANSITION T-setx_3_3
+	CONSUME x_2: 1,P-setx_3_0: 1;
+	PRODUCE x_0: 1,P-ify0_4_0: 1;
+
+TRANSITION T-setx_3_2
+	CONSUME x_1: 1,P-setx_3_0: 1;
+	PRODUCE x_0: 1,P-ify0_4_0: 1;
+
+TRANSITION T-setx_3_16
+	CONSUME x_3: 1,P-setx_3_3: 1;
+	PRODUCE x_3: 1,P-ify0_4_3: 1;
+
+TRANSITION T-setx_3_15
+	CONSUME x_2: 1,P-setx_3_3: 1;
+	PRODUCE x_3: 1,P-ify0_4_3: 1;
+
+TRANSITION T-setx_3_14
+	CONSUME x_1: 1,P-setx_3_3: 1;
+	PRODUCE x_3: 1,P-ify0_4_3: 1;
+
+TRANSITION T-setx_3_13
+	CONSUME x_0: 1,P-setx_3_3: 1;
+	PRODUCE x_3: 1,P-ify0_4_3: 1;
+
+TRANSITION T-setx_3_12
+	CONSUME x_3: 1,P-setx_3_2: 1;
+	PRODUCE x_2: 1,P-ify0_4_2: 1;
+
+TRANSITION T-setx_3_11
+	CONSUME x_2: 1,P-setx_3_2: 1;
+	PRODUCE x_2: 1,P-ify0_4_2: 1;
+
+TRANSITION T-setx_3_10
+	CONSUME x_1: 1,P-setx_3_2: 1;
+	PRODUCE x_2: 1,P-ify0_4_2: 1;
+
+TRANSITION T-setx_3_1
+	CONSUME x_0: 1,P-setx_3_0: 1;
+	PRODUCE x_0: 1,P-ify0_4_0: 1;
+
+TRANSITION T-setbi_5_8
+	CONSUME P-b_3_true: 1,P-setbi_5_3: 1;
+	PRODUCE P-b_3_false: 1,P-awaity_3: 1;
+
+TRANSITION T-setbi_5_7
+	CONSUME P-b_3_false: 1,P-setbi_5_3: 1;
+	PRODUCE P-b_3_false: 1,P-awaity_3: 1;
+
+TRANSITION T-setbi_5_6
+	CONSUME P-b_2_true: 1,P-setbi_5_2: 1;
+	PRODUCE P-b_2_false: 1,P-awaity_2: 1;
+
+TRANSITION T-setbi_5_5
+	CONSUME P-b_2_false: 1,P-setbi_5_2: 1;
+	PRODUCE P-b_2_false: 1,P-awaity_2: 1;
+
+TRANSITION T-setbi_5_4
+	CONSUME P-b_1_true: 1,P-setbi_5_1: 1;
+	PRODUCE P-b_1_false: 1,P-awaity_1: 1;
+
+TRANSITION T-setbi_5_3
+	CONSUME P-b_1_false: 1,P-setbi_5_1: 1;
+	PRODUCE P-b_1_false: 1,P-awaity_1: 1;
+
+TRANSITION T-setbi_5_2
+	CONSUME P-b_0_true: 1,P-setbi_5_0: 1;
+	PRODUCE P-b_0_false: 1,P-awaity_0: 1;
+
+TRANSITION T-setbi_5_1
+	CONSUME P-b_0_false: 1,P-setbi_5_0: 1;
+	PRODUCE P-b_0_false: 1,P-awaity_0: 1;
+
+TRANSITION T-setbi_2_8
+	CONSUME P-start_1_3: 1,P-b_3_true: 1;
+	PRODUCE P-b_3_true: 1,P-setx_3_3: 1;
+
+TRANSITION T-setbi_2_7
+	CONSUME P-start_1_3: 1,P-b_3_false: 1;
+	PRODUCE P-b_3_true: 1,P-setx_3_3: 1;
+
+TRANSITION T-setbi_2_6
+	CONSUME P-start_1_2: 1,P-b_2_true: 1;
+	PRODUCE P-b_2_true: 1,P-setx_3_2: 1;
+
+TRANSITION T-setbi_2_5
+	CONSUME P-start_1_2: 1,P-b_2_false: 1;
+	PRODUCE P-b_2_true: 1,P-setx_3_2: 1;
+
+TRANSITION T-setbi_2_4
+	CONSUME P-start_1_1: 1,P-b_1_true: 1;
+	PRODUCE P-b_1_true: 1,P-setx_3_1: 1;
+
+TRANSITION T-setbi_2_3
+	CONSUME P-start_1_1: 1,P-b_1_false: 1;
+	PRODUCE P-b_1_true: 1,P-setx_3_1: 1;
+
+TRANSITION T-setbi_2_2
+	CONSUME P-start_1_0: 1,P-b_0_true: 1;
+	PRODUCE P-b_0_true: 1,P-setx_3_0: 1;
+
+TRANSITION T-setbi_2_1
+	CONSUME P-start_1_0: 1,P-b_0_false: 1;
+	PRODUCE P-b_0_true: 1,P-setx_3_0: 1;
+
+TRANSITION T-setbi_24_8
+	CONSUME P-b_3_true: 1,P-setbi_24_3: 1;
+	PRODUCE P-start_1_3: 1,P-b_3_false: 1;
+
+TRANSITION T-setbi_24_7
+	CONSUME P-b_3_false: 1,P-setbi_24_3: 1;
+	PRODUCE P-start_1_3: 1,P-b_3_false: 1;
+
+TRANSITION T-setbi_24_6
+	CONSUME P-b_2_true: 1,P-setbi_24_2: 1;
+	PRODUCE P-start_1_2: 1,P-b_2_false: 1;
+
+TRANSITION T-setbi_24_5
+	CONSUME P-b_2_false: 1,P-setbi_24_2: 1;
+	PRODUCE P-start_1_2: 1,P-b_2_false: 1;
+
+TRANSITION T-setbi_24_4
+	CONSUME P-b_1_true: 1,P-setbi_24_1: 1;
+	PRODUCE P-start_1_1: 1,P-b_1_false: 1;
+
+TRANSITION T-setbi_24_3
+	CONSUME P-b_1_false: 1,P-setbi_24_1: 1;
+	PRODUCE P-start_1_1: 1,P-b_1_false: 1;
+
+TRANSITION T-setbi_24_2
+	CONSUME P-b_0_true: 1,P-setbi_24_0: 1;
+	PRODUCE P-start_1_0: 1,P-b_0_false: 1;
+
+TRANSITION T-setbi_24_1
+	CONSUME P-b_0_false: 1,P-setbi_24_0: 1;
+	PRODUCE P-start_1_0: 1,P-b_0_false: 1;
+
+TRANSITION T-setbi_11_8
+	CONSUME P-b_3_true: 1,P-setbi_11_3: 1;
+	PRODUCE P-b_3_false: 1,P-fordo_12_3: 1;
+
+TRANSITION T-setbi_11_7
+	CONSUME P-b_3_false: 1,P-setbi_11_3: 1;
+	PRODUCE P-b_3_false: 1,P-fordo_12_3: 1;
+
+TRANSITION T-setbi_11_6
+	CONSUME P-b_2_true: 1,P-setbi_11_2: 1;
+	PRODUCE P-b_2_false: 1,P-fordo_12_2: 1;
+
+TRANSITION T-setbi_11_5
+	CONSUME P-b_2_false: 1,P-setbi_11_2: 1;
+	PRODUCE P-b_2_false: 1,P-fordo_12_2: 1;
+
+TRANSITION T-setbi_11_4
+	CONSUME P-b_1_true: 1,P-setbi_11_1: 1;
+	PRODUCE P-b_1_false: 1,P-fordo_12_1: 1;
+
+TRANSITION T-setbi_11_3
+	CONSUME P-b_1_false: 1,P-setbi_11_1: 1;
+	PRODUCE P-b_1_false: 1,P-fordo_12_1: 1;
+
+TRANSITION T-setbi_11_2
+	CONSUME P-b_0_true: 1,P-setbi_11_0: 1;
+	PRODUCE P-b_0_false: 1,P-fordo_12_0: 1;
+
+TRANSITION T-setbi_11_1
+	CONSUME P-b_0_false: 1,P-setbi_11_0: 1;
+	PRODUCE P-b_0_false: 1,P-fordo_12_0: 1;
+
+TRANSITION T-forod_13_4
+	CONSUME P-await_13_3: 1,P-done_3_1: 1,P-done_3_2: 1,P-done_3_3: 1;
+	PRODUCE P-ifyi_15_3: 1;
+
+TRANSITION T-forod_13_3
+	CONSUME P-await_13_2: 1,P-done_2_1: 1,P-done_2_2: 1,P-done_2_3: 1;
+	PRODUCE P-ifyi_15_2: 1;
+
+TRANSITION T-forod_13_2
+	CONSUME P-await_13_1: 1,P-done_1_1: 1,P-done_1_2: 1,P-done_1_3: 1;
+	PRODUCE P-ifyi_15_1: 1;
+
+TRANSITION T-forod_13_1
+	CONSUME P-await_13_0: 1,P-done_0_1: 1,P-done_0_2: 1,P-done_0_3: 1;
+	PRODUCE P-ifyi_15_0: 1;
+
+TRANSITION T-fordo_12_4
+	CONSUME P-fordo_12_3: 1;
+	PRODUCE P-wait_3_1: 1,P-wait_3_2: 1,P-wait_3_3: 1,P-await_13_3: 1;
+
+TRANSITION T-fordo_12_3
+	CONSUME P-fordo_12_2: 1;
+	PRODUCE P-wait_2_1: 1,P-wait_2_2: 1,P-wait_2_3: 1,P-await_13_2: 1;
+
+TRANSITION T-fordo_12_2
+	CONSUME P-fordo_12_1: 1;
+	PRODUCE P-wait_1_1: 1,P-wait_1_2: 1,P-wait_1_3: 1,P-await_13_1: 1;
+
+TRANSITION T-fordo_12_1
+	CONSUME P-fordo_12_0: 1;
+	PRODUCE P-wait_0_1: 1,P-wait_0_2: 1,P-wait_0_3: 1,P-await_13_0: 1;
+
+TRANSITION T-awaity_4
+	CONSUME y_0: 1,P-awaity_3: 1;
+	PRODUCE P-start_1_3: 1,y_0: 1;
+
+TRANSITION T-awaity_3
+	CONSUME y_0: 1,P-awaity_2: 1;
+	PRODUCE P-start_1_2: 1,y_0: 1;
+
+TRANSITION T-awaity_2
+	CONSUME y_0: 1,P-awaity_1: 1;
+	PRODUCE P-start_1_1: 1,y_0: 1;
+
+TRANSITION T-awaity_1
+	CONSUME y_0: 1,P-awaity_0: 1;
+	PRODUCE y_0: 1,P-start_1_0: 1;
+
+TRANSITION T-await_13_9
+	CONSUME P-b_0_false: 1,P-wait_2_0: 1,P-await_13_2: 1;
+	PRODUCE P-b_0_false: 1,P-await_13_2: 1,P-done_2_0: 1;
+
+TRANSITION T-await_13_8
+	CONSUME P-b_3_false: 1,P-wait_1_3: 1,P-await_13_1: 1;
+	PRODUCE P-b_3_false: 1,P-await_13_1: 1,P-done_1_3: 1;
+
+TRANSITION T-await_13_7
+	CONSUME P-b_2_false: 1,P-wait_1_2: 1,P-await_13_1: 1;
+	PRODUCE P-b_2_false: 1,P-await_13_1: 1,P-done_1_2: 1;
+
+TRANSITION T-await_13_6
+	CONSUME P-b_1_false: 1,P-wait_1_1: 1,P-await_13_1: 1;
+	PRODUCE P-b_1_false: 1,P-await_13_1: 1,P-done_1_1: 1;
+
+TRANSITION T-await_13_5
+	CONSUME P-b_0_false: 1,P-wait_1_0: 1,P-await_13_1: 1;
+	PRODUCE P-b_0_false: 1,P-await_13_1: 1,P-done_1_0: 1;
+
+TRANSITION T-await_13_4
+	CONSUME P-b_3_false: 1,P-wait_0_3: 1,P-await_13_0: 1;
+	PRODUCE P-b_3_false: 1,P-await_13_0: 1,P-done_0_3: 1;
+
+TRANSITION T-await_13_3
+	CONSUME P-b_2_false: 1,P-wait_0_2: 1,P-await_13_0: 1;
+	PRODUCE P-b_2_false: 1,P-await_13_0: 1,P-done_0_2: 1;
+
+TRANSITION T-await_13_2
+	CONSUME P-b_1_false: 1,P-wait_0_1: 1,P-await_13_0: 1;
+	PRODUCE P-b_1_false: 1,P-await_13_0: 1,P-done_0_1: 1;
+
+TRANSITION T-await_13_16
+	CONSUME P-b_3_false: 1,P-wait_3_3: 1,P-await_13_3: 1;
+	PRODUCE P-b_3_false: 1,P-await_13_3: 1,P-done_3_3: 1;
+
+TRANSITION T-await_13_15
+	CONSUME P-b_2_false: 1,P-wait_3_2: 1,P-await_13_3: 1;
+	PRODUCE P-b_2_false: 1,P-await_13_3: 1,P-done_3_2: 1;
+
+TRANSITION T-await_13_14
+	CONSUME P-b_1_false: 1,P-wait_3_1: 1,P-await_13_3: 1;
+	PRODUCE P-b_1_false: 1,P-await_13_3: 1,P-done_3_1: 1;
+
+TRANSITION T-await_13_13
+	CONSUME P-b_0_false: 1,P-wait_3_0: 1,P-await_13_3: 1;
+	PRODUCE P-b_0_false: 1,P-await_13_3: 1,P-done_3_0: 1;
+
+TRANSITION T-await_13_12
+	CONSUME P-b_3_false: 1,P-wait_2_3: 1,P-await_13_2: 1;
+	PRODUCE P-b_3_false: 1,P-await_13_2: 1,P-done_2_3: 1;
+
+TRANSITION T-await_13_11
+	CONSUME P-b_2_false: 1,P-wait_2_2: 1,P-await_13_2: 1;
+	PRODUCE P-b_2_false: 1,P-await_13_2: 1,P-done_2_2: 1;
+
+TRANSITION T-await_13_10
+	CONSUME P-b_1_false: 1,P-wait_2_1: 1,P-await_13_2: 1;
+	PRODUCE P-b_1_false: 1,P-await_13_2: 1,P-done_2_1: 1;
+
+TRANSITION T-await_13_1
+	CONSUME P-b_0_false: 1,P-wait_0_0: 1,P-await_13_0: 1;
+	PRODUCE P-b_0_false: 1,P-await_13_0: 1,P-done_0_0: 1;
