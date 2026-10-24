@@ -25,7 +25,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
+from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label, wrap
 from .stats import holm, hodges_lehmann, quantiles, wilcoxon_greater, wilcoxon_two_sided
 
 D, G, P = "pv-dispatch", "pv-general", "pv-poly"
@@ -38,7 +38,7 @@ def paired(ctx: Ctx) -> pl.DataFrame:
     r = ctx.runs_meta("B").filter((pl.col("source") == "fam") & pl.col("solver_id").is_in([D, G]))
     if r.height == 0:
         return r
-    agg = r.group_by("cls", "family", "size", "instance_id", "query", "tid", "solver_id").agg(
+    agg = r.group_by("cls", "family", "size", "places", "instance_id", "query", "tid", "solver_id").agg(
         pl.col("verdict").sort_by("rep").first().alias("verdict"),
         pl.col("wall_ms").median().alias("wall"), pl.col("limit_ms").max().alias("cap"),
         pl.col("peak_rss_kib").median().alias("rss"),
@@ -47,7 +47,7 @@ def paired(ctx: Ctx) -> pl.DataFrame:
                            pl.col("verdict").is_in(list(CENSORED)).alias("cens"))
     d = agg.filter(pl.col("solver_id") == D).drop("solver_id")
     g = agg.filter(pl.col("solver_id") == G).drop("solver_id")
-    keys = ["cls", "family", "size", "instance_id", "query", "tid"]
+    keys = ["cls", "family", "size", "places", "instance_id", "query", "tid"]
     return d.join(g, on=keys, suffix="_g").rename({"verdict": "verdict_d", "t": "t_d", "cens": "cens_d", "wall": "wall_d", "rss": "rss_d", "cap": "cap_d"}).rename(
         {"verdict_g": "verdict_g", "t_g": "t_g", "cens_g": "cens_g"})
 
@@ -111,7 +111,7 @@ def _ablation(ctx: Ctx, pairs: pl.DataFrame) -> None:
     ctx.num("e2", "n_classes_tested", len(flat))
     ctx.num("e2", "n_classes_h2_rejected", sum(1 for f in flat if f["reject_h2"]))
     ctx.num("e2", "alpha", ALPHA)
-    ctx.csv("e2_pairs", ok.select("cls", "family", "size", "instance_id", "query", "tid", "verdict_d", "verdict_g", "t_d", "t_g", "cens", "rss_d", "rss_g").sort("cls", "family", "size", "query", "tid"))
+    ctx.csv("e2_pairs", ok.select("cls", "family", "size", "places", "instance_id", "query", "tid", "verdict_d", "verdict_g", "t_d", "t_g", "cens", "rss_d", "rss_g").sort("cls", "family", "size", "query", "tid"))
     _figures(ctx, ok)
 
 
@@ -121,25 +121,34 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
     cm = dict(zip(classes, ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#56B4E9"] + ["#000000"] * 4))
     cap = ctx.cap()
     # paired scatter: one dot per (net, question); above the diagonal the automatic choice is faster
-    fig, ax = p.subplots(figsize=(6.6, 4.6))
+    td = np.asarray(ok["t_d"].to_numpy(), dtype=float)
+    tg = np.asarray(ok["t_g"].to_numpy(), dtype=float)
+    finite = np.concatenate([td[np.isfinite(td) & (td > 0)], tg[np.isfinite(tg) & (tg > 0)]])
+    lo, hi = float(finite.min()) / 2, float(finite.max()) * 3
+    fig, ax = p.subplots(figsize=(6.6, 4.4))
+    ax.set_autoscale_on(False)
     for c in classes:
         k = ok.filter(pl.col("cls") == c)
         ax.scatter(k["t_d"], k["t_g"], s=14, color=cm[c], label=CLASS_LABEL.get(c, c), alpha=0.75, linewidths=0)
-    lo, hi = max(ok["t_d"].min(), 1e-1) / 2, max(ok["t_d"].max(), ok["t_g"].max()) * 3
     ax.plot([lo, hi], [lo, hi], color="#777777", lw=0.9)
+    ax.set_xscale("log"); ax.set_yscale("log")
+    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
+    # every point must be inside the axes; the limits are recorded so that an export shows what was used
+    (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
+    assert x0 <= td.min() and td.max() <= x1 and y0 <= tg.min() and tg.max() <= y1, f"scatter limits cut off data: {(x0, x1, y0, y1)}"
+    for name, v in (("xlim_lo", x0), ("xlim_hi", x1), ("ylim_lo", y0), ("ylim_hi", y1)):
+        ctx.num("e2", "scatter", name, v)
     if cap:
         ax.axhline(cap, color="#999999", ls="--", lw=0.8)
         ax.axvline(cap, color="#999999", ls="--", lw=0.8)
-        ax.text(lo * 1.1, cap * 1.15, "30 s limit: run stopped without an answer", fontsize=7, color="#555555", va="bottom")
-    ax.set_xscale("log"); ax.set_yscale("log")
-    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
+        ax.text(0.01, cap * 1.2, "30 s limit: run stopped without an answer", transform=ax.get_yaxis_transform(), fontsize=7, color="#555555", va="bottom")
     ax.set_xlabel("time with the automatic choice of method (ms, log scale)")
     ax.set_ylabel("time with plain state-space exploration (ms, log scale)")
-    ax.set_title("Does picking the method by net structure save time?", loc="left", fontsize=10.5, pad=22)
-    ax.text(0, 1.02, "One dot per net and question. Above the diagonal the automatic choice was faster; below it, plain exploration was.",
-            transform=ax.transAxes, fontsize=7.2, color="#444444")
-    ax.text(2e2, 4e3, "automatic choice faster\n(plain exploration slower or stopped)", fontsize=7.5, color="#333333", va="center")
-    ax.text(6e2, 1.15e1, "plain exploration faster\n(automatic choice slower or stopped)", fontsize=7.5, color="#333333", va="bottom")
+    ax.set_title("Does picking the method by net structure save time?", loc="left", fontsize=10.5, pad=30)
+    ax.text(0, 1.02, wrap("One dot per net and question. Above the diagonal the automatic choice was faster; below it, plain exploration was.", 84),
+            transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
+    ax.text(0.34, 0.67, "automatic choice faster\n(plain exploration slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="center")
+    ax.text(0.46, 0.03, "plain exploration faster\n(automatic choice slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="bottom")
     ax.legend(frameon=False, fontsize=8, title="Kind of net", title_fontsize=8.5, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     save_svg(fig, ctx.fig_path("e2_paired_scatter"))
     # time against net size, one panel per family
@@ -154,17 +163,17 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
         for ax, r in zip(axs.ravel(), rows_list):
             k = ok.filter((pl.col("family") == r["family"]) & pl.col("size").is_not_null())
             for col, solver in (("t_d", "pv-dispatch"), ("t_g", "pv-general")):
-                m = k.group_by("size").agg(pl.col(col).median()).sort("size")
-                ax.plot(m["size"], m[col], marker="o", ms=3, label=solver_label(solver), color=SOLVER_COLOR[solver])
+                m = k.group_by("size").agg(pl.col(col).median(), pl.col("places").median().alias("places")).sort("places")
+                ax.plot(m["places"], m[col], marker="o", ms=3, label=solver_label(solver), color=SOLVER_COLOR[solver])
             if cap:
                 ax.axhline(cap, color="#999999", ls="--", lw=0.8)
-            ax.set_xscale("log", base=2); ax.set_yscale("log")
+            ax.set_xscale("log"); ax.set_yscale("log")
             ax.set_title(f"{CLASS_LABEL.get(r['cls'], r['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(r['family'], r['family'])}", fontsize=8, loc="left")
             ax.tick_params(labelsize=7)
         for ax in axs.ravel()[n:]:
             ax.axis("off")
         for ax in axs[-1]:
-            ax.set_xlabel("net size n (log scale)", fontsize=8)
+            ax.set_xlabel("number of places in the net (log scale)", fontsize=8)
         for ax in axs[:, 0]:
             ax.set_ylabel("time (ms, log scale)", fontsize=8)
         h, lab = axs.ravel()[0].get_legend_handles_labels()

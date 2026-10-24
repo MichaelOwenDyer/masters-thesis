@@ -18,7 +18,7 @@ from __future__ import annotations
 import polars as pl
 
 from .cells import cell_table
-from .common import SOLVER_COLOR, Ctx, color_map, key, plt, save_svg, solver_label, source_label
+from .common import QUERY_LABEL, SOLVER_COLOR, Ctx, color_map, key, plt, save_svg, solver_label, source_label, wrap
 from .stats import median
 
 
@@ -65,8 +65,13 @@ def run(ctx: Ctx) -> None:
     cm = color_map(solvers)
     p = plt()
     for src in sorted(t["source"].unique().to_list()):
-        ts = t.filter((pl.col("source") == src) & pl.col("solved"))
-        if ts.height == 0:
+        # only the questions that every tool has a method for: a tool without one cannot be compared on it
+        allq = t.filter(pl.col("source") == src)
+        common = [q for q in sorted(allq["query"].unique().to_list())
+                  if all(allq.filter((pl.col("query") == q) & (pl.col("solver_id") == s) & (pl.col("verdict") != "NOT_SUPPORTED")).height > 0 for s in solvers)]
+        ts = allq.filter(pl.col("solved") & pl.col("query").is_in(common))
+        # too few answers per tool for the curves to say anything (the calibration nets: 8 questions, all in about 7 ms)
+        if ts.height == 0 or max(ts.filter(pl.col("solver_id") == s).height for s in solvers) < 30:
             continue
         fig, ax = p.subplots(figsize=(7.2, 3.8))
         for s in solvers:
@@ -79,8 +84,9 @@ def run(ctx: Ctx) -> None:
         ax.set_yscale("log")
         ax.set_xlabel("number of questions answered (quickest first)")
         ax.set_ylabel("time per answer (ms, log scale)")
-        ax.set_title(f"How many questions each tool answers, and how fast: {source_label(src)}", loc="left", fontsize=10.5, pad=22)
-        ax.text(0, 1.02, "Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is faster.",
-                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.set_title(f"How many questions each tool answers, and how fast: {source_label(src)}", loc="left", fontsize=10.5, pad=30)
+        qs = ", ".join(QUERY_LABEL.get(q, q) for q in common)
+        ax.text(0, 1.02, wrap(f"Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is faster. Questions: {qs}.", 105),
+                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path(f"e4_cactus_{key(src)}"))

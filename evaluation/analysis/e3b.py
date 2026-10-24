@@ -18,7 +18,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import Ctx, plt, save_svg, color_map
+from .common import Ctx, plt, save_svg, color_map, wrap
 from .stats import quantiles
 
 DEFINITE = ["TRUE", "FALSE", "COUNT"]
@@ -104,9 +104,9 @@ def run(ctx: Ctx) -> None:
             ax.axvline(thr, color="#000000", ls="--", lw=0.9)
             ax.text(thr * 1.15, ax.get_ylim()[1] * 0.97, f"{thr:g} ms: our limit for\n\"close to the deadline\"", fontsize=7.5, va="top")
         ax.set_xlabel("how long after the time limit the library stopped (ms, log scale)")
-        ax.set_ylabel("number of (net, question) pairs")
-        ax.set_title("How closely does the library keep to a time limit?", loc="left", fontsize=10.5, pad=22)
-        ax.text(0, 1.02, "Only pairs where the limit was hit. Bars further left: the library stopped closer to the deadline.",
-                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.set_ylabel("number of queries")
+        ax.set_title("How closely does the library keep to a time limit?", loc="left", fontsize=10.5, pad=30)
+        ax.text(0, 1.02, wrap("Only queries where the time limit ran out. Bars further left: the library stopped closer to the deadline.", 100),
+                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, title="time limit given", title_fontsize=8.5, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path("e3b_overshoot"))

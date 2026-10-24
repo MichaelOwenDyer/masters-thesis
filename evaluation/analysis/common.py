@@ -417,6 +417,18 @@ SOLVER_SHORT = {
 }
 
 
+QUERY_LABEL = {
+    "Q0": "size of the state space", "Q1": "deadlock-freedom", "Q2": "boundedness", "Q3": "liveness", "Q4": "quasi-liveness",
+    "Q5": "1-safety", "Q6": "stable place", "QR": "reachability", "QC": "coverability",
+}
+
+
+def wrap(text: str, width: int = 88) -> str:
+    """Subtitles are wrapped so that a long line cannot widen the exported figure."""
+    import textwrap
+    return textwrap.fill(text, width=width)
+
+
 def solver_label(s: str) -> str:
     return SOLVER_LABEL.get(s, s)
 

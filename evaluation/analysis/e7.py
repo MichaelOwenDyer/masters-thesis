@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, solver_label, source_label
+from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, solver_label, source_label, wrap
 from .stats import quantiles
 
 
@@ -24,7 +24,7 @@ def run(ctx: Ctx) -> None:
     if r.height == 0:
         ctx.skip("e7", "no campaign B runs with peak_rss_kib")
         return
-    cells = r.group_by("source", "instance_id", "query", "tid", "solver_id").agg(pl.col("peak_rss_kib").median().alias("rss"), pl.col("states").max().alias("states"),
+    cells = r.group_by("source", "instance_id", "query", "tid", "solver_id").agg(pl.col("peak_rss_kib").median().alias("rss"), pl.col("states").max().alias("states"), pl.col("places").first().alias("places"),
                                                                               pl.col("verdict").sort_by("rep").first().alias("verdict")).sort("source", "solver_id", "instance_id", "query", "tid")
     rows = []
     for (src, s), g in cells.group_by("source", "solver_id"):
@@ -70,8 +70,8 @@ def run(ctx: Ctx) -> None:
     for ax in axs.ravel()[len(srcs):]:
         ax.axis("off")
     fig.text(0.01, 0.955, "How much memory does each tool use?", fontsize=10.5, ha="left")
-    fig.text(0.01, 0.925, "One run per question and net (n = number of runs that gave an answer). Box: the middle half of the runs; black line: the median; circles: single runs far from it.\n"
-             "Runs at the dashed 8 GiB line ran out of memory. Values near 7 MiB are the size of the measuring wrapper itself: those runs used almost nothing.",
+    fig.text(0.01, 0.925, "One run per question and net (n = number of runs that gave an answer). Runs at the dashed 8 GiB line ran out of memory.\n"
+             "About 7 MiB is the size of the measuring wrapper itself: those runs used almost nothing.",
              fontsize=7, color="#444444", ha="left", va="top")
     save_svg(fig, ctx.fig_path("e7_rss"))
 
@@ -98,13 +98,13 @@ def run(ctx: Ctx) -> None:
         for k, val in (("n", g.height), ("median", q[0.5]), ("p90", q[0.9]), ("baseline_kib", base_map[s])):
             ctx.num("e7", "bytes_per_state", s, k, val)
         keep = v > 1  # at or below the start-up memory there is nothing to measure
-        ax.scatter(g["states"].to_numpy()[keep], v[keep], s=10, label=solver_label(s), color=SOLVER_COLOR.get(s, "#999999"), alpha=0.8, linewidths=0)
+        ax.scatter(g["places"].to_numpy()[keep], v[keep], s=10, label=solver_label(s), color=SOLVER_COLOR.get(s, "#999999"), alpha=0.8, linewidths=0)
     if out:
         ctx.csv("e7_bytes_per_state", pl.DataFrame(out))
         ax.set_xscale("log"); ax.set_yscale("log")
-        ax.set_xlabel("number of states of the net (log scale)"); ax.set_ylabel("memory per state (bytes, log scale)")
-        ax.set_title("How much memory does a tool need per state it explores?", loc="left", fontsize=10.5, pad=22)
-        ax.text(0, 1.02, "Counting all states of a net (question Q0). Memory above the tool's start-up memory, divided by the number of states; nets too small to measure are not drawn. Lower is better.",
-                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.set_xlabel("number of places in the net (log scale)"); ax.set_ylabel("memory per state (bytes, log scale)")
+        ax.set_title("How much memory does a tool need per state it explores?", loc="left", fontsize=10.5, pad=30)
+        ax.text(0, 1.02, wrap("Counting all states of a net. Memory above the tool's start-up memory, divided by the number of states; nets too small to measure are not drawn. Lower is better.", 105),
+                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path("e7_bytes_per_state"))
