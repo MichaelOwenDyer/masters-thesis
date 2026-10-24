@@ -121,7 +121,7 @@ impl Lola {
     fn script(&self, net: &str, checks: Vec<String>, stop: &str, otherwise: &str) -> CommandSpec {
         let mut s = format!("lola={}; net={}; unk=0\n", sh_quote(&self.program), sh_quote(net));
         s.push_str(
-            "chk() {\n  out=$(\"$lola\" \"$net\" \"--formula=$1\" --quiet --json=/dev/stdout </dev/null); rc=$?\n  printf '%s\\n' \"$out\"\n  [ \"$rc\" -eq 0 ] || exit \"$rc\"\n  case \"$out\" in\n    *'\"result\": true'*|*'\"result\":true'*) res=true;;\n    *'\"result\": false'*|*'\"result\":false'*) res=false;;\n    *) res=other;;\n  esac\n  if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi\n  [ \"$res\" = other ] && unk=1\n}\n",
+            "chk() {\n  out=$(\"$lola\" \"$net\" \"--formula=$1\" --quiet --json=/dev/stdout </dev/null); rc=$?\n  [ \"$rc\" -eq 0 ] || { printf '%s\\n' \"$out\"; exit \"$rc\"; }\n  case \"$out\" in\n    *'\"result\": true'*|*'\"result\":true'*) res=true;;\n    *'\"result\": false'*|*'\"result\":false'*) res=false;;\n    *) res=other;;\n  esac\n  if [ \"$res\" = \"$2\" ] || [ \"$res\" = other ]; then printf '%s\\n' \"$out\"; fi\n  if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi\n  [ \"$res\" = other ] && unk=1\n}\n",
         );
         for c in checks {
             s.push_str(&format!("chk {} {stop}\n", sh_quote(&c)));
@@ -134,6 +134,11 @@ impl Lola {
     pub fn parse_q(&self, query: Query, stdout: &str) -> Parsed {
         if let Some(word) = script_answer(stdout) {
             return answer_parsed(word);
+        }
+        // several JSON lines are the sub-runs of a script whose answer line is missing (output cut off): the last
+        // line says nothing about the query
+        if stdout.lines().filter(|l| l.trim_start().starts_with('{')).count() > 1 {
+            return Parsed::runner_error("script gave no PETRIVET_ANSWER line");
         }
         let Some(json) = json_line(stdout) else { return Parsed::runner_error("unparseable output") };
         let analysis = json.get("analysis");
@@ -305,7 +310,9 @@ mod tests {
         assert!(s.contains("chk 'EF FIREABLE(t0)' false\nchk 'EF FIREABLE(t1)' false\n"));
         let q3 = lola().build(Query::Q3, "N.lola", &p, &t, None);
         assert!(q3.script_text().contains("chk 'AGEF FIREABLE(t0)' false\nchk 'AGEF FIREABLE(t1)' false\n"));
-        assert!(s.contains("[ \"$rc\" -eq 0 ] || exit \"$rc\""));
+        assert!(s.contains("[ \"$rc\" -eq 0 ] || { printf '%s\\n' \"$out\"; exit \"$rc\"; }"));
+        // only the sub-run that ends the script (or gave no result) is echoed: output must not grow with the net
+        assert!(s.contains("if [ \"$res\" = \"$2\" ] || [ \"$res\" = other ]; then printf '%s\\n' \"$out\"; fi"));
         assert!(s.contains("if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi"));
         assert!(s.ends_with("else echo 'PETRIVET_ANSWER true'; fi\n"));
         let q6 = lola().build(Query::Q6, "N.lola", &p, &t, None);
@@ -386,6 +393,9 @@ mod tests {
         assert_eq!(p.verdict, Verdict::Unknown);
         assert!(p.detail.unwrap().contains("null or missing"));
         assert_eq!(l.parse_q(Query::Q3, r#"{"analysis": {"result": null}}"#).verdict, Verdict::Unknown);
+        // the output of a script that was cut off before its answer line must not be read as an answer
+        let cut = format!("{0}\n{0}\n", r#"{"analysis": {"result": true}}"#);
+        assert_eq!(l.parse_q(Query::Q4, &cut).verdict, Verdict::RunnerError);
         assert_eq!(l.parse_q(Query::Q3, "garbage").detail.as_deref(), Some("unparseable output"));
     }
 
