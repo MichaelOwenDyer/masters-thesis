@@ -1,0 +1,93 @@
+[2026-10-24 23:43:33] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z8zE7L9yLf, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:43:33] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z8zE7L9yLf/model.pnml 
+[2026-10-24 23:43:34] [INFO   ] Load time of PNML (sax parser for PT used): 270 ms 
+[2026-10-24 23:43:34] [INFO   ] Transformed 925 places. 
+[2026-10-24 23:43:34] [INFO   ] Transformed 1037 transitions. 
+[2026-10-24 23:43:34] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:43:34] [INFO   ] Parsed PT model containing 925 places and 1037 transitions and 2433 arcs in 761 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 925/925 places, 1037/1037 transitions.
+Graph (trivial) has 918 edges and 925 vertex of which 60 / 925 are part of one of the 9 SCC in 21 ms
+Free SCC test removed 51 places 
+Ensure Unique test removed 57 transitions
+Reduce isomorphic transitions removed 57 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 696 transitions 
+Trivial Post-agglo rules discarded 696 transitions
+Performed 696 trivial Post agglomeration. Transition count delta: 696
+Iterating post reduction 0 with 696 rules applied. Total rules applied 697 place count 874 transition count 284
+Reduce places removed 696 places and 0 transitions. 
+Ensure Unique test removed 9 transitions
+Reduce isomorphic transitions removed 9 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 3 transitions 
+Trivial Post-agglo rules discarded 3 transitions
+Performed 3 trivial Post agglomeration. Transition count delta: 3
+Iterating post reduction 1 with 708 rules applied. Total rules applied 1405 place count 178 transition count 272
+Reduce places removed 3 places and 0 transitions. 
+Iterating post reduction 2 with 3 rules applied. Total rules applied 1408 place count 175 transition count 272
+Performed 33 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 33 Pre rules applied. Total rules applied 1408 place count 175 transition count 239
+Deduced a syphon composed of 33 places in 7 ms
+Reduce places removed 33 places and 0 transitions. 
+Iterating global reduction 3 with 66 rules applied. Total rules applied 1474 place count 142 transition count 239
+Performed 46 Post agglomeration using F-continuation condition.Transition count delta: 46
+Deduced a syphon composed of 46 places in 4 ms
+Reduce places removed 46 places and 0 transitions. 
+Iterating global reduction 3 with 92 rules applied. Total rules applied 1566 place count 96 transition count 193
+Performed 9 Post agglomeration using F-continuation condition.Transition count delta: -32
+Deduced a syphon composed of 9 places in 0 ms
+Reduce places removed 9 places and 0 transitions. 
+Iterating global reduction 3 with 18 rules applied. Total rules applied 1584 place count 87 transition count 225
+Applied a total of 1584 rules in 245 ms. Remains 87 /925 variables (removed 838) and now considering 225/1037 (removed 812) transitions.
+[2026-10-24 23:43:34] [INFO   ] Flow matrix only has 216 transitions (discarded 9 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-5288698676927505623.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-14425564713766479481.kers' 
+[2026-10-24 23:43:35] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-5288698676927505623.kers, --Pflows, --basisKERS=/tmp/petrispot-output-14425564713766479481.kers]
+Normalized transition count is 215 out of 216 initially.
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 215 rows 87 cols 825 entries
+Finished phase 1 with 83 SingleSign rule and 0 generalized 
+[2026-10-24 23:43:35] [INFO   ] Computed 4 invariants in 0 ms
+Computed 4 P flows in 6 ms.
+Exported basis to /tmp/petrispot-output-14425564713766479481.kers
+Total runtime 7 ms.
+[2026-10-24 23:43:35] [INFO   ] Implicit Places using invariants in 425 ms returned [] 
+[2026-10-24 23:43:35] [INFO   ] Flow matrix only has 216 transitions (discarded 9 similar events) 
+[2026-10-24 23:43:35] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:43:35] [INFO   ] State equation strengthened by 64 read => feed constraints. 
+[2026-10-24 23:43:35] [INFO   ] Implicit Places using invariants and state equation in 346 ms returned [] 
+Implicit Place search using SMT with State Equation took 838 ms to find 0 implicit places.
+Running 198 sub problems to find dead transitions.
+[2026-10-24 23:43:35] [INFO   ] Flow matrix only has 216 transitions (discarded 9 similar events) 
+[2026-10-24 23:43:35] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:43:35] [INFO   ] State equation strengthened by 64 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/86 variables, 86/86 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/86 variables, 0/86 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 2 (OVERLAPS) 1/87 variables, 4/90 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/87 variables, 1/91 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/87 variables, 10/101 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/87 variables, 2/103 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/87 variables, 1/104 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/87 variables, 0/104 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 8 (OVERLAPS) 215/302 variables, 87/191 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/302 variables, 63/254 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/302 variables, 0/254 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 11 (OVERLAPS) 1/303 variables, 1/255 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/303 variables, 0/255 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 13 (OVERLAPS) 0/303 variables, 0/255 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 303/303 variables, and 255 constraints, problems are : Problem set: 0 solved, 198 unsolved in 13512 ms.
+Refiners :[Domain max(s): 87/87 constraints, Positive P Invariants (semi-flows): 4/4 constraints, State Equation: 87/87 constraints, ReadFeed: 64/64 constraints, PredecessorRefiner: 198/198 constraints, Known Traps: 13/13 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 198 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/86 variables, 86/86 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/86 variables, 0/86 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 2 (OVERLAPS) 1/87 variables, 4/90 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/87 variables, 1/91 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/87 variables, 13/104 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/87 variables, 0/104 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 6 (OVERLAPS) 215/302 variables, 87/191 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/302 variables, 63/254 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/302 variables, 198/452 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/302 variables, 1/453 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/302 variables, 0/453 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 11 (OVERLAPS) 1/303 variables, 1/454 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/303 variables, 0/454 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+At refinement iteration 13 (OVERLAPS) 0/303 variables, 0/454 constraints. Problems are: Problem set: 0 solved, 198 unsolved
+No progress, stopping.

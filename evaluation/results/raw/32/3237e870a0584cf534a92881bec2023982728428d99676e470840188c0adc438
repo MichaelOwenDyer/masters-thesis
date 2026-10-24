@@ -1,0 +1,25 @@
+[2026-10-24 23:57:10] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Re0RMeWB9S, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:57:10] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Re0RMeWB9S/model.pnml 
+[2026-10-24 23:57:10] [INFO   ] Load time of PNML (sax parser for PT used): 29 ms 
+[2026-10-24 23:57:10] [INFO   ] Transformed 5 places. 
+[2026-10-24 23:57:10] [INFO   ] Transformed 5 transitions. 
+[2026-10-24 23:57:10] [INFO   ] Parsed PT model containing 5 places and 5 transitions and 10 arcs in 404 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Re0RMeWB9S/ReachabilityDeadlock.xml in 11 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 8 ms.8358KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 5/5 places, 5/5 transitions.
+Graph (trivial) has 5 edges and 5 vertex of which 4 / 5 are part of one of the 1 SCC in 6 ms
+Free SCC test removed 3 places 
+Ensure Unique test removed 3 transitions
+Reduce isomorphic transitions removed 3 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.2 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 62 ms. Remains 1 /5 variables (removed 4) and now considering 2/5 (removed 3) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 83 ms. Remains : 1/5 places, 2/5 transitions.
+PetriSpot walker: 1/1 properties solved in 53 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 692 ms.

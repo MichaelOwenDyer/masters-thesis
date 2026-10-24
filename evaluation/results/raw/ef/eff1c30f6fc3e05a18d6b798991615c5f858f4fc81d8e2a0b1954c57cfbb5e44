@@ -1,0 +1,24 @@
+[2026-10-24 23:52:14] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JZQrpY1qnk, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:52:14] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JZQrpY1qnk/model.pnml 
+[2026-10-24 23:52:14] [INFO   ] Load time of PNML (sax parser for PT used): 88 ms 
+[2026-10-24 23:52:14] [INFO   ] Transformed 25 places. 
+[2026-10-24 23:52:14] [INFO   ] Transformed 25 transitions. 
+[2026-10-24 23:52:14] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:52:14] [INFO   ] Parsed PT model containing 25 places and 25 transitions and 80 arcs in 456 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JZQrpY1qnk/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 3 ms.8760KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 25/25 places, 25/25 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 5 Post agglomeration using F-continuation condition.Transition count delta: 5
+Deduced a syphon composed of 5 places in 0 ms
+Reduce places removed 5 places and 0 transitions. 
+Iterating global reduction 0 with 10 rules applied. Total rules applied 10 place count 20 transition count 20
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 10 rules in 61 ms. Remains 20 /25 variables (removed 5) and now considering 20/25 (removed 5) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 82 ms. Remains : 20/25 places, 20/25 transitions.
+PetriSpot walker: 1/1 properties solved in 51 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 716 ms.

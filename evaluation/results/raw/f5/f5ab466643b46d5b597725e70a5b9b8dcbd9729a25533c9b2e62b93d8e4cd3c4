@@ -1,0 +1,37 @@
+[2026-10-24 23:55:21] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.XzaQkXdbs8, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:55:21] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.XzaQkXdbs8/model.pnml 
+[2026-10-24 23:55:22] [INFO   ] Load time of PNML (sax parser for PT used): 45 ms 
+[2026-10-24 23:55:22] [INFO   ] Transformed 8 places. 
+[2026-10-24 23:55:22] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 23:55:22] [INFO   ] Parsed PT model containing 8 places and 4 transitions and 16 arcs in 406 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.XzaQkXdbs8/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.8380KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 8/8 places, 4/4 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Iterating post reduction 0 with 1 rules applied. Total rules applied 1 place count 7 transition count 4
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 1 Pre rules applied. Total rules applied 1 place count 7 transition count 3
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 1 with 3 rules applied. Total rules applied 4 place count 5 transition count 3
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 1 Pre rules applied. Total rules applied 4 place count 5 transition count 2
+Deduced a syphon composed of 1 places in 0 ms
+Ensure Unique test removed 1 places
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 1 with 4 rules applied. Total rules applied 8 place count 2 transition count 2
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 1 with 1 rules applied. Total rules applied 9 place count 2 transition count 1
+Reduce places removed 2 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 585 ms.

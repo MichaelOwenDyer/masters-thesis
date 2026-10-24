@@ -1,0 +1,35 @@
+[2026-10-24 23:19:03] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.BcjbzlS6Pp, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:19:03] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.BcjbzlS6Pp/model.pnml 
+[2026-10-24 23:19:04] [INFO   ] Load time of PNML (sax parser for PT used): 55 ms 
+[2026-10-24 23:19:04] [INFO   ] Transformed 27 places. 
+[2026-10-24 23:19:04] [INFO   ] Transformed 29 transitions. 
+[2026-10-24 23:19:04] [INFO   ] Parsed PT model containing 27 places and 29 transitions and 94 arcs in 427 ms. 
+Graph (trivial) has 9 edges and 27 vertex of which 8 / 27 are part of one of the 4 SCC in 8 ms
+Free SCC test removed 4 places 
+Structural test allowed to assert that 4 places are NOT stable. Took 28 ms.
+Ensure Unique test removed 4 transitions
+Reduce redundant transitions removed 4 transitions.
+PetriSpot walker: 23/23 properties solved in 96 ms (exit 0).
+PetriSpot walker: 23/23 properties solved in 89 ms (exit 0).
+Walk beside the decision diagrams solved 23 properties.
+[2026-10-24 23:19:04] [INFO   ] Flatten gal took : 41 ms 
+[2026-10-24 23:19:04] [INFO   ] Flatten gal took : 9 ms 
+[2026-10-24 23:19:04] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality7112938111721941605.gal : 20 ms 
+[2026-10-24 23:19:04] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality10516269692957985765.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.BcjbzlS6Pp;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality7112938111721941605.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality10516269692957985765.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality10516269692957985765.prop.
+Found states matching all0 target predicate 
+Will report total states built up to this point. Computation was interrupted after 3 fixpoint passes
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,7,0.002764,4144,2,35,5,114,6,0,116,73,0
+ Total reachable state count : 7
+
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query StableMarking after proving 24 properties.
+FORMULA StableMarking FALSE TECHNIQUES TRIVIAL_UNMARKED_SCC_TEST TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 973 ms.

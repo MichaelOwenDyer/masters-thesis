@@ -1,0 +1,30 @@
+[2026-10-24 23:44:10] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.WuKHvUkHPJ, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:44:10] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.WuKHvUkHPJ/model.pnml 
+[2026-10-24 23:44:11] [INFO   ] Load time of PNML (sax parser for PT used): 74 ms 
+[2026-10-24 23:44:11] [INFO   ] Transformed 27 places. 
+[2026-10-24 23:44:11] [INFO   ] Transformed 27 transitions. 
+[2026-10-24 23:44:11] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:44:11] [INFO   ] Parsed PT model containing 27 places and 27 transitions and 108 arcs in 444 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.WuKHvUkHPJ/ReachabilityDeadlock.xml in 8 ms.
+Working with output stream class java.io.PrintStream
+Ensure Unique test removed 1 transitions
+Reduce redundant transitions removed 1 transitions.
+Built sparse matrix representations for Structural reductions in 5 ms.8907KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 27/27 places, 26/26 transitions.
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 1 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 26 transition count 25
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Reduce places removed 1 places and 1 transitions. 
+Iterating global reduction 0 with 1 rules applied. Total rules applied 3 place count 25 transition count 24
+Reduce places removed 1 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 0 with 1 rules applied. Total rules applied 4 place count 24 transition count 24
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 4 rules in 63 ms. Remains 24 /27 variables (removed 3) and now considering 24/26 (removed 2) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 91 ms. Remains : 24/27 places, 24/26 transitions.

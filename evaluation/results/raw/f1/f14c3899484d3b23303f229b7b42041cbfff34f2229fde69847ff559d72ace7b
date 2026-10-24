@@ -1,0 +1,29 @@
+[2026-10-24 23:18:31] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.hAGs5ZhYQv, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:18:31] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.hAGs5ZhYQv/model.pnml 
+[2026-10-24 23:18:32] [INFO   ] Load time of PNML (sax parser for PT used): 219 ms 
+[2026-10-24 23:18:32] [INFO   ] Transformed 121 places. 
+[2026-10-24 23:18:32] [INFO   ] Transformed 1111 transitions. 
+[2026-10-24 23:18:32] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:18:32] [INFO   ] Parsed PT model containing 121 places and 1111 transitions and 4444 arcs in 604 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 121/121 places, 1111/1111 transitions.
+[2026-10-24 23:18:32] [INFO   ] Redundant transitions in 78 ms returned [] 
+Running 1101 sub problems to find dead transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4730379023001162378.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-11170011688036184196.kers' 
+[2026-10-24 23:18:33] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4730379023001162378.kers, --Pflows, --basisKERS=/tmp/petrispot-output-11170011688036184196.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 1111 rows 121 cols 2222 entries
+Finished phase 1 with 110 SingleSign rule and 0 generalized 
+[2026-10-24 23:18:33] [INFO   ] Computed 11 invariants in 1 ms
+Computed 11 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-11170011688036184196.kers
+Total runtime 2 ms.
+[2026-10-24 23:18:33] [INFO   ] State equation strengthened by 1010 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/121 variables, 121/121 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/121 variables, 11/132 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/121 variables, 20/152 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/121 variables, 20/172 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/121 variables, 20/192 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/121 variables, 20/212 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/121 variables, 20/232 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/121 variables, 20/252 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/121 variables, 20/272 constraints. Problems are: Problem set: 0 solved, 1101 unsolved

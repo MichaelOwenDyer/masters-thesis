@@ -1,0 +1,21 @@
+[2026-10-24 23:29:45] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.KbgyFjpyT9, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:29:45] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.KbgyFjpyT9/model.pnml 
+[2026-10-24 23:29:47] [INFO   ] Load time of PNML (sax parser for PT used): 1119 ms 
+[2026-10-24 23:29:47] [INFO   ] Transformed 7032 places. 
+[2026-10-24 23:29:47] [INFO   ] Transformed 10855 transitions. 
+[2026-10-24 23:29:47] [INFO   ] Parsed PT model containing 7032 places and 10855 transitions and 46214 arcs in 1772 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 7032/7032 places, 10855/10855 transitions.
+Running 10830 sub problems to find dead transitions.
+[2026-10-24 23:29:49] [INFO   ] Flow matrix only has 10255 transitions (discarded 600 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-15715196322091359049.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-4448387642379983992.kers' 
+[2026-10-24 23:29:49] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-15715196322091359049.kers, --Pflows, --basisKERS=/tmp/petrispot-output-4448387642379983992.kers]
+Culling duplicate invariants (modulo rational): removing 395 columns.
+Culled 395 columns in 21 ms.
+// Phase 1: matrix 10255 rows 6637 cols 28225 entries
+Finished phase 1 with 4748 SingleSign rule and 1471 generalized 
+[2026-10-24 23:29:49] [INFO   ] Computed 813 invariants in 287 ms
+Computed 813 P flows in 288 ms.
+Exported basis to /tmp/petrispot-output-4448387642379983992.kers
+Total runtime 308 ms.
+[2026-10-24 23:29:49] [INFO   ] State equation strengthened by 3202 read => feed constraints. 
+Excessive predecessor constraint size, skipping predecessor.

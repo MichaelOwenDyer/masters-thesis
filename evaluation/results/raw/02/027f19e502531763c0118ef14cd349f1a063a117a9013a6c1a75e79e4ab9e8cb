@@ -1,0 +1,29 @@
+[2026-10-24 23:52:17] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.jV9UHuFwfp, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:52:17] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.jV9UHuFwfp/model.pnml 
+[2026-10-24 23:52:17] [INFO   ] Load time of PNML (sax parser for PT used): 56 ms 
+[2026-10-24 23:52:17] [INFO   ] Transformed 12 places. 
+[2026-10-24 23:52:17] [INFO   ] Transformed 12 transitions. 
+[2026-10-24 23:52:17] [INFO   ] Parsed PT model containing 12 places and 12 transitions and 34 arcs in 435 ms. 
+Structural test allowed to assert that 8 places are NOT stable. Took 13 ms.
+[2026-10-24 23:52:18] [INFO   ] Flatten gal took : 106 ms 
+[2026-10-24 23:52:18] [INFO   ] Flatten gal took : 2 ms 
+[2026-10-24 23:52:19] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality10261326345665925299.gal : 117 ms 
+[2026-10-24 23:52:19] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality8750672545851556695.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.jV9UHuFwfp;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality10261326345665925299.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality8750672545851556695.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality8750672545851556695.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,10636,0.006312,4376,2,172,9,1994,7,0,60,1809,0
+ Total reachable state count : 10636
+
+Verifying 1 reachability properties.
+
+PetriSpot walker: 3/4 properties solved in 1390 ms (exit 137).
+Walk beside the decision diagrams solved 3 properties.
+PetriSpot walker: 4/4 properties solved in 2301 ms (exit 0).
+Able to resolve query StableMarking after proving 5 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST DECISION_DIAGRAMS COLLATERAL_PROCESSING TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 2858 ms.

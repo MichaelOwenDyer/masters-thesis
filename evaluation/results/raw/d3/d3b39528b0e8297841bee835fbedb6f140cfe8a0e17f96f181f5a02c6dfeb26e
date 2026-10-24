@@ -1,0 +1,21 @@
+[2026-10-24 23:52:28] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.L2RZ6LNNjJ, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:52:29] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.L2RZ6LNNjJ/model.pnml 
+[2026-10-24 23:52:29] [INFO   ] Load time of PNML (sax parser for PT used): 137 ms 
+[2026-10-24 23:52:29] [INFO   ] Transformed 256 places. 
+[2026-10-24 23:52:29] [INFO   ] Transformed 384 transitions. 
+[2026-10-24 23:52:29] [INFO   ] Parsed PT model containing 256 places and 384 transitions and 1024 arcs in 472 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.L2RZ6LNNjJ/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 10 ms.11129KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 256/256 places, 384/384 transitions.
+Graph (trivial) has 256 edges and 256 vertex of which 256 / 256 are part of one of the 2 SCC in 13 ms
+Free SCC test removed 254 places 
+Ensure Unique test removed 381 transitions
+Reduce isomorphic transitions removed 381 transitions.
+Computed a total of 2 stabilizing places and 0 stable transitions
+Reduce places removed 2 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 685 ms.

@@ -1,0 +1,35 @@
+[2026-10-24 23:42:49] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.brUmipN5Kx, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:42:49] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.brUmipN5Kx/model.pnml 
+[2026-10-24 23:42:51] [INFO   ] Load time of PNML (sax parser for PT used): 1607 ms 
+[2026-10-24 23:42:51] [INFO   ] Transformed 13544 places. 
+[2026-10-24 23:42:51] [INFO   ] Transformed 21807 transitions. 
+[2026-10-24 23:42:51] [INFO   ] Parsed PT model containing 13544 places and 21807 transitions and 93598 arcs in 2091 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 13544/13544 places, 21807/21807 transitions.
+Reduce places removed 40 places and 0 transitions. 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2112 transitions 
+Trivial Post-agglo rules discarded 2112 transitions
+Performed 2112 trivial Post agglomeration. Transition count delta: 2112
+Iterating post reduction 0 with 2152 rules applied. Total rules applied 2152 place count 13504 transition count 19695
+Reduce places removed 2112 places and 0 transitions. 
+Iterating post reduction 1 with 2112 rules applied. Total rules applied 4264 place count 11392 transition count 19695
+Performed 132 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 2 with 132 Pre rules applied. Total rules applied 4264 place count 11392 transition count 19563
+Deduced a syphon composed of 132 places in 162 ms
+Reduce places removed 132 places and 0 transitions. 
+Iterating global reduction 2 with 264 rules applied. Total rules applied 4528 place count 11260 transition count 19563
+Performed 33 Post agglomeration using F-continuation condition.Transition count delta: 33
+Deduced a syphon composed of 33 places in 36 ms
+Reduce places removed 33 places and 0 transitions. 
+Iterating global reduction 2 with 66 rules applied. Total rules applied 4594 place count 11227 transition count 19530
+Applied a total of 4594 rules in 2026 ms. Remains 11227 /13544 variables (removed 2317) and now considering 19530/21807 (removed 2277) transitions.
+[2026-10-24 23:42:53] [INFO   ] Flow matrix only has 18474 transitions (discarded 1056 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-14447320363875914692.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-17203399133689148567.kers' 
+[2026-10-24 23:42:53] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-14447320363875914692.kers, --Pflows, --basisKERS=/tmp/petrispot-output-17203399133689148567.kers]
+Culling duplicate invariants (modulo rational): removing 611 columns.
+Culled 611 columns in 24 ms.
+// Phase 1: matrix 18474 rows 10616 cols 51927 entries
+Finished phase 1 with 7335 SingleSign rule and 2599 generalized 
+[2026-10-24 23:42:53] [INFO   ] Computed 1293 invariants in 423 ms
+Computed 1293 P flows in 423 ms.
+Exported basis to /tmp/petrispot-output-17203399133689148567.kers
+Total runtime 443 ms.

@@ -1,0 +1,26 @@
+[2026-10-24 23:48:56] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z9033f2fdS, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:48:56] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z9033f2fdS/model.pnml 
+[2026-10-24 23:48:57] [INFO   ] Load time of PNML (sax parser for PT used): 200 ms 
+[2026-10-24 23:48:57] [INFO   ] Transformed 36 places. 
+[2026-10-24 23:48:57] [INFO   ] Transformed 156 transitions. 
+[2026-10-24 23:48:57] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:48:57] [INFO   ] Parsed PT model containing 36 places and 156 transitions and 624 arcs in 686 ms. 
+PetriSpot walker: 36/36 properties solved in 99 ms (exit 0).
+Walk beside the decision diagrams solved 36 properties.
+PetriSpot walker: 36/36 properties solved in 98 ms (exit 0).
+[2026-10-24 23:48:58] [INFO   ] Flatten gal took : 91 ms 
+[2026-10-24 23:48:58] [INFO   ] Flatten gal took : 36 ms 
+[2026-10-24 23:48:58] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality17466384316286786750.gal : 37 ms 
+[2026-10-24 23:48:58] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality10131087835916797773.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z9033f2fdS;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality17466384316286786750.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality10131087835916797773.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+Loading property file /tmp/ReachabilityCardinality10131087835916797773.prop.
+Could not access property file : /tmp/ReachabilityCardinality10131087835916797773.prop
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query StableMarking after proving 36 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1478 ms.

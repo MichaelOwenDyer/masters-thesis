@@ -1,0 +1,45 @@
+[2026-10-24 23:49:06] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vXH9u8vbo3, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:49:06] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vXH9u8vbo3/model.pnml 
+[2026-10-24 23:49:06] [INFO   ] Load time of PNML (sax parser for PT used): 130 ms 
+[2026-10-24 23:49:06] [INFO   ] Transformed 50 places. 
+[2026-10-24 23:49:06] [INFO   ] Transformed 120 transitions. 
+[2026-10-24 23:49:06] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:49:06] [INFO   ] Parsed PT model containing 50 places and 120 transitions and 820 arcs in 465 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 50/50 places, 120/120 transitions.
+Applied a total of 0 rules in 18 ms. Remains 50 /50 variables (removed 0) and now considering 120/120 (removed 0) transitions.
+[2026-10-24 23:49:06] [INFO   ] Flow matrix only has 40 transitions (discarded 80 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-3569249917883699161.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-3816188477046264582.kers' 
+[2026-10-24 23:49:06] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-3569249917883699161.kers, --Pflows, --basisKERS=/tmp/petrispot-output-3816188477046264582.kers]
+Culling duplicate invariants (modulo rational): removing 20 columns.
+Culled 20 columns in 0 ms.
+// Phase 1: matrix 40 rows 30 cols 80 entries
+Finished phase 1 with 20 SingleSign rule and 0 generalized 
+[2026-10-24 23:49:06] [INFO   ] Computed 30 invariants in 0 ms
+Computed 30 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-3816188477046264582.kers
+Total runtime 4 ms.
+[2026-10-24 23:49:07] [INFO   ] Implicit Places using invariants in 284 ms returned [20, 23, 26, 29, 32, 35, 38, 41, 44, 47] 
+Discarding 10 places :
+Implicit Place search using SMT only with invariants took 341 ms to find 10 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 40/50 places, 120/120 transitions.
+Applied a total of 0 rules in 5 ms. Remains 40 /40 variables (removed 0) and now considering 120/120 (removed 0) transitions.
+Finished structural reductions in LIVENESS mode , in 2 iterations and 398 ms. Remains : 40/50 places, 120/120 transitions.
+Discarding 10 transitions out of 120. Remains 110
+PetriSpot walker: 110/110 properties solved in 36 ms (exit 0).
+PetriSpot walker: 110/110 properties solved in 40 ms (exit 0).
+Walk beside the decision diagrams solved 110 properties.
+[2026-10-24 23:49:07] [INFO   ] Flatten gal took : 81 ms 
+[2026-10-24 23:49:07] [INFO   ] Flatten gal took : 22 ms 
+[2026-10-24 23:49:07] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality13003552757978393043.gal : 16 ms 
+[2026-10-24 23:49:07] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality7611527124514109750.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vXH9u8vbo3;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality13003552757978393043.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality7611527124514109750.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+ITS tools output stream closed.
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query QuasiLiveness after proving 110 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1368 ms.

@@ -1,0 +1,100 @@
+[2026-10-24 23:48:45] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.G9ZOJT0I9f, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:48:45] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.G9ZOJT0I9f/model.pnml 
+[2026-10-24 23:48:45] [INFO   ] Load time of PNML (sax parser for PT used): 81 ms 
+[2026-10-24 23:48:45] [INFO   ] Transformed 41 places. 
+[2026-10-24 23:48:45] [INFO   ] Transformed 31 transitions. 
+[2026-10-24 23:48:45] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:48:45] [INFO   ] Parsed PT model containing 41 places and 31 transitions and 126 arcs in 438 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 41/41 places, 31/31 transitions.
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Iterating post reduction 0 with 1 rules applied. Total rules applied 1 place count 41 transition count 30
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 1 Pre rules applied. Total rules applied 1 place count 41 transition count 29
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 1 with 2 rules applied. Total rules applied 3 place count 40 transition count 29
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 1 with 2 rules applied. Total rules applied 5 place count 39 transition count 28
+Applied a total of 5 rules in 55 ms. Remains 39 /41 variables (removed 2) and now considering 28/31 (removed 3) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-16393997568071050226.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-1640838394438376585.kers' 
+[2026-10-24 23:48:46] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-16393997568071050226.kers, --Pflows, --basisKERS=/tmp/petrispot-output-1640838394438376585.kers]
+Culling duplicate invariants (modulo rational): removing 2 columns.
+Culled 2 columns in 0 ms.
+// Phase 1: matrix 28 rows 37 cols 112 entries
+Finished phase 1 with 20 SingleSign rule and 0 generalized 
+[2026-10-24 23:48:46] [INFO   ] Computed 19 invariants in 0 ms
+Computed 19 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-1640838394438376585.kers
+Total runtime 4 ms.
+[2026-10-24 23:48:46] [INFO   ] Implicit Places using invariants in 206 ms returned [31, 32] 
+Discarding 2 places :
+Implicit Place search using SMT only with invariants took 258 ms to find 2 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 37/41 places, 28/31 transitions.
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 1 Pre rules applied. Total rules applied 0 place count 37 transition count 27
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 36 transition count 27
+Applied a total of 2 rules in 1 ms. Remains 36 /37 variables (removed 1) and now considering 27/28 (removed 1) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-5132502522814218414.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-3222815699000840496.kers' 
+[2026-10-24 23:48:46] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-5132502522814218414.kers, --Pflows, --basisKERS=/tmp/petrispot-output-3222815699000840496.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 27 rows 36 cols 110 entries
+Finished phase 1 with 19 SingleSign rule and 0 generalized 
+[2026-10-24 23:48:46] [INFO   ] Computed 17 invariants in 0 ms
+Computed 17 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-3222815699000840496.kers
+Total runtime 2 ms.
+[2026-10-24 23:48:46] [INFO   ] Implicit Places using invariants in 65 ms returned [25] 
+Discarding 1 places :
+Implicit Place search using SMT only with invariants took 68 ms to find 1 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 2 : 35/41 places, 27/31 transitions.
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 34 transition count 26
+Applied a total of 2 rules in 2 ms. Remains 34 /35 variables (removed 1) and now considering 26/27 (removed 1) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-1284551957495664744.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-9185992004981009935.kers' 
+[2026-10-24 23:48:46] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-1284551957495664744.kers, --Pflows, --basisKERS=/tmp/petrispot-output-9185992004981009935.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 26 rows 34 cols 106 entries
+Finished phase 1 with 18 SingleSign rule and 0 generalized 
+[2026-10-24 23:48:46] [INFO   ] Computed 16 invariants in 0 ms
+Computed 16 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-9185992004981009935.kers
+Total runtime 4 ms.
+[2026-10-24 23:48:46] [INFO   ] Implicit Places using invariants in 46 ms returned [] 
+[2026-10-24 23:48:46] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:48:46] [INFO   ] Implicit Places using invariants and state equation in 83 ms returned [] 
+Implicit Place search using SMT with State Equation took 133 ms to find 0 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 3 : 34/41 places, 26/31 transitions.
+Finished structural reductions in LIVENESS mode , in 3 iterations and 543 ms. Remains : 34/41 places, 26/31 transitions.
+Discarding 7 transitions out of 26. Remains 19
+Initial state reduction rules removed 1 formulas.
+PetriSpot walker: 18/18 properties solved in 10 ms (exit 0).
+PetriSpot walker: 18/18 properties solved in 14 ms (exit 0).
+Walk beside the decision diagrams solved 18 properties.
+[2026-10-24 23:48:46] [INFO   ] Flatten gal took : 41 ms 
+[2026-10-24 23:48:46] [INFO   ] Flatten gal took : 18 ms 
+[2026-10-24 23:48:46] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality11951399807000239957.gal : 13 ms 
+[2026-10-24 23:48:46] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality525146677652269241.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.G9ZOJT0I9f;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality11951399807000239957.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality525146677652269241.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality525146677652269241.prop.
+Found states matching all0 target predicate 
+Will report total states built up to this point. Computation was interrupted after 3 fixpoint passes
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,2,0.003063,4200,2,58,5,131,6,0,165,52,0
+ Total reachable state count : 2
+
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query QuasiLiveness after proving 19 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1399 ms.

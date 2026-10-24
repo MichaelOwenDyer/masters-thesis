@@ -1,0 +1,35 @@
+[2026-10-24 23:31:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.p4jGbIapsk, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:31:13] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.p4jGbIapsk/model.pnml 
+[2026-10-24 23:31:13] [INFO   ] Load time of PNML (sax parser for PT used): 332 ms 
+[2026-10-24 23:31:13] [INFO   ] Transformed 121 places. 
+[2026-10-24 23:31:13] [INFO   ] Transformed 1111 transitions. 
+[2026-10-24 23:31:13] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:31:13] [INFO   ] Parsed PT model containing 121 places and 1111 transitions and 4444 arcs in 836 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 121/121 places, 1111/1111 transitions.
+Applied a total of 0 rules in 73 ms. Remains 121 /121 variables (removed 0) and now considering 1111/1111 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-14095334372228754704.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-11233462642341336751.kers' 
+[2026-10-24 23:31:14] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-14095334372228754704.kers, --Pflows, --basisKERS=/tmp/petrispot-output-11233462642341336751.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 1111 rows 121 cols 2222 entries
+Finished phase 1 with 110 SingleSign rule and 0 generalized 
+[2026-10-24 23:31:14] [INFO   ] Computed 11 invariants in 16 ms
+Computed 11 P flows in 16 ms.
+Exported basis to /tmp/petrispot-output-11233462642341336751.kers
+Total runtime 17 ms.
+[2026-10-24 23:31:14] [INFO   ] Implicit Places using invariants in 568 ms returned [] 
+[2026-10-24 23:31:14] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:31:15] [INFO   ] State equation strengthened by 1010 read => feed constraints. 
+[2026-10-24 23:31:16] [INFO   ] Implicit Places using invariants and state equation in 1748 ms returned [] 
+Implicit Place search using SMT with State Equation took 2380 ms to find 0 implicit places.
+Running 1101 sub problems to find dead transitions.
+[2026-10-24 23:31:16] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:31:16] [INFO   ] State equation strengthened by 1010 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/121 variables, 121/121 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/121 variables, 11/132 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/121 variables, 20/152 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/121 variables, 20/172 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/121 variables, 20/192 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/121 variables, 20/212 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/121 variables, 20/232 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/121 variables, 20/252 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/121 variables, 20/272 constraints. Problems are: Problem set: 0 solved, 1101 unsolved

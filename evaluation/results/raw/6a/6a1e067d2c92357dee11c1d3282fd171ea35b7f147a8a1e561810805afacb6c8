@@ -1,0 +1,38 @@
+[2026-10-24 23:40:21] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.ivTHylJvLP, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:40:21] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.ivTHylJvLP/model.pnml 
+[2026-10-24 23:40:21] [INFO   ] Load time of PNML (sax parser for PT used): 65 ms 
+[2026-10-24 23:40:21] [INFO   ] Transformed 20 places. 
+[2026-10-24 23:40:21] [INFO   ] Transformed 8 transitions. 
+[2026-10-24 23:40:21] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:40:21] [INFO   ] Parsed PT model containing 20 places and 8 transitions and 32 arcs in 401 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 20/20 places, 8/8 transitions.
+[2026-10-24 23:40:21] [INFO   ] Redundant transitions in 0 ms returned [] 
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 7ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 141 ms. Remains : 20/20 places, 8/8 transitions.
+Final net has 20 places and 8 transitions.
+[2026-10-24 23:40:21] [INFO   ] Flatten gal took : 30 ms 
+[2026-10-24 23:40:21] [INFO   ] Applying decomposition  
+[2026-10-24 23:40:21] [INFO   ] Flatten gal took : 9 ms 
+[2026-10-24 23:40:21] [INFO   ] Decomposing Gal with order  
+[2026-10-24 23:40:21] [INFO   ] Rewriting arrays  to variables to allow decomposition. 
+[2026-10-24 23:40:22] [INFO   ] Removed a total of 8 redundant transitions. 
+[2026-10-24 23:40:22] [INFO   ] Flatten gal took : 50 ms 
+[2026-10-24 23:40:22] [INFO   ] Fuse similar labels procedure discarded/fused a total of 0 labels/synchronizations in 3 ms. 
+[2026-10-24 23:40:22] [INFO   ] Time to serialize gal into /tmp/StateSpace378477580022363722.gal : 15 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.ivTHylJvLP;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace378477580022363722.gal' '-t' 'CGAL' '--stats' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...266
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst\_mod\_flat,35,0.00204,4096,81,9,154,43,32,33,12,28,0
+ Total reachable state count : 35
+
+Max variable value : 1
+STATE_SPACE MAX_TOKEN_IN_PLACE  1 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Maximum sum along a path : 12
+STATE_SPACE MAX_TOKEN_PER_MARKING 12 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Exact state count : 35
+STATE_SPACE STATES  35 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Total runtime 960 ms.

@@ -1,0 +1,25 @@
+[2026-10-24 23:52:01] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2wo8JTlqBH, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:52:01] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2wo8JTlqBH/model.pnml 
+[2026-10-24 23:52:01] [INFO   ] Load time of PNML (sax parser for PT used): 53 ms 
+[2026-10-24 23:52:01] [INFO   ] Transformed 17 places. 
+[2026-10-24 23:52:01] [INFO   ] Transformed 17 transitions. 
+[2026-10-24 23:52:01] [INFO   ] Parsed PT model containing 17 places and 17 transitions and 34 arcs in 404 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2wo8JTlqBH/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.8399KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 17/17 places, 17/17 transitions.
+Graph (trivial) has 17 edges and 17 vertex of which 16 / 17 are part of one of the 1 SCC in 12 ms
+Free SCC test removed 15 places 
+Ensure Unique test removed 15 transitions
+Reduce isomorphic transitions removed 15 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.1 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 58 ms. Remains 1 /17 variables (removed 16) and now considering 2/17 (removed 15) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 85 ms. Remains : 1/17 places, 2/17 transitions.
+PetriSpot walker: 1/1 properties solved in 49 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 665 ms.

@@ -1,0 +1,25 @@
+[2026-10-24 23:58:17] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.RCGx4dGqK9, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:58:18] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.RCGx4dGqK9/model.pnml 
+[2026-10-24 23:58:18] [INFO   ] Load time of PNML (sax parser for PT used): 53 ms 
+[2026-10-24 23:58:18] [INFO   ] Transformed 33 places. 
+[2026-10-24 23:58:18] [INFO   ] Transformed 33 transitions. 
+[2026-10-24 23:58:18] [INFO   ] Parsed PT model containing 33 places and 33 transitions and 66 arcs in 395 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.RCGx4dGqK9/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 3 ms.8553KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 33/33 places, 33/33 transitions.
+Graph (trivial) has 33 edges and 33 vertex of which 32 / 33 are part of one of the 1 SCC in 9 ms
+Free SCC test removed 31 places 
+Ensure Unique test removed 31 transitions
+Reduce isomorphic transitions removed 31 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.2 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 65 ms. Remains 1 /33 variables (removed 32) and now considering 2/33 (removed 31) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 85 ms. Remains : 1/33 places, 2/33 transitions.
+PetriSpot walker: 1/1 properties solved in 45 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 645 ms.

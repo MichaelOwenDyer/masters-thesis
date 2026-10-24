@@ -1,0 +1,30 @@
+[2026-10-24 23:29:40] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.f2LhOSNCFM, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:29:40] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.f2LhOSNCFM/model.pnml 
+[2026-10-24 23:29:41] [INFO   ] Load time of PNML (sax parser for PT used): 84 ms 
+[2026-10-24 23:29:41] [INFO   ] Transformed 22 places. 
+[2026-10-24 23:29:41] [INFO   ] Transformed 20 transitions. 
+[2026-10-24 23:29:41] [INFO   ] Parsed PT model containing 22 places and 20 transitions and 50 arcs in 594 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.f2LhOSNCFM/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 14 ms.8595KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 22/22 places, 20/20 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 6 transitions 
+Trivial Post-agglo rules discarded 6 transitions
+Performed 6 trivial Post agglomeration. Transition count delta: 6
+Iterating post reduction 0 with 6 rules applied. Total rules applied 6 place count 22 transition count 14
+Reduce places removed 9 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Graph (trivial) has 12 edges and 13 vertex of which 9 / 13 are part of one of the 3 SCC in 2 ms
+Free SCC test removed 6 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2 transitions 
+Trivial Post-agglo rules discarded 2 transitions
+Performed 2 trivial Post agglomeration. Transition count delta: 2
+Iterating post reduction 1 with 12 rules applied. Total rules applied 18 place count 7 transition count 12
+Reduce places removed 3 places and 0 transitions. 
+Ensure Unique test removed 6 transitions
+Reduce isomorphic transitions removed 6 transitions.
+Found a source transition so no deadlocks exist. place count 4 transition count 6
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 824 ms.

@@ -1,0 +1,23 @@
+[2026-10-25 00:08:09] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.UevvDJhpQG, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-25 00:08:09] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.UevvDJhpQG/model.pnml 
+[2026-10-25 00:08:10] [INFO   ] Load time of PNML (sax parser for PT used): 1339 ms 
+[2026-10-25 00:08:10] [INFO   ] Transformed 16561 places. 
+[2026-10-25 00:08:11] [INFO   ] Transformed 32200 transitions. 
+[2026-10-25 00:08:11] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:08:11] [INFO   ] Parsed PT model containing 16561 places and 32200 transitions and 96800 arcs in 1946 ms. 
+[2026-10-25 00:08:17] [INFO   ] Flatten gal took : 3632 ms 
+[2026-10-25 00:08:19] [INFO   ] Flatten gal took : 2065 ms 
+[2026-10-25 00:08:20] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality10787352217358552618.gal : 628 ms 
+[2026-10-25 00:08:20] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality17039579227009961865.prop : 123 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.UevvDJhpQG;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality10787352217358552618.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality17039579227009961865.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+PetriSpot walker: 16561/16561 properties solved in 14856 ms (exit 0).
+ITS runner timed out or was interrupted.
+ITS tools runner thread asked to quit. Dying gracefully.
+PetriSpot walker: 0/16561 properties solved in 15355 ms (exit 137).
+Able to resolve query StableMarking after proving 16561 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 18543 ms.

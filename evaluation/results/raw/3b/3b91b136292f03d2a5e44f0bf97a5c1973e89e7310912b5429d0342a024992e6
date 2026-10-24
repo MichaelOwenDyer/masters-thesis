@@ -1,0 +1,31 @@
+[2026-10-24 23:30:08] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.svBlZSsDuj, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:30:08] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.svBlZSsDuj/model.pnml 
+[2026-10-24 23:30:08] [INFO   ] Load time of PNML (sax parser for PT used): 188 ms 
+[2026-10-24 23:30:08] [INFO   ] Transformed 231 places. 
+[2026-10-24 23:30:08] [INFO   ] Transformed 202 transitions. 
+[2026-10-24 23:30:08] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:30:08] [INFO   ] Parsed PT model containing 231 places and 202 transitions and 846 arcs in 544 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.svBlZSsDuj/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.10073KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 231/231 places, 202/202 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 14 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 14 Pre rules applied. Total rules applied 0 place count 231 transition count 188
+Deduced a syphon composed of 14 places in 5 ms
+Reduce places removed 14 places and 0 transitions. 
+Iterating global reduction 0 with 28 rules applied. Total rules applied 28 place count 217 transition count 188
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 6 places :
+Symmetric choice reduction at 0 with 6 rule applications. Total rules  34 place count 211 transition count 182
+Iterating global reduction 0 with 6 rules applied. Total rules applied 40 place count 211 transition count 182
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 18 Post agglomeration using F-continuation condition.Transition count delta: 18
+Deduced a syphon composed of 18 places in 7 ms
+Reduce places removed 18 places and 0 transitions. 
+Iterating global reduction 0 with 36 rules applied. Total rules applied 76 place count 193 transition count 164
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 76 rules in 194 ms. Remains 193 /231 variables (removed 38) and now considering 164/202 (removed 38) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 218 ms. Remains : 193/231 places, 164/202 transitions.

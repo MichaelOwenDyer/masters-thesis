@@ -1,0 +1,53 @@
+[2026-10-24 23:33:31] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.5V7RILooI7, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:33:31] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.5V7RILooI7/model.pnml 
+[2026-10-24 23:33:32] [INFO   ] Load time of PNML (sax parser for PT used): 664 ms 
+[2026-10-24 23:33:32] [INFO   ] Transformed 7032 places. 
+[2026-10-24 23:33:32] [INFO   ] Transformed 10855 transitions. 
+[2026-10-24 23:33:32] [INFO   ] Parsed PT model containing 7032 places and 10855 transitions and 46214 arcs in 1158 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 7032/7032 places, 10855/10855 transitions.
+Reduce places removed 32 places and 0 transitions. 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1200 transitions 
+Trivial Post-agglo rules discarded 1200 transitions
+Performed 1200 trivial Post agglomeration. Transition count delta: 1200
+Iterating post reduction 0 with 1232 rules applied. Total rules applied 1232 place count 7000 transition count 9655
+Reduce places removed 1200 places and 0 transitions. 
+Iterating post reduction 1 with 1200 rules applied. Total rules applied 2432 place count 5800 transition count 9655
+Performed 100 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 2 with 100 Pre rules applied. Total rules applied 2432 place count 5800 transition count 9555
+Deduced a syphon composed of 100 places in 60 ms
+Reduce places removed 100 places and 0 transitions. 
+Iterating global reduction 2 with 200 rules applied. Total rules applied 2632 place count 5700 transition count 9555
+Performed 25 Post agglomeration using F-continuation condition.Transition count delta: 25
+Deduced a syphon composed of 25 places in 11 ms
+Reduce places removed 25 places and 0 transitions. 
+Iterating global reduction 2 with 50 rules applied. Total rules applied 2682 place count 5675 transition count 9530
+Applied a total of 2682 rules in 1078 ms. Remains 5675 /7032 variables (removed 1357) and now considering 9530/10855 (removed 1325) transitions.
+[2026-10-24 23:33:33] [INFO   ] Flow matrix only has 8930 transitions (discarded 600 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-14861663079177836857.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-538099040433033205.kers' 
+[2026-10-24 23:33:33] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-14861663079177836857.kers, --Pflows, --basisKERS=/tmp/petrispot-output-538099040433033205.kers]
+Culling duplicate invariants (modulo rational): removing 363 columns.
+Culled 363 columns in 11 ms.
+// Phase 1: matrix 8930 rows 5312 cols 25575 entries
+Finished phase 1 with 3423 SingleSign rule and 1471 generalized 
+[2026-10-24 23:33:33] [INFO   ] Computed 781 invariants in 126 ms
+Computed 781 P flows in 126 ms.
+Exported basis to /tmp/petrispot-output-538099040433033205.kers
+Total runtime 138 ms.
+[2026-10-24 23:33:45] [INFO   ] Implicit Places using invariants in 11563 ms returned [4, 7, 13, 21, 31, 43, 57, 73, 91, 111, 133, 157, 183, 210, 236, 260, 282, 302, 320, 336, 350, 362, 372, 380, 386, 396, 402, 407, 413, 421, 431, 443, 457, 473, 491, 511, 533, 557, 582, 606, 628, 648, 666, 682, 696, 708, 718, 726, 732, 737, 747, 753, 758, 763, 769, 777, 787, 799, 813, 829, 847, 867, 889, 912, 934, 954, 972, 988, 1002, 1014, 1024, 1032, 1038, 1043, 1048, 1058, 1064, 1069, 1074, 1079, 1085, 1093, 1103, 1115, 1129, 1145, 1163, 1183, 1204, 1224, 1242, 1258, 1272, 1284, 1294, 1302, 1308, 1313, 1318, 1323, 1333, 1339, 1344, 1349, 1354, 1359, 1365, 1373, 1383, 1395, 1409, 1425, 1443, 1462, 1480, 1496, 1510, 1522, 1532, 1540, 1546, 1551, 1556, 1561, 1566, 1576, 1582, 1587, 1592, 1597, 1602, 1607, 1613, 1621, 1631, 1643, 1657, 1673, 1690, 1706, 1720, 1732, 1742, 1750, 1756, 1761, 1766, 1771, 1776, 1781, 1791, 1797, 1802, 1807, 1812, 1817, 1822, 1827, 1833, 1841, 1851, 1863, 1877, 1892, 1906, 1918, 1928, 1936, 1942, 1947, 1952, 1957, 1962, 1967, 1972, 1982, 1988, 1993, 1998, 2003, 2008, 2013, 2018, 2023, 2029, 2037, 2047, 2059, 2072, 2084, 2094, 2102, 2108, 2113, 2118, 2123, 2128, 2133, 2138, 2143, 2153, 2159, 2164, 2169, 2174, 2179, 2184, 2189, 2194, 2199, 2205, 2213, 2223, 2234, 2244, 2252, 2258, 2263, 2268, 2273, 2278, 2283, 2288, 2293, 2298, 2308, 2314, 2319, 2324, 2329, 2334, 2339, 2344, 2349, 2354, 2359, 2365, 2373, 2382, 2390, 2396, 2401, 2406, 2411, 2416, 2421, 2426, 2431, 2436, 2441, 2451, 2457, 2462, 2467, 2472, 2477, 2482, 2487, 2492, 2497, 2502, 2507, 2513, 2520, 2526, 2531, 2536, 2541, 2546, 2551, 2556, 2561, 2566, 2571, 2576, 2586, 2592, 2597, 2602, 2607, 2612, 2617, 2622, 2627, 2632, 2637, 2642, 2647, 2652, 2657, 2662, 2667, 2672, 2677, 2682, 2687, 2692, 2697, 2702, 2707, 2717, 2719, 2722, 2727, 2732, 2737, 2742, 2747, 2752, 2757, 2762, 2767, 2772, 2777, 2782, 2787, 2792, 2797, 2802, 2807, 2812, 2817, 2822, 2827, 2832, 2837, 2847, 2853, 2858, 2863, 2868, 2873, 2878, 2883, 2888, 2893, 2898, 2903, 2908, 2913, 2918, 2923, 2928, 2933, 2938, 2943, 2948, 2953, 2958, 2963, 2968, 2978, 2984, 2989, 2994, 2999, 3004, 3009, 3014, 3019, 3024, 3029, 3034, 3039, 3045, 3052, 3058, 3063, 3068, 3073, 3078, 3083, 3088, 3093, 3098, 3103, 3113, 3119, 3124, 3129, 3134, 3139, 3144, 3149, 3154, 3159, 3164, 3169, 3175, 3183, 3192, 3200, 3206, 3211, 3216, 3221, 3226, 3231, 3236, 3241, 3246, 3256, 3262, 3267, 3272, 3277, 3282, 3287, 3292, 3297, 3302, 3307, 3313, 3321, 3331, 3342, 3352, 3360, 3366, 3371, 3376, 3381, 3386, 3391, 3396, 3401, 3411, 3417, 3422, 3427, 3432, 3437, 3442, 3447, 3452, 3457, 3463, 3471, 3481, 3493, 3506, 3518, 3528, 3536, 3542, 3547, 3552, 3557, 3562, 3567, 3572, 3582, 3588, 3593, 3598, 3603, 3608, 3613, 3618, 3623, 3629, 3637, 3647, 3659, 3673, 3688, 3702, 3714, 3724, 3732, 3738, 3743, 3748, 3753, 3758, 3763, 3773, 3779, 3784, 3789, 3794, 3799, 3804, 3809, 3815, 3823, 3833, 3845, 3859, 3875, 3892, 3908, 3922, 3934, 3944, 3952, 3958, 3963, 3968, 3973, 3978, 3988, 3994, 3999, 4004, 4009, 4014, 4019, 4025, 4033, 4043, 4055, 4069, 4085, 4103, 4122, 4140, 4156, 4170, 4182, 4192, 4200, 4206, 4211, 4216, 4221, 4231, 4237, 4242, 4247, 4252, 4257, 4263, 4271, 4281, 4293, 4307, 4323, 4341, 4361, 4382, 4402, 4420, 4436, 4450, 4462, 4472, 4480, 4486, 4491, 4496, 4506, 4512, 4517, 4522, 4527, 4533, 4541, 4551, 4563, 4577, 4593, 4611, 4631, 4653, 4676, 4698, 4718, 4736, 4752, 4766, 4778, 4788, 4796, 4802, 4807, 4817, 4823, 4828, 4833, 4839, 4847, 4857, 4869, 4883, 4899, 4917, 4937, 4959, 4983, 5008, 5032, 5054, 5074, 5092, 5108, 5122, 5134, 5144, 5152, 5158, 5168, 5170, 5173, 5178, 5184, 5192, 5202, 5214, 5228, 5244, 5262, 5282, 5304, 5328, 5354, 5381, 5407, 5431, 5453, 5473, 5491, 5507, 5521, 5533, 5543, 5551, 5562] 
+[2026-10-24 23:33:45] [INFO   ] Actually due to overlaps returned [396, 747, 1058, 1333, 1576, 1791, 1982, 2153, 2308, 2451, 2586, 2717, 2847, 2978, 3113, 3256, 3411, 3582, 3773, 3988, 4231, 4506, 4817, 5168, 5562, 4, 2719, 5170] 
+Discarding 28 places :
+Implicit Place search using SMT only with invariants took 11636 ms to find 28 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 5647/7032 places, 9530/10855 transitions.
+Applied a total of 0 rules in 137 ms. Remains 5647 /5647 variables (removed 0) and now considering 9530/9530 (removed 0) transitions.
+Finished structural reductions in LIVENESS mode , in 2 iterations and 12891 ms. Remains : 5647/7032 places, 9530/10855 transitions.
+Initial state reduction rules removed 25 formulas.
+[2026-10-24 23:33:49] [INFO   ] Flatten gal took : 1687 ms 
+[2026-10-24 23:33:50] [INFO   ] Flatten gal took : 1008 ms 
+[2026-10-24 23:33:50] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality4324173412458441504.gal : 329 ms 
+[2026-10-24 23:33:50] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality7156012932208269820.prop : 135 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.5V7RILooI7;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality4324173412458441504.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality7156012932208269820.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality7156012932208269820.prop.

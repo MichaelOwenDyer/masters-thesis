@@ -1,0 +1,43 @@
+[2026-10-24 23:53:05] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.iRAPkqqMde, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:53:05] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.iRAPkqqMde/model.pnml 
+[2026-10-24 23:53:05] [INFO   ] Load time of PNML (sax parser for PT used): 85 ms 
+[2026-10-24 23:53:05] [INFO   ] Transformed 128 places. 
+[2026-10-24 23:53:05] [INFO   ] Transformed 64 transitions. 
+[2026-10-24 23:53:05] [INFO   ] Parsed PT model containing 128 places and 64 transitions and 256 arcs in 433 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.iRAPkqqMde/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.8680KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 128/128 places, 64/64 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 51 ms. Remains 128 /128 variables (removed 0) and now considering 64/64 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 66 ms. Remains : 128/128 places, 64/64 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 128/128 places, 64/64 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 24 ms. Remains 128 /128 variables (removed 0) and now considering 64/64 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-9573909634723157052.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-5509021010422249321.kers' 
+[2026-10-24 23:53:05] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-9573909634723157052.kers, --Pflows, --basisKERS=/tmp/petrispot-output-5509021010422249321.kers]
+Culling duplicate invariants (modulo rational): removing 64 columns.
+Culled 64 columns in 0 ms.
+// Phase 1: matrix 64 rows 64 cols 128 entries
+Finished phase 1 with 63 SingleSign rule and 0 generalized 
+[2026-10-24 23:53:05] [INFO   ] Computed 65 invariants in 0 ms
+Computed 65 P flows in 5 ms.
+Exported basis to /tmp/petrispot-output-5509021010422249321.kers
+Total runtime 6 ms.
+[2026-10-24 23:53:06] [INFO   ] Implicit Places using invariants in 340 ms returned [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127] 
+Discarding 64 places :
+Implicit Place search using SMT only with invariants took 385 ms to find 64 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 64/128 places, 64/64 transitions.
+Graph (trivial) has 64 edges and 64 vertex of which 64 / 64 are part of one of the 1 SCC in 7 ms
+Free SCC test removed 63 places 
+Ensure Unique test removed 63 transitions
+Reduce isomorphic transitions removed 63 transitions.
+Computed a total of 1 stabilizing places and 0 stable transitions
+Reduce places removed 1 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 1092 ms.

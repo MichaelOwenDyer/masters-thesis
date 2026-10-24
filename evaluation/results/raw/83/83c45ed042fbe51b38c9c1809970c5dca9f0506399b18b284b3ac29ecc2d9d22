@@ -1,0 +1,102 @@
+[2026-10-25 00:02:14] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.50j9Uufygi, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-25 00:02:14] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.50j9Uufygi/model.pnml 
+[2026-10-25 00:02:15] [INFO   ] Load time of PNML (sax parser for PT used): 83 ms 
+[2026-10-25 00:02:15] [INFO   ] Transformed 28 places. 
+[2026-10-25 00:02:15] [INFO   ] Transformed 52 transitions. 
+[2026-10-25 00:02:15] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:02:15] [INFO   ] Parsed PT model containing 28 places and 52 transitions and 159 arcs in 470 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 28/28 places, 52/52 transitions.
+Ensure Unique test removed 10 transitions
+Reduce isomorphic transitions removed 10 transitions.
+Iterating post reduction 0 with 10 rules applied. Total rules applied 10 place count 28 transition count 42
+Performed 4 Post agglomeration using F-continuation condition.Transition count delta: 4
+Deduced a syphon composed of 4 places in 0 ms
+Reduce places removed 4 places and 0 transitions. 
+Iterating global reduction 1 with 8 rules applied. Total rules applied 18 place count 24 transition count 38
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: -2
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 1 with 2 rules applied. Total rules applied 20 place count 23 transition count 40
+Applied a total of 20 rules in 56 ms. Remains 23 /28 variables (removed 5) and now considering 40/52 (removed 12) transitions.
+[2026-10-25 00:02:15] [INFO   ] Flow matrix only has 31 transitions (discarded 9 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-14249086941797172317.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-17746186205144956816.kers' 
+[2026-10-25 00:02:15] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-14249086941797172317.kers, --Pflows, --basisKERS=/tmp/petrispot-output-17746186205144956816.kers]
+Normalized transition count is 30 out of 31 initially.
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 30 rows 23 cols 75 entries
+Finished phase 1 with 19 SingleSign rule and 0 generalized 
+[2026-10-25 00:02:15] [INFO   ] Computed 4 invariants in 0 ms
+Computed 4 P flows in 10 ms.
+Exported basis to /tmp/petrispot-output-17746186205144956816.kers
+Total runtime 10 ms.
+[2026-10-25 00:02:15] [INFO   ] Implicit Places using invariants in 212 ms returned [] 
+[2026-10-25 00:02:15] [INFO   ] Flow matrix only has 31 transitions (discarded 9 similar events) 
+[2026-10-25 00:02:15] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:02:15] [INFO   ] State equation strengthened by 19 read => feed constraints. 
+[2026-10-25 00:02:15] [INFO   ] Implicit Places using invariants and state equation in 82 ms returned [] 
+Implicit Place search using SMT with State Equation took 345 ms to find 0 implicit places.
+Running 39 sub problems to find dead transitions.
+[2026-10-25 00:02:15] [INFO   ] Flow matrix only has 31 transitions (discarded 9 similar events) 
+[2026-10-25 00:02:15] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:02:15] [INFO   ] State equation strengthened by 19 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/22 variables, 22/22 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/22 variables, 0/22 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 2 (OVERLAPS) 1/23 variables, 4/26 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/23 variables, 1/27 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/23 variables, 1/28 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/23 variables, 0/28 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 6 (OVERLAPS) 30/53 variables, 23/51 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/53 variables, 18/69 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/53 variables, 0/69 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 9 (OVERLAPS) 1/54 variables, 1/70 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/54 variables, 0/70 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 11 (OVERLAPS) 0/54 variables, 0/70 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 54/54 variables, and 70 constraints, problems are : Problem set: 0 solved, 39 unsolved in 1400 ms.
+Refiners :[Domain max(s): 23/23 constraints, Positive P Invariants (semi-flows): 4/4 constraints, State Equation: 23/23 constraints, ReadFeed: 19/19 constraints, PredecessorRefiner: 39/39 constraints, Known Traps: 1/1 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 39 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/22 variables, 22/22 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/22 variables, 0/22 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 2 (OVERLAPS) 1/23 variables, 4/26 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/23 variables, 1/27 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/23 variables, 1/28 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/23 variables, 0/28 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 6 (OVERLAPS) 30/53 variables, 23/51 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/53 variables, 18/69 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/53 variables, 39/108 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/53 variables, 0/108 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 10 (OVERLAPS) 1/54 variables, 1/109 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 11 (INCLUDED_ONLY) 0/54 variables, 0/109 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+At refinement iteration 12 (OVERLAPS) 0/54 variables, 0/109 constraints. Problems are: Problem set: 0 solved, 39 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 54/54 variables, and 109 constraints, problems are : Problem set: 0 solved, 39 unsolved in 1084 ms.
+Refiners :[Domain max(s): 23/23 constraints, Positive P Invariants (semi-flows): 4/4 constraints, State Equation: 23/23 constraints, ReadFeed: 19/19 constraints, PredecessorRefiner: 39/39 constraints, Known Traps: 1/1 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 2565ms problems are : Problem set: 0 solved, 39 unsolved
+Search for dead transitions found 0 dead transitions in 2577ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 23/28 places, 40/52 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 3043 ms. Remains : 23/28 places, 40/52 transitions.
+Discarding 19 transitions out of 40. Remains 21
+Initial state reduction rules removed 1 formulas.
+PetriSpot walker: 20/20 properties solved in 50 ms (exit 0).
+PetriSpot walker: 20/20 properties solved in 445 ms (exit 0).
+Walk beside the decision diagrams solved 20 properties.
+[2026-10-25 00:02:19] [INFO   ] Flatten gal took : 45 ms 
+[2026-10-25 00:02:19] [INFO   ] Flatten gal took : 13 ms 
+[2026-10-25 00:02:19] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality3087529749837851820.gal : 12 ms 
+[2026-10-25 00:02:19] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality9236535397562168717.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.50j9Uufygi;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality3087529749837851820.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality9236535397562168717.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality9236535397562168717.prop.
+Found states matching all0 target predicate 
+Will report total states built up to this point. Computation was interrupted after 3 fixpoint passes
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,6,0.00332,4252,2,43,5,129,6,0,133,56,0
+ Total reachable state count : 6
+
+ITS runner timed out or was interrupted.
+Able to resolve query QuasiLiveness after proving 21 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 4232 ms.

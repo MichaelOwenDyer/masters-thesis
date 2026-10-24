@@ -1,0 +1,33 @@
+[2026-10-24 23:46:08] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.g4T7B9NbXU, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:46:08] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.g4T7B9NbXU/model.pnml 
+[2026-10-24 23:46:08] [INFO   ] Load time of PNML (sax parser for PT used): 60 ms 
+[2026-10-24 23:46:08] [INFO   ] Transformed 33 places. 
+[2026-10-24 23:46:08] [INFO   ] Transformed 2 transitions. 
+[2026-10-24 23:46:08] [INFO   ] Parsed PT model containing 33 places and 2 transitions and 66 arcs in 395 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 33/33 places, 2/2 transitions.
+Ensure Unique test removed 31 places
+Reduce places removed 32 places and 0 transitions. 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 0 with 33 rules applied. Total rules applied 33 place count 1 transition count 1
+Reduce places removed 1 places and 0 transitions. 
+Iterating post reduction 1 with 1 rules applied. Total rules applied 34 place count 0 transition count 1
+Applied a total of 34 rules in 47 ms. Remains 0 /33 variables (removed 33) and now considering 1/2 (removed 1) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-11413905422751990324.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-7326771584747624797.kers' 
+[2026-10-24 23:46:08] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-11413905422751990324.kers, --Pflows, --basisKERS=/tmp/petrispot-output-7326771584747624797.kers]
+[2026-10-24 23:46:08] [INFO   ] Computed 0 invariants in 0 ms
+Computed 0 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-7326771584747624797.kers
+Total runtime 3 ms.
+[2026-10-24 23:46:08] [INFO   ] Implicit Places using invariants in 68 ms returned [] 
+[2026-10-24 23:46:08] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:46:08] [INFO   ] Implicit Places using invariants and state equation in 29 ms returned [] 
+Implicit Place search using SMT with State Equation took 141 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 1ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 0/33 places, 1/2 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 239 ms. Remains : 0/33 places, 1/2 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 723 ms.

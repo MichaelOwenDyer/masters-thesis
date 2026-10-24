@@ -1,0 +1,25 @@
+[2026-10-25 00:08:48] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.W1sgTrZuan, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-25 00:08:48] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.W1sgTrZuan/model.pnml 
+[2026-10-25 00:08:49] [INFO   ] Load time of PNML (sax parser for PT used): 75 ms 
+[2026-10-25 00:08:49] [INFO   ] Transformed 31 places. 
+[2026-10-25 00:08:49] [INFO   ] Transformed 42 transitions. 
+[2026-10-25 00:08:49] [INFO   ] Parsed PT model containing 31 places and 42 transitions and 168 arcs in 415 ms. 
+PetriSpot walker: 31/31 properties solved in 74 ms (exit 0).
+PetriSpot walker: 31/31 properties solved in 82 ms (exit 0).
+Walk beside the decision diagrams solved 31 properties.
+[2026-10-25 00:08:49] [INFO   ] Flatten gal took : 47 ms 
+[2026-10-25 00:08:49] [INFO   ] Flatten gal took : 15 ms 
+[2026-10-25 00:08:49] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality14562377203130830841.gal : 14 ms 
+[2026-10-25 00:08:49] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality7668092119332715512.prop : 6 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.W1sgTrZuan;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality14562377203130830841.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality7668092119332715512.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality7668092119332715512.prop.
+Could not access property file : /tmp/ReachabilityCardinality7668092119332715512.prop
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query StableMarking after proving 31 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 913 ms.

@@ -1,0 +1,122 @@
+[2026-10-24 23:48:57] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.iKgU8uv8S8, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:48:57] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.iKgU8uv8S8/model.pnml 
+[2026-10-24 23:48:58] [INFO   ] Load time of PNML (sax parser for PT used): 199 ms 
+[2026-10-24 23:48:58] [INFO   ] Transformed 253 places. 
+[2026-10-24 23:48:58] [INFO   ] Transformed 178 transitions. 
+[2026-10-24 23:48:58] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:48:58] [INFO   ] Parsed PT model containing 253 places and 178 transitions and 526 arcs in 531 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 253/253 places, 178/178 transitions.
+Ensure Unique test removed 76 places
+Reduce places removed 84 places and 0 transitions. 
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 122 transitions 
+Trivial Post-agglo rules discarded 122 transitions
+Performed 122 trivial Post agglomeration. Transition count delta: 122
+Iterating post reduction 0 with 207 rules applied. Total rules applied 207 place count 168 transition count 56
+Reduce places removed 122 places and 0 transitions. 
+Ensure Unique test removed 5 transitions
+Reduce isomorphic transitions removed 5 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 6 transitions 
+Trivial Post-agglo rules discarded 6 transitions
+Performed 6 trivial Post agglomeration. Transition count delta: 6
+Iterating post reduction 1 with 133 rules applied. Total rules applied 340 place count 46 transition count 45
+Reduce places removed 6 places and 0 transitions. 
+Iterating post reduction 2 with 6 rules applied. Total rules applied 346 place count 40 transition count 45
+Performed 15 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 15 Pre rules applied. Total rules applied 346 place count 40 transition count 30
+Renaming transitions due to excessive name length > 1024 char.
+Deduced a syphon composed of 15 places in 0 ms
+Ensure Unique test removed 2 places
+Reduce places removed 17 places and 0 transitions. 
+Iterating global reduction 3 with 32 rules applied. Total rules applied 378 place count 23 transition count 30
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 3 with 2 rules applied. Total rules applied 380 place count 22 transition count 29
+Reduce places removed 1 places and 0 transitions. 
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 4 with 3 rules applied. Total rules applied 383 place count 21 transition count 27
+Reduce places removed 1 places and 0 transitions. 
+Iterating post reduction 5 with 1 rules applied. Total rules applied 384 place count 20 transition count 27
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 6 with 1 Pre rules applied. Total rules applied 384 place count 20 transition count 26
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 6 with 2 rules applied. Total rules applied 386 place count 19 transition count 26
+Performed 7 Post agglomeration using F-continuation condition with reduction of 3 identical transitions.
+Deduced a syphon composed of 7 places in 0 ms
+Reduce places removed 7 places and 0 transitions. 
+Iterating global reduction 6 with 14 rules applied. Total rules applied 400 place count 12 transition count 16
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Iterating post reduction 6 with 2 rules applied. Total rules applied 402 place count 12 transition count 14
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 7 with 2 rules applied. Total rules applied 404 place count 11 transition count 13
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 0
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 7 with 2 rules applied. Total rules applied 406 place count 10 transition count 13
+Applied a total of 406 rules in 89 ms. Remains 10 /253 variables (removed 243) and now considering 13/178 (removed 165) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4490750745855164867.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-7789765658965437227.kers' 
+[2026-10-24 23:48:58] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4490750745855164867.kers, --Pflows, --basisKERS=/tmp/petrispot-output-7789765658965437227.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 13 rows 10 cols 36 entries
+Finished phase 1 with 8 SingleSign rule and 1 generalized 
+[2026-10-24 23:48:58] [INFO   ] Computed 1 invariants in 0 ms
+Computed 1 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-7789765658965437227.kers
+Total runtime 0 ms.
+[2026-10-24 23:48:58] [INFO   ] Implicit Places using invariants in 151 ms returned [] 
+[2026-10-24 23:48:58] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:48:58] [INFO   ] Implicit Places using invariants and state equation in 72 ms returned [] 
+Implicit Place search using SMT with State Equation took 263 ms to find 0 implicit places.
+Running 5 sub problems to find dead transitions.
+[2026-10-24 23:48:58] [INFO   ] Invariant cache hit. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/9 variables, 9/9 constraints. Problems are: Problem set: 0 solved, 5 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/9 variables, 1/10 constraints. Problems are: Problem set: 0 solved, 5 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/9 variables, 0/10 constraints. Problems are: Problem set: 0 solved, 5 unsolved
+At refinement iteration 3 (OVERLAPS) 12/21 variables, 9/19 constraints. Problems are: Problem set: 0 solved, 5 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/21 variables, 0/19 constraints. Problems are: Problem set: 0 solved, 5 unsolved
+Problem TDEAD0 is UNSAT
+Problem TDEAD1 is UNSAT
+Problem TDEAD2 is UNSAT
+At refinement iteration 5 (OVERLAPS) 2/23 variables, 1/20 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/23 variables, 1/21 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/23 variables, 0/21 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 8 (OVERLAPS) 0/23 variables, 0/21 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 23/23 variables, and 21 constraints, problems are : Problem set: 3 solved, 2 unsolved in 180 ms.
+Refiners :[Domain max(s): 10/10 constraints, Generalized P Invariants (flows): 1/1 constraints, State Equation: 10/10 constraints, PredecessorRefiner: 5/5 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 3 solved, 2 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/2 variables, 2/2 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/2 variables, 0/2 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 2 (OVERLAPS) 2/4 variables, 1/3 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/4 variables, 2/5 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/4 variables, 0/5 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 5 (OVERLAPS) 8/12 variables, 4/9 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/12 variables, 0/9 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 7 (OVERLAPS) 10/22 variables, 5/14 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/22 variables, 5/19 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/22 variables, 2/21 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/22 variables, 0/21 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 11 (OVERLAPS) 1/23 variables, 1/22 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/23 variables, 1/23 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 13 (INCLUDED_ONLY) 0/23 variables, 0/23 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+At refinement iteration 14 (OVERLAPS) 0/23 variables, 0/23 constraints. Problems are: Problem set: 3 solved, 2 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 23/23 variables, and 23 constraints, problems are : Problem set: 3 solved, 2 unsolved in 91 ms.
+Refiners :[Domain max(s): 10/10 constraints, Generalized P Invariants (flows): 1/1 constraints, State Equation: 10/10 constraints, PredecessorRefiner: 2/5 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 303ms problems are : Problem set: 3 solved, 2 unsolved
+Search for dead transitions found 3 dead transitions in 312ms
+Found 3 dead transitions using SMT.
+FORMULA QuasiLiveness FALSE TECHNIQUES STRUCTURAL_REDUCTION 
+Total runtime 1331 ms.

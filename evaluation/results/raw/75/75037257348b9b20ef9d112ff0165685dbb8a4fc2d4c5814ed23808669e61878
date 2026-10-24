@@ -1,0 +1,43 @@
+[2026-10-25 00:03:33] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YqIbFsdVRu, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:03:33] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YqIbFsdVRu/model.pnml 
+[2026-10-25 00:03:34] [INFO   ] Load time of PNML (sax parser for PT used): 98 ms 
+[2026-10-25 00:03:34] [INFO   ] Transformed 256 places. 
+[2026-10-25 00:03:34] [INFO   ] Transformed 128 transitions. 
+[2026-10-25 00:03:34] [INFO   ] Parsed PT model containing 256 places and 128 transitions and 512 arcs in 436 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YqIbFsdVRu/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 8 ms.9040KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 256/256 places, 128/128 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 82 ms. Remains 256 /256 variables (removed 0) and now considering 128/128 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 105 ms. Remains : 256/256 places, 128/128 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 256/256 places, 128/128 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 32 ms. Remains 256 /256 variables (removed 0) and now considering 128/128 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-9623922808927291834.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-2444902837190636749.kers' 
+[2026-10-25 00:03:34] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-9623922808927291834.kers, --Pflows, --basisKERS=/tmp/petrispot-output-2444902837190636749.kers]
+Culling duplicate invariants (modulo rational): removing 128 columns.
+Culled 128 columns in 0 ms.
+// Phase 1: matrix 128 rows 128 cols 256 entries
+Finished phase 1 with 127 SingleSign rule and 0 generalized 
+[2026-10-25 00:03:34] [INFO   ] Computed 129 invariants in 0 ms
+Computed 129 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-2444902837190636749.kers
+Total runtime 4 ms.
+[2026-10-25 00:03:35] [INFO   ] Implicit Places using invariants in 570 ms returned [128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255] 
+Discarding 128 places :
+Implicit Place search using SMT only with invariants took 627 ms to find 128 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 128/256 places, 128/128 transitions.
+Graph (trivial) has 128 edges and 128 vertex of which 128 / 128 are part of one of the 1 SCC in 7 ms
+Free SCC test removed 127 places 
+Ensure Unique test removed 127 transitions
+Reduce isomorphic transitions removed 127 transitions.
+Computed a total of 1 stabilizing places and 0 stable transitions
+Reduce places removed 1 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 1370 ms.

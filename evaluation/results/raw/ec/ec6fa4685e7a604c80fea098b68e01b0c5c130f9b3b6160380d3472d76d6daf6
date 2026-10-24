@@ -1,0 +1,24 @@
+[2026-10-24 23:34:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.6RNSXJujjf, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:34:13] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.6RNSXJujjf/model.pnml 
+[2026-10-24 23:34:16] [INFO   ] Load time of PNML (sax parser for PT used): 3293 ms 
+[2026-10-24 23:34:16] [INFO   ] Transformed 906 places. 
+[2026-10-24 23:34:17] [INFO   ] Transformed 149363 transitions. 
+[2026-10-24 23:34:17] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:34:17] [INFO   ] Parsed PT model containing 906 places and 149363 transitions and 595952 arcs in 4645 ms. 
+Ensure Unique test removed 1582 transitions
+Reduce redundant transitions removed 4896 transitions.
+Starting structural reductions in STATESPACE mode, iteration 0 : 906/906 places, 144467/144467 transitions.
+Running 144466 sub problems to find dead transitions.
+[2026-10-24 23:34:20] [INFO   ] Flow matrix only has 113362 transitions (discarded 31105 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-15409898617968522482.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-5110153505977317741.kers' 
+[2026-10-24 23:34:20] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-15409898617968522482.kers, --Pflows, --basisKERS=/tmp/petrispot-output-5110153505977317741.kers]
+Culling duplicate invariants (modulo rational): removing 4 columns.
+Culled 4 columns in 39 ms.
+// Phase 1: matrix 113362 rows 902 cols 446940 entries
+Finished phase 1 with 897 SingleSign rule and 0 generalized 
+[2026-10-24 23:34:21] [INFO   ] Computed 9 invariants in 392 ms
+Computed 9 P flows in 394 ms.
+Exported basis to /tmp/petrispot-output-5110153505977317741.kers
+Total runtime 475 ms.
+[2026-10-24 23:34:32] [INFO   ] State equation strengthened by 2577 read => feed constraints. 
+Excessive predecessor constraint size, skipping predecessor.

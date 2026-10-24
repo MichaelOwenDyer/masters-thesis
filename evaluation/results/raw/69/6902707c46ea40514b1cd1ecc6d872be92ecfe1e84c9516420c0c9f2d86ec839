@@ -1,0 +1,76 @@
+[2026-10-24 23:24:41] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YDLf2elJI6, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:24:41] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YDLf2elJI6/model.pnml 
+[2026-10-24 23:24:42] [INFO   ] Load time of PNML (sax parser for PT used): 256 ms 
+[2026-10-24 23:24:42] [INFO   ] Transformed 231 places. 
+[2026-10-24 23:24:42] [INFO   ] Transformed 202 transitions. 
+[2026-10-24 23:24:42] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:24:42] [INFO   ] Parsed PT model containing 231 places and 202 transitions and 846 arcs in 813 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 231/231 places, 202/202 transitions.
+[2026-10-24 23:24:42] [INFO   ] Redundant transitions in 13 ms returned [] 
+Running 201 sub problems to find dead transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4274419551135435118.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-1106658398717008763.kers' 
+[2026-10-24 23:24:42] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4274419551135435118.kers, --Pflows, --basisKERS=/tmp/petrispot-output-1106658398717008763.kers]
+Culling duplicate invariants (modulo rational): removing 12 columns.
+Culled 12 columns in 0 ms.
+// Phase 1: matrix 202 rows 219 cols 568 entries
+Finished phase 1 with 119 SingleSign rule and 53 generalized 
+[2026-10-24 23:24:42] [INFO   ] Computed 59 invariants in 1 ms
+Computed 59 P flows in 5 ms.
+Exported basis to /tmp/petrispot-output-1106658398717008763.kers
+Total runtime 5 ms.
+[2026-10-24 23:24:42] [INFO   ] State equation strengthened by 68 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/229 variables, 229/229 constraints. Problems are: Problem set: 0 solved, 201 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/229 variables, 25/254 constraints. Problems are: Problem set: 0 solved, 201 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/229 variables, 30/284 constraints. Problems are: Problem set: 0 solved, 201 unsolved
+Problem TDEAD68 is UNSAT
+Problem TDEAD69 is UNSAT
+Problem TDEAD74 is UNSAT
+Problem TDEAD78 is UNSAT
+Problem TDEAD92 is UNSAT
+Problem TDEAD98 is UNSAT
+Problem TDEAD124 is UNSAT
+Problem TDEAD130 is UNSAT
+At refinement iteration 3 (INCLUDED_ONLY) 0/229 variables, 20/304 constraints. Problems are: Problem set: 8 solved, 193 unsolved
+Problem TDEAD71 is UNSAT
+Problem TDEAD72 is UNSAT
+Problem TDEAD73 is UNSAT
+Problem TDEAD75 is UNSAT
+Problem TDEAD76 is UNSAT
+Problem TDEAD77 is UNSAT
+Problem TDEAD95 is UNSAT
+Problem TDEAD96 is UNSAT
+Problem TDEAD97 is UNSAT
+Problem TDEAD125 is UNSAT
+Problem TDEAD127 is UNSAT
+Problem TDEAD128 is UNSAT
+Problem TDEAD129 is UNSAT
+Problem TDEAD131 is UNSAT
+Problem TDEAD132 is UNSAT
+Problem TDEAD133 is UNSAT
+Problem TDEAD134 is UNSAT
+Problem TDEAD149 is UNSAT
+Problem TDEAD155 is UNSAT
+Problem TDEAD156 is UNSAT
+Problem TDEAD157 is UNSAT
+Problem TDEAD158 is UNSAT
+At refinement iteration 4 (INCLUDED_ONLY) 0/229 variables, 19/323 constraints. Problems are: Problem set: 30 solved, 171 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/229 variables, 2/325 constraints. Problems are: Problem set: 30 solved, 171 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/229 variables, 0/325 constraints. Problems are: Problem set: 30 solved, 171 unsolved
+At refinement iteration 7 (OVERLAPS) 2/231 variables, 4/329 constraints. Problems are: Problem set: 30 solved, 171 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/231 variables, 2/331 constraints. Problems are: Problem set: 30 solved, 171 unsolved
+Problem TDEAD94 is UNSAT
+Problem TDEAD103 is UNSAT
+Problem TDEAD104 is UNSAT
+Problem TDEAD105 is UNSAT
+Problem TDEAD106 is UNSAT
+Problem TDEAD150 is UNSAT
+Problem TDEAD159 is UNSAT
+Problem TDEAD160 is UNSAT
+Problem TDEAD161 is UNSAT
+Problem TDEAD162 is UNSAT
+At refinement iteration 9 (INCLUDED_ONLY) 0/231 variables, 6/337 constraints. Problems are: Problem set: 40 solved, 161 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/231 variables, 0/337 constraints. Problems are: Problem set: 40 solved, 161 unsolved
+At refinement iteration 11 (OVERLAPS) 202/433 variables, 231/568 constraints. Problems are: Problem set: 40 solved, 161 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/433 variables, 68/636 constraints. Problems are: Problem set: 40 solved, 161 unsolved
+At refinement iteration 13 (INCLUDED_ONLY) 0/433 variables, 1/637 constraints. Problems are: Problem set: 40 solved, 161 unsolved
+At refinement iteration 14 (INCLUDED_ONLY) 0/433 variables, 0/637 constraints. Problems are: Problem set: 40 solved, 161 unsolved

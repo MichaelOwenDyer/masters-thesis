@@ -1,0 +1,25 @@
+[2026-10-24 23:23:14] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HHBY0l0kXH, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:23:14] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HHBY0l0kXH/model.pnml 
+[2026-10-24 23:23:15] [INFO   ] Load time of PNML (sax parser for PT used): 148 ms 
+[2026-10-24 23:23:15] [INFO   ] Transformed 39 places. 
+[2026-10-24 23:23:15] [INFO   ] Transformed 64 transitions. 
+[2026-10-24 23:23:15] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:23:15] [INFO   ] Parsed PT model containing 39 places and 64 transitions and 185 arcs in 675 ms. 
+[2026-10-24 23:23:17] [INFO   ] Flatten gal took : 324 ms 
+[2026-10-24 23:23:17] [INFO   ] Flatten gal took : 88 ms 
+[2026-10-24 23:23:17] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality16399508933389206001.gal : 114 ms 
+[2026-10-24 23:23:17] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality10215053036455528553.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HHBY0l0kXH;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality16399508933389206001.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality10215053036455528553.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+Loading property file /tmp/ReachabilityCardinality10215053036455528553.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,110,0.014582,4712,2,284,11,1252,11,0,226,974,0
+ Total reachable state count : 110
+
+Verifying 5 reachability properties.
+FORMULA StableMarking TRUE TECHNIQUES DECISION_DIAGRAMS COLLATERAL_PROCESSING TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+PetriSpot walker: 34/39 properties solved in 2028 ms (exit 137).
+Walk beside the decision diagrams solved 34 properties.

@@ -1,0 +1,70 @@
+[2026-10-24 23:45:43] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.4Y6W5mHRgr, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:45:43] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.4Y6W5mHRgr/model.pnml 
+[2026-10-24 23:45:44] [INFO   ] Load time of PNML (sax parser for PT used): 168 ms 
+[2026-10-24 23:45:44] [INFO   ] Transformed 176 places. 
+[2026-10-24 23:45:44] [INFO   ] Transformed 134 transitions. 
+[2026-10-24 23:45:44] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:45:44] [INFO   ] Parsed PT model containing 176 places and 134 transitions and 513 arcs in 634 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 176/176 places, 134/134 transitions.
+Performed 33 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 33 Pre rules applied. Total rules applied 0 place count 176 transition count 101
+Deduced a syphon composed of 33 places in 2 ms
+Ensure Unique test removed 2 places
+Reduce places removed 35 places and 0 transitions. 
+Iterating global reduction 0 with 68 rules applied. Total rules applied 68 place count 141 transition count 101
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 1 Pre rules applied. Total rules applied 68 place count 141 transition count 100
+Deduced a syphon composed of 1 places in 1 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 70 place count 140 transition count 100
+Performed 5 Post agglomeration using F-continuation condition.Transition count delta: 5
+Deduced a syphon composed of 5 places in 0 ms
+Reduce places removed 5 places and 0 transitions. 
+Iterating global reduction 0 with 10 rules applied. Total rules applied 80 place count 135 transition count 95
+Applied a total of 80 rules in 112 ms. Remains 135 /176 variables (removed 41) and now considering 95/134 (removed 39) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-10694720949690260810.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-5068146076766599848.kers' 
+[2026-10-24 23:45:44] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-10694720949690260810.kers, --Pflows, --basisKERS=/tmp/petrispot-output-5068146076766599848.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 95 rows 135 cols 434 entries
+Finished phase 1 with 69 SingleSign rule and 18 generalized 
+[2026-10-24 23:45:44] [INFO   ] Computed 48 invariants in 0 ms
+Computed 48 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-5068146076766599848.kers
+Total runtime 4 ms.
+[2026-10-24 23:45:45] [INFO   ] Implicit Places using invariants in 453 ms returned [20, 21, 28, 33, 75, 76, 77, 78, 94, 98, 99, 102] 
+[2026-10-24 23:45:45] [INFO   ] Actually due to overlaps returned [75, 78, 102, 20, 21, 28, 76, 77, 98] 
+Discarding 9 places :
+Implicit Place search using SMT only with invariants took 521 ms to find 9 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 126/176 places, 95/134 transitions.
+Performed 4 Post agglomeration using F-continuation condition.Transition count delta: 4
+Deduced a syphon composed of 4 places in 0 ms
+Reduce places removed 4 places and 0 transitions. 
+Iterating global reduction 0 with 8 rules applied. Total rules applied 8 place count 122 transition count 91
+Applied a total of 8 rules in 15 ms. Remains 122 /126 variables (removed 4) and now considering 91/95 (removed 4) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-8540033497325698198.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-7840699456604372971.kers' 
+[2026-10-24 23:45:45] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-8540033497325698198.kers, --Pflows, --basisKERS=/tmp/petrispot-output-7840699456604372971.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 91 rows 122 cols 397 entries
+Finished phase 1 with 72 SingleSign rule and 11 generalized 
+[2026-10-24 23:45:45] [INFO   ] Computed 39 invariants in 0 ms
+Computed 39 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-7840699456604372971.kers
+Total runtime 4 ms.
+[2026-10-24 23:45:45] [INFO   ] Implicit Places using invariants in 214 ms returned [30, 83, 87] 
+Discarding 3 places :
+Implicit Place search using SMT only with invariants took 215 ms to find 3 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 2 : 119/176 places, 91/134 transitions.
+Applied a total of 0 rules in 4 ms. Remains 119 /119 variables (removed 0) and now considering 91/91 (removed 0) transitions.
+Finished structural reductions in LIVENESS mode , in 3 iterations and 903 ms. Remains : 119/176 places, 91/134 transitions.
+Discarding 11 transitions out of 91. Remains 80
+Initial state reduction rules removed 1 formulas.
+[2026-10-24 23:45:47] [INFO   ] Flatten gal took : 383 ms 
+[2026-10-24 23:45:47] [INFO   ] Flatten gal took : 148 ms 
+[2026-10-24 23:45:47] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality10191015648903140715.gal : 124 ms 
+[2026-10-24 23:45:47] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality9931790078023451457.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.4Y6W5mHRgr;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality10191015648903140715.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality9931790078023451457.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality9931790078023451457.prop.

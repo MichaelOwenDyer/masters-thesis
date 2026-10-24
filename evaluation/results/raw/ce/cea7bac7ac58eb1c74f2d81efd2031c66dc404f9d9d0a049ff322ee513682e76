@@ -1,0 +1,23 @@
+[2026-10-24 23:48:41] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8bUofrhpis, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:48:41] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8bUofrhpis/model.pnml 
+[2026-10-24 23:48:41] [INFO   ] Load time of PNML (sax parser for PT used): 188 ms 
+[2026-10-24 23:48:41] [INFO   ] Transformed 230 places. 
+[2026-10-24 23:48:41] [INFO   ] Transformed 220 transitions. 
+[2026-10-24 23:48:41] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:48:41] [INFO   ] Parsed PT model containing 230 places and 220 transitions and 2460 arcs in 541 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8bUofrhpis/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.10493KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 230/230 places, 220/220 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 110 transitions 
+Trivial Post-agglo rules discarded 110 transitions
+Performed 110 trivial Post agglomeration. Transition count delta: 110
+Iterating post reduction 0 with 110 rules applied. Total rules applied 110 place count 230 transition count 110
+Reduce places removed 230 places and 0 transitions. 
+Ensure Unique test removed 109 transitions
+Reduce isomorphic transitions removed 109 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 727 ms.

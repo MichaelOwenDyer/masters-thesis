@@ -1,0 +1,41 @@
+[2026-10-24 23:28:07] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eietv8MWXk, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:28:07] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eietv8MWXk/model.pnml 
+[2026-10-24 23:28:08] [INFO   ] Load time of PNML (sax parser for PT used): 157 ms 
+[2026-10-24 23:28:08] [INFO   ] Transformed 50 places. 
+[2026-10-24 23:28:08] [INFO   ] Transformed 120 transitions. 
+[2026-10-24 23:28:08] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:28:08] [INFO   ] Parsed PT model containing 50 places and 120 transitions and 820 arcs in 611 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eietv8MWXk/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 12 ms.9138KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 50/50 places, 120/120 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 67 ms. Remains 50 /50 variables (removed 0) and now considering 120/120 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 100 ms. Remains : 50/50 places, 120/120 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 50/50 places, 120/120 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 26 ms. Remains 50 /50 variables (removed 0) and now considering 120/120 (removed 0) transitions.
+[2026-10-24 23:28:08] [INFO   ] Flow matrix only has 40 transitions (discarded 80 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-5123753622843389565.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-5487296044407573315.kers' 
+[2026-10-24 23:28:08] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-5123753622843389565.kers, --Pflows, --basisKERS=/tmp/petrispot-output-5487296044407573315.kers]
+Culling duplicate invariants (modulo rational): removing 20 columns.
+Culled 20 columns in 0 ms.
+// Phase 1: matrix 40 rows 30 cols 80 entries
+Finished phase 1 with 20 SingleSign rule and 0 generalized 
+[2026-10-24 23:28:08] [INFO   ] Computed 30 invariants in 0 ms
+Computed 30 P flows in 5 ms.
+Exported basis to /tmp/petrispot-output-5487296044407573315.kers
+Total runtime 6 ms.
+[2026-10-24 23:28:08] [INFO   ] Implicit Places using invariants in 395 ms returned [20, 23, 26, 29, 32, 35, 38, 41, 44, 47] 
+Discarding 10 places :
+Implicit Place search using SMT only with invariants took 461 ms to find 10 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 40/50 places, 120/120 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 24 ms. Remains 40 /40 variables (removed 0) and now considering 120/120 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 2 iterations and 517 ms. Remains : 40/50 places, 120/120 transitions.

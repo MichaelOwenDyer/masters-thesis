@@ -1,0 +1,30 @@
+[2026-10-24 23:46:42] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AMOo0s1t0O, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:46:42] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AMOo0s1t0O/model.pnml 
+[2026-10-24 23:46:43] [INFO   ] Load time of PNML (sax parser for PT used): 62 ms 
+[2026-10-24 23:46:43] [INFO   ] Transformed 14 places. 
+[2026-10-24 23:46:43] [INFO   ] Transformed 16 transitions. 
+[2026-10-24 23:46:43] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:46:43] [INFO   ] Parsed PT model containing 14 places and 16 transitions and 58 arcs in 439 ms. 
+PetriSpot walker: 14/14 properties solved in 70 ms (exit 0).
+PetriSpot walker: 14/14 properties solved in 62 ms (exit 0).
+Walk beside the decision diagrams solved 14 properties.
+[2026-10-24 23:46:43] [INFO   ] Flatten gal took : 36 ms 
+[2026-10-24 23:46:43] [INFO   ] Flatten gal took : 7 ms 
+[2026-10-24 23:46:43] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality17985338881093406879.gal : 15 ms 
+[2026-10-24 23:46:43] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality13098767136603289990.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AMOo0s1t0O;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality17985338881093406879.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality13098767136603289990.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+ITS runner timed out or was interrupted.
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+Loading property file /tmp/ReachabilityCardinality13098767136603289990.prop.
+Found states matching all0 target predicate 
+Will report total states built up to this point. Computation was interrupted after 3 fixpoint passes
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,5,0.001767,4064,2,24,5,77,6,0,76,40,0
+ Total reachable state count : 5
+
+Able to resolve query StableMarking after proving 14 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 881 ms.

@@ -1,0 +1,86 @@
+[2026-10-25 00:04:42] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.i4ulDU3lAC, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-25 00:04:42] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.i4ulDU3lAC/model.pnml 
+[2026-10-25 00:04:42] [INFO   ] Load time of PNML (sax parser for PT used): 126 ms 
+[2026-10-25 00:04:42] [INFO   ] Transformed 102 places. 
+[2026-10-25 00:04:42] [INFO   ] Transformed 126 transitions. 
+[2026-10-25 00:04:42] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:04:42] [INFO   ] Parsed PT model containing 102 places and 126 transitions and 384 arcs in 466 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 102/102 places, 126/126 transitions.
+[2026-10-25 00:04:43] [INFO   ] Redundant transitions in 5 ms returned [] 
+Running 123 sub problems to find dead transitions.
+[2026-10-25 00:04:43] [INFO   ] Flow matrix only has 120 transitions (discarded 6 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-3911405013945410712.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-15584825792892436597.kers' 
+[2026-10-25 00:04:43] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-3911405013945410712.kers, --Pflows, --basisKERS=/tmp/petrispot-output-15584825792892436597.kers]
+Culling duplicate invariants (modulo rational): removing 6 columns.
+Culled 6 columns in 0 ms.
+// Phase 1: matrix 120 rows 96 cols 264 entries
+Finished phase 1 with 88 SingleSign rule and 3 generalized 
+[2026-10-25 00:04:43] [INFO   ] Computed 11 invariants in 0 ms
+Computed 11 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-15584825792892436597.kers
+Total runtime 3 ms.
+[2026-10-25 00:04:43] [INFO   ] State equation strengthened by 22 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/99 variables, 99/99 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/99 variables, 5/104 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/99 variables, 3/107 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/99 variables, 19/126 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/99 variables, 1/127 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/99 variables, 1/128 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/99 variables, 0/128 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 7 (OVERLAPS) 3/102 variables, 3/131 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/102 variables, 3/134 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/102 variables, 0/134 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 10 (OVERLAPS) 120/222 variables, 102/236 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 11 (INCLUDED_ONLY) 0/222 variables, 22/258 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/222 variables, 0/258 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 13 (OVERLAPS) 0/222 variables, 0/258 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 222/222 variables, and 258 constraints, problems are : Problem set: 0 solved, 123 unsolved in 8185 ms.
+Refiners :[Domain max(s): 102/102 constraints, Positive P Invariants (semi-flows): 8/8 constraints, Generalized P Invariants (flows): 3/3 constraints, State Equation: 102/102 constraints, ReadFeed: 22/22 constraints, PredecessorRefiner: 123/123 constraints, Known Traps: 21/21 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 123 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/99 variables, 99/99 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/99 variables, 5/104 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/99 variables, 3/107 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/99 variables, 21/128 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/99 variables, 0/128 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 5 (OVERLAPS) 3/102 variables, 3/131 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/102 variables, 3/134 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/102 variables, 0/134 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 8 (OVERLAPS) 120/222 variables, 102/236 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/222 variables, 22/258 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/222 variables, 123/381 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 11 (INCLUDED_ONLY) 0/222 variables, 0/381 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+At refinement iteration 12 (OVERLAPS) 0/222 variables, 0/381 constraints. Problems are: Problem set: 0 solved, 123 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 222/222 variables, and 381 constraints, problems are : Problem set: 0 solved, 123 unsolved in 5638 ms.
+Refiners :[Domain max(s): 102/102 constraints, Positive P Invariants (semi-flows): 8/8 constraints, Generalized P Invariants (flows): 3/3 constraints, State Equation: 102/102 constraints, ReadFeed: 22/22 constraints, PredecessorRefiner: 123/123 constraints, Known Traps: 21/21 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 13975ms problems are : Problem set: 0 solved, 123 unsolved
+Search for dead transitions found 0 dead transitions in 13998ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 14159 ms. Remains : 102/102 places, 126/126 transitions.
+Final net has 102 places and 126 transitions.
+[2026-10-25 00:04:57] [INFO   ] Flatten gal took : 63 ms 
+[2026-10-25 00:04:57] [INFO   ] Applying decomposition  
+[2026-10-25 00:04:57] [INFO   ] Flatten gal took : 24 ms 
+[2026-10-25 00:04:57] [INFO   ] Decomposing Gal with order  
+[2026-10-25 00:04:57] [INFO   ] Rewriting arrays  to variables to allow decomposition. 
+[2026-10-25 00:04:57] [INFO   ] Removed a total of 57 redundant transitions. 
+[2026-10-25 00:04:57] [INFO   ] Flatten gal took : 79 ms 
+[2026-10-25 00:04:57] [INFO   ] Fuse similar labels procedure discarded/fused a total of 20 labels/synchronizations in 7 ms. 
+[2026-10-25 00:04:57] [INFO   ] Time to serialize gal into /tmp/StateSpace8736051660644362892.gal : 20 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.i4ulDU3lAC;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace8736051660644362892.gal' '-t' 'CGAL' '--stats' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...267
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst\_mod\_flat,20754,0.074722,9312,210,473,7408,5117,232,8703,228,20611,0
+ Total reachable state count : 20754
+
+Max variable value : 1
+STATE_SPACE MAX_TOKEN_IN_PLACE  1 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Maximum sum along a path : 8
+STATE_SPACE MAX_TOKEN_PER_MARKING 8 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Exact state count : 20754
+STATE_SPACE STATES  20754 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+ITS tools runner thread asked to quit. Dying gracefully.
+Total runtime 15291 ms.

@@ -1,0 +1,65 @@
+[2026-10-24 23:40:09] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.3WZfKKkcKQ, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:40:09] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.3WZfKKkcKQ/model.pnml 
+[2026-10-24 23:40:10] [INFO   ] Load time of PNML (sax parser for PT used): 63 ms 
+[2026-10-24 23:40:10] [INFO   ] Transformed 16 places. 
+[2026-10-24 23:40:10] [INFO   ] Transformed 12 transitions. 
+[2026-10-24 23:40:10] [INFO   ] Parsed PT model containing 16 places and 12 transitions and 48 arcs in 395 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 16/16 places, 12/12 transitions.
+[2026-10-24 23:40:10] [INFO   ] Redundant transitions in 0 ms returned [] 
+Running 9 sub problems to find dead transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-13374271828056642276.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-13187699398945326295.kers' 
+[2026-10-24 23:40:10] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-13374271828056642276.kers, --Pflows, --basisKERS=/tmp/petrispot-output-13187699398945326295.kers]
+Culling duplicate invariants (modulo rational): removing 6 columns.
+Culled 6 columns in 0 ms.
+// Phase 1: matrix 12 rows 10 cols 33 entries
+Finished phase 1 with 8 SingleSign rule and 0 generalized 
+[2026-10-24 23:40:10] [INFO   ] Computed 8 invariants in 0 ms
+Computed 8 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-13187699398945326295.kers
+Total runtime 4 ms.
+At refinement iteration 0 (INCLUDED_ONLY) 0/10 variables, 3/3 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/10 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 2 (OVERLAPS) 6/16 variables, 5/8 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/16 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 4 (OVERLAPS) 12/28 variables, 16/24 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/28 variables, 0/24 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 6 (OVERLAPS) 0/28 variables, 0/24 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 28/28 variables, and 24 constraints, problems are : Problem set: 0 solved, 9 unsolved in 335 ms.
+Refiners :[Positive P Invariants (semi-flows): 8/8 constraints, State Equation: 16/16 constraints, PredecessorRefiner: 9/9 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 9 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/10 variables, 3/3 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/10 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 2 (OVERLAPS) 6/16 variables, 5/8 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/16 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 4 (OVERLAPS) 12/28 variables, 16/24 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/28 variables, 9/33 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/28 variables, 0/33 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+At refinement iteration 7 (OVERLAPS) 0/28 variables, 0/33 constraints. Problems are: Problem set: 0 solved, 9 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 28/28 variables, and 33 constraints, problems are : Problem set: 0 solved, 9 unsolved in 302 ms.
+Refiners :[Positive P Invariants (semi-flows): 8/8 constraints, State Equation: 16/16 constraints, PredecessorRefiner: 9/9 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 708ms problems are : Problem set: 0 solved, 9 unsolved
+Search for dead transitions found 0 dead transitions in 717ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 855 ms. Remains : 16/16 places, 12/12 transitions.
+Final net has 16 places and 12 transitions.
+[2026-10-24 23:40:11] [INFO   ] Flatten gal took : 26 ms 
+[2026-10-24 23:40:11] [INFO   ] Flatten gal took : 8 ms 
+[2026-10-24 23:40:11] [INFO   ] Time to serialize gal into /tmp/StateSpace11098761767263071908.gal : 8 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.3WZfKKkcKQ;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace11098761767263071908.gal' '-t' 'CGAL' '--stats' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...289
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,109552,0.217812,12448,2,702,5,43875,6,0,80,52865,0
+ Total reachable state count : 109552
+
+Max variable value : 60
+STATE_SPACE MAX_TOKEN_IN_PLACE  60 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Maximum sum along a path : 66
+STATE_SPACE MAX_TOKEN_PER_MARKING 66 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Exact state count : 109552
+STATE_SPACE STATES  109552 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+ITS tools runner thread asked to quit. Dying gracefully.
+Total runtime 1798 ms.

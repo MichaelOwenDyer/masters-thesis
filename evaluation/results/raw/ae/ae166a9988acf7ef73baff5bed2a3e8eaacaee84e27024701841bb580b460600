@@ -1,0 +1,14 @@
+[2026-10-25 00:02:55] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eAosCBtDWM, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-25 00:02:55] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eAosCBtDWM/model.pnml 
+[2026-10-25 00:02:56] [INFO   ] Load time of PNML (sax parser for PT used): 63 ms 
+[2026-10-25 00:02:56] [INFO   ] Transformed 32 places. 
+[2026-10-25 00:02:56] [INFO   ] Transformed 16 transitions. 
+[2026-10-25 00:02:56] [INFO   ] Parsed PT model containing 32 places and 16 transitions and 64 arcs in 425 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 32/32 places, 16/16 transitions.
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Iterating post reduction 0 with 1 rules applied. Total rules applied 1 place count 31 transition count 16
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 9 places in 0 ms
+FORMULA QuasiLiveness FALSE TECHNIQUES STRUCTURAL_REDUCTION 
+Total runtime 563 ms.

@@ -1,0 +1,33 @@
+[2026-10-24 23:26:02] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.S0wMe8UA17, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:26:02] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.S0wMe8UA17/model.pnml 
+[2026-10-24 23:26:04] [INFO   ] Load time of PNML (sax parser for PT used): 1313 ms 
+[2026-10-24 23:26:04] [INFO   ] Transformed 16881 places. 
+[2026-10-24 23:26:04] [INFO   ] Transformed 32400 transitions. 
+[2026-10-24 23:26:04] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:26:04] [INFO   ] Parsed PT model containing 16881 places and 32400 transitions and 97600 arcs in 1914 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.S0wMe8UA17/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 58 ms.38645KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 16881/16881 places, 32400/32400 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 16000 transitions 
+Trivial Post-agglo rules discarded 16000 transitions
+Performed 16000 trivial Post agglomeration. Transition count delta: 16000
+Iterating post reduction 0 with 16000 rules applied. Total rules applied 16000 place count 16881 transition count 16400
+Reduce places removed 16080 places and 0 transitions. 
+Ensure Unique test removed 15800 transitions
+Reduce isomorphic transitions removed 15800 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 200 places :
+Implicit places reduction removed 200 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 400 transitions 
+Trivial Post-agglo rules discarded 400 transitions
+Performed 400 trivial Post agglomeration. Transition count delta: 400
+Iterating post reduction 1 with 32480 rules applied. Total rules applied 48480 place count 601 transition count 200
+Reduce places removed 601 places and 0 transitions. 
+Ensure Unique test removed 199 transitions
+Reduce isomorphic transitions removed 199 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 3035 ms.

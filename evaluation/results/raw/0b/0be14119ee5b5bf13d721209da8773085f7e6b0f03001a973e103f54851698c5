@@ -1,0 +1,47 @@
+[2026-10-24 23:23:16] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.bxb1Gi6a7x, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:23:16] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.bxb1Gi6a7x/model.pnml 
+[2026-10-24 23:23:17] [INFO   ] Load time of PNML (sax parser for PT used): 167 ms 
+[2026-10-24 23:23:17] [INFO   ] Transformed 36 places. 
+[2026-10-24 23:23:17] [INFO   ] Transformed 156 transitions. 
+[2026-10-24 23:23:17] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:23:17] [INFO   ] Parsed PT model containing 36 places and 156 transitions and 624 arcs in 699 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 36/36 places, 156/156 transitions.
+Applied a total of 0 rules in 29 ms. Remains 36 /36 variables (removed 0) and now considering 156/156 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-15476759531725692662.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-13195249197048156085.kers' 
+[2026-10-24 23:23:17] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-15476759531725692662.kers, --Pflows, --basisKERS=/tmp/petrispot-output-13195249197048156085.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 156 rows 36 cols 312 entries
+Finished phase 1 with 30 SingleSign rule and 0 generalized 
+[2026-10-24 23:23:17] [INFO   ] Computed 6 invariants in 0 ms
+Computed 6 P flows in 5 ms.
+Exported basis to /tmp/petrispot-output-13195249197048156085.kers
+Total runtime 5 ms.
+[2026-10-24 23:23:17] [INFO   ] Implicit Places using invariants in 326 ms returned [] 
+[2026-10-24 23:23:17] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:23:17] [INFO   ] State equation strengthened by 130 read => feed constraints. 
+[2026-10-24 23:23:18] [INFO   ] Implicit Places using invariants and state equation in 273 ms returned [] 
+Implicit Place search using SMT with State Equation took 664 ms to find 0 implicit places.
+Running 151 sub problems to find dead transitions.
+[2026-10-24 23:23:18] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:23:18] [INFO   ] State equation strengthened by 130 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/36 variables, 36/36 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/36 variables, 6/42 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/36 variables, 20/62 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/36 variables, 20/82 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/36 variables, 20/102 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/36 variables, 20/122 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/36 variables, 20/142 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/36 variables, 11/153 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/36 variables, 4/157 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/36 variables, 12/169 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/36 variables, 9/178 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 11 (INCLUDED_ONLY) 0/36 variables, 5/183 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/36 variables, 8/191 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 13 (INCLUDED_ONLY) 0/36 variables, 0/191 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 14 (OVERLAPS) 156/192 variables, 36/227 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 15 (INCLUDED_ONLY) 0/192 variables, 130/357 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 16 (INCLUDED_ONLY) 0/192 variables, 7/364 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 17 (INCLUDED_ONLY) 0/192 variables, 3/367 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 18 (INCLUDED_ONLY) 0/192 variables, 0/367 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 19 (OVERLAPS) 0/192 variables, 2/369 constraints. Problems are: Problem set: 0 solved, 151 unsolved
+At refinement iteration 20 (INCLUDED_ONLY) 0/192 variables, 0/369 constraints. Problems are: Problem set: 0 solved, 151 unsolved

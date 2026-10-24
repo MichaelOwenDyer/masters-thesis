@@ -1,0 +1,54 @@
+[2026-10-25 00:02:57] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.P98jy8CgVp, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:02:57] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.P98jy8CgVp/model.pnml 
+[2026-10-25 00:02:59] [INFO   ] Load time of PNML (sax parser for PT used): 1054 ms 
+[2026-10-25 00:02:59] [INFO   ] Transformed 13544 places. 
+[2026-10-25 00:02:59] [INFO   ] Transformed 21807 transitions. 
+[2026-10-25 00:02:59] [INFO   ] Parsed PT model containing 13544 places and 21807 transitions and 93598 arcs in 1578 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.P98jy8CgVp/ReachabilityDeadlock.xml in 11 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 39 ms.55094KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 13544/13544 places, 21807/21807 transitions.
+Computed a total of 7528 stabilizing places and 9838 stable transitions
+Graph (complete) has 70479 edges and 13544 vertex of which 13504 are kept as prefixes of interest. Removing 40 places using SCC suffix rule.237 ms
+Discarding 40 places :
+Also discarding 0 output transitions 
+Computed a total of 7488 stabilizing places and 9838 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2112 transitions 
+Trivial Post-agglo rules discarded 2112 transitions
+Performed 2112 trivial Post agglomeration. Transition count delta: 2112
+Iterating post reduction 0 with 2112 rules applied. Total rules applied 2113 place count 13504 transition count 19695
+Reduce places removed 2112 places and 0 transitions. 
+Computed a total of 5376 stabilizing places and 7726 stable transitions
+Iterating post reduction 1 with 2112 rules applied. Total rules applied 4225 place count 11392 transition count 19695
+Computed a total of 5376 stabilizing places and 7726 stable transitions
+Performed 132 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 2 with 132 Pre rules applied. Total rules applied 4225 place count 11392 transition count 19563
+Deduced a syphon composed of 132 places in 40 ms
+Reduce places removed 132 places and 0 transitions. 
+Iterating global reduction 2 with 264 rules applied. Total rules applied 4489 place count 11260 transition count 19563
+Computed a total of 5244 stabilizing places and 7594 stable transitions
+Discarding 1980 places :
+Symmetric choice reduction at 2 with 1980 rule applications. Total rules  6469 place count 9280 transition count 17583
+Iterating global reduction 2 with 1980 rules applied. Total rules applied 8449 place count 9280 transition count 17583
+Computed a total of 3264 stabilizing places and 5614 stable transitions
+Performed 4 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 2 with 4 Pre rules applied. Total rules applied 8449 place count 9280 transition count 17579
+Deduced a syphon composed of 4 places in 65 ms
+Reduce places removed 4 places and 0 transitions. 
+Iterating global reduction 2 with 8 rules applied. Total rules applied 8457 place count 9276 transition count 17579
+Computed a total of 3260 stabilizing places and 5610 stable transitions
+Discarding 990 places :
+Symmetric choice reduction at 2 with 990 rule applications. Total rules  9447 place count 8286 transition count 15599
+Iterating global reduction 2 with 990 rules applied. Total rules applied 10437 place count 8286 transition count 15599
+Computed a total of 2270 stabilizing places and 3630 stable transitions
+Performed 33 Post agglomeration using F-continuation condition.Transition count delta: 33
+Deduced a syphon composed of 33 places in 73 ms
+Reduce places removed 33 places and 0 transitions. 
+Iterating global reduction 2 with 66 rules applied. Total rules applied 10503 place count 8253 transition count 15566
+Computed a total of 2270 stabilizing places and 3630 stable transitions
+Computed a total of 2270 stabilizing places and 3630 stable transitions
+Applied a total of 10503 rules in 16887 ms. Remains 8253 /13544 variables (removed 5291) and now considering 15566/21807 (removed 6241) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 16918 ms. Remains : 8253/13544 places, 15566/21807 transitions.
+PetriSpot walker: 1/1 properties solved in 248 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 19274 ms.

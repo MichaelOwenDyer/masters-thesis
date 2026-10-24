@@ -1,0 +1,79 @@
+[2026-10-25 00:02:03] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oCO4oTQm7P, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-25 00:02:03] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oCO4oTQm7P/model.pnml 
+[2026-10-25 00:02:03] [INFO   ] Load time of PNML (sax parser for PT used): 97 ms 
+[2026-10-25 00:02:03] [INFO   ] Transformed 256 places. 
+[2026-10-25 00:02:03] [INFO   ] Transformed 257 transitions. 
+[2026-10-25 00:02:03] [INFO   ] Parsed PT model containing 256 places and 257 transitions and 514 arcs in 439 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 256/256 places, 257/257 transitions.
+Graph (trivial) has 257 edges and 256 vertex of which 256 / 256 are part of one of the 2 SCC in 10 ms
+Free SCC test removed 254 places 
+Ensure Unique test removed 254 transitions
+Reduce isomorphic transitions removed 254 transitions.
+Applied a total of 1 rules in 53 ms. Remains 2 /256 variables (removed 254) and now considering 3/257 (removed 254) transitions.
+[2026-10-25 00:02:03] [INFO   ] Flow matrix only has 2 transitions (discarded 1 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-7559962603469973523.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12109182145921775502.kers' 
+[2026-10-25 00:02:03] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-7559962603469973523.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12109182145921775502.kers]
+Normalized transition count is 1 out of 2 initially.
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 1 rows 1 cols 1 entries
+Finished phase 1 with 1 SingleSign rule and 0 generalized 
+[2026-10-25 00:02:03] [INFO   ] Computed 1 invariants in 0 ms
+Computed 1 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-12109182145921775502.kers
+Total runtime 4 ms.
+[2026-10-25 00:02:03] [INFO   ] Implicit Places using invariants in 97 ms returned [] 
+[2026-10-25 00:02:03] [INFO   ] Flow matrix only has 2 transitions (discarded 1 similar events) 
+[2026-10-25 00:02:03] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:02:03] [INFO   ] Implicit Places using invariants and state equation in 21 ms returned [] 
+Implicit Place search using SMT with State Equation took 171 ms to find 0 implicit places.
+Running 1 sub problems to find dead transitions.
+[2026-10-25 00:02:03] [INFO   ] Flow matrix only has 2 transitions (discarded 1 similar events) 
+[2026-10-25 00:02:03] [INFO   ] Invariant cache hit. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 1/2 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/2 variables, 0/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (OVERLAPS) 1/3 variables, 2/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/3 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (OVERLAPS) 0/3 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 3/4 variables, and 3 constraints, problems are : Problem set: 0 solved, 1 unsolved in 55 ms.
+Refiners :[Positive P Invariants (semi-flows): 1/1 constraints, State Equation: 2/2 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 1 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 1/2 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/2 variables, 0/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (OVERLAPS) 1/3 variables, 2/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/3 variables, 1/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/3 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 6 (OVERLAPS) 0/3 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 3/4 variables, and 4 constraints, problems are : Problem set: 0 solved, 1 unsolved in 36 ms.
+Refiners :[Positive P Invariants (semi-flows): 1/1 constraints, State Equation: 2/2 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 113ms problems are : Problem set: 0 solved, 1 unsolved
+Search for dead transitions found 0 dead transitions in 124ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 2/256 places, 3/257 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 409 ms. Remains : 2/256 places, 3/257 transitions.
+Discarding 1 transitions out of 3. Remains 2
+Initial state reduction rules removed 1 formulas.
+PetriSpot walker: 1/1 properties solved in 11 ms (exit 0).
+Walk beside the decision diagrams solved 1 properties.
+PetriSpot walker: 1/1 properties solved in 6 ms (exit 0).
+[2026-10-25 00:02:04] [INFO   ] Flatten gal took : 184 ms 
+[2026-10-25 00:02:04] [INFO   ] Flatten gal took : 2 ms 
+[2026-10-25 00:02:04] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality11306312647298408065.gal : 4 ms 
+[2026-10-25 00:02:04] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality13528925320802025295.prop : 3 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oCO4oTQm7P;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality11306312647298408065.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality13528925320802025295.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+ITS runner timed out or was interrupted.
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+Loading property file /tmp/ReachabilityCardinality13528925320802025295.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,2,0.000915,3932,2,4,5,11,6,0,10,6,0
+ Total reachable state count : 2
+
+Able to resolve query QuasiLiveness after proving 2 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES RANDOM_WALK TOPOLOGICAL INITIAL_STATE PARALLEL_PROCESSING EXPLICIT 
+Total runtime 1199 ms.

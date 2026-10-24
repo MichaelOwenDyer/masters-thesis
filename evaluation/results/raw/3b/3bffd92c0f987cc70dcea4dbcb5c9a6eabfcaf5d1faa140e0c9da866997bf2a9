@@ -1,0 +1,28 @@
+[2026-10-24 23:44:51] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.K2T7oOZVSB, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:44:51] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.K2T7oOZVSB/model.pnml 
+[2026-10-24 23:44:51] [INFO   ] Load time of PNML (sax parser for PT used): 145 ms 
+[2026-10-24 23:44:52] [INFO   ] Transformed 59 places. 
+[2026-10-24 23:44:52] [INFO   ] Transformed 180 transitions. 
+[2026-10-24 23:44:52] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:44:52] [INFO   ] Completing missing partition info from NUPN : creating a component with [P_client_idle_1, P_client_idle_2, P_client_idle_3, P_client_idle_4, P_client_idle_5, P_client_waiting_1, P_client_waiti... [1112 chars] 
+[2026-10-24 23:44:52] [INFO   ] Parsed PT model containing 59 places and 180 transitions and 1158 arcs in 503 ms. 
+Structural test allowed to assert that 15 places are NOT stable. Took 9 ms.
+[2026-10-24 23:44:53] [INFO   ] Flatten gal took : 342 ms 
+[2026-10-24 23:44:53] [INFO   ] Flatten gal took : 151 ms 
+[2026-10-24 23:44:53] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality17265632057859428652.gal : 155 ms 
+[2026-10-24 23:44:53] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality869217508545518161.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.K2T7oOZVSB;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality17265632057859428652.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality869217508545518161.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality869217508545518161.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,116176,0.277254,15500,2,2290,16,32781,9,0,423,29704,0
+ Total reachable state count : 116176
+
+Verifying 3 reachability properties.
+FORMULA StableMarking TRUE TECHNIQUES MARKED_SUFFIX_TEST DECISION_DIAGRAMS COLLATERAL_PROCESSING TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+ITS tools runner thread asked to quit. Dying gracefully.
+PetriSpot walker: 41/44 properties solved in 3946 ms (exit 137).
+Walk beside the decision diagrams solved 41 properties.

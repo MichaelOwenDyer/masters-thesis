@@ -1,0 +1,90 @@
+[2026-10-24 23:56:24] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.jy3u4F80mE, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:56:24] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.jy3u4F80mE/model.pnml 
+[2026-10-24 23:56:24] [INFO   ] Load time of PNML (sax parser for PT used): 113 ms 
+[2026-10-24 23:56:24] [INFO   ] Transformed 111 places. 
+[2026-10-24 23:56:25] [INFO   ] Transformed 45 transitions. 
+[2026-10-24 23:56:25] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:56:25] [INFO   ] Parsed PT model containing 111 places and 45 transitions and 224 arcs in 479 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 111/111 places, 45/45 transitions.
+Ensure Unique test removed 36 places
+Discarding 8 places :
+Implicit places reduction removed 8 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 7 transitions 
+Trivial Post-agglo rules discarded 7 transitions
+Performed 7 trivial Post agglomeration. Transition count delta: 7
+Iterating post reduction 0 with 51 rules applied. Total rules applied 51 place count 67 transition count 38
+Reduce places removed 11 places and 0 transitions. 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 8 transitions 
+Trivial Post-agglo rules discarded 8 transitions
+Performed 8 trivial Post agglomeration. Transition count delta: 8
+Iterating post reduction 1 with 19 rules applied. Total rules applied 70 place count 56 transition count 30
+Reduce places removed 8 places and 0 transitions. 
+Iterating post reduction 2 with 8 rules applied. Total rules applied 78 place count 48 transition count 30
+Performed 11 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 11 Pre rules applied. Total rules applied 78 place count 48 transition count 19
+Deduced a syphon composed of 11 places in 0 ms
+Ensure Unique test removed 3 places
+Reduce places removed 18 places and 0 transitions. 
+Iterating global reduction 3 with 29 rules applied. Total rules applied 107 place count 30 transition count 19
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 3 Pre rules applied. Total rules applied 107 place count 30 transition count 16
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 3 with 6 rules applied. Total rules applied 113 place count 27 transition count 16
+Performed 8 Post agglomeration using F-continuation condition.Transition count delta: 8
+Deduced a syphon composed of 8 places in 0 ms
+Reduce places removed 12 places and 0 transitions. 
+Iterating global reduction 3 with 20 rules applied. Total rules applied 133 place count 15 transition count 8
+Discarding 2 places :
+Implicit places reduction removed 2 places 
+Iterating post reduction 3 with 2 rules applied. Total rules applied 135 place count 13 transition count 8
+Performed 2 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 4 with 2 Pre rules applied. Total rules applied 135 place count 13 transition count 6
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 4 with 5 rules applied. Total rules applied 140 place count 10 transition count 6
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 4 with 1 rules applied. Total rules applied 141 place count 10 transition count 5
+Reduce places removed 2 places and 0 transitions. 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 5 with 3 rules applied. Total rules applied 144 place count 8 transition count 4
+Reduce places removed 2 places and 0 transitions. 
+Iterating post reduction 6 with 2 rules applied. Total rules applied 146 place count 6 transition count 4
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 7 with 1 Pre rules applied. Total rules applied 146 place count 6 transition count 3
+Deduced a syphon composed of 1 places in 0 ms
+Ensure Unique test removed 1 places
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 7 with 3 rules applied. Total rules applied 149 place count 4 transition count 3
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 7 with 3 rules applied. Total rules applied 152 place count 2 transition count 2
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 7 with 1 rules applied. Total rules applied 153 place count 2 transition count 1
+Reduce places removed 2 places and 0 transitions. 
+Iterating post reduction 8 with 2 rules applied. Total rules applied 155 place count 0 transition count 1
+Applied a total of 155 rules in 89 ms. Remains 0 /111 variables (removed 111) and now considering 1/45 (removed 44) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-1374000436699037591.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-8584546891990214457.kers' 
+[2026-10-24 23:56:25] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-1374000436699037591.kers, --Pflows, --basisKERS=/tmp/petrispot-output-8584546891990214457.kers]
+[2026-10-24 23:56:25] [INFO   ] Computed 0 invariants in 0 ms
+Computed 0 P flows in 6 ms.
+Exported basis to /tmp/petrispot-output-8584546891990214457.kers
+Total runtime 7 ms.
+[2026-10-24 23:56:25] [INFO   ] Implicit Places using invariants in 84 ms returned [] 
+[2026-10-24 23:56:25] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:56:25] [INFO   ] Implicit Places using invariants and state equation in 34 ms returned [] 
+Implicit Place search using SMT with State Equation took 163 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 4ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 0/111 places, 1/45 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 310 ms. Remains : 0/111 places, 1/45 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 872 ms.

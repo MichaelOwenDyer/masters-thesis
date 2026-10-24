@@ -1,0 +1,29 @@
+[2026-10-24 23:48:08] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wVD7DAjAaF, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:48:08] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wVD7DAjAaF/model.pnml 
+[2026-10-24 23:48:08] [INFO   ] Load time of PNML (sax parser for PT used): 64 ms 
+[2026-10-24 23:48:08] [INFO   ] Transformed 13 places. 
+[2026-10-24 23:48:08] [INFO   ] Transformed 16 transitions. 
+[2026-10-24 23:48:08] [INFO   ] Parsed PT model containing 13 places and 16 transitions and 64 arcs in 456 ms. 
+PetriSpot walker: 13/13 properties solved in 84 ms (exit 0).
+PetriSpot walker: 13/13 properties solved in 64 ms (exit 0).
+Walk beside the decision diagrams solved 13 properties.
+[2026-10-24 23:48:09] [INFO   ] Flatten gal took : 37 ms 
+[2026-10-24 23:48:09] [INFO   ] Flatten gal took : 3 ms 
+[2026-10-24 23:48:09] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality11122292375794261630.gal : 19 ms 
+[2026-10-24 23:48:09] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality9892178304952167885.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wVD7DAjAaF;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality11122292375794261630.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality9892178304952167885.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+ITS runner timed out or was interrupted.
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality9892178304952167885.prop.
+Found states matching all0 target predicate 
+Will report total states built up to this point. Computation was interrupted after 3 fixpoint passes
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,14,0.002129,4088,2,36,5,166,6,0,72,100,0
+ Total reachable state count : 14
+
+Able to resolve query StableMarking after proving 13 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 910 ms.

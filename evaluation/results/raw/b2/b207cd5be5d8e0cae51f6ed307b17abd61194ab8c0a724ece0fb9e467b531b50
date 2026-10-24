@@ -1,0 +1,25 @@
+[2026-10-25 00:03:20] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.uz7YaAACrb, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:03:20] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.uz7YaAACrb/model.pnml 
+[2026-10-25 00:03:21] [INFO   ] Load time of PNML (sax parser for PT used): 258 ms 
+[2026-10-25 00:03:21] [INFO   ] Transformed 1025 places. 
+[2026-10-25 00:03:21] [INFO   ] Transformed 1025 transitions. 
+[2026-10-25 00:03:21] [INFO   ] Parsed PT model containing 1025 places and 1025 transitions and 2050 arcs in 755 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.uz7YaAACrb/ReachabilityDeadlock.xml in 8 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 17 ms.19019KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 1025/1025 places, 1025/1025 transitions.
+Graph (trivial) has 1025 edges and 1025 vertex of which 1024 / 1025 are part of one of the 1 SCC in 18 ms
+Free SCC test removed 1023 places 
+Ensure Unique test removed 1023 transitions
+Reduce isomorphic transitions removed 1023 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.2 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 103 ms. Remains 1 /1025 variables (removed 1024) and now considering 2/1025 (removed 1023) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 133 ms. Remains : 1/1025 places, 2/1025 transitions.
+PetriSpot walker: 1/1 properties solved in 65 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 1371 ms.

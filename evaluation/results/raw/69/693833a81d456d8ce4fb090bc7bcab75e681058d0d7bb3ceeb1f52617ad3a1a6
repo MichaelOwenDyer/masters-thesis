@@ -1,0 +1,44 @@
+[2026-10-24 23:22:11] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oTzl9IXKxs, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:22:11] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oTzl9IXKxs/model.pnml 
+[2026-10-24 23:22:11] [INFO   ] Load time of PNML (sax parser for PT used): 130 ms 
+[2026-10-24 23:22:11] [INFO   ] Transformed 75 places. 
+[2026-10-24 23:22:11] [INFO   ] Transformed 255 transitions. 
+[2026-10-24 23:22:11] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:22:11] [INFO   ] Parsed PT model containing 75 places and 255 transitions and 1830 arcs in 520 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 75/75 places, 255/255 transitions.
+Applied a total of 0 rules in 22 ms. Remains 75 /75 variables (removed 0) and now considering 255/255 (removed 0) transitions.
+[2026-10-24 23:22:11] [INFO   ] Flow matrix only has 60 transitions (discarded 195 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-518424662674104821.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-6200117962372695015.kers' 
+[2026-10-24 23:22:11] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-518424662674104821.kers, --Pflows, --basisKERS=/tmp/petrispot-output-6200117962372695015.kers]
+Culling duplicate invariants (modulo rational): removing 30 columns.
+Culled 30 columns in 0 ms.
+// Phase 1: matrix 60 rows 45 cols 120 entries
+Finished phase 1 with 30 SingleSign rule and 0 generalized 
+[2026-10-24 23:22:11] [INFO   ] Computed 45 invariants in 0 ms
+Computed 45 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-6200117962372695015.kers
+Total runtime 0 ms.
+[2026-10-24 23:22:12] [INFO   ] Implicit Places using invariants in 391 ms returned [30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60, 63, 66, 69, 72] 
+Discarding 15 places :
+Implicit Place search using SMT only with invariants took 450 ms to find 15 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 60/75 places, 255/255 transitions.
+Applied a total of 0 rules in 9 ms. Remains 60 /60 variables (removed 0) and now considering 255/255 (removed 0) transitions.
+Finished structural reductions in LIVENESS mode , in 2 iterations and 520 ms. Remains : 60/75 places, 255/255 transitions.
+Discarding 15 transitions out of 255. Remains 240
+PetriSpot walker: 240/240 properties solved in 58 ms (exit 0).
+PetriSpot walker: 240/240 properties solved in 56 ms (exit 0).
+Walk beside the decision diagrams solved 240 properties.
+[2026-10-24 23:22:12] [INFO   ] Flatten gal took : 115 ms 
+[2026-10-24 23:22:12] [INFO   ] Flatten gal took : 44 ms 
+[2026-10-24 23:22:12] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality3902942757984296017.gal : 35 ms 
+[2026-10-24 23:22:12] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality7462303441657528310.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oTzl9IXKxs;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality3902942757984296017.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality7462303441657528310.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query QuasiLiveness after proving 240 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1715 ms.

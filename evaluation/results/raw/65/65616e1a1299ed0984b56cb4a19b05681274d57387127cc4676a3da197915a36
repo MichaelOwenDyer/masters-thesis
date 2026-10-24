@@ -1,0 +1,24 @@
+[2026-10-24 23:49:15] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kVi0i30bYO, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:49:15] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kVi0i30bYO/model.pnml 
+[2026-10-24 23:49:16] [INFO   ] Load time of PNML (sax parser for PT used): 109 ms 
+[2026-10-24 23:49:16] [INFO   ] Transformed 50 places. 
+[2026-10-24 23:49:16] [INFO   ] Transformed 50 transitions. 
+[2026-10-24 23:49:16] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:49:16] [INFO   ] Parsed PT model containing 50 places and 50 transitions and 160 arcs in 589 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kVi0i30bYO/ReachabilityDeadlock.xml in 3 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 9 ms.8864KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 50/50 places, 50/50 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 10 Post agglomeration using F-continuation condition.Transition count delta: 10
+Deduced a syphon composed of 10 places in 0 ms
+Reduce places removed 10 places and 0 transitions. 
+Iterating global reduction 0 with 20 rules applied. Total rules applied 20 place count 40 transition count 40
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 20 rules in 96 ms. Remains 40 /50 variables (removed 10) and now considering 40/50 (removed 10) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 127 ms. Remains : 40/50 places, 40/50 transitions.
+PetriSpot walker: 1/1 properties solved in 59 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 955 ms.

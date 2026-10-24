@@ -1,0 +1,36 @@
+[2026-10-24 23:21:21] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.9f4iCFFXko, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:21:21] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.9f4iCFFXko/model.pnml 
+[2026-10-24 23:21:22] [INFO   ] Load time of PNML (sax parser for PT used): 174 ms 
+[2026-10-24 23:21:22] [INFO   ] Transformed 231 places. 
+[2026-10-24 23:21:22] [INFO   ] Transformed 202 transitions. 
+[2026-10-24 23:21:22] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:21:22] [INFO   ] Parsed PT model containing 231 places and 202 transitions and 846 arcs in 574 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 231/231 places, 202/202 transitions.
+[2026-10-24 23:21:22] [INFO   ] Redundant transitions in 8 ms returned [] 
+Running 200 sub problems to find dead transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-6870099907927037796.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-9399490336814591907.kers' 
+[2026-10-24 23:21:22] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-6870099907927037796.kers, --Pflows, --basisKERS=/tmp/petrispot-output-9399490336814591907.kers]
+Culling duplicate invariants (modulo rational): removing 12 columns.
+Culled 12 columns in 0 ms.
+// Phase 1: matrix 202 rows 219 cols 568 entries
+Finished phase 1 with 119 SingleSign rule and 53 generalized 
+[2026-10-24 23:21:22] [INFO   ] Computed 59 invariants in 0 ms
+Computed 59 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-9399490336814591907.kers
+Total runtime 1 ms.
+[2026-10-24 23:21:22] [INFO   ] State equation strengthened by 68 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/227 variables, 227/227 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/227 variables, 25/252 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/227 variables, 26/278 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/227 variables, 20/298 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/227 variables, 17/315 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/227 variables, 3/318 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/227 variables, 1/319 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/227 variables, 1/320 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/227 variables, 0/320 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 9 (OVERLAPS) 4/231 variables, 8/328 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/231 variables, 4/332 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 11 (INCLUDED_ONLY) 0/231 variables, 8/340 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 12 (INCLUDED_ONLY) 0/231 variables, 0/340 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 13 (OVERLAPS) 202/433 variables, 231/571 constraints. Problems are: Problem set: 0 solved, 200 unsolved
+At refinement iteration 14 (INCLUDED_ONLY) 0/433 variables, 68/639 constraints. Problems are: Problem set: 0 solved, 200 unsolved

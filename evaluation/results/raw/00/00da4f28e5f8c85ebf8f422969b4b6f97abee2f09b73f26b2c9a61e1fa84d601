@@ -1,0 +1,29 @@
+[2026-10-24 23:57:30] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Bbf7VXTjqo, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:57:30] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Bbf7VXTjqo/model.pnml 
+[2026-10-24 23:57:30] [INFO   ] Load time of PNML (sax parser for PT used): 161 ms 
+[2026-10-24 23:57:30] [INFO   ] Transformed 104 places. 
+[2026-10-24 23:57:30] [INFO   ] Transformed 308 transitions. 
+[2026-10-24 23:57:30] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:57:31] [INFO   ] Parsed PT model containing 104 places and 308 transitions and 1611 arcs in 530 ms. 
+Graph (trivial) has 133 edges and 104 vertex of which 30 / 104 are part of one of the 9 SCC in 8 ms
+Free SCC test removed 21 places 
+Structural test allowed to assert that 36 places are NOT stable. Took 36 ms.
+Ensure Unique test removed 81 transitions
+Reduce redundant transitions removed 81 transitions.
+PetriSpot walker: 68/68 properties solved in 433 ms (exit 0).
+[2026-10-24 23:57:32] [INFO   ] Flatten gal took : 192 ms 
+[2026-10-24 23:57:32] [INFO   ] Flatten gal took : 70 ms 
+[2026-10-24 23:57:32] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality14629086947243486807.gal : 87 ms 
+[2026-10-24 23:57:32] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality7057881500747607207.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Bbf7VXTjqo;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality14629086947243486807.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality7057881500747607207.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+ITS tools runner thread asked to quit. Dying gracefully.
+PetriSpot walker: 58/68 properties solved in 1219 ms (exit 137).
+Walk beside the decision diagrams solved 58 properties.
+Able to resolve query StableMarking after proving 70 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST TRIVIAL_UNMARKED_SCC_TEST TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1922 ms.

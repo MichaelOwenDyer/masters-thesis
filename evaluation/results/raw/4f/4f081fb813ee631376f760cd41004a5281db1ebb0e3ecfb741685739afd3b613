@@ -1,0 +1,80 @@
+[2026-10-24 23:28:02] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.te1f3KnOvv, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:28:02] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.te1f3KnOvv/model.pnml 
+[2026-10-24 23:28:03] [INFO   ] Load time of PNML (sax parser for PT used): 100 ms 
+[2026-10-24 23:28:03] [INFO   ] Transformed 86 places. 
+[2026-10-24 23:28:03] [INFO   ] Transformed 56 transitions. 
+[2026-10-24 23:28:03] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:28:03] [INFO   ] Parsed PT model containing 86 places and 56 transitions and 223 arcs in 468 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 86/86 places, 56/56 transitions.
+Reduce places removed 10 places and 0 transitions. 
+Iterating post reduction 0 with 10 rules applied. Total rules applied 10 place count 76 transition count 56
+Performed 2 Post agglomeration using F-continuation condition.Transition count delta: 2
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 1 with 4 rules applied. Total rules applied 14 place count 74 transition count 54
+Applied a total of 14 rules in 53 ms. Remains 74 /86 variables (removed 12) and now considering 54/56 (removed 2) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-3842869787063108681.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12146454638125753602.kers' 
+[2026-10-24 23:28:03] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-3842869787063108681.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12146454638125753602.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 54 rows 74 cols 192 entries
+Finished phase 1 with 17 SingleSign rule and 35 generalized 
+[2026-10-24 23:28:03] [INFO   ] Computed 22 invariants in 0 ms
+Computed 22 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-12146454638125753602.kers
+Total runtime 4 ms.
+[2026-10-24 23:28:03] [INFO   ] Implicit Places using invariants in 261 ms returned [] 
+[2026-10-24 23:28:03] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:28:03] [INFO   ] Implicit Places using invariants and state equation in 142 ms returned [41, 42, 48] 
+Discarding 3 places :
+Implicit Place search using SMT with State Equation took 452 ms to find 3 implicit places.
+Starting structural reductions in LIVENESS mode, iteration 1 : 71/86 places, 54/56 transitions.
+Applied a total of 0 rules in 5 ms. Remains 71 /71 variables (removed 0) and now considering 54/54 (removed 0) transitions.
+Finished structural reductions in LIVENESS mode , in 2 iterations and 538 ms. Remains : 71/86 places, 54/56 transitions.
+Discarding 11 transitions out of 54. Remains 43
+Initial state reduction rules removed 4 formulas.
+[2026-10-24 23:28:04] [INFO   ] Flatten gal took : 213 ms 
+[2026-10-24 23:28:04] [INFO   ] Flatten gal took : 57 ms 
+[2026-10-24 23:28:04] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality5176987058381885912.gal : 60 ms 
+[2026-10-24 23:28:05] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality1535731193496852260.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.te1f3KnOvv;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality5176987058381885912.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality1535731193496852260.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality1535731193496852260.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,1021,0.021153,5360,2,1302,37,4817,9,0,337,2212,0
+ Total reachable state count : 1021
+
+Verifying 29 reachability properties.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PetriSpot walker: 10/39 properties solved in 1566 ms (exit 137).
+Walk beside the decision diagrams solved 10 properties.

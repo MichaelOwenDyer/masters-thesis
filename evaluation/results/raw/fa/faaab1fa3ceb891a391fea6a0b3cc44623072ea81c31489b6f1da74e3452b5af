@@ -1,0 +1,17 @@
+[2026-10-24 23:27:13] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.giVLgw3qwa, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:27:13] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.giVLgw3qwa/model.pnml 
+[2026-10-24 23:27:14] [INFO   ] Load time of PNML (sax parser for PT used): 58 ms 
+[2026-10-24 23:27:14] [INFO   ] Transformed 32 places. 
+[2026-10-24 23:27:14] [INFO   ] Transformed 32 transitions. 
+[2026-10-24 23:27:14] [INFO   ] Parsed PT model containing 32 places and 32 transitions and 96 arcs in 460 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 32/32 places, 32/32 transitions.
+Graph (trivial) has 16 edges and 32 vertex of which 16 / 32 are part of one of the 1 SCC in 7 ms
+Free SCC test removed 15 places 
+Ensure Unique test removed 15 transitions
+Reduce isomorphic transitions removed 15 transitions.
+Reduce places removed 1 places and 0 transitions. 
+Graph (trivial) has 16 edges and 16 vertex of which 16 / 16 are part of one of the 1 SCC in 0 ms
+Free SCC test removed 15 places 
+Iterating post reduction 0 with 2 rules applied. Total rules applied 3 place count 1 transition count 17
+FORMULA QuasiLiveness FALSE TECHNIQUES STRUCTURAL_REDUCTION 
+Total runtime 613 ms.

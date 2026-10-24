@@ -1,0 +1,32 @@
+[2026-10-24 23:22:21] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.hQknphMl6g, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:22:21] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.hQknphMl6g/model.pnml 
+[2026-10-24 23:22:22] [INFO   ] Load time of PNML (sax parser for PT used): 63 ms 
+[2026-10-24 23:22:22] [INFO   ] Transformed 27 places. 
+[2026-10-24 23:22:22] [INFO   ] Transformed 29 transitions. 
+[2026-10-24 23:22:22] [INFO   ] Parsed PT model containing 27 places and 29 transitions and 94 arcs in 403 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.hQknphMl6g/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 8 ms.8611KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 27/27 places, 29/29 transitions.
+Graph (trivial) has 9 edges and 27 vertex of which 8 / 27 are part of one of the 4 SCC in 5 ms
+Free SCC test removed 4 places 
+Ensure Unique test removed 4 transitions
+Reduce isomorphic transitions removed 4 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Redundant composition of simpler transitions.) removed 3 transitions 
+Redundant transition composition rules discarded 3 transitions
+Iterating global reduction 0 with 3 rules applied. Total rules applied 4 place count 23 transition count 22
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 3 transitions 
+Trivial Post-agglo rules discarded 3 transitions
+Performed 3 trivial Post agglomeration. Transition count delta: 3
+Iterating post reduction 0 with 3 rules applied. Total rules applied 7 place count 23 transition count 19
+Reduce places removed 6 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 1 with 6 rules applied. Total rules applied 13 place count 17 transition count 19
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 13 rules in 72 ms. Remains 17 /27 variables (removed 10) and now considering 19/29 (removed 10) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 97 ms. Remains : 17/27 places, 19/29 transitions.

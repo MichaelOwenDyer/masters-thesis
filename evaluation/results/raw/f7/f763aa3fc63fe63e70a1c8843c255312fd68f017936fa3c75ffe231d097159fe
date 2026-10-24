@@ -1,0 +1,9 @@
+[2026-10-24 23:52:32] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oLMdx0bBiZ, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 23:52:32] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.oLMdx0bBiZ/model.pnml 
+[2026-10-24 23:52:32] [INFO   ] Load time of PNML (sax parser for PT used): 97 ms 
+[2026-10-24 23:52:32] [INFO   ] Transformed 25 places. 
+[2026-10-24 23:52:32] [INFO   ] Transformed 25 transitions. 
+[2026-10-24 23:52:32] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:52:32] [INFO   ] Parsed PT model containing 25 places and 25 transitions and 80 arcs in 597 ms. 
+FORMULA OneSafe TRUE TECHNIQUES STRUCTURAL
+Total runtime 683 ms.

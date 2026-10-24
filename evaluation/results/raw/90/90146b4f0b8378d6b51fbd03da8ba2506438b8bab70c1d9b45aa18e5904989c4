@@ -1,0 +1,31 @@
+[2026-10-24 23:55:45] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pSPYuMaPAO, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:55:45] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pSPYuMaPAO/model.pnml 
+[2026-10-24 23:55:45] [INFO   ] Load time of PNML (sax parser for PT used): 235 ms 
+[2026-10-24 23:55:45] [INFO   ] Transformed 231 places. 
+[2026-10-24 23:55:45] [INFO   ] Transformed 202 transitions. 
+[2026-10-24 23:55:45] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:55:45] [INFO   ] Parsed PT model containing 231 places and 202 transitions and 846 arcs in 720 ms. 
+[2026-10-24 23:55:48] [INFO   ] Flatten gal took : 465 ms 
+[2026-10-24 23:55:48] [INFO   ] Flatten gal took : 195 ms 
+[2026-10-24 23:55:48] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality8969323873349229378.gal : 219 ms 
+[2026-10-24 23:55:48] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality2447535390560862530.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pSPYuMaPAO;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality8969323873349229378.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality2447535390560862530.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality2447535390560862530.prop.
+PetriSpot walker: 231/231 properties solved in 3242 ms (exit 0).
+Walk beside the decision diagrams solved 231 properties.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,349874,0.643507,23596,2,11538,19,76963,9,0,1133,58314,0
+ Total reachable state count : 349874
+
+Verifying 3 reachability properties.
+
+
+
+PetriSpot walker: 231/231 properties solved in 8061 ms (exit 0).
+Able to resolve query StableMarking after proving 231 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 9026 ms.

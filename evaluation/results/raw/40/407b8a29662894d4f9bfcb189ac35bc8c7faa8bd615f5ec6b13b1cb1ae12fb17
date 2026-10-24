@@ -1,0 +1,10 @@
+[2026-10-25 00:00:11] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Ef4yiHtQTu, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-25 00:00:11] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Ef4yiHtQTu/model.pnml 
+[2026-10-25 00:00:11] [INFO   ] Load time of PNML (sax parser for PT used): 111 ms 
+[2026-10-25 00:00:11] [INFO   ] Transformed 9 places. 
+[2026-10-25 00:00:11] [INFO   ] Transformed 72 transitions. 
+[2026-10-25 00:00:12] [INFO   ] Parsed PT model containing 9 places and 72 transitions and 144 arcs in 579 ms. 
+Structural test allowed to assert that 9 places are NOT stable. Took 13 ms.
+Able to resolve query StableMarking after proving 1 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST 
+Total runtime 712 ms.

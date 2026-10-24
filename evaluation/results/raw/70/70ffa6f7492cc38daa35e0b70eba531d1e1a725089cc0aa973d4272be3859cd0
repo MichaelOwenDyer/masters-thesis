@@ -1,0 +1,9 @@
+[2026-10-25 00:07:42] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2AruhpwE51, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-25 00:07:42] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2AruhpwE51/model.pnml 
+[2026-10-25 00:07:42] [INFO   ] Load time of PNML (sax parser for PT used): 55 ms 
+[2026-10-25 00:07:42] [INFO   ] Transformed 11 places. 
+[2026-10-25 00:07:42] [INFO   ] Transformed 11 transitions. 
+[2026-10-25 00:07:42] [INFO   ] Parsed PT model containing 11 places and 11 transitions and 34 arcs in 423 ms. 
+Due to initial marking, net is not one safe.
+FORMULA OneSafe FALSE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 508 ms.

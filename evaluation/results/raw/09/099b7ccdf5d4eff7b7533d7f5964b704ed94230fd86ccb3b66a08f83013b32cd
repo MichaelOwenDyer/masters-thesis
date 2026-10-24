@@ -1,0 +1,25 @@
+[2026-10-25 00:02:29] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JyvivT7Oxi, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-25 00:02:29] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JyvivT7Oxi/model.pnml 
+[2026-10-25 00:02:29] [INFO   ] Load time of PNML (sax parser for PT used): 121 ms 
+[2026-10-25 00:02:29] [INFO   ] Transformed 112 places. 
+[2026-10-25 00:02:29] [INFO   ] Transformed 140 transitions. 
+[2026-10-25 00:02:29] [INFO   ] Parsed PT model containing 112 places and 140 transitions and 400 arcs in 487 ms. 
+PetriSpot walker: 112/112 properties solved in 114 ms (exit 0).
+PetriSpot walker: 112/112 properties solved in 99 ms (exit 0).
+Walk beside the decision diagrams solved 112 properties.
+[2026-10-25 00:02:29] [INFO   ] Flatten gal took : 64 ms 
+[2026-10-25 00:02:29] [INFO   ] Flatten gal took : 24 ms 
+[2026-10-25 00:02:30] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality11416773305337064144.gal : 29 ms 
+[2026-10-25 00:02:30] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality10514209160317013117.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.JyvivT7Oxi;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality11416773305337064144.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality10514209160317013117.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...378
+Loading property file /tmp/ReachabilityCardinality10514209160317013117.prop.
+Could not access property file : /tmp/ReachabilityCardinality10514209160317013117.prop
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query StableMarking after proving 112 properties.
+FORMULA StableMarking FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 1065 ms.

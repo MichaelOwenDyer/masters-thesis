@@ -1,0 +1,71 @@
+[2026-10-24 23:41:19] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LV1zZSyxks, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:41:19] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LV1zZSyxks/model.pnml 
+[2026-10-24 23:41:19] [INFO   ] Load time of PNML (sax parser for PT used): 129 ms 
+[2026-10-24 23:41:19] [INFO   ] Transformed 57 places. 
+[2026-10-24 23:41:19] [INFO   ] Transformed 91 transitions. 
+[2026-10-24 23:41:19] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:41:19] [INFO   ] Parsed PT model containing 57 places and 91 transitions and 541 arcs in 497 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LV1zZSyxks/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Reduce places removed 3 places and 0 transitions. 
+Built sparse matrix representations for Structural reductions in 4 ms.9317KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 54/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 40 ms. Remains 54 /54 variables (removed 0) and now considering 91/91 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 66 ms. Remains : 54/54 places, 91/91 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 54/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 13 ms. Remains 54 /54 variables (removed 0) and now considering 91/91 (removed 0) transitions.
+[2026-10-24 23:41:19] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-10390005408825708194.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-1265734589146582288.kers' 
+[2026-10-24 23:41:19] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-10390005408825708194.kers, --Pflows, --basisKERS=/tmp/petrispot-output-1265734589146582288.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 68 rows 53 cols 292 entries
+Finished phase 1 with 14 SingleSign rule and 23 generalized 
+[2026-10-24 23:41:19] [INFO   ] Computed 17 invariants in 0 ms
+Computed 17 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-1265734589146582288.kers
+Total runtime 4 ms.
+[2026-10-24 23:41:20] [INFO   ] Implicit Places using invariants in 269 ms returned [42, 43, 44] 
+Discarding 3 places :
+Implicit Place search using SMT only with invariants took 323 ms to find 3 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 51/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 3 Pre rules applied. Total rules applied 0 place count 51 transition count 88
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 6 place count 48 transition count 88
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Post agglomeration using F-continuation condition.Transition count delta: -3
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 12 place count 45 transition count 91
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 12 rules in 40 ms. Remains 45 /51 variables (removed 6) and now considering 91/91 (removed 0) transitions.
+[2026-10-24 23:41:20] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-109108502471585726.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12682985080909232835.kers' 
+[2026-10-24 23:41:20] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-109108502471585726.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12682985080909232835.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 68 rows 44 cols 313 entries
+Finished phase 1 with 11 SingleSign rule and 20 generalized 
+[2026-10-24 23:41:20] [INFO   ] Computed 14 invariants in 0 ms
+Computed 14 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-12682985080909232835.kers
+Total runtime 2 ms.
+[2026-10-24 23:41:20] [INFO   ] Implicit Places using invariants in 82 ms returned [] 
+[2026-10-24 23:41:20] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+[2026-10-24 23:41:20] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:41:20] [INFO   ] State equation strengthened by 13 read => feed constraints. 
+[2026-10-24 23:41:20] [INFO   ] Implicit Places using invariants and state equation in 143 ms returned [] 
+Implicit Place search using SMT with State Equation took 231 ms to find 0 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 2 : 45/54 places, 91/91 transitions.
+Finished structural reductions in DEADLOCK mode , in 2 iterations and 615 ms. Remains : 45/54 places, 91/91 transitions.

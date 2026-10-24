@@ -1,0 +1,25 @@
+[2026-10-24 23:28:47] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wnrSRBBz6k, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:28:47] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wnrSRBBz6k/model.pnml 
+[2026-10-24 23:28:47] [INFO   ] Load time of PNML (sax parser for PT used): 198 ms 
+[2026-10-24 23:28:47] [INFO   ] Transformed 263 places. 
+[2026-10-24 23:28:48] [INFO   ] Transformed 139 transitions. 
+[2026-10-24 23:28:48] [INFO   ] Parsed PT model containing 263 places and 139 transitions and 541 arcs in 681 ms. 
+Structural test allowed to assert that 21 places are NOT stable. Took 18 ms.
+[2026-10-24 23:28:49] [INFO   ] Flatten gal took : 202 ms 
+[2026-10-24 23:28:49] [INFO   ] Flatten gal took : 81 ms 
+[2026-10-24 23:28:49] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality3852819791223464960.gal : 76 ms 
+[2026-10-24 23:28:49] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality8081504415094903855.prop : 12 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.wnrSRBBz6k;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality3852819791223464960.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality8081504415094903855.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality8081504415094903855.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,15546,0.220978,12468,2,884,31,5727,225,0,1386,3446,0
+ Total reachable state count : 15546
+
+Verifying 242 reachability properties.
+FORMULA StableMarking TRUE TECHNIQUES MARKED_SUFFIX_TEST DECISION_DIAGRAMS COLLATERAL_PROCESSING TOPOLOGICAL 
+ITS tools runner thread asked to quit. Dying gracefully.
+PetriSpot walker: 0/242 properties solved in 1850 ms (exit 137).

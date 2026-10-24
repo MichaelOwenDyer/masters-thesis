@@ -1,0 +1,21 @@
+[2026-10-24 23:26:38] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.SUDLQ58v2H, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 23:26:38] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.SUDLQ58v2H/model.pnml 
+[2026-10-24 23:26:39] [INFO   ] Load time of PNML (sax parser for PT used): 1010 ms 
+[2026-10-24 23:26:39] [INFO   ] Transformed 12194 places. 
+[2026-10-24 23:26:40] [INFO   ] Transformed 10560 transitions. 
+[2026-10-24 23:26:40] [INFO   ] Parsed PT model containing 12194 places and 10560 transitions and 32238 arcs in 1735 ms. 
+Reduce places removed 17 places and 0 transitions. 
+Structural unfed/single firing approximation deduced that 6479/12177 places are one safe.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-1601118778657925150.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-8373897308874192120.kers' 
+[2026-10-24 23:26:41] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-1601118778657925150.kers, --Pflows, --basisKERS=/tmp/petrispot-output-8373897308874192120.kers]
+Culled 0 columns in 26 ms.
+// Phase 1: matrix 10560 rows 12177 cols 30300 entries
+Finished phase 1 with 5782 SingleSign rule and 3627 generalized 
+[2026-10-24 23:26:41] [INFO   ] Computed 2768 invariants in 337 ms
+Computed 2768 P flows in 338 ms.
+Exported basis to /tmp/petrispot-output-8373897308874192120.kers
+Total runtime 366 ms.
+[2026-10-24 23:26:42] [INFO   ] Rough structural analysis with invariants proved 7205 places are one safe in 739 ms (including invariant computation). 
+[2026-10-24 23:26:47] [INFO   ] [Real]Absence check using  152 positive place invariants in 3498 ms proved 0 places are One-Safe. 
+[2026-10-24 23:26:52] [INFO   ] [Real]Absence check using  152 positive and 2616 generalized place invariants in 4335 ms proved 4939 places are One-Safe. 
+[2026-10-24 23:27:03] [INFO   ] [Real] State equation constraints in 11162 ms proved 0 places are One-Safe. 

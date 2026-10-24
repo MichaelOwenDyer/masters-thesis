@@ -1,0 +1,73 @@
+[2026-10-24 23:32:48] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1cLKG8QQlj, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:32:48] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1cLKG8QQlj/model.pnml 
+[2026-10-24 23:32:48] [INFO   ] Load time of PNML (sax parser for PT used): 63 ms 
+[2026-10-24 23:32:48] [INFO   ] Transformed 14 places. 
+[2026-10-24 23:32:48] [INFO   ] Transformed 16 transitions. 
+[2026-10-24 23:32:48] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:32:48] [INFO   ] Parsed PT model containing 14 places and 16 transitions and 58 arcs in 397 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 14/14 places, 16/16 transitions.
+[2026-10-24 23:32:48] [INFO   ] Redundant transitions in 30 ms returned [] 
+Running 14 sub problems to find dead transitions.
+[2026-10-24 23:32:48] [INFO   ] Flow matrix only has 14 transitions (discarded 2 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-7511649515234215972.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12274605003100253658.kers' 
+[2026-10-24 23:32:48] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-7511649515234215972.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12274605003100253658.kers]
+Culling duplicate invariants (modulo rational): removing 7 columns.
+Culled 7 columns in 0 ms.
+// Phase 1: matrix 14 rows 7 cols 21 entries
+Finished phase 1 with 7 SingleSign rule and 0 generalized 
+[2026-10-24 23:32:48] [INFO   ] Computed 7 invariants in 0 ms
+Computed 7 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-12274605003100253658.kers
+Total runtime 0 ms.
+[2026-10-24 23:32:48] [INFO   ] State equation strengthened by 2 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/14 variables, 14/14 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/14 variables, 7/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/14 variables, 0/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 3 (OVERLAPS) 14/28 variables, 14/35 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/28 variables, 2/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/28 variables, 0/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 6 (OVERLAPS) 0/28 variables, 0/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 28/28 variables, and 37 constraints, problems are : Problem set: 0 solved, 14 unsolved in 387 ms.
+Refiners :[Domain max(s): 14/14 constraints, Positive P Invariants (semi-flows): 7/7 constraints, State Equation: 14/14 constraints, ReadFeed: 2/2 constraints, PredecessorRefiner: 14/14 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 14 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/14 variables, 14/14 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/14 variables, 7/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/14 variables, 0/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 3 (OVERLAPS) 14/28 variables, 14/35 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/28 variables, 2/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/28 variables, 14/51 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/28 variables, 0/51 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 7 (OVERLAPS) 0/28 variables, 0/51 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 28/28 variables, and 51 constraints, problems are : Problem set: 0 solved, 14 unsolved in 270 ms.
+Refiners :[Domain max(s): 14/14 constraints, Positive P Invariants (semi-flows): 7/7 constraints, State Equation: 14/14 constraints, ReadFeed: 2/2 constraints, PredecessorRefiner: 14/14 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 723ms problems are : Problem set: 0 solved, 14 unsolved
+Search for dead transitions found 0 dead transitions in 730ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 898 ms. Remains : 14/14 places, 16/16 transitions.
+Final net has 14 places and 16 transitions.
+[2026-10-24 23:32:49] [INFO   ] Flatten gal took : 26 ms 
+[2026-10-24 23:32:49] [INFO   ] Applying decomposition  
+[2026-10-24 23:32:49] [INFO   ] Flatten gal took : 2 ms 
+[2026-10-24 23:32:49] [INFO   ] Decomposing Gal with order  
+[2026-10-24 23:32:49] [INFO   ] Rewriting arrays  to variables to allow decomposition. 
+[2026-10-24 23:32:49] [INFO   ] Removed a total of 7 redundant transitions. 
+[2026-10-24 23:32:50] [INFO   ] Flatten gal took : 66 ms 
+[2026-10-24 23:32:50] [INFO   ] Fuse similar labels procedure discarded/fused a total of 4 labels/synchronizations in 8 ms. 
+[2026-10-24 23:32:50] [INFO   ] Time to serialize gal into /tmp/StateSpace1775993247269089521.gal : 12 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1cLKG8QQlj;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace1775993247269089521.gal' '-t' 'CGAL' '--stats' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...267
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst\_mod\_flat,128,0.00212,4084,9,4,111,26,43,87,14,20,0
+ Total reachable state count : 128
+
+Max variable value : 1
+STATE_SPACE MAX_TOKEN_IN_PLACE  1 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Maximum sum along a path : 7
+STATE_SPACE MAX_TOKEN_PER_MARKING 7 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Exact state count : 128
+STATE_SPACE STATES  128 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL USE_NUPN
+Total runtime 1717 ms.

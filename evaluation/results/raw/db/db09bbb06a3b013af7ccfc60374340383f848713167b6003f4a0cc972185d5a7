@@ -1,0 +1,43 @@
+[2026-10-25 00:02:36] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HZRcvLV6JS, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:02:36] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HZRcvLV6JS/model.pnml 
+[2026-10-25 00:02:37] [INFO   ] Load time of PNML (sax parser for PT used): 189 ms 
+[2026-10-25 00:02:37] [INFO   ] Transformed 512 places. 
+[2026-10-25 00:02:37] [INFO   ] Transformed 256 transitions. 
+[2026-10-25 00:02:37] [INFO   ] Parsed PT model containing 512 places and 256 transitions and 1024 arcs in 660 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.HZRcvLV6JS/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 10 ms.12304KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 512/512 places, 256/256 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 201 ms. Remains 512 /512 variables (removed 0) and now considering 256/256 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 231 ms. Remains : 512/512 places, 256/256 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 512/512 places, 256/256 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 70 ms. Remains 512 /512 variables (removed 0) and now considering 256/256 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-16575581690464320492.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-234174485368553217.kers' 
+[2026-10-25 00:02:37] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-16575581690464320492.kers, --Pflows, --basisKERS=/tmp/petrispot-output-234174485368553217.kers]
+Culling duplicate invariants (modulo rational): removing 256 columns.
+Culled 256 columns in 0 ms.
+// Phase 1: matrix 256 rows 256 cols 512 entries
+Finished phase 1 with 255 SingleSign rule and 0 generalized 
+[2026-10-25 00:02:37] [INFO   ] Computed 257 invariants in 1 ms
+Computed 257 P flows in 15 ms.
+Exported basis to /tmp/petrispot-output-234174485368553217.kers
+Total runtime 15 ms.
+[2026-10-25 00:02:39] [INFO   ] Implicit Places using invariants in 1292 ms returned [256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511] 
+Discarding 256 places :
+Implicit Place search using SMT only with invariants took 1358 ms to find 256 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 256/512 places, 256/256 transitions.
+Graph (trivial) has 256 edges and 256 vertex of which 256 / 256 are part of one of the 1 SCC in 2 ms
+Free SCC test removed 255 places 
+Ensure Unique test removed 255 transitions
+Reduce isomorphic transitions removed 255 transitions.
+Computed a total of 1 stabilizing places and 0 stable transitions
+Reduce places removed 1 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 2571 ms.

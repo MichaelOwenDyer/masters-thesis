@@ -1,0 +1,70 @@
+[2026-10-24 23:59:11] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8b6CZimA6m, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:59:11] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8b6CZimA6m/model.pnml 
+[2026-10-24 23:59:11] [INFO   ] Load time of PNML (sax parser for PT used): 140 ms 
+[2026-10-24 23:59:11] [INFO   ] Transformed 68 places. 
+[2026-10-24 23:59:11] [INFO   ] Transformed 72 transitions. 
+[2026-10-24 23:59:11] [INFO   ] Parsed PT model containing 68 places and 72 transitions and 288 arcs in 616 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 68/68 places, 72/72 transitions.
+Applied a total of 0 rules in 19 ms. Remains 68 /68 variables (removed 0) and now considering 72/72 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-13775449257326373639.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-14219589014017911238.kers' 
+[2026-10-24 23:59:12] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-13775449257326373639.kers, --Pflows, --basisKERS=/tmp/petrispot-output-14219589014017911238.kers]
+Culling duplicate invariants (modulo rational): removing 24 columns.
+Culled 24 columns in 0 ms.
+// Phase 1: matrix 72 rows 44 cols 208 entries
+Finished phase 1 with 39 SingleSign rule and 0 generalized 
+[2026-10-24 23:59:12] [INFO   ] Computed 29 invariants in 0 ms
+Computed 29 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-14219589014017911238.kers
+Total runtime 2 ms.
+[2026-10-24 23:59:12] [INFO   ] Implicit Places using invariants in 338 ms returned [] 
+[2026-10-24 23:59:12] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:59:12] [INFO   ] Implicit Places using invariants and state equation in 180 ms returned [] 
+Implicit Place search using SMT with State Equation took 584 ms to find 0 implicit places.
+Running 56 sub problems to find dead transitions.
+[2026-10-24 23:59:12] [INFO   ] Invariant cache hit. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/36 variables, 8/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/36 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 2 (OVERLAPS) 32/68 variables, 21/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/68 variables, 0/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 4 (OVERLAPS) 72/140 variables, 68/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/140 variables, 0/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 6 (OVERLAPS) 0/140 variables, 0/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 140/140 variables, and 97 constraints, problems are : Problem set: 0 solved, 56 unsolved in 2666 ms.
+Refiners :[Positive P Invariants (semi-flows): 29/29 constraints, State Equation: 68/68 constraints, PredecessorRefiner: 56/56 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 56 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/36 variables, 8/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/36 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 2 (OVERLAPS) 32/68 variables, 21/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/68 variables, 0/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 4 (OVERLAPS) 72/140 variables, 68/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/140 variables, 56/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/140 variables, 0/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 7 (OVERLAPS) 0/140 variables, 0/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 140/140 variables, and 153 constraints, problems are : Problem set: 0 solved, 56 unsolved in 3129 ms.
+Refiners :[Positive P Invariants (semi-flows): 29/29 constraints, State Equation: 68/68 constraints, PredecessorRefiner: 56/56 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 5933ms problems are : Problem set: 0 solved, 56 unsolved
+Search for dead transitions found 0 dead transitions in 5952ms
+Finished structural reductions in LIVENESS mode , in 1 iterations and 6666 ms. Remains : 68/68 places, 72/72 transitions.
+Discarding 32 transitions out of 72. Remains 40
+Initial state reduction rules removed 16 formulas.
+PetriSpot walker: 24/24 properties solved in 44 ms (exit 0).
+PetriSpot walker: 24/24 properties solved in 39 ms (exit 0).
+Walk beside the decision diagrams solved 24 properties.
+[2026-10-24 23:59:19] [INFO   ] Flatten gal took : 96 ms 
+[2026-10-24 23:59:19] [INFO   ] Flatten gal took : 33 ms 
+[2026-10-24 23:59:19] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality14792839154894474982.gal : 24 ms 
+[2026-10-24 23:59:19] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality5598504793884717442.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.8b6CZimA6m;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality14792839154894474982.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality5598504793884717442.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+ITS runner timed out or was interrupted.
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+Loading property file /tmp/ReachabilityCardinality5598504793884717442.prop.
+Could not access property file : /tmp/ReachabilityCardinality5598504793884717442.prop
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query QuasiLiveness after proving 40 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 7945 ms.

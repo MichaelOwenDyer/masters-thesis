@@ -1,0 +1,45 @@
+[2026-10-25 00:09:22] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YDoX61Oq6i, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-25 00:09:22] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.YDoX61Oq6i/model.pnml 
+[2026-10-25 00:09:22] [INFO   ] Load time of PNML (sax parser for PT used): 42 ms 
+[2026-10-25 00:09:22] [INFO   ] Transformed 8 places. 
+[2026-10-25 00:09:22] [INFO   ] Transformed 4 transitions. 
+[2026-10-25 00:09:22] [INFO   ] Parsed PT model containing 8 places and 4 transitions and 16 arcs in 610 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 8/8 places, 4/4 transitions.
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Iterating post reduction 0 with 1 rules applied. Total rules applied 1 place count 7 transition count 4
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 1 Pre rules applied. Total rules applied 1 place count 7 transition count 3
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 1 with 3 rules applied. Total rules applied 4 place count 5 transition count 3
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 1 Pre rules applied. Total rules applied 4 place count 5 transition count 2
+Deduced a syphon composed of 1 places in 0 ms
+Ensure Unique test removed 1 places
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 1 with 4 rules applied. Total rules applied 8 place count 2 transition count 2
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 1 with 1 rules applied. Total rules applied 9 place count 2 transition count 1
+Reduce places removed 2 places and 0 transitions. 
+Iterating post reduction 2 with 2 rules applied. Total rules applied 11 place count 0 transition count 1
+Applied a total of 11 rules in 93 ms. Remains 0 /8 variables (removed 8) and now considering 1/4 (removed 3) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-9893839864047209708.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-8411339495136847461.kers' 
+[2026-10-25 00:09:22] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-9893839864047209708.kers, --Pflows, --basisKERS=/tmp/petrispot-output-8411339495136847461.kers]
+[2026-10-25 00:09:22] [INFO   ] Computed 0 invariants in 0 ms
+Computed 0 P flows in 6 ms.
+Exported basis to /tmp/petrispot-output-8411339495136847461.kers
+Total runtime 7 ms.
+[2026-10-25 00:09:23] [INFO   ] Implicit Places using invariants in 117 ms returned [] 
+[2026-10-25 00:09:23] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:09:23] [INFO   ] Implicit Places using invariants and state equation in 34 ms returned [] 
+Implicit Place search using SMT with State Equation took 232 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 6ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 0/8 places, 1/4 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 404 ms. Remains : 0/8 places, 1/4 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 1133 ms.

@@ -1,0 +1,9 @@
+[2026-10-24 23:51:32] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.rej0FuOhNv, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 23:51:32] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.rej0FuOhNv/model.pnml 
+[2026-10-24 23:51:33] [INFO   ] Load time of PNML (sax parser for PT used): 501 ms 
+[2026-10-24 23:51:33] [INFO   ] Transformed 312 places. 
+[2026-10-24 23:51:33] [INFO   ] Transformed 5431 transitions. 
+[2026-10-24 23:51:33] [INFO   ] Parsed PT model containing 312 places and 5431 transitions and 28790 arcs in 907 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 312/312 places, 5431/5431 transitions.
+FORMULA QuasiLiveness FALSE TECHNIQUES STRUCTURAL_REDUCTION 
+Total runtime 1028 ms.

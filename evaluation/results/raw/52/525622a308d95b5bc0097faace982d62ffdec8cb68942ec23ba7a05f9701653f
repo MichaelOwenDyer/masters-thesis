@@ -1,0 +1,25 @@
+[2026-10-24 23:19:48] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.gMon2WhHfa, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:19:49] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.gMon2WhHfa/model.pnml 
+[2026-10-24 23:19:49] [INFO   ] Load time of PNML (sax parser for PT used): 100 ms 
+[2026-10-24 23:19:49] [INFO   ] Transformed 257 places. 
+[2026-10-24 23:19:49] [INFO   ] Transformed 257 transitions. 
+[2026-10-24 23:19:49] [INFO   ] Parsed PT model containing 257 places and 257 transitions and 514 arcs in 446 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.gMon2WhHfa/ReachabilityDeadlock.xml in 9 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 8 ms.11836KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 257/257 places, 257/257 transitions.
+Graph (trivial) has 257 edges and 257 vertex of which 256 / 257 are part of one of the 1 SCC in 9 ms
+Free SCC test removed 255 places 
+Ensure Unique test removed 255 transitions
+Reduce isomorphic transitions removed 255 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.6 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 67 ms. Remains 1 /257 variables (removed 256) and now considering 2/257 (removed 255) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 92 ms. Remains : 1/257 places, 2/257 transitions.
+PetriSpot walker: 1/1 properties solved in 50 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 756 ms.

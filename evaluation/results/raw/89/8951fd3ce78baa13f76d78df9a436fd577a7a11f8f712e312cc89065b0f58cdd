@@ -1,0 +1,19 @@
+[2026-10-24 23:44:25] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.bmiDgQYPJF, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:44:25] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.bmiDgQYPJF/model.pnml 
+[2026-10-24 23:44:26] [INFO   ] Load time of PNML (sax parser for PT used): 41 ms 
+[2026-10-24 23:44:26] [INFO   ] Transformed 8 places. 
+[2026-10-24 23:44:26] [INFO   ] Transformed 9 transitions. 
+[2026-10-24 23:44:26] [INFO   ] Parsed PT model containing 8 places and 9 transitions and 18 arcs in 367 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.bmiDgQYPJF/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.8462KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 8/8 places, 9/9 transitions.
+Graph (trivial) has 9 edges and 8 vertex of which 8 / 8 are part of one of the 2 SCC in 7 ms
+Free SCC test removed 6 places 
+Ensure Unique test removed 6 transitions
+Reduce isomorphic transitions removed 6 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Applied a total of 1 rules in 47 ms. Remains 2 /8 variables (removed 6) and now considering 3/9 (removed 6) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 69 ms. Remains : 2/8 places, 3/9 transitions.

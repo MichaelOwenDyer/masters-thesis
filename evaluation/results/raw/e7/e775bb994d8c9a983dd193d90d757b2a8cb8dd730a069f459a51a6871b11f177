@@ -1,0 +1,85 @@
+[2026-10-24 23:47:34] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.sxoQwB67Vt, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:47:34] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.sxoQwB67Vt/model.pnml 
+[2026-10-24 23:47:35] [INFO   ] Load time of PNML (sax parser for PT used): 130 ms 
+[2026-10-24 23:47:35] [INFO   ] Transformed 145 places. 
+[2026-10-24 23:47:35] [INFO   ] Transformed 287 transitions. 
+[2026-10-24 23:47:35] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:47:35] [INFO   ] Parsed PT model containing 145 places and 287 transitions and 1240 arcs in 499 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.sxoQwB67Vt/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Deduced a syphon composed of 2 places in 9 ms
+Reduce places removed 2 places and 2 transitions. 
+Built sparse matrix representations for Structural reductions in 8 ms.10229KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 143/143 places, 285/285 transitions.
+Computed a total of 17 stabilizing places and 19 stable transitions
+Graph (complete) has 445 edges and 143 vertex of which 136 are kept as prefixes of interest. Removing 7 places using SCC suffix rule.15 ms
+Discarding 7 places :
+Also discarding 3 output transitions 
+Drop transitions (Output transitions of discarded places.) removed 3 transitions 
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Computed a total of 17 stabilizing places and 19 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 25 transitions 
+Trivial Post-agglo rules discarded 25 transitions
+Performed 25 trivial Post agglomeration. Transition count delta: 25
+Iterating post reduction 0 with 26 rules applied. Total rules applied 27 place count 136 transition count 256
+Reduce places removed 25 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Computed a total of 11 stabilizing places and 13 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2 transitions 
+Trivial Post-agglo rules discarded 2 transitions
+Performed 2 trivial Post agglomeration. Transition count delta: 2
+Iterating post reduction 1 with 29 rules applied. Total rules applied 56 place count 111 transition count 252
+Reduce places removed 2 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Computed a total of 11 stabilizing places and 13 stable transitions
+Iterating post reduction 2 with 4 rules applied. Total rules applied 60 place count 109 transition count 250
+Computed a total of 11 stabilizing places and 13 stable transitions
+Performed 4 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 4 Pre rules applied. Total rules applied 60 place count 109 transition count 246
+Deduced a syphon composed of 4 places in 0 ms
+Reduce places removed 4 places and 0 transitions. 
+Iterating global reduction 3 with 8 rules applied. Total rules applied 68 place count 105 transition count 246
+Computed a total of 11 stabilizing places and 13 stable transitions
+Discarding 30 places :
+Symmetric choice reduction at 3 with 30 rule applications. Total rules  98 place count 75 transition count 208
+Iterating global reduction 3 with 30 rules applied. Total rules applied 128 place count 75 transition count 208
+Computed a total of 7 stabilizing places and 7 stable transitions
+Performed 2 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 3 with 2 Pre rules applied. Total rules applied 128 place count 75 transition count 206
+Deduced a syphon composed of 2 places in 1 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 3 with 4 rules applied. Total rules applied 132 place count 73 transition count 206
+Computed a total of 11 stabilizing places and 79 stable transitions
+Performed 24 Post agglomeration using F-continuation condition with reduction of 3 identical transitions.
+Deduced a syphon composed of 24 places in 6 ms
+Reduce places removed 24 places and 0 transitions. 
+Iterating global reduction 3 with 48 rules applied. Total rules applied 180 place count 49 transition count 179
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Computed a total of 9 stabilizing places and 73 stable transitions
+Iterating post reduction 3 with 2 rules applied. Total rules applied 182 place count 49 transition count 177
+Computed a total of 9 stabilizing places and 73 stable transitions
+Performed 4 Post agglomeration using F-continuation condition.Transition count delta: -8
+Deduced a syphon composed of 4 places in 0 ms
+Reduce places removed 4 places and 0 transitions. 
+Iterating global reduction 4 with 8 rules applied. Total rules applied 190 place count 45 transition count 185
+Computed a total of 9 stabilizing places and 81 stable transitions
+Computed a total of 9 stabilizing places and 81 stable transitions
+Drop transitions (Redundant composition of simpler transitions.) removed 8 transitions 
+Redundant transition composition rules discarded 8 transitions
+Iterating global reduction 4 with 8 rules applied. Total rules applied 198 place count 45 transition count 177
+Computed a total of 9 stabilizing places and 77 stable transitions
+Performed 2 Post agglomeration using F-continuation condition.Transition count delta: -23
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 4 with 4 rules applied. Total rules applied 202 place count 43 transition count 200
+Computed a total of 9 stabilizing places and 92 stable transitions
+Computed a total of 9 stabilizing places and 92 stable transitions
+Applied a total of 202 rules in 233 ms. Remains 43 /143 variables (removed 100) and now considering 200/285 (removed 85) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 261 ms. Remains : 43/143 places, 200/285 transitions.
+PetriSpot walker: 1/1 properties solved in 58 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 988 ms.

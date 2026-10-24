@@ -1,0 +1,24 @@
+[2026-10-25 00:04:55] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.U5jLLKBaEx, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-25 00:04:55] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.U5jLLKBaEx/model.pnml 
+[2026-10-25 00:04:55] [INFO   ] Load time of PNML (sax parser for PT used): 150 ms 
+[2026-10-25 00:04:55] [INFO   ] Transformed 86 places. 
+[2026-10-25 00:04:55] [INFO   ] Transformed 56 transitions. 
+[2026-10-25 00:04:55] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:04:55] [INFO   ] Parsed PT model containing 86 places and 56 transitions and 223 arcs in 665 ms. 
+Structural unfed/single firing approximation deduced that 83/86 places are one safe.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-16881097561835062644.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-14867156375829838497.kers' 
+[2026-10-25 00:04:55] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-16881097561835062644.kers, --Pflows, --basisKERS=/tmp/petrispot-output-14867156375829838497.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 56 rows 86 cols 223 entries
+Finished phase 1 with 40 SingleSign rule and 15 generalized 
+[2026-10-25 00:04:55] [INFO   ] Computed 31 invariants in 0 ms
+Computed 31 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-14867156375829838497.kers
+Total runtime 4 ms.
+[2026-10-25 00:04:56] [INFO   ] Rough structural analysis with invariants proved 12 places are one safe in 70 ms (including invariant computation). 
+[2026-10-25 00:04:56] [INFO   ] [Real]Absence check using  7 positive place invariants in 102 ms proved 0 places are One-Safe. 
+[2026-10-25 00:04:56] [INFO   ] [Real]Absence check using  7 positive and 24 generalized place invariants in 73 ms proved 2 places are One-Safe. 
+[2026-10-25 00:04:56] [INFO   ] [Real] State equation constraints in 132 ms proved 72 places are One-Safe. 
+Able to resolve query OneSafe after proving 86 properties.
+FORMULA OneSafe TRUE TECHNIQUES INVARIANTS SAT_SMT STRUCTURAL 
+Total runtime 1415 ms.

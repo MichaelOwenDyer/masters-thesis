@@ -1,0 +1,27 @@
+[2026-10-24 23:36:21] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.M5FA17AQN4, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:36:21] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.M5FA17AQN4/model.pnml 
+[2026-10-24 23:36:22] [INFO   ] Load time of PNML (sax parser for PT used): 365 ms 
+[2026-10-24 23:36:22] [INFO   ] Transformed 86 places. 
+[2026-10-24 23:36:22] [INFO   ] Transformed 1042 transitions. 
+[2026-10-24 23:36:22] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:36:22] [INFO   ] Parsed PT model containing 86 places and 1042 transitions and 11192 arcs in 893 ms. 
+Structural test allowed to assert that 14 places are NOT stable. Took 24 ms.
+Ensure Unique test removed 800 transitions
+Reduce redundant transitions removed 800 transitions.
+PetriSpot walker: 72/72 properties solved in 194 ms (exit 0).
+PetriSpot walker: 72/72 properties solved in 324 ms (exit 0).
+Walk beside the decision diagrams solved 72 properties.
+[2026-10-24 23:36:23] [INFO   ] Flatten gal took : 151 ms 
+[2026-10-24 23:36:23] [INFO   ] Flatten gal took : 64 ms 
+[2026-10-24 23:36:23] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality1070688516826098262.gal : 71 ms 
+[2026-10-24 23:36:23] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality10376428394345337688.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.M5FA17AQN4;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality1070688516826098262.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality10376428394345337688.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+ITS runner timed out or was interrupted.
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...377
+ITS tools runner thread asked to quit. Dying gracefully.
+Able to resolve query StableMarking after proving 73 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+Total runtime 2055 ms.

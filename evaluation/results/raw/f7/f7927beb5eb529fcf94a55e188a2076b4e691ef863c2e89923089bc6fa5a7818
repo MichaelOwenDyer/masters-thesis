@@ -1,0 +1,61 @@
+[2026-10-24 23:39:02] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7Gyvnvtrqv, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:39:02] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7Gyvnvtrqv/model.pnml 
+[2026-10-24 23:39:02] [INFO   ] Load time of PNML (sax parser for PT used): 62 ms 
+[2026-10-24 23:39:02] [INFO   ] Transformed 24 places. 
+[2026-10-24 23:39:02] [INFO   ] Transformed 12 transitions. 
+[2026-10-24 23:39:02] [INFO   ] Parsed PT model containing 24 places and 12 transitions and 48 arcs in 419 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7Gyvnvtrqv/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.8590KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 24/24 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 24 ms. Remains 24 /24 variables (removed 0) and now considering 12/12 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 44 ms. Remains : 24/24 places, 12/12 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 24/24 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 2 ms. Remains 24 /24 variables (removed 0) and now considering 12/12 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-1876365900496851684.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-13605401759523491233.kers' 
+[2026-10-24 23:39:02] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-1876365900496851684.kers, --Pflows, --basisKERS=/tmp/petrispot-output-13605401759523491233.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 12 rows 24 cols 48 entries
+Finished phase 1 with 0 SingleSign rule and 11 generalized 
+[2026-10-24 23:39:02] [INFO   ] Computed 13 invariants in 0 ms
+Computed 13 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-13605401759523491233.kers
+Total runtime 3 ms.
+[2026-10-24 23:39:03] [INFO   ] Implicit Places using invariants in 174 ms returned [5, 15, 20, 21] 
+Discarding 4 places :
+Implicit Place search using SMT only with invariants took 224 ms to find 4 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 20/24 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 4 transitions 
+Trivial Post-agglo rules discarded 4 transitions
+Performed 4 trivial Post agglomeration. Transition count delta: 4
+Iterating post reduction 0 with 4 rules applied. Total rules applied 4 place count 20 transition count 8
+Reduce places removed 4 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 1 with 4 rules applied. Total rules applied 8 place count 16 transition count 8
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 8 rules in 22 ms. Remains 16 /20 variables (removed 4) and now considering 8/12 (removed 4) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-6658666495940199711.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-3435801828650564767.kers' 
+[2026-10-24 23:39:03] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-6658666495940199711.kers, --Pflows, --basisKERS=/tmp/petrispot-output-3435801828650564767.kers]
+Culling duplicate invariants (modulo rational): removing 8 columns.
+Culled 8 columns in 0 ms.
+// Phase 1: matrix 8 rows 8 cols 16 entries
+Finished phase 1 with 5 SingleSign rule and 2 generalized 
+[2026-10-24 23:39:03] [INFO   ] Computed 9 invariants in 0 ms
+Computed 9 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-3435801828650564767.kers
+Total runtime 1 ms.
+[2026-10-24 23:39:03] [INFO   ] Implicit Places using invariants in 40 ms returned [] 
+[2026-10-24 23:39:03] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:39:03] [INFO   ] Implicit Places using invariants and state equation in 49 ms returned [] 
+Implicit Place search using SMT with State Equation took 96 ms to find 0 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 2 : 16/24 places, 8/12 transitions.
+Finished structural reductions in DEADLOCK mode , in 2 iterations and 350 ms. Remains : 16/24 places, 8/12 transitions.

@@ -1,0 +1,34 @@
+[2026-10-24 23:52:46] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MUqCnlWGUL, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:52:46] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MUqCnlWGUL/model.pnml 
+[2026-10-24 23:52:47] [INFO   ] Load time of PNML (sax parser for PT used): 115 ms 
+[2026-10-24 23:52:47] [INFO   ] Transformed 9 places. 
+[2026-10-24 23:52:47] [INFO   ] Transformed 72 transitions. 
+[2026-10-24 23:52:47] [INFO   ] Parsed PT model containing 9 places and 72 transitions and 144 arcs in 626 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 9/9 places, 72/72 transitions.
+Drop transitions (Redundant composition of simpler transitions.) removed 56 transitions 
+Redundant transition composition rules discarded 56 transitions
+[2026-10-24 23:52:47] [INFO   ] Redundant transitions in 0 ms returned [] 
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 2ms
+Starting structural reductions in STATESPACE mode, iteration 1 : 9/9 places, 16/72 transitions.
+Finished structural reductions in STATESPACE mode , in 1 iterations and 209 ms. Remains : 9/9 places, 16/72 transitions.
+Final net has 9 places and 16 transitions.
+[2026-10-24 23:52:47] [INFO   ] Flatten gal took : 259 ms 
+[2026-10-24 23:52:47] [INFO   ] Flatten gal took : 5 ms 
+[2026-10-24 23:52:47] [INFO   ] Time to serialize gal into /tmp/StateSpace14679170742850706686.gal : 16 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MUqCnlWGUL;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace14679170742850706686.gal' '-t' 'CGAL' '--stats' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...289
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,24310,0.007497,4260,2,82,5,1613,6,0,56,1352,0
+ Total reachable state count : 24310
+
+Max variable value : 9
+STATE_SPACE MAX_TOKEN_IN_PLACE  9 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Maximum sum along a path : 9
+STATE_SPACE MAX_TOKEN_PER_MARKING 9 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Exact state count : 24310
+STATE_SPACE STATES  24310 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Total runtime 1328 ms.

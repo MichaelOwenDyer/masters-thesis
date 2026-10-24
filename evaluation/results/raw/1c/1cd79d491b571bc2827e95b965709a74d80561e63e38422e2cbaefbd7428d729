@@ -1,0 +1,64 @@
+[2026-10-24 23:21:53] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7wpJMplpeh, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:21:53] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7wpJMplpeh/model.pnml 
+[2026-10-24 23:21:54] [INFO   ] Load time of PNML (sax parser for PT used): 76 ms 
+[2026-10-24 23:21:54] [INFO   ] Transformed 9 places. 
+[2026-10-24 23:21:54] [INFO   ] Transformed 7 transitions. 
+[2026-10-24 23:21:54] [INFO   ] Parsed PT model containing 9 places and 7 transitions and 20 arcs in 657 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 9/9 places, 7/7 transitions.
+[2026-10-24 23:21:54] [INFO   ] Redundant transitions in 0 ms returned [] 
+Running 6 sub problems to find dead transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-11160804750961477897.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-9049977337146237904.kers' 
+[2026-10-24 23:21:54] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-11160804750961477897.kers, --Pflows, --basisKERS=/tmp/petrispot-output-9049977337146237904.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 7 rows 9 cols 20 entries
+Finished phase 1 with 6 SingleSign rule and 0 generalized 
+[2026-10-24 23:21:54] [INFO   ] Computed 3 invariants in 0 ms
+Computed 3 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-9049977337146237904.kers
+Total runtime 0 ms.
+At refinement iteration 0 (INCLUDED_ONLY) 0/8 variables, 2/2 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/8 variables, 0/2 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 2 (OVERLAPS) 1/9 variables, 1/3 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/9 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 4 (OVERLAPS) 7/16 variables, 9/12 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/16 variables, 0/12 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 6 (OVERLAPS) 0/16 variables, 0/12 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 16/16 variables, and 12 constraints, problems are : Problem set: 0 solved, 6 unsolved in 355 ms.
+Refiners :[Positive P Invariants (semi-flows): 3/3 constraints, State Equation: 9/9 constraints, PredecessorRefiner: 6/6 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 6 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/8 variables, 2/2 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/8 variables, 0/2 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 2 (OVERLAPS) 1/9 variables, 1/3 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/9 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 4 (OVERLAPS) 7/16 variables, 9/12 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/16 variables, 6/18 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/16 variables, 0/18 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+At refinement iteration 7 (OVERLAPS) 0/16 variables, 0/18 constraints. Problems are: Problem set: 0 solved, 6 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 16/16 variables, and 18 constraints, problems are : Problem set: 0 solved, 6 unsolved in 204 ms.
+Refiners :[Positive P Invariants (semi-flows): 3/3 constraints, State Equation: 9/9 constraints, PredecessorRefiner: 6/6 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 633ms problems are : Problem set: 0 solved, 6 unsolved
+Search for dead transitions found 0 dead transitions in 650ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 880 ms. Remains : 9/9 places, 7/7 transitions.
+Final net has 9 places and 7 transitions.
+[2026-10-24 23:21:55] [INFO   ] Flatten gal took : 30 ms 
+[2026-10-24 23:21:55] [INFO   ] Flatten gal took : 8 ms 
+[2026-10-24 23:21:55] [INFO   ] Time to serialize gal into /tmp/StateSpace9300698283320163326.gal : 15 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.7wpJMplpeh;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace9300698283320163326.gal' '-t' 'CGAL' '--stats' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...288
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst,89621,0.487723,15188,2,2975,5,55084,6,0,47,62078,0
+ Total reachable state count : 89621
+
+Max variable value : 20
+STATE_SPACE MAX_TOKEN_IN_PLACE  20 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Maximum sum along a path : 45
+STATE_SPACE MAX_TOKEN_PER_MARKING 45 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+Exact state count : 89621
+STATE_SPACE STATES  89621 TECHNIQUES DECISION_DIAGRAMS TOPOLOGICAL 
+ITS tools runner thread asked to quit. Dying gracefully.
+Total runtime 2556 ms.

@@ -1,0 +1,12 @@
+[2026-10-25 00:06:34] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2KLinMeEvp, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-25 00:06:34] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.2KLinMeEvp/model.pnml 
+[2026-10-25 00:06:35] [INFO   ] Load time of PNML (sax parser for PT used): 487 ms 
+[2026-10-25 00:06:35] [INFO   ] Transformed 312 places. 
+[2026-10-25 00:06:35] [INFO   ] Transformed 5431 transitions. 
+[2026-10-25 00:06:35] [INFO   ] Parsed PT model containing 312 places and 5431 transitions and 28790 arcs in 872 ms. 
+Deduced a syphon composed of 242 places in 39 ms
+Reduce places removed 242 places and 5204 transitions. 
+Reduce places removed 1 places and 0 transitions. 
+Due to initial marking, net is not one safe.
+FORMULA OneSafe FALSE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 1034 ms.

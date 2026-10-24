@@ -1,0 +1,65 @@
+[2026-10-24 23:58:46] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MiJGxKbDy5, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:58:46] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MiJGxKbDy5/model.pnml 
+[2026-10-24 23:58:47] [INFO   ] Load time of PNML (sax parser for PT used): 115 ms 
+[2026-10-24 23:58:47] [INFO   ] Transformed 68 places. 
+[2026-10-24 23:58:47] [INFO   ] Transformed 72 transitions. 
+[2026-10-24 23:58:47] [INFO   ] Parsed PT model containing 68 places and 72 transitions and 288 arcs in 505 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.MiJGxKbDy5/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 6 ms.8773KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 68/68 places, 72/72 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 35 ms. Remains 68 /68 variables (removed 0) and now considering 72/72 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 59 ms. Remains : 68/68 places, 72/72 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 68/68 places, 72/72 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 6 ms. Remains 68 /68 variables (removed 0) and now considering 72/72 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-1465990740806949946.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-4715697133558650682.kers' 
+[2026-10-24 23:58:47] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-1465990740806949946.kers, --Pflows, --basisKERS=/tmp/petrispot-output-4715697133558650682.kers]
+Culling duplicate invariants (modulo rational): removing 24 columns.
+Culled 24 columns in 0 ms.
+// Phase 1: matrix 72 rows 44 cols 208 entries
+Finished phase 1 with 39 SingleSign rule and 0 generalized 
+[2026-10-24 23:58:47] [INFO   ] Computed 29 invariants in 0 ms
+Computed 29 P flows in 3 ms.
+Exported basis to /tmp/petrispot-output-4715697133558650682.kers
+Total runtime 3 ms.
+[2026-10-24 23:58:47] [INFO   ] Implicit Places using invariants in 267 ms returned [] 
+[2026-10-24 23:58:47] [INFO   ] Invariant cache hit. 
+[2026-10-24 23:58:47] [INFO   ] Implicit Places using invariants and state equation in 139 ms returned [] 
+Implicit Place search using SMT with State Equation took 446 ms to find 0 implicit places.
+[2026-10-24 23:58:47] [INFO   ] Redundant transitions in 1 ms returned [] 
+Running 56 sub problems to find dead transitions.
+[2026-10-24 23:58:47] [INFO   ] Invariant cache hit. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/36 variables, 8/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/36 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 2 (OVERLAPS) 32/68 variables, 21/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/68 variables, 0/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 4 (OVERLAPS) 72/140 variables, 68/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/140 variables, 0/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 6 (OVERLAPS) 0/140 variables, 0/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 140/140 variables, and 97 constraints, problems are : Problem set: 0 solved, 56 unsolved in 1800 ms.
+Refiners :[Positive P Invariants (semi-flows): 29/29 constraints, State Equation: 68/68 constraints, PredecessorRefiner: 56/56 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 56 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/36 variables, 8/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/36 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 2 (OVERLAPS) 32/68 variables, 21/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/68 variables, 0/29 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 4 (OVERLAPS) 72/140 variables, 68/97 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/140 variables, 56/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/140 variables, 0/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+At refinement iteration 7 (OVERLAPS) 0/140 variables, 0/153 constraints. Problems are: Problem set: 0 solved, 56 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 140/140 variables, and 153 constraints, problems are : Problem set: 0 solved, 56 unsolved in 2190 ms.
+Refiners :[Positive P Invariants (semi-flows): 29/29 constraints, State Equation: 68/68 constraints, PredecessorRefiner: 56/56 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 4087ms problems are : Problem set: 0 solved, 56 unsolved
+Search for dead transitions found 0 dead transitions in 4099ms
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 4601 ms. Remains : 68/68 places, 72/72 transitions.
+PetriSpot walker: 1/1 properties solved in 11 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 5323 ms.

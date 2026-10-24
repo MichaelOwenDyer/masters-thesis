@@ -1,0 +1,24 @@
+[2026-10-24 23:34:34] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.IYux2bHgsp, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 23:34:34] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.IYux2bHgsp/model.pnml 
+[2026-10-24 23:34:35] [INFO   ] Load time of PNML (sax parser for PT used): 137 ms 
+[2026-10-24 23:34:35] [INFO   ] Transformed 100 places. 
+[2026-10-24 23:34:35] [INFO   ] Transformed 156 transitions. 
+[2026-10-24 23:34:35] [INFO   ] Found NUPN structural information; 
+[2026-10-24 23:34:35] [INFO   ] Completing missing partition info from NUPN : creating a component with [P_start_1_0, P_start_1_1, P_start_1_2, P_start_1_3, P_b_0_false, P_b_0_true, P_b_1_false, P_b_1_true, P_b_2_false, P_b_... [1152 chars] 
+[2026-10-24 23:34:35] [INFO   ] Parsed PT model containing 100 places and 156 transitions and 664 arcs in 547 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.IYux2bHgsp/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Deduced a syphon composed of 29 places in 1 ms
+Reduce places removed 29 places and 42 transitions. 
+Built sparse matrix representations for Structural reductions in 6 ms.9801KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 71/71 places, 114/114 transitions.
+Computed a total of 1 stabilizing places and 3 stable transitions
+Computed a total of 1 stabilizing places and 3 stable transitions
+Performed 3 Post agglomeration using F-continuation condition.Transition count delta: 3
+Deduced a syphon composed of 3 places in 1 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 6 place count 68 transition count 111
+Computed a total of 1 stabilizing places and 3 stable transitions
+Computed a total of 1 stabilizing places and 3 stable transitions
+Applied a total of 6 rules in 68 ms. Remains 68 /71 variables (removed 3) and now considering 111/114 (removed 3) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 87 ms. Remains : 68/71 places, 111/114 transitions.
