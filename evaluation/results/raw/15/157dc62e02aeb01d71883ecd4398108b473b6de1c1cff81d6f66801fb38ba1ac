@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {HexagonalGrid-PT-110}
+
+31 places, 42 transitions, 168 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+40193 marking(s), 430884 transition(s)
+
+1.039s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 40193 live marking(s)
+0 dead transition(s), 42 live transition(s)
+
+0.045s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {HexagonalGrid-PT-110}, 31 places, 42 transitions, 168 arcs      #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states        40193         31          ?          0      40193 # 
+# transitions       430884         42          ?          0         42 #

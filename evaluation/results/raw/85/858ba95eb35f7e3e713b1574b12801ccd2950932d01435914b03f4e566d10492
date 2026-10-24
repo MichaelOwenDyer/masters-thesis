@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/RwMutex-PT-r0010w0100/model.pnml","property":"stable","mode":"general","verdict":"false","class":"General","places":230,"transitions":220,"arcs":2460,"parse_ms":6.090,"analyze_ms":11.642,"timeout_ms":null,"states":1124,"edges":10440}

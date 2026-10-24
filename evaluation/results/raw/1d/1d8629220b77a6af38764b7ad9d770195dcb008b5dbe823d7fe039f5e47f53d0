@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {CircadianClock-PT-000010}
+
+14 places, 16 transitions, 58 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+644204 marking(s), 6766320 transition(s)
+
+18.583s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 644204 live marking(s)
+0 dead transition(s), 16 live transition(s)
+
+0.975s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {CircadianClock-PT-000010}, 14 places, 16 transitions, 58 arcs   #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states       644204         14          ?          0     644204 # 
+# transitions      6766320         16          ?          0         16 #

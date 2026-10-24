@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CircadianClock-PT-000010/model.pnml","property":"statespace","mode":"general","verdict":"true","class":"General","places":14,"transitions":16,"arcs":58,"parse_ms":0.398,"analyze_ms":1666.405,"timeout_ms":null,"states":644204,"edges":6766320}

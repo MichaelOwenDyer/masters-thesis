@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/TriangularGrid-PT-1500/model.pnml","property":"statespace","mode":"general","verdict":"true","class":"AsymmetricChoice","places":16,"transitions":12,"arcs":48,"parse_ms":0.421,"analyze_ms":1212.458,"timeout_ms":null,"states":705712,"edges":3683592}

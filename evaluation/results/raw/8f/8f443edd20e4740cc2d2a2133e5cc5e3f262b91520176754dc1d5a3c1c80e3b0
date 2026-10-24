@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {ParamProductionCell-PT-2}
+
+231 places, 202 transitions, 846 arcs
+
+0.007s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+349874 marking(s), 1380742 transition(s)
+
+4.600s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 349874 live marking(s)
+0 dead transition(s), 202 live transition(s)
+
+0.259s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {ParamProductionCell-PT-2}, 231 places, 202 transitions, 846 arcs#
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states       349874        231          ?          0     349874 # 
+# transitions      1380742        202          ?          0        202 #

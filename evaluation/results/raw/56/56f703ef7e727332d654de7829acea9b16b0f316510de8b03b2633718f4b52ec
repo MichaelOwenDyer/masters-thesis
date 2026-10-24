@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {GPUForwardProgress-PT-08a}
+
+40 places, 49 transitions, 181 arcs
+
+0.001s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+380093 marking(s), 3289766 transition(s)
+
+6.432s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+not live
+not reversible
+
+256 dead marking(s), 256 live marking(s)
+0 dead transition(s), 0 live transition(s)
+
+0.289s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {GPUForwardProgress-PT-08a}, 40 places, 49 transitions, 181 arcs #
+# bounded, not live, not reversible                                    #
+# abstraction        count      props      psets       dead       live #
+#      states       380093         40          ?        256        256 # 
+# transitions      3289766         49          ?          0          0 #

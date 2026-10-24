@@ -1,0 +1,37 @@
+Tina version 4.0.0 -- 07/04/26 -- LAAS/CNRS
+
+mode -R
+
+INPUT NET ------------------------------------------------------- 
+
+parsed net {BART-PT-002}
+
+474 places, 404 transitions, 3240 arcs
+
+0.021s
+
+REACHABILITY ANALYSIS ------------------------------------------- 
+
+bounded
+
+17424 marking(s), 53328 transition(s)
+
+2.133s
+
+LIVENESS ANALYSIS ----------------------------------------------- 
+
+live
+reversible
+
+0 dead marking(s), 17424 live marking(s)
+0 dead transition(s), 404 live transition(s)
+
+0.007s
+
+ANALYSIS COMPLETED ---------------------------------------------- 
+
+# net {BART-PT-002}, 474 places, 404 transitions, 3240 arcs            #
+# bounded, live, reversible                                            #
+# abstraction        count      props      psets       dead       live #
+#      states        17424        474          ?          0      17424 # 
+# transitions        53328        404          ?          0        404 #

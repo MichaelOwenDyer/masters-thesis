@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/Parking-PT-104/model.pnml","property":"live","mode":"general","verdict":"false","class":"AsymmetricChoice","places":65,"transitions":97,"arcs":284,"parse_ms":1.141,"analyze_ms":113.980,"timeout_ms":null,"states":31745,"edges":339201}

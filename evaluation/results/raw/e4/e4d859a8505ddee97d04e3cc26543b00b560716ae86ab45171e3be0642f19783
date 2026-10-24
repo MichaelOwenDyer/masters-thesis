@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/CryptoMiner-PT-D03N010/model.pnml","property":"onesafe","mode":"dispatch","verdict":"false","class":"General","places":12,"transitions":12,"arcs":34,"parse_ms":0.281,"analyze_ms":0.004,"timeout_ms":null}
