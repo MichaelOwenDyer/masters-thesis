@@ -43,9 +43,9 @@
       "unknown": 0
     },
     {
-      "agree": 187,
+      "agree": 188,
       "crash": 0,
-      "disagree": 1,
+      "disagree": 0,
       "input_rejected": 0,
       "no_truth": 0,
       "not_supported": 0,
@@ -57,9 +57,9 @@
       "unknown": 0
     },
     {
-      "agree": 224,
+      "agree": 225,
       "crash": 0,
-      "disagree": 1,
+      "disagree": 0,
       "input_rejected": 0,
       "no_truth": 0,
       "not_supported": 0,
@@ -548,40 +548,7 @@
     }
   ],
   "crashes": [],
-  "disagreements": [
-    {
-      "answer": "TRUE",
-      "campaign": "B",
-      "detail": null,
-      "instance_id": "3c9a4cb9b6928392036809bc26c1bbd1543588dc32e1ac02979e327111391b73",
-      "outcome": "DISAGREE",
-      "pattern": "tool-vs-oracle",
-      "query": "Q3",
-      "run_id": "b67f61b8c6d4419945ce18ad2cd14f0b99f18676256342358417fe477636e4b4",
-      "solver_id": "lola",
-      "source": "fam",
-      "target_id": null,
-      "truth_source": "construction",
-      "truth_value": false,
-      "verdict_differs": false
-    },
-    {
-      "answer": "TRUE",
-      "campaign": "B",
-      "detail": null,
-      "instance_id": "3c9a4cb9b6928392036809bc26c1bbd1543588dc32e1ac02979e327111391b73",
-      "outcome": "DISAGREE",
-      "pattern": "tool-vs-oracle",
-      "query": "Q4",
-      "run_id": "d6001ae89a54250140126605908845f0533b65c5471994ec8763cba7385b701f",
-      "solver_id": "lola",
-      "source": "fam",
-      "target_id": null,
-      "truth_source": "construction",
-      "truth_value": false,
-      "verdict_differs": false
-    }
-  ],
+  "disagreements": [],
   "e1": [
     {
       "cp_upper_95": 0.7763932022500211,
@@ -638,19 +605,19 @@
       "source": "fam"
     },
     {
-      "cp_upper_95": null,
-      "n_agree": 97,
+      "cp_upper_95": 0.030106198694773156,
+      "n_agree": 98,
       "n_conclusive": 98,
-      "n_disagree": 1,
+      "n_disagree": 0,
       "query": "Q3",
       "solver_id": "lola",
       "source": "fam"
     },
     {
-      "cp_upper_95": null,
-      "n_agree": 124,
+      "cp_upper_95": 0.023680957510334832,
+      "n_agree": 125,
       "n_conclusive": 125,
-      "n_disagree": 1,
+      "n_disagree": 0,
       "query": "Q4",
       "solver_id": "lola",
       "source": "fam"
