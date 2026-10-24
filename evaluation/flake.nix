@@ -35,6 +35,9 @@
           };
         };
 
+      # `nix build .#checks.x86_64-linux.its-tools`: runs ITS-Tools as a user of the package would (see nix/its-tools-check.nix)
+      checks.${system}.its-tools = pkgs.callPackage ./nix/its-tools-check.nix { its-tools = self.packages.${system}.its-tools; };
+
       devShells = nixpkgs.lib.recursiveUpdate
         # `nix develop .#analysis`: only the Python environment, on every system (LoLA and TINA are not needed to
         # regenerate export/). From this directory: python -m analysis --results results --truth results/truth.jsonl --out export

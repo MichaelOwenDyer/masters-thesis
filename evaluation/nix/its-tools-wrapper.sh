@@ -1,11 +1,12 @@
 #!@bash@/bin/bash
 # `its-tools`: the launcher of ITS-Tools (see nix/its-tools.nix).
 #
-# The tool makes its z3 executable with File.setExecutable before it starts it, which fails for a file of the
-# read-only store (even if the file is executable already), and without z3 several examinations stall until the
-# cap. So the tool runs from a small tree in the cache of the user: symbolic links to the store for every plugin,
-# a writable copy for the plugin that holds z3. The tree is built once (in a temporary folder that is renamed, so
-# that runs starting at the same time cannot see a half-built tree) and is named after this package build.
+# The plugins that carry binaries (z3, PetriSpot, the ITS engines, ...) make them executable with File.setExecutable
+# before they start them, which fails for a file of the read-only store (even if the file is executable already);
+# without z3 or PetriSpot several examinations stall until the cap or give no answer. So the tool runs from a small
+# tree in the cache of the user: symbolic links to the store for every plugin, and a writable copy of each plugin
+# that carries binaries. The tree is built once (in a temporary folder that is renamed, so that runs starting at the
+# same time cannot see a half-built tree) and is named after this package build.
 set -eu
 export PATH="@path@:$PATH"
 store=@store@
@@ -18,7 +19,7 @@ if [ ! -d "$cache/plugins" ]; then
 	for entry in "$store"/plugins/*; do
 		name=$(basename "$entry")
 		case "$name" in
-			fr.lip6.smt.z3.binaries_*) cp -r "$entry" "$tmp/plugins/$name"; chmod -R u+w "$tmp/plugins/$name" ;;
+			*.binaries_*) cp -r "$entry" "$tmp/plugins/$name"; chmod -R u+w "$tmp/plugins/$name" ;;
 			*) ln -s "$entry" "$tmp/plugins/$name" ;;
 		esac
 	done

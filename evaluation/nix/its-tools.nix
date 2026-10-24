@@ -11,9 +11,12 @@
 #  * the launcher script starts with `#! /bin/bash` (NixOS has no /bin/bash): patchShebangs;
 #  * the launcher unpacks the jars nested in plugins into plugins-lib/ on its first run, which a read-only store
 #    cannot do: it is run once at build time;
-#  * the tool makes its z3 executable with File.setExecutable before it starts it, which fails for any file of the
-#    read-only store; the wrapper (nix/its-tools-wrapper.sh) therefore runs the tool from a small tree in the cache
-#    of the user (links to the store, and a writable copy of the plugin that holds z3);
+#  * the plugins that carry binaries (z3, PetriSpot, the ITS engines, ...) make them executable with
+#    File.setExecutable before they start them, which fails for any file of the read-only store; the wrapper
+#    (nix/its-tools-wrapper.sh) therefore runs the tool from a small tree in the cache of the user (links to the
+#    store, and a writable copy of every plugin that carries binaries). Whether that works is checked by
+#    nix/its-tools-check.nix, which must run as a user of the finished package: during this build the output is
+#    writable, so a test here would pass for the wrong reason;
 #  * the tool calls `killall` by name after a run, to stop its engine processes; `killall` is not installed and,
 #    with several runs side by side, would also stop the engines of the other runs. A no-op stands in for it: the
 #    runner of the evaluation stops the whole process group of every run itself;
@@ -81,13 +84,6 @@ stdenv.mkDerivation {
       --subst-var-by heap ${heap}
     chmod +x $out/bin/its-tools
 
-    # The tool must find a working z3: run a real examination (it uses z3 for the reductions of the state space) on a
-    # three-place net and fail the build on the error that a z3 that cannot be made executable gives.
-    mkdir smoke && cp ${./its-tools-smoke.pnml} smoke/model.pnml
-    HOME=$TMPDIR $out/bin/its-tools -pnfolder smoke -examination StateSpace -its -timeout 60 > smoke.log 2>&1 || true
-    cat smoke.log
-    ! grep -q "unable to make the command-line tool executable" smoke.log
-    grep -q "STATE_SPACE STATES  *3 " smoke.log
     runHook postInstall
   '';
 
