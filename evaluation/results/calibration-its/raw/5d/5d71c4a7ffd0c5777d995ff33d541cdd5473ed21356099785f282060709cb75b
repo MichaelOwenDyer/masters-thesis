@@ -1,0 +1,51 @@
+[2026-10-24 22:33:17] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.sWYRid/tmp.14JoXiEM2H, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 22:33:17] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.sWYRid/tmp.14JoXiEM2H/model.pnml 
+[2026-10-24 22:33:18] [INFO   ] Load time of PNML (sax parser for PT used): 26 ms 
+[2026-10-24 22:33:18] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:33:18] [INFO   ] Transformed 6 transitions. 
+[2026-10-24 22:33:18] [INFO   ] Parsed PT model containing 5 places and 6 transitions and 14 arcs in 318 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 5/5 places, 6/6 transitions.
+Graph (trivial) has 4 edges and 5 vertex of which 4 / 5 are part of one of the 2 SCC in 5 ms
+Free SCC test removed 2 places 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 0 with 1 rules applied. Total rules applied 2 place count 3 transition count 3
+Reduce places removed 3 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Iterating post reduction 1 with 5 rules applied. Total rules applied 7 place count 0 transition count 1
+Applied a total of 7 rules in 45 ms. Remains 0 /5 variables (removed 5) and now considering 1/6 (removed 5) transitions.
+[2026-10-24 22:33:18] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/9843a78q5f36v184gpias1lji1wjs95s-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:33:18] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@32650345] 
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:156)
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:141)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:154)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:147)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:137)
+	at fr.lip6.move.gal.structural.smt.DeadlockTester.testImplicitWithSMT(DeadlockTester.java:1538)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.applySMTBasedReductionRules(ReachabilitySolver.java:770)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.applyReductions(ReachabilitySolver.java:738)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:296)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preSolveLiveness(GlobalPropertySolver.java:188)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preStableMarking(GlobalPropertySolver.java:88)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:61)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:600)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:33:18] [INFO   ] Implicit Places with SMT raised an exceptionjava.io.IOException: unable to make the command-line tool executable after 27 ms  
+[2026-10-24 22:33:18] [INFO   ] Invariant cache hit. 
+[2026-10-24 22:33:18] [INFO   ] Implicit Places using invariants and state equation in 48 ms returned [] 
+Implicit Place search using SMT with State Equation took 109 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 1ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 0/5 places, 1/6 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 200 ms. Remains : 0/5 places, 1/6 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 597 ms.
