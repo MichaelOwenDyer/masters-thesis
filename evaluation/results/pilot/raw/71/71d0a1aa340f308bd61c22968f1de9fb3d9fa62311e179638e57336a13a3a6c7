@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/NoC3x3-PT-6B/model.pnml","property":"df","mode":"dispatch","verdict":"unknown","class":"General","places":1544,"transitions":2229,"arcs":6663,"parse_ms":28.761,"analyze_ms":15.034,"timeout_ms":10}
