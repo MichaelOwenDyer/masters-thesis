@@ -1,0 +1,67 @@
+runs adjudicated: 52590
+solver       q     agree disagree unknown  n/sup rejected  crash    to+mo   rerr no_truth    oos
+pv-dispatch  Q1     1313        0       0      0        0      0        0      0        0    383
+pv-dispatch  Q2     1696        0       0      0        0      0        0      0        0      0
+pv-dispatch  Q3     1313        0       0      0        0      0        0      0        0    383
+pv-dispatch  Q4     1313        0       0      0        0      0        0      0        0    383
+pv-dispatch  QC     4681        4       0      0        0      0       49      0      252      0
+pv-dispatch  QR     5214        4       0      0        0      0       12      0      530      0
+pv-general   Q1     1313        0       0      0        0      0        0      0        0    383
+pv-general   Q2     1696        0       0      0        0      0        0      0        0      0
+pv-general   Q3     1313        0       0      0        0      0        0      0        0    383
+pv-general   Q4     1313        0       0      0        0      0        0      0        0    383
+pv-general   QC     4727        0       0      0        0      0        2      0      257      0
+pv-general   QR     4795        0       0      0        0      0      690      0      275      0
+pv-poly      Q1     1117        0     196      0        0      0        0      0        0    383
+pv-poly      Q2     1107        0     589      0        0      0        0      0        0      0
+pv-poly      Q3     1226        0      87      0        0      0        0      0        0    383
+pv-poly      Q4     1226        0      87      0        0      0        0      0        0    383
+pv-poly      QC     1112        0    3874      0        0      0        0      0        0      0
+pv-poly      QR     1509        0    4200      0        0      0        0      0       51      0
+
+DISAGREE: 8
+  pattern petrivet-vs-single-tool (3)
+    8c5b2d43291f QC c92406f183f41340 pv-dispatch answer=FALSE truth=TRUE source=lola-only
+    aa5fc9d63af8 QR 2926daad5f927158 pv-dispatch answer=FALSE truth=TRUE source=lola-only
+    e171d6649ba2 QR 0705326775245d81 pv-dispatch answer=FALSE truth=TRUE source=lola-only
+  pattern pv-modes-disagree (5)
+    b3758a0ea28b QC 291b585e9bc4c13a pv-dispatch answer=FALSE truth=TRUE source=lola+tina
+    bb42e878daa1 QR 09893c7576910921 pv-dispatch answer=FALSE truth=TRUE source=lola+tina
+    bb42e878daa1 QR f8bebcb7f2980b2f pv-dispatch answer=FALSE truth=TRUE source=lola+tina
+    e30bbc543d1d QC ec6c862ffc4a3fc7 pv-dispatch answer=FALSE truth=TRUE source=lola+tina
+    f2b3390663e5 QC 079123d6e9177048 pv-dispatch answer=FALSE truth=TRUE source=lola+tina
+
+FINDINGS without truth: 1
+  pv-modes-disagree 8f96f2555aa1 QR 1eeab3daf51afc68 pv-dispatch=FALSE pv-general=TRUE
+
+CRASH: 0
+
+runs with a differing repetition: 0
+
+E1 (conclusive = agree + disagree; ub = one-sided 95% Clopper-Pearson upper bound, only for 0 disagreements)
+solver       source       q    conclusive   agree  disagree       ub
+pv-dispatch  gen          Q1         1313    1313         0   0.0023
+pv-dispatch  gen          Q2         1696    1696         0   0.0018
+pv-dispatch  gen          Q3         1313    1313         0   0.0023
+pv-dispatch  gen          Q4         1313    1313         0   0.0023
+pv-dispatch  gen          QC         3437    3434         3        -
+pv-dispatch  gen          QR         4226    4224         2        -
+pv-dispatch  gen-lola-only QC         1248    1247         1        -
+pv-dispatch  gen-lola-only QR          992     990         2        -
+pv-general   gen          Q1         1313    1313         0   0.0023
+pv-general   gen          Q2         1696    1696         0   0.0018
+pv-general   gen          Q3         1313    1313         0   0.0023
+pv-general   gen          Q4         1313    1313         0   0.0023
+pv-general   gen          QC         3454    3454         0   0.0009
+pv-general   gen          QR         4228    4228         0   0.0007
+pv-general   gen-lola-only QC         1273    1273         0   0.0024
+pv-general   gen-lola-only QR          567     567         0   0.0053
+pv-poly      gen          Q1         1117    1117         0   0.0027
+pv-poly      gen          Q2         1107    1107         0   0.0027
+pv-poly      gen          Q3         1226    1226         0   0.0024
+pv-poly      gen          Q4         1226    1226         0   0.0024
+pv-poly      gen          QC         1112    1112         0   0.0027
+pv-poly      gen          QR         1375    1375         0   0.0022
+pv-poly      gen-lola-only QR          134     134         0   0.0221
+
+wrote results/adjudication.jsonl (52590 lines), results/adjudication_summary.json, 10 reproducers in results/reproducers
