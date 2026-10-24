@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/ServersAndClients-PT-100160/model.pnml","property":"df","mode":"dispatch","verdict":"unknown","class":"General","places":16561,"transitions":32200,"arcs":96800,"parse_ms":559.345,"analyze_ms":127.518,"timeout_ms":100}

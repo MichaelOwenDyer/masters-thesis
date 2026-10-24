@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/DiscoveryGPU-PT-14b/model.pnml","property":"live","mode":"dispatch","verdict":"unknown","class":"AsymmetricChoice","places":408,"transitions":434,"arcs":1135,"parse_ms":6.261,"analyze_ms":14.218,"timeout_ms":10}

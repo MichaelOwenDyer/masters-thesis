@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/SquareGrid-PT-020102/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"AsymmetricChoice","places":68,"transitions":72,"arcs":288,"parse_ms":9.906,"analyze_ms":1012.900,"timeout_ms":1000}

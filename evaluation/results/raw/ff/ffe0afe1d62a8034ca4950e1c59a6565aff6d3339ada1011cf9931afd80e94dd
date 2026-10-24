@@ -1,0 +1,1 @@
+{"tool":"petrivet","version":"0.1.0","file":"/home/michael/RustroverProjects/masters-thesis/evaluation/corpus/mcc/models/UtilityControlRoom-PT-Z2T3N04/model.pnml","property":"quasi-live","mode":"dispatch","verdict":"unknown","class":"General","places":72,"transitions":108,"arcs":340,"parse_ms":1.342,"analyze_ms":10.979,"timeout_ms":10}
