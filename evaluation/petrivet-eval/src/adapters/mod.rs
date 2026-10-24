@@ -87,21 +87,58 @@ pub struct CommandSpec {
     pub program: String,
     pub args: Vec<String>,
     pub env: Vec<(String, String)>,
+    /// Fed to the child's standard input (everything else gets `/dev/null`).
+    pub stdin: Option<String>,
 }
 
 impl CommandSpec {
     #[cfg_attr(not(test), allow(dead_code))]
     pub fn new(program: impl Into<String>, args: impl IntoIterator<Item = impl Into<String>>) -> Self {
-        CommandSpec { program: program.into(), args: args.into_iter().map(Into::into).collect(), env: Vec::new() }
+        CommandSpec { program: program.into(), args: args.into_iter().map(Into::into).collect(), env: Vec::new(), stdin: None }
+    }
+
+    /// A shell script run as `sh -s` with the script on standard input. Scripts for nets with many transitions
+    /// outgrow the kernel's limit for a single argument (128 KiB), which `sh -c` would hit. The tools called by the
+    /// script must be started with `</dev/null` so that they do not read the rest of the script.
+    pub fn sh_script(script: String) -> Self {
+        CommandSpec { program: "sh".into(), args: vec!["-s".into()], env: Vec::new(), stdin: Some(script) }
+    }
+
+    /// The script of a `sh -c` or `sh -s` command, for tests.
+    #[cfg(test)]
+    pub fn script_text(&self) -> &str {
+        self.stdin.as_deref().unwrap_or_else(|| &self.args[1])
+    }
+
+    /// Runs the command to completion with its standard input, for tests.
+    #[cfg(test)]
+    pub fn output(&self) -> std::process::Output {
+        use std::io::Write;
+        let mut child = std::process::Command::new(&self.program)
+            .args(&self.args)
+            .envs(self.env.iter().map(|(k, v)| (k, v)))
+            .stdin(if self.stdin.is_some() { std::process::Stdio::piped() } else { std::process::Stdio::null() })
+            .stdout(std::process::Stdio::piped())
+            .stderr(std::process::Stdio::piped())
+            .spawn()
+            .unwrap();
+        if let Some(s) = &self.stdin {
+            child.stdin.take().unwrap().write_all(s.as_bytes()).unwrap();
+        }
+        child.wait_with_output().unwrap()
     }
 
     /// Shell-ish rendering for the record (display only, not re-parsed).
     pub fn display(&self) -> String {
-        std::iter::once(self.program.as_str())
+        let line = std::iter::once(self.program.as_str())
             .chain(self.args.iter().map(String::as_str))
             .map(|a| if a.is_empty() || a.contains(char::is_whitespace) { format!("'{a}'") } else { a.to_owned() })
             .collect::<Vec<_>>()
-            .join(" ")
+            .join(" ");
+        match &self.stdin {
+            Some(s) => format!("{line} <<'PETRIVET_SCRIPT'\n{s}PETRIVET_SCRIPT"),
+            None => line,
+        }
     }
 }
 

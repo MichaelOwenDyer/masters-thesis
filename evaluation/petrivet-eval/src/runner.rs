@@ -139,7 +139,7 @@ fn build_command(spec: &CommandSpec, limits: &Limits) -> Command {
         c
     };
     cmd.envs(spec.env.iter().map(|(k, v)| (k, v)));
-    cmd.stdin(Stdio::null()).stdout(Stdio::piped()).stderr(Stdio::piped());
+    cmd.stdin(if spec.stdin.is_some() { Stdio::piped() } else { Stdio::null() }).stdout(Stdio::piped()).stderr(Stdio::piped());
     cmd.process_group(0);
     #[cfg(target_os = "linux")]
     {
@@ -200,6 +200,13 @@ pub fn run_command(spec: &CommandSpec, limits: &Limits) -> RunResult {
         }
     };
     let pid = child.id() as libc::pid_t;
+    // the script goes in from a thread: it may be larger than the pipe, and a child killed early closes the pipe
+    let feed = spec.stdin.clone().zip(child.stdin.take()).map(|(text, mut pipe)| {
+        std::thread::spawn(move || {
+            use std::io::Write;
+            let _ = pipe.write_all(text.as_bytes());
+        })
+    });
     let out = drain(child.stdout.take().expect("piped"), limits.out_cap);
     let err = drain(child.stderr.take().expect("piped"), limits.out_cap);
 
@@ -237,6 +244,9 @@ pub fn run_command(spec: &CommandSpec, limits: &Limits) -> RunResult {
     };
     kill_group();
     let _ = waiter.join();
+    if let Some(f) = feed {
+        let _ = f.join();
+    }
     let (stdout, t1) = out.join().unwrap_or_default();
     let (stderr, t2) = err.join().unwrap_or_default();
 
@@ -313,6 +323,15 @@ mod tests {
 
     fn limits(wall_ms: u64) -> Limits {
         Limits { wall: Duration::from_millis(wall_ms), mem_kib: 8 * 1024 * 1024, core: None, out_cap: 1024, limiter: Limiter::None }
+    }
+
+    #[test]
+    fn script_larger_than_one_argument_runs_via_stdin() {
+        // 300 KiB: `sh -c` would fail with "Argument list too long"; stdin may be larger than the pipe too
+        let script = format!("{}echo TRUE\n", "x=1\n".repeat(75_000));
+        let r = run_command(&CommandSpec::sh_script(script), &limits(10_000));
+        assert!(r.spawn_error.is_none() && r.exit_code == Some(0), "{r:?}");
+        assert!(String::from_utf8_lossy(&r.stdout).contains("TRUE"));
     }
 
     #[test]

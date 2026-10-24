@@ -101,7 +101,7 @@ impl Adapter for Pv {
             args.push("--target".into());
             args.push(t.display().to_string());
         }
-        CommandSpec { program: self.program.clone(), args, env: Vec::new() }
+        CommandSpec { program: self.program.clone(), args, env: Vec::new(), stdin: None }
     }
 
     fn parse(&self, stdout: &str, _exit_code: i32) -> Parsed {

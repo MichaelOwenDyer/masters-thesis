@@ -47,7 +47,7 @@ impl Lola {
         args.extend(extra.iter().cloned());
         args.push("--quiet".into());
         args.push("--json=/dev/stdout".into());
-        CommandSpec { program: self.program.clone(), args, env: Vec::new() }
+        CommandSpec { program: self.program.clone(), args, env: Vec::new(), stdin: None }
     }
 
     fn formula_cmd(&self, net: &str, pre: &[&str], formula: String) -> CommandSpec {
@@ -121,13 +121,13 @@ impl Lola {
     fn script(&self, net: &str, checks: Vec<String>, stop: &str, otherwise: &str) -> CommandSpec {
         let mut s = format!("lola={}; net={}; unk=0\n", sh_quote(&self.program), sh_quote(net));
         s.push_str(
-            "chk() {\n  out=$(\"$lola\" \"$net\" \"--formula=$1\" --quiet --json=/dev/stdout); rc=$?\n  printf '%s\\n' \"$out\"\n  [ \"$rc\" -eq 0 ] || exit \"$rc\"\n  case \"$out\" in\n    *'\"result\": true'*|*'\"result\":true'*) res=true;;\n    *'\"result\": false'*|*'\"result\":false'*) res=false;;\n    *) res=other;;\n  esac\n  if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi\n  [ \"$res\" = other ] && unk=1\n}\n",
+            "chk() {\n  out=$(\"$lola\" \"$net\" \"--formula=$1\" --quiet --json=/dev/stdout </dev/null); rc=$?\n  printf '%s\\n' \"$out\"\n  [ \"$rc\" -eq 0 ] || exit \"$rc\"\n  case \"$out\" in\n    *'\"result\": true'*|*'\"result\":true'*) res=true;;\n    *'\"result\": false'*|*'\"result\":false'*) res=false;;\n    *) res=other;;\n  esac\n  if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi\n  [ \"$res\" = other ] && unk=1\n}\n",
         );
         for c in checks {
             s.push_str(&format!("chk {} {stop}\n", sh_quote(&c)));
         }
         s.push_str(&format!("if [ \"$unk\" -eq 1 ]; then echo 'PETRIVET_ANSWER unknown'; else echo 'PETRIVET_ANSWER {otherwise}'; fi\n"));
-        CommandSpec::new("sh", ["-c", s.as_str()])
+        CommandSpec::sh_script(s)
     }
 
     /// Reads the output of a run that exited with status 0.
@@ -300,16 +300,16 @@ mod tests {
         let (p, t) = net();
         let q4 = lola().build(Query::Q4, "N.lola", &p, &t, None);
         assert_eq!(q4.program, "sh");
-        let s = &q4.args[1];
+        let s = q4.script_text();
         assert!(s.contains("lola='lola'; net='N.lola'"));
         assert!(s.contains("chk 'EF FIREABLE(t0)' false\nchk 'EF FIREABLE(t1)' false\n"));
         let q3 = lola().build(Query::Q3, "N.lola", &p, &t, None);
-        assert!(q3.args[1].contains("chk 'AGEF FIREABLE(t0)' false\nchk 'AGEF FIREABLE(t1)' false\n"));
+        assert!(q3.script_text().contains("chk 'AGEF FIREABLE(t0)' false\nchk 'AGEF FIREABLE(t1)' false\n"));
         assert!(s.contains("[ \"$rc\" -eq 0 ] || exit \"$rc\""));
         assert!(s.contains("if [ \"$res\" = \"$2\" ]; then echo \"PETRIVET_ANSWER $2\"; exit 0; fi"));
         assert!(s.ends_with("else echo 'PETRIVET_ANSWER true'; fi\n"));
         let q6 = lola().build(Query::Q6, "N.lola", &p, &t, None);
-        let s = &q6.args[1];
+        let s = q6.script_text();
         assert!(s.contains("chk 'AG (p0 = 1)' true\nchk 'AG (p1 = 0)' true\nchk 'AG (p2 = 2)' true\n"));
         assert!(s.ends_with("else echo 'PETRIVET_ANSWER false'; fi\n"));
     }
@@ -338,7 +338,7 @@ mod tests {
             let places: Vec<(String, u32)> = ps.iter().map(|(p, m)| ((*p).to_owned(), *m)).collect();
             let trans: Vec<String> = ts.iter().map(|t| (*t).to_owned()).collect();
             let c = l.build(q, "N.lola", &places, &trans, None);
-            let o = std::process::Command::new(&c.program).args(&c.args).output().unwrap();
+            let o = c.output();
             let out = String::from_utf8_lossy(&o.stdout).into_owned();
             let calls = std::fs::read_to_string(dir.join("calls")).map_or(0, |t| t.lines().count());
             let f = Finished { spawn_error: None, timed_out: false, memout: false, exit_code: o.status.code(), signal: None, stdout: &out, stderr: &String::from_utf8_lossy(&o.stderr) };

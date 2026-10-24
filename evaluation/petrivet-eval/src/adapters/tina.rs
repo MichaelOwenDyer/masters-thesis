@@ -79,9 +79,9 @@ impl Tina {
         let flags = sift_flags.join(" ");
         let mut s = format!("sift={}; scan={}; net={}; unk=0\n", sh_quote(&self.sift), sh_quote(&self.scan), sh_quote(net));
         s.push_str("d=$(mktemp -d) || { echo 'mktemp failed' >&2; exit 70; }\ntrap 'rm -rf \"$d\"' EXIT\nk=\"$d/net.ktz\"\n");
-        s.push_str(&format!("\"$sift\" {flags} \"$net\" \"$k\"; rc=$?\n[ \"$rc\" -eq 0 ] || exit \"$rc\"\n"));
+        s.push_str(&format!("\"$sift\" {flags} \"$net\" \"$k\" </dev/null; rc=$?\n[ \"$rc\" -eq 0 ] || exit \"$rc\"\n"));
         s.push_str(
-            "chk() {\n  out=$(\"$scan\" \"$k\" \"$1\" \"$2\" -b); rc=$?\n  printf '%s\\n' \"$out\"\n  [ \"$rc\" -eq 0 ] || exit \"$rc\"\n  if printf '%s\\n' \"$out\" | grep -qx TRUE; then res=true\n  elif printf '%s\\n' \"$out\" | grep -qx FALSE; then res=false\n  else res=other; fi\n}\n",
+            "chk() {\n  out=$(\"$scan\" \"$k\" \"$1\" \"$2\" -b </dev/null); rc=$?\n  printf '%s\\n' \"$out\"\n  [ \"$rc\" -eq 0 ] || exit \"$rc\"\n  if printf '%s\\n' \"$out\" | grep -qx TRUE; then res=true\n  elif printf '%s\\n' \"$out\" | grep -qx FALSE; then res=false\n  else res=other; fi\n}\n",
         );
         if search_true {
             for (mode, f) in checks {
@@ -95,7 +95,7 @@ impl Tina {
             }
             s.push_str("echo \"PETRIVET_ANSWER $res\"\n");
         }
-        CommandSpec::new("sh", ["-c", s.as_str()])
+        CommandSpec::sh_script(s)
     }
 
     pub fn parse_q(&self, query: Query, stdout: &str) -> Parsed {
@@ -365,8 +365,8 @@ mod tests {
         // Q6: sift -k, one scan -n per place, early exit on the first TRUE
         let c = args(Query::Q6);
         assert_eq!(c.program, "sh");
-        let s = &c.args[1];
-        assert!(s.contains("\"$sift\" -R -k \"$net\" \"$k\"; rc=$?"));
+        let s = c.script_text();
+        assert!(s.contains("\"$sift\" -R -k \"$net\" \"$k\" </dev/null; rc=$?"));
         assert!(s.contains("d=$(mktemp -d)") && s.contains("trap 'rm -rf \"$d\"' EXIT"));
         assert!(s.contains("chk -n '-(p0 = 1)'\n[ \"$res\" = true ] && { echo 'PETRIVET_ANSWER true'; exit 0; }"));
         assert!(s.contains("chk -n '-(p1 = 0)'\n") && s.contains("chk -n '-(p2 = 2)'\n"));
@@ -375,17 +375,17 @@ mod tests {
         // QR: -rs profile, every place including zeros
         let tgt: BTreeMap<String, u32> = [("p2".to_owned(), 3)].into();
         let c = t.build(Query::QR, "N.pnml", &places(), Some(&tgt));
-        let s = &c.args[1];
+        let s = c.script_text();
         assert!(s.contains("\"$sift\" -R -rs -k \"$net\" \"$k\""));
         assert!(s.contains("chk -r 'p0 = 0 /\\ p1 = 0 /\\ p2 = 3'\n"));
         assert!(s.ends_with("echo \"PETRIVET_ANSWER $res\"\n"));
         // QC: places with a positive entry, >=
         let c = t.build(Query::QC, "N.pnml", &places(), Some(&tgt));
-        assert!(c.args[1].contains("chk -r 'p2 >= 3'\n"));
+        assert!(c.script_text().contains("chk -r 'p2 >= 3'\n"));
         // zero target: trivially true
         let zero = BTreeMap::new();
         let c = t.build(Query::QC, "N.pnml", &places(), Some(&zero));
-        assert_eq!(c.args[1], "echo 'PETRIVET_ANSWER true'");
+        assert_eq!(c.script_text(), "echo 'PETRIVET_ANSWER true'");
     }
 
     #[test]
@@ -432,7 +432,7 @@ mod tests {
             let _ = std::fs::remove_file(dir.join("scan_calls"));
             let places: Vec<(String, u32)> = ps.iter().map(|(p, m)| ((*p).to_owned(), *m)).collect();
             let c = t.build(q, "N.pnml", &places, tgt);
-            let o = std::process::Command::new(&c.program).args(&c.args).output().unwrap();
+            let o = c.output();
             let out = String::from_utf8_lossy(&o.stdout).into_owned();
             let calls = std::fs::read_to_string(dir.join("scan_calls")).map_or(0, |t| t.lines().count());
             let err = String::from_utf8_lossy(&o.stderr).into_owned();
@@ -467,7 +467,7 @@ mod tests {
         for (q, v) in expect {
             let req = Request { instance_path: std::path::Path::new(src), query: q, target_file: q.needs_target().then_some(target.as_path()), internal_timeout_ms: None, converted: None };
             let spec = a.command(&req);
-            let o = std::process::Command::new(&spec.program).args(&spec.args).output().unwrap();
+            let o = spec.output();
             let (out, err) = (String::from_utf8_lossy(&o.stdout).into_owned(), String::from_utf8_lossy(&o.stderr).into_owned());
             let p = a.classify_for(q, &fin(o.status.code().unwrap_or(-1), &out, &err));
             assert_eq!(p.verdict, v, "{q:?}: {out} {err}");
