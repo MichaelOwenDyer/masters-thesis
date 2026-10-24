@@ -1,6 +1,7 @@
 """E7: memory. Peak RSS distribution and bytes per state.
 
-Campaign B, median ``peak_rss_kib`` over repetitions per cell. Distribution (p25 p50 p75 p95 max) per solver and source.
+Campaign B cells with the memory of campaign M (``use_memory_campaign`` in common.py: B's own peak memory contains the
+runner's footprint), median over repetitions per cell. Distribution (p25 p50 p75 p95 max) per solver and source.
 Bytes per state = (peak_rss_kib - baseline) * 1024 / states, on Q0 runs with verdict COUNT and states > 0; baseline = median
 ``peak_rss_kib`` of the solver's ``instance_id == "BASELINE"`` runs (no-op on a trivial net); without a baseline for that
 solver the solver is skipped for bytes per state. Only solvers that report ``states`` (COUNT) appear.

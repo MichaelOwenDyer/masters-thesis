@@ -91,18 +91,22 @@ def run(ctx: Ctx) -> None:
     p = plt()
     trig = cells.filter(pl.col("triggered"))
     if trig.height:
-        cm = color_map([str(int(t)) for t in ts])
-        fig, ax = p.subplots(figsize=(5.2, 3.4))
+        cm = dict(zip([str(int(t)) for t in ts], ["#56B4E9", "#E69F00", "#009E73", "#0072B2"]))
+        fig, ax = p.subplots(figsize=(6.4, 3.8))
         vals = np.clip(trig["overshoot_ms"].to_numpy(), 0.01, None)
         bins = np.logspace(np.log10(vals.min()) - 0.05, np.log10(vals.max()) + 0.05, 25) if vals.max() > vals.min() else 10
         for t in ts:
             v = np.clip(trig.filter(pl.col("timeout_ms") == t)["overshoot_ms"].to_numpy(), 0.01, None)
             if len(v):
-                ax.hist(v, bins=bins, alpha=0.6, label=f"t = {int(t)} ms", color=cm[str(int(t))])
+                ax.hist(v, bins=bins, alpha=0.65, label=f"{int(t)} ms", color=cm[str(int(t))])
         ax.set_xscale("log")
         if thr is not None:
-            ax.axvline(thr, color="#000000", ls="--", lw=0.8)
-        ax.set_xlabel("overshoot = analyze_ms - timeout_ms (ms)")
-        ax.set_ylabel("cells")
-        ax.legend(frameon=False)
+            ax.axvline(thr, color="#000000", ls="--", lw=0.9)
+            ax.text(thr * 1.15, ax.get_ylim()[1] * 0.97, f"{thr:g} ms: our limit for\n\"close to the deadline\"", fontsize=7.5, va="top")
+        ax.set_xlabel("how long after the time limit the library stopped (ms, log scale)")
+        ax.set_ylabel("number of (net, question) pairs")
+        ax.set_title("How closely does the library keep to a time limit?", loc="left", fontsize=10.5, pad=22)
+        ax.text(0, 1.02, "Only pairs where the limit was hit. Bars further left: the library stopped closer to the deadline.",
+                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.legend(frameon=False, title="time limit given", title_fontsize=8.5, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path("e3b_overshoot"))

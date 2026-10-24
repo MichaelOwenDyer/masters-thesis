@@ -1,5 +1,7 @@
 //! `petrivet-eval run`: campaign B of SPEC 9 (subprocess runs, performance and comparison) and campaign A
 //! (correctness on generated nets, the same machinery with one repetition, no baseline, no warm-up).
+//! Campaign M repeats every cell of B once with the tool started through the `rss` wrapper (see `measure.rs`),
+//! because the peak memory of B's runs contains the runner's own footprint; only its memory column is used.
 //!
 //! Plan: units = (instance, query, target) in seeded shuffled order, solvers shuffled inside each unit so that
 //! they run next to each other. Execution is in rounds: round 0 holds repetition 0 of every cell
@@ -250,7 +252,7 @@ impl Ctx<'_> {
         let req = Request { instance_path: &path, query: u.query, target_file: target_file.as_deref(), internal_timeout_ms: None, converted: converted.as_deref() };
         let spec = adapter.command(&req);
         let core = (!self.cores.is_empty()).then(|| self.cores[worker % self.cores.len()]);
-        let limits = Limits { wall: self.wall, mem_kib: self.mem_kib, core, out_cap: self.out_cap, limiter: self.limiter };
+        let limits = Limits { wall: self.wall, mem_kib: self.mem_kib, core, out_cap: self.out_cap, limiter: self.limiter, measure_rss: self.campaign == "M" };
         let started = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_millis() as u64);
         let res = if note.is_some() || forced.is_some() { runner::RunResult { spawn_error: note.clone(), ..Default::default() } } else { runner::run_command(&spec, &limits) };
 
@@ -368,10 +370,11 @@ pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), St
         return campaign_c::run(cfg, config_path, args);
     }
     let is_a = args.campaign.eq_ignore_ascii_case("A");
-    if !is_a && !args.campaign.eq_ignore_ascii_case("B") {
-        return Err(format!("campaign {:?} is not implemented (A, B and C)", args.campaign));
+    let is_m = args.campaign.eq_ignore_ascii_case("M");
+    if !is_a && !is_m && !args.campaign.eq_ignore_ascii_case("B") {
+        return Err(format!("campaign {:?} is not implemented (A, B, C and M)", args.campaign));
     }
-    let campaign: &'static str = if is_a { "A" } else { "B" };
+    let campaign: &'static str = if is_a { "A" } else if is_m { "M" } else { "B" };
     if args.solvers.is_empty() {
         args.solvers = ["pv-dispatch", "pv-general", "pv-poly"].map(String::from).to_vec();
     }
@@ -449,6 +452,22 @@ pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), St
         u.solvers.shuffle(&mut rng);
     }
 
+    if is_m {
+        // Only cells that gave an answer in B are measured again: a time-out is killed at the cap together with
+        // the wrapper and leaves no memory value, a memory-out already shows the limit (its value is taken from B,
+        // where it is far above the runner's footprint), and the other outcomes have nothing to measure.
+        let b = record::read_existing(&results_dir);
+        let mut dropped = 0usize;
+        for u in &mut units {
+            let inst = &instances[u.inst];
+            let tid = u.target.map(|t| inst.targets[t].target_id.as_str());
+            let before = u.solvers.len();
+            u.solvers.retain(|&s| b.get(&record::run_id("B", &inst.instance_id, u.query.as_str(), tid, adapters[s].solver_id(), 0)).is_some_and(|r| r.verdict.repeatable()));
+            dropped += before - u.solvers.len();
+        }
+        units.retain(|u| !u.solvers.is_empty());
+        println!("campaign M: {dropped} cells left out (no answer in campaign B: time-out, memory-out, not supported, error)");
+    }
     let n_instances = units.iter().map(|u| u.inst).collect::<std::collections::BTreeSet<_>>().len();
     let cells: usize = units.iter().map(|u| u.solvers.len()).sum();
     let wall = Duration::from_secs(args.wall_cap_secs.unwrap_or(if is_a { rcfg.a_wall_cap_secs } else { rcfg.wall_cap_secs }));
@@ -463,7 +482,11 @@ pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), St
         if is_a {
             println!("campaign A: {n_instances} instances, {} units, {cells} jobs (one repetition each), wall cap {} s{}", units.len(), wall.as_secs(), shard.map_or(String::new(), |(i, n)| format!(", shard {i}/{n}")));
         } else {
-            println!("campaign B: {n_instances} instances, {} units, {cells} first-run jobs (repetitions add up to 4 per cell after the first run)", units.len());
+            if is_m {
+                println!("campaign M (memory, through the `rss` wrapper): {n_instances} instances, {} units, {cells} jobs (one run per cell)", units.len());
+            } else {
+                println!("campaign B: {n_instances} instances, {} units, {cells} first-run jobs (repetitions add up to 4 per cell after the first run)", units.len());
+            }
         }
         println!("solvers {:?}, queries {:?}, seed {seed}, results {}", args.solvers, args.queries, results_dir.display());
         let dummy = Ctx {
@@ -548,7 +571,8 @@ pub fn run(cfg: &Config, config_path: &Path, mut args: RunArgs) -> Result<(), St
     }
     println!("warm-up: read {n_instances} instance files ({warm} bytes)");
 
-    let stats = run_rounds(&ctx, parallel, &mut log, &mut done)?;
+    // campaign M measures memory only: one run per cell, no repetitions
+    let stats = if is_m { run_rounds_n(&ctx, parallel, &mut log, &mut done, 1)? } else { run_rounds(&ctx, parallel, &mut log, &mut done)? };
     let (written, skipped, differing, summary) = (stats.written, stats.skipped, stats.differing, stats.summary);
     println!("\nsummary: {written} runs written to {}, {skipped} skipped (already recorded), {differing} repetitions differ from repetition 0", record::runs_path(&results_dir).display());
     for (solver, counts) in &summary {
@@ -768,7 +792,7 @@ mod tests {
     /// Classification table: real processes through runner + mock adapter + default rules.
     #[test]
     fn classification_table() {
-        let l = Limits { wall: Duration::from_millis(500), mem_kib: 1 << 20, core: None, out_cap: 4096, limiter: Limiter::None };
+        let l = Limits { wall: Duration::from_millis(500), mem_kib: 1 << 20, core: None, out_cap: 4096, limiter: Limiter::None, measure_rss: false };
         let classify = |shell: &str, program: Option<&str>| {
             let m = Mock::new("mock", shell);
             let mut spec = m.command(&Request { instance_path: Path::new("x"), query: Query::Q1, target_file: None, internal_timeout_ms: None, converted: None });

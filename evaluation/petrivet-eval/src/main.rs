@@ -9,6 +9,7 @@ mod histogram;
 mod instance;
 mod latency;
 mod manifest_mcc;
+mod measure;
 mod oracle;
 mod oracle_dl;
 mod record;
@@ -82,10 +83,21 @@ enum Cmd {
     Calibrate(calibrate::CalibrateArgs),
     /// Latency campaign D (E6): in-process and subprocess call sequences on small gen nets, startup baselines
     Latency(latency::LatencyArgs),
+    /// Internal (campaign M): run a command and write its peak memory in KiB to --out, ending like the command
+    #[command(hide = true)]
+    Rss {
+        #[arg(long)]
+        out: PathBuf,
+        #[arg(trailing_var_arg = true, allow_hyphen_values = true, required = true)]
+        cmd: Vec<String>,
+    },
 }
 
 fn main() {
     let cli = Cli::parse();
+    if let Cmd::Rss { out, cmd } = &cli.cmd {
+        measure::main(out, cmd);
+    }
     let result = if let Cmd::Adjudicate(args) = &cli.cmd {
         adjudicate::run(args)
     } else if matches!(cli.cmd, Cmd::Doctor) {
@@ -105,7 +117,7 @@ fn main() {
                 other => Err(format!("--source {other}: expected mcc or calibration")),
             },
             Cmd::Truth { manifest, out, tools } => truth::run(&cfg, &cli.config, &manifest, &out, &tools),
-            Cmd::Doctor | Cmd::Adjudicate(_) => unreachable!(),
+            Cmd::Doctor | Cmd::Adjudicate(_) | Cmd::Rss { .. } => unreachable!(),
         })
     };
     if let Err(e) = result {

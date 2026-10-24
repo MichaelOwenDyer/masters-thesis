@@ -25,7 +25,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import Ctx, color_map, plt, save_svg
+from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
 from .stats import holm, hodges_lehmann, quantiles, wilcoxon_greater, wilcoxon_two_sided
 
 D, G, P = "pv-dispatch", "pv-general", "pv-poly"
@@ -117,37 +117,59 @@ def _ablation(ctx: Ctx, pairs: pl.DataFrame) -> None:
 
 def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
     p = plt()
-    # paired scatter
-    cm = color_map(ok["cls"].unique().to_list())
-    fig, ax = p.subplots(figsize=(4.4, 4.2))
-    for c in sorted(cm):
+    classes = [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER))
+    cm = dict(zip(classes, ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#56B4E9"] + ["#000000"] * 4))
+    cap = ctx.cap()
+    # paired scatter: one dot per (net, question); above the diagonal the automatic choice is faster
+    fig, ax = p.subplots(figsize=(6.6, 4.6))
+    for c in classes:
         k = ok.filter(pl.col("cls") == c)
-        ax.scatter(k["t_d"], k["t_g"], s=12, color=cm[c], label=c, alpha=0.8, linewidths=0)
-    lo, hi = max(ok["t_d"].min(), 1e-1) / 2, max(ok["t_d"].max(), ok["t_g"].max()) * 2
-    ax.plot([lo, hi], [lo, hi], color="#999999", lw=0.8)
+        ax.scatter(k["t_d"], k["t_g"], s=14, color=cm[c], label=CLASS_LABEL.get(c, c), alpha=0.75, linewidths=0)
+    lo, hi = max(ok["t_d"].min(), 1e-1) / 2, max(ok["t_d"].max(), ok["t_g"].max()) * 3
+    ax.plot([lo, hi], [lo, hi], color="#777777", lw=0.9)
+    if cap:
+        ax.axhline(cap, color="#999999", ls="--", lw=0.8)
+        ax.axvline(cap, color="#999999", ls="--", lw=0.8)
+        ax.text(lo * 1.1, cap * 1.15, "30 s limit: run stopped without an answer", fontsize=7, color="#555555", va="bottom")
     ax.set_xscale("log"); ax.set_yscale("log")
-    ax.set_xlabel("pv-dispatch wall time (ms)"); ax.set_ylabel("pv-general wall time (ms)")
-    ax.set_title("Paired times, fam (censored at the cap)")
-    ax.legend(frameon=False, fontsize=7)
+    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
+    ax.set_xlabel("time with the automatic choice of method (ms, log scale)")
+    ax.set_ylabel("time with plain state-space exploration (ms, log scale)")
+    ax.set_title("Does picking the method by net structure save time?", loc="left", fontsize=10.5, pad=22)
+    ax.text(0, 1.02, "One dot per net and question. Above the diagonal the automatic choice was faster; below it, plain exploration was.",
+            transform=ax.transAxes, fontsize=7.2, color="#444444")
+    ax.text(2e2, 4e3, "automatic choice faster\n(plain exploration slower or stopped)", fontsize=7.5, color="#333333", va="center")
+    ax.text(6e2, 1.15e1, "plain exploration faster\n(automatic choice slower or stopped)", fontsize=7.5, color="#333333", va="bottom")
+    ax.legend(frameon=False, fontsize=8, title="Kind of net", title_fontsize=8.5, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     save_svg(fig, ctx.fig_path("e2_paired_scatter"))
-    # scaling per family
-    fams = ok.filter(pl.col("size").is_not_null()).group_by("family", "cls").len().sort("cls", "family")
+    # time against net size, one panel per family
+    fams = ok.filter(pl.col("size").is_not_null()).group_by("family", "cls").len()
     if fams.height:
-        n = fams.height
+        order = {c: i for i, c in enumerate(CLASS_ORDER)}
+        rows_list = sorted(fams.iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), r["family"]))
+        n = len(rows_list)
         cols = min(3, n)
         rows_ = (n + cols - 1) // cols
-        fig, axs = p.subplots(rows_, cols, figsize=(3.6 * cols, 2.9 * rows_), squeeze=False, constrained_layout=True)
-        for ax, r in zip(axs.ravel(), fams.iter_rows(named=True)):
+        fig, axs = p.subplots(rows_, cols, figsize=(3.7 * cols, 2.7 * rows_), squeeze=False, constrained_layout=True, sharex=True)
+        for ax, r in zip(axs.ravel(), rows_list):
             k = ok.filter((pl.col("family") == r["family"]) & pl.col("size").is_not_null())
-            for col, lab, colr in (("t_d", "pv-dispatch", "#0072B2"), ("t_g", "pv-general", "#D55E00")):
+            for col, solver in (("t_d", "pv-dispatch"), ("t_g", "pv-general")):
                 m = k.group_by("size").agg(pl.col(col).median()).sort("size")
-                ax.plot(m["size"], m[col], marker="o", ms=3, label=lab, color=colr)
+                ax.plot(m["size"], m[col], marker="o", ms=3, label=solver_label(solver), color=SOLVER_COLOR[solver])
+            if cap:
+                ax.axhline(cap, color="#999999", ls="--", lw=0.8)
             ax.set_xscale("log", base=2); ax.set_yscale("log")
-            ax.set_title(f"{r['family']} ({r['cls']})", fontsize=8)
-            ax.set_xlabel("size parameter"); ax.set_ylabel("time (ms)")
+            ax.set_title(f"{CLASS_LABEL.get(r['cls'], r['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(r['family'], r['family'])}", fontsize=8, loc="left")
+            ax.tick_params(labelsize=7)
         for ax in axs.ravel()[n:]:
             ax.axis("off")
-        axs.ravel()[0].legend(frameon=False, fontsize=7)
+        for ax in axs[-1]:
+            ax.set_xlabel("net size n (log scale)", fontsize=8)
+        for ax in axs[:, 0]:
+            ax.set_ylabel("time (ms, log scale)", fontsize=8)
+        h, lab = axs.ravel()[0].get_legend_handles_labels()
+        fig.legend(h, lab, loc="outside upper left", ncol=2, frameon=False, fontsize=8)
+        fig.suptitle("How long each method takes as the net grows (dashed line: 30 s limit, no answer)", fontsize=10, x=0.99, ha="right")
         save_svg(fig, ctx.fig_path("e2_scaling"))
 
 

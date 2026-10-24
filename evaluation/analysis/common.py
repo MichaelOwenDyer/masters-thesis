@@ -113,6 +113,44 @@ def load_runs(path: Path) -> tuple[pl.DataFrame, int]:
     return df.with_columns(pl.col("target_id").fill_null("").alias("tid")), bad
 
 
+MEMORY_KEYS = ["instance_id", "query", "tid", "solver_id"]
+
+
+def use_memory_campaign(runs: pl.DataFrame) -> tuple[pl.DataFrame, dict[str, Any]]:
+    """Memory comes from campaign M, not from B.
+
+    The peak memory in B's records is what ``wait4`` reports for the child of the runner, and that contains the
+    runner's own footprint (a floor of about 143 MiB for every tool). Campaign M repeats every cell of B once with the
+    tool started through the ``rss`` wrapper (petrivet-eval/src/measure.rs). When M records exist, ``peak_rss_kib`` of
+    every B record is replaced by M's value for the same (instance, query, target, solver), or, when M has none, by null
+    (a run killed at the wall cap leaves no value) except for a memory-out, which keeps B's value (the limit). Without M records B's values stay and the numbers say so.
+    The verdicts of M and B are compared as a sanity check of the wrapper (it must not change an answer)."""
+    info: dict[str, Any] = {}
+    m = runs.filter(pl.col("campaign") == "M")
+    if m.height == 0:
+        info["meta.memory_source"] = "campaign B (wait4 includes the runner's own footprint: small values are not reliable)"
+        return runs, info
+    mem = m.filter(pl.col("rep") == 0).select(MEMORY_KEYS + [pl.col("peak_rss_kib").alias("_rss_m"), pl.col("verdict").alias("_verdict_m")]).unique(subset=MEMORY_KEYS, keep="first")
+    is_b = pl.col("campaign") == "B"
+    joined = runs.join(mem, on=MEMORY_KEYS, how="left")
+    # B records without an M value: a memory-out keeps B's value (the limit, far above the runner's footprint); the
+    # rest has none (time-outs are killed together with the wrapper)
+    kept_b = pl.when(pl.col("verdict") == "MEMOUT").then(pl.col("peak_rss_kib"))
+    out = joined.with_columns(pl.when(is_b).then(pl.coalesce(pl.col("_rss_m"), kept_b)).otherwise(pl.col("peak_rss_kib")).alias("peak_rss_kib"))
+    b0 = joined.filter(is_b & (pl.col("rep") == 0) & pl.col("_verdict_m").is_not_null())
+    info["meta.memory_source"] = "campaign M (runs started through the rss wrapper)"
+    info["m.n_runs"] = m.height
+    info["m.n_cells_matched_in_b"] = b0.height
+    info["m.n_b_cells_without_m"] = joined.filter(is_b & (pl.col("rep") == 0) & pl.col("_verdict_m").is_null() & (pl.col("instance_id") != "BASELINE")).height
+    info["m.n_with_memory_value"] = m.filter(pl.col("peak_rss_kib").is_not_null()).height
+    # a time-out or memory-out near the cap can legitimately flip between two runs: those are counted apart
+    near = ["TIMEOUT", "MEMOUT"]
+    differs = b0.filter(pl.col("verdict") != pl.col("_verdict_m"))
+    info["m.n_verdict_differs"] = differs.height
+    info["m.n_verdict_differs_not_limit"] = differs.filter(~pl.col("verdict").is_in(near) & ~pl.col("_verdict_m").is_in(near)).height
+    return out.drop(["_rss_m", "_verdict_m"]), info
+
+
 def load_truth(path: Path) -> pl.DataFrame:
     rows, _ = read_jsonl(path)
     out = []
@@ -321,6 +359,60 @@ def save_svg(fig, path: Path) -> None:
 
 def color_map(names) -> dict[str, str]:
     return {n: PALETTE[i % len(PALETTE)] for i, n in enumerate(sorted(set(names)))}
+
+
+# Names used in titles, axes and legends: plain language, no internal ids. The CSVs and numbers.json keep the ids.
+SOLVER_LABEL = {
+    "pv-dispatch": "petrivet: automatic choice of method",
+    "pv-general": "petrivet: plain state-space exploration",
+    "pv-poly": "petrivet: fast methods only",
+    "lola": "LoLA",
+    "tina": "TINA",
+}
+# one colour per solver in every chart
+SOLVER_COLOR = {"pv-dispatch": "#0072B2", "pv-general": "#D55E00", "pv-poly": "#CC79A7", "lola": "#009E73", "tina": "#E69F00"}
+# structural classes, narrowest first
+CLASS_ORDER = ["circuit", "sm", "mg", "efc", "ac", "general"]
+CLASS_LABEL = {
+    "circuit": "circuit",
+    "sm": "state machine",
+    "mg": "marked graph",
+    "efc": "extended free-choice",
+    "ac": "asymmetric choice",
+    "general": "general (no special structure)",
+}
+SOURCE_LABEL = {
+    "gen": "generated nets",
+    "fam": "generated net families",
+    "calibration": "hand-built calibration nets",
+    "mcc_small": "benchmark models, small (MCC)",
+    "mcc_large": "benchmark models, large (MCC)",
+}
+FAMILY_LABEL = {
+    "circuit": "plain ring",
+    "sm_hub_and_spokes": "hub and spokes",
+    "sm_two_cycles": "two cycles, one-way switch",
+    "sm_two_cycles_n_tokens": "two cycles, n tokens",
+    "sm_choice_ring": "ring of choices",
+    "sm_ring_with_sink": "ring with a token sink",
+    "mg_buffer_ring": "ring of buffers",
+    "mg_buffer_ring_unmarked_circuit": "ring of buffers, token-free circuit",
+    "mg_forkjoin_cycle": "fork and join, cyclic",
+    "mg_forkjoin_unbounded": "fork and join, unbounded",
+    "efc_forkjoin": "fork and join with choice",
+    "efc_forkjoin_leaky": "fork and join with choice, leaky",
+    "ac_cycle": "cycle with choices",
+    "ac_cycle_no_low_token": "cycle with choices, no start token",
+    "general_cycle": "cycle",
+}
+
+
+def solver_label(s: str) -> str:
+    return SOLVER_LABEL.get(s, s)
+
+
+def source_label(s: str) -> str:
+    return SOURCE_LABEL.get(s) or SOURCE_LABEL.get(s.replace("-", "_"), s)
 
 
 # ---------------------------------------------------------------------------------------------------------

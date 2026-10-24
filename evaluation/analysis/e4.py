@@ -18,7 +18,7 @@ from __future__ import annotations
 import polars as pl
 
 from .cells import cell_table
-from .common import Ctx, color_map, plt, save_svg, key
+from .common import SOLVER_COLOR, Ctx, color_map, key, plt, save_svg, solver_label, source_label
 from .stats import median
 
 
@@ -68,16 +68,19 @@ def run(ctx: Ctx) -> None:
         ts = t.filter((pl.col("source") == src) & pl.col("solved"))
         if ts.height == 0:
             continue
-        fig, ax = p.subplots(figsize=(5.2, 3.6))
+        fig, ax = p.subplots(figsize=(7.2, 3.8))
         for s in solvers:
             times = sorted(ts.filter(pl.col("solver_id") == s)["wall_ms"].to_list())
             if times:
-                ax.plot(range(1, len(times) + 1), times, label=s, color=cm[s], lw=1.4)
+                ax.plot(range(1, len(times) + 1), times, label=solver_label(s), color=SOLVER_COLOR.get(s, cm[s]), lw=1.6)
         if cap is not None:
             ax.axhline(cap, color="#999999", ls="--", lw=0.8)
+            ax.text(0, cap * 1.12, "30 s limit", fontsize=7, color="#555555", va="bottom")
         ax.set_yscale("log")
-        ax.set_xlabel("instances solved")
-        ax.set_ylabel("wall time per instance (ms)")
-        ax.set_title(f"Cactus plot, {src}")
-        ax.legend(frameon=False)
+        ax.set_xlabel("number of questions answered (quickest first)")
+        ax.set_ylabel("time per answer (ms, log scale)")
+        ax.set_title(f"How many questions each tool answers, and how fast: {source_label(src)}", loc="left", fontsize=10.5, pad=22)
+        ax.text(0, 1.02, "Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is faster.",
+                transform=ax.transAxes, fontsize=7.2, color="#444444")
+        ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path(f"e4_cactus_{key(src)}"))

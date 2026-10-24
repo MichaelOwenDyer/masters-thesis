@@ -11,7 +11,7 @@ from pathlib import Path
 import polars as pl
 
 from . import __version__, e1, e1b, e2, e3a, e3b, e4, e5a, e5b, e6, e7
-from .common import Ctx, load_meta, load_runs, load_truth, read_jsonl, run_module, sha256_file, utc_now
+from .common import Ctx, load_meta, load_runs, load_truth, read_jsonl, run_module, sha256_file, use_memory_campaign, utc_now
 
 MODULES = [("e1", e1.run), ("e1b", e1b.run), ("e2", e2.run), ("e3a", e3a.run), ("e3b", e3b.run), ("e4", e4.run),
            ("e5a", e5a.run), ("e5b", e5b.run), ("e6", e6.run), ("e7", e7.run)]
@@ -42,6 +42,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"error: {a.truth} not found", file=sys.stderr)
         return 1
     runs, bad = load_runs(runs_path)
+    runs, memory_info = use_memory_campaign(runs)
     truth = load_truth(a.truth)
 
     cfg_path = a.config or a.results.resolve().parent / "eval.toml"
@@ -66,6 +67,7 @@ def main(argv: list[str] | None = None) -> int:
     ctx.numbers["meta.adjudication_jsonl_sha256"] = sha256_file(adj_path) if adj_rows is not None else None
     ctx.numbers["meta.analysis_version"] = __version__
     ctx.numbers["meta.n_runs"] = runs.height
+    ctx.numbers.update(memory_info)
     ctx.numbers["meta.n_runs_unparsable_lines"] = bad
     ctx.numbers["meta.n_truth_lines"] = truth.height
     ctx.numbers["meta.n_manifest_instances"] = meta.filter(pl.col("cls").is_not_null()).height

@@ -6,3 +6,4 @@ evaluation/corpus/mcc
 related-work-survey
 .idea
 evaluation/results/runs.jsonl
+evaluation/analysis/__pycache__

@@ -29,6 +29,7 @@
 
 use crate::adapters::CommandSpec;
 use std::io::Read;
+use std::path::Path;
 use std::os::unix::process::CommandExt;
 use std::process::{Command, Stdio};
 use std::sync::atomic::{AtomicUsize, Ordering};
@@ -92,6 +93,8 @@ pub struct Limits {
     /// Bytes of each of stdout and stderr that are kept.
     pub out_cap: usize,
     pub limiter: Limiter,
+    /// Campaign M: start the command through `petrivet-eval rss` and take its peak memory from there.
+    pub measure_rss: bool,
 }
 
 #[derive(Clone, Debug, Default)]
@@ -124,7 +127,20 @@ pub fn looks_like_memout(failed: bool, signal: Option<i32>, peak_rss_kib: Option
     (failed && msg) || killed_big
 }
 
-fn build_command(spec: &CommandSpec, limits: &Limits) -> Command {
+/// The program and arguments to start: the command itself, or (campaign M) `petrivet-eval rss` around it.
+fn program_and_args(spec: &CommandSpec, rss_file: Option<&Path>) -> (String, Vec<String>) {
+    match (rss_file, std::env::current_exe()) {
+        (Some(file), Ok(exe)) => {
+            let mut args = vec!["rss".to_owned(), "--out".into(), file.display().to_string(), "--".into(), spec.program.clone()];
+            args.extend(spec.args.iter().cloned());
+            (exe.display().to_string(), args)
+        }
+        _ => (spec.program.clone(), spec.args.clone()),
+    }
+}
+
+fn build_command(spec: &CommandSpec, limits: &Limits, rss_file: Option<&Path>) -> Command {
+    let (program, args) = program_and_args(spec, rss_file);
     let mut cmd = if limits.limiter == Limiter::Cgroup {
         let mut c = Command::new("systemd-run");
         c.args(["--user", "--scope", "--quiet", "-p"])
@@ -132,12 +148,12 @@ fn build_command(spec: &CommandSpec, limits: &Limits) -> Command {
             // OOMPolicy=continue: after the kernel OOM-kills the tool, the scope is not stopped with SIGTERM, so a
             // wrapper shell survives, reaps the tool (SIGKILL, peak RSS at the limit) and reports it as status 137
             .args(["-p", "MemorySwapMax=0", "-p", "OOMPolicy=continue", "--"])
-            .arg(&spec.program)
-            .args(&spec.args);
+            .arg(&program)
+            .args(&args);
         c
     } else {
-        let mut c = Command::new(&spec.program);
-        c.args(&spec.args);
+        let mut c = Command::new(&program);
+        c.args(&args);
         c
     };
     cmd.envs(spec.env.iter().map(|(k, v)| (k, v)));
@@ -193,7 +209,9 @@ fn tv_ms(tv: libc::timeval) -> f64 {
 
 /// Runs one command to completion (or to the limit). Never panics on spawn failure; see `spawn_error`.
 pub fn run_command(spec: &CommandSpec, limits: &Limits) -> RunResult {
-    let mut cmd = build_command(spec, limits);
+    static RSS_FILES: AtomicUsize = AtomicUsize::new(0);
+    let rss_file = limits.measure_rss.then(|| std::env::temp_dir().join(format!("petrivet-rss-{}-{}", std::process::id(), RSS_FILES.fetch_add(1, Ordering::Relaxed))));
+    let mut cmd = build_command(spec, limits, rss_file.as_deref());
     let start = Instant::now();
     let mut child = match cmd.spawn() {
         Ok(c) => c,
@@ -265,7 +283,13 @@ pub fn run_command(spec: &CommandSpec, limits: &Limits) -> RunResult {
     // Only a kill by us counts as a timeout; a process that finished in the race window keeps its result.
     timed_out &= signal == Some(libc::SIGKILL);
     let maxrss = ru.ru_maxrss.max(0) as u64;
-    let peak_rss_kib = Some(if cfg!(target_os = "macos") { maxrss / 1024 } else { maxrss });
+    let mut peak_rss_kib = Some(if cfg!(target_os = "macos") { maxrss / 1024 } else { maxrss });
+    if let Some(file) = &rss_file {
+        // campaign M: the wrapper's figure replaces wait4's, which contains the runner's own footprint; a wrapper
+        // that was killed with the tool (time-out) leaves no file and the run has no memory value
+        peak_rss_kib = std::fs::read_to_string(file).ok().and_then(|t| t.trim().parse().ok());
+        let _ = std::fs::remove_file(file);
+    }
     let shell_signal = signal.or(match exit_code {
         Some(137) => Some(libc::SIGKILL),
         Some(143) => Some(libc::SIGTERM),
@@ -324,7 +348,17 @@ mod tests {
     }
 
     fn limits(wall_ms: u64) -> Limits {
-        Limits { wall: Duration::from_millis(wall_ms), mem_kib: 8 * 1024 * 1024, core: None, out_cap: 1024, limiter: Limiter::None }
+        Limits { wall: Duration::from_millis(wall_ms), mem_kib: 8 * 1024 * 1024, core: None, out_cap: 1024, limiter: Limiter::None, measure_rss: false }
+    }
+
+    #[test]
+    fn rss_wrapper_surrounds_the_command() {
+        let spec = CommandSpec::new("tool", ["-a", "b c"]);
+        let (prog, args) = program_and_args(&spec, Some(Path::new("/tmp/f")));
+        assert!(prog.contains("petrivet") || !prog.is_empty());
+        assert_eq!(&args[..4], ["rss", "--out", "/tmp/f", "--"].map(String::from));
+        assert_eq!(&args[4..], ["tool", "-a", "b c"].map(String::from));
+        assert_eq!(program_and_args(&spec, None), ("tool".to_owned(), vec!["-a".to_owned(), "b c".to_owned()]));
     }
 
     #[test]
@@ -404,7 +438,7 @@ mod tests {
     #[test]
     fn rlimit_as_stops_a_memory_hog() {
         // Not runnable on the macOS dev machine; written for the Linux box.
-        let l = Limits { wall: Duration::from_secs(20), mem_kib: 64 * 1024, core: None, out_cap: 4096, limiter: Limiter::RlimitAs };
+        let l = Limits { wall: Duration::from_secs(20), mem_kib: 64 * 1024, core: None, out_cap: 4096, limiter: Limiter::RlimitAs, measure_rss: false };
         let r = run_command(&sh("awk 'BEGIN{s=\"x\"; while(1) s = s s}'"), &l);
         assert!(!r.timed_out);
         assert!(r.exit_code != Some(0) || r.signal.is_some(), "{r:?}");

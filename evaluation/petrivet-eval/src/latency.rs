@@ -615,6 +615,7 @@ pub fn run(cfg: &Config, config_path: &Path, args: LatencyArgs) -> Result<(), St
         core: rcfg.cores.first().copied(),
         out_cap: 64 * 1024,
         limiter: Limiter::None,
+        measure_rss: false,
     };
     let done = finished_keys(&read_log(&out_path), n);
     let mut log = Log::open(&out_path)?;
@@ -728,7 +729,7 @@ mod tests {
     }
 
     fn limits() -> Limits {
-        Limits { wall: Duration::from_secs(10), mem_kib: 8 * 1024 * 1024, core: None, out_cap: 4096, limiter: Limiter::None }
+        Limits { wall: Duration::from_secs(10), mem_kib: 8 * 1024 * 1024, core: None, out_cap: 4096, limiter: Limiter::None, measure_rss: false }
     }
 
     fn inst(id: &str, class: &str, bucket: &str, source: &str) -> Instance {
