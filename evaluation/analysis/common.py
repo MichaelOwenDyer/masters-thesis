@@ -235,14 +235,14 @@ def classify(row: dict, oos: bool) -> str:
             return "RUNNER_ERROR"
         return "AGREE" if (v == "TRUE") == row["truth_bool"] else "DISAGREE"
     if v == "COUNT":
-        if row["states"] is None or row["edges"] is None:
+        if row["states"] is None:
             return "RUNNER_ERROR"
         if row["truth_kind"] is None:
             return "NO_TRUTH"
         if row["truth_kind"] != "count":
             return "RUNNER_ERROR"
         ok = (row["truth_states"] is None or row["truth_states"] == row["states"]) and \
-             (row["truth_edges"] is None or row["truth_edges"] == row["edges"])
+             (row["truth_edges"] is None or row["edges"] is None or row["truth_edges"] == row["edges"])
         return "AGREE" if ok else "DISAGREE"
     if v in ("UNKNOWN", "NOT_SUPPORTED", "TIMEOUT", "MEMOUT", "INPUT_REJECTED", "RUNNER_ERROR", "SHARD_FAILED"):
         return v

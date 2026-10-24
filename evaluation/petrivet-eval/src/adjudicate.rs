@@ -88,7 +88,8 @@ pub type TruthMap = HashMap<CellKey, Truth>;
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Ans {
     Bool(bool),
-    Count(u64, u64),
+    /// States and, where the tool reports it, transitions (ITS-Tools gives states only).
+    Count(u64, Option<u64>),
 }
 
 impl Ans {
@@ -96,7 +97,8 @@ impl Ans {
         match self {
             Ans::Bool(true) => "TRUE".into(),
             Ans::Bool(false) => "FALSE".into(),
-            Ans::Count(s, e) => format!("COUNT({s},{e})"),
+            Ans::Count(s, Some(e)) => format!("COUNT({s},{e})"),
+            Ans::Count(s, None) => format!("COUNT({s},?)"),
         }
     }
 }
@@ -105,7 +107,7 @@ pub fn answer_of(r: &Run) -> Option<Ans> {
     match r.verdict.as_str() {
         "TRUE" => Some(Ans::Bool(true)),
         "FALSE" => Some(Ans::Bool(false)),
-        "COUNT" => Some(Ans::Count(r.states?, r.edges?)),
+        "COUNT" => Some(Ans::Count(r.states?, r.edges)),
         _ => None,
     }
 }
@@ -116,12 +118,13 @@ pub fn compare(ans: &Ans, truth: &Value) -> Option<bool> {
     match (ans, truth) {
         (Ans::Bool(a), Value::Bool(t)) => Some(a == t),
         (Ans::Count(s, e), Value::Object(o)) => {
-            let st = o.get("STATES").and_then(Value::as_u64);
-            let tr = o.get("TRANSITIONS").and_then(Value::as_u64);
+            let st = o.get("STATES").and_then(Value::as_u64).map(|x| x == *s);
+            // transitions are compared only when the tool reported them
+            let tr = o.get("TRANSITIONS").and_then(Value::as_u64).zip(*e).map(|(x, y)| x == y);
             if st.is_none() && tr.is_none() {
                 return None;
             }
-            Some(st.is_none_or(|x| x == *s) && tr.is_none_or(|x| x == *e))
+            Some(st.unwrap_or(true) && tr.unwrap_or(true))
         }
         _ => None,
     }
@@ -153,7 +156,7 @@ pub fn classify_run(r: &Run, truth: Option<&Truth>, out_of_scope: bool) -> (Stri
     match verdict {
         "TRUE" | "FALSE" | "COUNT" => {
             let Some(ans) = answer_of(r) else {
-                return ("RUNNER_ERROR".into(), Some("COUNT without states/edges".into()));
+                return ("RUNNER_ERROR".into(), Some("COUNT without states".into()));
             };
             match truth {
                 None => ("NO_TRUTH".into(), None),
@@ -835,6 +838,17 @@ mod tests {
         assert_eq!(outcome(&count_run("s", 10, 20), Some(&t), false), "AGREE");
         assert_eq!(outcome(&count_run("s", 11, 20), Some(&t), false), "DISAGREE");
         assert_eq!(outcome(&count_run("s", 10, 21), Some(&t), false), "DISAGREE");
+        // a tool that reports states only (ITS-Tools) is compared on the states
+        let mut states_only = count_run("s", 10, 0);
+        states_only.edges = None;
+        assert_eq!(outcome(&states_only, Some(&t), false), "AGREE");
+        states_only.states = Some(11);
+        assert_eq!(outcome(&states_only, Some(&t), false), "DISAGREE");
+        // a truth line that has only transitions cannot be compared with an answer that has none
+        let t_edges = truth_of(json!({"TRANSITIONS": 20}), "mcc-oracle");
+        let mut no_edges = count_run("s", 10, 0);
+        no_edges.edges = None;
+        assert_eq!(outcome(&no_edges, Some(&t_edges), false), "RUNNER_ERROR");
         // kind mismatch is a data problem, not a disagreement
         assert_eq!(outcome(&run_rec("s", "i1", "Q0", None, "TRUE"), Some(&t), false), "RUNNER_ERROR");
     }

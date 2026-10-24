@@ -4,7 +4,7 @@
 //! finding. Full results go to `<results_dir>/calibration.json`. Exit status is non-zero if any answer disagrees.
 //!
 //! Rules of comparison (SPEC section 6, CALIBRATE):
-//! * Q0 compares states and edges; the other queries compare TRUE/FALSE.
+//! * Q0 compares states and edges (edges only if the tool reports them); the other queries compare TRUE/FALSE.
 //! * On unbounded nets (hand Q2 = false) only Q2 and the coverability targets (QC) are compared; every other query
 //!   is out of scope there and is reported as informational (own column, no AGREE/DISAGREE counting).
 //! * UNKNOWN on an unbounded net is expected and gets no block; on bounded nets it gets a one line block (a
@@ -66,7 +66,11 @@ pub struct Judged {
 
 fn matches_hand(query: Query, hand: &Value, v: Verdict, states: Option<u64>, edges: Option<u64>) -> bool {
     if query == Query::Q0 {
-        return v == Verdict::Count && hand.get("STATES").and_then(Value::as_u64) == states && hand.get("TRANSITIONS").and_then(Value::as_u64) == edges && states.is_some();
+        // a tool that reports no transition count (ITS-Tools) is compared on the states
+        return v == Verdict::Count
+            && hand.get("STATES").and_then(Value::as_u64) == states
+            && states.is_some()
+            && (edges.is_none() || hand.get("TRANSITIONS").and_then(Value::as_u64) == edges);
     }
     match (v, hand.as_bool()) {
         (Verdict::True, Some(b)) => b,
@@ -397,6 +401,9 @@ mod tests {
         let h = Some(json!({"STATES": 5, "TRANSITIONS": 6}));
         assert_eq!(j(Query::Q0, false, h.clone(), Verdict::Count, Some(5), Some(6)).0, Bucket::Agree);
         assert_eq!(j(Query::Q0, false, h.clone(), Verdict::Count, Some(5), Some(7)).0, Bucket::Disagree);
+        // no transition count reported: states only
+        assert_eq!(j(Query::Q0, false, h.clone(), Verdict::Count, Some(5), None).0, Bucket::Agree);
+        assert_eq!(j(Query::Q0, false, h.clone(), Verdict::Count, Some(4), None).0, Bucket::Disagree);
         assert_eq!(j(Query::Q0, false, h, Verdict::True, None, None).0, Bucket::Disagree);
     }
 

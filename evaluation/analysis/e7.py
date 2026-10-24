@@ -86,6 +86,7 @@ def run(ctx: Ctx) -> None:
         ctx.skip("e7_bytes_per_state", "no BASELINE runs with peak_rss_kib")
         return
     out = []
+    plotted = 0
     fig, ax = p.subplots(figsize=(7.0, 3.8))
     for s in sorted(q0["solver_id"].unique().to_list()):
         if s not in base_map:
@@ -97,8 +98,10 @@ def run(ctx: Ctx) -> None:
         out.append({"solver_id": s, "n": g.height, "baseline_kib": base_map[s], "median_bytes_per_state": q[0.5], "p90_bytes_per_state": q[0.9]})
         for k, val in (("n", g.height), ("median", q[0.5]), ("p90", q[0.9]), ("baseline_kib", base_map[s])):
             ctx.num("e7", "bytes_per_state", s, k, val)
-        keep = v > 1  # at or below the start-up memory there is nothing to measure
-        ax.scatter(g["places"].to_numpy()[keep], v[keep], s=10, label=solver_label(s), color=SOLVER_COLOR.get(s, "#999999"), alpha=0.8, linewidths=0)
+        places = g["places"].to_numpy()
+        keep = (v > 1) & np.isfinite(places)  # at or below the start-up memory there is nothing to measure
+        plotted += int(keep.sum())
+        ax.scatter(places[keep], v[keep], s=10, label=solver_label(s), color=SOLVER_COLOR.get(s, "#999999"), alpha=0.8, linewidths=0)
     if out:
         ctx.csv("e7_bytes_per_state", pl.DataFrame(out))
         ax.set_xscale("log"); ax.set_yscale("log")
@@ -107,4 +110,8 @@ def run(ctx: Ctx) -> None:
         ax.text(0, 1.02, wrap("Counting all states of a net. Memory above the tool's start-up memory, divided by the number of states; nets too small to measure are not drawn. Lower is better.", 105),
                 transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
-        save_svg(fig, ctx.fig_path("e7_bytes_per_state"))
+        if plotted:
+            save_svg(fig, ctx.fig_path("e7_bytes_per_state"))
+        else:
+            p.close(fig)
+            ctx.skip("e7_bytes_per_state_figure", "no net with a known number of places (is the manifest given?)")

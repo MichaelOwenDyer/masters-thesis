@@ -83,6 +83,10 @@ tina = "tina"
 sift = "sift"
 scan = "scan"
 
+[solvers.its]
+# ITS-Tools through the `its-tools` wrapper of nix/its-tools.nix (ITS_BIN overrides it).
+command = "its-tools"
+
 [latency]
 # Campaign D (`petrivet-eval latency <gen manifest>`): sequences of back-to-back calls on small gen nets.
 # calls per (variant, query, instance) sequence

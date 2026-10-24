@@ -1,5 +1,5 @@
 {
-  description = "Environment for the petrivet evaluation: petrivet, LoLA and TINA (tina, selt, ndrio, ...)";
+  description = "Environment for the petrivet evaluation: petrivet, LoLA, TINA (tina, selt, ndrio, ...) and ITS-Tools";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -31,6 +31,7 @@
           ${system} = {
             tina = pkgs.callPackage ./nix/tina.nix { };
             tina-large = pkgs.callPackage ./nix/tina.nix { large = true; };
+            its-tools = pkgs.callPackage ./nix/its-tools.nix { };
           };
         };
 
@@ -39,7 +40,7 @@
         # regenerate export/). From this directory: python -m analysis --results results --truth results/truth.jsonl --out export
         (forAllSystems (p: { analysis = p.mkShell { packages = [ (analysisPython p) ]; }; }))
         {
-          # The shell the evaluation runs in: petrivet, LoLA and TINA on PATH (ndrio comes with TINA), plus the Python environment.
+          # The shell the evaluation runs in: petrivet, LoLA, TINA and ITS-Tools on PATH (ndrio comes with TINA), plus the Python environment.
           ${system}.default = pkgs.mkShell {
             # building petrivet-eval compiles the petrivet library, which needs Z3 and libclang (via the package's inputs)
             inputsFrom = [ self.packages.${system}.petrivet ];
@@ -47,6 +48,7 @@
               self.packages.${system}.petrivet
               self.packages.${system}.lola
               self.packages.${system}.tina
+              self.packages.${system}.its-tools
               pkgs.cargo
               pkgs.rustc
               pkgs.clippy

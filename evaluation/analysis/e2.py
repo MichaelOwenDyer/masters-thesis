@@ -163,7 +163,7 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
         for ax, r in zip(axs.ravel(), rows_list):
             k = ok.filter((pl.col("family") == r["family"]) & pl.col("size").is_not_null())
             for col, solver in (("t_d", "pv-dispatch"), ("t_g", "pv-general")):
-                m = k.group_by("size").agg(pl.col(col).median(), pl.col("places").median().alias("places")).sort("places")
+                m = k.group_by("size").agg(pl.col(col).median(), pl.col("places").median().alias("places")).sort("places", "size")
                 ax.plot(m["places"], m[col], marker="o", ms=3, label=solver_label(solver), color=SOLVER_COLOR[solver])
             if cap:
                 ax.axhline(cap, color="#999999", ls="--", lw=0.8)

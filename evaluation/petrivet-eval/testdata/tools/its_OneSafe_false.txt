@@ -1,0 +1,3 @@
+[2026-10-24 21:45:23] [INFO   ] [Real]Absence check using  1 positive place invariants in 1 ms proved 0 places are One-Safe. 
+FORMULA OneSafe FALSE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 256 ms.

@@ -3,6 +3,7 @@
 //! One small module per tool: `pv` (petrivet CLI), `lola` (with `convert`), `tina`, and `mock` (tests).
 
 pub mod convert;
+pub mod itstools;
 pub mod lola;
 #[cfg(test)]
 pub mod mock;
@@ -360,6 +361,19 @@ impl Default for NdrioCfg {
     }
 }
 
+/// `[solvers.its]` of eval.toml (`ITS_BIN` overrides): the `its-tools` wrapper of `nix/its-tools.nix`.
+#[derive(Clone, Debug, serde::Deserialize)]
+#[serde(default)]
+pub struct ItsCfg {
+    pub command: String,
+}
+
+impl Default for ItsCfg {
+    fn default() -> Self {
+        ItsCfg { command: "its-tools".to_owned() }
+    }
+}
+
 /// `[solvers.tina]` of eval.toml (`TINA_BIN`, `SIFT_BIN`, `SCAN_BIN` override).
 #[derive(Clone, Debug, serde::Deserialize)]
 #[serde(default)]
@@ -385,6 +399,8 @@ pub struct SolversCfg {
     pub tina: TinaCfg,
     #[serde(default)]
     pub ndrio: NdrioCfg,
+    #[serde(default)]
+    pub its: ItsCfg,
 }
 
 /// Environment variable if set and non-empty, else the configured program.
@@ -398,6 +414,7 @@ pub fn build(solver_id: &str, cfg: &SolversCfg) -> Result<Box<dyn Adapter>, Stri
         "pv-dispatch" | "pv-general" | "pv-poly" => Ok(Box::new(pv::Pv::new(solver_id, &cfg.pv))),
         "lola" => Ok(Box::new(lola::Lola::new(&cfg.lola, &cfg.ndrio))),
         "tina" => Ok(Box::new(tina::Tina::new(&cfg.tina))),
-        other => Err(format!("unknown solver {other:?} (known: pv-dispatch, pv-general, pv-poly, lola, tina)")),
+        "its-tools" => Ok(Box::new(itstools::ItsTools::new(&cfg.its))),
+        other => Err(format!("unknown solver {other:?} (known: pv-dispatch, pv-general, pv-poly, lola, tina, its-tools)")),
     }
 }

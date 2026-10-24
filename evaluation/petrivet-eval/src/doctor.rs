@@ -103,7 +103,7 @@ pub fn run(config_path: &Path) -> Result<(), String> {
         }
     }
     // external tools: reported, never fatal
-    for (tool, args) in [("lola", &["--version"][..]), ("petrivet", &["--version"][..]), ("tina", &[][..]), ("ndrio", &[][..]), ("selt", &[][..])] {
+    for (tool, args) in [("lola", &["--version"][..]), ("petrivet", &["--version"][..]), ("tina", &[][..]), ("ndrio", &[][..]), ("selt", &[][..]), ("its-tools", &[][..])] {
         let (status, detail) = match find_on_path(tool) {
             None => ("missing", "not on PATH".to_string()),
             Some(p) => {

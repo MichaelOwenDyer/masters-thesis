@@ -1,0 +1,4 @@
+Structural test allowed to assert that 3 places are NOT stable. Took 3 ms.
+Able to resolve query StableMarking after proving 1 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST 
+Total runtime 189 ms.

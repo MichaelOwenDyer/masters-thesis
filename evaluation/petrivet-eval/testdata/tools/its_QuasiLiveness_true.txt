@@ -1,0 +1,4 @@
+Finished structural reductions in LIVENESS mode , in 1 iterations and 96 ms. Remains : 0/3 places, 1/3 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 280 ms.
