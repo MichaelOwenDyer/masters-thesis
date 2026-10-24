@@ -1,0 +1,15 @@
+[2026-10-24 22:56:11] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.IKew8Se9QG, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 22:56:11] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.IKew8Se9QG/model.pnml 
+[2026-10-24 22:56:12] [INFO   ] Load time of PNML (sax parser for PT used): 15 ms 
+[2026-10-24 22:56:12] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:56:12] [INFO   ] Transformed 5 transitions. 
+[2026-10-24 22:56:12] [INFO   ] Parsed PT model containing 5 places and 5 transitions and 13 arcs in 235 ms. 
+[2026-10-24 22:56:12] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:12] [INFO   ] Rough structural analysis with invariants proved 0 places are one safe in 18 ms (including invariant computation). 
+[2026-10-24 22:56:12] [INFO   ] [Real]Absence check using  0 positive place invariants in 7 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:12] [INFO   ] [Real]Absence check using  0 positive and 0 generalized place invariants in 18 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:12] [INFO   ] [Real] State equation constraints in 9 ms proved 5 places are One-Safe. 
+Able to resolve query OneSafe after proving 5 properties.
+FORMULA OneSafe TRUE TECHNIQUES SAT_SMT STRUCTURAL 
+Total runtime 443 ms.

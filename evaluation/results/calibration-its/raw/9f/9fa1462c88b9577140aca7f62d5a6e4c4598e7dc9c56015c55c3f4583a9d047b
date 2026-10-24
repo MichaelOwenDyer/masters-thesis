@@ -1,0 +1,35 @@
+[2026-10-24 22:56:17] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.mwI9WPT6VH, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 22:56:17] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.mwI9WPT6VH/model.pnml 
+[2026-10-24 22:56:18] [INFO   ] Load time of PNML (sax parser for PT used): 23 ms 
+[2026-10-24 22:56:18] [INFO   ] Transformed 4 places. 
+[2026-10-24 22:56:18] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:56:18] [INFO   ] Parsed PT model containing 4 places and 3 transitions and 7 arcs in 283 ms. 
+Structural unfed/single firing approximation deduced that 3/4 places are one safe.
+[2026-10-24 22:56:18] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:18] [INFO   ] Rough structural analysis with invariants proved 0 places are one safe in 27 ms (including invariant computation). 
+[2026-10-24 22:56:18] [INFO   ] [Real]Absence check using  0 positive place invariants in 5 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:18] [INFO   ] [Real]Absence check using  0 positive and 0 generalized place invariants in 14 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:18] [INFO   ] [Real] State equation constraints in 8 ms proved 3 places are One-Safe. 
+PetriSpot walker listener dropped: OneSafe FALSE
+FORMULA OneSafe FALSE TECHNIQUES RANDOM_WALK TOPOLOGICAL PARALLEL_PROCESSING SAT_SMT EXPLICIT STRUCTURAL 
+PetriSpot walker listener dropped: OneSafe FALSE
+PetriSpot walker: 1/1 properties solved in 13 ms (exit 0).
+PetriSpot walker: 1/1 properties solved in 16 ms (exit 0).
+Walk beside the decision diagrams failed : OneSafe FALSE
+[2026-10-24 22:56:18] [INFO   ] Flatten gal took : 13 ms 
+[2026-10-24 22:56:18] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:56:18] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality8368525770539151043.gal : 2 ms 
+[2026-10-24 22:56:18] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@42b03dd5] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Total runtime 681 ms.

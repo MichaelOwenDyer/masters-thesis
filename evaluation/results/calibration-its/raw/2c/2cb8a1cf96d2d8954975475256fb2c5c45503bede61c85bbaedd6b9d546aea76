@@ -1,0 +1,54 @@
+[2026-10-24 22:56:00] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.xWV7ASJySM, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 22:56:00] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.xWV7ASJySM/model.pnml 
+[2026-10-24 22:56:00] [INFO   ] Load time of PNML (sax parser for PT used): 22 ms 
+[2026-10-24 22:56:00] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:56:00] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 22:56:00] [INFO   ] Parsed PT model containing 5 places and 4 transitions and 10 arcs in 258 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 5/5 places, 4/4 transitions.
+[2026-10-24 22:56:01] [INFO   ] Redundant transitions in 0 ms returned [] 
+Running 3 sub problems to find dead transitions.
+[2026-10-24 22:56:01] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+At refinement iteration 0 (INCLUDED_ONLY) 0/4 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 1 (OVERLAPS) 4/8 variables, 4/4 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/8 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 3 (OVERLAPS) 1/9 variables, 1/5 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/9 variables, 0/5 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 5 (OVERLAPS) 0/9 variables, 0/5 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 9/9 variables, and 5 constraints, problems are : Problem set: 0 solved, 3 unsolved in 117 ms.
+Refiners :[State Equation: 5/5 constraints, PredecessorRefiner: 3/3 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 3 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/4 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 1 (OVERLAPS) 4/8 variables, 4/4 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/8 variables, 2/6 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/8 variables, 0/6 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 4 (OVERLAPS) 1/9 variables, 1/7 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/9 variables, 1/8 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/9 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+At refinement iteration 7 (OVERLAPS) 0/9 variables, 0/8 constraints. Problems are: Problem set: 0 solved, 3 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 9/9 variables, and 8 constraints, problems are : Problem set: 0 solved, 3 unsolved in 73 ms.
+Refiners :[State Equation: 5/5 constraints, PredecessorRefiner: 3/3 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 236ms problems are : Problem set: 0 solved, 3 unsolved
+Search for dead transitions found 0 dead transitions in 249ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 375 ms. Remains : 5/5 places, 4/4 transitions.
+Final net has 5 places and 4 transitions.
+[2026-10-24 22:56:01] [INFO   ] Flatten gal took : 14 ms 
+[2026-10-24 22:56:01] [INFO   ] Flatten gal took : 2 ms 
+[2026-10-24 22:56:01] [INFO   ] Time to serialize gal into /tmp/StateSpace17644825466894373288.gal : 4 ms 
+[2026-10-24 22:56:01] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@e96584e] 
+Application raised an uncaught exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:86)
+	at fr.lip6.move.gal.application.runner.its.MultiOrderRunner.startRunner(MultiOrderRunner.java:161)
+	at fr.lip6.move.gal.application.runner.its.MultiOrderRunner.runMultiITS(MultiOrderRunner.java:130)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:711)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Total runtime 854 ms.

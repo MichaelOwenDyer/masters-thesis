@@ -1,0 +1,10 @@
+[2026-10-24 22:56:40] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.V3dGBILTkf, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 22:56:40] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.V3dGBILTkf/model.pnml 
+[2026-10-24 22:56:40] [INFO   ] Load time of PNML (sax parser for PT used): 18 ms 
+[2026-10-24 22:56:40] [INFO   ] Transformed 3 places. 
+[2026-10-24 22:56:40] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:56:40] [INFO   ] Parsed PT model containing 3 places and 3 transitions and 6 arcs in 293 ms. 
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 1 transitions. 
+FORMULA StableMarking TRUE TECHNIQUES CONSTANT_TEST 
+Total runtime 342 ms.

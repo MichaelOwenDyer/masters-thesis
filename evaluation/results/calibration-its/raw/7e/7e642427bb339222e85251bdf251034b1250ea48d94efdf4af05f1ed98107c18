@@ -1,0 +1,25 @@
+[2026-10-24 22:56:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.WXVnL6DFD0, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 22:56:12] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.WXVnL6DFD0/model.pnml 
+[2026-10-24 22:56:13] [INFO   ] Load time of PNML (sax parser for PT used): 20 ms 
+[2026-10-24 22:56:13] [INFO   ] Transformed 4 places. 
+[2026-10-24 22:56:13] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:56:13] [INFO   ] Parsed PT model containing 4 places and 3 transitions and 8 arcs in 275 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 4/4 places, 3/3 transitions.
+Reduce places removed 2 places and 0 transitions. 
+Iterating post reduction 0 with 2 rules applied. Total rules applied 2 place count 2 transition count 3
+Applied a total of 2 rules in 13 ms. Remains 2 /4 variables (removed 2) and now considering 3/3 (removed 0) transitions.
+[2026-10-24 22:56:13] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:13] [INFO   ] Implicit Places using invariants in 73 ms returned [] 
+[2026-10-24 22:56:13] [INFO   ] Invariant cache hit. 
+[2026-10-24 22:56:13] [INFO   ] Implicit Places using invariants and state equation in 18 ms returned [] 
+Implicit Place search using SMT with State Equation took 116 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 2ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 2/4 places, 3/3 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 161 ms. Remains : 2/4 places, 3/3 transitions.
+Discarding 2 transitions out of 3. Remains 1
+Initial state reduction rules removed 1 formulas.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 506 ms.

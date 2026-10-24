@@ -1,0 +1,72 @@
+[2026-10-24 22:56:06] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.gjbSPCrqV4, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 22:56:06] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.gjbSPCrqV4/model.pnml 
+[2026-10-24 22:56:07] [INFO   ] Load time of PNML (sax parser for PT used): 20 ms 
+[2026-10-24 22:56:07] [INFO   ] Transformed 3 places. 
+[2026-10-24 22:56:07] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:56:07] [INFO   ] Parsed PT model containing 3 places and 3 transitions and 6 arcs in 280 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 3/3 places, 3/3 transitions.
+Graph (trivial) has 3 edges and 3 vertex of which 2 / 3 are part of one of the 1 SCC in 4 ms
+Free SCC test removed 1 places 
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Applied a total of 1 rules in 20 ms. Remains 2 /3 variables (removed 1) and now considering 2/3 (removed 1) transitions.
+[2026-10-24 22:56:07] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:07] [INFO   ] Implicit Places using invariants in 49 ms returned [] 
+[2026-10-24 22:56:07] [INFO   ] Invariant cache hit. 
+[2026-10-24 22:56:07] [INFO   ] State equation strengthened by 1 read => feed constraints. 
+[2026-10-24 22:56:07] [INFO   ] Implicit Places using invariants and state equation in 17 ms returned [] 
+Implicit Place search using SMT with State Equation took 89 ms to find 0 implicit places.
+Running 1 sub problems to find dead transitions.
+[2026-10-24 22:56:07] [INFO   ] Invariant cache hit. 
+[2026-10-24 22:56:07] [INFO   ] State equation strengthened by 1 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 1/2 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/2 variables, 0/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (OVERLAPS) 1/3 variables, 1/2 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/3 variables, 0/2 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (OVERLAPS) 1/4 variables, 1/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/4 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 7 (OVERLAPS) 0/4 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 4/4 variables, and 3 constraints, problems are : Problem set: 0 solved, 1 unsolved in 49 ms.
+Refiners :[State Equation: 2/2 constraints, ReadFeed: 1/1 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 1 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 1/2 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/2 variables, 1/2 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/2 variables, 0/2 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (OVERLAPS) 1/3 variables, 1/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/3 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 6 (OVERLAPS) 1/4 variables, 1/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/4 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 8 (OVERLAPS) 0/4 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 4/4 variables, and 4 constraints, problems are : Problem set: 0 solved, 1 unsolved in 29 ms.
+Refiners :[State Equation: 2/2 constraints, ReadFeed: 1/1 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 93ms problems are : Problem set: 0 solved, 1 unsolved
+Search for dead transitions found 0 dead transitions in 100ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 2/3 places, 2/3 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 243 ms. Remains : 2/3 places, 2/3 transitions.
+Initial state reduction rules removed 1 formulas.
+PetriSpot walker: 1/1 properties solved in 8 ms (exit 0).
+PetriSpot walker: 1/1 properties solved in 8 ms (exit 0).
+Walk beside the decision diagrams solved 1 properties.
+[2026-10-24 22:56:07] [INFO   ] Flatten gal took : 126 ms 
+[2026-10-24 22:56:07] [INFO   ] Flatten gal took : 0 ms 
+[2026-10-24 22:56:07] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality2517827425132664727.gal : 4 ms 
+[2026-10-24 22:56:07] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@306056e0] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Able to resolve query QuasiLiveness after proving 2 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES RANDOM_WALK TOPOLOGICAL INITIAL_STATE PARALLEL_PROCESSING EXPLICIT 
+Total runtime 762 ms.

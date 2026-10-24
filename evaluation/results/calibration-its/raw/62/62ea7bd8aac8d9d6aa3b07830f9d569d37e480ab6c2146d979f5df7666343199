@@ -1,0 +1,24 @@
+[2026-10-24 22:56:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.ivht5IY70m, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:56:12] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.ivht5IY70m/model.pnml 
+[2026-10-24 22:56:13] [INFO   ] Load time of PNML (sax parser for PT used): 22 ms 
+[2026-10-24 22:56:13] [INFO   ] Transformed 4 places. 
+[2026-10-24 22:56:13] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:56:13] [INFO   ] Parsed PT model containing 4 places and 3 transitions and 8 arcs in 279 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.ivht5IY70m/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.10589KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 4/4 places, 3/3 transitions.
+Computed a total of 3 stabilizing places and 2 stable transitions
+Graph (complete) has 5 edges and 4 vertex of which 1 are kept as prefixes of interest. Removing 3 places using SCC suffix rule.3 ms
+Discarding 3 places :
+Also discarding 1 output transitions 
+Drop transitions (Output transitions of discarded places.) removed 1 transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 1 rules in 21 ms. Remains 1 /4 variables (removed 3) and now considering 2/3 (removed 1) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 32 ms. Remains : 1/4 places, 2/3 transitions.
+[2026-10-24 22:56:13] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot walker I/O error: unable to make PetriSpot executable
+Finished random  walk after 1  steps, including 0 resets, run found a deadlock after 1 ms. (steps per millisecond=1 )
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 439 ms.

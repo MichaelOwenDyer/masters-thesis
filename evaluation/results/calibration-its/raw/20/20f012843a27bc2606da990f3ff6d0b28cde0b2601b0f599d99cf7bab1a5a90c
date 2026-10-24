@@ -1,0 +1,34 @@
+[2026-10-24 22:56:29] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.vbSryHPiZt, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 22:56:29] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.vbSryHPiZt/model.pnml 
+[2026-10-24 22:56:30] [INFO   ] Load time of PNML (sax parser for PT used): 28 ms 
+[2026-10-24 22:56:30] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:56:30] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 22:56:30] [INFO   ] Parsed PT model containing 5 places and 4 transitions and 10 arcs in 281 ms. 
+[2026-10-24 22:56:30] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:30] [INFO   ] Rough structural analysis with invariants proved 0 places are one safe in 22 ms (including invariant computation). 
+[2026-10-24 22:56:30] [INFO   ] [Real]Absence check using  0 positive place invariants in 7 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:30] [INFO   ] [Real]Absence check using  0 positive and 0 generalized place invariants in 20 ms proved 0 places are One-Safe. 
+[2026-10-24 22:56:30] [INFO   ] [Real] State equation constraints in 9 ms proved 3 places are One-Safe. 
+FORMULA OneSafe FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING SAT_SMT EXPLICIT STRUCTURAL HEURISTIC_WALK 
+PetriSpot walker listener dropped: OneSafe FALSE
+PetriSpot walker listener dropped: OneSafe FALSE
+PetriSpot walker: 2/2 properties solved in 14 ms (exit 0).
+Walk beside the decision diagrams failed : OneSafe FALSE
+PetriSpot walker: 2/2 properties solved in 14 ms (exit 0).
+[2026-10-24 22:56:30] [INFO   ] Flatten gal took : 12 ms 
+[2026-10-24 22:56:30] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:56:30] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality12579725724085391909.gal : 3 ms 
+[2026-10-24 22:56:30] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@18056836] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Total runtime 683 ms.

@@ -1,0 +1,37 @@
+[2026-10-24 22:56:15] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.hMmJoLFNVZ, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 22:56:15] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.hA5sA5/tmp.hMmJoLFNVZ/model.pnml 
+[2026-10-24 22:56:16] [INFO   ] Load time of PNML (sax parser for PT used): 21 ms 
+[2026-10-24 22:56:16] [INFO   ] Transformed 6 places. 
+[2026-10-24 22:56:16] [INFO   ] Transformed 6 transitions. 
+[2026-10-24 22:56:16] [INFO   ] Parsed PT model containing 6 places and 6 transitions and 14 arcs in 316 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 6/6 places, 6/6 transitions.
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2 transitions 
+Trivial Post-agglo rules discarded 2 transitions
+Performed 2 trivial Post agglomeration. Transition count delta: 2
+Iterating post reduction 0 with 2 rules applied. Total rules applied 2 place count 6 transition count 4
+Reduce places removed 2 places and 0 transitions. 
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Graph (trivial) has 3 edges and 3 vertex of which 3 / 3 are part of one of the 1 SCC in 1 ms
+Free SCC test removed 2 places 
+Iterating post reduction 1 with 5 rules applied. Total rules applied 7 place count 1 transition count 3
+Reduce places removed 1 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Iterating post reduction 2 with 3 rules applied. Total rules applied 10 place count 0 transition count 1
+Applied a total of 10 rules in 40 ms. Remains 0 /6 variables (removed 6) and now considering 1/6 (removed 5) transitions.
+[2026-10-24 22:56:16] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/6q6nz885wcgpaq8mp5245hjvwplniq3x-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:56:16] [INFO   ] Implicit Places using invariants in 33 ms returned [] 
+[2026-10-24 22:56:16] [INFO   ] Invariant cache hit. 
+[2026-10-24 22:56:16] [INFO   ] Implicit Places using invariants and state equation in 19 ms returned [] 
+Implicit Place search using SMT with State Equation took 78 ms to find 0 implicit places.
+Running 0 sub problems to find dead transitions.
+Search for dead transitions found 0 dead transitions in 1ms
+Starting structural reductions in LIVENESS mode, iteration 1 : 0/6 places, 1/6 transitions.
+Finished structural reductions in LIVENESS mode , in 1 iterations and 145 ms. Remains : 0/6 places, 1/6 transitions.
+Able to resolve query QuasiLiveness after proving 1 properties.
+FORMULA QuasiLiveness TRUE TECHNIQUES TOPOLOGICAL INITIAL_STATE 
+Total runtime 531 ms.
