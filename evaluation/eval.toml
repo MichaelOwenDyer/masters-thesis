@@ -52,7 +52,7 @@ parallel_jobs = 3
 # one core per running job is taken from this list (worker i gets cores[i]); empty: no pinning. On the Linux box
 # use separate physical cores whose hyper-thread siblings stay idle (check `lscpu -e`: on the i7-4790K box CPUs n and n+4
 # are siblings, so use [0, 1, 2] and leave 3-7 to the system).
-cores = []
+cores = [0, 1, 2]
 # memory limiter: "auto" (cgroup v2 via systemd-run --user --scope if it works, else setrlimit address space on
 # Linux, else none), "cgroup", "rlimit" or "none"
 mem_limiter = "auto"
