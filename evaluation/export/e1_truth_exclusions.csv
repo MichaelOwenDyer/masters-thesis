@@ -1,0 +1,9 @@
+corpus_source,cls,query,reason,n_excluded
+gen,ac,QC,lola_only:inconclusive,15
+gen,ac,QR,lola_only:inconclusive,16
+gen,efc,QC,lola_only:inconclusive,94
+gen,efc,QR,lola_only:inconclusive,241
+gen,general,QC,lola_only:inconclusive,121
+gen,general,QR,lola_only:inconclusive,270
+gen,mg,QC,lola_only:inconclusive,29
+gen,mg,QR,lola_only:inconclusive,7
