@@ -1,0 +1,29 @@
+[2026-10-24 22:41:45] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.GlKHvO8Bsb, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:41:45] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.GlKHvO8Bsb/model.pnml 
+[2026-10-24 22:41:45] [INFO   ] Load time of PNML (sax parser for PT used): 22 ms 
+[2026-10-24 22:41:45] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:41:45] [INFO   ] Transformed 5 transitions. 
+[2026-10-24 22:41:45] [INFO   ] Parsed PT model containing 5 places and 5 transitions and 13 arcs in 380 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.GlKHvO8Bsb/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.10597KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 5/5 places, 5/5 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 1 places :
+Symmetric choice reduction at 0 with 1 rule applications. Total rules  1 place count 4 transition count 4
+Iterating global reduction 0 with 1 rules applied. Total rules applied 2 place count 4 transition count 4
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Graph (trivial) has 3 edges and 3 vertex of which 3 / 3 are part of one of the 1 SCC in 2 ms
+Free SCC test removed 2 places 
+Iterating post reduction 0 with 3 rules applied. Total rules applied 5 place count 1 transition count 3
+Reduce places removed 1 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 543 ms.

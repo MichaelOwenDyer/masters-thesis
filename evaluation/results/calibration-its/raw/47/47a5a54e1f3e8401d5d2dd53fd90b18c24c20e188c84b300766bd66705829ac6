@@ -1,9 +1,0 @@
-[2026-10-24 22:30:28] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.sWYRid/tmp.Q14DEDEZCh, -examination, StableMarking, -its, -timeout, 3600] 
-[2026-10-24 22:30:28] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.sWYRid/tmp.Q14DEDEZCh/model.pnml 
-[2026-10-24 22:30:29] [INFO   ] Load time of PNML (sax parser for PT used): 33 ms 
-[2026-10-24 22:30:29] [INFO   ] Transformed 3 places. 
-[2026-10-24 22:30:29] [INFO   ] Transformed 2 transitions. 
-[2026-10-24 22:30:29] [INFO   ] Parsed PT model containing 3 places and 2 transitions and 6 arcs in 460 ms. 
-Reduce places removed 1 places and 0 transitions. 
-FORMULA StableMarking TRUE TECHNIQUES CONSTANT_TEST 
-Total runtime 549 ms.

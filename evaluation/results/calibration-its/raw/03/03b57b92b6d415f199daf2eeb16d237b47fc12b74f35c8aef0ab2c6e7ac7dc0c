@@ -1,0 +1,67 @@
+[2026-10-24 22:42:45] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.Z9AEPMmIhi, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 22:42:45] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.Z9AEPMmIhi/model.pnml 
+[2026-10-24 22:42:45] [INFO   ] Load time of PNML (sax parser for PT used): 29 ms 
+[2026-10-24 22:42:45] [INFO   ] Transformed 3 places. 
+[2026-10-24 22:42:45] [INFO   ] Transformed 2 transitions. 
+[2026-10-24 22:42:45] [INFO   ] Parsed PT model containing 3 places and 2 transitions and 5 arcs in 434 ms. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 3/3 places, 2/2 transitions.
+[2026-10-24 22:42:46] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@16bc3bfb] 
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:156)
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:141)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:154)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:147)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:139)
+	at fr.lip6.move.gal.structural.smt.DeadlockTester.testImplicitTransitionWithSMT(DeadlockTester.java:1397)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.applySMTBasedReductionRules(ReachabilitySolver.java:799)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.applyReductions(ReachabilitySolver.java:738)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:693)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:42:46] [WARNING] SMT solver raised an exception java.io.IOException: unable to make the command-line tool executable returning currently detected 0 redundant transitions  
+Running 1 sub problems to find dead transitions.
+[2026-10-24 22:42:46] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/9843a78q5f36v184gpias1lji1wjs95s-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 2/3 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/3 variables, 0/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (OVERLAPS) 2/5 variables, 2/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/5 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (OVERLAPS) 0/5 variables, 0/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 5/5 variables, and 3 constraints, problems are : Problem set: 0 solved, 1 unsolved in 95 ms.
+Refiners :[State Equation: 3/3 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 1 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/1 variables, 0/0 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 1 (OVERLAPS) 2/3 variables, 1/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/3 variables, 0/1 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 3 (OVERLAPS) 2/5 variables, 2/3 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/5 variables, 1/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/5 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+At refinement iteration 6 (OVERLAPS) 0/5 variables, 0/4 constraints. Problems are: Problem set: 0 solved, 1 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 5/5 variables, and 4 constraints, problems are : Problem set: 0 solved, 1 unsolved in 51 ms.
+Refiners :[State Equation: 3/3 constraints, PredecessorRefiner: 1/1 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 185ms problems are : Problem set: 0 solved, 1 unsolved
+Search for dead transitions found 0 dead transitions in 201ms
+Finished structural reductions in STATESPACE mode , in 1 iterations and 315 ms. Remains : 3/3 places, 2/2 transitions.
+Final net has 3 places and 2 transitions.
+[2026-10-24 22:42:46] [INFO   ] Flatten gal took : 180 ms 
+[2026-10-24 22:42:46] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:42:46] [INFO   ] Time to serialize gal into /tmp/StateSpace4044901443621786363.gal : 4 ms 
+[2026-10-24 22:42:46] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@7655362e] 
+Application raised an uncaught exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:86)
+	at fr.lip6.move.gal.application.runner.its.MultiOrderRunner.startRunner(MultiOrderRunner.java:161)
+	at fr.lip6.move.gal.application.runner.its.MultiOrderRunner.runMultiITS(MultiOrderRunner.java:130)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:711)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Total runtime 1049 ms.

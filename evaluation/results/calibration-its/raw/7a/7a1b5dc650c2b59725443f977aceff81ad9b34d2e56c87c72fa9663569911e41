@@ -1,0 +1,14 @@
+[2026-10-24 22:41:34] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.9bauKmoja3, -examination, QuasiLiveness, -its, -timeout, 3600] 
+[2026-10-24 22:41:34] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.9bauKmoja3/model.pnml 
+[2026-10-24 22:41:34] [INFO   ] Load time of PNML (sax parser for PT used): 32 ms 
+[2026-10-24 22:41:34] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:41:34] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 22:41:34] [INFO   ] Parsed PT model containing 5 places and 4 transitions and 10 arcs in 340 ms. 
+Starting structural reductions in LIVENESS mode, iteration 0 : 5/5 places, 4/4 transitions.
+Discarding 1 places :
+Implicit places reduction removed 1 places 
+Graph (trivial) has 4 edges and 4 vertex of which 4 / 4 are part of one of the 2 SCC in 2 ms
+Free SCC test removed 2 places 
+Iterating post reduction 0 with 2 rules applied. Total rules applied 2 place count 2 transition count 4
+FORMULA QuasiLiveness FALSE TECHNIQUES STRUCTURAL_REDUCTION 
+Total runtime 434 ms.

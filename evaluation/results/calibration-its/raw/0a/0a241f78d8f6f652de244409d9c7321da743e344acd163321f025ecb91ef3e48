@@ -1,0 +1,14 @@
+[2026-10-24 22:43:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.HinVAWCMrK, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:43:12] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.HinVAWCMrK/model.pnml 
+[2026-10-24 22:43:12] [INFO   ] Load time of PNML (sax parser for PT used): 17 ms 
+[2026-10-24 22:43:12] [INFO   ] Transformed 3 places. 
+[2026-10-24 22:43:12] [INFO   ] Transformed 2 transitions. 
+[2026-10-24 22:43:12] [INFO   ] Parsed PT model containing 3 places and 2 transitions and 4 arcs in 307 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.uNfc0U/tmp.HinVAWCMrK/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.10615KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 3/3 places, 2/2 transitions.
+Computed a total of 3 stabilizing places and 2 stable transitions
+Complete graph has no SCC; deadlocks are unavoidable. place count 3 transition count 2
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 397 ms.
