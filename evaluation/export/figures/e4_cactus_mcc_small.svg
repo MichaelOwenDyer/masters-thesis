@@ -466,6 +466,105 @@ L -2 0
     </g>
    </g>
    <g id="line2d_53">
+    <path d="M 61.302521 141.170031 
+L 63.371849 141.078291 
+L 65.441177 140.961632 
+L 66.475841 140.948377 
+L 69.579833 140.589781 
+L 80.961136 140.189883 
+L 83.030464 140.058468 
+L 84.065128 139.716408 
+L 87.169119 139.586756 
+L 88.203783 139.46477 
+L 91.307775 139.378026 
+L 93.377103 139.278583 
+L 100.61975 138.869257 
+L 101.654414 138.631073 
+L 104.758406 138.4267 
+L 107.862398 138.336076 
+L 109.931726 138.240931 
+L 116.139709 137.893636 
+L 117.174373 137.74943 
+L 122.347693 137.543657 
+L 124.41702 137.270276 
+L 125.451684 136.832248 
+L 127.521012 136.37042 
+L 129.59034 136.253512 
+L 130.625004 136.035704 
+L 133.728996 135.843691 
+L 135.798324 135.526879 
+L 137.867651 135.265601 
+L 143.040971 134.923036 
+L 152.352946 134.457184 
+L 153.38761 134.251947 
+L 155.456938 134.229512 
+L 159.595594 133.724579 
+L 162.699585 133.64547 
+L 164.768913 133.551364 
+L 167.872905 133.43815 
+L 174.080889 133.059774 
+L 177.18488 132.928798 
+L 179.254208 132.81283 
+L 180.288872 132.776042 
+L 182.3582 132.384899 
+L 189.600847 131.861965 
+L 196.843495 131.206198 
+L 197.878159 131.004875 
+L 198.912823 130.549134 
+L 202.016814 130.338918 
+L 204.086142 129.610407 
+L 207.190134 129.260052 
+L 208.224798 128.712972 
+L 210.294126 128.171852 
+L 217.536773 127.51239 
+L 219.606101 126.80408 
+L 222.710093 126.692776 
+L 226.848748 125.897547 
+L 228.918076 125.718952 
+L 229.95274 125.538352 
+L 230.987404 125.186531 
+L 234.091396 124.952191 
+L 236.160724 124.352661 
+L 239.264715 124.295993 
+L 242.368707 123.76922 
+L 245.472699 122.720819 
+L 246.507363 122.613264 
+L 247.542027 120.976991 
+L 248.576691 120.618833 
+L 249.611355 120.481417 
+L 250.646019 120.176983 
+L 251.680683 119.413991 
+L 252.715346 119.369951 
+L 253.75001 118.381316 
+L 255.819338 117.290966 
+L 256.854002 117.206078 
+L 257.888666 116.301223 
+L 258.92333 116.215453 
+L 259.957994 115.165087 
+L 262.027322 113.668559 
+L 264.09665 113.479513 
+L 265.131313 112.223184 
+L 266.165977 111.497321 
+L 267.200641 111.451116 
+L 268.235305 109.81427 
+L 269.269969 109.796315 
+L 271.339297 109.618383 
+L 272.373961 109.542934 
+L 273.408625 108.333544 
+L 274.443289 107.676173 
+L 275.477953 101.063044 
+L 276.512617 100.87246 
+L 277.547281 99.387649 
+L 278.581944 99.149383 
+L 280.651272 98.381883 
+L 281.685936 85.532729 
+L 282.7206 81.279821 
+L 283.755264 73.253194 
+L 284.789928 69.166581 
+L 284.789928 69.166581 
+" clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #56b4e9; stroke-width: 1.6; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_54">
     <path d="M 61.302521 235.161245 
 L 62.337185 234.994573 
 L 63.371849 234.525513 
@@ -672,7 +771,7 @@ L 411.018926 54.951007
 L 411.018926 54.951007 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #009e73; stroke-width: 1.6; stroke-linecap: square"/>
    </g>
-   <g id="line2d_54">
+   <g id="line2d_55">
     <path d="M 61.302521 246.274359 
 L 62.337185 240.823271 
 L 63.371849 239.290343 
@@ -914,7 +1013,7 @@ L 398.602959 56.681928
 L 398.602959 56.681928 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #0072b2; stroke-width: 1.6; stroke-linecap: square"/>
    </g>
-   <g id="line2d_55">
+   <g id="line2d_56">
     <path d="M 61.302521 240.505858 
 L 62.337185 238.120199 
 L 63.371849 237.13644 
@@ -1145,7 +1244,7 @@ L 426.538885 55.163812
 L 426.538885 55.163812 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #d55e00; stroke-width: 1.6; stroke-linecap: square"/>
    </g>
-   <g id="line2d_56">
+   <g id="line2d_57">
     <path d="M 61.302521 235.954574 
 L 62.337185 234.817036 
 L 63.371849 234.776016 
@@ -1185,7 +1284,7 @@ L 97.515758 170.832316
 L 98.550422 154.986771 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #cc79a7; stroke-width: 1.6; stroke-linecap: square"/>
    </g>
-   <g id="line2d_57">
+   <g id="line2d_58">
     <path d="M 61.302521 238.933532 
 L 62.337185 238.029975 
 L 63.371849 235.989932 
@@ -1428,7 +1527,7 @@ L 419.296238 64.337161
 L 419.296238 64.337161 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke: #e69f00; stroke-width: 1.6; stroke-linecap: square"/>
    </g>
-   <g id="line2d_58">
+   <g id="line2d_59">
     <path d="M 43.040703 54.754359 
 L 444.800703 54.754359 
 " clip-path="url(#p87f5ddfbbd)" style="fill: none; stroke-dasharray: 2.96,1.28; stroke-dashoffset: 0; stroke: #999999; stroke-width: 0.8"/>
@@ -1447,57 +1546,67 @@ L 444.800703 255.850359
     <text style="font-size: 7px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #555555" x="60.267857" y="50.270196" transform="rotate(-0 60.267857 50.270196)">30 s limit</text>
    </g>
    <g id="text_16">
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #444444" transform="translate(43.040703 29.87256)">Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is</text>
-    <text style="font-size: 7.2px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #444444" transform="translate(43.040703 38.514529)">faster. Questions: deadlock-freedom, liveness, quasi-liveness, 1-safety.</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #444444" transform="translate(43.040703 21.230591)">Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #444444" transform="translate(43.040703 29.87256)">faster. Questions: deadlock-freedom, liveness, quasi-liveness, 1-safety. ITS-Tools has no method for some</text>
+    <text style="font-size: 7.2px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; fill: #444444" transform="translate(43.040703 38.514529)">of these questions, so its line covers fewer.</text>
    </g>
    <g id="text_17">
     <text style="font-size: 10.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="43.040703" y="15.178359" transform="rotate(-0 43.040703 15.178359)">How many questions each tool answers, and how fast: benchmark models, small (MCC)</text>
    </g>
    <g id="legend_1">
-    <g id="line2d_59">
+    <g id="line2d_60">
      <path d="M 460.035903 55.657109 
 L 468.035903 55.657109 
 L 476.035903 55.657109 
-" style="fill: none; stroke: #009e73; stroke-width: 1.6; stroke-linecap: square"/>
+" style="fill: none; stroke: #56b4e9; stroke-width: 1.6; stroke-linecap: square"/>
     </g>
     <g id="text_18">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="58.457109" transform="rotate(-0 482.435903 58.457109)">LoLA</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="58.457109" transform="rotate(-0 482.435903 58.457109)">ITS-Tools</text>
     </g>
-    <g id="line2d_60">
+    <g id="line2d_61">
      <path d="M 460.035903 67.657734 
 L 468.035903 67.657734 
 L 476.035903 67.657734 
-" style="fill: none; stroke: #0072b2; stroke-width: 1.6; stroke-linecap: square"/>
+" style="fill: none; stroke: #009e73; stroke-width: 1.6; stroke-linecap: square"/>
     </g>
     <g id="text_19">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="70.457734" transform="rotate(-0 482.435903 70.457734)">petrivet: automatic choice of method</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="70.457734" transform="rotate(-0 482.435903 70.457734)">LoLA</text>
     </g>
-    <g id="line2d_61">
+    <g id="line2d_62">
      <path d="M 460.035903 79.658359 
 L 468.035903 79.658359 
 L 476.035903 79.658359 
-" style="fill: none; stroke: #d55e00; stroke-width: 1.6; stroke-linecap: square"/>
+" style="fill: none; stroke: #0072b2; stroke-width: 1.6; stroke-linecap: square"/>
     </g>
     <g id="text_20">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="82.458359" transform="rotate(-0 482.435903 82.458359)">petrivet: plain state-space exploration</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="82.458359" transform="rotate(-0 482.435903 82.458359)">petrivet: automatic choice of method</text>
     </g>
-    <g id="line2d_62">
+    <g id="line2d_63">
      <path d="M 460.035903 91.658984 
 L 468.035903 91.658984 
 L 476.035903 91.658984 
-" style="fill: none; stroke: #cc79a7; stroke-width: 1.6; stroke-linecap: square"/>
+" style="fill: none; stroke: #d55e00; stroke-width: 1.6; stroke-linecap: square"/>
     </g>
     <g id="text_21">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="94.458984" transform="rotate(-0 482.435903 94.458984)">petrivet: fast methods only</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="94.458984" transform="rotate(-0 482.435903 94.458984)">petrivet: plain state-space exploration</text>
     </g>
-    <g id="line2d_63">
+    <g id="line2d_64">
      <path d="M 460.035903 103.659609 
 L 468.035903 103.659609 
 L 476.035903 103.659609 
-" style="fill: none; stroke: #e69f00; stroke-width: 1.6; stroke-linecap: square"/>
+" style="fill: none; stroke: #cc79a7; stroke-width: 1.6; stroke-linecap: square"/>
     </g>
     <g id="text_22">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="106.459609" transform="rotate(-0 482.435903 106.459609)">TINA</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="106.459609" transform="rotate(-0 482.435903 106.459609)">petrivet: fast methods only</text>
+    </g>
+    <g id="line2d_65">
+     <path d="M 460.035903 115.660234 
+L 468.035903 115.660234 
+L 476.035903 115.660234 
+" style="fill: none; stroke: #e69f00; stroke-width: 1.6; stroke-linecap: square"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="482.435903" y="118.460234" transform="rotate(-0 482.435903 118.460234)">TINA</text>
     </g>
    </g>
   </g>
