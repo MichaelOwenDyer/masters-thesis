@@ -76,7 +76,7 @@ fn cgroup_available() -> bool {
         return false;
     }
     Command::new("systemd-run")
-        .args(["--user", "--scope", "--quiet", "-p", "MemoryMax=256M", "-p", "MemorySwapMax=0", "--", "true"])
+        .args(["--user", "--scope", "--quiet", "-p", "MemoryMax=256M", "-p", "MemorySwapMax=0", "-p", "OOMPolicy=continue", "--", "true"])
         .stdin(Stdio::null())
         .stdout(Stdio::null())
         .stderr(Stdio::null())
@@ -129,7 +129,9 @@ fn build_command(spec: &CommandSpec, limits: &Limits) -> Command {
         let mut c = Command::new("systemd-run");
         c.args(["--user", "--scope", "--quiet", "-p"])
             .arg(format!("MemoryMax={}K", limits.mem_kib))
-            .args(["-p", "MemorySwapMax=0", "--"])
+            // OOMPolicy=continue: after the kernel OOM-kills the tool, the scope is not stopped with SIGTERM, so a
+            // wrapper shell survives, reaps the tool (SIGKILL, peak RSS at the limit) and reports it as status 137
+            .args(["-p", "MemorySwapMax=0", "-p", "OOMPolicy=continue", "--"])
             .arg(&spec.program)
             .args(&spec.args);
         c
