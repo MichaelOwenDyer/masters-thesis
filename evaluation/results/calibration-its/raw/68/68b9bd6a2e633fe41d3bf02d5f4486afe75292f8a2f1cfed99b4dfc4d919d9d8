@@ -1,0 +1,27 @@
+[2026-10-24 22:20:13] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.Mn7Hs4ksyq, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:20:13] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.Mn7Hs4ksyq/model.pnml 
+[2026-10-24 22:20:14] [INFO   ] Load time of PNML (sax parser for PT used): 26 ms 
+[2026-10-24 22:20:14] [INFO   ] Transformed 4 places. 
+[2026-10-24 22:20:14] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 22:20:14] [INFO   ] Parsed PT model containing 4 places and 3 transitions and 7 arcs in 454 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.Mn7Hs4ksyq/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.10834KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 4/4 places, 3/3 transitions.
+Graph (trivial) has 2 edges and 4 vertex of which 2 / 4 are part of one of the 1 SCC in 5 ms
+Free SCC test removed 1 places 
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Computed a total of 3 stabilizing places and 1 stable transitions
+Graph (complete) has 3 edges and 3 vertex of which 1 are kept as prefixes of interest. Removing 2 places using SCC suffix rule.4 ms
+Discarding 2 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 49 ms. Remains 1 /4 variables (removed 3) and now considering 2/3 (removed 1) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 76 ms. Remains : 1/4 places, 2/3 transitions.
+[2026-10-24 22:20:14] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot walker I/O error: unable to make PetriSpot executable
+Finished random  walk after 1  steps, including 0 resets, run found a deadlock after 1 ms. (steps per millisecond=1 )
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 664 ms.

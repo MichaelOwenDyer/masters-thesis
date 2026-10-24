@@ -1,0 +1,48 @@
+[2026-10-24 22:19:27] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.1ronF65s9T, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 22:19:27] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.1ronF65s9T/model.pnml 
+[2026-10-24 22:19:27] [INFO   ] Load time of PNML (sax parser for PT used): 28 ms 
+[2026-10-24 22:19:27] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:19:27] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 22:19:27] [INFO   ] Parsed PT model containing 5 places and 4 transitions and 10 arcs in 344 ms. 
+[2026-10-24 22:19:27] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:19:27] [INFO   ] Rough structural analysis with invariants proved 0 places are one safe in 20 ms (including invariant computation). 
+[2026-10-24 22:19:27] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@d0d6565] 
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:156)
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:141)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:154)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:147)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:137)
+	at fr.lip6.move.gal.structural.smt.DeadlockTester.testOneSafeWithSMT(DeadlockTester.java:2168)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.executeOneSafeOnHLPNTest(GlobalPropertySolver.java:448)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.applyExhaustiveMethods(GlobalPropertySolver.java:361)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:334)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preSolveLiveness(GlobalPropertySolver.java:188)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preStableMarking(GlobalPropertySolver.java:88)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:61)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:600)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:19:27] [INFO   ] Z3 timed out or crashed after 6 ms, continuing without it. 
+PetriSpot walker listener dropped: OneSafe FALSE
+FORMULA OneSafe FALSE TECHNIQUES TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT HEURISTIC_WALK 
+PetriSpot walker listener dropped: OneSafe FALSE
+[2026-10-24 22:19:28] [INFO   ] Flatten gal took : 23 ms 
+[2026-10-24 22:19:28] [INFO   ] Flatten gal took : 5 ms 
+[2026-10-24 22:19:28] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality2196390261686328177.gal : 8 ms 
+[2026-10-24 22:19:28] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@37e99838] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+PetriSpot walker: 2/5 properties solved in 414 ms (exit 137).
+Walk beside the decision diagrams failed : OneSafe FALSE

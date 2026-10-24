@@ -1,0 +1,28 @@
+[2026-10-24 22:19:58] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.QqnZcL0cU5, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 22:19:58] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.QqnZcL0cU5/model.pnml 
+[2026-10-24 22:19:59] [INFO   ] Load time of PNML (sax parser for PT used): 40 ms 
+[2026-10-24 22:19:59] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:19:59] [INFO   ] Transformed 6 transitions. 
+[2026-10-24 22:19:59] [INFO   ] Parsed PT model containing 5 places and 6 transitions and 14 arcs in 433 ms. 
+Structural test allowed to assert that 4 places are NOT stable. Took 8 ms.
+[2026-10-24 22:19:59] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot walker I/O error: unable to make PetriSpot executable
+PetriSpot walker: 1/1 properties solved in 63 ms (exit 0).
+[2026-10-24 22:19:59] [INFO   ] Flatten gal took : 21 ms 
+[2026-10-24 22:19:59] [INFO   ] Flatten gal took : 5 ms 
+[2026-10-24 22:19:59] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality7170013033028183779.gal : 10 ms 
+[2026-10-24 22:19:59] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@5947cf74] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Able to resolve query StableMarking after proving 2 properties.
+FORMULA StableMarking FALSE TECHNIQUES RANDOM_WALK MARKED_SUFFIX_TEST TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT 
+Total runtime 817 ms.

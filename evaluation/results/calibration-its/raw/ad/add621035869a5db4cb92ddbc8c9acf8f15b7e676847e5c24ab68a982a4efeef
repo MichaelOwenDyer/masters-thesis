@@ -1,0 +1,77 @@
+[2026-10-24 22:17:07] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.wuPgFopaZd, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 22:17:07] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.wuPgFopaZd/model.pnml 
+[2026-10-24 22:17:07] [INFO   ] Load time of PNML (sax parser for PT used): 23 ms 
+[2026-10-24 22:17:07] [INFO   ] Transformed 3 places. 
+[2026-10-24 22:17:07] [INFO   ] Transformed 2 transitions. 
+[2026-10-24 22:17:07] [INFO   ] Parsed PT model containing 3 places and 2 transitions and 6 arcs in 291 ms. 
+Reduce places removed 1 places and 0 transitions. 
+[2026-10-24 22:17:07] [SEVERE ] unable to make PetriSpot executable [file:/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64] 
+PetriSpot I/O error (PFLOWS): unable to make PetriSpot executable
+[2026-10-24 22:17:07] [INFO   ] Rough structural analysis with invariants proved 0 places are one safe in 19 ms (including invariant computation). 
+[2026-10-24 22:17:08] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@23cd135d] 
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:156)
+	at fr.lip6.smt.z3.binaries.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:141)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:154)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:147)
+	at fr.lip6.move.gal.structural.smt.SMTUtils.initSolver(SMTUtils.java:137)
+	at fr.lip6.move.gal.structural.smt.DeadlockTester.testOneSafeWithSMT(DeadlockTester.java:2168)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.executeOneSafeOnHLPNTest(GlobalPropertySolver.java:448)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.applyExhaustiveMethods(GlobalPropertySolver.java:361)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:334)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preSolveLiveness(GlobalPropertySolver.java:188)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.preStableMarking(GlobalPropertySolver.java:88)
+	at fr.lip6.move.gal.application.solver.global.GlobalPropertySolver.solveProperty(GlobalPropertySolver.java:61)
+	at fr.lip6.move.gal.application.Application.startNoEx(Application.java:600)
+	at fr.lip6.move.gal.application.Application.run(Application.java:297)
+	at fr.lip6.move.gal.application.Application.lambda$0(Application.java:283)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:17:08] [INFO   ] Z3 timed out or crashed after 4 ms, continuing without it. 
+[2026-10-24 22:17:08] [INFO   ] Flatten gal took : 46 ms 
+[2026-10-24 22:17:08] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:17:08] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality15708601528852095802.gal : 11 ms 
+[2026-10-24 22:17:08] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@73fdf81f] 
+ITS runner failed with exception unable to make the command-line tool executable
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.itstools.BinaryToolsPlugin.getProgramURI(BinaryToolsPlugin.java:169)
+	at fr.lip6.move.gal.itstools.CommandLineBuilder.<init>(CommandLineBuilder.java:18)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:438)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.buildCommandLine(ITSRunner.java:434)
+	at fr.lip6.move.gal.application.runner.its.ITSRunner.configure(ITSRunner.java:157)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:61)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:17:08] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:17:08] [INFO   ] Applying decomposition  
+[2026-10-24 22:17:08] [INFO   ] Flatten gal took : 0 ms 
+[2026-10-24 22:17:08] [SEVERE ] unable to make the command-line tool executable [[Ljava.net.URI;@14b50847] 
+[2026-10-24 22:17:08] [WARNING] Could not apply decomposition. Using flat GAL structure. 
+java.io.IOException: unable to make the command-line tool executable
+	at fr.lip6.move.gal.louvain.LouvainTools.getProgramURI(LouvainTools.java:169)
+	at fr.lip6.move.gal.louvain.GraphBuilder.convertGraphToBin(GraphBuilder.java:388)
+	at fr.lip6.move.gal.louvain.GraphBuilder.computeLouvain(GraphBuilder.java:314)
+	at fr.lip6.move.gal.louvain.GraphBuilder.computeLouvain(GraphBuilder.java:280)
+	at fr.lip6.move.gal.application.mcc.MccTranslator.applyOrder(MccTranslator.java:121)
+	at fr.lip6.move.gal.application.mcc.MccTranslator.flattenSpec(MccTranslator.java:242)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.runExhaustiveEngines(ExhaustiveEngines.java:55)
+	at fr.lip6.move.gal.application.solver.ExhaustiveEngines.verifyWithSDD(ExhaustiveEngines.java:31)
+	at fr.lip6.move.gal.application.solver.ReachabilitySolver.lambda$2(ReachabilitySolver.java:79)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+[2026-10-24 22:17:08] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 22:17:08] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality9197487966071321255.gal : 0 ms 
+[2026-10-24 22:17:08] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality2947745942936788085.prop : 0 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.wuPgFopaZd;'/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality9197487966071321255.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality2947745942936788085.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/nix/store/g7wm9drxq3qffjrmmr3a49bw6l4jlg8g-its-tools-2026-09-11/share/its-tools/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reac...372
+Loading property file /tmp/ReachabilityCardinality2947745942936788085.prop.
+Model ,|S| ,Time ,Mem(kb) ,fin. SDD ,fin. DDD ,peak SDD ,peak DDD ,SDD Hom ,SDD cache peak ,DDD Hom ,DDD cachepeak ,SHom cache
+petri\_inst\_inst\_inst,2,0.001545,4208,2,4,5,12,8,0,16,6,0
+ Total reachable state count : 2
+
+Verifying 2 reachability properties.
+
+
+PetriSpot walker: 0/2 properties solved in 386 ms (exit 137).

@@ -1,0 +1,32 @@
+[2026-10-24 22:19:25] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.TPIezwbdxw, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:19:25] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.TPIezwbdxw/model.pnml 
+[2026-10-24 22:19:25] [INFO   ] Load time of PNML (sax parser for PT used): 18 ms 
+[2026-10-24 22:19:25] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:19:25] [INFO   ] Transformed 4 transitions. 
+[2026-10-24 22:19:25] [INFO   ] Parsed PT model containing 5 places and 4 transitions and 10 arcs in 340 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.TPIezwbdxw/ReachabilityDeadlock.xml in 3 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.10672KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 5/5 places, 4/4 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 1 Pre rules applied. Total rules applied 0 place count 5 transition count 3
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 4 transition count 3
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Ensure Unique test removed 1 places
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 0 with 3 rules applied. Total rules applied 5 place count 2 transition count 2
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 0 with 1 rules applied. Total rules applied 6 place count 2 transition count 1
+Reduce places removed 2 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 494 ms.

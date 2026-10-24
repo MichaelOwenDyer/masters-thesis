@@ -1,0 +1,26 @@
+[2026-10-24 22:19:56] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.FCezoiSbdm, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-24 22:19:56] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.FCezoiSbdm/model.pnml 
+[2026-10-24 22:19:56] [INFO   ] Load time of PNML (sax parser for PT used): 16 ms 
+[2026-10-24 22:19:56] [INFO   ] Transformed 5 places. 
+[2026-10-24 22:19:56] [INFO   ] Transformed 6 transitions. 
+[2026-10-24 22:19:56] [INFO   ] Parsed PT model containing 5 places and 6 transitions and 14 arcs in 303 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.SVnWrX/tmp.FCezoiSbdm/ReachabilityDeadlock.xml in 3 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.10667KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 5/5 places, 6/6 transitions.
+Graph (trivial) has 4 edges and 5 vertex of which 4 / 5 are part of one of the 2 SCC in 3 ms
+Free SCC test removed 2 places 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 0 with 1 rules applied. Total rules applied 2 place count 3 transition count 3
+Reduce places removed 3 places and 0 transitions. 
+Ensure Unique test removed 2 transitions
+Reduce isomorphic transitions removed 2 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 429 ms.
