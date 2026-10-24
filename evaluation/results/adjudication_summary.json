@@ -59,7 +59,7 @@
     {
       "agree": 4681,
       "crash": 0,
-      "disagree": 4,
+      "disagree": 0,
       "input_rejected": 0,
       "no_truth": 252,
       "not_supported": 0,
@@ -68,21 +68,21 @@
       "runner_error": 0,
       "solver_id": "pv-dispatch",
       "timeout_memout": 49,
-      "unknown": 0
+      "unknown": 4
     },
     {
       "agree": 5214,
       "crash": 0,
-      "disagree": 4,
+      "disagree": 0,
       "input_rejected": 0,
-      "no_truth": 530,
+      "no_truth": 529,
       "not_supported": 0,
       "out_of_scope": 0,
       "query": "QR",
       "runner_error": 0,
       "solver_id": "pv-dispatch",
       "timeout_memout": 12,
-      "unknown": 0
+      "unknown": 5
     },
     {
       "agree": 1313,
@@ -254,136 +254,7 @@
     }
   ],
   "crashes": [],
-  "disagreements": [
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "8c5b2d43291fed33b55b08773cd9c6220ff67429128e1ae6e82cffa264bd2150",
-      "outcome": "DISAGREE",
-      "pattern": "petrivet-vs-single-tool",
-      "query": "QC",
-      "run_id": "28b248a5066e84dd808a35463b2d2f39173c68f7e6e5eb8136bda3827b386f2d",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "c92406f183f41340",
-      "truth_source": "lola-only",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "aa5fc9d63af8f11c154e26c112dd92e0f649794590fdd3bdac90464c197cb36a",
-      "outcome": "DISAGREE",
-      "pattern": "petrivet-vs-single-tool",
-      "query": "QR",
-      "run_id": "d652d756ab43c59de4a041ea9f0e814685b3d31fc68adf1664fcfafd8c76ac93",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "2926daad5f927158",
-      "truth_source": "lola-only",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "b3758a0ea28b8980633099abb8305a8165f20e16c4cdab295e543e596c03a13b",
-      "outcome": "DISAGREE",
-      "pattern": "pv-modes-disagree",
-      "query": "QC",
-      "run_id": "ea6989b8e183495a84f1d1c7f3c3230adebbec0066c62cd78f7813de6a3173ee",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "291b585e9bc4c13a",
-      "truth_source": "lola+tina",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "bb42e878daa16f4387c801a5026a1d2e2744c2e89fc4e232fe13d477bb9e66e0",
-      "outcome": "DISAGREE",
-      "pattern": "pv-modes-disagree",
-      "query": "QR",
-      "run_id": "2c7ab0820b7c690b24da921dbbfa2fd5c694d94de11bd374a14042c9f107652c",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "09893c7576910921",
-      "truth_source": "lola+tina",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "bb42e878daa16f4387c801a5026a1d2e2744c2e89fc4e232fe13d477bb9e66e0",
-      "outcome": "DISAGREE",
-      "pattern": "pv-modes-disagree",
-      "query": "QR",
-      "run_id": "fefdcbf03a9960be4e640d6016c8a1f73bfbc5482e44413055c9f5b6d97a1273",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "f8bebcb7f2980b2f",
-      "truth_source": "lola+tina",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "e171d6649ba2ce3b7348d7c27cd461dfc238e94bda853992f7b19788344c69a1",
-      "outcome": "DISAGREE",
-      "pattern": "petrivet-vs-single-tool",
-      "query": "QR",
-      "run_id": "3d95942fcef39b27e254784260846010b6f06857562b9a48b92dc0c68faed86e",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "0705326775245d81",
-      "truth_source": "lola-only",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "e30bbc543d1df793db108a70e74a9c48e85c09b8de533a3c31e7f030552e9e0e",
-      "outcome": "DISAGREE",
-      "pattern": "pv-modes-disagree",
-      "query": "QC",
-      "run_id": "6a1c0527c65d4ae24be5da8e5c5d1e9975c0d8ac0ac6be19b84c792121f3d229",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "ec6c862ffc4a3fc7",
-      "truth_source": "lola+tina",
-      "truth_value": true,
-      "verdict_differs": false
-    },
-    {
-      "answer": "FALSE",
-      "campaign": "A",
-      "detail": null,
-      "instance_id": "f2b3390663e52d86b310d1972848363cf787cb7b53c1160ce10b94546938689f",
-      "outcome": "DISAGREE",
-      "pattern": "pv-modes-disagree",
-      "query": "QC",
-      "run_id": "deb4696ac419a9d9ec664d636a135c14a443f1fae928b8d544c8396fb8ff15f1",
-      "solver_id": "pv-dispatch",
-      "source": "gen",
-      "target_id": "079123d6e9177048",
-      "truth_source": "lola+tina",
-      "truth_value": true,
-      "verdict_differs": false
-    }
-  ],
+  "disagreements": [],
   "e1": [
     {
       "cp_upper_95": 0.0022789926500785818,
@@ -422,37 +293,37 @@
       "source": "gen"
     },
     {
-      "cp_upper_95": null,
+      "cp_upper_95": 0.0008719935800796108,
       "n_agree": 3434,
-      "n_conclusive": 3437,
-      "n_disagree": 3,
+      "n_conclusive": 3434,
+      "n_disagree": 0,
       "query": "QC",
       "solver_id": "pv-dispatch",
       "source": "gen"
     },
     {
-      "cp_upper_95": null,
+      "cp_upper_95": 0.0007089654859462335,
       "n_agree": 4224,
-      "n_conclusive": 4226,
-      "n_disagree": 2,
+      "n_conclusive": 4224,
+      "n_disagree": 0,
       "query": "QR",
       "solver_id": "pv-dispatch",
       "source": "gen"
     },
     {
-      "cp_upper_95": null,
+      "cp_upper_95": 0.0023994681254702055,
       "n_agree": 1247,
-      "n_conclusive": 1248,
-      "n_disagree": 1,
+      "n_conclusive": 1247,
+      "n_disagree": 0,
       "query": "QC",
       "solver_id": "pv-dispatch",
       "source": "gen-lola-only"
     },
     {
-      "cp_upper_95": null,
+      "cp_upper_95": 0.0030214184956152135,
       "n_agree": 990,
-      "n_conclusive": 992,
-      "n_disagree": 2,
+      "n_conclusive": 990,
+      "n_disagree": 0,
       "query": "QR",
       "solver_id": "pv-dispatch",
       "source": "gen-lola-only"
@@ -593,23 +464,7 @@
       "source": "gen-lola-only"
     }
   ],
-  "findings_without_truth": [
-    {
-      "answers": {
-        "pv-dispatch": "FALSE",
-        "pv-general": "TRUE"
-      },
-      "campaign": "A",
-      "instance_id": "8f96f2555aa16130817ed0f89e664728d9546a397c4d2272b877914098c0e889",
-      "pattern": "pv-modes-disagree",
-      "query": "QR",
-      "run_ids": [
-        "46df52e58aa55232e99b9ed9fa491bc4670bca2087a5ddf18a015d5dba9ce044",
-        "82f7327feb14519377dc3940a067ff1f4285b28bb5e2113252d18f13c687f420"
-      ],
-      "target_id": "1eeab3daf51afc68"
-    }
-  ],
+  "findings_without_truth": [],
   "runs": 52590,
   "runs_with_differing_repetition": 0
 }
