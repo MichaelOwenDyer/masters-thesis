@@ -10,11 +10,11 @@ from pathlib import Path
 
 import polars as pl
 
-from . import __version__, e1, e1b, e2, e3a, e3b, e4, e5a, e5b, e6, e7
+from . import __version__, e1, e1b, e2, e3a, e3b, e4, e5a, e5b, e6, e7, e8
 from .common import Ctx, load_meta, load_runs, load_truth, read_jsonl, run_module, sha256_file, use_memory_campaign, utc_now
 
 MODULES = [("e1", e1.run), ("e1b", e1b.run), ("e2", e2.run), ("e3a", e3a.run), ("e3b", e3b.run), ("e4", e4.run),
-           ("e5a", e5a.run), ("e5b", e5b.run), ("e6", e6.run), ("e7", e7.run)]
+           ("e5a", e5a.run), ("e5b", e5b.run), ("e6", e6.run), ("e7", e7.run), ("e8", e8.run)]
 
 
 def main(argv: list[str] | None = None) -> int:

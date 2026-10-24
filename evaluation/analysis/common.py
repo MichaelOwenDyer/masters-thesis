@@ -368,9 +368,12 @@ SOLVER_LABEL = {
     "pv-poly": "petrivet: fast methods only",
     "lola": "LoLA",
     "tina": "TINA",
+    "its-tools": "ITS-Tools",
 }
 # one colour per solver in every chart
-SOLVER_COLOR = {"pv-dispatch": "#0072B2", "pv-general": "#D55E00", "pv-poly": "#CC79A7", "lola": "#009E73", "tina": "#E69F00"}
+SOLVER_COLOR = {"pv-dispatch": "#0072B2", "pv-general": "#D55E00", "pv-poly": "#CC79A7", "lola": "#009E73", "tina": "#E69F00", "its-tools": "#56B4E9"}
+# solvers that answer only some of the questions: they do not decide which questions the charts compare on
+PARTIAL_SOLVERS = ("its-tools",)
 # structural classes, narrowest first
 CLASS_ORDER = ["circuit", "sm", "mg", "efc", "ac", "general"]
 CLASS_LABEL = {
@@ -414,6 +417,7 @@ SOLVER_SHORT = {
     "pv-poly": "petrivet\nfast only",
     "lola": "LoLA",
     "tina": "TINA",
+    "its-tools": "ITS-Tools",
 }
 
 
