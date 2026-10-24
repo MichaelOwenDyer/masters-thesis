@@ -1,0 +1,14 @@
+[2026-10-24 23:10:03] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.cj6nmILdO8, -examination, StableMarking, -its, -timeout, 3600] 
+[2026-10-24 23:10:03] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.cj6nmILdO8/model.pnml 
+[2026-10-24 23:10:03] [INFO   ] Load time of PNML (sax parser for PT used): 18 ms 
+[2026-10-24 23:10:03] [INFO   ] Transformed 3 places. 
+[2026-10-24 23:10:03] [INFO   ] Transformed 3 transitions. 
+[2026-10-24 23:10:03] [INFO   ] Parsed PT model containing 3 places and 3 transitions and 6 arcs in 264 ms. 
+Graph (trivial) has 2 edges and 3 vertex of which 2 / 3 are part of one of the 1 SCC in 3 ms
+Free SCC test removed 1 places 
+Structural test allowed to assert that 3 places are NOT stable. Took 17 ms.
+Ensure Unique test removed 1 transitions
+Reduce redundant transitions removed 1 transitions.
+Able to resolve query StableMarking after proving 2 properties.
+FORMULA StableMarking FALSE TECHNIQUES MARKED_SUFFIX_TEST TRIVIAL_UNMARKED_SCC_TEST 
+Total runtime 332 ms.

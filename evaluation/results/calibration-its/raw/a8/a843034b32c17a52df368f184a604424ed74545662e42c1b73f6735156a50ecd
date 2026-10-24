@@ -1,0 +1,27 @@
+[2026-10-24 23:11:30] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AmoVPjELG0, -examination, StateSpace, -its, -timeout, 3600] 
+[2026-10-24 23:11:30] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AmoVPjELG0/model.pnml 
+[2026-10-24 23:11:30] [INFO   ] Load time of PNML (sax parser for PT used): 20 ms 
+[2026-10-24 23:11:30] [INFO   ] Transformed 3 places. 
+[2026-10-24 23:11:30] [INFO   ] Transformed 1 transitions. 
+[2026-10-24 23:11:30] [INFO   ] Parsed PT model containing 3 places and 1 transitions and 3 arcs in 342 ms. 
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 1 transitions. 
+Reduce places removed 1 places and 0 transitions. 
+Starting structural reductions in STATESPACE mode, iteration 0 : 0/0 places, 0/0 transitions.
+[2026-10-24 23:11:30] [INFO   ] Redundant transitions in 0 ms returned [] 
+Skipped dead transition search.
+Finished structural reductions in STATESPACE mode , in 1 iterations and 83 ms. Remains : 0/0 places, 0/0 transitions.
+Final net has 0 places and 0 transitions.
+[2026-10-24 23:11:31] [INFO   ] Removed 1 GAL types that were empty due to variable simplifications.
+petri, 
+[2026-10-24 23:11:31] [INFO   ] Flatten gal took : 108 ms 
+[2026-10-24 23:11:31] [INFO   ] Flatten gal took : 0 ms 
+[2026-10-24 23:11:31] [INFO   ] Time to serialize gal into /tmp/StateSpace14184057611816836495.gal : 4 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.AmoVPjELG0;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/StateSpace14184057611816836495.gal' '-t' 'CGAL' '--stats' '--gen-order' 'FOLLOW' 
+
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...289
+Unknown type petri when treating ITSModel::setInstance.
+ITS-tools command line returned an error code 139
+Total runtime 885 ms.

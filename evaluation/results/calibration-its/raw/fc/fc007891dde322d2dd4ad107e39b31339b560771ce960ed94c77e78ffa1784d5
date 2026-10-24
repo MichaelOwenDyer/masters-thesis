@@ -1,0 +1,38 @@
+[2026-10-24 23:11:43] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Ogy1b421qf, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 23:11:43] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Ogy1b421qf/model.pnml 
+[2026-10-24 23:11:44] [INFO   ] Load time of PNML (sax parser for PT used): 19 ms 
+[2026-10-24 23:11:44] [INFO   ] Transformed 3 places. 
+[2026-10-24 23:11:44] [INFO   ] Transformed 2 transitions. 
+[2026-10-24 23:11:44] [INFO   ] Parsed PT model containing 3 places and 2 transitions and 5 arcs in 300 ms. 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4138762168191825968.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-13150265267212014050.kers' 
+[2026-10-24 23:11:44] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4138762168191825968.kers, --Pflows, --basisKERS=/tmp/petrispot-output-13150265267212014050.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 2 rows 2 cols 2 entries
+Finished phase 1 with 2 SingleSign rule and 0 generalized 
+[2026-10-24 23:11:44] [INFO   ] Computed 1 invariants in 0 ms
+Computed 1 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-13150265267212014050.kers
+Total runtime 1 ms.
+[2026-10-24 23:11:44] [INFO   ] Rough structural analysis with invariants proved 2 places are one safe in 31 ms (including invariant computation). 
+[2026-10-24 23:11:44] [INFO   ] [Real]Absence check using  1 positive place invariants in 2 ms proved 0 places are One-Safe. 
+[2026-10-24 23:11:44] [INFO   ] [Real]Absence check using  1 positive and 0 generalized place invariants in 15 ms proved 0 places are One-Safe. 
+[2026-10-24 23:11:44] [INFO   ] [Real] State equation constraints in 6 ms proved 0 places are One-Safe. 
+PetriSpot walker listener dropped: OneSafe FALSE
+FORMULA OneSafe FALSE TECHNIQUES RANDOM_WALK INVARIANTS TOPOLOGICAL PARALLEL_PROCESSING EXPLICIT STRUCTURAL 
+PetriSpot walker listener dropped: OneSafe FALSE
+PetriSpot walker: 1/1 properties solved in 7 ms (exit 0).
+PetriSpot walker: 1/1 properties solved in 16 ms (exit 0).
+Walk beside the decision diagrams failed : OneSafe FALSE
+[2026-10-24 23:11:44] [INFO   ] Flatten gal took : 10 ms 
+[2026-10-24 23:11:44] [INFO   ] Flatten gal took : 1 ms 
+[2026-10-24 23:11:44] [INFO   ] Time to serialize gal into /tmp/ReachabilityCardinality1925067720839948686.gal : 4 ms 
+[2026-10-24 23:11:44] [INFO   ] Time to serialize properties into /tmp/ReachabilityCardinality8583548987419983507.prop : 1 ms 
+Invoking ITS tools like this :cd /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Ogy1b421qf;'/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-reach-linux64' '--gc-threshold' '2000000' '--quiet' '-i' '/tmp/ReachabilityCardinality1925067720839948686.gal' '-t' 'CGAL' '-reachable-file' '/tmp/ReachabilityCardinality8583548987419983507.prop' '--nowitness' '--gen-order' 'FOLLOW' 
+
+ITS runner timed out or was interrupted.
+its-reach command run as :
+
+/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.move.gal.itstools.binaries_1.0.0.202609112134/bin/its-...376
+Loading property file /tmp/ReachabilityCardinality8583548987419983507.prop.
+Total runtime 633 ms.

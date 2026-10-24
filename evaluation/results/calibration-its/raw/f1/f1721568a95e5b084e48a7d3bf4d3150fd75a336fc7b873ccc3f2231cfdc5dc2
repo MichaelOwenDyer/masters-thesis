@@ -1,0 +1,21 @@
+[2026-10-24 23:10:08] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.DMJR53SyRB, -examination, OneSafe, -its, -timeout, 3600] 
+[2026-10-24 23:10:08] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.DMJR53SyRB/model.pnml 
+[2026-10-24 23:10:08] [INFO   ] Load time of PNML (sax parser for PT used): 14 ms 
+[2026-10-24 23:10:08] [INFO   ] Transformed 5 places. 
+[2026-10-24 23:10:08] [INFO   ] Transformed 5 transitions. 
+[2026-10-24 23:10:08] [INFO   ] Parsed PT model containing 5 places and 5 transitions and 13 arcs in 224 ms. 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-16917281668083902121.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-4049766547104709527.kers' 
+[2026-10-24 23:10:08] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-16917281668083902121.kers, --Pflows, --basisKERS=/tmp/petrispot-output-4049766547104709527.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 5 rows 4 cols 10 entries
+Finished phase 1 with 3 SingleSign rule and 0 generalized 
+[2026-10-24 23:10:08] [INFO   ] Computed 2 invariants in 0 ms
+Computed 2 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-4049766547104709527.kers
+Total runtime 0 ms.
+[2026-10-24 23:10:08] [INFO   ] Rough structural analysis with invariants proved 5 places are one safe in 21 ms (including invariant computation). 
+[2026-10-24 23:10:08] [INFO   ] [Real]Absence check using  2 positive place invariants in 1 ms proved 0 places are One-Safe. 
+Able to resolve query OneSafe after proving 5 properties.
+FORMULA OneSafe TRUE TECHNIQUES INVARIANTS STRUCTURAL 
+Total runtime 360 ms.
