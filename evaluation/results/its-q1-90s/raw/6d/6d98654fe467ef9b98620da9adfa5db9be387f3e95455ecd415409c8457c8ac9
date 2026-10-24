@@ -1,0 +1,24 @@
+[2026-10-25 00:44:08] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.r9PMNBgRvy, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:44:08] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.r9PMNBgRvy/model.pnml 
+[2026-10-25 00:44:08] [INFO   ] Load time of PNML (sax parser for PT used): 56 ms 
+[2026-10-25 00:44:08] [INFO   ] Transformed 48 places. 
+[2026-10-25 00:44:08] [INFO   ] Transformed 48 transitions. 
+[2026-10-25 00:44:08] [INFO   ] Parsed PT model containing 48 places and 48 transitions and 128 arcs in 395 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.r9PMNBgRvy/ReachabilityDeadlock.xml in 9 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.8572KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 48/48 places, 48/48 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 15 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 15 Pre rules applied. Total rules applied 0 place count 48 transition count 33
+Deduced a syphon composed of 15 places in 1 ms
+Reduce places removed 15 places and 0 transitions. 
+Iterating global reduction 0 with 30 rules applied. Total rules applied 30 place count 33 transition count 33
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 30 rules in 65 ms. Remains 33 /48 variables (removed 15) and now considering 33/48 (removed 15) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 88 ms. Remains : 33/48 places, 33/48 transitions.
+PetriSpot walker: 1/1 properties solved in 41 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 650 ms.

@@ -1,0 +1,24 @@
+[2026-10-25 00:45:33] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z1PrRHA60Z, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:45:33] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z1PrRHA60Z/model.pnml 
+[2026-10-25 00:45:34] [INFO   ] Load time of PNML (sax parser for PT used): 179 ms 
+[2026-10-25 00:45:34] [INFO   ] Transformed 1536 places. 
+[2026-10-25 00:45:34] [INFO   ] Transformed 1536 transitions. 
+[2026-10-25 00:45:34] [INFO   ] Parsed PT model containing 1536 places and 1536 transitions and 4096 arcs in 552 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Z1PrRHA60Z/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 11 ms.8611KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 1536/1536 places, 1536/1536 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 511 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 511 Pre rules applied. Total rules applied 0 place count 1536 transition count 1025
+Deduced a syphon composed of 511 places in 18 ms
+Reduce places removed 511 places and 0 transitions. 
+Iterating global reduction 0 with 1022 rules applied. Total rules applied 1022 place count 1025 transition count 1025
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 1022 rules in 580 ms. Remains 1025 /1536 variables (removed 511) and now considering 1025/1536 (removed 511) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 590 ms. Remains : 1025/1536 places, 1025/1536 transitions.
+PetriSpot walker: 1/1 properties solved in 62 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 1511 ms.

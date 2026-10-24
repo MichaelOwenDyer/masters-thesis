@@ -1,0 +1,25 @@
+[2026-10-25 00:40:56] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pXqLJ3NdTr, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:40:56] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pXqLJ3NdTr/model.pnml 
+[2026-10-25 00:40:57] [INFO   ] Load time of PNML (sax parser for PT used): 122 ms 
+[2026-10-25 00:40:57] [INFO   ] Transformed 513 places. 
+[2026-10-25 00:40:57] [INFO   ] Transformed 513 transitions. 
+[2026-10-25 00:40:57] [INFO   ] Parsed PT model containing 513 places and 513 transitions and 1026 arcs in 438 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.pXqLJ3NdTr/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 11 ms.13349KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 513/513 places, 513/513 transitions.
+Graph (trivial) has 513 edges and 513 vertex of which 512 / 513 are part of one of the 1 SCC in 14 ms
+Free SCC test removed 511 places 
+Ensure Unique test removed 511 transitions
+Reduce isomorphic transitions removed 511 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Graph (complete) has 2 edges and 2 vertex of which 1 are kept as prefixes of interest. Removing 1 places using SCC suffix rule.2 ms
+Discarding 1 places :
+Also discarding 0 output transitions 
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 60 ms. Remains 1 /513 variables (removed 512) and now considering 2/513 (removed 511) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 78 ms. Remains : 1/513 places, 2/513 transitions.
+PetriSpot walker: 1/1 properties solved in 42 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 747 ms.

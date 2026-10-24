@@ -1,0 +1,71 @@
+[2026-10-25 00:41:36] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kFHbLjIxQE, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:41:36] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kFHbLjIxQE/model.pnml 
+[2026-10-25 00:41:36] [INFO   ] Load time of PNML (sax parser for PT used): 58 ms 
+[2026-10-25 00:41:36] [INFO   ] Transformed 14 places. 
+[2026-10-25 00:41:36] [INFO   ] Transformed 16 transitions. 
+[2026-10-25 00:41:36] [INFO   ] Parsed PT model containing 14 places and 16 transitions and 58 arcs in 358 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.kFHbLjIxQE/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.8627KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 14/14 places, 16/16 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 27 ms. Remains 14 /14 variables (removed 0) and now considering 16/16 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 47 ms. Remains : 14/14 places, 16/16 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 14/14 places, 16/16 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 3 ms. Remains 14 /14 variables (removed 0) and now considering 16/16 (removed 0) transitions.
+[2026-10-25 00:41:36] [INFO   ] Flow matrix only has 14 transitions (discarded 2 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-17173639027807473538.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-1871986852658682012.kers' 
+[2026-10-25 00:41:36] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-17173639027807473538.kers, --Pflows, --basisKERS=/tmp/petrispot-output-1871986852658682012.kers]
+Culling duplicate invariants (modulo rational): removing 7 columns.
+Culled 7 columns in 0 ms.
+// Phase 1: matrix 14 rows 7 cols 21 entries
+Finished phase 1 with 7 SingleSign rule and 0 generalized 
+[2026-10-25 00:41:36] [INFO   ] Computed 7 invariants in 0 ms
+Computed 7 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-1871986852658682012.kers
+Total runtime 3 ms.
+[2026-10-25 00:41:36] [INFO   ] Implicit Places using invariants in 120 ms returned [] 
+[2026-10-25 00:41:36] [INFO   ] Flow matrix only has 14 transitions (discarded 2 similar events) 
+[2026-10-25 00:41:36] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:41:36] [INFO   ] State equation strengthened by 2 read => feed constraints. 
+[2026-10-25 00:41:36] [INFO   ] Implicit Places using invariants and state equation in 59 ms returned [] 
+Implicit Place search using SMT with State Equation took 227 ms to find 0 implicit places.
+[2026-10-25 00:41:37] [INFO   ] Redundant transitions in 14 ms returned [] 
+Running 14 sub problems to find dead transitions.
+[2026-10-25 00:41:37] [INFO   ] Flow matrix only has 14 transitions (discarded 2 similar events) 
+[2026-10-25 00:41:37] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:41:37] [INFO   ] State equation strengthened by 2 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/14 variables, 7/7 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/14 variables, 0/7 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 2 (OVERLAPS) 14/28 variables, 14/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/28 variables, 2/23 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/28 variables, 0/23 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 5 (OVERLAPS) 0/28 variables, 0/23 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+No progress, stopping.
+After SMT solving in domain Real declared 28/28 variables, and 23 constraints, problems are : Problem set: 0 solved, 14 unsolved in 275 ms.
+Refiners :[Positive P Invariants (semi-flows): 7/7 constraints, State Equation: 14/14 constraints, ReadFeed: 2/2 constraints, PredecessorRefiner: 14/14 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+Escalating to Integer solving :Problem set: 0 solved, 14 unsolved
+At refinement iteration 0 (INCLUDED_ONLY) 0/14 variables, 7/7 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/14 variables, 0/7 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 2 (OVERLAPS) 14/28 variables, 14/21 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/28 variables, 2/23 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/28 variables, 14/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/28 variables, 0/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+At refinement iteration 6 (OVERLAPS) 0/28 variables, 0/37 constraints. Problems are: Problem set: 0 solved, 14 unsolved
+No progress, stopping.
+After SMT solving in domain Int declared 28/28 variables, and 37 constraints, problems are : Problem set: 0 solved, 14 unsolved in 263 ms.
+Refiners :[Positive P Invariants (semi-flows): 7/7 constraints, State Equation: 14/14 constraints, ReadFeed: 2/2 constraints, PredecessorRefiner: 14/14 constraints, Known Traps: 0/0 constraints, Known Traps Along Path: 0/0 constraints]
+After SMT, in 576ms problems are : Problem set: 0 solved, 14 unsolved
+Search for dead transitions found 0 dead transitions in 585ms
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 869 ms. Remains : 14/14 places, 16/16 transitions.
+PetriSpot walker: 0/1 properties solved in 30016 ms (exit 0).
+[2026-10-25 00:42:07] [INFO   ] Flow matrix only has 14 transitions (discarded 2 similar events) 
+[2026-10-25 00:42:07] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:42:07] [INFO   ] [Real]Absence check using  7 positive place invariants in 7 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 31436 ms.

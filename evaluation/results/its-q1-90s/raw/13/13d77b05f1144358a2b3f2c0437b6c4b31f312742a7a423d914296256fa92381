@@ -1,0 +1,50 @@
+[2026-10-25 00:31:56] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vwdIyAXGvA, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:31:56] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vwdIyAXGvA/model.pnml 
+[2026-10-25 00:31:56] [INFO   ] Load time of PNML (sax parser for PT used): 49 ms 
+[2026-10-25 00:31:56] [INFO   ] Transformed 15 places. 
+[2026-10-25 00:31:56] [INFO   ] Transformed 11 transitions. 
+[2026-10-25 00:31:56] [INFO   ] Parsed PT model containing 15 places and 11 transitions and 34 arcs in 349 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.vwdIyAXGvA/ReachabilityDeadlock.xml in 1 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 6 ms.8473KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 15/15 places, 11/11 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Discarding 2 places :
+Implicit places reduction removed 2 places 
+Drop transitions (Trivial Post-Agglo cleanup.) removed 3 transitions 
+Trivial Post-agglo rules discarded 3 transitions
+Performed 3 trivial Post agglomeration. Transition count delta: 3
+Iterating post reduction 0 with 5 rules applied. Total rules applied 5 place count 13 transition count 8
+Reduce places removed 3 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 1 with 3 rules applied. Total rules applied 8 place count 10 transition count 8
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 2 with 1 Pre rules applied. Total rules applied 8 place count 10 transition count 7
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 2 with 2 rules applied. Total rules applied 10 place count 9 transition count 7
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 2 Post agglomeration using F-continuation condition.Transition count delta: 2
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 2 with 4 rules applied. Total rules applied 14 place count 7 transition count 5
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 14 rules in 57 ms. Remains 7 /15 variables (removed 8) and now considering 5/11 (removed 6) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 81 ms. Remains : 7/15 places, 5/11 transitions.
+PetriSpot walker: 0/1 properties solved in 30033 ms (exit 0).
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-5873153012080505335.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-3921023915537673542.kers' 
+[2026-10-25 00:32:26] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-5873153012080505335.kers, --Pflows, --basisKERS=/tmp/petrispot-output-3921023915537673542.kers]
+Culling duplicate invariants (modulo rational): removing 2 columns.
+Culled 2 columns in 0 ms.
+// Phase 1: matrix 5 rows 5 cols 12 entries
+Finished phase 1 with 3 SingleSign rule and 0 generalized 
+[2026-10-25 00:32:26] [INFO   ] Computed 4 invariants in 0 ms
+Computed 4 P flows in 0 ms.
+Exported basis to /tmp/petrispot-output-3921023915537673542.kers
+Total runtime 0 ms.
+[2026-10-25 00:32:26] [INFO   ] [Real]Absence check using  4 positive place invariants in 3 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 30680 ms.

@@ -1,0 +1,50 @@
+[2026-10-25 00:31:53] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.p64k5EWVjk, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:31:53] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.p64k5EWVjk/model.pnml 
+[2026-10-25 00:31:53] [INFO   ] Load time of PNML (sax parser for PT used): 58 ms 
+[2026-10-25 00:31:53] [INFO   ] Transformed 27 places. 
+[2026-10-25 00:31:53] [INFO   ] Transformed 29 transitions. 
+[2026-10-25 00:31:53] [INFO   ] Parsed PT model containing 27 places and 29 transitions and 94 arcs in 362 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.p64k5EWVjk/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 4 ms.8608KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 27/27 places, 29/29 transitions.
+Graph (trivial) has 9 edges and 27 vertex of which 8 / 27 are part of one of the 4 SCC in 8 ms
+Free SCC test removed 4 places 
+Ensure Unique test removed 4 transitions
+Reduce isomorphic transitions removed 4 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Redundant composition of simpler transitions.) removed 3 transitions 
+Redundant transition composition rules discarded 3 transitions
+Iterating global reduction 0 with 3 rules applied. Total rules applied 4 place count 23 transition count 22
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 3 transitions 
+Trivial Post-agglo rules discarded 3 transitions
+Performed 3 trivial Post agglomeration. Transition count delta: 3
+Iterating post reduction 0 with 3 rules applied. Total rules applied 7 place count 23 transition count 19
+Reduce places removed 6 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 1 with 6 rules applied. Total rules applied 13 place count 17 transition count 19
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 13 rules in 74 ms. Remains 17 /27 variables (removed 10) and now considering 19/29 (removed 10) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 95 ms. Remains : 17/27 places, 19/29 transitions.
+PetriSpot walker: 0/1 properties solved in 30034 ms (exit 0).
+[2026-10-25 00:32:24] [INFO   ] Flow matrix only has 15 transitions (discarded 4 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-2288913849845677494.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-11605242625932103994.kers' 
+[2026-10-25 00:32:24] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-2288913849845677494.kers, --Pflows, --basisKERS=/tmp/petrispot-output-11605242625932103994.kers]
+Normalized transition count is 14 out of 15 initially.
+Culling duplicate invariants (modulo rational): removing 4 columns.
+Culled 4 columns in 0 ms.
+// Phase 1: matrix 14 rows 13 cols 43 entries
+Finished phase 1 with 9 SingleSign rule and 0 generalized 
+[2026-10-25 00:32:24] [INFO   ] Computed 8 invariants in 0 ms
+Computed 8 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-11605242625932103994.kers
+Total runtime 5 ms.
+[2026-10-25 00:32:24] [INFO   ] [Real]Absence check using  6 positive place invariants in 3 ms returned sat 
+[2026-10-25 00:32:24] [INFO   ] [Real]Absence check using  6 positive and 2 generalized place invariants in 2 ms returned sat 
+[2026-10-25 00:32:24] [INFO   ] [Real]Absence check using state equation in 15 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 30730 ms.

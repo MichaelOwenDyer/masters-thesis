@@ -1,0 +1,86 @@
+[2026-10-25 00:31:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.mWofiHSAOi, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:31:12] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.mWofiHSAOi/model.pnml 
+[2026-10-25 00:31:12] [INFO   ] Load time of PNML (sax parser for PT used): 121 ms 
+[2026-10-25 00:31:12] [INFO   ] Transformed 57 places. 
+[2026-10-25 00:31:12] [INFO   ] Transformed 91 transitions. 
+[2026-10-25 00:31:12] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:31:12] [INFO   ] Parsed PT model containing 57 places and 91 transitions and 541 arcs in 449 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.mWofiHSAOi/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Reduce places removed 3 places and 0 transitions. 
+Built sparse matrix representations for Structural reductions in 4 ms.9332KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 54/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 35 ms. Remains 54 /54 variables (removed 0) and now considering 91/91 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 64 ms. Remains : 54/54 places, 91/91 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 54/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 17 ms. Remains 54 /54 variables (removed 0) and now considering 91/91 (removed 0) transitions.
+[2026-10-25 00:31:12] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-11246313500025164926.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12820996291039655564.kers' 
+[2026-10-25 00:31:12] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-11246313500025164926.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12820996291039655564.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 68 rows 53 cols 292 entries
+Finished phase 1 with 14 SingleSign rule and 23 generalized 
+[2026-10-25 00:31:12] [INFO   ] Computed 17 invariants in 0 ms
+Computed 17 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-12820996291039655564.kers
+Total runtime 5 ms.
+[2026-10-25 00:31:13] [INFO   ] Implicit Places using invariants in 264 ms returned [42, 43, 44] 
+Discarding 3 places :
+Implicit Place search using SMT only with invariants took 310 ms to find 3 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 51/54 places, 91/91 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 3 Pre rules applied. Total rules applied 0 place count 51 transition count 88
+Deduced a syphon composed of 3 places in 1 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 6 place count 48 transition count 88
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Post agglomeration using F-continuation condition.Transition count delta: -3
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 12 place count 45 transition count 91
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 12 rules in 44 ms. Remains 45 /51 variables (removed 6) and now considering 91/91 (removed 0) transitions.
+[2026-10-25 00:31:13] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-6402615970976784009.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-15629114838231310932.kers' 
+[2026-10-25 00:31:13] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-6402615970976784009.kers, --Pflows, --basisKERS=/tmp/petrispot-output-15629114838231310932.kers]
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 68 rows 44 cols 313 entries
+Finished phase 1 with 11 SingleSign rule and 20 generalized 
+[2026-10-25 00:31:13] [INFO   ] Computed 14 invariants in 0 ms
+Computed 14 P flows in 4 ms.
+Exported basis to /tmp/petrispot-output-15629114838231310932.kers
+Total runtime 4 ms.
+[2026-10-25 00:31:13] [INFO   ] Implicit Places using invariants in 68 ms returned [] 
+[2026-10-25 00:31:13] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+[2026-10-25 00:31:13] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:31:13] [INFO   ] State equation strengthened by 13 read => feed constraints. 
+[2026-10-25 00:31:13] [INFO   ] Implicit Places using invariants and state equation in 128 ms returned [] 
+Implicit Place search using SMT with State Equation took 203 ms to find 0 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 2 : 45/54 places, 91/91 transitions.
+Finished structural reductions in DEADLOCK mode , in 2 iterations and 576 ms. Remains : 45/54 places, 91/91 transitions.
+PetriSpot walker: 0/1 properties solved in 30008 ms (exit 0).
+[2026-10-25 00:31:43] [INFO   ] Flow matrix only has 68 transitions (discarded 23 similar events) 
+[2026-10-25 00:31:43] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:31:43] [INFO   ] [Real]Absence check using  6 positive place invariants in 2 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] [Real]Absence check using  6 positive and 8 generalized place invariants in 4 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] [Real]Absence check using state equation in 29 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] Solution in real domain found non-integer solution. 
+[2026-10-25 00:31:43] [INFO   ] [Nat]Absence check using  6 positive place invariants in 1 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] [Nat]Absence check using  6 positive and 8 generalized place invariants in 5 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] [Nat]Absence check using state equation in 32 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] State equation strengthened by 13 read => feed constraints. 
+[2026-10-25 00:31:43] [INFO   ] [Nat]Added 13 Read/Feed constraints in 2 ms returned sat 
+[2026-10-25 00:31:43] [INFO   ] Computed and/alt/rep : 37/219/37 causal constraints (skipped 28 transitions) in 13 ms. 
+[2026-10-25 00:31:43] [INFO   ] Added : 10 causal constraints over 2 iterations in 56 ms. Result :sat 
+PetriSpot walker: 0/1 properties solved in 30005 ms (exit 0).

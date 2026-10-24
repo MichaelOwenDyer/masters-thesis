@@ -1,0 +1,50 @@
+[2026-10-25 00:32:34] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.SmGudFNy8f, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:32:34] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.SmGudFNy8f/model.pnml 
+[2026-10-25 00:32:34] [INFO   ] Load time of PNML (sax parser for PT used): 64 ms 
+[2026-10-25 00:32:34] [INFO   ] Transformed 28 places. 
+[2026-10-25 00:32:34] [INFO   ] Transformed 21 transitions. 
+[2026-10-25 00:32:34] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:32:34] [INFO   ] Parsed PT model containing 28 places and 21 transitions and 78 arcs in 368 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.SmGudFNy8f/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Ensure Unique test removed 1 transitions
+Reduce redundant transitions removed 1 transitions.
+Built sparse matrix representations for Structural reductions in 5 ms.8907KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 28/28 places, 20/20 transitions.
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Performed 2 Post agglomeration using F-continuation condition.Transition count delta: 2
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 0 with 4 rules applied. Total rules applied 4 place count 26 transition count 18
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Reduce places removed 1 places and 1 transitions. 
+Iterating global reduction 0 with 1 rules applied. Total rules applied 5 place count 25 transition count 17
+Reduce places removed 1 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 0 with 1 rules applied. Total rules applied 6 place count 24 transition count 17
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 2 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 1 with 2 Pre rules applied. Total rules applied 6 place count 24 transition count 15
+Deduced a syphon composed of 2 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 1 with 4 rules applied. Total rules applied 10 place count 22 transition count 15
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 10 rules in 60 ms. Remains 22 /28 variables (removed 6) and now considering 15/20 (removed 5) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 87 ms. Remains : 22/28 places, 15/20 transitions.
+PetriSpot walker: 0/1 properties solved in 30034 ms (exit 0).
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-7100761900646304845.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-14829170811802330903.kers' 
+[2026-10-25 00:33:05] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-7100761900646304845.kers, --Pflows, --basisKERS=/tmp/petrispot-output-14829170811802330903.kers]
+Culling duplicate invariants (modulo rational): removing 9 columns.
+Culled 9 columns in 0 ms.
+// Phase 1: matrix 15 rows 13 cols 31 entries
+Finished phase 1 with 11 SingleSign rule and 0 generalized 
+[2026-10-25 00:33:05] [INFO   ] Computed 11 invariants in 0 ms
+Computed 11 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-14829170811802330903.kers
+Total runtime 2 ms.
+[2026-10-25 00:33:05] [INFO   ] [Real]Absence check using  11 positive place invariants in 8 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 30714 ms.

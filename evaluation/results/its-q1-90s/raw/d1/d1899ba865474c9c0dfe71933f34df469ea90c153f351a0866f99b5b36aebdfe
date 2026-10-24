@@ -1,0 +1,27 @@
+[2026-10-25 00:43:20] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LcyuUKOgAZ, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:43:20] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LcyuUKOgAZ/model.pnml 
+[2026-10-25 00:43:21] [INFO   ] Load time of PNML (sax parser for PT used): 60 ms 
+[2026-10-25 00:43:21] [INFO   ] Transformed 65 places. 
+[2026-10-25 00:43:21] [INFO   ] Transformed 34 transitions. 
+[2026-10-25 00:43:21] [INFO   ] Parsed PT model containing 65 places and 34 transitions and 130 arcs in 377 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.LcyuUKOgAZ/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 6 ms.8532KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 65/65 places, 34/34 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 32 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 32 Pre rules applied. Total rules applied 0 place count 65 transition count 2
+Deduced a syphon composed of 32 places in 0 ms
+Ensure Unique test removed 31 places
+Reduce places removed 63 places and 0 transitions. 
+Iterating global reduction 0 with 95 rules applied. Total rules applied 95 place count 2 transition count 2
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 1 transitions 
+Trivial Post-agglo rules discarded 1 transitions
+Performed 1 trivial Post agglomeration. Transition count delta: 1
+Iterating post reduction 0 with 1 rules applied. Total rules applied 96 place count 2 transition count 1
+Reduce places removed 2 places and 0 transitions. 
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 544 ms.

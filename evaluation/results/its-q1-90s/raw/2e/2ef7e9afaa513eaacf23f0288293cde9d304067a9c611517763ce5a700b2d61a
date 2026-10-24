@@ -1,0 +1,46 @@
+[2026-10-25 00:33:06] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1SWoXL1Vzw, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:33:06] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1SWoXL1Vzw/model.pnml 
+[2026-10-25 00:33:06] [INFO   ] Load time of PNML (sax parser for PT used): 111 ms 
+[2026-10-25 00:33:06] [INFO   ] Transformed 100 places. 
+[2026-10-25 00:33:06] [INFO   ] Transformed 156 transitions. 
+[2026-10-25 00:33:06] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:33:06] [INFO   ] Completing missing partition info from NUPN : creating a component with [P_start_1_0, P_start_1_1, P_start_1_2, P_start_1_3, P_b_0_false, P_b_0_true, P_b_1_false, P_b_1_true, P_b_2_false, P_b_... [1152 chars] 
+[2026-10-25 00:33:06] [INFO   ] Parsed PT model containing 100 places and 156 transitions and 664 arcs in 432 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1SWoXL1Vzw/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Deduced a syphon composed of 29 places in 2 ms
+Reduce places removed 29 places and 42 transitions. 
+Built sparse matrix representations for Structural reductions in 3 ms.9750KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 71/71 places, 114/114 transitions.
+Computed a total of 1 stabilizing places and 3 stable transitions
+Computed a total of 1 stabilizing places and 3 stable transitions
+Performed 3 Post agglomeration using F-continuation condition.Transition count delta: 3
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 6 place count 68 transition count 111
+Computed a total of 1 stabilizing places and 3 stable transitions
+Computed a total of 1 stabilizing places and 3 stable transitions
+Applied a total of 6 rules in 65 ms. Remains 68 /71 variables (removed 3) and now considering 111/114 (removed 3) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 79 ms. Remains : 68/71 places, 111/114 transitions.
+PetriSpot walker: 0/1 properties solved in 30030 ms (exit 0).
+[2026-10-25 00:33:36] [INFO   ] Flow matrix only has 93 transitions (discarded 18 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4984017450070704641.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-9942940108309562696.kers' 
+[2026-10-25 00:33:36] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4984017450070704641.kers, --Pflows, --basisKERS=/tmp/petrispot-output-9942940108309562696.kers]
+Culling duplicate invariants (modulo rational): removing 3 columns.
+Culled 3 columns in 0 ms.
+// Phase 1: matrix 93 rows 65 cols 279 entries
+Finished phase 1 with 51 SingleSign rule and 0 generalized 
+[2026-10-25 00:33:36] [INFO   ] Computed 17 invariants in 0 ms
+Computed 17 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-9942940108309562696.kers
+Total runtime 3 ms.
+[2026-10-25 00:33:37] [INFO   ] [Real]Absence check using  17 positive place invariants in 14 ms returned sat 
+[2026-10-25 00:33:37] [INFO   ] [Real]Absence check using state equation in 42 ms returned sat 
+[2026-10-25 00:33:37] [INFO   ] Solution in real domain found non-integer solution. 
+[2026-10-25 00:33:37] [INFO   ] [Nat]Absence check using  17 positive place invariants in 7 ms returned sat 
+[2026-10-25 00:33:37] [INFO   ] [Nat]Absence check using state equation in 40 ms returned sat 
+[2026-10-25 00:33:37] [INFO   ] State equation strengthened by 27 read => feed constraints. 
+[2026-10-25 00:33:37] [INFO   ] [Nat]Added 27 Read/Feed constraints in 6 ms returned sat 
+[2026-10-25 00:33:37] [INFO   ] Trap strengthening procedure managed to obtain unsat after adding 6 trap constraints in 323 ms 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 31395 ms.

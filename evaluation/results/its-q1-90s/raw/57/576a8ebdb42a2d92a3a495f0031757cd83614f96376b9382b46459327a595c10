@@ -1,0 +1,35 @@
+[2026-10-25 00:39:07] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.U1MN4eBSaM, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:39:07] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.U1MN4eBSaM/model.pnml 
+[2026-10-25 00:39:07] [INFO   ] Load time of PNML (sax parser for PT used): 58 ms 
+[2026-10-25 00:39:07] [INFO   ] Transformed 64 places. 
+[2026-10-25 00:39:07] [INFO   ] Transformed 65 transitions. 
+[2026-10-25 00:39:07] [INFO   ] Parsed PT model containing 64 places and 65 transitions and 130 arcs in 388 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.U1MN4eBSaM/ReachabilityDeadlock.xml in 12 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 3 ms.8610KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 64/64 places, 65/65 transitions.
+Graph (trivial) has 65 edges and 64 vertex of which 64 / 64 are part of one of the 2 SCC in 8 ms
+Free SCC test removed 62 places 
+Ensure Unique test removed 62 transitions
+Reduce isomorphic transitions removed 62 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Applied a total of 1 rules in 48 ms. Remains 2 /64 variables (removed 62) and now considering 3/65 (removed 62) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 80 ms. Remains : 2/64 places, 3/65 transitions.
+PetriSpot walker: 0/1 properties solved in 30038 ms (exit 0).
+[2026-10-25 00:39:37] [INFO   ] Flow matrix only has 2 transitions (discarded 1 similar events) 
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-17496175461036964499.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-6541362433884431393.kers' 
+[2026-10-25 00:39:37] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-17496175461036964499.kers, --Pflows, --basisKERS=/tmp/petrispot-output-6541362433884431393.kers]
+Normalized transition count is 1 out of 2 initially.
+Culling duplicate invariants (modulo rational): removing 1 columns.
+Culled 1 columns in 0 ms.
+// Phase 1: matrix 1 rows 1 cols 1 entries
+Finished phase 1 with 1 SingleSign rule and 0 generalized 
+[2026-10-25 00:39:37] [INFO   ] Computed 1 invariants in 0 ms
+Computed 1 P flows in 1 ms.
+Exported basis to /tmp/petrispot-output-6541362433884431393.kers
+Total runtime 1 ms.
+[2026-10-25 00:39:37] [INFO   ] [Real]Absence check using  1 positive place invariants in 1 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 30714 ms.

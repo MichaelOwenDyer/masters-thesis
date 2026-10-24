@@ -1,0 +1,24 @@
+[2026-10-25 00:34:57] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.g7dqD679g4, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:34:57] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.g7dqD679g4/model.pnml 
+[2026-10-25 00:34:57] [INFO   ] Load time of PNML (sax parser for PT used): 40 ms 
+[2026-10-25 00:34:57] [INFO   ] Transformed 12 places. 
+[2026-10-25 00:34:57] [INFO   ] Transformed 12 transitions. 
+[2026-10-25 00:34:57] [INFO   ] Parsed PT model containing 12 places and 12 transitions and 32 arcs in 352 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.g7dqD679g4/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.8385KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 12/12 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 3 Pre rules applied. Total rules applied 0 place count 12 transition count 9
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 3 places and 0 transitions. 
+Iterating global reduction 0 with 6 rules applied. Total rules applied 6 place count 9 transition count 9
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 6 rules in 50 ms. Remains 9 /12 variables (removed 3) and now considering 9/12 (removed 3) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 70 ms. Remains : 9/12 places, 9/12 transitions.
+PetriSpot walker: 1/1 properties solved in 44 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 575 ms.

@@ -1,0 +1,61 @@
+[2026-10-25 00:45:43] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.nniAHySQ27, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:45:43] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.nniAHySQ27/model.pnml 
+[2026-10-25 00:45:43] [INFO   ] Load time of PNML (sax parser for PT used): 140 ms 
+[2026-10-25 00:45:43] [INFO   ] Transformed 104 places. 
+[2026-10-25 00:45:43] [INFO   ] Transformed 158 transitions. 
+[2026-10-25 00:45:43] [INFO   ] Parsed PT model containing 104 places and 158 transitions and 863 arcs in 477 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.nniAHySQ27/ReachabilityDeadlock.xml in 3 ms.
+Working with output stream class java.io.PrintStream
+Deduced a syphon composed of 2 places in 1 ms
+Reduce places removed 2 places and 2 transitions. 
+Ensure Unique test removed 77 transitions
+Reduce redundant transitions removed 77 transitions.
+Built sparse matrix representations for Structural reductions in 8 ms.9743KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 102/102 places, 79/79 transitions.
+Computed a total of 10 stabilizing places and 11 stable transitions
+Graph (complete) has 422 edges and 102 vertex of which 94 are kept as prefixes of interest. Removing 8 places using SCC suffix rule.11 ms
+Discarding 8 places :
+Also discarding 3 output transitions 
+Drop transitions (Output transitions of discarded places.) removed 3 transitions 
+Ensure Unique test removed 32 places
+Computed a total of 7 stabilizing places and 10 stable transitions
+Iterating post reduction 0 with 32 rules applied. Total rules applied 33 place count 62 transition count 76
+Computed a total of 7 stabilizing places and 10 stable transitions
+Discarding 10 places :
+Symmetric choice reduction at 1 with 10 rule applications. Total rules  43 place count 52 transition count 66
+Iterating global reduction 1 with 10 rules applied. Total rules applied 53 place count 52 transition count 66
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Computed a total of 6 stabilizing places and 8 stable transitions
+Iterating post reduction 1 with 1 rules applied. Total rules applied 54 place count 52 transition count 65
+Computed a total of 6 stabilizing places and 8 stable transitions
+Discarding 9 places :
+Symmetric choice reduction at 2 with 9 rule applications. Total rules  63 place count 43 transition count 56
+Iterating global reduction 2 with 9 rules applied. Total rules applied 72 place count 43 transition count 56
+Computed a total of 6 stabilizing places and 8 stable transitions
+Discarding 9 places :
+Symmetric choice reduction at 2 with 9 rule applications. Total rules  81 place count 34 transition count 47
+Iterating global reduction 2 with 9 rules applied. Total rules applied 90 place count 34 transition count 47
+Computed a total of 6 stabilizing places and 8 stable transitions
+Discarding 8 places :
+Symmetric choice reduction at 2 with 8 rule applications. Total rules  98 place count 26 transition count 39
+Iterating global reduction 2 with 8 rules applied. Total rules applied 106 place count 26 transition count 39
+Computed a total of 6 stabilizing places and 8 stable transitions
+Discarding 8 places :
+Symmetric choice reduction at 2 with 8 rule applications. Total rules  114 place count 18 transition count 31
+Iterating global reduction 2 with 8 rules applied. Total rules applied 122 place count 18 transition count 31
+Ensure Unique test removed 8 transitions
+Reduce isomorphic transitions removed 8 transitions.
+Computed a total of 6 stabilizing places and 8 stable transitions
+Iterating post reduction 2 with 8 rules applied. Total rules applied 130 place count 18 transition count 23
+Computed a total of 6 stabilizing places and 8 stable transitions
+Computed a total of 6 stabilizing places and 8 stable transitions
+Reduce places removed 1 places and 1 transitions. 
+Iterating global reduction 3 with 1 rules applied. Total rules applied 131 place count 17 transition count 22
+Computed a total of 5 stabilizing places and 7 stable transitions
+Computed a total of 5 stabilizing places and 7 stable transitions
+Applied a total of 131 rules in 97 ms. Remains 17 /102 variables (removed 85) and now considering 22/79 (removed 57) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 117 ms. Remains : 17/102 places, 22/79 transitions.
+PetriSpot walker: 1/1 properties solved in 47 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 793 ms.

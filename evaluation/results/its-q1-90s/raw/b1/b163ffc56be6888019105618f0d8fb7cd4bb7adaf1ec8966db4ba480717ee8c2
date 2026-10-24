@@ -1,0 +1,27 @@
+[2026-10-25 00:43:27] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Oq9yY6uAvd, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:43:27] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Oq9yY6uAvd/model.pnml 
+[2026-10-25 00:43:27] [INFO   ] Load time of PNML (sax parser for PT used): 123 ms 
+[2026-10-25 00:43:27] [INFO   ] Transformed 106 places. 
+[2026-10-25 00:43:27] [INFO   ] Transformed 173 transitions. 
+[2026-10-25 00:43:27] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:43:27] [INFO   ] Parsed PT model containing 106 places and 173 transitions and 986 arcs in 442 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Oq9yY6uAvd/ReachabilityDeadlock.xml in 2 ms.
+Working with output stream class java.io.PrintStream
+Deduced a syphon composed of 29 places in 1 ms
+Reduce places removed 33 places and 106 transitions. 
+Reduce places removed 25 places and 0 transitions. 
+Built sparse matrix representations for Structural reductions in 6 ms.9875KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 48/48 places, 67/67 transitions.
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Drop transitions (Redundant composition of simpler transitions.) removed 2 transitions 
+Redundant transition composition rules discarded 2 transitions
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 48 transition count 65
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Applied a total of 2 rules in 57 ms. Remains 48 /48 variables (removed 0) and now considering 65/67 (removed 2) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 77 ms. Remains : 48/48 places, 65/67 transitions.
+PetriSpot walker: 1/1 properties solved in 47 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 699 ms.

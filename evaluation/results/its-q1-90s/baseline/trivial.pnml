@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="baseline" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <page id="pg">
+      <place id="p0"><initialMarking><text>1</text></initialMarking></place>
+      <transition id="t0"/>
+      <arc id="a0" source="p0" target="t0"/>
+      <arc id="a1" source="t0" target="p0"/>
+    </page>
+  </net>
+</pnml>

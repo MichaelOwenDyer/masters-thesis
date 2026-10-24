@@ -1,0 +1,58 @@
+[2026-10-25 00:35:18] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Rj9NQGK1SM, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:35:18] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Rj9NQGK1SM/model.pnml 
+[2026-10-25 00:35:18] [INFO   ] Load time of PNML (sax parser for PT used): 186 ms 
+[2026-10-25 00:35:18] [INFO   ] Transformed 121 places. 
+[2026-10-25 00:35:18] [INFO   ] Transformed 1111 transitions. 
+[2026-10-25 00:35:18] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:35:18] [INFO   ] Parsed PT model containing 121 places and 1111 transitions and 4444 arcs in 527 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.Rj9NQGK1SM/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 7 ms.12185KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 121/121 places, 1111/1111 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 164 ms. Remains 121 /121 variables (removed 0) and now considering 1111/1111 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 189 ms. Remains : 121/121 places, 1111/1111 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 121/121 places, 1111/1111 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 60 ms. Remains 121 /121 variables (removed 0) and now considering 1111/1111 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-4691281792090296842.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-18229775768604186547.kers' 
+[2026-10-25 00:35:19] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-4691281792090296842.kers, --Pflows, --basisKERS=/tmp/petrispot-output-18229775768604186547.kers]
+Culled 0 columns in 0 ms.
+// Phase 1: matrix 1111 rows 121 cols 2222 entries
+Finished phase 1 with 110 SingleSign rule and 0 generalized 
+[2026-10-25 00:35:19] [INFO   ] Computed 11 invariants in 1 ms
+Computed 11 P flows in 9 ms.
+Exported basis to /tmp/petrispot-output-18229775768604186547.kers
+Total runtime 10 ms.
+[2026-10-25 00:35:19] [INFO   ] Implicit Places using invariants in 432 ms returned [] 
+[2026-10-25 00:35:19] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:35:19] [INFO   ] State equation strengthened by 1010 read => feed constraints. 
+[2026-10-25 00:35:20] [INFO   ] Implicit Places using invariants and state equation in 1118 ms returned [] 
+Implicit Place search using SMT with State Equation took 1597 ms to find 0 implicit places.
+[2026-10-25 00:35:20] [INFO   ] Redundant transitions in 76 ms returned [] 
+Running 1101 sub problems to find dead transitions.
+[2026-10-25 00:35:20] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:35:20] [INFO   ] State equation strengthened by 1010 read => feed constraints. 
+At refinement iteration 0 (INCLUDED_ONLY) 0/121 variables, 121/121 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 1 (INCLUDED_ONLY) 0/121 variables, 11/132 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 2 (INCLUDED_ONLY) 0/121 variables, 20/152 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 3 (INCLUDED_ONLY) 0/121 variables, 20/172 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 4 (INCLUDED_ONLY) 0/121 variables, 20/192 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 5 (INCLUDED_ONLY) 0/121 variables, 20/212 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 6 (INCLUDED_ONLY) 0/121 variables, 20/232 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 7 (INCLUDED_ONLY) 0/121 variables, 20/252 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 8 (INCLUDED_ONLY) 0/121 variables, 20/272 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 9 (INCLUDED_ONLY) 0/121 variables, 20/292 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+At refinement iteration 10 (INCLUDED_ONLY) 0/121 variables, 20/312 constraints. Problems are: Problem set: 0 solved, 1101 unsolved
+SMT process timed out in 31233ms, After SMT, problems are : Problem set: 0 solved, 1101 unsolved
+Search for dead transitions found 0 dead transitions in 31267ms
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 33070 ms. Remains : 121/121 places, 1111/1111 transitions.
+PetriSpot walker: 0/1 properties solved in 30027 ms (exit 0).
+[2026-10-25 00:36:22] [INFO   ] Invariant cache hit. 
+[2026-10-25 00:36:22] [INFO   ] [Real]Absence check using  11 positive place invariants in 4 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 64046 ms.

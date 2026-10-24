@@ -1,0 +1,41 @@
+[2026-10-25 00:43:14] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eUTnhTT7oD, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:43:14] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eUTnhTT7oD/model.pnml 
+[2026-10-25 00:43:15] [INFO   ] Load time of PNML (sax parser for PT used): 50 ms 
+[2026-10-25 00:43:15] [INFO   ] Transformed 9 places. 
+[2026-10-25 00:43:15] [INFO   ] Transformed 8 transitions. 
+[2026-10-25 00:43:15] [INFO   ] Parsed PT model containing 9 places and 8 transitions and 27 arcs in 357 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.eUTnhTT7oD/ReachabilityDeadlock.xml in 4 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 6 ms.8534KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 9/9 places, 8/8 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Ensure Unique test removed 1 places
+Computed a total of 0 stabilizing places and 0 stable transitions
+Drop transitions (Trivial Post-Agglo cleanup.) removed 2 transitions 
+Trivial Post-agglo rules discarded 2 transitions
+Performed 2 trivial Post agglomeration. Transition count delta: 2
+Iterating post reduction 0 with 3 rules applied. Total rules applied 3 place count 8 transition count 6
+Reduce places removed 3 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Graph (trivial) has 3 edges and 5 vertex of which 2 / 5 are part of one of the 1 SCC in 3 ms
+Free SCC test removed 1 places 
+Iterating post reduction 1 with 4 rules applied. Total rules applied 7 place count 4 transition count 6
+Ensure Unique test removed 1 transitions
+Reduce isomorphic transitions removed 1 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 2 with 1 rules applied. Total rules applied 8 place count 4 transition count 5
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 2 places and 0 transitions. 
+Iterating global reduction 3 with 3 rules applied. Total rules applied 11 place count 2 transition count 4
+Computed a total of 0 stabilizing places and 0 stable transitions
+Graph (trivial) has 4 edges and 2 vertex of which 2 / 2 are part of one of the 1 SCC in 0 ms
+Free SCC test removed 1 places 
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 3 with 2 rules applied. Total rules applied 13 place count 0 transition count 4
+Ensure Unique test removed 3 transitions
+Reduce isomorphic transitions removed 3 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 539 ms.

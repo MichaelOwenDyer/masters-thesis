@@ -1,0 +1,24 @@
+[2026-10-25 00:41:12] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1ZYw8HtGZg, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:41:12] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1ZYw8HtGZg/model.pnml 
+[2026-10-25 00:41:13] [INFO   ] Load time of PNML (sax parser for PT used): 36 ms 
+[2026-10-25 00:41:13] [INFO   ] Transformed 6 places. 
+[2026-10-25 00:41:13] [INFO   ] Transformed 6 transitions. 
+[2026-10-25 00:41:13] [INFO   ] Parsed PT model containing 6 places and 6 transitions and 16 arcs in 337 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.1ZYw8HtGZg/ReachabilityDeadlock.xml in 7 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 6 ms.8292KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 6/6 places, 6/6 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 1 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 1 Pre rules applied. Total rules applied 0 place count 6 transition count 5
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 5 transition count 5
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 2 rules in 50 ms. Remains 5 /6 variables (removed 1) and now considering 5/6 (removed 1) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 71 ms. Remains : 5/6 places, 5/6 transitions.
+PetriSpot walker: 1/1 properties solved in 43 ms (exit 0).
+FORMULA ReachabilityDeadlock TRUE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION RANDOM_WALK
+Total runtime 567 ms.

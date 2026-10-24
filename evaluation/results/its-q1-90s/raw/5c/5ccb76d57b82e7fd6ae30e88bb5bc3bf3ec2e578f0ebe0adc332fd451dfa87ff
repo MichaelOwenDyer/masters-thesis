@@ -1,0 +1,44 @@
+[2026-10-25 00:36:06] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.lqDwvZDfr9, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:36:06] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.lqDwvZDfr9/model.pnml 
+[2026-10-25 00:36:06] [INFO   ] Load time of PNML (sax parser for PT used): 59 ms 
+[2026-10-25 00:36:06] [INFO   ] Transformed 27 places. 
+[2026-10-25 00:36:06] [INFO   ] Transformed 27 transitions. 
+[2026-10-25 00:36:06] [INFO   ] Found NUPN structural information; 
+[2026-10-25 00:36:06] [INFO   ] Parsed PT model containing 27 places and 27 transitions and 108 arcs in 366 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.lqDwvZDfr9/ReachabilityDeadlock.xml in 6 ms.
+Working with output stream class java.io.PrintStream
+Ensure Unique test removed 1 transitions
+Reduce redundant transitions removed 1 transitions.
+Built sparse matrix representations for Structural reductions in 3 ms.8917KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 27/27 places, 26/26 transitions.
+Computed a total of 1 stabilizing places and 1 stable transitions
+Computed a total of 1 stabilizing places and 1 stable transitions
+Performed 1 Post agglomeration using F-continuation condition.Transition count delta: 1
+Deduced a syphon composed of 1 places in 0 ms
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 2 place count 26 transition count 25
+Computed a total of 2 stabilizing places and 1 stable transitions
+Computed a total of 2 stabilizing places and 1 stable transitions
+Reduce places removed 1 places and 1 transitions. 
+Iterating global reduction 0 with 1 rules applied. Total rules applied 3 place count 25 transition count 24
+Reduce places removed 1 places and 0 transitions. 
+Computed a total of 0 stabilizing places and 0 stable transitions
+Iterating post reduction 0 with 1 rules applied. Total rules applied 4 place count 24 transition count 24
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 4 rules in 52 ms. Remains 24 /27 variables (removed 3) and now considering 24/26 (removed 2) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 74 ms. Remains : 24/27 places, 24/26 transitions.
+PetriSpot walker: 0/1 properties solved in 30038 ms (exit 0).
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-16410747191837606706.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-12473724122314241331.kers' 
+[2026-10-25 00:36:37] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-16410747191837606706.kers, --Pflows, --basisKERS=/tmp/petrispot-output-12473724122314241331.kers]
+Culling duplicate invariants (modulo rational): removing 12 columns.
+Culled 12 columns in 0 ms.
+// Phase 1: matrix 24 rows 12 cols 43 entries
+Finished phase 1 with 12 SingleSign rule and 0 generalized 
+[2026-10-25 00:36:37] [INFO   ] Computed 12 invariants in 0 ms
+Computed 12 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-12473724122314241331.kers
+Total runtime 3 ms.
+[2026-10-25 00:36:37] [INFO   ] [Real]Absence check using  12 positive place invariants in 4 ms returned unsat 
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL SAT_SMT STRUCTURAL_REDUCTION
+Total runtime 30728 ms.

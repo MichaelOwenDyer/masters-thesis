@@ -1,0 +1,57 @@
+[2026-10-25 00:44:11] [INFO   ] Running its-tools with arguments : [-pnfolder, /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.POJ0d9EHuL, -examination, ReachabilityDeadlock, -its, -timeout, 3600] 
+[2026-10-25 00:44:11] [INFO   ] Parsing pnml file : /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.POJ0d9EHuL/model.pnml 
+[2026-10-25 00:44:11] [INFO   ] Load time of PNML (sax parser for PT used): 53 ms 
+[2026-10-25 00:44:11] [INFO   ] Transformed 16 places. 
+[2026-10-25 00:44:11] [INFO   ] Transformed 12 transitions. 
+[2026-10-25 00:44:11] [INFO   ] Parsed PT model containing 16 places and 12 transitions and 48 arcs in 389 ms. 
+Parsed 1 properties from file /tmp/nix-shell.31IPQ0/nix-shell.dJ6nig/tmp.POJ0d9EHuL/ReachabilityDeadlock.xml in 5 ms.
+Working with output stream class java.io.PrintStream
+Built sparse matrix representations for Structural reductions in 5 ms.8474KB memory used
+Starting structural reductions in DEADLOCK mode, iteration 0 : 16/16 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 22 ms. Remains 16 /16 variables (removed 0) and now considering 12/12 (removed 0) transitions.
+Finished structural reductions in DEADLOCK mode , in 1 iterations and 45 ms. Remains : 16/16 places, 12/12 transitions.
+Starting structural reductions in DEADLOCK mode, iteration 0 : 16/16 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Applied a total of 0 rules in 7 ms. Remains 16 /16 variables (removed 0) and now considering 12/12 (removed 0) transitions.
+Running PetriSpot : '/home/michael/.cache/its-tools/ffkx6xy7n45f1v30zr0hj7mmazw2q97k-its-tools-2026-09-11/plugins/fr.lip6.petrispot.binaries_1.0.0.202609112134/bin/petri64' '--loadKERS=/tmp/petrispot-input-993562707507927888.kers' '--Pflows' '--basisKERS=/tmp/petrispot-output-17999811826951319121.kers' 
+[2026-10-25 00:44:11] [INFO   ] Running PetriSpot with arguments : [--loadKERS=/tmp/petrispot-input-993562707507927888.kers, --Pflows, --basisKERS=/tmp/petrispot-output-17999811826951319121.kers]
+Culling duplicate invariants (modulo rational): removing 6 columns.
+Culled 6 columns in 0 ms.
+// Phase 1: matrix 12 rows 10 cols 33 entries
+Finished phase 1 with 8 SingleSign rule and 0 generalized 
+[2026-10-25 00:44:11] [INFO   ] Computed 8 invariants in 0 ms
+Computed 8 P flows in 2 ms.
+Exported basis to /tmp/petrispot-output-17999811826951319121.kers
+Total runtime 2 ms.
+[2026-10-25 00:44:11] [INFO   ] Implicit Places using invariants in 142 ms returned [3] 
+Discarding 1 places :
+Implicit Place search using SMT only with invariants took 194 ms to find 1 implicit places.
+Starting structural reductions in DEADLOCK mode, iteration 1 : 15/16 places, 12/12 transitions.
+Computed a total of 0 stabilizing places and 0 stable transitions
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 3 Pre rules applied. Total rules applied 0 place count 15 transition count 9
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 6 places and 0 transitions. 
+Iterating global reduction 0 with 9 rules applied. Total rules applied 9 place count 9 transition count 9
+Computed a total of 0 stabilizing places and 0 stable transitions
+Performed 3 Pre agglomeration using Quasi-Persistent + Divergent Free condition..
+Pre-agglomeration after 0 with 3 Pre rules applied. Total rules applied 9 place count 9 transition count 6
+Deduced a syphon composed of 3 places in 0 ms
+Reduce places removed 6 places and 0 transitions. 
+Iterating global reduction 0 with 9 rules applied. Total rules applied 18 place count 3 transition count 6
+Computed a total of 0 stabilizing places and 0 stable transitions
+Graph (trivial) has 6 edges and 3 vertex of which 3 / 3 are part of one of the 1 SCC in 2 ms
+Free SCC test removed 2 places 
+Reduce places removed 1 places and 0 transitions. 
+Iterating global reduction 0 with 2 rules applied. Total rules applied 20 place count 0 transition count 6
+Ensure Unique test removed 5 transitions
+Reduce isomorphic transitions removed 5 transitions.
+Found a source transition so no deadlocks exist. place count 0 transition count 1
+FORMULA ReachabilityDeadlock FALSE TECHNIQUES TOPOLOGICAL STRUCTURAL_REDUCTION
+Total runtime 779 ms.
