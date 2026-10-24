@@ -1054,7 +1054,7 @@ dependencies = [
 [[package]]
 name = "petrivet"
 version = "0.1.0"
-source = "git+https://github.com/MichaelOwenDyer/petrivet?branch=main#ca1dd341be726e8189ba00eb857d1e51388b29bb"
+source = "git+https://github.com/MichaelOwenDyer/petrivet?branch=main#71ececd464e5bf4f42720aa3a35cd9aab3f4abe0"
 dependencies = [
  "ahash",
  "bon",
