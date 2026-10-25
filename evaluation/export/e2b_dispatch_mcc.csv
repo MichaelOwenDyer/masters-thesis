@@ -1,0 +1,17 @@
+state,source,query,n_cells,n_dispatch_answered,n_general_answered,n_both,ratio_median,ratio_p90,n_dispatch_fails_general_answers
+before,mcc-small,Q1,90,76,88,76,1.947650,42.928921,12
+before,mcc-small,Q3,90,47,88,47,5.026387,170.514342,41
+before,mcc-small,Q4,90,48,88,48,6.009453,176.363929,40
+before,mcc-small,Q5,90,65,90,65,1.146783,35.533847,25
+before,mcc-large,Q1,20,3,6,3,12.467677,12.467677,3
+before,mcc-large,Q3,20,4,0,0,,,0
+before,mcc-large,Q4,20,4,0,0,,,0
+before,mcc-large,Q5,20,4,5,4,1.044507,1.077277,1
+after,mcc-small,Q1,90,76,88,76,1.884735,39.174450,12
+after,mcc-small,Q3,90,82,88,82,2.424443,8.081577,6
+after,mcc-small,Q4,90,82,88,82,2.401543,8.193358,6
+after,mcc-small,Q5,90,87,90,87,1.099057,4.362659,3
+after,mcc-large,Q1,20,4,6,4,7.075544,12.190105,2
+after,mcc-large,Q3,20,4,0,0,,,0
+after,mcc-large,Q4,20,4,0,0,,,0
+after,mcc-large,Q5,20,4,5,4,0.900165,0.921244,1

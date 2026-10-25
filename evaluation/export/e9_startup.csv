@@ -1,0 +1,7 @@
+solver_id,query,baseline_wall_ms,baseline_rss_kib,verdict
+its-tools,Q1,989.907811,82504.000000,FALSE
+lola,Q1,14.429897,7532.000000,TRUE
+pv-dispatch,Q1,18.440149,7404.000000,TRUE
+pv-general,Q1,8.200807,7532.000000,TRUE
+pv-poly,Q1,7.934738,7532.000000,TRUE
+tina,Q1,7.198278,7532.000000,TRUE
