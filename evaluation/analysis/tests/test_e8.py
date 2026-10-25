@@ -67,3 +67,18 @@ def test_timeouts_are_answered_with_the_longer_cap(tmp_path):
     # the longest answer: a polars aggregate returned a smaller value on the evaluation machine
     assert n["e8.answer_max_s"] == 65.0
     assert "e8_its_q1_90s" in ctx.tables
+    # B alone: i5 is unbounded and the tool answered a deadlock (FALSE for Q1) where the truth says deadlock-free; here its B
+    # run timed out, so nothing is counted; with a definite B answer it would be
+    assert (n["e8.unbounded_q1_answered"] if "e8.unbounded_q1_answered" in n else 0) == 0
+
+
+def test_unbounded_q1_contradictions_are_counted(tmp_path):
+    base = [run_row("B", "u1", "FALSE", 900, 30000), run_row("B", "u2", "FALSE", 900, 30000), run_row("B", "u3", "TRUE", 900, 30000), run_row("B", "b1", "FALSE", 900, 30000)]
+    runs = frame(base, RUN_SCHEMA).with_columns(pl.col("target_id").fill_null("").alias("tid"))
+    truth = truth_frame(
+        [{"instance_id": i, "query": "Q1", "truth_bool": True} for i in ("u1", "u2", "u3", "b1")]
+        + [{"instance_id": i, "query": "Q2", "truth_bool": False} for i in ("u1", "u2", "u3")]
+    )
+    ctx = Stub(tmp_path, runs, truth)
+    e8.run(ctx)
+    assert ctx.numbers["e8.unbounded_q1_answered"] == 3 and ctx.numbers["e8.unbounded_q1_contradict_truth"] == 2

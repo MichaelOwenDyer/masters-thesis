@@ -8,7 +8,11 @@ TIMEOUT in campaign B it counts how many are answered with 90 s and when (about 
 work), and checks the answers of the 90 s run against the truth (cells of unbounded nets are out of scope and counted apart)
 and against the 30 s run.
 
-Keys: e8.present, e8.cap_ms, e8.n_cells, e8.n_timeouts_30s, e8.n_answered_90s, e8.n_answered_30_35s,
+Besides, from campaign B alone (needs no sensitivity run): of the Q1 answers of ITS-Tools on nets that are unbounded (Q2 truth
+false), how many contradict the Q1 truth (``e8.unbounded_q1_answered``, ``e8.unbounded_q1_contradict_truth``); those cells are out
+of scope of the correctness comparison and are reported as an observation.
+
+Keys: e8.unbounded_q1_answered, e8.unbounded_q1_contradict_truth, e8.present, e8.cap_ms, e8.n_cells, e8.n_timeouts_30s, e8.n_answered_90s, e8.n_answered_30_35s,
 e8.n_answered_35_60s, e8.n_answered_60s_plus, e8.n_still_timeout, e8.answer_median_s, e8.answer_max_s, e8.n_flips,
 e8.n_truth_agree, e8.n_truth_disagree, e8.n_unbounded_skipped
 Table: e8_its_q1_90s.csv (one row)
@@ -27,6 +31,7 @@ SENS_DIR = "its-q1-90s"
 
 
 def run(ctx: Ctx) -> None:
+    _unbounded_q1(ctx)
     path = ctx.results / SENS_DIR / "runs.jsonl"
     if not path.is_file():
         ctx.numbers["e8.present"] = False
@@ -62,3 +67,16 @@ def run(ctx: Ctx) -> None:
     for key, v in row.items():
         ctx.num("e8", key, v)
     ctx.csv("e8_its_q1_90s", pl.DataFrame([row]))
+
+
+def _unbounded_q1(ctx: Ctx) -> None:
+    its = ctx.runs.filter((pl.col("campaign") == "B") & (pl.col("solver_id") == SOLVER) & (pl.col("query") == "Q1") & (pl.col("rep") == 0)
+                          & (pl.col("instance_id") != "BASELINE") & pl.col("verdict").is_in(["TRUE", "FALSE"]))
+    if its.height == 0:
+        return
+    unbounded = set(ctx.truth.filter((pl.col("query") == "Q2") & (pl.col("truth_bool") == False))["instance_id"].to_list())  # noqa: E712
+    t1 = ctx.truth.filter((pl.col("query") == "Q1") & pl.col("truth_bool").is_not_null()).select("instance_id", "truth_bool")
+    j = its.filter(pl.col("instance_id").is_in(list(unbounded))).select("instance_id", "verdict").join(t1, on="instance_id", how="inner")
+    contradict = j.filter((pl.col("verdict") == "TRUE") != pl.col("truth_bool")).height
+    ctx.num("e8", "unbounded_q1_answered", j.height)
+    ctx.num("e8", "unbounded_q1_contradict_truth", contradict)

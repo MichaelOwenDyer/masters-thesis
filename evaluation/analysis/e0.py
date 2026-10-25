@@ -9,13 +9,17 @@ hash), so a size range of a class can hold fewer nets than were drawn.
 A net that is listed in two manifests (identical files drawn into two collections) is counted in each manifest and
 reported as a duplicate: ``e0.n_duplicate_instances`` is the number of instance ids with more than one source.
 
+The draw of the competition models (``corpus/mcc/selected.json``, an optional input) gives ``e0.mcc.<small|large>.{drawn,
+accepted,rejected_arc_weight,rejected_not_connected,rejected_too_large}``: candidates drawn, models taken, and the rejections by reason.
+
 Keys: e0.<source>.n_manifest_lines, e0.gen.<class>.<bucket>.{n,n_same_class}, e0.gen.<class>.n, e0.n_duplicate_instances,
-      e0.n_unique_instances
+      e0.n_unique_instances, e0.mcc.<small|large>.<field>
 Table: e0_nets.csv (source, gen_class, bucket, n, n_same_class, places_median)
 """
 
 from __future__ import annotations
 
+import json
 import statistics
 from collections import Counter, defaultdict
 
@@ -60,3 +64,25 @@ def run(ctx: Ctx) -> None:
         places = [r["places"] for r in recs if r.get("source") == src and isinstance(r.get("places"), (int, float))]
         rows.append({"source": src, "gen_class": None, "bucket": None, "n": n, "n_same_class": None, "places_median": statistics.median(places) if places else None})
     ctx.csv("e0_nets", pl.DataFrame(rows, infer_schema_length=None))
+    _mcc_draw(ctx)
+
+
+def _mcc_draw(ctx: Ctx) -> None:
+    path = ctx.results.resolve().parent / "corpus" / "mcc" / "selected.json"
+    if not path.is_file():
+        return
+    counts = json.loads(path.read_text()).get("summary", {}).get("counts", {})
+    for size, keys in (("small", ["small"]), ("large", [k for k in counts if k.startswith("large")])):
+        rej = Counter()
+        drawn = accepted = 0
+        for k in keys:
+            c = counts.get(k, {})
+            drawn += c.get("drawn", 0)
+            accepted += c.get("accepted", 0)
+            for reason, n in c.get("rejected", {}).items():
+                rej[reason] += n
+        ctx.num("e0", "mcc", size, "drawn", drawn)
+        ctx.num("e0", "mcc", size, "accepted", accepted)
+        ctx.num("e0", "mcc", size, "rejected_arc_weight", rej["arc weight"])
+        ctx.num("e0", "mcc", size, "rejected_not_connected", rej["not connected"])
+        ctx.num("e0", "mcc", size, "rejected_too_large", rej["too large"])

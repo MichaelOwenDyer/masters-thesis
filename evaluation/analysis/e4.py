@@ -18,7 +18,7 @@ from __future__ import annotations
 import polars as pl
 
 from .cells import cell_table
-from .common import PARTIAL_SOLVERS, QUERY_LABEL, SOLVER_COLOR, Ctx, color_map, key, plt, save_svg, solver_label, source_label, wrap
+from .common import PARTIAL_SOLVERS, SOLVER_COLOR, Ctx, color_map, key, plt, save_svg, solver_label
 from .stats import median
 
 
@@ -87,10 +87,8 @@ def run(ctx: Ctx) -> None:
         ax.set_yscale("log")
         ax.set_xlabel("number of questions answered (quickest first)")
         ax.set_ylabel("time per answer (ms, log scale)")
-        ax.set_title(f"How many questions each tool answers, and how fast: {source_label(src)}", loc="left", fontsize=10.5, pad=30)
-        qs = ", ".join(QUERY_LABEL.get(q, q) for q in common)
-        note = " ".join(f"{solver_label(s)} has no method for some of these questions, so its line covers fewer." for s in partial)
-        ax.text(0, 1.02, wrap(f"Each point is one answer, sorted by time. A line that reaches further right answers more; a lower line is faster. Questions: {qs}. {note}".strip(), 105),
-                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
+        # the questions of the chart and the tools that cover only some of them go into the caption (typst), from here
+        ctx.numbers[key("e4", "cactus", src, "questions")] = ",".join(common)
+        ctx.numbers[key("e4", "cactus", src, "partial_tools")] = ",".join(partial)
         ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path(f"e4_cactus_{key(src)}"))

@@ -5,6 +5,9 @@ inconclusive = runs that have a truth value but no definite answer (UNKNOWN, TIM
 NOT_SUPPORTED, RUNNER_ERROR, SHARD_FAILED); inconclusive_rate = n_inconclusive / (n_conclusive + n_inconclusive).
 OUT_OF_SCOPE (Q1/Q3/Q4 on a net with Q2 = false) and NO_TRUTH are reported as separate counts and in no rate.
 
+Tables: e1.csv (solver x source x class x query), e1_by_solver_source.csv (solver x source), e1_disagreements.csv,
+e1_truth_exclusions.csv
+
 numbers.json keys (subject solver only, sources never pooled):
   e1.<source>.<field>, e1.<source>.<query>.<field>, e1.<source>.<class>.<query>.<field>
   with field in n_conclusive n_agree n_disagree n_inconclusive inconclusive_rate cp_upper_95
@@ -68,6 +71,8 @@ def run(ctx: Ctx) -> None:
     )
     tab = agreement_table(adj, ["solver_id", "source", "cls", "query"])
     ctx.csv("e1", tab)
+    # one row per solver and collection (labels that rest on LoLA alone are their own collection): the table of the chapter
+    ctx.csv("e1_by_solver_source", agreement_table(adj, ["solver_id", "source"]))
     sub = adj.filter(pl.col("solver_id") == ctx.subject)
     if sub.height == 0:
         ctx.skip("e1_numbers", f"no runs of subject solver {ctx.subject}")

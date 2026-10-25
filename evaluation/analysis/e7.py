@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, series_max, solver_label, source_label, wrap
+from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, series_max, solver_label, source_label
 from .stats import quantiles
 
 
@@ -46,7 +46,7 @@ def run(ctx: Ctx) -> None:
     ncols = 2
     nrows = (len(srcs) + ncols - 1) // ncols
     fig, axs = p.subplots(nrows, ncols, figsize=(8.6, 3.5 * nrows), squeeze=False, sharey=True)
-    fig.subplots_adjust(top=0.80, bottom=0.08, left=0.08, right=0.98, hspace=0.42, wspace=0.12)
+    fig.subplots_adjust(top=0.96, bottom=0.08, left=0.08, right=0.98, hspace=0.42, wspace=0.12)
     for ax, src in zip(axs.ravel(), srcs):
         data, labs = [], []
         for s in solvers:
@@ -69,10 +69,6 @@ def run(ctx: Ctx) -> None:
         ax.tick_params(labelsize=7)
     for ax in axs.ravel()[len(srcs):]:
         ax.axis("off")
-    fig.text(0.01, 0.955, "How much memory does each tool use?", fontsize=10.5, ha="left")
-    fig.text(0.01, 0.925, "One run per question and net (n = number of runs that gave an answer). Runs at the dashed 8 GiB line ran out of memory.\n"
-             "About 7 MiB is the size of the measuring wrapper itself: those runs used almost nothing.",
-             fontsize=7, color="#444444", ha="left", va="top")
     save_svg(fig, ctx.fig_path("e7_rss"))
 
     # bytes per state
@@ -106,9 +102,6 @@ def run(ctx: Ctx) -> None:
         ctx.csv("e7_bytes_per_state", pl.DataFrame(out))
         ax.set_xscale("log"); ax.set_yscale("log")
         ax.set_xlabel("number of places in the net (log scale)"); ax.set_ylabel("memory per state (bytes, log scale)")
-        ax.set_title("How much memory does a tool need per state it explores?", loc="left", fontsize=10.5, pad=30)
-        ax.text(0, 1.02, wrap("Counting all states of a net. Memory above the tool's start-up memory, divided by the number of states; nets too small to measure are not drawn. Lower is better.", 105),
-                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         if plotted:
             save_svg(fig, ctx.fig_path("e7_bytes_per_state"))

@@ -102,3 +102,20 @@ def test_e2b_without_the_archive_only_after(tmp_path):
     e2b.run(ctx)
     assert ctx.numbers["e2b.before_present"] is False
     assert key("e2b", "after", "mcc-small", "Q3", "n_both") in ctx.numbers and not any(k.startswith("e2b.before.") for k in ctx.numbers)
+
+
+def test_e0_reads_the_draw_of_the_competition_models(tmp_path):
+    results = tmp_path / "results"
+    (tmp_path / "corpus" / "mcc").mkdir(parents=True)
+    results.mkdir()
+    (tmp_path / "corpus" / "mcc" / "selected.json").write_text(json.dumps({"summary": {"counts": {
+        "small": {"drawn": 134, "accepted": 90, "rejected": {"arc weight": 22, "not connected": 22}},
+        "large:L": {"drawn": 12, "accepted": 5, "rejected": {"arc weight": 2, "too large": 5}},
+        "large:RD": {"drawn": 13, "accepted": 5, "rejected": {"arc weight": 1, "not connected": 5, "too large": 2}},
+    }}}))
+    (tmp_path / "m.jsonl").write_text(json.dumps({"instance_id": "a", "source": "mcc-small", "places": 3}) + "\n")
+    ctx = Stub(results, manifests=[tmp_path / "m.jsonl"])
+    e0.run(ctx)
+    n = ctx.numbers
+    assert (n["e0.mcc.small.drawn"], n["e0.mcc.small.accepted"], n["e0.mcc.small.rejected_arc_weight"], n["e0.mcc.small.rejected_not_connected"]) == (134, 90, 22, 22)
+    assert (n["e0.mcc.large.drawn"], n["e0.mcc.large.accepted"], n["e0.mcc.large.rejected_arc_weight"], n["e0.mcc.large.rejected_not_connected"], n["e0.mcc.large.rejected_too_large"]) == (25, 10, 3, 5, 7)

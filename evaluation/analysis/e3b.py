@@ -8,7 +8,9 @@ Threshold for H3b ("close to its deadline"): ``--overshoot-threshold-ms`` or eva
 Group = manifest ``family`` (mcc_family for MCC), else source. The procedure/phase responsible for the largest overshoots is
 not in the run record (the CLI reports no method); the largest cells are listed in e3b_top_overshoot.csv for the manual
 perf follow-up of the pilot.
-Keys: e3b.t<t>.{n_cells,n_triggered,share_unknown,share_definite,overshoot_median_ms,overshoot_p90_ms,overshoot_p95_ms,
+Runs that did not return at all (the wall cap of the campaign ended them, so they report no analysis time) are not part of the
+distribution: they are counted per t in ``e3b.t<t>.n_wall_cap`` and listed in e3b_wall_cap.csv (the library did not stop at its deadline).
+Keys: e3b.t<t>.n_wall_cap, e3b.t<t>.{n_cells,n_triggered,share_unknown,share_definite,overshoot_median_ms,overshoot_p90_ms,overshoot_p95_ms,
       overshoot_max_ms,share_within_threshold,wall_minus_analyze_median_ms}; e3b.<source>.t<t>.<same>; e3b.threshold_ms
 Figure: e3b_overshoot.svg (histogram of triggered overshoot per t, log-spaced bins on max(overshoot, 0.01 ms)).
 """
@@ -18,7 +20,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import Ctx, plt, save_svg, color_map, wrap
+from .common import Ctx, plt, save_svg, color_map
 from .stats import quantiles
 
 DEFINITE = ["TRUE", "FALSE", "COUNT"]
@@ -52,7 +54,22 @@ def _row(g: pl.DataFrame, thr: float | None) -> dict:
     return out
 
 
+def wall_cap_cells(c: pl.DataFrame) -> pl.DataFrame:
+    """The cells (instance, query, target, t) of campaign C whose run was ended by the wall cap: TIMEOUT, one row per cell."""
+    return (c.filter(pl.col("verdict") == "TIMEOUT")
+            .group_by("source", "family", "instance_id", "query", "tid", "timeout_ms").agg(pl.col("wall_ms").median())
+            .with_columns(pl.col("family").fill_null(pl.col("source")).alias("group"))
+            .select("source", "group", "instance_id", "query", "tid", "timeout_ms", "wall_ms")
+            .sort("source", "instance_id", "query", "tid", "timeout_ms"))
+
+
 def run(ctx: Ctx) -> None:
+    c_all = ctx.runs_meta("C").filter((pl.col("solver_id") == ctx.subject) & pl.col("timeout_ms").is_not_null())
+    if c_all.height:
+        wc = wall_cap_cells(c_all)
+        ctx.csv("e3b_wall_cap", wc)
+        for t in sorted(c_all["timeout_ms"].unique().to_list()):
+            ctx.num("e3b", f"t{int(t)}", "n_wall_cap", wc.filter(pl.col("timeout_ms") == t).height)
     r = ctx.runs_meta("C").filter((pl.col("solver_id") == ctx.subject) & pl.col("timeout_ms").is_not_null() & pl.col("analyze_ms").is_not_null())
     if r.height == 0:
         ctx.skip("e3b", "no campaign C runs with timeout_ms and analyze_ms")
@@ -105,8 +122,5 @@ def run(ctx: Ctx) -> None:
             ax.text(thr * 1.15, ax.get_ylim()[1] * 0.97, f"{thr:g} ms: our limit for\n\"close to the deadline\"", fontsize=7.5, va="top")
         ax.set_xlabel("how long after the time limit the library stopped (ms, log scale)")
         ax.set_ylabel("number of queries")
-        ax.set_title("How closely does the library keep to a time limit?", loc="left", fontsize=10.5, pad=30)
-        ax.text(0, 1.02, wrap("Only queries where the time limit ran out. Bars further left: the library stopped closer to the deadline.", 100),
-                transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
         ax.legend(frameon=False, title="time limit given", title_fontsize=8.5, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))
         save_svg(fig, ctx.fig_path("e3b_overshoot"))

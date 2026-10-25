@@ -25,7 +25,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label, wrap
+from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
 from .stats import holm, hodges_lehmann, quantiles, wilcoxon_greater, wilcoxon_two_sided
 
 D, G, P = "pv-dispatch", "pv-general", "pv-poly"
@@ -144,9 +144,6 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
         ax.text(0.01, cap * 1.2, "30 s limit: run stopped without an answer", transform=ax.get_yaxis_transform(), fontsize=7, color="#555555", va="bottom")
     ax.set_xlabel("time with the automatic choice of method (ms, log scale)")
     ax.set_ylabel("time with plain state-space exploration (ms, log scale)")
-    ax.set_title("Does picking the method by net structure save time?", loc="left", fontsize=10.5, pad=30)
-    ax.text(0, 1.02, wrap("One dot per net and question. Above the diagonal the automatic choice was faster; below it, plain exploration was.", 84),
-            transform=ax.transAxes, fontsize=7.2, color="#444444", va="bottom")
     ax.text(0.34, 0.67, "automatic choice faster\n(plain exploration slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="center")
     ax.text(0.46, 0.03, "plain exploration faster\n(automatic choice slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="bottom")
     ax.legend(frameon=False, fontsize=8, title="Kind of net", title_fontsize=8.5, loc="upper left", bbox_to_anchor=(1.02, 1.0))
@@ -178,7 +175,6 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
             ax.set_ylabel("time (ms, log scale)", fontsize=8)
         h, lab = axs.ravel()[0].get_legend_handles_labels()
         fig.legend(h, lab, loc="outside upper left", ncol=2, frameon=False, fontsize=8)
-        fig.suptitle("How long each method takes as the net grows (dashed line: 30 s limit, no answer)", fontsize=10, x=0.99, ha="right")
         save_svg(fig, ctx.fig_path("e2_scaling"))
 
 
