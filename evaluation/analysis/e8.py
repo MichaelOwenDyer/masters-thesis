@@ -18,7 +18,9 @@ from __future__ import annotations
 
 import polars as pl
 
-from .common import Ctx, load_runs
+import statistics
+
+from .common import Ctx, load_runs, series_max
 
 SOLVER = "its-tools"
 SENS_DIR = "its-q1-90s"
@@ -51,10 +53,10 @@ def run(ctx: Ctx) -> None:
     k_in = k.filter(~pl.col("instance_id").is_in(list(unbounded)))
     agree = k_in.filter((pl.col("verdict") == "TRUE") == pl.col("truth_bool")).height
     row = {
-        "cap_ms": float(j["cap90"].max()), "n_cells": j.height, "n_timeouts_30s": slow.height, "n_answered_90s": n_ans,
+        "cap_ms": float(series_max(j["cap90"])), "n_cells": j.height, "n_timeouts_30s": slow.height, "n_answered_90s": n_ans,
         "n_answered_30_35s": int(((secs >= 30) & (secs < 35)).sum()), "n_answered_35_60s": int(((secs >= 35) & (secs < 60)).sum()),
         "n_answered_60s_plus": int((secs >= 60).sum()), "n_still_timeout": slow.height - n_ans,
-        "answer_median_s": float(secs.median()) if n_ans else None, "answer_max_s": float(secs.max()) if n_ans else None,
+        "answer_median_s": statistics.median(secs.to_list()) if n_ans else None, "answer_max_s": series_max(secs) if n_ans else None,
         "n_flips": flips, "n_truth_agree": agree, "n_truth_disagree": k_in.height - agree, "n_unbounded_skipped": k.height - k_in.height,
     }
     for key, v in row.items():

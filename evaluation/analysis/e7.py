@@ -15,7 +15,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, solver_label, source_label, wrap
+from .common import SOLVER_COLOR, SOLVER_SHORT, Ctx, color_map, plt, save_svg, series_max, solver_label, source_label, wrap
 from .stats import quantiles
 
 
@@ -29,7 +29,7 @@ def run(ctx: Ctx) -> None:
     rows = []
     for (src, s), g in cells.group_by("source", "solver_id"):
         q = quantiles(g["rss"].to_list(), (0.25, 0.5, 0.75, 0.95))
-        row = {"source": src, "solver_id": s, "n": g.height, "rss_p25_kib": q[0.25], "rss_p50_kib": q[0.5], "rss_p75_kib": q[0.75], "rss_p95_kib": q[0.95], "rss_max_kib": g["rss"].max()}
+        row = {"source": src, "solver_id": s, "n": g.height, "rss_p25_kib": q[0.25], "rss_p50_kib": q[0.5], "rss_p75_kib": q[0.75], "rss_p95_kib": q[0.95], "rss_max_kib": series_max(g["rss"])}
         rows.append(row)
         for k, v in row.items():
             if k not in ("source", "solver_id"):

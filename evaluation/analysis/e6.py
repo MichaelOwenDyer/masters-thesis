@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import polars as pl
 
-from .common import Ctx, color_map, plt, read_jsonl, save_svg
+from .common import Ctx, color_map, plt, read_jsonl, save_svg, series_max, series_min
 from .stats import quantiles
 
 UNIT = (("ns", 1e-3), ("latency_us", 1.0), ("latency_ns", 1e-3), ("latency_ms", 1e3), ("ms", 1e3))
@@ -75,7 +75,7 @@ def run(ctx: Ctx) -> None:
     rows = []
     for (variant, phase), g in df.group_by("variant", "phase"):
         q = quantiles(g["us"].to_list(), (0.5, 0.95, 0.99))
-        row = {"variant": variant, "phase": phase, "n": g.height, "p50_us": q[0.5], "p95_us": q[0.95], "p99_us": q[0.99], "min_us": g["us"].min(), "max_us": g["us"].max()}
+        row = {"variant": variant, "phase": phase, "n": g.height, "p50_us": q[0.5], "p95_us": q[0.95], "p99_us": q[0.99], "min_us": series_min(g["us"]), "max_us": series_max(g["us"])}
         rows.append(row)
         for k in ("n", "p50_us", "p95_us", "p99_us", "min_us", "max_us"):
             ctx.num("e6", variant, phase, k, row[k])

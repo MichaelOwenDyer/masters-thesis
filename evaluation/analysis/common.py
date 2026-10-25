@@ -318,7 +318,7 @@ class Ctx:
         if c:
             return float(c) * 1000.0
         b = self.runs.filter(pl.col("campaign") == "B")["limit_ms"].drop_nulls()
-        return float(b.max()) if len(b) else None
+        return float(series_max(b)) if len(b) else None
 
     # --- outputs ---
     def csv(self, name: str, df: pl.DataFrame) -> None:
@@ -431,6 +431,19 @@ def wrap(text: str, width: int = 88) -> str:
     """Subtitles are wrapped so that a long line cannot widen the exported figure."""
     import textwrap
     return textwrap.fill(text, width=width)
+
+
+def series_max(s) -> float | None:
+    """Maximum of a Series without the aggregate of polars: on the evaluation machine ``Series.max()`` returned a value
+    that is not the maximum for some Float64 series (the memory maxima of E7 and the longest answer of E8 came out
+    far too small, every other number was identical to a run elsewhere)."""
+    v = [x for x in s.to_list() if x is not None]
+    return max(v) if v else None
+
+
+def series_min(s) -> float | None:
+    v = [x for x in s.to_list() if x is not None]
+    return min(v) if v else None
 
 
 def solver_label(s: str) -> str:

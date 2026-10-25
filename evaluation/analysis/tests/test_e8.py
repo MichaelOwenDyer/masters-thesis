@@ -64,4 +64,6 @@ def test_timeouts_are_answered_with_the_longer_cap(tmp_path):
     # i5 is unbounded: its FALSE (against a truth of TRUE) is out of scope and counted apart
     assert (n["e8.n_truth_agree"], n["e8.n_truth_disagree"], n["e8.n_unbounded_skipped"]) == (3, 0, 1)
     assert n["e8.n_flips"] == 0 and n["e8.cap_ms"] == 90000.0 and abs(n["e8.answer_median_s"] - 31.3) < 1e-9
+    # the longest answer: a polars aggregate returned a smaller value on the evaluation machine
+    assert n["e8.answer_max_s"] == 65.0
     assert "e8_its_q1_90s" in ctx.tables
