@@ -10,11 +10,11 @@ from pathlib import Path
 
 import polars as pl
 
-from . import __version__, e1, e1b, e2, e3a, e3b, e4, e5a, e5b, e6, e7, e8
+from . import __version__, e0, e1, e1b, e2, e2b, e3a, e3b, e4, e5a, e5b, e6, e7, e8, e9
 from .common import Ctx, load_meta, load_runs, load_truth, read_jsonl, run_module, sha256_file, use_memory_campaign, utc_now
 
-MODULES = [("e1", e1.run), ("e1b", e1b.run), ("e2", e2.run), ("e3a", e3a.run), ("e3b", e3b.run), ("e4", e4.run),
-           ("e5a", e5a.run), ("e5b", e5b.run), ("e6", e6.run), ("e7", e7.run), ("e8", e8.run)]
+MODULES = [("e0", e0.run), ("e1", e1.run), ("e1b", e1b.run), ("e2", e2.run), ("e2b", e2b.run), ("e3a", e3a.run), ("e3b", e3b.run), ("e4", e4.run),
+           ("e5a", e5a.run), ("e5b", e5b.run), ("e6", e6.run), ("e7", e7.run), ("e8", e8.run), ("e9", e9.run)]
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -57,7 +57,7 @@ def main(argv: list[str] | None = None) -> int:
 
     ctx = Ctx(results=a.results, truth_path=a.truth, out=a.out, runs=runs, truth=truth, meta=meta, cfg=cfg, subject=a.subject,
               adj_rows=adj_rows, cache_coherence=a.cache_coherence, latency_path=a.latency or a.results / "latency.jsonl",
-              truth_excluded=excluded, overshoot_threshold_ms=a.overshoot_threshold_ms, cap_ms=a.cap_ms)
+              truth_excluded=excluded, overshoot_threshold_ms=a.overshoot_threshold_ms, cap_ms=a.cap_ms, manifests=[Path(m) for m in manifests])
     a.out.mkdir(parents=True, exist_ok=True)
 
     ctx.numbers["meta.generated_at"] = a.generated_at or utc_now()

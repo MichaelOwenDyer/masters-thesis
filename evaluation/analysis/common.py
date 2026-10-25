@@ -283,6 +283,7 @@ class Ctx:
     truth_excluded: list[dict] = field(default_factory=list)
     overshoot_threshold_ms: float | None = None
     cap_ms: float | None = None
+    manifests: list[Path] = field(default_factory=list)
     numbers: dict[str, Any] = field(default_factory=dict)
     written: list[str] = field(default_factory=list)
     _adj: pl.DataFrame | None = None
