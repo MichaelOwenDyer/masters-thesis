@@ -1,26 +1,23 @@
+#import "./01-introduction/03-research-questions.typ": *
+
 = Conclusion <conclusion>
 
-I have presented _petrivet_ #footnote[https://github.com/MichaelOwenDyer/petrivet].
+I have presented `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet].
 This paper aimed to answer the following research questions:
 
-Research Question 1 (To what extent do existing Petri net analysis tools meet the requirements of tool builders
-(programmatic access, safe portability, cost control, model interchange, adequate performance, and traceability to theory),
-and where do they fall short?) was answered in @related-work.
+#rqs.existing-tools (#rqs.existing-tools-text) was answered in @related-work.
 
-RQ2 "How can a library organize Petri net theorems so that each query is dispatched to the cheapest applicable procedure,
-the caller can restrict its runtime cost, and each answer is traceable to the theory that made it possible?"
-was answered in @solution-design and @implementation.
+#rqs.correctness (#rqs.correctness-text) was answered in @eval-correctness.
 
-RQ3 "To what extent does the resulting artifact implement the applicable theorems from the literature soundly and efficiently,
-and how well does it meet the requirements of tool builders?"
-was answered in @evaluation.
+#rqs.procedure-dispatch (#rqs.procedure-dispatch-text) was answered in @eval-dispatch.
 
-RQ4: Which design principles emerged during implementation, and what trade-offs did they involve?
-was answered in @discussion.
+#rqs.cost-control (#rqs.cost-control-text) was answered in @eval-dispatch.
+
+#rqs.perf-mem (#rqs.perf-mem-text) was answered in @eval-perf-mem.
 
 == Future Work
 
-The future work on _petrivet_ will include extensions to both its core procedures, unlocking new levels of performance,
+The future work on `petrivet` will include extensions to both its core procedures, unlocking new levels of performance,
 and additions to its scope, adding support for extensions on the basic Petri net model.
 
 - IC3 is a model checking procedure that has been applied to Petri nets @hassan_better_2013 @kloos_incremental_2013
@@ -34,6 +31,7 @@ but do increase the expressiveness of the model (that transformation may result 
 This would allow for a more natural representation of certain systems, but would also require additional work to support these extensions in the core logic.
 In particular, the various structural properties of Petri nets do not apply in general to Petri nets with arc weights and
 place capacities, so the current optimizations for specific subclasses of nets would not be correct.
+- structural reductions @berthelot_reduction_1976 @thierry-mieg_structural_2020
 
 - Model checking is a formal verification technique that systematically explores the state space of a system to verify
   whether certain properties hold. It involves constructing a model of the system, specifying properties in a formal
@@ -45,3 +43,5 @@ place capacities, so the current optimizations for specific subclasses of nets w
   - Binary Decision Diagrams / Hierarchical Set Decision Diagrams for state space representation @couvreur_hierarchical_2005.
 - More targeted procedures for general liveness and deadlock-freedom which do not require the construction of the entire reachability graph,
 perhaps by reducing to a reachability problem (TODO: cite Hack, Esparza) and applying the existing reachability procedures.
+- For Free-Choice Nets, checking liveness and boundedness simultaneously is cheaper than checking them separately, and
+is in fact polynomial time @esparza_synthesis_1990 @kemper_efficient_1992.

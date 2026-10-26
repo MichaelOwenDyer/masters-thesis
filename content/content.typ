@@ -5,7 +5,7 @@
   related-work: include "02-related-work.typ",
   solution-design: include "03-solution-design.typ",
   implementation: include "04-implementation/00-chapter.typ",
-  evaluation: include "05-evaluation.typ",
+  evaluation: include "05-evaluation/00-chapter.typ",
   discussion: include "06-discussion.typ",
   conclusion: include "07-conclusion.typ",
   appendix: include "99-appendix/chapter.typ",

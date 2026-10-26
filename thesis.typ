@@ -194,6 +194,7 @@
   )
 
   set heading(numbering: "1.", bookmarked: true, outlined: true)
+  show figure.where(kind: table): set block(breakable: true)
 
   content.introduction
   content.related-work

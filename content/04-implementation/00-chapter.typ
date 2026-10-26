@@ -1,6 +1,6 @@
 = Implementation <implementation>
 
-This section discusses the implementation of the _petrivet_ #footnote[https://github.com/MichaelOwenDyer/petrivet] Rust
+This section discusses the implementation of the `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet] Rust
 crate, including arch
 
 #include "01-builder.typ"

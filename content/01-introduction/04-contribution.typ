@@ -1,8 +1,8 @@
 == Contribution
 
-_petrivet_ #footnote[https://github.com/MichaelOwenDyer/petrivet] is a Rust library that provides a programmatic interface to the same theoretical foundations.
-
-I also present in this thesis two secondary contributions:
-- A catalogue of Petri net theorems and intuitive explanations of their significance.
-- A discussion of the design principles that emerged during the implementation of _petrivet_.
-
+The main contribution of this thesis is `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet],
+a Rust library that answers each question with the cheapest procedure applicable to the net at hand,
+while letting the caller bound the cost.
+Its evaluation addresses the correctness of the answers, the effect of dispatching, the control of cost,
+and the standing of the library relative to established tools.
+I also discuss the design principles that emerged during implementation, and the trade-offs they involved.

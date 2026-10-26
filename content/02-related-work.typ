@@ -1,16 +1,23 @@
+#import "./01-introduction/03-research-questions.typ": *
+
 = Related Work <related-work>
 
-This chapter explores to what extent existing Petri net analysis tools meet the requirements outlined in RQ1:
-programmatic access (R1),
+This chapter answers #rqs.existing-tools: to what extent do existing Petri net analysis tools meet the requirements R1 to R8 derived in @motivation?
+Those are programmatic access (R1),
 safe portability (R2),
 cost control (R3),
 model interchange (R4),
 performance and memory efficiency (R5),
-result traceability (R6),
+evidence with answers (R6),
 extensibility (R7),
-and contribution-friendliness (R8).
+and approachability (R8).
+Correctness of the answers is a precondition for all of them and is not rated (see the threats to validity).
+R8 is the softest of them: it cannot be measured directly, and I only describe how `petrivet` addresses it.
+The choice of language and the design principles that follow from the requirements are discussed in @solution-design.
 I first describe the methodology used to select the tools to survey, and then present the 37 selected tools
 with regard to their support for the requirements.
+Beyond the ratings, I look at one more feature that matters for #rqs.procedure-dispatch:
+whether a tool documents that it chooses its procedure by the structure of the net.
 Finally, I state the conclusions drawn from the survey and state the gap that `petrivet` aims to fill.
 
 == Survey Methodology
@@ -115,63 +122,71 @@ I assigned each tool a score on a four-point scale for each requirement based on
 and source code: "✓" = fully meets the requirement, "(✓)" = partly meets the requirement, "✗" = does not meet the
 requirement, and "?" = not determined.
 These scores are a subjective, qualitative assessment of the tools' capabilities and can be disputed.
+R6 is rated by what a tool returns as evidence for an answer:
+"✓" if it can return a witness (for example a firing sequence or a counterexample) or an independently verifiable certificate,
+"(✓)" if it can only name the net elements responsible for a negative result,
+and "✗" if it offers neither (naming the technique is recorded in the table but does not count).
+The column "Dispatch by net class" records whether the documentation says that the tool selects its procedure by the structure of the net;
+it is not a rated requirement and is discussed separately below.
+
+#text(fill: red)[\[TODO: re-check the "Dispatch by net class" entry of every row against the tool's documentation and source. The column was filled in as a side note when the survey was done, but dispatching by net structure has since become a central claim of the thesis (RQ2), so each entry must be verified before the finding below is relied on.\]]
 
 #figure(
   kind: table,
   caption: "Table of the 37 tools surveyed, their properties, and the scores for each requirement.",
   text(size: 5.5pt, table(
-    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto),
-    align: (left, left, left, left, center, center, center, center, center, center, center, left, left),
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto),
+    align: (left, left, left, left, center, center, center, center, center, center, left, center, center, left),
     inset: 2.5pt,
     stroke: 0.4pt + luma(170),
-    table.header([*\#*], [*Tool*], [*Properties decided*], [*Dispatch by net class*], [*R1*], [*R2*], [*R3*], [*R4*], [*R5*], [*R6*], [*R7*], [*R8*], [*Last release or commit*]),
-    table.cell(colspan: 13, fill: luma(235))[*Performance-oriented model checkers*],
-    [1], [TAPAAL / verifypn], [R, CTL, LTL (query language)], [by query type], [(✓)], [✗], [(✓)], [(✓)], [✓], [method, witness], [(✓)], [✓], [2026-06],
-    [2], [TINA], [B, D, L, R, C (graphs, model checker)], [by net features (time, priorities)], [✓], [✓], [✓], [(✓)], [✓], [method, witness, culprits], [✗], [✗], [2026-04],
-    [3], [ITS-Tools], [R, D, B (MCC examinations)], [not documented], [(✓)], [✗], [✓], [✓], [✓], [method, witness], [(✓)], [(✓)], [2026-09],
-    [5], [LoLA], [B, D, L, R, C (graph)], [per property only], [✓], [✗], [✓], [✗], [✓], [method, witness, theorem], [(✓)], [✗], [2020-07],
-    [6], [Marcie], [D, L, R, CTL; B only as degree], [not documented], [(✓)], [✗], [(✓)], [(✓)], [✓], [method, witness, culprits], [✗], [✗], [2017-06],
-    [7], [GreatSPN], [B, D, L, CTL (P/T part of a stochastic suite)], [not documented], [(✓)], [✗], [✗], [(✓)], [✓], [method, culprits], [(✓)], [✓], [2026-02],
-    [23], [mcc4mcc], [delegates to MCC tools (all examinations)], [learned from net characteristics], [(✓)], [(✓)], [✗], [✗], [✓], [not documented], [(✓)], [(✓)], [2018-10],
-    [24], [LTSmin], [R, D (L only as formula)], [not documented], [(✓)], [✗], [(✓)], [(✓)], [✓], [witness, method], [✓], [✓], [2024-10],
-    [25], [pnmc], [D, dead transitions], [not documented], [✓], [✗], [✓], [(✓)], [✓], [witness, method], [(✓)], [(✓)], [2026-04 (bot)],
-    table.cell(colspan: 13, fill: luma(235))[*Constraint-based checkers (SMT, SAT)*],
-    [4], [SMPT], [R, D, quasi-L, C], [not documented], [(✓)], [(✓)], [✓], [(✓)], [✓], [method, witness, certificate], [(✓)], [(✓)], [2025-06],
-    [10], [Petrinizer], [B, D, R (unreachability proof)], [no], [(✓)], [(✓)], [(✓)], [(✓)], [(✓)], [method, certificate, culprits], [(✓)], [(✓)], [2020-11],
-    [11], [QCover], [C], [not documented], [(✓)], [(✓)], [✗], [✗], [(✓)], [method], [(✓)], [(✓)], [2019-08],
-    [12], [Inequalizer], [R, C (disproof only)], [not documented], [(✓)], [(✓)], [(✓)], [✗], [(✓)], [method, certificate, theorem], [(✓)], [(✓)], [2020-05],
-    [31], [bounded-model-checker-for-petri-nets], [D on 1-safe nets only], [not documented], [(✓)], [✗], [(✓)], [✗], [✗], [method], [(✓)], [✗], [2018-12],
-    [36], [mist], [C], [user picks the algorithm], [(✓)], [✗], [✓], [✗], [(✓)], [method, witness], [(✓)], [(✓)], [2026-09 (bot)],
-    table.cell(colspan: 13, fill: luma(235))[*Workflow and process-mining tools (soundness)*],
-    [15], [PM4Py], [workflow soundness (B, D, L)], [in code, not documented], [✓], [(✓)], [(✓)], [✓], [✗], [method, witness, culprits], [✓], [✓], [2026-10],
-    [16], [ProM (Woflan)], [B, L, C and R graphs, soundness], [no], [(✓)], [✓], [✗], [(✓)], [✗], [method, theorem, witness, culprits], [✗], [✗], [2025-09],
-    [17], [WoPeD], [soundness (B, D, L), C and R graphs], [no], [✗], [✓], [(✓)], [✓], [✗], [method, culprits], [(✓)], [✓], [2026-05],
-    [18], [Wolfgang], [B (in source)], [not documented], [✗], [✓], [✗], [✓], [✗], [not documented], [(✓)], [✗], [2017-12],
-    [21], [YAPNE], [data-aware soundness (D, dead transitions)], [not documented], [(✓)], [✓], [✗], [✓], [✗], [method, witness, culprits], [(✓)], [✓], [2026-10],
-    [22], [bpmn2pnml-ltl-analyzer], [D, livelock via LTL], [not documented], [✓], [✓], [✗], [(✓)], [✗], [not documented], [✓], [(✓)], [2026-07],
-    [26], [jBPT], [B (own); R, L, soundness via bundled LoLA], [structure detected only], [✓], [(✓)], [✓], [✓], [✗], [culprits, method], [✓], [✓], [2026-08],
-    [35], [wasm4pm], [workflow soundness, safeness], [detection only], [✓], [✓], [(✓)], [✓], [✗], [theorem, culprits], [(✓)], [(✓)], [2026-10],
-    table.cell(colspan: 13, fill: luma(235))[*Libraries and small tools in language ecosystems*],
-    [13], [SNAKES], [R (finite state graph)], [not documented], [✓], [✓], [✗], [(✓)], [✗], [method], [✓], [(✓)], [2024-06],
-    [14], [petritub], [B, C, dead transitions], [not documented], [✓], [✓], [✗], [✗], [✗], [method], [✗], [✗], [2026-04],
-    [27], [go-pflow], [D, B, quasi-L, R], [structural first, then exhaustive], [✓], [✓], [(✓)], [(✓)], [✗], [method, witness, theorem, certificate, culprits], [✓], [(✓)], [2026-10],
-    [30], [isene/petri], [B, D (capped search)], [not documented], [(✓)], [✓], [(✓)], [✗], [✗], [culprits], [(✓)], [(✓)], [2026-10],
-    [32], [visualpetri-mcp], [R, D (bounded graph)], [not documented], [✓], [✓], [✓], [✗], [✗], [witness, culprits], [(✓)], [(✓)], [2026-10],
-    [33], [libpetri], [D, place bound, unreachability, mutual exclusion], [by net features], [✓], [(✓)], [✓], [✗], [✗], [method, witness, certificate, theorem], [✓], [(✓)], [2026-10],
-    [34], [petricheck], [k-safeness; R, D, L via user CTL], [no], [✓], [✓], [(✓)], [(✓)], [✗], [culprits], [✓], [(✓)], [2026-02],
-    table.cell(colspan: 13, fill: luma(235))[*Teaching, desktop and web analysers*],
-    [8], [APT], [B, C, weak L], [not documented], [✓], [✓], [✓], [(✓)], [✗], [method, witness, culprits], [✓], [(✓)], [2026-02],
-    [9], [Charlie], [B, L, C, dead states, R via CTL/LTL], [class detected, not a switch], [(✓)], [✓], [(✓)], [✗], [✗], [method, theorem, witness, culprits], [✗], [✗], [2017-06],
-    [19], [Petri Net Toolbox], [B, L, D, C (omega tree)], [not documented], [(✓)], [(✓)], [✗], [✗], [✗], [method, culprits], [✗], [✗], [2025-09],
-    [20], [Hippo-CPS], [B, L], [user chooses method], [✗], [?], [(✓)], [?], [(✓)], [method, culprits], [✗], [✗], [no date],
-    [28], [petri-nets-tool-reactjs], [R, B, L, invariants, siphons, traps], [not documented], [✗], [✓], [(✓)], [✗], [✗], [none], [(✓)], [(✓)], [2023-02],
-    [29], [PnAT], [B, weak termination, k-bound], [not documented], [✗], [✓], [(✓)], [(✓)], [✗], [witness], [(✓)], [✗], [2023-12],
-    [37], [GPenSIM], [B, D, C, R (capped)], [user picks cotree vs cotreei], [✓], [(✓)], [(✓)], [✓], [✗], [method, culprits], [✗], [✗], [2025-08],
+    table.header([*\#*], [*Tool*], [*Properties decided*], [*Dispatch by net class*], [*R1*], [*R2*], [*R3*], [*R4*], [*R5*], [*R6*], [*Evidence offered*], [*R7*], [*R8*], [*Last release or commit*]),
+    table.cell(colspan: 14, fill: luma(235))[*Performance-oriented model checkers*],
+    [1], [TAPAAL / verifypn], [R, CTL, LTL (query language)], [by query type], [(✓)], [✗], [(✓)], [(✓)], [✓], [✓], [method, witness], [(✓)], [✓], [2026-06],
+    [2], [TINA], [B, D, L, R, C (graphs, model checker)], [by net features (time, priorities)], [✓], [✓], [✓], [(✓)], [✓], [✓], [method, witness, culprits], [✗], [✗], [2026-04],
+    [3], [ITS-Tools], [R, D, B (MCC examinations)], [not documented], [(✓)], [✗], [✓], [✓], [✓], [✓], [method, witness], [(✓)], [(✓)], [2026-09],
+    [5], [LoLA], [B, D, L, R, C (graph)], [per property only], [✓], [✗], [✓], [✗], [✓], [✓], [method, witness, theorem], [(✓)], [✗], [2020-07],
+    [6], [Marcie], [D, L, R, CTL; B only as degree], [not documented], [(✓)], [✗], [(✓)], [(✓)], [✓], [✓], [method, witness, culprits], [✗], [✗], [2017-06],
+    [7], [GreatSPN], [B, D, L, CTL (P/T part of a stochastic suite)], [not documented], [(✓)], [✗], [✗], [(✓)], [✓], [(✓)], [method, culprits], [(✓)], [✓], [2026-02],
+    [23], [mcc4mcc], [delegates to MCC tools (all examinations)], [learned from net characteristics], [(✓)], [(✓)], [✗], [✗], [✓], [✗], [not documented], [(✓)], [(✓)], [2018-10],
+    [24], [LTSmin], [R, D (L only as formula)], [not documented], [(✓)], [✗], [(✓)], [(✓)], [✓], [✓], [witness, method], [✓], [✓], [2024-10],
+    [25], [pnmc], [D, dead transitions], [not documented], [✓], [✗], [✓], [(✓)], [✓], [✓], [witness, method], [(✓)], [(✓)], [2026-04 (bot)],
+    table.cell(colspan: 14, fill: luma(235))[*Constraint-based checkers (SMT, SAT)*],
+    [4], [SMPT], [R, D, quasi-L, C], [not documented], [(✓)], [(✓)], [✓], [(✓)], [✓], [✓], [method, witness, certificate], [(✓)], [(✓)], [2025-06],
+    [10], [Petrinizer], [B, D, R (unreachability proof)], [no], [(✓)], [(✓)], [(✓)], [(✓)], [(✓)], [✓], [method, certificate, culprits], [(✓)], [(✓)], [2020-11],
+    [11], [QCover], [C], [not documented], [(✓)], [(✓)], [✗], [✗], [(✓)], [✗], [method], [(✓)], [(✓)], [2019-08],
+    [12], [Inequalizer], [R, C (disproof only)], [not documented], [(✓)], [(✓)], [(✓)], [✗], [(✓)], [✓], [method, certificate, theorem], [(✓)], [(✓)], [2020-05],
+    [31], [bounded-model-checker-for-petri-nets], [D on 1-safe nets only], [not documented], [(✓)], [✗], [(✓)], [✗], [✗], [✗], [method], [(✓)], [✗], [2018-12],
+    [36], [mist], [C], [user picks the algorithm], [(✓)], [✗], [✓], [✗], [(✓)], [✓], [method, witness], [(✓)], [(✓)], [2026-09 (bot)],
+    table.cell(colspan: 14, fill: luma(235))[*Workflow and process-mining tools (soundness)*],
+    [15], [PM4Py], [workflow soundness (B, D, L)], [in code, not documented], [✓], [(✓)], [(✓)], [✓], [✗], [✓], [method, witness, culprits], [✓], [✓], [2026-10],
+    [16], [ProM (Woflan)], [B, L, C and R graphs, soundness], [no], [(✓)], [✓], [✗], [(✓)], [✗], [✓], [method, theorem, witness, culprits], [✗], [✗], [2025-09],
+    [17], [WoPeD], [soundness (B, D, L), C and R graphs], [no], [✗], [✓], [(✓)], [✓], [✗], [(✓)], [method, culprits], [(✓)], [✓], [2026-05],
+    [18], [Wolfgang], [B (in source)], [not documented], [✗], [✓], [✗], [✓], [✗], [✗], [not documented], [(✓)], [✗], [2017-12],
+    [21], [YAPNE], [data-aware soundness (D, dead transitions)], [not documented], [(✓)], [✓], [✗], [✓], [✗], [✓], [method, witness, culprits], [(✓)], [✓], [2026-10],
+    [22], [bpmn2pnml-ltl-analyzer], [D, livelock via LTL], [not documented], [✓], [✓], [✗], [(✓)], [✗], [✗], [not documented], [✓], [(✓)], [2026-07],
+    [26], [jBPT], [B (own); R, L, soundness via bundled LoLA], [structure detected only], [✓], [(✓)], [✓], [✓], [✗], [(✓)], [culprits, method], [✓], [✓], [2026-08],
+    [35], [wasm4pm], [workflow soundness, safeness], [detection only], [✓], [✓], [(✓)], [✓], [✗], [(✓)], [theorem, culprits], [(✓)], [(✓)], [2026-10],
+    table.cell(colspan: 14, fill: luma(235))[*Libraries and small tools in language ecosystems*],
+    [13], [SNAKES], [R (finite state graph)], [not documented], [✓], [✓], [✗], [(✓)], [✗], [✗], [method], [✓], [(✓)], [2024-06],
+    [14], [petritub], [B, C, dead transitions], [not documented], [✓], [✓], [✗], [✗], [✗], [✗], [method], [✗], [✗], [2026-04],
+    [27], [go-pflow], [D, B, quasi-L, R], [structural first, then exhaustive], [✓], [✓], [(✓)], [(✓)], [✗], [✓], [method, witness, theorem, certificate, culprits], [✓], [(✓)], [2026-10],
+    [30], [isene/petri], [B, D (capped search)], [not documented], [(✓)], [✓], [(✓)], [✗], [✗], [(✓)], [culprits], [(✓)], [(✓)], [2026-10],
+    [32], [visualpetri-mcp], [R, D (bounded graph)], [not documented], [✓], [✓], [✓], [✗], [✗], [✓], [witness, culprits], [(✓)], [(✓)], [2026-10],
+    [33], [libpetri], [D, place bound, unreachability, mutual exclusion], [by net features], [✓], [(✓)], [✓], [✗], [✗], [✓], [method, witness, certificate, theorem], [✓], [(✓)], [2026-10],
+    [34], [petricheck], [k-safeness; R, D, L via user CTL], [no], [✓], [✓], [(✓)], [(✓)], [✗], [(✓)], [culprits], [✓], [(✓)], [2026-02],
+    table.cell(colspan: 14, fill: luma(235))[*Teaching, desktop and web analysers*],
+    [8], [APT], [B, C, weak L], [not documented], [✓], [✓], [✓], [(✓)], [✗], [✓], [method, witness, culprits], [✓], [(✓)], [2026-02],
+    [9], [Charlie], [B, L, C, dead states, R via CTL/LTL], [class detected, not a switch], [(✓)], [✓], [(✓)], [✗], [✗], [✓], [method, theorem, witness, culprits], [✗], [✗], [2017-06],
+    [19], [Petri Net Toolbox], [B, L, D, C (omega tree)], [not documented], [(✓)], [(✓)], [✗], [✗], [✗], [(✓)], [method, culprits], [✗], [✗], [2025-09],
+    [20], [Hippo-CPS], [B, L], [user chooses method], [✗], [?], [(✓)], [?], [(✓)], [(✓)], [method, culprits], [✗], [✗], [no date],
+    [28], [petri-nets-tool-reactjs], [R, B, L, invariants, siphons, traps], [not documented], [✗], [✓], [(✓)], [✗], [✗], [✗], [none], [(✓)], [(✓)], [2023-02],
+    [29], [PnAT], [B, weak termination, k-bound], [not documented], [✗], [✓], [(✓)], [(✓)], [✗], [✓], [witness], [(✓)], [✗], [2023-12],
+    [37], [GPenSIM], [B, D, C, R (capped)], [user picks cotree vs cotreei], [✓], [(✓)], [(✓)], [✓], [✗], [(✓)], [method, culprits], [✗], [✗], [2025-08],
   )),
 ) <tab:landscape>
 
 #figure(
-  caption: [Number of the 37 tools that meet each requirement fully (dark), partly (medium) or not (light). R6 is not rated on a scale; see the traceability counts in the text.],
+  caption: [Number of the 37 tools that meet each requirement fully (dark), partly (medium) or not (light). The ratings for R6 follow the evidence rule given above.],
   {
     let total = 37
     let w = 9cm
@@ -185,8 +200,9 @@ These scores are a subjective, qualitative assessment of the tools' capabilities
       bar([R3 cost control], 10, 17, 10),
       bar([R4 model interchange], 8, 15, 14),
       bar([R5 performance evidence], 10, 5, 22),
+      bar([R6 evidence with answers], 20, 9, 8),
       bar([R7 extensibility], 9, 20, 8),
-      bar([R8 contribution-friendliness], 7, 18, 12),
+      bar([R8 approachability], 7, 18, 12),
     )
   },
 ) <fig:landscape-bars>
@@ -219,11 +235,11 @@ Thirteen tools have a proprietary format only, or none documented.
 five more have a published evaluation, mostly by their authors.
 The remaining twenty-two tools have no performance evidence.
 
-*R6, traceability to theory.* Twenty-eight tools can name the technique that decided a query,
-eighteen can return a witness or counterexample,
-nineteen name the net elements responsible for a negative result,
-seven cite the theorem on which the answer rests,
-and five can emit a certificate that can be independently verified.
+*R6, evidence with answers.* Twenty tools can return a witness or counterexample (eighteen tools) or an independently
+verifiable certificate (five tools, three of which also return a witness).
+Nine more can only name the net elements responsible for a negative result, and eight offer no evidence beyond the answer.
+As a side remark, twenty-eight tools can name the technique that decided a query and seven cite the theorem on which the answer rests;
+this is documentation, not evidence for a particular answer, and does not count towards the rating.
 
 *R7, extensibility.* Nine tools (APT, SNAKES, PM4Py, bpmn2pnml-ltl-analyzer, LTSmin, jBPT, go-pflow, libpetri and petricheck)
 publish their source under an OSI-approved license and are either usable as a library or document an extension mechanism.
@@ -232,7 +248,9 @@ Among them, Petrinizer, Inequalizer, the bounded model checker and visualpetri-m
 which gives no right to reuse or modify the code, and wasm4pm combines an Apache, an MIT and a commercial license.
 Eight tools, including TINA, Charlie, Marcie and the Petri Net Toolbox, offer no source that I could find.
 
-*R8, contribution-friendliness.* I counted five indicators for each tool:
+*R8, approachability.* This rating covers only the contributor side of the requirement, through observable repository indicators;
+it does not measure how easy a tool is to use, for people or for AI agents, and it is the softest rating of the survey.
+I counted five indicators for each tool:
 a public repository with an issue tracker,
 a documented build from a clean checkout with a standard toolchain,
 automated tests or continuous integration,
@@ -244,9 +262,42 @@ Twelve meet at most one indicator or have no public repository.
 Only PM4Py, LTSmin and jBPT are rated as met on both R7 and R8, and each of them fails another requirement
 (R5 for PM4Py and jBPT, R2 for LTSmin).
 
-*Across the requirements,* no tool fully meets all of R1 to R5, R7 and R8.
-The most requirements met in full is five of those seven (jBPT), followed by four (TINA, PM4Py and APT).
-Only SMPT and Petrinizer fail none of the seven requirements outright, and both meet only some of them partly.
+*Across the requirements,* no tool fully meets all of R1 to R8.
+The most requirements met in full is five of the eight (TINA, PM4Py, jBPT and APT), followed by four (ITS-Tools, LoLA, LTSmin and pnmc).
+Only SMPT and Petrinizer fail none of the eight requirements outright, and both meet only some of them partly.
+
+== Dispatching by net structure
+
+The answer to RQ2 depends on whether tools choose a decision procedure by the structure of the net, so I looked at what the documentation says about this.
+Most tools do not say anything: for twenty-one tools I found no documentation of any selection, and for four more the documentation states
+explicitly that there is none.
+Some tools select by something other than the net structure: TAPAAL chooses by query type, LoLA applies a procedure per property,
+and the contest meta-tool mcc4mcc chooses among other tools using a learned model of net characteristics.
+In a few tools the user makes the choice (mist, Hippo-CPS, GPenSIM).
+Only a handful of tools document anything like a selection by structure:
+TINA by net features (time and priorities),
+go-pflow by structural checks before exhaustive search,
+and libpetri by net features;
+jBPT, Charlie and wasm4pm detect the structure of the net but do not use it to switch procedures.
+No tool documents a dispatch that spans the net classes (for example free-choice, marked graph and state machine) and cost-bounded fallbacks.
+These counts depend on the verification noted with the table.
+It is a gap in documentation as much as in implementation, but a user can only rely on what is documented.
+
+== The gap
+
+The requirements pull in different directions in the surveyed tools.
+The tools with performance evidence (R5) mostly give up safe portability or extensibility:
+of the ten tools with independent contest results, only TINA is rated fully on R2, and TINA publishes no source and offers no
+contribution path (R7 and R8 not met), while LoLA fails R2 and R4, and LTSmin fails R2.
+In the other direction, the libraries that provide programmatic access, extensibility and at least partly safe portability (SNAKES, go-pflow, libpetri and petricheck)
+have no performance evidence (R5 is not met by any of the seven libraries), and their cost control is at best partial for three of them
+and absent for SNAKES.
+Workflow tools and teaching tools return the most helpful evidence, but they answer a narrow set of questions on small nets and show no performance evidence either.
+Finally, almost no tool documents choosing its procedure by the structure of the net, so a user who wants the cheapest applicable procedure has to know the
+theory and pick the tool, or the option, themselves.
+This is the gap that `petrivet` aims to fill: a library that is programmatically accessible, memory-safe and extensible,
+that decides each question with the cheapest procedure applicable to the net, that lets the caller bound the cost, and that is measured against the
+established tools in @evaluation.
 
 == Threats to validity
 
@@ -259,6 +310,15 @@ at most a few minutes per tool, and not checked by a second rater.
 For five tools (Marcie, Charlie, petritub, ProM/Woflan and Wolfgang) the first pass could not reach or identify the source;
 their ratings rest on a later manual look or default to "not met".
 Commits by AI accounts are not counted as a second author, which lowers the R8 rating of tools maintained by one human with an AI assistant.
+- Correctness of the surveyed tools is not rated and is assumed.
+For the contest participants it is supported by their participation in the Model Checking Contest, whose results are cross-checked,
+but for the other tools no evidence was collected.
+- R6 and R8 were defined more narrowly than in the first version of the protocol:
+R6 started as "traceability to theory" and was reduced to evidence for answers, and R8 is rated only through contributor indicators.
+The ratings in the table follow the narrower definitions.
+- Tools I already knew from prior experience were added by hand, so the selection is biased towards tools familiar to me and, through them, to the model checking community.
+- I later apply the same rubric to `petrivet` myself (@eval-requirements), so that rating is not independent of the one given to the surveyed tools,
+and no second rater checked either.
 - The scoring is subjective and unverified; I did not ask the authors of the tools to confirm my assessment.
 - "Not documented" means that I could not find documentation, not that the tool does not have it.
 - Maintenance is judged by the date of the last release or commit, which may not reflect the actual state of the project.

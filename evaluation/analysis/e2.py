@@ -10,14 +10,25 @@ Difference d = t_general - t_dispatch (positive: dispatch faster).
   * Hodges-Lehmann estimate of d (ms) and median ratio t_general / t_dispatch with its quartiles (IQR).
   * Censoring: the primary analysis keeps censored pairs at the cap (both censored: d = 0, dropped by the test);
     ``n_censored`` counts pairs with at least one censored side. The sensitivity run (``sens``) excludes them.
-  * Frontier: largest ``size_param`` solved (definite, not contradicting truth) per family and solver, and the largest
-    attempted.
+  * Frontier: largest ``size_param`` at which every question of the family is solved (definite, not contradicting truth)
+    per family and solver (``max_size_solved``), the largest size at which at least one question is solved
+    (``max_size_any_question``), and the largest attempted.
+  * Memory by size: the peak resident memory of both modes per family and size (median over the questions that have a
+    memory value), with ``n_*_memout`` (runs ended by the memory limit, whose value is the limit) and ``n_*_no_value``
+    (runs that were stopped by the time limit and therefore report no memory); a ratio of the medians would hide both.
   * RSS: paired median ``peak_rss_kib`` general / dispatch per class, two-sided Wilcoxon, Holm across classes (exploratory).
+  * By size: the median speedup (t_general / t_dispatch) per family and size parameter, which does not depend on how many
+    sizes were tried, with the cells of a size split by what was stopped: ``n_general_stopped`` (the speedup of such a cell
+    is only a lower bound), ``n_dispatch_stopped`` (only an upper bound), ``n_both_stopped`` (no information, excluded from
+    the median). Per family: ``last_clean_size`` (largest size at which no run of the family was stopped) with the
+    median speedup of its cells, and the smallest size at which plain exploration / the automatic choice was stopped.
 Keys: e2.<class>.{n_pairs,n_dropped,n_censored,n_nonzero,wilcoxon_p,holm_p,reject_h2,hl_ms,median_ratio,ratio_q1,ratio_q3,
       sens_n_pairs,sens_n_nonzero,sens_wilcoxon_p,sens_holm_p,sens_reject_h2,sens_hl_ms,sens_median_ratio,sens_ratio_q1,sens_ratio_q3,rss_pairs,rss_ratio_median,rss_p,rss_holm_p}
+      e2.family.<family>.{last_clean_size,last_clean_speedup,general_first_stop_size,dispatch_first_stop_size}
       e2.frontier.<family>.<solver>.{max_size_solved,max_size_attempted}
       e2.mcc_small.{n_instances,n_non_general_class,n_poly_definite,n_dispatch_differs,share_dispatch_differs}
-Figures: e2_scaling.svg (time vs size per family), e2_paired_scatter.svg.
+Figures: e2_scaling.svg (time vs size per family), e2_paired_scatter.svg, e2_speedup_by_size.svg, e2_memory_by_size.svg.
+CSV: e2_speedup_by_size.csv, e2_family_summary.csv, e2_memory_by_size.csv.
 """
 
 from __future__ import annotations
@@ -25,7 +36,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
+from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, family_rank, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
 from .stats import holm, hodges_lehmann, quantiles, wilcoxon_greater, wilcoxon_two_sided
 
 D, G, P = "pv-dispatch", "pv-general", "pv-poly"
@@ -112,7 +123,129 @@ def _ablation(ctx: Ctx, pairs: pl.DataFrame) -> None:
     ctx.num("e2", "n_classes_h2_rejected", sum(1 for f in flat if f["reject_h2"]))
     ctx.num("e2", "alpha", ALPHA)
     ctx.csv("e2_pairs", ok.select("cls", "family", "size", "places", "instance_id", "query", "tid", "verdict_d", "verdict_g", "t_d", "t_g", "cens", "rss_d", "rss_g").sort("cls", "family", "size", "query", "tid"))
+    _by_size(ctx, ok, [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER)))
+    _memory_by_size(ctx, ok, [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER)))
     _figures(ctx, ok)
+
+
+def _by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
+    """Median speedup per family and size, and the per-family summary that does not depend on the size grid."""
+    k = ok.filter(pl.col("size").is_not_null()).with_columns(
+        pl.col("size").cast(pl.Int64),
+        (pl.col("cens_g") & ~pl.col("cens_d")).alias("g_only"),
+        (pl.col("cens_d") & ~pl.col("cens_g")).alias("d_only"),
+        (pl.col("cens_d") & pl.col("cens_g")).alias("both"),
+        (pl.col("t_g").clip(lower_bound=1e-3) / pl.col("t_d").clip(lower_bound=1e-3)).alias("speedup"),
+    )
+    order = {c: i for i, c in enumerate(classes)}
+    fams = sorted(k.group_by("family", "cls").len().iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), family_rank(r["family"]), r["family"]))
+    rows, summary = [], []
+    for fr in fams:
+        f, c = fr["family"], fr["cls"]
+        kf = k.filter(pl.col("family") == f)
+        clean = []
+        for size in sorted(kf["size"].unique().to_list()):
+            ks = kf.filter(pl.col("size") == size)
+            informative = ks.filter(~pl.col("both"))
+            med = float(np.median(informative["speedup"].to_numpy())) if informative.height else None
+            rows.append({
+                "cls": c, "family": f, "size": size, "n_pairs": ks.height,
+                "n_general_stopped": int(ks["g_only"].sum()), "n_dispatch_stopped": int(ks["d_only"].sum()), "n_both_stopped": int(ks["both"].sum()),
+                "median_speedup": med,
+            })
+            if not ks["cens_g"].any() and not ks["cens_d"].any():
+                clean.append((size, med))
+        last = max(clean, key=lambda x: x[0]) if clean else (None, None)
+        ctx.num("e2", "family", f, "last_clean_size", last[0])
+        ctx.num("e2", "family", f, "last_clean_speedup", last[1])
+        stops = {}
+        for name, col in (("general_first_stop_size", "cens_g"), ("dispatch_first_stop_size", "cens_d")):
+            st = kf.filter(pl.col(col))
+            stops[name] = int(st["size"].min()) if st.height else None
+            ctx.num("e2", "family", f, name, stops[name])
+        summary.append({"cls": c, "family": f, "last_clean_size": last[0], "last_clean_speedup": last[1], **stops})
+    df = pl.DataFrame(rows, infer_schema_length=None)
+    ctx.csv("e2_speedup_by_size", df)
+    ctx.csv("e2_family_summary", pl.DataFrame(summary, infer_schema_length=None))
+    if not fams:
+        return
+    p = plt()
+    colors = {"circuit": "#0072B2", "sm": "#D55E00", "mg": "#009E73", "efc": "#CC79A7", "ac": "#E69F00", "general": "#56B4E9"}
+    n = len(fams)
+    cols = min(3, n)
+    nrows = (n + cols - 1) // cols
+    fig, axs = p.subplots(nrows, cols, figsize=(3.7 * cols, 2.5 * nrows), squeeze=False, constrained_layout=True, sharex=True, sharey=True)
+    for ax, fr in zip(axs.ravel(), fams):
+        c = colors.get(fr["cls"], "#000000")
+        d = df.filter((pl.col("family") == fr["family"]) & pl.col("median_speedup").is_not_null()).sort("size")
+        ax.axhline(1, color="#777777", lw=0.9)
+        ax.plot(d["size"], d["median_speedup"], color=c, lw=1.2)
+        for r in d.iter_rows(named=True):
+            g, dd = r["n_general_stopped"] > 0, r["n_dispatch_stopped"] > 0
+            m = "D" if g and dd else "^" if g else "v" if dd else "o"
+            ax.plot([r["size"]], [r["median_speedup"]], marker=m, ms=5, color=c, mfc="white" if (g or dd) else c, ls="none")
+        ax.set_xscale("log", base=2); ax.set_yscale("log")
+        ax.set_title(f"{CLASS_LABEL.get(fr['cls'], fr['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(fr['family'], fr['family'])}", fontsize=8, loc="left")
+        ax.tick_params(labelsize=7)
+    for ax in axs.ravel()[n:]:
+        ax.axis("off")
+    for ax in axs[-1]:
+        ax.set_xlabel("size parameter n of the family (log scale)", fontsize=8)
+    for ax in axs[:, 0]:
+        ax.set_ylabel("speedup (log scale)", fontsize=8)
+    save_svg(fig, ctx.fig_path("e2_speedup_by_size"))
+
+
+def _memory_by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
+    """Peak memory of both modes per family and size (MiB). A MEMOUT run keeps the memory limit as its value, a run
+    stopped by the time limit has no value; both are counted so that the medians can be read with them."""
+    k = ok.filter(pl.col("size").is_not_null()).with_columns(pl.col("size").cast(pl.Int64))
+    order = {c: i for i, c in enumerate(classes)}
+    fams = sorted(k.group_by("family", "cls").len().iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), family_rank(r["family"]), r["family"]))
+    rows = []
+    for fr in fams:
+        kf = k.filter(pl.col("family") == fr["family"])
+        for size in sorted(kf["size"].unique().to_list()):
+            ks = kf.filter(pl.col("size") == size)
+            row = {"cls": fr["cls"], "family": fr["family"], "size": size, "n_pairs": ks.height}
+            for tag, rss, verdict in (("d", "rss_d", "verdict_d"), ("g", "rss_g", "verdict_g")):
+                v = ks.filter(pl.col(rss).is_not_null() & (pl.col(rss) > 0))[rss]
+                row[f"n_{tag}_with_value"] = len(v)
+                row[f"n_{tag}_no_value"] = ks.height - len(v)
+                row[f"n_{tag}_memout"] = int((ks[verdict] == "MEMOUT").sum())
+                row[f"median_rss_{tag}_mib"] = float(np.median(v.to_numpy())) / 1024 if len(v) else None
+            rows.append(row)
+    if not rows:
+        return
+    df = pl.DataFrame(rows, infer_schema_length=None)
+    ctx.csv("e2_memory_by_size", df)
+    p = plt()
+    gib = ctx.cfg.get("run", {}).get("mem_limit_gib")
+    limit = float(gib) * 1024 if gib else float(df.select(pl.max_horizontal(pl.col("median_rss_d_mib").max(), pl.col("median_rss_g_mib").max())).item())
+    n = len(fams)
+    cols = min(3, n)
+    nrows = (n + cols - 1) // cols
+    fig, axs = p.subplots(nrows, cols, figsize=(3.7 * cols, 2.6 * nrows), squeeze=False, constrained_layout=True, sharex=True, sharey=True)
+    for ax, fr in zip(axs.ravel(), fams):
+        d = df.filter(pl.col("family") == fr["family"]).sort("size")
+        for tag, solver in (("d", "pv-dispatch"), ("g", "pv-general")):
+            dd = d.filter(pl.col(f"median_rss_{tag}_mib").is_not_null())
+            ax.plot(dd["size"], dd[f"median_rss_{tag}_mib"], marker="o", ms=3, color=SOLVER_COLOR[solver], label=solver_label(solver))
+            mo = dd.filter(pl.col(f"n_{tag}_memout") > 0)
+            ax.plot(mo["size"], mo[f"median_rss_{tag}_mib"], ls="none", marker="o", ms=6, mfc="none", mec="#000000")
+        ax.axhline(limit, color="#999999", ls="--", lw=0.8)
+        ax.set_xscale("log", base=2); ax.set_yscale("log")
+        ax.set_title(f"{CLASS_LABEL.get(fr['cls'], fr['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(fr['family'], fr['family'])}", fontsize=8, loc="left")
+        ax.tick_params(labelsize=7)
+    for ax in axs.ravel()[n:]:
+        ax.axis("off")
+    for ax in axs[-1]:
+        ax.set_xlabel("size parameter n of the family (log scale)", fontsize=8)
+    for ax in axs[:, 0]:
+        ax.set_ylabel("peak memory (MiB, log scale)", fontsize=8)
+    h, lab = axs.ravel()[0].get_legend_handles_labels()
+    fig.legend(h, lab, loc="outside upper left", ncol=2, frameon=False, fontsize=8)
+    save_svg(fig, ctx.fig_path("e2_memory_by_size"))
 
 
 def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
@@ -142,17 +275,18 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
         ax.axhline(cap, color="#999999", ls="--", lw=0.8)
         ax.axvline(cap, color="#999999", ls="--", lw=0.8)
         ax.text(0.01, cap * 1.2, "30 s limit: run stopped without an answer", transform=ax.get_yaxis_transform(), fontsize=7, color="#555555", va="bottom")
-    ax.set_xlabel("time with the automatic choice of method (ms, log scale)")
-    ax.set_ylabel("time with plain state-space exploration (ms, log scale)")
-    ax.text(0.34, 0.67, "automatic choice faster\n(plain exploration slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="center")
-    ax.text(0.46, 0.03, "plain exploration faster\n(automatic choice slower or stopped)", transform=ax.transAxes, fontsize=7.5, color="#333333", va="bottom")
+    ax.set_xlabel("time with automatic dispatch (ms, log scale)")
+    ax.set_ylabel("time with brute-force exploration (ms, log scale)")
+    # which side is which goes next to the legend, outside the plotted area
+    ax.text(1.02, 0.30, "Above the diagonal:\nautomatic dispatch faster", transform=ax.transAxes, fontsize=8, va="top", color="#333333")
+    ax.text(1.02, 0.16, "Below the diagonal:\nbrute-force exploration faster", transform=ax.transAxes, fontsize=8, va="top", color="#333333")
     ax.legend(frameon=False, fontsize=8, title="Kind of net", title_fontsize=8.5, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     save_svg(fig, ctx.fig_path("e2_paired_scatter"))
     # time against net size, one panel per family
     fams = ok.filter(pl.col("size").is_not_null()).group_by("family", "cls").len()
     if fams.height:
         order = {c: i for i, c in enumerate(CLASS_ORDER)}
-        rows_list = sorted(fams.iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), r["family"]))
+        rows_list = sorted(fams.iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), family_rank(r["family"]), r["family"]))
         n = len(rows_list)
         cols = min(3, n)
         rows_ = (n + cols - 1) // cols
@@ -185,15 +319,21 @@ def _frontier(ctx: Ctx) -> None:
     adj = ctx.adj.filter(pl.col("campaign") == "B").select("instance_id", "query", "tid", "solver_id", "outcome")
     t = t.filter(pl.col("rep") == 0).join(adj, on=["instance_id", "query", "tid", "solver_id"], how="left")
     t = t.with_columns((pl.col("verdict").is_in(["TRUE", "FALSE", "COUNT"]) & pl.col("outcome").ne("DISAGREE").fill_null(True)).alias("solved"))
-    f = t.group_by("family", "cls", "solver_id").agg(
-        pl.col("size").filter(pl.col("solved")).max().alias("max_size_solved"),
+    # a size counts as solved when every question of the family is answered at that size: a mode that answers a single
+    # question (plain exploration decides boundedness of an unbounded net in milliseconds) has not handled the net
+    per_size = t.group_by("family", "cls", "solver_id", "size").agg(
+        pl.col("solved").all().alias("all_solved"), pl.col("solved").any().alias("any_solved"))
+    f = per_size.group_by("family", "cls", "solver_id").agg(
+        pl.col("size").filter(pl.col("all_solved")).max().alias("max_size_solved"),
+        pl.col("size").filter(pl.col("any_solved")).max().alias("max_size_any_question"),
         pl.col("size").max().alias("max_size_attempted"),
         pl.col("size").n_unique().alias("n_sizes"),
-    ).sort("family", "solver_id")
+    ).with_columns(pl.col("family").map_elements(family_rank, return_dtype=pl.Int64).alias("_rank")).sort("_rank", "family", "solver_id").drop("_rank")
     ctx.csv("e2_frontier", f)
     for r in f.iter_rows(named=True):
         ctx.num("e2", "frontier", r["family"], r["solver_id"], "max_size_solved", r["max_size_solved"])
         ctx.num("e2", "frontier", r["family"], r["solver_id"], "max_size_attempted", r["max_size_attempted"])
+        ctx.num("e2", "frontier", r["family"], r["solver_id"], "max_size_any_question", r["max_size_any_question"])
 
 
 def _mcc_small(ctx: Ctx) -> None:

@@ -383,7 +383,7 @@ CLASS_LABEL = {
     "mg": "marked graph",
     "efc": "extended free-choice",
     "ac": "asymmetric choice",
-    "general": "general (no special structure)",
+    "general": "general",
 }
 SOURCE_LABEL = {
     "gen": "generated nets",
@@ -409,6 +409,12 @@ FAMILY_LABEL = {
     "ac_cycle_no_low_token": "cycle with choices, no start token",
     "general_cycle": "cycle",
 }
+
+
+def family_rank(family: str) -> int:
+    """Position of a family in the order in which the families are presented (the order of FAMILY_LABEL)."""
+    order = list(FAMILY_LABEL)
+    return order.index(family) if family in order else len(order)
 
 
 # short names for tick labels

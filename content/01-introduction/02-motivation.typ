@@ -1,4 +1,4 @@
-== Motivation
+== Motivation <motivation>
 
 Process models are used to communicate and reason about the behavior of a system.
 A faulty model can lead to a system that fails in practice, and the cost of such failures can be high. // cite
@@ -33,19 +33,20 @@ The questions above correspond to the following properties of Petri nets:
 These properties are the reason Petri nets are used in business process management, manufacturing,
 and other domains where the correctness of a process is critical.
 
-=== The chair's perspective
+===
 
-The Chair of Information Systems develops the Cloud Process Execution Engine (CPEE) @mangler_cpee_2014 @mangler_cloud_2022
-infrastructure, in which processes are assembled from calls to heterogeneous software tools and human actors.
-Over time the chair has built up a collection of such tools, and a Petri net analyzer is a
-natural addition: a process model's structure can be checked before it runs, by a step in
-another process, or by an automated agent assisting a modeler.
+The Chair of Information Systems develops and applies the Cloud Process Execution Engine (CPEE) @mangler_cpee_2014
+@mangler_cloud_2022, which orchestrates calls to heterogeneous software tools and human actors.
+Over time the chair has assembled a collection of software tools for various use cases,
+and a Petri net analyzer is a natural addition, to check the correctness of process models before they are deployed.
 
-Our wishlist for such a tool reads as follows. The analyzer should:
+We would like a Petri net analyzer to meet the following requirements:
 
-*R1.* be callable programmatically, either in-process or through a command-line interface with structured input and output;
+*R1.* be callable programmatically, either in-process or through a command-line interface
+with structured input and output;
 
-*R2.* be portable and memory-safe, so that it can be embedded into larger software systems without introducing security vulnerabilities or memory leaks;
+*R2.* be portable and memory-safe, so that it can be embedded into larger software systems without introducing
+security vulnerabilities or memory leaks;
 
 *R3.* let the caller anticipate and bound the cost of a query, since a process step cannot wait indefinitely;
 
@@ -53,22 +54,28 @@ Our wishlist for such a tool reads as follows. The analyzer should:
 
 *R5.* perform adequately in time and memory;
 
-*R6.* provide results with rich context, including counterexamples and witnesses;
+*R6.* return evidence with its answers, such as a witness or counterexample where the question has one;
 
 *R7.* be extensible, so that new procedures and model extensions can be added as the need arises; and
 
-*R8.* be written in a modern language, with a strong type system and modern tooling, to lower the barrier for contributors, including students and AI agents.
+*R8.* be approachable for the users and contributors who will build on it, including students and AI agents,
+so that it can be used correctly and extended with little effort.
 
-Items 1 to 6 are the requirements assessed in @related-work. The last two describe the
-design of the artifact, and I discuss them in @solution-design.
+Every requirement above presupposes that the analyzer is correct.
+Where the analyzer cannot decide, which is unavoidable for some questions, it must say "unknown" instead of guessing.
+
+Correctness and R1 to R8 are the requirements against which the survey in @related-work rates existing tools,
+and against which `petrivet` is assessed in @evaluation.
 
 === The gap
 
 Mature Petri net analyzers exist, and several excel at some of these requirements.
 Performance-oriented model checkers lead on R5, workflow tools lead on interchange,
-and a few libraries offer a callable interface. The survey in @related-work finds, however,
-that no tool meets all of the requirements together, and that the tools which come closest do
-so by leaving out the open, extensible foundation the chair wants to build on.
+and a few libraries offer a callable interface.
+Few of the surveyed tools document that they choose among procedures by the structure of the net,
+although over six decades of Petri net theory have produced shortcuts for many structural classes.
+The survey in @related-work finds, however, that no tool meets all of the requirements together,
+and that the tools which come closest do so by leaving out the open, extensible foundation the chair wants to build on.
 Nobody has, to my knowledge, built the tool that the chair's wishlist describes.
 This is the objective of the thesis: to design, implement and evaluate such a tool.
 

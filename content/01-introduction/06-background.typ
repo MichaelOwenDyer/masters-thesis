@@ -67,12 +67,27 @@ We can further specify liveness by classifying it into four levels, L0 through L
 
 The reachability problem asks whether it is possible to reach a target marking $M$ from the initial marking $M_0$ by firing a sequence of transitions.
 
+The *reachability graph* of a Petri net is a directed graph whose nodes are the reachable markings of the net,
+and whose edges represent the firing of transitions between markings.
+This is also called the *state space* of the net.
+The reachability graph is finite if and only if the net is bounded.
+The reachability graph gives full information about the behavior of the net, and can be used to answer all of the questions above.
+However, it is often too large to construct in practice due to the state-space explosion problem.
+
 ==== Coverability <background-coverability>
 
 The coverability problem asks whether it is possible to reach a marking $M'$ from the initial marking $M_0$
 such that $M'(p) ≥ M(p)$ for all places $p$ in the net.
 
-==== Structural Subclasses of Petri Nets
+A *coverability graph* (or Karp-Miller graph) of a Petri net is similar to the reachability graph, but its nodes are
+so-called $omega$-markings, which are markings that may contain the symbol $ω$ to represent an unbounded number
+of tokens in a place.
+This graph is always finite, even for unbounded nets, and can be used to answer coverability and boundedness questions.
+It is constructed using the Karp-Miller algorithm, which explores the state space of the net while applying an
+unboundedness detection technique to identify places that can grow without bound.
+This comes with a nontrivial performance cost compared to the reachability graph.
+
+==== Structural Subclasses of Petri Nets <background-structural-classes>
 
 Nets can be classified into various subclasses based on their structural layout.
 These subclasses imply various behavioral properties, which can be exploited to improve the efficiency of analysis algorithms.

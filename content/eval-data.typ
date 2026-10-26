@@ -3,17 +3,17 @@
 // evaluation/analysis), tables are the CSV files of the export.
 
 // `typst compile --input export-dir=/target/export-dev/ ...` reads another export (for development)
-#let export-dir = sys.inputs.at("export-dir", default: "/evaluation/export/")
+#let export-dir = sys.inputs.at("export-dir", default: "/target/export-dev/")
 #let nums = json(export-dir + "numbers.json")
 
 // the value of a key of numbers.json; fails loudly (at compile time) if the key does not exist
-#let v(key) = {
+#let val(key) = {
   assert(key in nums, message: "numbers.json has no key " + key)
   nums.at(key)
 }
 
 // an integer with thousands separators: 13246 -> 13,246
-#let group(x) = {
+#let fmt(x) = {
   let s = str(calc.abs(calc.round(x)))
   let n = s.len()
   let out = ""
@@ -26,12 +26,12 @@
 
 // a number with d decimals (thousands separators in the integer part)
 #let dec(x, d: 1) = {
-  if d == 0 { return group(x) }
+  if d == 0 { return fmt(x) }
   let r = calc.round(float(x), digits: d)
   let whole = calc.trunc(calc.abs(r))
   let frac = str(calc.round((calc.abs(r) - whole) * calc.pow(10, d)))
   while frac.len() < d { frac = "0" + frac }
-  (if r < 0 { "−" } else { "" }) + group(whole) + "." + frac
+  (if r < 0 { "−" } else { "" }) + fmt(whole) + "." + frac
 }
 
 #let pct(x, d: 1) = dec(x * 100, d: d) + "%"
@@ -40,7 +40,7 @@
 #let cell(x, d: 1) = {
   if x == "" or x == none { return [–] }
   let f = float(x)
-  if f == calc.round(f) and calc.abs(f) < 1e15 { return [#group(f)] }
+  if f == calc.round(f) and calc.abs(f) < 1e15 { return [#fmt(f)] }
   [#dec(f, d: d)]
 }
 
@@ -66,12 +66,12 @@
 )
 
 #let source-name = (
-  "gen": "Generated nets (two tools)",
-  "gen-lola-only": "Generated nets (LoLA alone)",
-  "fam": "Scaling families",
-  "mcc-small": "Competition models, small",
-  "mcc-large": "Competition models, large",
-  "calibration": "Hand-checked nets",
+  "calibration": "Calibration nets",
+  "gen": "Randomized nets (LoLA/TINA consensus)",
+  "gen-lola-only": "Randomized nets (LoLA verdict only)",
+  "fam": "Parametrized families",
+  "mcc-small": "MCC models, small",
+  "mcc-large": "MCC models, large",
 )
 
 #let class-name = (

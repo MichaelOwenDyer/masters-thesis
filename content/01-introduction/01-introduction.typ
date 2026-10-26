@@ -20,17 +20,25 @@ can be translated into Petri nets, and the properties of those nets (such as bou
 reachability, and coverability) can be used to verify the correctness of the process model @van_der_aalst_workflow_2000
 @dijkman_formal_2007.
 
-A tool that is to be orchestrated this way has requirements beyond analytical power.
+It is paramount that a Petri net analysis tool is correct: it must give the right answer,
+and where it cannot decide, it must say so instead of guessing.
+An analyzer that reports a wrong result, or that guesses where it cannot decide,
+is actively harmful because it can lead to the deployment of unsafe processes.
+Beyond correctness, integration into CPEE and other orchestration platforms yields a set of further requirements
+for a Petri net analysis tool:
 It must be callable programmatically, ideally in-process, or at least via a command-line interface with structured input and output.
-It must be portable and memory-safe, so that it can be embedded into larger software systems without introducing security vulnerabilities or memory leaks.
-It must offer predictable performance and memory usage, so that it can be used in production systems without risk of resource exhaustion.
-A query's cost must be predictable enough to be bounded by a caller that cannot wait indefinitely for a result.
-It must be extensible, so that new procedures and extensions to the Petri net model can be added as the need arises.
-And it should be written with a modern language and toolchain that invite contribution and are legible to AI agents, which increasingly assist in software development.
+It must be portable and memory-safe, so that it can be embedded without introducing security vulnerabilities or memory leaks.
+The cost of a query must be predictable enough to be bounded by a caller that cannot wait indefinitely for a result,
+and its time and memory use must be adequate for the models that occur in practice.
+It should read and write standard model formats, return evidence with its answers, be extensible
+as new procedures and model extensions are needed, and be approachable for the users and contributors
+who will build on it, including for students and the AI agents which increasingly assist in software development.
 
 To my knowledge no existing Petri net analysis tool meets all of these requirements together (see @related-work).
-This thesis presents _petrivet_ #footnote[https://github.com/MichaelOwenDyer/petrivet], a Rust library designed to fill this gap.
-_petrivet_ implements a variety of decision and semi-decision procedures for Petri net analysis,
+This thesis presents `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet], a Rust library designed to fill this gap.
+Its central design idea is that each question is answered by the cheapest procedure that is applicable to the net at hand.
+`petrivet` implements a variety of decision and semi-decision procedures for Petri net analysis,
 including some that are novel to this work.
-I evaluate the extent to which _petrivet_ meets the requirements above,
-and discuss the design principles that emerged during development.
+I evaluate whether its answers are correct, whether dispatching to the cheapest procedure pays off,
+how well the cost of an analysis can be bounded, and how `petrivet` compares with established tools in speed and memory.
+I also assess it against the requirements above and discuss the design principles that emerged during development.

@@ -122,21 +122,21 @@ pub fn detected(i: &FamilyInstance) -> &'static str {
 use Query::{Q1, Q2, Q3, Q4};
 
 pub const FAMILIES: &[FamilySpec] = &[
-    FamilySpec { name: "circuit", intended: Class::Circuit, min_n: 2, build: circuit, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "sm_hub_and_spokes", intended: Class::StateMachine, min_n: 2, build: sm_hub_and_spokes, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "sm_two_cycles", intended: Class::StateMachine, min_n: 4, build: |n| sm_two_cycles(n, 1), answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, true)] },
-    FamilySpec { name: "sm_two_cycles_n_tokens", intended: Class::StateMachine, min_n: 4, build: |n| sm_two_cycles(n, n as u32), answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, true)] },
-    FamilySpec { name: "sm_choice_ring", intended: Class::StateMachine, min_n: 2, build: sm_choice_ring, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "sm_ring_with_sink", intended: Class::StateMachine, min_n: 2, build: sm_ring_with_sink, answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, true)] },
-    FamilySpec { name: "mg_buffer_ring", intended: Class::MarkedGraph, min_n: 3, build: mg_buffer_ring, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "mg_buffer_ring_unmarked_circuit", intended: Class::MarkedGraph, min_n: 4, build: mg_buffer_ring_unmarked_circuit, answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, false)] },
-    FamilySpec { name: "mg_forkjoin_cycle", intended: Class::MarkedGraph, min_n: 2, build: mg_forkjoin_cycle, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "mg_forkjoin_unbounded", intended: Class::MarkedGraph, min_n: 2, build: mg_forkjoin_unbounded, answers: |_| vec![(Q1, true), (Q2, false), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "efc_forkjoin", intended: Class::ExtendedFreeChoice, min_n: 2, build: |n| efc_forkjoin(n, false), answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "efc_forkjoin_leaky", intended: Class::ExtendedFreeChoice, min_n: 2, build: |n| efc_forkjoin(n, true), answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, true)] },
-    FamilySpec { name: "ac_cycle", intended: Class::AsymmetricChoice, min_n: 2, build: |n| ac_cycle(n, true), answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
-    FamilySpec { name: "ac_cycle_no_low_token", intended: Class::AsymmetricChoice, min_n: 2, build: |n| ac_cycle(n, false), answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, false)] },
-    FamilySpec { name: "general_cycle", intended: Class::General, min_n: 2, build: general_cycle, answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "circuit", intended: Class::Circuit, min_n: 2, build: circuit,                                                       answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "sm_hub_and_spokes", intended: Class::StateMachine, min_n: 2, build: sm_hub_and_spokes,                              answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "sm_two_cycles", intended: Class::StateMachine, min_n: 4, build: |n| sm_two_cycles(n, 1),                     answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, true)] },
+    FamilySpec { name: "sm_two_cycles_n_tokens", intended: Class::StateMachine, min_n: 4, build: |n| sm_two_cycles(n, n as u32),            answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, true)] },
+    FamilySpec { name: "sm_choice_ring", intended: Class::StateMachine, min_n: 2, build: sm_choice_ring,                                    answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "sm_ring_with_sink", intended: Class::StateMachine, min_n: 2, build: sm_ring_with_sink,                              answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, true)] },
+    FamilySpec { name: "mg_buffer_ring", intended: Class::MarkedGraph, min_n: 3, build: mg_buffer_ring,                                     answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "mg_buffer_ring_unmarked_circuit", intended: Class::MarkedGraph, min_n: 4, build: mg_buffer_ring_unmarked_circuit,   answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, false)] },
+    FamilySpec { name: "mg_forkjoin_cycle", intended: Class::MarkedGraph, min_n: 2, build: mg_forkjoin_cycle,                               answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "mg_forkjoin_unbounded", intended: Class::MarkedGraph, min_n: 2, build: mg_forkjoin_unbounded,                       answers: |_| vec![(Q1, true), (Q2, false), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "efc_forkjoin", intended: Class::ExtendedFreeChoice, min_n: 2, build: |n| efc_forkjoin(n, false),              answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "efc_forkjoin_leaky", intended: Class::ExtendedFreeChoice, min_n: 2, build: |n| efc_forkjoin(n, true),          answers: |_| vec![(Q1, false), (Q2, true), (Q3, false), (Q4, true)] },
+    FamilySpec { name: "ac_cycle", intended: Class::AsymmetricChoice, min_n: 2, build: |n| ac_cycle(n, true),                       answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
+    FamilySpec { name: "ac_cycle_no_low_token", intended: Class::AsymmetricChoice, min_n: 2, build: |n| ac_cycle(n, false),         answers: |_| vec![(Q1, true), (Q2, true), (Q3, false), (Q4, false)] },
+    FamilySpec { name: "general_cycle", intended: Class::General, min_n: 2, build: general_cycle,                                           answers: |_| vec![(Q1, true), (Q2, true), (Q3, true), (Q4, true)] },
 ];
 
 pub fn by_name(name: &str) -> Option<&'static FamilySpec> {
