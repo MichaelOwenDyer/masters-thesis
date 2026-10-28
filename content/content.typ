@@ -2,7 +2,7 @@
   abstract: include "00-abstract.typ",
   acknowledgements: include "00-acknowledgements.typ",
   introduction: include "01-introduction/00-chapter.typ",
-  related-work: include "02-related-work.typ",
+  related-work: include "02-related-work/00-chapter.typ",
   solution-design: include "03-solution-design.typ",
   implementation: include "04-implementation/00-chapter.typ",
   evaluation: include "05-evaluation/00-chapter.typ",

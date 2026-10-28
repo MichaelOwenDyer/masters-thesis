@@ -103,3 +103,21 @@ def test_buffer_ring_loops_keep_their_direction():
     assert sides == {True, False}
     # all forward places are on one side and all backward places on the other
     assert len({rad(f"r{i}") > r_t for i in range(n)}) == 1 and len({rad(f"b{i}") > r_t for i in range(n)}) == 1
+
+
+def test_hint_for_every_node_gives_straight_edges_without_dummies():
+    n = P.parse_pnml(PNML)
+    pos, chains = P.layout(n, {"positions": {"p0": [0, 0], "t0": [1, 0], "p1": [2, 0], "t1": [3, 0]}})
+    assert chains == {} and set(pos) == {"p0", "t0", "p1", "t1"}
+
+
+def test_highlight_box_encloses_its_nodes_and_subscript_labels():
+    n = P.parse_pnml(PNML)
+    hint = {"positions": {"p0": [0, 0], "t0": [1, 0], "p1": [2, 0], "t1": [3, 0]}}
+    svg = P.render(n, hint, label_map={"p0": "P_1"}, highlights=[["t0", "p1"]])
+    root = ET.fromstring(svg)
+    box = next(e for e in root.iter() if e.tag.endswith("rect") and e.get("stroke-dasharray"))
+    x0, w = float(box.get("x")), float(box.get("width"))
+    assert x0 < P.DX - P.S_TRANS / 2 and x0 + w > 2 * P.DX + P.R_PLACE  # around t0 and p1, clear of p0 and t1
+    assert x0 > P.R_PLACE and x0 + w < 3 * P.DX - P.S_TRANS / 2
+    assert ">P<tspan" in svg and ">1</tspan>" in svg

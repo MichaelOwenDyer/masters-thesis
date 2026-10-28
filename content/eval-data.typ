@@ -57,9 +57,9 @@
 
 // names of the tools and the collections, in plain language
 #let solver-name = (
-  "pv-dispatch": "automatic choice",
-  "pv-general": "plain exploration",
-  "pv-poly": "fast methods only",
+  "pv-dispatch": "petrivet: automatic dispatch",
+  "pv-general": "petrivet: RG exploration",
+  "pv-poly": "petrivet: efficient methods only",
   "lola": "LoLA",
   "tina": "TINA",
   "its-tools": "ITS-Tools",
@@ -106,21 +106,21 @@
 ))
 
 #let family-name = (
-  "circuit": "circuit (plain ring)",
-  "sm_hub_and_spokes": "hub and spokes",
-  "sm_two_cycles": "two cycles, one-way switch",
-  "sm_two_cycles_n_tokens": "two cycles, n tokens",
-  "sm_choice_ring": "ring of choices",
-  "sm_ring_with_sink": "ring with a token sink",
-  "mg_buffer_ring": "ring of buffers",
-  "mg_buffer_ring_unmarked_circuit": "ring of buffers, token-free circuit",
-  "mg_forkjoin_cycle": "fork and join, cyclic",
-  "mg_forkjoin_unbounded": "fork and join, unbounded",
-  "efc_forkjoin": "fork and join with choice",
-  "efc_forkjoin_leaky": "fork and join with choice, leaky",
-  "ac_cycle": "cycle with choices",
-  "ac_cycle_no_low_token": "cycle with choices, no start token",
-  "general_cycle": "cycle (general net)",
+  "circuit": raw("circuit"),
+  "sm_hub_and_spokes": raw("sm-hub-and-spokes"),
+  "sm_two_cycles": raw("sm-two-cycles"),
+  "sm_two_cycles_n_tokens": raw("sm-two-cycles-n-tokens"),
+  "sm_choice_ring": raw("sm-choice-ring"),
+  "sm_ring_with_sink": raw("sm-ring-with-sink"),
+  "mg_buffer_ring": raw("mg-buffer-ring"),
+  "mg_buffer_ring_unmarked_circuit": raw("mg-buffer-ring-unmarked-circuit"),
+  "mg_forkjoin_cycle": raw("mg-forkjoin-cycle"),
+  "mg_forkjoin_unbounded": raw("mg-forkjoin-unbounded"),
+  "efc_forkjoin": raw("fc-forkjoin"),
+  "efc_forkjoin_leaky": raw("fc-forkjoin-leaky"),
+  "ac_cycle": raw("ac-cycle"),
+  "ac_cycle_no_low_token": raw("ac-cycle-no-low-token"),
+  "general_cycle": raw("general-cycle"),
 )
 
 // a p-value for a table: tiny values as "< 0.001"

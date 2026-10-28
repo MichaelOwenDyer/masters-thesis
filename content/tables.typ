@@ -62,7 +62,7 @@
     [Free-choice],
     [Rank theorem: positive S- and T-invariants exist, $"rank"(C) = c - 1$ with $c$ the number of clusters, and every proper siphon is marked at $M_0$],
     [$⇔$ ("live and bounded")],
-    [P; $O(|P||T||F|)$ for the structural part],
+    [P; $O(|P| * |T| * |F|)$ for the structural part],
     [@esparza_petri_2026[Thm. 5.3.16]; @best_petri_2024[Lem. 6.17, Thm. 6.18]; @esparza_analysis_1991[Cor. 2.8]; @kemper_efficient_1992],
     [Not implemented],
     [Decides liveness and boundedness jointly in polynomial time, although liveness alone is co-NP-complete. Worthwhile whenever boundedness is wanted as well.],

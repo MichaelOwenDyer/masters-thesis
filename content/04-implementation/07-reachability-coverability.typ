@@ -3,57 +3,48 @@
 
 The following is a summary of known results for reachability and their implementation status in petrivet.
 
-#figure(
-  kind: table,
-  caption: [Known results for reachability and their implementation status.],
-  table(
-    columns: (auto, auto, auto, auto, auto, auto),
-    [*Applicability*], [*Theorem*], [*Intuition*], [*Complexity*], [*Citation*], [*Implementation status*],
+[Strongly Connected State Machine],
+[$M$ is reachable iff $M(S) = M_0(S)$],
+[
+  Tokens are conserved in state machines, and the strongly connected property ensures
+  that every token can reach every place.
+  Therefore any two markings with the same total token count are mutually reachable.
+],
+[P],
+[@esparza_petri_2026[Thm. 5.1.5]],
+[Implemented],
 
-    [Strongly Connected State Machine],
-    [$M$ is reachable iff $M(S) = M_0(S)$],
-    [
-      Tokens are conserved in state machines, and the strongly connected property ensures
-      that every token can reach every place.
-      Therefore any two markings with the same total token count are mutually reachable.
-    ],
-    [P],
-    [@esparza_petri_2026[Thm. 5.1.5]],
-    [Implemented],
+[Non-strongly connected state machine],
+[],
+// TODO: Formalize
+"Strongly connected components are partially ordered by the relation < defined as follows:
+            (V ′, E′) < (V ′′, E′′) iff V ′ ̸= V ′′ and ∀M ′ ∈ V ′, M ′′ ∈ V ′′ : M ′′ ∈ [M ′⟩ @esparza_petri_2026 Chap. 3.1.
+            Tokens can only move downstream in this partial order.
+            Let M(SCC_downstream) be the total number of tokens in the SCC and all SCCs less than it in the partial order.
+            Then M is reachable iff M(SCC_downstream) = M_0(SCC_downstream) for all SCCs.",
+[P],
+[],
+[Not implemented],
 
-    [Non-strongly connected state machine],
-    [],
-    // TODO: Formalize
-    "Strongly connected components are partially ordered by the relation < defined as follows:
-                (V ′, E′) < (V ′′, E′′) iff V ′ ̸= V ′′ and ∀M ′ ∈ V ′, M ′′ ∈ V ′′ : M ′′ ∈ [M ′⟩ @esparza_petri_2026 Chap. 3.1.
-                Tokens can only move downstream in this partial order.
-                Let M(SCC_downstream) be the total number of tokens in the SCC and all SCCs less than it in the partial order.
-                Then M is reachable iff M(SCC_downstream) = M_0(SCC_downstream) for all SCCs.",
-    [P],
-    [],
-    [Not implemented],
+[Live Marked Graph],
+[$M$ is reachable iff the marking equation $M = M_0 + C X$ has a solution],
+[],
+[],
+[],
+[],
 
-    [Live Marked Graph],
-    [$M$ is reachable iff the marking equation $M = M_0 + C X$ has a solution],
-    [],
-    [],
-    [],
-    [],
+[General],
+[Reachability is decidable, but Ackermann-hard],
+[],
+[@czerwinski_reachability_2022],
+[],
+[],
 
-    [General],
-    [Reachability is decidable, but Ackermann-hard],
-    [],
-    [@czerwinski_reachability_2022],
-    [],
-    [],
-  )
-)
-
-The initial implementation of reachability checking in petrivet was merely the brute-force semi-algorithm
+The initial implementation of reachability checking in petrivet was merely the RG semi-algorithm
 of constructing the reachability graph and checking for the target marking within it.
 This is will never terminate in the unreachable case for unbounded nets.
 
-The current implementation is more sophisticated than the brute-force approach.
+The current implementation is more sophisticated than the reachability graph approach.
 
 === CEGAR Engine
 

@@ -129,14 +129,17 @@ def use_memory_campaign(runs: pl.DataFrame) -> tuple[pl.DataFrame, dict[str, Any
     m = runs.filter(pl.col("campaign") == "M")
     if m.height == 0:
         info["meta.memory_source"] = "campaign B (wait4 includes the runner's own footprint: small values are not reliable)"
-        return runs, info
+        return runs.with_columns(pl.col("peak_rss_kib").alias("rss_b_kib")), info
     mem = m.filter(pl.col("rep") == 0).select(MEMORY_KEYS + [pl.col("peak_rss_kib").alias("_rss_m"), pl.col("verdict").alias("_verdict_m")]).unique(subset=MEMORY_KEYS, keep="first")
     is_b = pl.col("campaign") == "B"
     joined = runs.join(mem, on=MEMORY_KEYS, how="left")
     # B records without an M value: a memory-out keeps B's value (the limit, far above the runner's footprint); the
     # rest has none (time-outs are killed together with the wrapper)
     kept_b = pl.when(pl.col("verdict") == "MEMOUT").then(pl.col("peak_rss_kib"))
-    out = joined.with_columns(pl.when(is_b).then(pl.coalesce(pl.col("_rss_m"), kept_b)).otherwise(pl.col("peak_rss_kib")).alias("peak_rss_kib"))
+    # B's own value stays available as ``rss_b_kib``: for a run stopped by the time limit it is the memory at the moment it was
+    # killed (a lower bound of what it would have needed, with the runner's footprint of about 143 MiB included)
+    out = joined.with_columns(pl.col("peak_rss_kib").alias("rss_b_kib")).with_columns(
+        pl.when(is_b).then(pl.coalesce(pl.col("_rss_m"), kept_b)).otherwise(pl.col("peak_rss_kib")).alias("peak_rss_kib"))
     b0 = joined.filter(is_b & (pl.col("rep") == 0) & pl.col("_verdict_m").is_not_null())
     info["meta.memory_source"] = "campaign M (runs started through the rss wrapper)"
     info["m.n_runs"] = m.height
@@ -364,9 +367,9 @@ def color_map(names) -> dict[str, str]:
 
 # Names used in titles, axes and legends: plain language, no internal ids. The CSVs and numbers.json keep the ids.
 SOLVER_LABEL = {
-    "pv-dispatch": "petrivet: automatic choice of method",
-    "pv-general": "petrivet: plain state-space exploration",
-    "pv-poly": "petrivet: fast methods only",
+    "pv-dispatch": "petrivet: automatic dispatch",
+    "pv-general": "petrivet: reachability graph exploration",
+    "pv-poly": "petrivet: polynomial methods only",
     "lola": "LoLA",
     "tina": "TINA",
     "its-tools": "ITS-Tools",
@@ -393,21 +396,21 @@ SOURCE_LABEL = {
     "mcc_large": "benchmark models, large (MCC)",
 }
 FAMILY_LABEL = {
-    "circuit": "plain ring",
-    "sm_hub_and_spokes": "hub and spokes",
-    "sm_two_cycles": "two cycles, one-way switch",
-    "sm_two_cycles_n_tokens": "two cycles, n tokens",
-    "sm_choice_ring": "ring of choices",
-    "sm_ring_with_sink": "ring with a token sink",
-    "mg_buffer_ring": "ring of buffers",
-    "mg_buffer_ring_unmarked_circuit": "ring of buffers, token-free circuit",
-    "mg_forkjoin_cycle": "fork and join, cyclic",
-    "mg_forkjoin_unbounded": "fork and join, unbounded",
-    "efc_forkjoin": "fork and join with choice",
-    "efc_forkjoin_leaky": "fork and join with choice, leaky",
-    "ac_cycle": "cycle with choices",
-    "ac_cycle_no_low_token": "cycle with choices, no start token",
-    "general_cycle": "cycle",
+    "circuit": "circuit",
+    "sm_hub_and_spokes": "sm-hub-and-spokes",
+    "sm_two_cycles": "sm-two-cycles",
+    "sm_two_cycles_n_tokens": "sm-two-cycles-n-tokens",
+    "sm_choice_ring": "sm-choice-ring",
+    "sm_ring_with_sink": "sm-ring-with-sink",
+    "mg_buffer_ring": "mg-buffer-ring",
+    "mg_buffer_ring_unmarked_circuit": "mg-buffer-ring-unmarked-circuit",
+    "mg_forkjoin_cycle": "mg-forkjoin-cycle",
+    "mg_forkjoin_unbounded": "mg-forkjoin-unbounded",
+    "efc_forkjoin": "fc-forkjoin",
+    "efc_forkjoin_leaky": "fc-forkjoin-leaky",
+    "ac_cycle": "ac-cycle",
+    "ac_cycle_no_low_token": "ac-cycle-no-low-token",
+    "general_cycle": "general-cycle",
 }
 
 

@@ -6,7 +6,7 @@ The evaluation consists of a measured component and an assessed component.
 The measured component examines the correctness of the answers (#rqs.correctness),
 the benefit of dispatching to the cheapest procedure (#rqs.procedure-dispatch),
 the ability to control the cost by restricting effort or setting a deadline (#rqs.cost-control),
-and the speed and memory use of `petrivet` in comparison with established tools (#rqs.perf-mem).
+and the speed and memory use of `petrivet` in comparison with established tools (#rqs.comparison).
 The assessed part rates `petrivet` against the requirements of the chair that cannot be reduced to a measurement,
 using the same rubric as the survey of existing tools, and reports an integration case study.
 The goal is NOT to best existing model checkers, which have had sometimes decades to mature;

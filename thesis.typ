@@ -71,10 +71,6 @@
 
       *Submitted by* \
       #meta.author \
-      #if meta.matriculation-number != none [
-        \
-        *Matriculation Number:* #meta.matriculation-number
-      ]
       #v(12pt)
 
       *Submitted on* \
@@ -194,7 +190,6 @@
   )
 
   set heading(numbering: "1.", bookmarked: true, outlined: true)
-  show figure.where(kind: table): set block(breakable: true)
 
   content.introduction
   content.related-work

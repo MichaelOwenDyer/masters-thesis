@@ -1,11 +1,13 @@
+#pagebreak(weak: true)
 = Implementation <implementation>
 
-This section discusses the implementation of the `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet] Rust
-crate, including arch
+This section discusses the implementation of `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet].
+
+// TODO: Why Rust
 
 #include "01-builder.typ"
 #include "02-simulation.typ"
-#include "03-state_space.typ"
+#include "03-state-space.typ"
 
 === Fundamental Property Checking
 
@@ -69,3 +71,5 @@ and with reference to the theorems table for the underlying procedures used in e
 #include "06-deadlock-freedom.typ"
 #include "07-reachability-coverability.typ"
 #include "08-chc.typ"
+
+TODO: Discuss the timeout / deadline checking mechanism

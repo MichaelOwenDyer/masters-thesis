@@ -7,18 +7,9 @@
 
 == Commoner-Hack Criterion <chc>
 
-The Commoner-Hack Criterion (CHC), also called the Siphon-Trap Criterion, states that every siphon contains a marked trap.
-This is a characteristic which yields powerful insights into the behavior of even the most general Petri nets.
-The most well-known result is that a Free Choice Petri net is live if and only if the CHC holds @hack_analysis_1972,
-but it is also sufficient for liveness of Asymmetric Choice Petri nets,
-and sufficient for deadlock-freedom of General Petri nets @murata_petri_1989.
+The Commoner-Hack criterion (CHC), also called the Siphon-Trap Criterion, states that every siphon contains a marked trap.
 
-Deciding the CHC is co-NP-complete. The number of minimal siphons in a net scales exponentially with the number of places,
-making the naive approach of enumerating all siphons and checking for a marked trap intractable for large nets.
-But the problem of finding a counterexample (a siphon without a marked trap) maps directly to the Boolean satisfiability
-problem (SAT), which allows us to leverage the power of modern solvers.
-
-==== SAT Encoding of the CHC Counterexample Search
+=== SAT Encoding of the CHC Counterexample Search
 
 We encode the search for a CHC counterexample as a SAT problem following the approach of @oanea_new_2010 et al.
 

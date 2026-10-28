@@ -33,7 +33,7 @@ The questions above correspond to the following properties of Petri nets:
 These properties are the reason Petri nets are used in business process management, manufacturing,
 and other domains where the correctness of a process is critical.
 
-===
+=== Requirements for a Petri net analyzer
 
 The Chair of Information Systems develops and applies the Cloud Process Execution Engine (CPEE) @mangler_cpee_2014
 @mangler_cloud_2022, which orchestrates calls to heterogeneous software tools and human actors.
@@ -65,19 +65,7 @@ Every requirement above presupposes that the analyzer is correct.
 Where the analyzer cannot decide, which is unavoidable for some questions, it must say "unknown" instead of guessing.
 
 Correctness and R1 to R8 are the requirements against which the survey in @related-work rates existing tools,
-and against which `petrivet` is assessed in @evaluation.
-
-=== The gap
-
-Mature Petri net analyzers exist, and several excel at some of these requirements.
-Performance-oriented model checkers lead on R5, workflow tools lead on interchange,
-and a few libraries offer a callable interface.
-Few of the surveyed tools document that they choose among procedures by the structure of the net,
-although over six decades of Petri net theory have produced shortcuts for many structural classes.
-The survey in @related-work finds, however, that no tool meets all of the requirements together,
-and that the tools which come closest do so by leaving out the open, extensible foundation the chair wants to build on.
-Nobody has, to my knowledge, built the tool that the chair's wishlist describes.
-This is the objective of the thesis: to design, implement and evaluate such a tool.
+and finds that none of them meet all of them together.
 
 The project was initiated by the chair's need rather than by an observed failure of existing
 tools to produce correct answers. In the terminology of Peffers et al. @peffers_design_2007,

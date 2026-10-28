@@ -5,34 +5,34 @@
 
 This section describes the methodology by which the evaluation was conducted.
 
-=== Queries
+=== Properties <eval-properties>
 
-All measured experiments used the same nine Petri net queries.
-They all take a Petri net $(N, M_0)$ as input, and return a boolean answer.
+All measured experiments used the same nine Petri net properties.
+They all take a Petri net $(N, M_0)$ as input, and return a boolean verdict.
 Two (reachability and coverability) additionally take a target marking as input.
 
-The queries are listed here:
+The properties are listed here:
 - Deadlock-free: Is $(N, M_0)$ deadlock-free?
 - Bounded: Is $(N, M_0)$ bounded?
-- Safe: Is $(N, M_0)$ 1-bounded?
+- (1-)Safe: Is $(N, M_0)$ 1-bounded?
 - Live: Is $(N, M_0)$ #lv(4)-live?
 - Quasi-live: Is $(N, M_0)$ #lv(1)-live?
-- Stable place: Does $(N, M_0)$ contain a place whose marking is constant in all reachable markings?
-- Reachable: Is $M_t$ reachable in $(N, M_0)$?
-- Coverable: Is $M_t$ coverable in $(N, M_0)$?
+- Reachable: Is $M$ reachable in $(N, M_0)$?
+- Coverable: Is $M$ coverable in $(N, M_0)$?
 - State space size: How many nodes and edges (markings and transition firings) are in the reachability graph of $(N, M_0)$?
+- Stable place: Does $(N, M_0)$ contain a place whose marking is constant in all reachable markings?
 
-=== Net collections
+=== Net collections <eval-collections>
 
 Four sources of Petri nets were used in the evaluation.
 Results are reported separately for each collection because they have different characteristics and are used for different purposes.
-The following table summarizes the four collections, their sizes, the source of the reference answers, and the purposes for which they are used.
+The following table summarizes the four collections, their sizes, the source of the reference verdicts, and the purposes for which they are used.
 
 #figure(
   table(
     columns: (auto, auto, 1fr, 1fr),
     align: (left, left, left, left),
-    table.header[*Collection*][*Size*][*Reference answers from*][*Used for*],
+    table.header[*Collection*][*Size*][*Reference verdicts from*][*Used for*],
     [Calibration nets], [#val("e0.calibration.n_manifest_lines")], [Worked out by hand], [Validating the evaluation setup],
     [Randomized nets], [#fmt(val("e0.gen.n_manifest_lines"))], [Agreement of two reference tools], [Correctness],
     [Parametrized nets], [#val("e0.fam.n_manifest_lines") nets \ across 15 families], [By construction], [Dispatching, performance and memory comparison, cost control],
@@ -42,7 +42,7 @@ The following table summarizes the four collections, their sizes, the source of 
 )
 
 *Calibration nets.* Thirty small Petri nets were constructed and analyzed by hand.
-They serve two purposes: to validate the measurement setup for the various tools, and to provide answers which do not depend on any software.
+They serve two purposes: to validate the measurement setup for the various tools, and to provide verdicts which do not depend on any software.
 
 *Randomized nets.* A pseudorandom number generator was used to generate 100 nets each across six structural subclasses
 (circuits, state machines, marked graphs, extended free-choice nets, asymmetric choice nets, and general nets) (@background-structural-classes),
@@ -55,7 +55,7 @@ and in these cases the net was classified into the most specific class.
 The RNG was seeded, so the collection can be reproduced exactly, and the files are archived together with a checksum.
 
 *Parametrized nets.* Fifteen families of nets parametrized by size.
-The answers to every query are known for every family by construction.
+Every property is known for every family by construction.
 These families are used to evaluate how running time grows with the size of the net.
 @tab-parametrized-families lists the families, the properties they satisfy, and a small example of each.
 
@@ -67,6 +67,7 @@ Models which `petrivet` failed to parse were skipped, which included:
 #val("e0.mcc.small.rejected_arc_weight") small and #val("e0.mcc.large.rejected_arc_weight") large nets which contained nonstandard ($!= 1$) arc weights, and
 #val("e0.mcc.large.rejected_too_large") large nets whose file size exceeded 5 MB.
 
+#show figure: set block(breakable: true)
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto, auto, 30%),
@@ -122,113 +123,138 @@ Models which `petrivet` failed to parse were skipped, which included:
     [yes], [no], [yes], [yes],
     [#image("/figures/nets/families/mg_forkjoin_unbounded.svg")],
 
-    [efc-forkjoin],
+    [fc-forkjoin],
     [A ring of $n$ sequential two-way parallel decisions with $n/2$ tokens.],
     [yes], [yes], [yes], [yes],
     [#image("/figures/nets/families/efc_forkjoin.svg")],
 
-    [efc-forkjoin-leaky],
-    [Like efc-forkjoin, except that one of the choices does not produce enough tokens to continue.],
+    [fc-forkjoin-leaky],
+    [Like fc-forkjoin, except that one of the choices does not produce enough tokens to continue.],
     [no], [yes], [no], [yes],
     [#image("/figures/nets/families/efc_forkjoin_leaky.svg")],
 
     [ac-cycle],
-    [$n$ conjoined segments with a left place and a right place each. The left tokens can move independently, the right tokens can only move together with the left tokens. Contains one left and one right token.],
+    [$n$ conjoined segments with a high place and a low place each. The high tokens can move independently, the low tokens can only move together with the high tokens. Contains one low and one high token.],
     [yes], [yes], [yes], [yes],
     [#image("/figures/nets/families/ac_cycle.svg")],
 
     [ac-cycle-no-low-token],
-    [Like ac-cycle, but without the right token.],
+    [Like ac-cycle, but without the low token.],
     [yes], [yes], [no], [no],
     [#image("/figures/nets/families/ac_cycle_no_low_token.svg")],
 
     [general-cycle],
-    [A ring of $n$ segments with two places each (an a-place and a b-place). Per segment there are two transitions that move one token forward independently and a shared transition that moves both together. There is one token on each of the first a and b places. The shared transition overlaps with both independent ones in a way no restricted class allows, so the net is general.],
+    [Like ac-cycle, but the low tokens can also move independently.],
     [yes], [yes], [yes], [yes],
     [#image("/figures/nets/families/general_cycle.svg")],
   ),
   caption: [
-    The fifteen families of parametrized nets used in the evaluation, with their properties and a small example.
-    DF = deadlock-free, B = bounded, L = #lv(4)-live, QL = #lv(1)-live (quasi-live).
+    The fifteen families of parametrized nets used in the evaluation, with their properties and a small example. \
+    sm = state machine, mg = marked graph, fc = free-choice, ac = asym. choice. \
+    DF = deadlock-free, B = bounded, L = live (#lv(4)), QL = quasi-live (#lv(1)).
   ],
 ) <tab-parametrized-families>
 
-=== Reference answers <eval-reference>
-
-For the authoritative reference answers, I used a different strategy for each of the four collections.
-The calibration nets were analyzed by hand (and cross-checked by all tools during the evaluation),
-the randomized nets were analyzed by two reference tools of unrelated origin (LoLA #footnote[https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/] and TINA #footnote[https://projects.laas.fr/tina/index.php]) for consensus,
-the parametrized nets were constructed with the answers known by design,
-and the MCC model verdicts were taken from the official oracle #footnote[https://yanntm.github.io/pnmcc-models-2026].
-
-For the randomized nets, a disagreement or lack of answer from either reference tool within the 60s time limit was
-treated as a failure to produce an authoritative answer, and the net was excluded from the correctness evaluation.
-These exclusions happened before any `petrivet` runs, so that `petrivet`'s answers could not influence which Petri nets
-entered the correctness evaluation.
-
-There is one exception to this rule: for the reachability and coverability queries, TINA does not finish within a
-reasonable time. In these cases, a definite answer from LoLA alone is used as the reference, and these cases are labeled
-separately in the results. Any disagreement between `petrivet` and a reference answer produced by LoLA alone is first
-checked by hand.
-
 === Tools under comparison <eval-tools>
 
-`petrivet` enters the evaluation in three different configurations through a CLI wrapper:
-+ In the default mode ("automatic choice"), `petrivet` chooses the procedure to use based on its internal dispatching logic.
-+ In the efficient-only mode ("fast methods only"), `petrivet` must answer the query using only polynomial-time procedures (if possible).
-+ In the general mode ("plain exploration"), `petrivet` must answer the question by brute-force exploration of the
-  reachability graph, which isolates the effect of the internal dispatching. As discussed in @background-reachability, this is an infinitely large structure for unbounded Petri nets and in many cases
-  results in a timeout in the evaluation.
+`petrivet` enters the evaluation in three different configurations:
++ In the default mode ("automatic dispatch"), `petrivet` chooses the procedure to use based on its internal dispatching logic.
++ In the efficient-only mode ("fast methods only"), `petrivet` must decide the property using only polynomial-time procedures (if possible).
++ In the brute-force mode ("RG exploration"), `petrivet` must answer the query via a breadth-first search of the
+  reachability graph, which isolates the effect of the internal dispatching.
+  As discussed in @background-reachability, this is an infinitely large structure for unbounded Petri nets and often
+  results in a timeout in the evaluation (unless the property can be decided on a partially explored graph).
 
-LoLA 2.0 and TINA 4.0.0 are used as external reference tools, packaged reproducibly as Nix derivations.
-A third external tool, ITS-Tools, the overall winner of the 2026 Model Checking Contest, is included as an extra point
-of comparison for performance and memory, but is not used as a correctness reference due to difficulties supporting
-all of the queries. It answers five of the nine queries which overlap with the MCC's examinations (state space size,
-deadlock-freedom, quasi-liveness, 1-safety, and stable place); the others are either not supported or cannot be answered
-in time: for liveness it spends a fixed 30 seconds on an internal procedure (which invariably consumes the entire evaluation
-time limit), and for the state space size query it only reports the number of markings and not the number of transition
-firings. This second limitation is a fundamental design trade-off: while `petrivet`, `LoLA` and `TINA` are all explicit
-state model checkers which fire transitions and count the resulting markings,
-ITS-Tools is a symbolic model checker which constructs the state space indirectly by manipulating hierarchical set decision
-diagrams (SDDs) @couvreur_hierarchical_2005. This gives it a flatter performance curve particularly for large
-nets, but its JVM-based implementation gives it a higher constant overhead.
+A selection of three external tools from the survey in @related-work,
+LoLA 2.0 #footnote[https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/] <lola>,
+TINA 4.0.0 #footnote[https://projects.laas.fr/tina/index.php] <tina>,
+and ITS-Tools #footnote[https://lip6.github.io/ITSTools-web/] <its-tools>
+also enter the evaluation for comparison.
 
-Each external tool was wrapped with an adapter which translates the evaluation query into the tool's own input format,
-and translates the tool's output back. Each adapter was validated against the calibration nets to ensure that the translation was
-correct and that the tool was invoked correctly.
-Where a tool offers no direct query (for example, LoLA has no direct API for the liveness of a whole net),
-the translation combines several smaller queries; these are described in the appendix. TODO reference
+Every tool was wrapped with an adapter which translates the evaluation query into the tool's own input format,
+and translates the tool's output back.
+Every adapter was validated against the calibration nets to ensure correct translation and invocation of the tool.
+Where a tool does not directly support a property (for example, LoLA has no direct API for the liveness of a whole net),
+the adapter combines several smaller queries to produce the verdict.
+These are described in the appendix. TODO reference
 
-All tools run as separate processes, under the same time and memory limits, on the same machine.
+All tools run as separate processes, under the same time and memory limits, on the same machine (see @eval-setup).
 Using a command-line interface for all tools places them on equal footing, including process start-up overhead.
-The start-up time of each tool is measured on a trivial net and reported next to the results,
-so that it can be subtracted where the analysis itself is short.
+The start-up time of each tool is measured on a trivial net and reported in the results,
+so that the overhead can be subtracted from the measured times.
+
+=== Reference verdicts <eval-reference>
+
+For the authoritative reference verdicts, I used a different strategy for each of the four collections.
+The calibration nets were analyzed by hand (and cross-checked by all tools during the evaluation),
+the randomized nets were analyzed by LoLA and TINA for consensus,
+the parametrized nets were constructed with the verdicts known by design,
+and the MCC model verdicts were taken from the official oracle #footnote[https://yanntm.github.io/pnmcc-models-2026].
+
+#let its = rows("e8_its_q1_90s.csv").first()  // the ITS-Tools deadlock-freedom check with a 90 s limit
+
+ITS-Tools is not used as a correctness reference for the randomized nets due to difficulties supporting
+all of the properties. It decides the five of the nine properties which overlap with the MCC's examinations
+(state space size, deadlock-freedom, quasi-liveness, 1-safety, and stable place);
+the others are either not supported or cannot be answered in time: for liveness it spends a fixed 30 seconds on an
+unknown internal procedure (which invariably consumes the entire evaluation time limit)
+#footnote[
+  ITS-Tools answers liveness after a fixed wait:
+  of the #cell(its.n_timeouts_30s) liveness queries that it did not answer within 30 seconds,
+  #cell(its.n_answered_30_35s) of them are answered between 30 to 35 seconds, and
+  #cell(its.n_answered_90s) are answered within 90 seconds (median #dec(float(its.answer_median_s), d: 1) s).
+  Its liveness results are therefore limited by the evaluation's 30s time limit, and not by the difficulty of the model.
+],
+and for the state space size property it only reports the number of markings and not the number of transition firings.
+This second limitation is a fundamental design trade-off: while `petrivet`, `LoLA` and `TINA` are all explicit
+state model checkers which fire individual transitions and evaluate the resulting markings,
+ITS-Tools is a symbolic model checker which constructs the state space indirectly using
+hierarchical set decision diagrams (SDDs) and tailors the marking representation to exploit the structure
+of each individual net @couvreur_hierarchical_2005 @hamez_hierarchical_2008 @hamez_building_2009.
+This gives it a flatter performance curve particularly for large nets,
+but it also means that it cannot decide the state space size property as completely as the other tools.
+
+For the randomized nets, a disagreement or timeout from either reference tool was
+treated as a failure to produce an authoritative verdict, and the net was excluded from the correctness evaluation.
+These exclusions happened before any `petrivet` runs, so that `petrivet`'s verdicts could not influence which Petri nets
+entered the correctness evaluation.
+
+For unbounded Petri nets, the reference tools gave particularly unreliable verdicts (or often no verdict at all)
+for the properties liveness, quasi-liveness, and deadlock-freedom.
+For this reason, the correctness evaluation is restricted to bounded nets for these three properties.
+The unbounded results are nonetheless reported where available for completeness, but they do not influence
+the outcome of the evaluation.
+
+Furthermore, for the reachability and coverability properties, TINA often failed to produce a verdict within a
+reasonable time.
+Because this was so frequent, and because I saw no reason to doubt the correctness of LoLA's verdicts,
+I used LoLA's verdicts alone as the reference verdict in these cases.
+These cases are labeled separately in the results for transparency.
 
 === Measurement setup <eval-setup>
 
 Measurements were conducted on a single desktop machine with a four-core, eight-thread Intel i7-4790K CPU @ 4.00GHz and 32 GiB of RAM.
 At most three runs were executed at a time, each pinned to a unique physical CPU core with the sibling hyperthread left idle.
-Turbo frequency boosting was switched off and the frequency governor fixed at "performance" to avoid variability in the
-clock speed with load.
+The frequency governor was fixed at "performance" and turbo frequency boosting was switched off to avoid
+variability in clock speed.
 Graphical sessions, file synchronization and other background services were stopped for the measured runs.
 
-Each run has a wall-clock time limit of 30 seconds, enforced outside the process, and a memory limit of 8 GiB.
+Each run has a wall-clock time limit of 30 seconds (with the exception of the correctness runs which were given
+60 seconds), enforced outside the process, and a memory limit of 8 GiB.
 A run that exceeds either limit is recorded as a time-out or memory-out, and the process is killed.
 A run that ends abnormally, through a crash, abort, or other error, is recorded under its own category.
 Timing runs are repeated; the number of repetitions was fixed in a short pilot study before the measured runs began.
 Settings, tool versions, and processor configuration are recorded with every run.
 
-Correctness runs are not timed; tools are given 60 seconds to provide an answer which is then compared to the reference answer.
-
-Peak memory is measured in a second pass over the runs which produced an answer, using a separate low-overhead wrapper
-that records the peak resident set size of the process.
-A separate low-overhead wrapper is needed to lower the measurement floor as far as possible, because the wrapper's own
-memory use is included in the peak measurement of the tool process.
+Peak memory is measured in a second pass over the runs which produced a verdict,
+using a separate low-overhead wrapper that records the peak resident set size (RSS) of the process.
+The separate low-overhead wrapper served to lower the RSS measurement floor as far as possible,
+because the wrapper's own memory use is included in the peak measurement of the tool process.
 This measurement floor is about #dec(val("e9.lola.baseline_rss_kib") / 1024, d: 1) MiB.
-For a tool which spawns child processes of its own, such as ITS-Tools, the measured value is that of the largest single
-process and not the sum.
-A run which timed out does not report a peak memory value.
-A run which ran out of memory keeps the value of the limit, 8 GiB, as its peak memory.
+For a tool which spawns child processes of its own, such as ITS-Tools,
+the measured value is that of the largest single process, and not the sum.
+A run which times out does not report a peak memory value.
+A run which exhausts the memory limit keeps the value of the limit, 8 GiB, as its peak memory.
 
 === Analysis <eval-analysis>
 
@@ -241,7 +267,14 @@ Timeouts are treated as censored data: their number is reported, and the compari
 the conclusion is robust to their presence.
 For the tool comparisons, I report the number of solved instances, the penalized average runtime where a failed run
 counts as twice the time limit, and cactus plots.
-Where no disagreement with the reference answer is found, I provide the one-sided 95 percent upper bound on the true
-rate of disagreement (Clopper-Pearson interval).
-All tests are listed together with their correction method // TODO: what does this mean?
-and unsupported hypotheses are explicitly marked as such.
+Where no disagreement with the reference verdict is found, I provide the one-sided 95 percent upper bound on the true
+rate of disagreement (Clopper-Pearson interval). // TODO Cite
+
+*Terminology.* In following sections, I use the following terminology:
+- A *collection* is a set of Petri nets as described in @eval-collections.
+- A *property* is a Petri net property as described in @eval-properties.
+- A *query* is a combination of a Petri net and a property (and, for reachability and coverability, a target marking).
+- A *run* is a single invocation of a tool on a query.
+- A *verdict* is a definite answer (yes or no) produced by a run.
+  A verdict may be correct or incorrect with respect to the reference verdict.
+  A run may also produce no verdict, either because it timed out, ran out of memory, or crashed.

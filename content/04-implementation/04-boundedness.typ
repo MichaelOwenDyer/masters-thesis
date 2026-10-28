@@ -42,7 +42,7 @@ so every place is bounded by the total number of tokens in the system.
   A place $s$ on a circuit $γ$ is k-bounded if $M_0(γ) ≤ k$, but may additionally be bounded for lower k.
 ],
 [
-  At least one circuit is unmarked (see @liveness-theorems).
+  At least one circuit is unmarked.
   Unmarked circuits can prevent tokens on other circuits from circulating,
   leading to a lower bound for some places than otherwise.
 ],

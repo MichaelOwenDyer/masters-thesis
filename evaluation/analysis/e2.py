@@ -13,9 +13,9 @@ Difference d = t_general - t_dispatch (positive: dispatch faster).
   * Frontier: largest ``size_param`` at which every question of the family is solved (definite, not contradicting truth)
     per family and solver (``max_size_solved``), the largest size at which at least one question is solved
     (``max_size_any_question``), and the largest attempted.
-  * Memory by size: the peak resident memory of both modes per family and size (median over the questions that have a
-    memory value), with ``n_*_memout`` (runs ended by the memory limit, whose value is the limit) and ``n_*_no_value``
-    (runs that were stopped by the time limit and therefore report no memory); a ratio of the medians would hide both.
+  * Memory by size: the peak resident memory of every run (family, size, question, mode), never pooled over questions.
+    Value: the memory pass for answered runs, the limit for a memory-out, and for a run stopped by the time limit the memory
+    of campaign B at the moment it was killed (a lower bound). ``status`` tells which.
   * RSS: paired median ``peak_rss_kib`` general / dispatch per class, two-sided Wilcoxon, Holm across classes (exploratory).
   * By size: the median speedup (t_general / t_dispatch) per family and size parameter, which does not depend on how many
     sizes were tried, with the cells of a size split by what was stopped: ``n_general_stopped`` (the speedup of such a cell
@@ -36,7 +36,7 @@ from __future__ import annotations
 import numpy as np
 import polars as pl
 
-from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, family_rank, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
+from .common import CLASS_LABEL, CLASS_ORDER, FAMILY_LABEL, QUERY_LABEL, family_rank, SOLVER_COLOR, Ctx, color_map, plt, save_svg, solver_label
 from .stats import holm, hodges_lehmann, quantiles, wilcoxon_greater, wilcoxon_two_sided
 
 D, G, P = "pv-dispatch", "pv-general", "pv-poly"
@@ -124,7 +124,7 @@ def _ablation(ctx: Ctx, pairs: pl.DataFrame) -> None:
     ctx.num("e2", "alpha", ALPHA)
     ctx.csv("e2_pairs", ok.select("cls", "family", "size", "places", "instance_id", "query", "tid", "verdict_d", "verdict_g", "t_d", "t_g", "cens", "rss_d", "rss_g").sort("cls", "family", "size", "query", "tid"))
     _by_size(ctx, ok, [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER)))
-    _memory_by_size(ctx, ok, [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER)))
+    _memory_by_size(ctx, [c for c in CLASS_ORDER if c in set(ok["cls"].to_list())] + sorted(set(ok["cls"].to_list()) - set(CLASS_ORDER)))
     _figures(ctx, ok)
 
 
@@ -185,7 +185,7 @@ def _by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
             m = "D" if g and dd else "^" if g else "v" if dd else "o"
             ax.plot([r["size"]], [r["median_speedup"]], marker=m, ms=5, color=c, mfc="white" if (g or dd) else c, ls="none")
         ax.set_xscale("log", base=2); ax.set_yscale("log")
-        ax.set_title(f"{CLASS_LABEL.get(fr['cls'], fr['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(fr['family'], fr['family'])}", fontsize=8, loc="left")
+        ax.set_title(FAMILY_LABEL.get(fr["family"], fr["family"]), fontsize=8, loc="left")
         ax.tick_params(labelsize=7)
     for ax in axs.ravel()[n:]:
         ax.axis("off")
@@ -196,46 +196,72 @@ def _by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
     save_svg(fig, ctx.fig_path("e2_speedup_by_size"))
 
 
-def _memory_by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
-    """Peak memory of both modes per family and size (MiB). A MEMOUT run keeps the memory limit as its value, a run
-    stopped by the time limit has no value; both are counted so that the medians can be read with them."""
-    k = ok.filter(pl.col("size").is_not_null()).with_columns(pl.col("size").cast(pl.Int64))
-    order = {c: i for i, c in enumerate(classes)}
-    fams = sorted(k.group_by("family", "cls").len().iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), family_rank(r["family"]), r["family"]))
-    rows = []
-    for fr in fams:
-        kf = k.filter(pl.col("family") == fr["family"])
-        for size in sorted(kf["size"].unique().to_list()):
-            ks = kf.filter(pl.col("size") == size)
-            row = {"cls": fr["cls"], "family": fr["family"], "size": size, "n_pairs": ks.height}
-            for tag, rss, verdict in (("d", "rss_d", "verdict_d"), ("g", "rss_g", "verdict_g")):
-                v = ks.filter(pl.col(rss).is_not_null() & (pl.col(rss) > 0))[rss]
-                row[f"n_{tag}_with_value"] = len(v)
-                row[f"n_{tag}_no_value"] = ks.height - len(v)
-                row[f"n_{tag}_memout"] = int((ks[verdict] == "MEMOUT").sum())
-                row[f"median_rss_{tag}_mib"] = float(np.median(v.to_numpy())) / 1024 if len(v) else None
-            rows.append(row)
-    if not rows:
+STATUS = {"TRUE": "answered", "FALSE": "answered", "COUNT": "answered", "MEMOUT": "memory-out", "TIMEOUT": "time-out"}
+QUESTION_MARKER = {"Q1": ("o", 7.5), "Q2": ("s", 6.0), "Q3": ("^", 5.0), "Q4": ("D", 3.5)}
+
+
+def _memory_runs(ctx: Ctx) -> pl.DataFrame:
+    """One row per (family, size, question, mode): the peak memory in MiB and what ended the run.
+
+    answered: the value of the memory pass (campaign M). memory-out: the limit. time-out: the memory of campaign B at the
+    moment the run was killed, a lower bound that includes the runner's footprint of about 143 MiB. Other outcomes keep the
+    memory pass value if there is one."""
+    r = ctx.runs_meta("B").filter((pl.col("source") == "fam") & pl.col("solver_id").is_in([D, G]) & pl.col("size").is_not_null())
+    if r.height == 0:
+        return r
+    agg = r.group_by("cls", "family", "size", "instance_id", "query", "tid", "solver_id").agg(
+        pl.col("verdict").sort_by("rep").first().alias("verdict"),
+        pl.col("peak_rss_kib").median().alias("rss"), pl.col("rss_b_kib").median().alias("rss_b"))
+    agg = agg.with_columns(
+        pl.col("size").cast(pl.Int64),
+        pl.col("verdict").replace_strict(STATUS, default=None).fill_null(pl.col("verdict").str.to_lowercase()).alias("status"),
+        (pl.when(pl.col("verdict") == "TIMEOUT").then(pl.col("rss_b")).otherwise(pl.col("rss")) / 1024).alias("rss_mib"),
+    )
+    return agg.select("cls", "family", "size", "query", "solver_id", "verdict", "status", "rss_mib").sort("family", "size", "query", "solver_id")
+
+
+def _memory_by_size(ctx: Ctx, classes: list[str]) -> None:
+    """Peak memory per family, size, question and mode, without any pooling over questions (a median over the questions
+    that happen to have a value changes its composition from size to size). A line stops where a run has no value."""
+    df = _memory_runs(ctx)
+    if df.height == 0:
         return
-    df = pl.DataFrame(rows, infer_schema_length=None)
     ctx.csv("e2_memory_by_size", df)
     p = plt()
+    from matplotlib.lines import Line2D
     gib = ctx.cfg.get("run", {}).get("mem_limit_gib")
-    limit = float(gib) * 1024 if gib else float(df.select(pl.max_horizontal(pl.col("median_rss_d_mib").max(), pl.col("median_rss_g_mib").max())).item())
+    limit = float(gib) * 1024 if gib else float(df["rss_mib"].max())
+    order = {c: i for i, c in enumerate(classes)}
+    fams = sorted(df.group_by("family", "cls").len().iter_rows(named=True), key=lambda r: (order.get(r["cls"], 99), family_rank(r["family"]), r["family"]))
     n = len(fams)
     cols = min(3, n)
     nrows = (n + cols - 1) // cols
-    fig, axs = p.subplots(nrows, cols, figsize=(3.7 * cols, 2.6 * nrows), squeeze=False, constrained_layout=True, sharex=True, sharey=True)
+    fig, axs = p.subplots(nrows, cols, figsize=(3.7 * cols, 2.6 * nrows + 0.5), squeeze=False, constrained_layout=True, sharex=True, sharey=True)
     for ax, fr in zip(axs.ravel(), fams):
-        d = df.filter(pl.col("family") == fr["family"]).sort("size")
-        for tag, solver in (("d", "pv-dispatch"), ("g", "pv-general")):
-            dd = d.filter(pl.col(f"median_rss_{tag}_mib").is_not_null())
-            ax.plot(dd["size"], dd[f"median_rss_{tag}_mib"], marker="o", ms=3, color=SOLVER_COLOR[solver], label=solver_label(solver))
-            mo = dd.filter(pl.col(f"n_{tag}_memout") > 0)
-            ax.plot(mo["size"], mo[f"median_rss_{tag}_mib"], ls="none", marker="o", ms=6, mfc="none", mec="#000000")
+        d = df.filter(pl.col("family") == fr["family"])
+        sizes = sorted(d["size"].unique().to_list())
+        for solver in (G, D):  # the automatic choice is drawn on top
+            col = SOLVER_COLOR[solver]
+            for q, (mk, ms) in QUESTION_MARKER.items():
+                dq = d.filter((pl.col("solver_id") == solver) & (pl.col("query") == q))
+                pts = {r["size"]: r for r in dq.iter_rows(named=True) if r["rss_mib"] is not None}
+                run: list[dict] = []
+                for s in sizes + [None]:  # a line only joins neighbouring sizes that both have a value
+                    if s is not None and s in pts:
+                        run.append(pts[s])
+                        continue
+                    if len(run) > 1:
+                        ax.plot([x["size"] for x in run], [x["rss_mib"] for x in run], color=col, lw=0.9, alpha=0.8, zorder=2)
+                    run = []
+                for r in pts.values():
+                    kw = dict(marker=mk, ms=ms, ls="none", zorder=3 + (10.0 - ms) / 10)  # the smaller the marker, the further up: none is hidden by a larger one
+                    if r["status"] == "time-out":
+                        ax.plot([r["size"]], [r["rss_mib"]], mfc="white", mec=col, mew=1.0, **kw)
+                    else:
+                        ax.plot([r["size"]], [r["rss_mib"]], mfc=col, mec="#000000" if r["status"] == "memory-out" else col, mew=1.0, **kw)
         ax.axhline(limit, color="#999999", ls="--", lw=0.8)
         ax.set_xscale("log", base=2); ax.set_yscale("log")
-        ax.set_title(f"{CLASS_LABEL.get(fr['cls'], fr['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(fr['family'], fr['family'])}", fontsize=8, loc="left")
+        ax.set_title(FAMILY_LABEL.get(fr["family"], fr["family"]), fontsize=8, loc="left")
         ax.tick_params(labelsize=7)
     for ax in axs.ravel()[n:]:
         ax.axis("off")
@@ -243,8 +269,12 @@ def _memory_by_size(ctx: Ctx, ok: pl.DataFrame, classes: list[str]) -> None:
         ax.set_xlabel("size parameter n of the family (log scale)", fontsize=8)
     for ax in axs[:, 0]:
         ax.set_ylabel("peak memory (MiB, log scale)", fontsize=8)
-    h, lab = axs.ravel()[0].get_legend_handles_labels()
-    fig.legend(h, lab, loc="outside upper left", ncol=2, frameon=False, fontsize=8)
+    handles = [Line2D([], [], color=SOLVER_COLOR[D], lw=1.5, label=solver_label(D)), Line2D([], [], color=SOLVER_COLOR[G], lw=1.5, label=solver_label(G))]
+    handles += [Line2D([], [], color="#555555", marker=mk, ms=ms, ls="none", label=QUERY_LABEL[q]) for q, (mk, ms) in QUESTION_MARKER.items()]
+    handles += [Line2D([], [], color="#555555", marker="o", ms=6, ls="none", label="answered"),
+                Line2D([], [], color="#555555", marker="o", ms=6, mfc="#555555", mec="#000000", mew=1.2, ls="none", label="ended by the memory limit"),
+                Line2D([], [], color="#555555", marker="o", ms=6, mfc="white", ls="none", label="stopped by the time limit")]
+    fig.legend(handles=handles, loc="outside upper center", ncol=5, frameon=False, fontsize=7.5)
     save_svg(fig, ctx.fig_path("e2_memory_by_size"))
 
 
@@ -276,10 +306,10 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
         ax.axvline(cap, color="#999999", ls="--", lw=0.8)
         ax.text(0.01, cap * 1.2, "30 s limit: run stopped without an answer", transform=ax.get_yaxis_transform(), fontsize=7, color="#555555", va="bottom")
     ax.set_xlabel("time with automatic dispatch (ms, log scale)")
-    ax.set_ylabel("time with brute-force exploration (ms, log scale)")
+    ax.set_ylabel("time with reachability graph exploration (ms, log scale)")
     # which side is which goes next to the legend, outside the plotted area
     ax.text(1.02, 0.30, "Above the diagonal:\nautomatic dispatch faster", transform=ax.transAxes, fontsize=8, va="top", color="#333333")
-    ax.text(1.02, 0.16, "Below the diagonal:\nbrute-force exploration faster", transform=ax.transAxes, fontsize=8, va="top", color="#333333")
+    ax.text(1.02, 0.16, "Below the diagonal:\nRG exploration faster", transform=ax.transAxes, fontsize=8, va="top", color="#333333")
     ax.legend(frameon=False, fontsize=8, title="Kind of net", title_fontsize=8.5, loc="upper left", bbox_to_anchor=(1.02, 1.0))
     save_svg(fig, ctx.fig_path("e2_paired_scatter"))
     # time against net size, one panel per family
@@ -299,7 +329,7 @@ def _figures(ctx: Ctx, ok: pl.DataFrame) -> None:
             if cap:
                 ax.axhline(cap, color="#999999", ls="--", lw=0.8)
             ax.set_xscale("log"); ax.set_yscale("log")
-            ax.set_title(f"{CLASS_LABEL.get(r['cls'], r['cls']).split(' (')[0].capitalize()}: {FAMILY_LABEL.get(r['family'], r['family'])}", fontsize=8, loc="left")
+            ax.set_title(FAMILY_LABEL.get(r["family"], r["family"]), fontsize=8, loc="left")
             ax.tick_params(labelsize=7)
         for ax in axs.ravel()[n:]:
             ax.axis("off")

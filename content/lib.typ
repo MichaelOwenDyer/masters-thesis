@@ -1,5 +1,6 @@
-#let pre(x)  = $attach(#x, tl: •)$
-#let post(x) = $attach(#x, tr: •)$
+#let pre(x)  = $•#x$
+#let post(x) = $#x•$
+#let supp(x) = $chevron.l #x chevron.r$
 #let pipe = $triangle.stroked.r$
 #let lv(i) = $upright(L)_#i$
 #let reach = $arrow.r.squiggly$

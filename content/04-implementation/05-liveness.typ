@@ -4,47 +4,32 @@
 
 == Liveness
 
+[*Applicability*], [*Theorem*], [*Intuition*], [*Complexity*], [*Citation*], [*Implementation status*],
 
+[Strongly Connected State Machine],
+[All transitions are L4 live iff the initial marking contains at least one token],
+[Tokens are conserved and can reach every transition arbitrarily often.],
+[O(|P|)],
+[@esparza_petri_2026[Thm. 5.1.3]; @murata_petri_1989[Thm. 4, Thm. 7]],
+[Implemented],
 
-#figure(
-  kind: table,
-  caption: [
-    Known results for (L4-)liveness and the liveness levels, and their implementation status.
-    Direction: $⇔$ the condition characterises the property, $⇒$ the condition is sufficient, $⇐$ the condition is necessary.
-  ],
-  table(
-    columns: (auto, auto, auto, auto, auto, auto),
-    [*Applicability*], [*Theorem*], [*Intuition*], [*Complexity*], [*Citation*], [*Implementation status*],
-
-    [Strongly Connected State Machine],
-    [All transitions are L4 live iff the initial marking contains at least one token],
-    [Tokens are conserved and can reach every transition arbitrarily often.],
-    [O(|P|)],
-    [@esparza_petri_2026[Thm. 5.1.3]; @murata_petri_1989[Thm. 4, Thm. 7]],
-    [Implemented],
-
-    [State Machine],
-    [
-      Transitions between SCCs are L1;
-      transitions inside a nontrivial SCC downstream of a token are at least L3;
-      L4 if that SCC is the only terminal nontrivial SCC reachable from some marked SCC;
-      L0 if the SCC is unmarked and not downstream of any marked SCC.
-    ],
-    [
-      TODO: Actual proof
-      L0 means unreachable from every marked place.
-      L1 means reachable, but not on a cycle, so the transition fires at most `M₀(pre*(•t))` times.
-      L3 means reachable and on a cycle. L2 and L3 coincide in an S-net, so your code never emits L2. Say that in the thesis.
-      L4 means some marked q has `post*(q) ⊆ pre*(•t)`. That forces the SCC to be terminal, which is what your "unique reachable terminal SCC" test checks. State this lemma in the proof, because it's the real reason for the single-terminal rule.
-    ],
-    [],
-    [],
-    [],
-
-    [Marked Graph],
-    [],
-  ),
-) <liveness-theorems>
+[State Machine],
+[
+  Transitions between SCCs are L1;
+  transitions inside a nontrivial SCC downstream of a token are at least L3;
+  L4 if that SCC is the only terminal nontrivial SCC reachable from some marked SCC;
+  L0 if the SCC is unmarked and not downstream of any marked SCC.
+],
+[
+  TODO: Actual proof
+  L0 means unreachable from every marked place.
+  L1 means reachable, but not on a cycle, so the transition fires at most `M₀(pre*(•t))` times.
+  L3 means reachable and on a cycle. L2 and L3 coincide in an S-net, so your code never emits L2. Say that in the thesis.
+  L4 means some marked q has `post*(q) ⊆ pre*(•t)`. That forces the SCC to be terminal, which is what your "unique reachable terminal SCC" test checks. State this lemma in the proof, because it's the real reason for the single-terminal rule.
+],
+[],
+[],
+[],
 
 We can represent this property in Rust as an enum:
 

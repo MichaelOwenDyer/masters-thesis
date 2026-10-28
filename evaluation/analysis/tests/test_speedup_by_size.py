@@ -38,17 +38,23 @@ def test_speedup_summary_does_not_depend_on_the_sizes_tried(tmp_path):
     assert (tmp_path / "e2_speedup_by_size.svg").exists()
 
 
-def test_memory_by_size_counts_memouts_and_missing_values(tmp_path):
+def test_memory_runs_use_b_memory_for_timeouts_and_never_pool_questions(tmp_path):
     from analysis.e2 import _memory_by_size
-    base = {"cls": "sm", "family": "sm_x", "size": 16.0}
-    ok = pl.DataFrame([
-        {**base, "rss_d": 8000.0, "rss_g": 8388608.0, "verdict_d": "TRUE", "verdict_g": "MEMOUT"},
-        {**base, "rss_d": 9000.0, "rss_g": None, "verdict_d": "TRUE", "verdict_g": "TIMEOUT"},
+    base = {"cls": "mg", "family": "mg_x", "size": 4.0, "source": "fam", "instance_id": "i", "tid": "", "rep": 0}
+    runs = pl.DataFrame([
+        {**base, "query": "Q1", "solver_id": "pv-general", "verdict": "TIMEOUT", "peak_rss_kib": None, "rss_b_kib": 8_000_000.0},
+        {**base, "query": "Q2", "solver_id": "pv-general", "verdict": "FALSE", "peak_rss_kib": 7000.0, "rss_b_kib": 150_000.0},
+        {**base, "query": "Q3", "solver_id": "pv-general", "verdict": "MEMOUT", "peak_rss_kib": 8_388_608.0, "rss_b_kib": 8_388_608.0},
+        {**base, "query": "Q1", "solver_id": "pv-dispatch", "verdict": "TRUE", "peak_rss_kib": 34000.0, "rss_b_kib": 180_000.0},
     ])
     c = Stub(tmp_path)
     c.cfg = {"run": {"mem_limit_gib": 8}}
-    _memory_by_size(c, ok, ["sm"])
-    r = c.csvs["e2_memory_by_size"].row(0, named=True)
-    assert r["n_g_memout"] == 1 and r["n_g_no_value"] == 1 and r["n_g_with_value"] == 1
-    assert r["median_rss_g_mib"] == 8192.0 and abs(r["median_rss_d_mib"] - 8500 / 1024) < 1e-9
+    c.runs_meta = lambda campaign=None: runs
+    _memory_by_size(c, ["mg"])
+    d = c.csvs["e2_memory_by_size"]
+    row = lambda q, s: d.filter((pl.col("query") == q) & (pl.col("solver_id") == s)).row(0, named=True)
+    assert d.height == 4  # one row per question and mode, no pooling
+    assert row("Q1", "pv-general")["status"] == "time-out" and abs(row("Q1", "pv-general")["rss_mib"] - 8_000_000 / 1024) < 1e-9
+    assert row("Q2", "pv-general")["status"] == "answered" and abs(row("Q2", "pv-general")["rss_mib"] - 7000 / 1024) < 1e-9  # M's value, not B's
+    assert row("Q3", "pv-general")["status"] == "memory-out" and row("Q3", "pv-general")["rss_mib"] == 8192.0
     assert (tmp_path / "e2_memory_by_size.svg").exists()

@@ -6,37 +6,26 @@
 
 The following is a summary of known results for deadlock-freedom and their implementation status in petrivet.
 
-#figure(
-  kind: table,
-  caption: [Known results for deadlock-freedom and their implementation status.],
-  table(
-    columns: (auto, auto, auto, auto, auto, auto),
-    [*Applicability*], [*Theorem*], [*Intuition*], [*Complexity*], [*Citation*], [*Implementation status*],
+[General],
+[Deadlock-free <= there exists a transition with an empty preset],
+[
+  A transition with an empty preset is vacuously enabled at every marking,
+  ensuring that the set of enabled transitions is never empty.
+],
+[O(|T|)],
+[],
+[Implemented],
 
-    [General],
-    [Deadlock-free <= there exists a transition with an empty preset],
-    [
-      A transition with an empty preset is vacuously enabled at every marking,
-      ensuring that the set of enabled transitions is never empty.
-    ],
-    [O(|T|)],
-    [],
-    [Implemented],
-
-    [State Machine],
-    [Deadlock-free <=> there exists a marked place with no path to a sink place.],
-    [
-      (⇐) The set R of places reachable from the marked place p₀ is closed under successors and holds a token forever.
-      It contains no place with an empty postset, so some transition is always enabled.
-      (⇒) If every marked place reaches a sink, walk all tokens into sinks. That marking is dead.
-    ],
-    [O(|P| + |T|)],
-    [Own derivation], // TODO: Search literature
-    [Implemented],
-
-
-  ),
-)
+[State Machine],
+[Deadlock-free <=> there exists a marked place with no path to a sink place.],
+[
+  (⇐) The set R of places reachable from the marked place p₀ is closed under successors and holds a token forever.
+  It contains no place with an empty postset, so some transition is always enabled.
+  (⇒) If every marked place reaches a sink, walk all tokens into sinks. That marking is dead.
+],
+[O(|P| + |T|)],
+[Own derivation], // TODO: Search literature
+[Implemented],
 
 Dimensions:
 

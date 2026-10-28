@@ -11,36 +11,36 @@ The proof uses the following known facts.
 
 Let $t in T$ and $s_t := pre(t)$ (the unique input place of $t$).
 
-Let $||M_0|| := {p in P : M_0(p) > 0}$ be the support of the initial marking.
+Let $supp(M_0) := {p in P : M_0(p) > 0}$ be the support of the initial marking.
 
 Let $K(t)$ be the SCC of $cal(C)$ containing $t$.
 
 #lemma(title: "Classification")[
-  + _Dead._ $t$ is $lv(0)$ iff no place of $||M_0||$ reaches $s_t$.
-  + _Strictly $lv(1)$._ If some place of $||M_0||$ reaches $s_t$ and $K(t)$ is trivial, then $t$ is $lv(1)$-live and not $lv(2)$-live.
-  + _$lv(3)$._ If some place of $||M_0||$ reaches $s_t$ and $K(t)$ is nontrivial, then $t$ is $lv(3)$-live.
-  + _$lv(4)$._ $t$ is live iff there is a $q in ||M_0||$ with $poststar(q) subset.eq prestar(s_t)$.
+  + _Dead._ $t$ is $lv(0)$ iff no place of $supp(M_0)$ reaches $s_t$.
+  + _Strictly $lv(1)$._ If some place of $supp(M_0)$ reaches $s_t$ and $K(t)$ is trivial, then $t$ is $lv(1)$-live and not $lv(2)$-live.
+  + _$lv(3)$._ If some place of $supp(M_0)$ reaches $s_t$ and $K(t)$ is nontrivial, then $t$ is $lv(3)$-live.
+  + _$lv(4)$._ $t$ is live iff there is a $q in supp(M_0)$ with $poststar(q) subset.eq prestar(s_t)$.
   _Proof._
 
-  (1) If $q in ||M_0||$ reaches $s_t$, move a token to $s_t$ (Fact 2) and fire $t$.
-  Otherwise, every marking $M$ reachable from $M_0$ and every $r in P$ satisfies $M(r) > 0 arrow.r.double exists q in ||M_0||: q reach r$, because a firing moves a token only to a successor of its place.
+  (1) If $q in supp(M_0)$ reaches $s_t$, move a token to $s_t$ (Fact 2) and fire $t$.
+  Otherwise, every marking $M$ reachable from $M_0$ and every $r in P$ satisfies $M(r) > 0 arrow.r.double exists q in supp(M_0): q reach r$, because a firing moves a token only to a successor of its place.
   So $s_t$ is never marked.
 
   (2) By (1), $t$ is $lv(1)$-live.
   A token's trajectory is a walk in $N$.
   If it fired $t$ twice, the walk between the two firings would close a circuit through $t$, contradicting that $K(t)$ is trivial.
-  Hence every token fires $t$ at most once, and by Fact 2 $t$ fires at most $|{p in ||M_0|| : p reach s_t}|$ times in any firing sequence (hence not $lv(2)$-live).
+  Hence every token fires $t$ at most once, and by Fact 2 $t$ fires at most $|{p in supp(M_0) : p reach s_t}|$ times in any firing sequence (hence not $lv(2)$-live).
 
   (3) Move a token to $s_t$.
   As $K(t)$ is strongly connected and nontrivial, it contains a circuit through $t$, and the token can run around this circuit forever.
   This is an infinite firing sequence containing $t$ infinitely often.
 
-  (4) ($arrow.l.double$) Let $B := poststar(q)$ for some $q in ||M_0||$ with $B subset.eq prestar(s_t)$.
+  (4) ($arrow.l.double$) Let $B := poststar(q)$ for some $q in supp(M_0)$ with $B subset.eq prestar(s_t)$.
   $B$ is closed under successors, so no firing removes the last token from $B$: a firing either does not touch $B$ or moves a token inside $B$.
   Hence $M(B) >= M_0(q) >= 1$ in every reachable $M$.
   Every place of $B subset.eq prestar(s_t)$ reaches $s_t$, so by Fact 2 $t$ can fire from $M$.
 
-  ($arrow.r.double$) Suppose no such $q$ exists, so for every $q in ||M_0||$ there is $r_q in poststar(q) without prestar(s_t)$.
+  ($arrow.r.double$) Suppose no such $q$ exists, so for every $q in supp(M_0)$ there is $r_q in poststar(q) without prestar(s_t)$.
   By Fact 2 we move every token of every marked place $q$ to $r_q$.
   The resulting marking $M$ has no token in $prestar(s_t)$.
   $P without prestar(s_t)$ is closed under successors, since a place with a successor in $prestar(s_t)$ would itself lie in $prestar(s_t)$.
@@ -53,7 +53,7 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
 #lemma(title: "Live SCCs")[
 
   Let $t in T$ with $K := K(t)$ nontrivial.
-  $poststar(q) subset.eq prestar(s_t)$ for some $q in ||M_0||$ iff $K$ is terminal and $K$ is the only terminal SCC reachable from $q$.
+  $poststar(q) subset.eq prestar(s_t)$ for some $q in supp(M_0)$ iff $K$ is terminal and $K$ is the only terminal SCC reachable from $q$.
 
   _Proof._
 
@@ -72,9 +72,9 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
 
   After termination, for every SCC $K$:
 
-  $ell[K] = lv(0)$ if no node of $K$ is reachable from $||M_0||$;
+  $ell[K] = lv(0)$ if no node of $K$ is reachable from $supp(M_0)$;
 
-  $ell[K] = lv(1)$ if $K$ is trivial and reachable from $||M_0||$;
+  $ell[K] = lv(1)$ if $K$ is trivial and reachable from $supp(M_0)$;
 
   $ell[K] = lv(4)$ if $K$ is nontrivial, terminal, and the unique terminal SCC reachable from some marked place; and
 
@@ -88,7 +88,7 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
   Initially $r = m$.
   Every predecessor of $K$ precedes $K$ in $pi$, so by the induction hypothesis its flag is final when it is visited, and a reachable predecessor sets $r[K]$.
   Conversely only a reachable predecessor or $m[K]$ can set $r[K]$.
-  Since the nodes reachable from a marked place are those of the SCCs reachable from its SCC, $r$ identifies exactly the SCCs reachable from $||M_0||$.
+  Since the nodes reachable from a marked place are those of the SCCs reachable from its SCC, $r$ identifies exactly the SCCs reachable from $supp(M_0)$.
 
   _Terminal SCCs._ Let $"Term"(K)$ be the set of terminal SCCs reachable from $K$; it is nonempty by Fact 3.
   We show by induction over $"rev"(pi)$ that $sigma[K] = "One"(K')$ if $"Term"(K) = {K'}$ and $sigma[K] = "Multiple"$ otherwise.
@@ -111,7 +111,7 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
 
   $lv(0)$ iff $t$ is dead, $lv(1)$ iff $t$ is strictly $lv(1)$-live, $lv(3)$ iff $t$ is strictly $lv(3)$-live, and $lv(4)$ iff $t$ is $lv(4)$-live.
   _Proof._ The four cases of the Algorithm lemma are exhaustive and mutually exclusive.
-  The case $lv(0)$ is part (1) of the Classification lemma: since $s_t$ is the only predecessor of $t$, a marked place reaches $t$ iff it reaches $s_t$, i.e. iff $K(t)$ is reachable from $||M_0||$.
+  The case $lv(0)$ is part (1) of the Classification lemma: since $s_t$ is the only predecessor of $t$, a marked place reaches $t$ iff it reaches $s_t$, i.e. iff $K(t)$ is reachable from $supp(M_0)$.
   The case $lv(1)$ is part (2), $lv(4)$ is part (4) combined with the Live SCCs lemma, and for $lv(3)$ we use part (3) and the fact that $t$ is not live by part (4).
 ]
 

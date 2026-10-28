@@ -1,120 +1,73 @@
-#import "./01-introduction/03-research-questions.typ": *
-
-= Related Work <related-work>
-
-This chapter answers #rqs.existing-tools: to what extent do existing Petri net analysis tools meet the requirements R1 to R8 derived in @motivation?
-Those are programmatic access (R1),
-safe portability (R2),
-cost control (R3),
-model interchange (R4),
-performance and memory efficiency (R5),
-evidence with answers (R6),
-extensibility (R7),
-and approachability (R8).
-Correctness of the answers is a precondition for all of them and is not rated (see the threats to validity).
-R8 is the softest of them: it cannot be measured directly, and I only describe how `petrivet` addresses it.
-The choice of language and the design principles that follow from the requirements are discussed in @solution-design.
-I first describe the methodology used to select the tools to survey, and then present the 37 selected tools
-with regard to their support for the requirements.
-Beyond the ratings, I look at one more feature that matters for #rqs.procedure-dispatch:
-whether a tool documents that it chooses its procedure by the structure of the net.
-Finally, I state the conclusions drawn from the survey and state the gap that `petrivet` aims to fill.
-
-== Survey Methodology
-
-I followed a structured literature review protocol @kitchenham_systematic_2009 to identify relevant Petri net analysis tools.
-The protocol was fixed before the survey was conducted.
-I searched ten sources: // todo: update last accessed dates
-Google Scholar #footnote[scholar.google.com, last accessed: 2026-10-14],
-DBLP #footnote[dblp.org, last accessed: 2026-10-14],
-the ACM Digital Library #footnote[dl.acm.org, last accessed: 2026-10-14],
-and SpringerLink #footnote[link.springer.com, last accessed: 2026-10-14] for papers;
-crates.io #footnote[crates.io, last accessed: 2026-10-14],
-PyPI #footnote[pypi.org, last accessed: 2026-10-14],
-and GitHub #footnote[github.com, last accessed: 2026-10-14] for software packages;
-the Hamburg Petri Nets Tool Database #footnote[www2.informatik.uni-hamburg.de/tgi/PetriNets/tools/db.html],
-and the participant list of the 2025 Model Checking Contest. TODO: add 2026 tools
-In addition, the tools already known through prior experience were included in the survey.
-A set of search queries was defined for each source, and the top N search results by relevance were collected.
-
-A record entered the review in two stages.
-At stage 1, search results were roughly filtered for relevance based on title, description/abstract, and metadata.
-At stage 2, the remaining records were filtered for relevance by reading the documentation and/or source code of the tool.
-A tool was included if its documentation mentioned a decision procedure for place/transition nets
-(or nets which can be interpreted as such) for at least one of boundedness, deadlock-freedom, liveness, reachability
-or coverability (Inclusion Criterion 1, IC1);
-if it is at least partially documented and available for download (IC2);
-and if its last release or commit is dated within ten years of the survey, 2016-10-14 or later (IC3).
-Pure editors and simulators without analysis capabilities were excluded (Exclusion Criterion 1, EC1),
-as well as tools which only support colored, timed, stochastic, or other non-ordinary Petri nets (EC2).
-
-IC3 was widened from 5 to 10 years after the survey had begun, in order to include LoLA @schmidt_lola_2000, a prominent tool which
-was last released in 2020. This and other protocol amendments are documented in the survey log @appendix.
-
-The 785 records collected from the ten sources were filtered in stage 1 with the help of Claude Sonnet 5.5,
-and a random sample of 20% (157) of the records was filtered by hand to verify the quality of the filtering.
-Agreement between the two filtering methods was 94.3%, and Cohen's kappa was a moderate 0.50, which is explained
-by the low proportion of results which contained a relevant tool.
-No disagreement was responsible for adding or removing a tool from the survey.
-46 records passed stage 1 and were filtered by hand in stage 2, resulting in 37 tools which met the inclusion criteria.
+#import "../lib.typ": *
 
 == Survey Results
 
 The 37 tools fall into five categories based on their primary purpose:
 
-*Performance-oriented model checkers* (nine tools) are built with LTL and CTL properties in mind:
-TAPAAL/VerifyPN @jensen_tapaal_2016,
-TINA,
-ITS-Tools,
-LoLA @schmidt_lola_2000,
-Marcie,
-GreatSPN,
-LTSmin,
-pnmc,
-and mcc4mcc, which is a meta-tool that dispatches queries to other tools.
-
+*Performance-oriented model checkers* (9) are built with LTL and CTL properties in mind:
+- TAPAAL/VerifyPN #footnote[https://www.tapaal.net/, last accessed: 2026-10-27] @jensen_tapaal_2016,
+- TINA #footnote[https://projects.laas.fr/tina/, last accessed: 2026-10-25] @berthomieu__tool_2004 @vernadat_time_2006,
+- ITS-Tools #footnote[https://lip6.github.io/ITSTools-web/, last accessed: 2026-10-27] @thierry-mieg_symbolic_2015,
+- LoLA #footnote[https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/, last accessed: 2026-10-27] @schmidt_lola_2000,
+- Marcie #footnote[https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Marcie, last accessed: 2026-10-14],
+- GreatSPN #footnote[https://github.com/greatspn/SOURCES, last accessed: 2026-10-14],
+- LTSmin #footnote[https://github.com/utwente-fmt/ltsmin, last accessed: 2026-10-14],
+- pnmc #footnote[https://github.com/ahamez/pnmc, last accessed: 2026-10-14], and
+- mcc4mcc #footnote[https://github.com/cui-unige/mcc4mcc, last accessed: 2026-10-14], which is a meta-tool that dispatches queries to other tools.
 They scale through reductions @thierry-mieg_structural_2020, decision diagrams @couvreur_hierarchical_2005 and partial-order methods @valmari_stubborn_1991.
-Most are written in C or C++ and take their query as a temporal-logic formula.
+Most are written in C or C++ and accept queries in the form of temporal-logic formulae.
 
-*Constraint-based analyzers* (six tools) formulate Petri net properties in a constraint language and solve them with a SAT or SMT solver:
-SMPT,
-Petrinizer @esparza_smt-based_2014,
-QCover,
-Inequalizer,
-mist,
-and bounded-model-checker-for-petri-nets.
+*Constraint-based analyzers* (6) formulate Petri net properties in a constraint language and dispatch to a SAT or SMT solver:
+- SMPT #footnote[https://github.com/nicolasAmat/SMPT, last accessed: 2026-10-14],
+- Petrinizer #footnote[https://github.com/cryptica/pnerf, last accessed: 2026-10-14] @esparza_smt-based_2014,
+- QCover #footnote[https://github.com/michaelblondin/qcover, last accessed: 2026-10-14],
+- Inequalizer #footnote[https://github.com/florianfurbach/Inequalizer, last accessed: 2026-10-14],
+- mist #footnote[https://github.com/pierreganty/mist, last accessed: 2026-10-14], and
+- bounded-model-checker-for-petri-nets #footnote[https://github.com/tatsuhirotsuchiya/bounded-model-checker-for-petri-nets, last accessed: 2026-10-14].
 Their results tend to include independently verifiable certificates as a by-product of the constraint solving process.
 
-*Workflow and process-mining tools* (eight tools) are designed to analyze soundness of workflow nets:
-WoPeD @freytag_woped_2017,
-ProM with Woflan
-PM4Py,
-Wolfgang,
-jBPT,
-YAPNE,
-wasm4pm,
-and bpmn2pnml-ltl-analyzer.
-They answer a single composite query: "Is this workflow net sound?" and can point out particular
-transitions or places which violate soundness.
+*Workflow and process-mining tools* (8) are designed to analyze soundness of workflow nets
+#footnote[
+  A workflow net is a Petri net exhibiting
+  a single source place (with an empty preset) which can reach every other node, and
+  a single sink place (with an empty postset) which every other node can reach @van_der_aalst_verification_1997.
+  They are commonly used to model and analyze business processes.
+]:
+- WoPeD #footnote[https://github.com/woped/WoPeD, last accessed: 2026-10-14] @freytag_woped_2017,
+- ProM with Woflan #footnote[https://github.com/promworkbench, last accessed: 2026-10-14]
+- PM4Py #footnote[https://github.com/process-intelligence-solutions/pm4py, last accessed: 2026-10-14],
+- Wolfgang #footnote[https://github.com/iig-uni-freiburg/WOLFGANG, last accessed: 2026-10-27],
+- jBPT #footnote[https://github.com/jbpt/codebase, last accessed: 2026-10-14],
+- YAPNE #footnote[https://github.com/chimenkamp/YAPNE-Yet-Another-Petri-Net-Editor, last accessed: 2026-10-14],
+- wasm4pm #footnote[https://github.com/seanchatmangpt/wasm4pm, last accessed: 2026-10-14], and
+- bpmn2pnml-ltl-analyzer #footnote[https://github.com/Research-MCI/BPMN2PNML-LTL-Analyzer, last accessed: 2026-10-14].
+They answer a single composite query: "Is this workflow net sound
+#footnote[
+  Soundness is a composite property of workflow nets requiring
+  (1) there is exactly one reachable deadlock (final marking) which puts one token in the end place and no tokens elsewhere,
+  (2) the final marking is reachable from every reachable marking, and
+  (3) every transition is at least #lv(1)-live in the initial marking.
+]?"
+and can point out particular transitions or places which violate soundness.
 
-*Libraries and small tools in language ecosystems* (seven tools) offer analysis as a function call from Python, Rust or Go:
-SNAKES,
-petritub,
-go-pflow,
-isene/petri,
-visualpetri-mcp,
-libpetri,
-and petricheck.
+*Libraries and small tools in language ecosystems* (7) offer analysis as a function call from Python, Rust or Go:
+- SNAKES #footnote[https://github.com/fpom/snakes, last accessed: 2026-10-14],
+- petritub #footnote[https://control.gitlab-pages.tu-berlin.de/discrete-event-systems/bsc-thesis-code/petri-tub-max-plus-automata, last accessed: 2026-10-14],
+- go-pflow #footnote[https://github.com/pflow-xyz/go-pflow, last accessed: 2026-10-14],
+- isene/petri #footnote[https://github.com/isene/petri, last accessed: 2026-10-14],
+- visualpetri-mcp #footnote[https://github.com/everlnggg/visualpetri-mcp, last accessed: 2026-10-14],
+- libpetri #footnote[https://github.com/debe/libpetri, last accessed: 2026-10-14], and
+- petricheck #footnote[https://github.com/erwanM974/petricheck, last accessed: 2026-10-14].
 They are generally limited in scope (capped state space, only one property, etc.) and their documentation is overall sparse.
 
-*Teaching, desktop and web analysers* (seven tools) place a graphical user interface in front of classical algorithms (mostly Karp-Miller coverability tree @karp_parallel_1969):
-APT,
-Charlie @heiner_charlie_2015,
-the MATLAB Petri Net Toolbox,
-GPenSIM,
-Hippo-CPS,
-PnAT,
-and petri-nets-tool-reactjs.
+*Teaching, desktop and web analysers* (7) place a graphical user interface in front of classical algorithms (mostly Karp-Miller coverability tree @karp_parallel_1969):
+- APT #footnote[https://github.com/CvO-Theory/apt, last accessed: 2026-10-14],
+- Charlie #footnote[https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Charlie, last accessed: 2026-10-14] @heiner_charlie_2015,
+- the MATLAB Petri Net Toolbox #footnote[https://www.pntool.ac.tuiasi.ro/, last accessed: 2026-10-14],
+- GPenSIM #footnote[https://www.davidrajuh.net/gpensim, last accessed: 2026-10-14],
+- Hippo-CPS #footnote[https://hippo.uz.zgora.pl, last accessed: 2026-10-14],
+- PnAT #footnote[https://github.com/dbera/Petri-net-Analysis-Tools, last accessed: 2026-10-14], and
+- petri-nets-tool-reactjs #footnote[https://github.com/albertovalerio/petri-nets-tool-reactjs, last accessed: 2026-10-14].
 
 == Findings
 
@@ -131,10 +84,11 @@ it is not a rated requirement and is discussed separately below.
 
 #text(fill: red)[\[TODO: re-check the "Dispatch by net class" entry of every row against the tool's documentation and source. The column was filled in as a side note when the survey was done, but dispatching by net structure has since become a central claim of the thesis (RQ2), so each entry must be verified before the finding below is relied on.\]]
 
+#show figure: set block(breakable: true)
 #figure(
   kind: table,
   caption: "Table of the 37 tools surveyed, their properties, and the scores for each requirement.",
-  text(size: 5.5pt, table(
+  text(size: 8pt, table(
     columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto),
     align: (left, left, left, left, center, center, center, center, center, center, left, center, center, left),
     inset: 2.5pt,
@@ -185,15 +139,15 @@ it is not a rated requirement and is discussed separately below.
   )),
 ) <tab:landscape>
 
+#show figure: set block(breakable: false)
 #figure(
-  caption: [Number of the 37 tools that meet each requirement fully (dark), partly (medium) or not (light). The ratings for R6 follow the evidence rule given above.],
   {
     let total = 37
     let w = 9cm
     let seg(count, fill, txtcolor) = if count > 0 { box(width: w * count / total, height: 0.45cm, fill: fill, align(center + horizon, text(size: 7pt, fill: txtcolor)[#count])) }
     let bar(label, met, part, no) = grid(columns: (4.2cm, auto), column-gutter: 4pt, align: horizon,
       text(size: 8pt)[#label],
-      stack(dir: ltr, seg(met, rgb("#2a6f4f"), white), seg(part, rgb("#9bc4ae"), black), seg(no, luma(225), black)))
+      stack(dir: ltr, seg(met, luma(50), white), seg(part, luma(170), black), seg(no, luma(225), black)))
     stack(dir: ttb, spacing: 5pt,
       bar([R1 programmatic access], 15, 17, 5),
       bar([R2 safe portability], 16, 10, 11),
@@ -205,6 +159,10 @@ it is not a rated requirement and is discussed separately below.
       bar([R8 approachability], 7, 18, 12),
     )
   },
+  caption: [
+    Number of the 37 tools that meet each requirement fully (dark), partly (medium) or not (light).
+    The ratings for R6 follow the evidence rule given above.
+  ],
 ) <fig:landscape-bars>
 
 *R1, programmatic access.* Fifteen tools return structured data from a function call or command-line interface,
@@ -238,8 +196,6 @@ The remaining twenty-two tools have no performance evidence.
 *R6, evidence with answers.* Twenty tools can return a witness or counterexample (eighteen tools) or an independently
 verifiable certificate (five tools, three of which also return a witness).
 Nine more can only name the net elements responsible for a negative result, and eight offer no evidence beyond the answer.
-As a side remark, twenty-eight tools can name the technique that decided a query and seven cite the theorem on which the answer rests;
-this is documentation, not evidence for a particular answer, and does not count towards the rating.
 
 *R7, extensibility.* Nine tools (APT, SNAKES, PM4Py, bpmn2pnml-ltl-analyzer, LTSmin, jBPT, go-pflow, libpetri and petricheck)
 publish their source under an OSI-approved license and are either usable as a library or document an extension mechanism.
@@ -298,27 +254,3 @@ theory and pick the tool, or the option, themselves.
 This is the gap that `petrivet` aims to fill: a library that is programmatically accessible, memory-safe and extensible,
 that decides each question with the cheapest procedure applicable to the net, that lets the caller bound the cost, and that is measured against the
 established tools in @evaluation.
-
-== Threats to validity
-
-- The sample is selected by search and not exhaustive; tools without English or German documentation or without a public page are not included.
-- R7 and R8 were added after the survey had begun, as an amendment to the protocol.
-The rating rules were fixed before any data for them was collected.
-They are coarse, observable proxies: the license, the presence of a library interface or documented extension point,
-and five repository indicators. The facts were collected with the help of Claude Sonnet 5.5 from the tools' public pages and repositories,
-at most a few minutes per tool, and not checked by a second rater.
-For five tools (Marcie, Charlie, petritub, ProM/Woflan and Wolfgang) the first pass could not reach or identify the source;
-their ratings rest on a later manual look or default to "not met".
-Commits by AI accounts are not counted as a second author, which lowers the R8 rating of tools maintained by one human with an AI assistant.
-- Correctness of the surveyed tools is not rated and is assumed.
-For the contest participants it is supported by their participation in the Model Checking Contest, whose results are cross-checked,
-but for the other tools no evidence was collected.
-- R6 and R8 were defined more narrowly than in the first version of the protocol:
-R6 started as "traceability to theory" and was reduced to evidence for answers, and R8 is rated only through contributor indicators.
-The ratings in the table follow the narrower definitions.
-- Tools I already knew from prior experience were added by hand, so the selection is biased towards tools familiar to me and, through them, to the model checking community.
-- I later apply the same rubric to `petrivet` myself (@eval-requirements), so that rating is not independent of the one given to the surveyed tools,
-and no second rater checked either.
-- The scoring is subjective and unverified; I did not ask the authors of the tools to confirm my assessment.
-- "Not documented" means that I could not find documentation, not that the tool does not have it.
-- Maintenance is judged by the date of the last release or commit, which may not reflect the actual state of the project.

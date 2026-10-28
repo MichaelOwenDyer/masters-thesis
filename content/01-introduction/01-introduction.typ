@@ -1,3 +1,4 @@
+#pagebreak(weak: true)
 = Introduction
 
 Petri nets are a well-established mathematical and graphical formalism for modeling concurrent systems,

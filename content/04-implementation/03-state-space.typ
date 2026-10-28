@@ -17,7 +17,7 @@ The explorer maintains a "frontier" of transitions enabled in some discovered ma
 
 The `ReachabilityGraph` structure represents a fully-explored reachability graph, and provides methods to query the graph for properties such as boundedness, deadlock-freedom, and liveness,
 which, if we have already done the work of constructing the entire graph, can be answered in linear time by traversing the graph.
-The enormous computational cost of constructing the graph in general in the first place cannot be understated, and so the user should be aware of the potential for long-running computations when calling this method,
+The enormous computational cost of constructing the graph in general in the first place cannot be overstated, and so the user should be aware of the potential for long-running computations when calling this method,
 or, if the Petri net happens to be unbounded, the graph is infinite and construction will not terminate.
 
 A highly related concept is the Karp-Miller coverability graph, which is identical to the reachability graph for bounded Petri nets,

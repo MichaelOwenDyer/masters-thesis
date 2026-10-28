@@ -13,7 +13,8 @@ A hint file (JSON) overrides single nodes: {"positions": {"p0": [col, row], ...}
 distance); nodes not mentioned keep their computed place. With positions for every node no layering is done.
 
 Drawing: places are circles, transitions are squares, arcs carry an arrowhead and a weight label when the weight is
-not 1, tokens are dots (a number above four). The module can be imported: ``parse_pnml``, ``layout``, ``render``,
+not 1, tokens are dots (a number above four), a label "P_1" is drawn as P with the subscript 1, and highlighted node
+sets get a shaded box with a dashed outline. The module can be imported: ``parse_pnml``, ``layout``, ``render``,
 ``render_grid`` (several nets as labelled panels in one SVG).
 """
 
@@ -235,17 +236,33 @@ def _score(net: Net, pos, chains) -> float:
     return 10 * cross + 10 * through + length / 1000
 
 
-def _rotate(pos):
-    """Rotate so that the longer extent (principal axis) of the drawing is horizontal."""
+def _rotate(pos, tall: bool = False):
+    """Rotate so that the longer extent (principal axis) of the drawing is horizontal (vertical if ``tall``)."""
     xs = [p[0] for p in pos.values()]
     ys = [p[1] for p in pos.values()]
     mx, my = sum(xs) / len(xs), sum(ys) / len(ys)
     sxx = sum((x - mx) ** 2 for x in xs)
     syy = sum((y - my) ** 2 for y in ys)
     sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
-    th = 0.5 * math.atan2(2 * sxy, sxx - syy)
+    th = 0.5 * math.atan2(2 * sxy, sxx - syy) - (math.pi / 2 if tall else 0.0)
     c, s_ = math.cos(-th), math.sin(-th)
     return {n: ((x - mx) * c - (y - my) * s_, (x - mx) * s_ + (y - my) * c) for n, (x, y) in pos.items()}
+
+
+def _squarify(pos):
+    """Rotate the drawing so that its bounding box is about square (within 1.3 : 1), preferring an upright one."""
+    pos = _rotate(pos)
+    best = None
+    for deg in range(0, 180, 5):
+        c, s_ = math.cos(math.radians(deg)), math.sin(math.radians(deg))
+        q = {n: (x * c - y * s_, x * s_ + y * c) for n, (x, y) in pos.items()}
+        w = max(p[0] for p in q.values()) - min(p[0] for p in q.values()) + 1.0
+        h = max(p[1] for p in q.values()) - min(p[1] for p in q.values()) + 1.0
+        off = abs(math.log(w / h))
+        key = (0.0 if off <= 0.25 else off, deg % 90 != 0, w * h)
+        if best is None or key < best[0]:
+            best = (key, q)
+    return best[1]
 
 
 def _force(net: Net, seed: int):
@@ -336,7 +353,7 @@ def _ring(net: Net):
     return pos
 
 
-def layout(net: Net, hint: dict | None = None, rankdir: str = "LR", method: str = "auto"):
+def layout(net: Net, hint: dict | None = None, rankdir: str = "LR", method: str = "auto", tall: bool = False, square: bool = False):
     """Return (positions in pixels of the nodes and of the dummy nodes of long edges, chains of dummy nodes per edge)."""
     nodes = list(net.places) + list(net.transitions)
     fixed = {n: net.places.get(n, net.transitions.get(n))["pos"] for n in nodes}
@@ -354,13 +371,20 @@ def layout(net: Net, hint: dict | None = None, rankdir: str = "LR", method: str 
             lanes = sum(1 for ch in chains.values() if len(ch) > 2)
             best = (_score(net, pos, chains) + 10 * lanes, pos, chains)
             if method == "force" or best[0] >= 40:
-                cands = [(_score(net, f, {}), f, {}) for f in (_rotate(_force(net, sd)) for sd in range(30))]
-                top = min(cands, key=lambda c: c[0])
+                cands = [(_score(net, f, {}), f, {}) for f in ((_squarify(_force(net, sd)) if square else _rotate(_force(net, sd), tall)) for sd in range(30))]
+                def area(f):
+                    return (max(p[0] for p in f.values()) - min(p[0] for p in f.values())) * (max(p[1] for p in f.values()) - min(p[1] for p in f.values()))
+
+                # among equally clean layouts a square picture takes the most compact one
+                top = min(cands, key=(lambda c: (round(c[0]), area(c[1]))) if square else (lambda c: c[0]))
                 best = top if method == "force" or top[0] <= best[0] / 2 else best
             _, pos, chains = best
     for n, (c, r) in ((hint or {}).get("positions", {})).items():
         if n in pos:
             pos[n] = (c * DX, r * DY) if rankdir == "LR" else (r * DY, c * DX)
+    if hint and nodes and all(n in hint.get("positions", {}) for n in nodes):  # every node is placed by hand: straight edges
+        pos = {n: pos[n] for n in nodes}
+        chains = {}
     lo_x = min((p[0] for p in pos.values()), default=0)
     lo_y = min((p[1] for p in pos.values()), default=0)
     return {n: (x - lo_x, y - lo_y) for n, (x, y) in pos.items()}, chains
@@ -500,15 +524,32 @@ def _label_text(net: Net, n: str, mode: str, label_map: dict) -> str | None:
     return None
 
 
+def _highlight(net: Net, pos, nodes, labelled: bool) -> tuple[float, float, float, float]:
+    """Box (x0, y0, x1, y1) around the given nodes with some room to spare, and below them for their labels."""
+    pad = 6.0
+    xs0 = [pos[n][0] - (R_PLACE if net.is_place(n) else S_TRANS / 2) - pad for n in nodes]
+    xs1 = [pos[n][0] + (R_PLACE if net.is_place(n) else S_TRANS / 2) + pad for n in nodes]
+    ys0 = [pos[n][1] - (R_PLACE if net.is_place(n) else S_TRANS / 2) - pad for n in nodes]
+    ys1 = [pos[n][1] + (R_PLACE if net.is_place(n) else S_TRANS / 2) + pad + (10 if labelled else 0) for n in nodes]
+    return min(xs0), min(ys0), max(xs1), max(ys1)
+
+
 def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels: str = "none",
-                label_map: dict | None = None, uid: str = "n", method: str = "auto") -> tuple[str, float, float]:
-    """SVG elements of one net (without the outer <svg>), and its width and height including the margin."""
+                label_map: dict | None = None, uid: str = "n", method: str = "auto", tall: bool = False, square: bool = False,
+                highlights: list | None = None) -> tuple[str, float, float]:
+    """SVG elements of one net (without the outer <svg>), and its width and height including the margin.
+
+    ``highlights`` is a list of node sets, each drawn as a shaded box with a dashed outline behind its nodes."""
     label_map = label_map or {}
-    raw_pos, chains = layout(net, hint, rankdir, method)
+    raw_pos, chains = layout(net, hint, rankdir, method, tall, square)
     pos = {n: p for n, p in raw_pos.items() if not n.startswith("~")}
     dummies = {n: p for n, p in raw_pos.items() if n.startswith("~")}
     allp = {**pos, **dummies}
     out: list[str] = []
+    boxes = [_highlight(net, pos, hl, labels != "none" or bool(label_map)) for hl in highlights or []]
+    for x0, y0, x1, y1 in boxes:
+        out.append(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" rx="8" fill="#ececec" '
+                   f'stroke="#000" stroke-width="0.8" stroke-dasharray="3,2"/>')
     arc_set = {(a, b) for a, b, _ in net.arcs}
     for s, t, w in net.arcs:
         chain = None
@@ -551,11 +592,15 @@ def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels:
         lab = _label_text(net, n, labels, label_map)
         if lab:
             ly = y + (R_PLACE if net.is_place(n) else S_TRANS / 2) + 9
-            out.append(f'<text x="{x:.1f}" y="{ly:.1f}" font-size="8.5" text-anchor="middle" font-family="{FONT}" font-style="italic">{escape(lab)}</text>')
+            base, sub = lab.rsplit("_", 1) if "_" in lab else (lab, "")  # "P_1": P with the subscript 1
+            sub = f'<tspan dy="2" font-size="6" font-style="normal">{escape(sub)}</tspan>' if sub else ""
+            out.append(f'<text x="{x:.1f}" y="{ly:.1f}" font-size="8.5" text-anchor="middle" font-family="{FONT}" font-style="italic">{escape(base)}{sub}</text>')
     xs = [p[0] for p in allp.values()] or [0]
     ys = [p[1] for p in allp.values()] or [0]
     w = max(xs) + 2 * MARGIN
     h = max(ys) + 2 * MARGIN + (10 if labels != "none" or label_map else 0)
+    for x0, y0, x1, y1 in boxes:  # a box may reach further out than the margin
+        w, h = max(w, x1 + MARGIN + 1), max(h, y1 + MARGIN + 1)
     body = f'<g transform="translate({MARGIN},{MARGIN})">' + "".join(out) + "</g>"
     return body, w, h
 
@@ -566,19 +611,20 @@ def _defs(uid: str) -> str:
 
 
 def render(net: Net, hint: dict | None = None, rankdir: str = "LR", labels: str = "none",
-           label_map: dict | None = None, scale: float = 1.0, method: str = "auto") -> str:
-    body, w, h = render_body(net, hint, rankdir, labels, label_map, method=method)
+           label_map: dict | None = None, scale: float = 1.0, method: str = "auto", tall: bool = False, square: bool = False,
+           highlights: list | None = None) -> str:
+    body, w, h = render_body(net, hint, rankdir, labels, label_map, method=method, tall=tall, square=square, highlights=highlights)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{w * scale:.1f}" height="{h * scale:.1f}" '
             f'viewBox="0 0 {w:.1f} {h:.1f}">{_defs("n")}{body}</svg>\n')
 
 
-def render_grid(items: list[tuple[str, Net]], cols: int = 3, rankdir: str = "LR", labels: str = "none",
+def render_grid(items: list[tuple], cols: int = 3, rankdir: str = "LR", labels: str = "none",
                 caption_size: float = 9.5, gap: float = 10.0, scale: float = 1.0,
                 method: str = "auto") -> str:
     """Several nets as panels in a grid, each with a caption under it. Rows are as high as their tallest panel."""
     panels = []
-    for i, (cap, net) in enumerate(items):
-        body, w, h = render_body(net, None, rankdir, labels, None, uid=f"n{i}", method=method)
+    for i, (cap, net, *hint) in enumerate(items):  # an item may carry a layout hint as its third element
+        body, w, h = render_body(net, hint[0] if hint else None, rankdir, labels, None, uid=f"n{i}", method=method)
         panels.append((cap, body, w, h, i))
     rows = [panels[i:i + cols] for i in range(0, len(panels), cols)]
     colw = [max((r[c][2] for r in rows if c < len(r)), default=0) for c in range(cols)]

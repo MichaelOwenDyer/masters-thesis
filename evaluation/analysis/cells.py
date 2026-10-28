@@ -9,8 +9,8 @@ from .common import Ctx
 
 def cell_table(ctx: Ctx, campaign: str = "B") -> pl.DataFrame:
     """Columns: source, cls, instance_id, query, tid, solver_id, verdict (rep 0), outcome (vs truth), wall_ms (median over
-    repetitions), rss_kib (median), truth_bool, solved (definite and not DISAGREE), par2_ms (wall if solved within the
-    cap, else 2 x cap). The cap is ``ctx.cap()``; without one PAR-2 is null.
+    repetitions), rss_kib (median, the memory pass), rss_b_kib (median of campaign B's own value: for a run killed at the time limit the memory at that moment), family, size (families only), truth_bool, solved (definite and not DISAGREE), par2_ms (wall if solved within the
+    cap or declined with UNKNOWN before the cap, else 2 x cap). The cap is ``ctx.cap()``; without one PAR-2 is null.
 
     Only the first repetition's verdict counts for classification; timings are the median of all repetitions
     (repetitions are only run for TRUE/FALSE/COUNT/UNKNOWN, a TIMEOUT cell has one run).
@@ -20,6 +20,9 @@ def cell_table(ctx: Ctx, campaign: str = "B") -> pl.DataFrame:
         pl.col("verdict").sort_by("rep").first().alias("verdict"),
         pl.col("wall_ms").median().alias("wall_ms"),
         pl.col("peak_rss_kib").median().alias("rss_kib"),
+        pl.col("rss_b_kib").median().alias("rss_b_kib"),
+        pl.col("family").first().alias("family"),
+        pl.col("size").first().alias("size"),
         pl.col("limit_ms").max().alias("limit_ms"),
     )
     adj = ctx.adj.filter(pl.col("campaign") == campaign).select("instance_id", "query", "tid", "solver_id", "outcome", "truth_bool", "truth_source")
@@ -29,7 +32,8 @@ def cell_table(ctx: Ctx, campaign: str = "B") -> pl.DataFrame:
     )
     cap = ctx.cap()
     if cap is not None:
-        t = t.with_columns(pl.when(pl.col("solved") & (pl.col("wall_ms") <= cap)).then(pl.col("wall_ms")).otherwise(2 * cap).alias("par2_ms"))
+        declined = (pl.col("verdict") == "UNKNOWN") & (pl.col("wall_ms") < cap)  # an unknown before the deadline is not held against the tool
+        t = t.with_columns(pl.when((pl.col("solved") & (pl.col("wall_ms") <= cap)) | declined).then(pl.col("wall_ms")).otherwise(2 * cap).alias("par2_ms"))
     else:
         t = t.with_columns(pl.lit(None, dtype=pl.Float64).alias("par2_ms"))
     return t.sort("source", "instance_id", "query", "tid", "solver_id")

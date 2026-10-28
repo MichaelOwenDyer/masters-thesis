@@ -1,5 +1,6 @@
 = Appendix <appendix>
 
+#include "related-work-protocol-amendments.typ"
 #include "proof-state-machine-liveness.typ"
 #include "proof-marked-graph-liveness.typ"
 #include "proof-state-machine-deadlock-freedom.typ"

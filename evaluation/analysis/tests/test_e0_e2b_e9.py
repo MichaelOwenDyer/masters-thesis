@@ -19,6 +19,12 @@ class Stub:
     def csv(self, name, df):
         self.tables[name] = df
 
+    def fig_path(self, name):
+        return self.results / f"{name}.svg"
+
+    def cap(self):
+        return 30000.0
+
     def skip(self, name, why):
         self.skipped.append((name, why))
 
@@ -85,9 +91,15 @@ def test_e2b_before_and_after(tmp_path):
     assert n["e2b.before_present"] is True
     assert (n[p + "n_dispatch_answered"], n[p + "n_both"], n[p + "n_dispatch_fails_general_answers"]) == (1, 1, 2)
     assert n[p + "ratio_median"] == 10.0  # 200 ms against 20 ms
+    # every cell is in exactly one category: i1 and i3 timed out (only plain answers), i2 is 10 times slower
+    assert (n[p + "n_only_general"], n[p + "n_slower2"], n[p + "n_faster2"], n[p + "n_equal2"], n[p + "n_only_dispatch"], n[p + "n_neither"]) == (2, 1, 0, 0, 0, 0)
     q = key("e2b", "after", "mcc-small", "Q3") + "."
     assert (n[q + "n_dispatch_answered"], n[q + "n_both"], n[q + "n_dispatch_fails_general_answers"]) == (2, 2, 1)
     assert n[q + "ratio_median"] == statistics_median([4.0, 2.0])
+    # i1: 10 ms against 40 ms (speedup 0.25), i2: 20 against 40 (0.5, counted as slower), i3: memory-out against 30 ms
+    assert (n[q + "n_slower2"], n[q + "n_equal2"], n[q + "n_faster2"], n[q + "n_only_general"], n[q + "n_neither"]) == (2, 0, 0, 1, 0)
+    assert (tmp_path / "e2b_scatter.svg").exists()
+    assert n[q + "n_cells"] == sum(n[q + f] for f in ("n_faster2", "n_equal2", "n_slower2", "n_only_general", "n_only_dispatch", "n_neither"))
 
 
 def statistics_median(v):
