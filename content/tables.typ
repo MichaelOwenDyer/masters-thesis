@@ -208,7 +208,7 @@
     [Valid for every ordinary net: the unmarked places of a dead marking form a siphon, and a marked trap can never be emptied. Not polynomial, so not "efficient" in the strict sense.],
 
     [1-bounded net],
-    [The system $M = M_0 + C X$, $sum_(s ∈ •t) M(s) < |•t|$ for all $t$ has no solution],
+    [The system $M = M_0 + C X$, $sum_(s ∈ •t) M(p) < |•t|$ for all $t$ has no solution],
     [$⇒$],
     [NP (ILP)],
     [@esparza_petri_2026[Prop. 4.2.9]],
@@ -232,7 +232,7 @@
     [Orthogonal speed-up of the exploration fallback.],
 
     [General],
-    [Reduce to finitely many reachability queries: for each place set $R$ hitting every preset, is a marking with $M(s) = 0$ for all $s ∈ R$ reachable?],
+    [Reduce to finitely many reachability queries: for each place set $R$ hitting every preset, is a marking with $M(p) = 0$ for all $s ∈ R$ reachable?],
     [$⇔$],
     [Ackermann-hard (@czerwinski_reachability_2022; non-elementary already by @czerwinski_reachability_2020); exponentially many queries],
     [@esparza_petri_2026[Thm. 3.2.25, Thm. 3.2.26, §3.2.5]; @best_petri_2024[§3.7]],
@@ -385,7 +385,7 @@
     [`is_coverable` currently dispatches to CEGAR, not to the coverability graph. The graph is also the engine for boundedness.],
 
     [General],
-    [CEGAR over the state equation with target "$M(s) ≥$ target" (same engine as reachability)],
+    [CEGAR over the state equation with target "$M(p) ≥$ target" (same engine as reachability)],
     [$⇔$],
     [The problem is EXPSPACE-complete; no bound is claimed for the procedure],
     [@wimmel_applying_2011; @clarke_counterexample-guided_2000],

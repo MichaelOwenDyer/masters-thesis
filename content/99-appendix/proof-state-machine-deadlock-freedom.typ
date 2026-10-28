@@ -6,7 +6,7 @@
 The proof uses the following known facts.
 
 + _Token movement_ @esparza_petri_2026[Thm. 5.1.3]: if $q$ is marked and $q reach r$, the transitions on the path can be fired in order, which moves one token from $q$ to $r$ and leaves the other tokens in place.
-+ _Enabledness in state machines_: a transition $t$ is enabled at $M$ iff $M(s_t) > 0$, where ${s_t} := pre(t)$ (the unique input place of $t$).
++ _Enabledness in state machines_: a transition $t$ is enabled at $M$ iff $M(p_t) > 0$, where ${p_t} := pre(t)$ (the unique input place of $t$).
 
 Let $supp(M_0) = {p in P | M_0(p) > 0}$ be the support of the initial marking $M_0$.
 
@@ -16,8 +16,8 @@ Let $Sigma = {p in P | post(p) = emptyset}$ be the set of sink places.
 
   A marking $M$ is a deadlock iff every marked place of $M$ has an empty postset.
 
-  _Proof._ By Fact 2, $M$ enables no transition iff $M(s_t) = 0$ for every $t in T$.
-  The places of the form $s_t$ are exactly the places with a nonempty postset, so this holds iff all marked places have an empty postset.
+  _Proof._ By Fact 2, $M$ enables no transition iff $M(pre(t)) = 0$ for every $t in T$.
+  The places of $pre(T)$ are exactly the places with a nonempty postset, so this holds iff all marked places have an empty postset.
 ]
 
 #lemma(title: "Reachable deadlocks")[
@@ -49,7 +49,7 @@ Let $Sigma = {p in P | post(p) = emptyset}$ be the set of sink places.
   By induction from the end of the path, $p_i$ is in the set: when $p_(i+1)$ is popped, $t_(i+1) in pre(p_(i+1))$ and $p_i in pre(t_(i+1))$ are scanned, and $p_i$ is added unless it is already present.
 
   _Complexity._ Each place is pushed and popped at most once.
-  Popping $p$ scans $pre(p)$ and, for each $t in pre(p)$, the single place $s_t$.
+  Popping $p$ scans $pre(p)$ and, for each $t in pre(p)$, the single place $p_t$.
   Since every transition has exactly one output place, each transition $t$ is scanned exactly once over the whole run, so the total work is $O(|P| + |T| + |F|)$.
 ]
 

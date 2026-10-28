@@ -9,42 +9,42 @@ The proof uses the following known facts.
 + _Token movement_ @esparza_petri_2026[Thm. 5.1.3]: if $q$ is marked and $q reach r$, the transitions on the path can be fired in order, which moves one token from $q$ to $r$ and leaves the other tokens in place.
 + _Strongly connected components_ can be computed in linear time, and $cal(C)$ is acyclic @tarjan_depth-first_1972. Hence every node of $N$ reaches some terminal SCC.
 
-Let $t in T$ and $s_t := pre(t)$ (the unique input place of $t$).
+Let $t in T$ and $p_t := pre(t)$ (the unique input place of $t$).
 
 Let $supp(M_0) := {p in P : M_0(p) > 0}$ be the support of the initial marking.
 
 Let $K(t)$ be the SCC of $cal(C)$ containing $t$.
 
 #lemma(title: "Classification")[
-  + _Dead._ $t$ is $lv(0)$ iff no place of $supp(M_0)$ reaches $s_t$.
-  + _Strictly $lv(1)$._ If some place of $supp(M_0)$ reaches $s_t$ and $K(t)$ is trivial, then $t$ is $lv(1)$-live and not $lv(2)$-live.
-  + _$lv(3)$._ If some place of $supp(M_0)$ reaches $s_t$ and $K(t)$ is nontrivial, then $t$ is $lv(3)$-live.
+  + _Dead._ $t$ is $lv(0)$ iff no place of $supp(M_0)$ reaches $p_t$.
+  + _Strictly $lv(1)$._ If some place of $supp(M_0)$ reaches $p_t$ and $K(t)$ is trivial, then $t$ is $lv(1)$-live and not $lv(2)$-live.
+  + _$lv(3)$._ If some place of $supp(M_0)$ reaches $p_t$ and $K(t)$ is nontrivial, then $t$ is $lv(3)$-live.
   + _$lv(4)$._ $t$ is live iff there is a $q in supp(M_0)$ with $poststar(q) subset.eq prestar(s_t)$.
   _Proof._
 
-  (1) If $q in supp(M_0)$ reaches $s_t$, move a token to $s_t$ (Fact 2) and fire $t$.
+  (1) If $q in supp(M_0)$ reaches $p_t$, move a token to $p_t$ (Fact 2) and fire $t$.
   Otherwise, every marking $M$ reachable from $M_0$ and every $r in P$ satisfies $M(r) > 0 arrow.r.double exists q in supp(M_0): q reach r$, because a firing moves a token only to a successor of its place.
-  So $s_t$ is never marked.
+  So $p_t$ is never marked.
 
   (2) By (1), $t$ is $lv(1)$-live.
   A token's trajectory is a walk in $N$.
   If it fired $t$ twice, the walk between the two firings would close a circuit through $t$, contradicting that $K(t)$ is trivial.
   Hence every token fires $t$ at most once, and by Fact 2 $t$ fires at most $|{p in supp(M_0) : p reach s_t}|$ times in any firing sequence (hence not $lv(2)$-live).
 
-  (3) Move a token to $s_t$.
+  (3) Move a token to $p_t$.
   As $K(t)$ is strongly connected and nontrivial, it contains a circuit through $t$, and the token can run around this circuit forever.
   This is an infinite firing sequence containing $t$ infinitely often.
 
   (4) ($arrow.l.double$) Let $B := poststar(q)$ for some $q in supp(M_0)$ with $B subset.eq prestar(s_t)$.
   $B$ is closed under successors, so no firing removes the last token from $B$: a firing either does not touch $B$ or moves a token inside $B$.
   Hence $M(B) >= M_0(q) >= 1$ in every reachable $M$.
-  Every place of $B subset.eq prestar(s_t)$ reaches $s_t$, so by Fact 2 $t$ can fire from $M$.
+  Every place of $B subset.eq prestar(s_t)$ reaches $p_t$, so by Fact 2 $t$ can fire from $M$.
 
   ($arrow.r.double$) Suppose no such $q$ exists, so for every $q in supp(M_0)$ there is $r_q in poststar(q) without prestar(s_t)$.
   By Fact 2 we move every token of every marked place $q$ to $r_q$.
   The resulting marking $M$ has no token in $prestar(s_t)$.
   $P without prestar(s_t)$ is closed under successors, since a place with a successor in $prestar(s_t)$ would itself lie in $prestar(s_t)$.
-  So $s_t$ is never marked from $M$ on, and $t$ is dead at $M$, hence not live.
+  So $p_t$ is never marked from $M$ on, and $t$ is dead at $M$, hence not live.
 ]
 
 The last case is the generalisation of the argument for (⇒) in @esparza_petri_2026[Thm. 5.1.3].
@@ -57,15 +57,15 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
 
   _Proof._
 
-  ($arrow.r.double$) Since $q in poststar(q) subset.eq prestar(s_t)$, $q$ reaches $s_t in K$.
-  If an arc left $K$ to a node $r$, then $r$ is reachable from $q$ (through $K$), so $r in poststar(q) subset.eq prestar(s_t)$ reaches $s_t$, and $r in K$, a contradiction.
+  ($arrow.r.double$) Since $q in poststar(q) subset.eq prestar(s_t)$, $q$ reaches $p_t in K$.
+  If an arc left $K$ to a node $r$, then $r$ is reachable from $q$ (through $K$), so $r in poststar(q) subset.eq prestar(s_t)$ reaches $p_t$, and $r in K$, a contradiction.
   Hence $K$ is terminal.
   Let $T'$ be a terminal SCC reachable from $q$.
-  Its places lie in $poststar(q) subset.eq prestar(s_t)$, so they reach $s_t$; as no arc leaves $T'$, $s_t in T'$ and $T' = K$.
+  Its places lie in $poststar(q) subset.eq prestar(s_t)$, so they reach $p_t$; as no arc leaves $T'$, $p_t in T'$ and $T' = K$.
 
   ($arrow.l.double$) Let $r in poststar(q)$.
   By Fact 3, $r$ reaches a terminal SCC, which is reachable from $q$ and hence equals $K$.
-  $K$ is strongly connected, so $r$ reaches $s_t$, i.e. $r in prestar(s_t)$.
+  $K$ is strongly connected, so $r$ reaches $p_t$, i.e. $r in prestar(s_t)$.
 ]
 
 #lemma(title: "The algorithm")[
@@ -111,7 +111,7 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
 
   $lv(0)$ iff $t$ is dead, $lv(1)$ iff $t$ is strictly $lv(1)$-live, $lv(3)$ iff $t$ is strictly $lv(3)$-live, and $lv(4)$ iff $t$ is $lv(4)$-live.
   _Proof._ The four cases of the Algorithm lemma are exhaustive and mutually exclusive.
-  The case $lv(0)$ is part (1) of the Classification lemma: since $s_t$ is the only predecessor of $t$, a marked place reaches $t$ iff it reaches $s_t$, i.e. iff $K(t)$ is reachable from $supp(M_0)$.
+  The case $lv(0)$ is part (1) of the Classification lemma: since $p_t$ is the only predecessor of $t$, a marked place reaches $t$ iff it reaches $p_t$, i.e. iff $K(t)$ is reachable from $supp(M_0)$.
   The case $lv(1)$ is part (2), $lv(4)$ is part (4) combined with the Live SCCs lemma, and for $lv(3)$ we use part (3) and the fact that $t$ is not live by part (4).
 ]
 

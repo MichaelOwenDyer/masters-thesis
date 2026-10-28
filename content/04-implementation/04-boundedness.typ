@@ -28,7 +28,7 @@ so every place is bounded by the total number of tokens in the system.
 
 
 [Live Marked Graph],
-[A place $s$ is bounded iff it lies on a circuit $γ$, and k-bounded iff $min{M_0(γ) : s ∈ γ} ≤ k$.],
+[A place $p$ is bounded iff it lies on a circuit $γ$, and k-bounded iff $min{M_0(γ) : p ∈ γ} ≤ k$.],
 [
   A place is exactly bounded by the minimum token count of the circuits it lies on,
   and unbounded if it does not lie on any circuit.
@@ -39,7 +39,7 @@ so every place is bounded by the total number of tokens in the system.
 
 [Non-live Marked Graph],
 [
-  A place $s$ on a circuit $γ$ is k-bounded if $M_0(γ) ≤ k$, but may additionally be bounded for lower k.
+  A place $p$ on a circuit $γ$ is k-bounded if $M_0(γ) ≤ k$, but may additionally be bounded for lower k.
 ],
 [
   At least one circuit is unmarked.
@@ -53,7 +53,7 @@ so every place is bounded by the total number of tokens in the system.
 [Live Free-Choice Net],
 [
   A place is bounded iff it resides in an S-component (subnet strongly connected state machine).
-  A place $s$ is k-bounded iff some strongly connected S-component $S_1 ∋ s$ has $M_0(S_1) ≤ k$.
+  A place $p$ is k-bounded iff some strongly connected S-component $S_1 ∋ p$ has $M_0(S_1) ≤ k$.
 ],
 [
   The token counts of state machines are invariant, and the same applies to state machines embedded in a free-choice net.
@@ -65,7 +65,7 @@ so every place is bounded by the total number of tokens in the system.
 [General],
 [
   $y ≫ 0$ with $C^T y ≤ 0$ ⇒ $N$ is bounded under every $M_0$ ("structurally bounded").
-  A place $s$ is bounded by $⌊(y · M_0) / y(s)⌋$.
+  A place $p$ is bounded by $⌊(y · M_0) / y(p)⌋$.
 ],
 [
   Semi-algorithm: a positive place subinvariant is a weighted sum of the token counts of all places which is non-increasing under every transition firing.
@@ -77,7 +77,7 @@ so every place is bounded by the total number of tokens in the system.
 [Implemented],
 
 [General],
-[The marking-equation LP $max ∑_s∈S M(s)$ subject to $M = M_0 + C X$, $X ≥ 0$ has a finite optimum ⇒ the Petri net is bounded.],
+[The marking-equation LP $max ∑_s∈S M(p)$ subject to $M = M_0 + C X$, $X ≥ 0$ has a finite optimum ⇒ the Petri net is bounded.],
 [
   Semi-algorithm: an algebraic finite maximum of the total token count within the marking equation implies that the Petri net is bounded.
   The converse is not true, as the marking equation is only an overapproximation of the reachable markings.
@@ -87,7 +87,7 @@ so every place is bounded by the total number of tokens in the system.
 [Not implemented],
 
 [General],
-[Karp–Miller coverability graph: $s$ is unbounded iff some node carries $ω$ at $s$; $s$ is $k$-bounded iff every node has $M(s) ≤ k$],
+[Karp–Miller coverability graph: $p$ is unbounded iff some node carries $ω$ at $p$; $p$ is $k$-bounded iff every node has $M(p) ≤ k$],
 [
   Constructing the coverability graph is a complete procedure for checking (k-)boundedness, but it is expensive.
   Use as a last resort when no other procedure yields a definitive answer.

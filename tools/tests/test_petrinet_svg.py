@@ -121,3 +121,14 @@ def test_highlight_box_encloses_its_nodes_and_subscript_labels():
     assert x0 < P.DX - P.S_TRANS / 2 and x0 + w > 2 * P.DX + P.R_PLACE  # around t0 and p1, clear of p0 and t1
     assert x0 > P.R_PLACE and x0 + w < 3 * P.DX - P.S_TRANS / 2
     assert ">P<tspan" in svg and ">1</tspan>" in svg
+
+
+def test_target_tokens_are_outlined_and_labels_can_move():
+    n = P.parse_pnml(PNML)
+    n.places["p1"]["target"] = 1
+    hint = {"positions": {"p0": [0, 0], "t0": [1, 0], "p1": [2, 0], "t1": [3, 0]}, "label_side": {"t0": "above"}}
+    root = ET.fromstring(P.render(n, hint, labels="ids"))
+    dots = [e for e in root.iter() if e.tag.endswith("circle") and e.get("r") != str(P.R_PLACE)]
+    assert sorted(d.get("fill") for d in dots) == ["#000", "#000", "#fff"]  # two tokens in p0, one target token in p1
+    texts = {e.text: float(e.get("y")) for e in root.iter() if e.tag.endswith("text")}
+    assert texts["t0"] < texts["p0"]  # above its node, the others below

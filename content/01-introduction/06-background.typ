@@ -7,10 +7,13 @@ For further details, I recommend consulting @murata_petri_1989 @esparza_petri_20
 
 === Structure
 
-A *net* $N = (S, T, F)$ is a bipartite directed graph consisting of:
-- a finite set of *places* $S$,
+A *net* $N = (P, T, F)$ is a connected
+#footnote[Not all authors require nets to be connected.]
+bipartite directed graph consisting of:
+- a finite set of *places* $P$,
+  #footnote[The set of places is often denoted $S$ in classical literature, from the German word "Stellen". In this thesis, I choose to use $P$ for consistency with the English word "Place".]
 - a finite set of *transitions* $T$ disjoint from $S$, and
-- a *flow relation* $F ⊆ (S × T) ∪ (T × S)$.
+- a *flow relation* $F ⊆ (P × T) ∪ (T × P)$.
 
 The places (often drawn as circles) and transitions (rectangles or squares) are the nodes of the graph,
 and the flow relation defines directed edges (often called arcs) between them.
@@ -20,13 +23,13 @@ and the flow relation defines directed edges (often called arcs) between them.
   caption: [A net with one place $P_1$, one transition $T_1$, and one arc from $P_1$ to $T_1$.],
 ) <fig-bg-structure>
 
-The *preset of a place* $s in S$, denoted $•s$, is defined as ${ t in T : (t, s) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $t$ to $s$).
+The *preset of a place* $p in P$, denoted $•p$, is defined as ${ t in T : (t, s) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $t$ to $p$).
 
-The *postset of a place* $s in S$, denoted $s•$, is defined as ${ t in T : (s, t) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $s$ to $t$).
+The *postset of a place* $p in P$, denoted $p•$, is defined as ${ t in T : (p, t) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $p$ to $t$).
 
-The *preset of a transition* $t in T$, denoted $•t$, is defined as ${ s in S : (s, t) ∈ F }$ \ (the set of places $s$ such that there is a directed edge from $s$ to $t$).
+The *preset of a transition* $t in T$, denoted $•t$, is defined as ${ p in P : (p, t) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $p$ to $t$).
 
-The *postset of a transition* $t in T$, denoted $t•$, is defined as ${ s in S : (t, s) ∈ F }$ \ (the set of places $s$ such that there is a directed edge from $t$ to $s$).
+The *postset of a transition* $t in T$, denoted $t•$, is defined as ${ p in P : (t, s) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $t$ to $p$).
 
 In this thesis, the terms *input* and *output* are also used to refer to the preset and postset, respectively.
 
@@ -40,14 +43,14 @@ Tokens are often drawn as black dots inside the places.
   caption: [A place with one token.],
 ) <fig-bg-token>
 
-A marking $M$ *covers* another marking $M'$ if $M(s) ≥ M'(s)$ for all $s in S$, that is,
+A marking $M$ *covers* another marking $M'$ if $M(p) ≥ M'(p)$ for all $p in P$, that is,
 $M$ has at least as many tokens in every place as $M'$.
 
-A place $s in S$ is called *marked* if it contains at least one token, and *unmarked* otherwise.
+A place $p in P$ is called *marked* if it contains at least one token, and *unmarked* otherwise.
 
 A set of places $X subset.eq S$ is called marked if at least one place in the set is marked, and unmarked otherwise.
 
-The *support* of a marking $M$, denoted $supp(M)$, is the set of marked places in the marking: ${ s in S : M(s) > 0 }$.
+The *support* of a marking $M$, denoted $supp(M)$, is the set of marked places in the marking: ${ p in P : M(p) > 0 }$.
 
 A *Petri net* (or *system*) $(N, M_0)$ is a net $N$ paired with an initial marking $M_0$.
 
@@ -61,10 +64,10 @@ consuming one token from each input place and
 producing one token in each output place,
 resulting in a new marking $M'$ defined as follows:
 
-$ M'(s) = cases(
-  M(s) - 1 "if" s in •t and s in.not t•,
-  M(s) + 1 "if" s in t• and s in.not •t,
-  M(s) "otherwise"
+$ M'(p) = cases(
+  M(p) - 1 "if" p in •t and p in.not t•,
+  M(p) + 1 "if" p in t• and p in.not •t,
+  M(p) "otherwise"
 ) $
 
 #figure(
@@ -102,7 +105,7 @@ and the movement of tokens through the net.
 The boundedness problem asks whether the reachability set of a Petri net is finite.
 This is the case if and only if there exists a finite integer `k`
 such that no reachable marking contains more than `k` tokens in any place.
-A place $s in S$ is said to be k-bounded iff $M(s) ≤ k$ for all reachable markings $M$,
+A place $p in P$ is said to be k-bounded iff $M(p) ≤ k$ for all reachable markings $M$,
 and a Petri net is k-bounded iff all of its places are k-bounded.
 If any place is not k-bounded for any finite `k`, it is said to be unbounded,
 and the Petri net as a whole is unbounded.
@@ -116,6 +119,21 @@ and the Petri net as a whole is unbounded.
 
 The reachability problem asks whether there exists an enabled firing sequence $σ$
 that leads from the initial marking $M_0$ to a given target marking $M$.
+
+#figure(
+  grid(
+    columns: 2,
+    column-gutter: 2em,
+    row-gutter: 0.6em,
+    image("/figures/nets/background/reach_yes.svg"), image("/figures/nets/background/reach_no.svg"),
+    [(a) Reachable target], [(b) Unreachable target],
+  ),
+  caption: [
+    The net of @fig-bg-firing with its initial marking (filled tokens) and a target marking (outlined tokens). \
+    The target in (a) is reached by firing $T_1$ once.
+    The target in (b) is unreachable: it requires firing $T_1$ twice, but $P_2$ only has one token.
+  ],
+) <fig-bg-reachability>
 
 Reachability was shown to be decidable independently by Ernst W. Mayr @mayr_algorithm_1981 (1981) and
 S. R. Kosaraju @kosaraju_decidability_1982 (1982),
@@ -187,6 +205,18 @@ A transition is called *strictly* #lv[k]-live if it is #lv[k]-live but not #lv[k
 A Petri net is #lv[k]-live if all of its transitions are #lv[k]-live, and strictly #lv[k]-live if it is #lv[k]-live
 but not #lv[k+1]-live.
 
+#figure(
+  image("/figures/nets/background/liveness.svg"),
+  caption: [
+    A Petri net in which each transition $T_k$ is strictly #lv[k]-live.
+    $T_0$ is dead because $P_0$ is never marked.
+    $T_1$ can fire at most once, since it consumes the only token in $P_1$.
+    $T_3$ can fire indefinitely, but only until $T_1$ fires, adding a token to $P_2$ each time.
+    $T_2$ can then fire once for each of those tokens, so any finite number of times, but not infinitely often.
+    $T_4$ can always eventually fire in every reachable marking, so it is live.
+  ],
+) <fig-bg-liveness>
+
 ==== Deadlock-freedom <background-deadlock-freedom>
 
 A Petri net is said to be *deadlock-free* if every reachable marking enables at least one transition.
@@ -209,14 +239,13 @@ and are often used to prove behavioral properties.
 ==== Traps and Siphons <background-traps-siphons>
 
 *Traps.*
-A *trap* is a nonempty $Q subset.eq P$ with $post(Q) subset.eq pre(Q)$.
-A *trap* is a set of places such that every transition which consumes a token from a place in the trap also produces
-a token in some place in the trap. A trap is _marked_ if at least one place in the trap has a token in the current marking.
-Once a trap is marked, it is impossible to completely unmark it through transition firings.
+A trap is a set of places $Q subset.eq S$ with $post(Q) subset.eq pre(Q)$.
+Every transition which consumes a token from a place in the trap also produces a token to some place in the trap.
+Once a trap becomes marked, it is impossible to completely unmark it through transition firings.
 Once marked, forever marked.
 
 *Siphons.*
-A *siphon* is a nonempty $D subset.eq P$ with $pre(D) subset.eq post(D)$.
+A *siphon* is a nonempty $D subset.eq S$ with $pre(D) subset.eq post(D)$.
 A *siphon* is a set of places such that every transition which produces a token in a place in the siphon also consumes
 a token from some place in the siphon. A siphon is _unmarked_ if all places in the siphon have zero tokens in the current marking.
 Once a siphon is unmarked, it is impossible to mark it again through transition firings.
@@ -244,6 +273,19 @@ making the naive approach of enumerating all siphons and checking for a marked t
 But the problem of finding a counterexample (a siphon without a marked trap) maps directly to the Boolean satisfiability
 problem (SAT), which allows us to leverage the power of modern constraint solvers.
 
+#figure(
+  grid(
+    row-gutter: 0.6em,
+    image("/figures/nets/background/chc_yes.svg"), [(a) The trap is marked],
+    image("/figures/nets/background/chc_no.svg"), [(b) The trap is unmarked],
+  ),
+  caption: [
+    The siphon ${P_1, P_2}$ (light) contains the trap ${P_2}$ (dark), and no other trap.
+    In (a) the trap is marked, so the siphon can never become empty.
+    In (b) the trap is unmarked, and firing $T_3$ empties the siphon forever.
+  ],
+) <fig-bg-chc>
+
 ==== Structural Subclasses  <background-structural-classes>
 
 The structure of a net can be classified into various subclasses,
@@ -254,7 +296,7 @@ Some notable net subclasses include, in order of increasing generality:
 
 *Circuits.*
 A net $N = (S, T, F)$ is called a *circuit* if \
-$forall s in S: |•s| = |s•| = 1$ and $forall t in T: |•t| = |t•| = 1$. \
+$forall p in P: |•p| = |p•| = 1$ and $forall t in T: |•t| = |t•| = 1$. \
 Intuitively: the entire net forms a single directed cycle.
 The behavioral properties of circuits are trivial.
 They inherit the properties of state machines and marked graphs, discussed next.
@@ -287,7 +329,7 @@ in state machines @murata_petri_1989.
 
 *Marked Graphs.*
 A net $N = (S, T, F)$ is called a *marked graph* (or *T-net*) if \
-$forall s in S: |•s| = |s•| = 1$. \
+$forall p in P: |•p| = |p•| = 1$. \
 Intuitively: every place has exactly one input and one output transition.
 
 Marked graphs are the structural dual of state machines,
@@ -367,3 +409,10 @@ sufficient (but not necessary) for liveness in asymmetric choice nets @murata_pe
   image("/figures/nets/background/general.svg"),
   caption: [A general net which is not an asymmetric choice net: the two transitions share the middle input place, but neither preset contains the other.],
 ) <fig-bg-general>
+
+#figure(
+  image("/figures/nets/background/classes.svg"),
+  caption: [
+    The structural subclasses of nets within the scope of this thesis.
+  ],
+) <fig-bg-classes>

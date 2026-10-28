@@ -11,10 +11,11 @@ their dummy nodes, so cycles and long edges are routed around the nodes in betwe
 
 A hint file (JSON) overrides single nodes: {"positions": {"p0": [col, row], ...}} in grid units (1 unit = one node
 distance); nodes not mentioned keep their computed place. With positions for every node no layering is done.
+{"label_side": {"t0": "above"}} moves the label of a node from below it to "above", "left" or "right".
 
 Drawing: places are circles, transitions are squares, arcs carry an arrowhead and a weight label when the weight is
-not 1, tokens are dots (a number above four), a label "P_1" is drawn as P with the subscript 1, and highlighted node
-sets get a shaded box with a dashed outline. The module can be imported: ``parse_pnml``, ``layout``, ``render``,
+not 1, tokens are dots (a number above four; tokens of a target marking are outlined), a label "P_1" is drawn as P
+with the subscript 1, and highlighted node sets get a shaded box with a dashed outline. The module can be imported: ``parse_pnml``, ``layout``, ``render``,
 ``render_grid`` (several nets as labelled panels in one SVG).
 """
 
@@ -524,14 +525,27 @@ def _label_text(net: Net, n: str, mode: str, label_map: dict) -> str | None:
     return None
 
 
-def _highlight(net: Net, pos, nodes, labelled: bool) -> tuple[float, float, float, float]:
-    """Box (x0, y0, x1, y1) around the given nodes with some room to spare, and below them for their labels."""
-    pad = 6.0
-    xs0 = [pos[n][0] - (R_PLACE if net.is_place(n) else S_TRANS / 2) - pad for n in nodes]
-    xs1 = [pos[n][0] + (R_PLACE if net.is_place(n) else S_TRANS / 2) + pad for n in nodes]
-    ys0 = [pos[n][1] - (R_PLACE if net.is_place(n) else S_TRANS / 2) - pad for n in nodes]
-    ys1 = [pos[n][1] + (R_PLACE if net.is_place(n) else S_TRANS / 2) + pad + (10 if labelled else 0) for n in nodes]
-    return min(xs0), min(ys0), max(xs1), max(ys1)
+def _half(net: Net, n: str) -> float:
+    return R_PLACE if net.is_place(n) else S_TRANS / 2
+
+
+def _label_at(net: Net, n: str, x: float, y: float, side: str) -> tuple[float, float, str]:
+    """Anchor point and text-anchor of the label of a node on the given side of it."""
+    r = _half(net, n)
+    return {"below": (x, y + r + 9, "middle"), "above": (x, y - r - 3, "middle"),
+            "right": (x + r + 2, y + 3, "start"), "left": (x - r - 2, y + 3, "end")}[side]
+
+
+def _highlight(net: Net, pos, nodes, labelled: bool, pad: float = 6.0, sides: dict | None = None) -> tuple[float, float, float, float]:
+    """Box (x0, y0, x1, y1) around the given nodes with ``pad`` room to spare, and room for their labels."""
+    x0 = y0 = math.inf
+    x1 = y1 = -math.inf
+    for n in nodes:
+        (x, y), r = pos[n], _half(net, n) + pad
+        side = (sides or {}).get(n, "below") if labelled else None
+        x0, x1 = min(x0, x - r - (11 if side == "left" else 0)), max(x1, x + r + (11 if side == "right" else 0))
+        y0, y1 = min(y0, y - r - (10 if side == "above" else 0)), max(y1, y + r + (10 if side == "below" else 0))
+    return x0, y0, x1, y1
 
 
 def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels: str = "none",
@@ -539,16 +553,20 @@ def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels:
                 highlights: list | None = None) -> tuple[str, float, float]:
     """SVG elements of one net (without the outer <svg>), and its width and height including the margin.
 
-    ``highlights`` is a list of node sets, each drawn as a shaded box with a dashed outline behind its nodes."""
+    ``highlights`` is a list of node sets, each drawn as a shaded box with a dashed outline behind its nodes. An entry
+    may also be {"nodes": [...], "pad": 6, "fill": "#ececec"}: a set nested in another one takes a smaller pad and a
+    darker fill. Boxes are drawn in the order given, so the outer one comes first."""
     label_map = label_map or {}
     raw_pos, chains = layout(net, hint, rankdir, method, tall, square)
     pos = {n: p for n, p in raw_pos.items() if not n.startswith("~")}
     dummies = {n: p for n, p in raw_pos.items() if n.startswith("~")}
     allp = {**pos, **dummies}
     out: list[str] = []
-    boxes = [_highlight(net, pos, hl, labels != "none" or bool(label_map)) for hl in highlights or []]
-    for x0, y0, x1, y1 in boxes:
-        out.append(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" rx="8" fill="#ececec" '
+    hls = [hl if isinstance(hl, dict) else {"nodes": hl} for hl in highlights or []]
+    sides = (hint or {}).get("label_side", {})
+    boxes = [_highlight(net, pos, hl["nodes"], labels != "none" or bool(label_map), hl.get("pad", 6.0), sides) for hl in hls]
+    for (x0, y0, x1, y1), hl in zip(boxes, hls):
+        out.append(f'<rect x="{x0:.1f}" y="{y0:.1f}" width="{x1 - x0:.1f}" height="{y1 - y0:.1f}" rx="8" fill="{hl.get("fill", "#ececec")}" '
                    f'stroke="#000" stroke-width="0.8" stroke-dasharray="3,2"/>')
     arc_set = {(a, b) for a, b, _ in net.arcs}
     for s, t, w in net.arcs:
@@ -579,11 +597,12 @@ def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels:
     for n, (x, y) in pos.items():
         if net.is_place(n):
             out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{R_PLACE}" fill="#fff" stroke="#000" stroke-width="1"/>')
-            m = net.places[n]["marking"]
-            if 0 < m <= 4:
-                offs = {1: [(0, 0)], 2: [(-3, 0), (3, 0)], 3: [(-3.2, 2), (3.2, 2), (0, -3)], 4: [(-3, -3), (3, -3), (-3, 3), (3, 3)]}[m]
-                for ox, oy in offs:
-                    out.append(f'<circle cx="{x + ox:.1f}" cy="{y + oy:.1f}" r="1.9" fill="#000"/>')
+            m, goal = net.places[n]["marking"], net.places[n].get("target", 0)  # target tokens are drawn outlined
+            if 0 < m + goal <= 4:
+                offs = {1: [(0, 0)], 2: [(-3, 0), (3, 0)], 3: [(-3.2, 2), (3.2, 2), (0, -3)], 4: [(-3, -3), (3, -3), (-3, 3), (3, 3)]}[m + goal]
+                for k, (ox, oy) in enumerate(offs):
+                    style = 'r="1.9" fill="#000"' if k < m else 'r="1.7" fill="#fff" stroke="#000" stroke-width="0.6"'
+                    out.append(f'<circle cx="{x + ox:.1f}" cy="{y + oy:.1f}" {style}/>')
             elif m > 4:
                 out.append(f'<text x="{x:.1f}" y="{y + 3:.1f}" font-size="9" text-anchor="middle" font-family="{FONT}">{m}</text>')
         else:
@@ -591,17 +610,23 @@ def render_body(net: Net, hint: dict | None = None, rankdir: str = "LR", labels:
             out.append(f'<rect x="{x - h:.1f}" y="{y - h:.1f}" width="{S_TRANS}" height="{S_TRANS}" fill="#fff" stroke="#000" stroke-width="1"/>')
         lab = _label_text(net, n, labels, label_map)
         if lab:
-            ly = y + (R_PLACE if net.is_place(n) else S_TRANS / 2) + 9
+            lx, ly, anchor = _label_at(net, n, x, y, sides.get(n, "below"))
             base, sub = lab.rsplit("_", 1) if "_" in lab else (lab, "")  # "P_1": P with the subscript 1
             sub = f'<tspan dy="2" font-size="6" font-style="normal">{escape(sub)}</tspan>' if sub else ""
-            out.append(f'<text x="{x:.1f}" y="{ly:.1f}" font-size="8.5" text-anchor="middle" font-family="{FONT}" font-style="italic">{escape(base)}{sub}</text>')
+            out.append(f'<text x="{lx:.1f}" y="{ly:.1f}" font-size="8.5" text-anchor="{anchor}" font-family="{FONT}" font-style="italic">{escape(base)}{sub}</text>')
     xs = [p[0] for p in allp.values()] or [0]
     ys = [p[1] for p in allp.values()] or [0]
     w = max(xs) + 2 * MARGIN
     h = max(ys) + 2 * MARGIN + (10 if labels != "none" or label_map else 0)
-    for x0, y0, x1, y1 in boxes:  # a box may reach further out than the margin
-        w, h = max(w, x1 + MARGIN + 1), max(h, y1 + MARGIN + 1)
-    body = f'<g transform="translate({MARGIN},{MARGIN})">' + "".join(out) + "</g>"
+    # a box, or a label beside or above its node, may reach further out than the margin
+    labelled = labels != "none" or bool(label_map)
+    extents = boxes + [_highlight(net, pos, [n], True, 2.0, sides) for n in sides if labelled and n in pos]
+    ox = max([MARGIN] + [1 - e[0] for e in extents])
+    oy = max([MARGIN] + [1 - e[1] for e in extents])
+    w, h = w - MARGIN + ox, h - MARGIN + oy
+    for x0, y0, x1, y1 in extents:
+        w, h = max(w, x1 + ox + 1), max(h, y1 + oy + 1)
+    body = f'<g transform="translate({ox:.1f},{oy:.1f})">' + "".join(out) + "</g>"
     return body, w, h
 
 
