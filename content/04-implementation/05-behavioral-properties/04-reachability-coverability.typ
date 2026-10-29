@@ -1,46 +1,15 @@
+#import "../../lib.typ": *
+#import "../../../lib/tum/elements.typ": *
 
-== Reachability & Coverability
+== Reachability & Coverability <implementation-reachability-coverability>
 
-The following is a summary of known results for reachability and their implementation status in petrivet.
+This section describes the implementation of reachability and coverability together,
+as they share a common engine in `petrivet` which is based on the paradigm of counterexample-guided
+abstraction refinement (CEGAR) @clarke_counterexample-guided_2000.
 
-[Strongly Connected State Machine],
-[$M$ is reachable iff $M(S) = M_0(S)$],
-[
-  Tokens are conserved in state machines, and the strongly connected property ensures
-  that every token can reach every place.
-  Therefore any two markings with the same total token count are mutually reachable.
-],
-[P],
-[@esparza_petri_2026[Thm. 5.1.5]],
-[Implemented],
+The following is a summary of known results for reachability and their implementation status in `petrivet`.
 
-[Non-strongly connected state machine],
-[],
-// TODO: Formalize
-"Strongly connected components are partially ordered by the relation < defined as follows:
-            (V ′, E′) < (V ′′, E′′) iff V ′ ̸= V ′′ and ∀M ′ ∈ V ′, M ′′ ∈ V ′′ : M ′′ ∈ [M ′⟩ @esparza_petri_2026 Chap. 3.1.
-            Tokens can only move downstream in this partial order.
-            Let M(SCC_downstream) be the total number of tokens in the SCC and all SCCs less than it in the partial order.
-            Then M is reachable iff M(SCC_downstream) = M_0(SCC_downstream) for all SCCs.",
-[P],
-[],
-[Not implemented],
-
-[Live Marked Graph],
-[$M$ is reachable iff the marking equation $M = M_0 + C X$ has a solution],
-[],
-[],
-[],
-[],
-
-[General],
-[Reachability is decidable, but Ackermann-hard],
-[],
-[@czerwinski_reachability_2022],
-[],
-[],
-
-The initial implementation of reachability checking in petrivet was merely the RG semi-algorithm
+The initial implementation of reachability checking in `petrivet` was merely the RG semi-algorithm
 of constructing the reachability graph and checking for the target marking within it.
 This is will never terminate in the unreachable case for unbounded nets.
 
@@ -58,7 +27,7 @@ Simulating the potential solution in the original system either confirms the sol
 which is then used to refine the abstraction, and the process repeats until a definitive answer is found.
 
 #figure(
-  image("../../figures/cegar/diagram.svg"),
+  image("../../../figures/cegar/diagram.svg"),
   caption: [Counterexample-guided abstraction refinement (CEGAR) paradigm.],
 )
 
@@ -75,7 +44,7 @@ to delay confrontation with the state space explosion problem as long as possibl
 By arranging these refinement opportunities in order of increasing computational cost, we can attempt to find a counterexample
 to each potential solution as cheaply as possible, and only resort to the expensive simulation of firing transitions when all other options have been exhausted.
 
-petrivet implements this CEGAR procedure as a shared engine for checking reachability and coverability properties.
+`petrivet` implements this CEGAR procedure as a shared engine for checking reachability and coverability properties.
 A `CegarProblem` is defined as a four-tuple of Net, initial marking, target marking, and property type (reachability or coverability):
 ```rust
 pub struct CegarProblem<'a> {
@@ -118,7 +87,7 @@ and no knowledge of transitions or the marking equation. In this phase, a potent
 A siphon which is unmarked in the initial marking must remain unmarked in every reachable marking.
 Since there is exactly one maximal unmarked siphon in the initial marking, we can apply @best_petri_2024[Algorithm 6.19]
 to find it once at the beginning of the CEGAR procedure, and set every place variable it includes in the SMT problem to zero.
-This is a preemptive refinement which runs in $O(|S|^2 * |T|^2)$ which prevents the solver from placing tokens where they can never be placed.
+This is a preemptive refinement which runs in $O(|P|^2 * |T|^2)$ which prevents the solver from placing tokens where they can never be placed.
 
 ==== Initially Marked Traps
 
@@ -132,28 +101,19 @@ but I apply the dual of @best_petri_2024[Algorithm 6.19] to find the maximal unm
 in the candidate marking, and then check whether it is marked in the initial marking.
 
 ==== P-invariants (P-subinvariants, P-surinvariants)
-A *P-invariant* is a weighted sum of token counts of places which is invariant under transition firing: y^T C = 0.
-A *P-subinvariant* is a weighted sum of token counts of places which is non-increasing under transition firing: y^T C ≤ 0.
-A *P-surinvariant* is a weighted sum of token counts of places which is non-decreasing under transition firing: y^T C ≥ 0.
 
-Given a potential solution marking M, we can check for the existence of a P-invariant, P-subinvariant, or P-surinvariant
-in the net which is violated by M with respect to the initial marking M_0.
+Given a potential solution marking $M$, we can check for the existence of a P-invariant, P-subinvariant, or P-surinvariant
+in the net which is violated by $M$ with respect to the initial marking $M_0$.
 
 // TODO: Formulate the SAT problem
 // TODO: Describe how I expand upon Thierry-Mieg's P-invariant approach
 
 ==== Marking Equation
 
-The marking equation is a linear algebraic overapproximation of the reachable markings of a Petri net @murata_state_1977
-which relates the initial marking M_0, the incidence matrix C, and a vector of transition firing counts X to a reachable marking M:
-any reachable marking M can be expressed as M = M_0 + C X for some non-negative integer vector (_Parikh vector_) X.
-In other words, any reachable marking is a linear combination of transition effects added to the initial marking.
-The marking equation is a necessary condition for reachability, but not sufficient in general.
-
 In order to encode the marking equation into the SMT problem, we introduce a non-negative integer variable for each transition in the net,
 and relate each place variable to the initial marking and the transition variables according to the marking equation:
 
-$forall p in P: M(p) = M_0(p) + sum_{t in T} C(p, t) * X(t)$
+$ forall p in P: M(p) = M_0(p) + sum_{t in T} C(p, t) * X(t) $
 
 From this point onward, every candidate solution from the SMT solver additionally includes a Parikh vector.
 This gives us an important hint about the potential firing sequence which could lead to the candidate solution marking.
@@ -175,4 +135,4 @@ feed tokens into the trap are in the support of the Parikh vector.
 To refine the SMT problem, we add an implication that if any of the transitions which feed tokens into the trap are
 included in the Parikh vector, then at least one of the places in the trap must be marked:
 
-sum_{t in T_feed} X(t) > 0 => sum_{p in P_trap} M(p) > 0
+$ sum_{t in T_"feed"} X(t) > 0 => sum_{p in P_"trap"} M(p) > 0 $

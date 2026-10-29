@@ -14,7 +14,7 @@ The first concerns the problem, and the others concern the artifact, with one qu
   cost-control: "RQ4",
   cost-control-text: "Can a caller effectively bound the cost of an analysis, either by restricting the effort or by setting a deadline?",
   comparison: "RQ5",
-  comparison-text: "How does `petrivet` compare with established tools in speed and memory?"
+  comparison-text: [How does `petrivet` compare with established tools in speed and memory?]
 )
 
 - RQ1: #rqs.existing-tools-text
@@ -24,8 +24,9 @@ The first concerns the problem, and the others concern the artifact, with one qu
 - RQ5: #rqs.comparison-text
 
 #rqs.existing-tools is answered by the survey in @related-work.
+#rqs.correctness is answered in @eval-correctness.
 The design behind #rqs.procedure-dispatch and #rqs.cost-control is described in @solution-design and @implementation,
-and the effect of that design is measured in @eval-dispatch and @eval-dispatch.
-RQ4 and RQ5 are answered in @eval-correctness and @eval-comparison.
+and the effect of that design is measured in @eval-dispatch and @eval-cost-control.
+#rqs.comparison is answered in @eval-comparison.
 The requirements that cannot be reduced to a measurement are assessed in @eval-requirements.
-The design principles that emerged during the implementation discussed in @discussion.
+The design principles that emerged during the implementation are discussed in @discussion.

@@ -17,10 +17,10 @@ At the center of the model is the Design Cycle, which represents the iterative p
 evaluating the artifact. The design cycle is informed by the problem domain and the knowledge base,
 and in turn informs both of them.
 
-Hevner @hevner_design_2004 establish seven critical guidelines for conducting design science research.
+Hevner, March, Park, and Ram @hevner_design_2004 establish seven critical guidelines for conducting design science research.
 
 1. Design as an Artifact: The research must produce a viable artifact.
-Hevner defines artifacts as constructs (vocabulary/symbols), models (abstractions/representations),
+Hevner et al. define artifacts as constructs (vocabulary/symbols), models (abstractions/representations),
 methods (algorithms/practices), or instantiations (implemented systems).
 
 2. Problem Relevance: The research must address a problem that is relevant to the real world.

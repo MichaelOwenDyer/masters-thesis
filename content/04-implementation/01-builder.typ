@@ -1,86 +1,167 @@
-== Builder API
+== Builder API (Net Structure)
 
-The builder API serves as the entry point for constructing Petri net models programmatically.
-It allows users to add and remove places, transitions, and arcs, and returns simple handles to these elements with a
-backing ascending ID. We leverage Rust's newtype pattern to wrap these IDs in strongly typed handles,
-which prevents accidental misuse of the wrong handle type at zero runtime cost.
-Arcs are represented in this phase as an enum of either a place-to-transition or transition-to-place arc, which ensures
-the bipartite structure of the net is maintained at compile time.
-In order to reduce overhead on the user, I provide implementations of the `From` trait for tuples of place and transition
-handles, and accept `impl Into<Arc>` for the `add_arc()` method, allowing the user to pass in a tuple of handles directly
-without having to construct an `Arc` object explicitly. This enables the user to write `b.add_arc((p, t))` instead of `b.add_arc(Arc::PlaceToTransition(p, t))`,
-or `b.add_arc((t, p))` instead of `b.add_arc(Arc::TransitionToPlace(t, p))`, achieving the same effect.
+The builder API serves as `petrivet`'s entry point for programmatically defining structure of a net:
+the places, transitions, and arcs that connect them.
 
-#grid(
-  columns: (auto, auto),
-  [Operation], [Method on NetBuilder `b`],
-  [Add a place], [let p = b.add_place();],
-  [Add a transition], [let t = b.add_transition();],
-  [Add an arc from place `p` to transition `t`], [b.add_arc((p, t));],
-  [Add an arc from transition `t` to place `p`], [b.add_arc((t, p));],
+A builder can be created with `NetBuilder::new()`,
+and places and transitions can be added with `add_place()` and `add_transition()`.
+These methods return opaque handles to the created nodes,
+which are wrapper types (_newtypes_) around ascending integer IDs.
+Rust's type system allows distinct concepts to have distinct types at no additional runtime cost,
+preventing accidental misuse of the API at compile time,
+such as passing a place where a transition is expected.
+
+Arcs are represented as an enum: either a place-to-transition or transition-to-place arc,
+guaranteeing the bipartite structure of the net by refusing to compile otherwise.
+
+#figure(
+  [
+    ```
+    enum Arc {
+        PlaceToTransition(Place, Transition),
+        TransitionToPlace(Transition, Place),
+    }
+    ```
+  ],
+  caption: [
+    The `Arc` enum guarantees the bipartite structure of the net at compile time.
+  ]
 )
 
-We also provide bulk operations for adding multiple places, transitions, or arcs at once, which primarily reduces code bloat for the user.
-Here we leverage Rust's powerful type system in several ways.
+To improve API ergonomics, I provide implementations of Rust's `From` trait
+for the tuple types `(Place, Transition)` and `(Transition, Place)` to be converted into an `Arc`,
+which works well with Rust's `Into` trait to allow the user to specify an arc as a pair of nodes.
 
-For bulk adding nodes, we utilize const generics to allow the user to create an arbitrary number of places or transitions ergonomically
-in a single operation: the `add_places()` and `add_transitions()` methods return an array of handles of size `N`,
-where `N` is a compile-time constant specified by the user or, more conveniently, inferred from context.
-The user can call for example `let places = b.add_places::<3>()` to add three places and then access them via `places[0]`, `places[1]`, and `places[2]`,
-or preferred: `let [p0, p1, p2] = b.add_places()` to add three places and immediately destructure the returned array into three separate variables.
-`N` no longer has to be specified explicitly, as the compiler can infer it from the number of names provided in the destructuring assignment.
-
-For adding multiple arcs at once, I provide multiple possibilities.
-I lean on Rust's trait system to provide a single `add_arcs()` method that can accept a variety of input types which can be converted to an Iterator of arcs:
-`IntoArcs` is implemented for anything that can be converted into an iterator of individual arcs.
-But it is also implemented for tuples of >2 alternating places and transitions, with the semantics that
-an arc is created between each consecutive pair of nodes in the tuple.
-I find this to be a very ergonomic way to add multiple arcs at once when the user has a specific path in mind, avoiding
-the duplication of writing out each individual arc in a list.
-
-#grid(
-  columns: (auto, auto, auto),
-  [Operation], [Method on NetBuilder `b`], [Note],
-  [Add multiple places], [`let [p0, p1, p2] = b.add_places();`], [The user simply names each place in the array destructuring assignment, and the compiler infers the size of the array from the number of names provided.],
-  [Add multiple transitions], [`let [t0, t1, t2, t3] = b.add_transitions();`], [],
-  [Add multiple arcs], [`b.add_arcs([(p0, t0), (t0, p1), (p1, t1)]);`], [Any type that can be iterated over and converted into an `Arc` can be passed to this method, including arrays, slices, and vectors.],
-  [Add multiple arcs - alternate syntax], [`b.add_arcs((p0, t0, p1, t1));`], [This alternate syntax is more compact when the arcs form a contiguous path.],
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new(); // Create a new builder
+    let p = b.add_place(); // Add a place
+    let t = b.add_transition(); // Add a transition
+    b.add_arc((p, t)); // Add an arc from place `p` to transition `t`
+    b.add_arc((t, p)); // Add an arc from transition `t` to place `p`
+    ```
+  ],
+  caption: [
+    The builder API allows the user to add and remove places, transitions, and arcs,
+    and returns opaque handles to these elements.
+    The `add_arc()` method accepts any type that can be converted into an `Arc`,
+    including tuples of opposite node types, which are semantically interpreted as arcs.
+  ]
 )
 
-During the builder phase, arcs are stored in a hash map, allowing for fast insertion and removal of arcs.
-Once the model is constructed, calling the `build()` method will return a fully constructed, read-only Petri net model that can be analyzed.
-On building the net, the builder will reorganize the internal data structures to optimize for cache locality,
-packing everything into dense arrays and removing any gaps in the ID space.
-Arcs are not stored as separate objects anymore, but instead are represented as adjacency lists of nodes,
-the presets and postsets of each node. This allows for fast traversal of the neighborhood of a node.
+Removing a node or an arc is as simple as calling the corresponding `remove_*()` method with the handle
+of the element to be removed.
+All adjacent arcs are automatically removed as well, and the removed node's internal ID is not reused to ensure
+that the invalidated handles do not accidentally refer to a new node that has been added later.
 
-The `build()` operation also evaluates and caches some structural properties of the net,
-such as the net's incidence matrix, its structural subclass (either circuit, state machine, marked graph, (extended) free choice, asymmetric choice, or general)
-and whether the net is strongly connected, all of which will be useful for analysis later.
-(TODO: section on analysis properties of structural subclasses)
+`petrivet`'s API also provides bulk operations for adding multiple places, transitions, or arcs at once,
+with the goal of reducing boilerplate code.
+Rust's type system can be leveraged to provide ergonomic syntax here as well.
 
-#grid(
-  columns: (auto, auto, auto),
-  [Petri net element], [Semantic Label], [Dense Internal Representation],
-  [Place], [Place(u32)], [PlaceIdx(u32)],
-  [Transition], [Transition(u32)], [TransitionIdx(u32)],
-  [Arc], [Arc - either Place-Transition or Transition-Place], [Preset and postset adjacency lists],
+For bulk adding nodes, _const generics_ and _array destructuring_ allow the user to create an arbitrary number of
+places or transitions at once without having to specify the desired number explicitly.
+
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new();
+    // Add three places
+    let [p0, p1, p2] = b.add_places();
+    // Add four transitions
+    let [t0, t1, t2, t3] = b.add_transitions();
+    ```
+  ],
+  caption: [
+    Bulk adding of places and transitions is supported via const generics,
+    allowing the user to add an arbitrary number of nodes at once.
+  ]
 )
 
-It was an explicit design decision to make NetBuilder mutable and the structure of a built Net immutable, which allows for a clear separation between the construction and analysis phases.
-Every place and transition is assigned a unique index in the internal arrays, which allows us to avoid the use of
-hash maps and instead use simple array indexing for node-associated data.
-This two-tiered representation allows for a decoupling of the user-facing semantic labels of the Petri net components from
-the data structure used by the underlying analysis engine. This is a critical design decision that allows freedom to optimize
-the internal representation for performance without affecting the user-facing API.
+For adding multiple arcs at once, multiple possibilities exist within `petrivet`'s API.
+The `add_arcs()` method accepts any type than can be converted into an _iterator_ of arcs,
+including arrays, slices, and vectors.
+But most interestingly, it also accepts a tuple of alternating places and transitions,
+which is semantically interpreted as a path through the net,
+with an arc created between each neighboring pair of nodes in the path.
 
-This architecture does not come without overhead.
-It necessitates a translation layer that maps the user-facing semantic labels to the internal dense representation and vice versa.
-This translation must happen at the beginning and end of every analysis operation, which adds overhead.
-Performance overhead is negligible compared to the astronomical computational complexity of some of the problems we are trying to solve.
-Development overhead is the more significant concern, as suddenly every core feature must be routed through this translation layer,
-which threatens to entangle itself with the core logic of the analysis engine. A development pattern which has slowly emerged
-is the separation of the codebase into an API and a core layer, where the API definitions are simple wrappers around the mapping and core data structures.
-No logic is implemented in the API layer, it simply maps the user's request to the core layer and maps the results back to the user-facing representation.
-This pattern has proven to be a successful strategy for segregating the translation layer from the core logic,
-but comes with the cost of additional boilerplate code and a more complex project structure.
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new();
+    let [p0, p1, p2] = b.add_places();
+    let [t0, t1] = b.add_transitions();
+    // Add three arcs
+    b.add_arcs([(p0, t0), (t0, p1), (p1, t1)]);
+    // Add the same three arcs using path syntax
+    b.add_arcs((p0, t0, p1, t1));
+    // This will fail to compile, as it is not a valid path
+    !{b.add_arcs((t0, t1, t2))};
+    ```
+  ],
+  caption: [
+    `petrivet`'s `add_arcs()` builder method allows adding multiple arcs at once,
+    either as an array of arcs or as a path through the net.
+    Rust's type system allows flexibility without sacrificing correctness.
+  ]
+)
+
+The `NetBuilder` is optimized for mutability, allowing the user to add and remove nodes and arcs in any order.
+Once construction is complete, the user can call the `build()` method to finalize the net and return a read-only
+`Net` object.
+
+Internally, `build()` transforms the internal mutation-oriented data structures into a densely packed representation
+optimized for analysis:
+- Every place and transition is assigned a unique index in the internal arrays,
+  removing any gaps in the ID space which might have arisen via removals of nodes during construction.
+  This index becomes their canonical internal ID for the core logic,
+  and allows any data associated with places or transitions to be stored in a CPU cache-friendly contiguous array
+  in the canonical order (as opposed to a hash map or other associative data structure).
+  This also decouples the internal layout of the net from the insertion order of the nodes,
+  which allows for optimizations such as sorting the nodes by their degree or other properties to improve cache locality.
+  A mapping is maintained between the user-facing semantic labels of the nodes and their internal canonical IDs,
+  which allows the user to continue to refer to nodes by their original handles while the core logic
+  operates on the internal representation.
+- Arcs are no longer represented as separate objects, but rather as adjacency lists of node indices.
+  This allows for cache-friendly iteration over the preset and postset of a node,
+  which is a common operation in many analysis algorithms.
+- The structural class of the net is evaluated once and cached, along with the net's incidence matrix
+  and whether the net is strongly connected.
+  All of these properties will be useful for analysis later, and since the net is immutable,
+  will not need to be recomputed for the lifetime of the net.
+
+The `build()` method additionally performs two validation checks on the net to ensure that it is a valid net:
+- The net must be connected.
+  A non-connected net, in the opinion of the author, is not a net at all, but rather a collection of nets.
+- The net must contain at least one place and one transition.
+  A single place, a single transition, or an empty net are degenerate cases that have no interesting properties.
+
+If either of these checks fails, the `build()` method returns a `BuildError` enum indicating the reason for failure.
+Otherwise, it returns a fully constructed, read-only `Net` object that is ready to be analyzed.
+
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new();
+    // ... construct the net ...
+    let net = match b.build() {
+        Ok(net) => net, // The net is valid and can be analyzed
+        Err(BuildError::Disconnected) => panic!("The net is disconnected"),
+        Err(BuildError::Degenerate) => panic!("The net must contain at least one place and one transition"),
+    };
+    // Alternatively, use the `?` operator to propagate the error
+    let net = b.build()?;
+    ```
+  ],
+  caption: [
+    The `build()` method returns a `Result<Net, BuildError>`, which is either a fully constructed,
+    read-only net model that can be analyzed,
+    or a `BuildError` if the net violates one of two rules: it must be connected and
+    contain at least one place and one transition.
+  ]
+)
+
+If the user wishes to modify the net after construction,
+they can convert a `Net` back into a `NetBuilder` and continue to add or remove nodes and arcs.
+Building the net again will re-evaluate the canonical internal representation and the validation checks,
+ensuring that the unique story of how a net was constructed does not affect its analysis properties.

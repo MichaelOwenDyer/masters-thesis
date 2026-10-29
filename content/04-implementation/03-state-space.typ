@@ -24,7 +24,7 @@ A highly related concept is the Karp-Miller coverability graph, which is identic
 but provides a finite representation of an infinite state space for unbounded Petri nets by introducing the concept of an "omega" token count,
 representing an arbitrarily large number of tokens.
 
-petrivet provides analogous structures for the Karp-Miller coverability graph as for the reachability graph,
+`petrivet` provides analogous structures for the Karp-Miller coverability graph as for the reachability graph,
 and the same considerations apply for incremental exploration versus full construction,
 with the exception that full construction is guaranteed to terminate.
 The size of the graph can still be astronomical.

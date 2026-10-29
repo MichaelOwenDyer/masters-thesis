@@ -8,7 +8,8 @@ which can be a powerful tool in the uncovering of design flaws and the verificat
 a system is deployed @van_der_aalst_putting_1994 @van_der_aalst_workflow_2000 @murata_petri_1989.
 While the algorithmic complexity of most Petri net analysis questions is intractable in the general case,
 over six decades of Petri net research has produced a wealth of theorems that can be leveraged
-to derive efficient decision and semi-decision procedures in broad contexts @murata_petri_1989 @best_petri_2024.
+to derive efficient decision and semi-decision #footnote[A semi-decision procedure is one that sometimes fail to provide an answer, but never provides a wrong answer.]
+procedures in broad contexts @murata_petri_1989 @best_petri_2024.
 Mature Petri net analysis tools apply these shortcuts instead of the general case procedures where they can @schmidt_lola_2000,
 and higher-level tools are built on top of Petri net analyzers to fit more specific use cases, such as business process
 model editors @dijkman_formal_2007, verification services, and teaching platforms. // cite specific tools
@@ -43,3 +44,5 @@ including some that are novel to this work.
 I evaluate whether its answers are correct, whether dispatching to the cheapest procedure pays off,
 how well the cost of an analysis can be bounded, and how `petrivet` compares with established tools in speed and memory.
 I also assess it against the requirements above and discuss the design principles that emerged during development.
+
+TODO: Mention `petrivet` participated in MCC 2026

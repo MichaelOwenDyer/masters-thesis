@@ -119,7 +119,7 @@ def run(ctx: Ctx) -> None:
         ax.set_xscale("log")
         if thr is not None:
             ax.axvline(thr, color="#000000", ls="--", lw=0.9)
-            ax.text(thr * 1.15, ax.get_ylim()[1] * 0.97, f"{thr:g} ms: our limit for\n\"close to the deadline\"", fontsize=7.5, va="top")
+            ax.text(thr * 1.15, ax.get_ylim()[1] * 0.97, f"{thr:g} ms", fontsize=7.5, va="top")
         ax.set_xlabel("how long after the time limit the library stopped (ms, log scale)")
         ax.set_ylabel("number of queries")
         ax.legend(frameon=False, title="time limit given", title_fontsize=8.5, fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0))

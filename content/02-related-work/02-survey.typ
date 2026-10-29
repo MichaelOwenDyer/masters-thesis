@@ -82,8 +82,6 @@ and "✗" if it offers neither (naming the technique is recorded in the table bu
 The column "Dispatch by net class" records whether the documentation says that the tool selects its procedure by the structure of the net;
 it is not a rated requirement and is discussed separately below.
 
-#text(fill: red)[\[TODO: re-check the "Dispatch by net class" entry of every row against the tool's documentation and source. The column was filled in as a side note when the survey was done, but dispatching by net structure has since become a central claim of the thesis (RQ2), so each entry must be verified before the finding below is relied on.\]]
-
 #show figure: set block(breakable: true)
 #figure(
   kind: table,

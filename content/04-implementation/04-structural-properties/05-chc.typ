@@ -5,9 +5,9 @@
 #let map  = $op("map")$
 #let zip  = $op("zip")$
 
-== Commoner-Hack Criterion <chc>
+== Commoner/Hack Criterion <chc>
 
-The Commoner-Hack criterion (CHC), also called the Siphon-Trap Criterion, states that every siphon contains a marked trap.
+The Commoner/Hack criterion (CHC), also called the Siphon-Trap Criterion, states that every siphon contains a marked trap.
 
 === SAT Encoding of the CHC Counterexample Search
 
@@ -81,7 +81,7 @@ The maximal trap $D_n$ of $D$ is unmarked, or empty, so $phi_"unmarked"$ holds. 
 
 When $phi$ is satisfiable, the assignment gives a counterexample: the siphon $D$ and its maximal trap $D_n$ (possibly empty).
 
-The following pseudocode mirrors the implementation of the above encoding in petrivet,
+The following pseudocode mirrors the implementation of the above encoding in `petrivet`,
 which returns a counterexample if one exists, or $bot$ if the CHC holds.
 
 #figure(

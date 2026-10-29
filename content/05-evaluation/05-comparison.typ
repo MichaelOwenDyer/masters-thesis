@@ -9,7 +9,7 @@ and is intended to place `petrivet` in the landscape of existing tools
 rather than to rank the tools against each other.
 
 #let e4 = rows("e4.csv")                        // solved questions per collection, question and tool
-#let time-h2h = rows("e4b_time_headtohead.csv")   // petrivet against LoLA and TINA, times, per collection and question
+#let time-h2h = rows("e4b_time_headtohead.csv")   // `petrivet` against LoLA and TINA, times, per collection and question
 #let mem-h2h = rows("e4b_memory_headtohead.csv")  // the same for the peak memory
 #let frontier = rows("e4b_frontier.csv")        // largest size at which a tool answers all four questions of a family
 #let frontier-families = frontier.map(r => r.family).dedup()

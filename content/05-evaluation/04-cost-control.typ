@@ -26,7 +26,7 @@ which check the deadline too infrequently and could be improved.
 #let wall-cap(t) = val("e3b.t" + str(t) + ".n_wall_cap")
 #assert(("fam", "mcc-small", "mcc-large", "calibration").map(c => int(h3a(c).n_wrong)).sum() == 0, message: "the text says that no verdict of the fast methods is wrong")
 
-*The polynomial-only mode.*
+*The efficient-only mode.*
 @tab-h3a shows how often the polynomial procedures are able to produce a verdict.
 On the parametrized families they give a verdict for #cell(h3a("fam").n_definite) of #cell(h3a("fam").n_runs)
 runs (#pct(float(h3a("fam").share_definite), d: 0)) and decline in the rest.
@@ -34,8 +34,8 @@ In #h3a("fam").n_poly_answers_general_timeout of the runs the polynomial methods
 so the hypothesis is supported.
 The same happens for #h3a("mcc-large").n_poly_answers_general_timeout runs of the large competition models.
 On the small competition models the efficient methods answer only #pct(float(h3a("mcc-small").share_definite), d: 0)
-of the runs, and in none of them does RG exploration timeout:
-for MCC nets the restriction to efficient methods mostly prevents a verdict from being returned at all.
+of the runs, and in none of them does RG exploration time out.
+For MCC nets the restriction usually prevents a verdict from being returned at all.
 
 #figure(
   eval-table(
@@ -51,7 +51,8 @@ for MCC nets the restriction to efficient methods mostly prevents a verdict from
     )).flatten(),
   ),
   caption: [
-    The number of runs where the fast methods
+    The number of runs where the efficient methods return a verdict, where they do not, where they return an incorrect verdict,
+    and where they return a verdict while RG exploration times out, for each collection of nets.
   ],
 ) <tab-h3a>
 

@@ -44,6 +44,15 @@ The following table summarizes the four collections, their sizes, the source of 
 *Calibration nets.* Thirty small Petri nets were constructed and analyzed by hand.
 They serve two purposes: to validate the measurement setup for the various tools, and to provide verdicts which do not depend on any software.
 
+#figure(
+  image("/figures/nets/collections/calibration.svg"),
+  caption: [
+    The calibration net `cal-22-ac-mutex`: two processes, each with an idle place ($p_0$, $p_2$) and a critical
+    section ($p_1$, $p_3$), share the lock $p_4$.
+    It has three reachable markings, and both processes are never in their critical section at the same time.
+  ],
+) <fig-eval-calibration>
+
 *Randomized nets.* A pseudorandom number generator was used to generate 100 nets each across six structural subclasses
 (circuits, state machines, marked graphs, extended free-choice nets, asymmetric choice nets, and general nets) (@background-structural-classes),
 and three size ranges (2-5 places, 6-8 places, 9-12 places). This produced 100 x 6 x 3 = 1800 nets.
@@ -54,18 +63,16 @@ The generators for each structural class occasionally produced nets which also b
 and in these cases the net was classified into the most specific class.
 The RNG was seeded, so the collection can be reproduced exactly, and the files are archived together with a checksum.
 
-*Parametrized nets.* Fifteen families of nets parametrized by size.
-Every property is known for every family by construction.
+#figure(
+  image("/figures/nets/collections/randomized.svg"),
+  caption: [A randomized general net of medium size \ (6 places, 6 transitions, 18 arcs, 4 tokens).],
+) <fig-eval-randomized>
+
+*Parametrized nets.* Fifteen families of parametrized nets were constructed,
+each following a specific pattern and parameterized by a size $n$.
+The properties boundedness, deadlock-freedom, liveness, and quasi-liveness are known for each family by construction.
 These families are used to evaluate how running time grows with the size of the net.
 @tab-parametrized-families lists the families, the properties they satisfy, and a small example of each.
-
-*MCC models.* From the model repository of the 2026 Model Checking Contest #footnote[https://mcc.lip6.fr/models.php]
-I drew a seeded random sample of 90 "small" and 20 "large" non-colored Petri nets, where
-a small net is one whose state space is known to be at most $10^6$ markings, and a large net is one whose state space is larger than that or unknown.
-Models which `petrivet` failed to parse were skipped, which included:
-#val("e0.mcc.small.rejected_not_connected") small and #val("e0.mcc.large.rejected_not_connected") large non-connected nets,
-#val("e0.mcc.small.rejected_arc_weight") small and #val("e0.mcc.large.rejected_arc_weight") large nets which contained nonstandard ($!= 1$) arc weights, and
-#val("e0.mcc.large.rejected_too_large") large nets whose file size exceeded 5 MB.
 
 #show figure: set block(breakable: true)
 #figure(
@@ -155,15 +162,69 @@ Models which `petrivet` failed to parse were skipped, which included:
   ],
 ) <tab-parametrized-families>
 
+The largest parametrized net used in the evaluation (`sm-choice-ring` with $n$ = 1024) has
+3,072 places and 4,096 transitions.
+
+*MCC models.* From the model repository of the 2026 Model Checking Contest #footnote[https://mcc.lip6.fr/models.php]
+I drew a seeded random sample of 90 "small" and 20 "large" non-colored Petri nets, where
+a small net is one whose state space is known to be at most $10^6$ markings, and a large net is one whose state space is larger than that or unknown.
+
+MCC models which `petrivet` failed to parse were skipped, which included:
+#val("e0.mcc.small.rejected_not_connected") small and #val("e0.mcc.large.rejected_not_connected") large non-connected nets,
+#val("e0.mcc.small.rejected_arc_weight") small and #val("e0.mcc.large.rejected_arc_weight") large nets which contained nonstandard ($!= 1$) arc weights, and
+#val("e0.mcc.large.rejected_too_large") large nets whose file size exceeded 5 MB.
+
+@fig-eval-mcc-small and @fig-eval-mcc-large show examples of a small and a large MCC model, respectively.
+
+#figure(
+  placement: auto,
+  image("/figures/nets/collections/mcc_small.svg", height: 19cm),
+  caption: [
+    The small MCC model `HouseConstruction-PT-00002` \
+    (26 places, 18 transitions, 1,501 reachable markings).
+  ],
+) <fig-eval-mcc-small>
+#pagebreak(weak: true)
+
+#figure(
+  placement: auto,
+  image("/figures/nets/collections/mcc_large.svg", width: 100%),
+  caption: [
+    The large MCC model `SquareGrid-PT-020102` \
+    (68 places, 72 transitions, about $2.1 dot 10^12$ reachable markings).
+  ],
+) <fig-eval-mcc-large>
+
+The largest (by number of places and transitions) "small" MCC models used in the evaluation were
+`ServersAndClients-PT-200080` (16,881 places, 32,400 transitions, but only 16,401 reachable markings)
+and `RERS2020-PT-pb101` (906 places, 149,363 transitions, and 345,421 reachable markings).
+
+The largest "large" MCC models used in the evaluation,
+`FamilyReunion-PT-L00050M0005C002P002G001` (12,194 places, 10,560 transitions) and
+`DLCflexbar-PT-6a` (2,069 places, 16,077 transitions),
+both have an unknown number of reachable markings:
+no participant tool in the 2026 MCC was able to compute the state space size of either model.
+They are suspected to be bounded.
+The large MCC model with the largest known state space used in the evaluation is `ProductionCell-PT-none`
+(176 places, 134 transitions, roughly $1.13 * 10^13$ reachable markings).
+This shows that net size has very little correlation with state space size,
+and that the evaluation includes a wide range of net sizes and state space sizes.
+
 === Tools under comparison <eval-tools>
 
 `petrivet` enters the evaluation in three different configurations:
-+ In the default mode ("automatic dispatch"), `petrivet` chooses the procedure to use based on its internal dispatching logic.
-+ In the efficient-only mode ("fast methods only"), `petrivet` must decide the property using only polynomial-time procedures (if possible).
-+ In the brute-force mode ("RG exploration"), `petrivet` must answer the query via a breadth-first search of the
++ In the default configuration ("automatic dispatch"), `petrivet`
+  answers the query using its normal internal dispatching logic.
+  This is what a user of the library would experience when using the library without utilizing any cost-control mechanism.
++ In the efficient-only configuration ("efficient methods only"), `petrivet` must answer the query using only
+  polynomial-time procedures (if possible).
+  This is equivalent to automatic dispatch with the efficiency cost-control mechanism enabled.
++ In the brute-force configuration ("RG exploration"), `petrivet` must answer the query via a breadth-first search of the
   reachability graph, which isolates the effect of the internal dispatching.
-  As discussed in @background-reachability, this is an infinitely large structure for unbounded Petri nets and often
-  results in a timeout in the evaluation (unless the property can be decided on a partially explored graph).
+  If the property can be decided on a partially explored graph, then the search is terminated early,
+  otherwise the search continues until the entire reachability graph is explored or a timeout occurs.
+  As discussed in @background-reachability, this is an infinitely large structure for unbounded Petri nets,
+  which is why `petrivet` does not use this method by default.
 
 A selection of three external tools from the survey in @related-work,
 LoLA 2.0 #footnote[https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/] <lola>,
@@ -270,7 +331,7 @@ counts as twice the time limit, and cactus plots.
 Where no disagreement with the reference verdict is found, I provide the one-sided 95 percent upper bound on the true
 rate of disagreement (Clopper-Pearson interval). // TODO Cite
 
-*Terminology.* In following sections, I use the following terminology:
+*Terminology.* The following sections use the following terminology:
 - A *collection* is a set of Petri nets as described in @eval-collections.
 - A *property* is a Petri net property as described in @eval-properties.
 - A *query* is a combination of a Petri net and a property (and, for reachability and coverability, a target marking).

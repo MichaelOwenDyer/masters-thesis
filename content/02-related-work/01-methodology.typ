@@ -4,18 +4,18 @@
 I followed a structured literature review protocol @kitchenham_systematic_2009 to identify relevant Petri net analysis tools.
 The protocol was fixed before the survey was conducted.
 
-I searched ten sources: // todo: update last accessed dates
+I searched four sources for academic papers:
 - Google Scholar #footnote[scholar.google.com, last accessed: 2026-10-27],
 - DBLP #footnote[dblp.org, last accessed: 2026-10-14],
 - the ACM Digital Library #footnote[dl.acm.org, last accessed: 2026-10-14], and
-- SpringerLink #footnote[link.springer.com, last accessed: 2026-10-14]
-for academic papers;
+- SpringerLink #footnote[link.springer.com, last accessed: 2026-10-14];
 
+three sources for software packages:
 - crates.io #footnote[crates.io, last accessed: 2026-10-14],
 - PyPI #footnote[pypi.org, last accessed: 2026-10-14], and
-- GitHub #footnote[github.com, last accessed: 2026-10-14]
-for software packages; as well as
+- GitHub #footnote[github.com, last accessed: 2026-10-14];
 
+and three sources for curated lists of Petri net tools:
 - the Hamburg Petri Nets Tool Database #footnote[www2.informatik.uni-hamburg.de/tgi/PetriNets/tools/db.html, last accessed: 2026-10-14], and
 - the Model Checking Contest (MCC) participant lists for 2025 #footnote[https://mcc.lip6.fr/2025/results.php, last accessed: 2026-10-14] and 2026 #footnote[https://mcc.lip6.fr/2026/results.php, last accessed: 2026-10-14].
 

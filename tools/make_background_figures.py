@@ -49,6 +49,17 @@ FIGURES = {
                       "P1>T1 P2>T1 T1>P3"), True, []),
     "reach_no": (net({"P1": (0, -0.6, 2), "P2": (0, 0.6, 1), "P3": (2, 0, 0, 2)}, {"T1": (1, 0)},
                      "P1>T1 P2>T1 T1>P3"), True, []),
+    # incidence matrix and marking equation: T2 reads and writes P3, so its column has a 0 for P3
+    "incidence": (net({"P1": (0, 0, 1), "P2": (2, 0), "P3": (1, 2, 1)}, {"T1": (1, -1), "T2": (1, 1)},
+                      "P1>T1 T1>P2 P2>T2 T2>P1 P3>T2 T2>P3", {"T2": "right"}), True, []),
+    # P-invariant (1, 1, 0, 0): P1 + P2 is constant; P-subinvariant (0, 0, 0, 1): P4 never grows;
+    # P-surinvariant (0, 0, 1, 0): P3 never shrinks
+    "p_invariants": (net({"P1": (0, 0, 1), "P2": (2, 0), "P3": (-1, 1), "P4": (-1, -1, 2)},
+                         {"T1": (1, -1), "T2": (1, 1), "T3": (-1, 0)},
+                         "P1>T1 T1>P2 P2>T2 T2>P1 P1>T3 T3>P1 P4>T3 T3>P3", {"T3": "left", "P4": "left"}), True, []),
+    # T-invariants (1, 0, 1) and (0, 1, 1): either way to P2 and back
+    "t_invariant": (net({"P1": (0, 0, 1), "P2": (2, 0)}, {"T1": (1, -1), "T2": (1, 0), "T3": (1, 1)},
+                        "P1>T1 T1>P2 P1>T2 T2>P2 P2>T3 T3>P1"), True, []),
     # T1 has no input place, so it is always enabled and P1 grows without bound
     "unbounded": (net({"P1": (1, 0)}, {"T1": (0, 0)}, "T1>P1"), True, []),
     # trap {P1, P2}: unmarked at first, marked for good once T3 has fired

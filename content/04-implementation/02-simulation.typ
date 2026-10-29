@@ -1,19 +1,39 @@
-== Simulation
+== Simulation (Petri Net Behavior)
+
+This section introduces the implementation of markings and Petri net simulation in `petrivet`,
+which is the basis for behavioral analysis in the library.
 
 === Tokens and Markings
 
-Up until now, we have only discussed the static structure of a Petri net: the places and transitions and arcs between them.
 We now introduce the dynamic aspect of Petri nets, representing the state of the system at a given point.
-A _token_ is an abstract representation of a resource or a fulfillment of a condition in the modeled system.
-A _marking_ is a distribution of tokens across the places in the Petri net, representing the current state of the system.
-Tokens are anonymous and indistinguishable, meaning that the identity of individual tokens does not matter; only the number of tokens in each place is relevant.
 
-Therefore, tokens are represented in petrivet as a simple type alias for `u32`, providing a semantic label for the number without separating it into a distinct type.
+Therefore, tokens are represented in `petrivet` as a simple type alias for `u32`, providing a semantic label for the number without separating it into a distinct type.
 Markings have a public representation and an internal representation, each optimized for their respective use cases.
 From the API perspective, it is convenient to only specify the places that have tokens, leaving the rest of the places implicitly empty.
 Internally, however, we store the number of tokens in each place in a dense array, allowing for fast access and manipulation of the marking.
 This dense array has the same size and ordering as the dense array of places, allowing us to zip the two arrays
 together and iterate over the places and their corresponding token counts in a single pass.
+
+#figure(
+  [
+    ```
+    pub struct PetriNet<N: AsRef<Net>> {
+        /// The underlying net structure.
+        pub net: N,
+        /// The current marking of the net.
+        pub marking: IdxMarking<u32>,
+        /// The initial marking of the net, which can be used to reset the net to its original state.
+        pub reset_marking: IdxMarking<u32>,
+    }
+    ```
+  ],
+  caption: [
+    The `PetriNet` structure combines a `Net` and a `Marking`, allowing for the simulation of Petri net behavior.
+    The `AsRef<Net>` trait bound allows for flexibility in the ownership of the underlying net structure,
+    allowing for both owned and borrowed nets to be used.
+  ]
+)
+
 
 === Basic Simulation
 
@@ -34,7 +54,7 @@ allowing for the simulation and mutation of the Petri net state over time.
 We can then call the `fire()` method on the `PetriNet` structure, which will attempt to fire the given transition from the current marking,
 modifying the marking in place if successful, or returning an error if the transition was not enabled.
 
-petrivet provides three different ways to fire transitions, each for a different use case.
+`petrivet` provides three different ways to fire transitions, each for a different use case.
 
 #grid(
   columns: (auto, auto, auto),

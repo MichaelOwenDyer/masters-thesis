@@ -145,6 +145,36 @@
   )
 ]
 
+#let mark-errors(it) = {
+  let pattern = regex("!\{([^}]+)\}")
+  let raw-text = it.text
+  let last-pos = 0
+  let elements = ()
+
+  for m in raw-text.matches(pattern) {
+    if m.start > last-pos {
+      elements.push(raw(raw-text.slice(last-pos, m.start), lang: it.lang, block: false))
+    }
+
+    let error-text = m.captures.at(0)
+    elements.push(underline(
+      stroke: 1pt + red,
+      offset: 2pt,
+      evade: false,
+      raw(error-text, lang: it.lang, block: false)
+    ))
+
+    last-pos = m.end
+  }
+
+  // 1c. Highlight remaining text after the last error
+  if last-pos < raw-text.len() {
+    elements.push(raw(raw-text.slice(last-pos), lang: it.lang, block: false))
+  }
+
+  align(left, elements.join())
+}
+
 #let thesis() = {
   titlepage(metadata)
 
@@ -182,6 +212,20 @@
   set text(font: body-font, size: body-size, lang: "en")
 
   show math.equation: set text(font: "TeX Gyre Termes Math", weight: 400)
+
+  show figure: it => {
+    it
+    v(1.5em)
+  }
+
+  show raw.where(block: true): it => {
+    block(
+      fill: luma(230),
+      inset: 8pt,
+      radius: 4pt,
+      mark-errors(it),
+    )
+  }
 
   show bibliography: set heading(
     outlined: true,

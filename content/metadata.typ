@@ -1,6 +1,6 @@
 #let metadata = (
-  title: "High Performance Petri Net Model Checker",
-  german-title: "Hochleistungs-Petri-Netz-Modellprüfer",
+  title: "",
+  german-title: "",
   author: "Michael Dyer",
   chair: "Chair of Information Systems and Business Process Management (i17)",
   school: "TUM School of Computation, Information and Technology",
@@ -10,7 +10,6 @@
   examiner: "Prof. Dr. Stefanie Rinderle-Ma",
   supervisor: "Dr. Jürgen Mangler",
   supervisor-2: none,
-  matriculation-number: 03726484,
   submission-place: "Garching",
   submission-date: "02.11.2026",
 )

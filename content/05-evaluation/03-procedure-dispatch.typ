@@ -32,7 +32,8 @@ Runs which time out at 30 seconds are counted as 30 seconds, which is an underes
 The comparisons are therefore additionally repeated excluding the runs that timed out in either mode.
 
 *Results on the parametrized families.*
-@tab-h2 shows the results of the paired runs for each structural class.
+@tab-h2 shows a summary of which mode is faster for each structural class and the associated p-value
+after Holm-Bonferroni correction for the number of classes tested.
 The automatic dispatch is clearly faster than RG exploration for
 #classes.filter(c => supported(c) and supported-without-stopped(c)).map(c => class-name.at(c)).join(", ", last: " and ")
 nets, and this holds with and without the timed out runs.
@@ -53,7 +54,9 @@ For asymmetric-choice and general nets the automatic dispatch is not faster.
       if supported-without-stopped(c) [yes] else [no],
     )).flatten(),
   ),
-  caption: [Performance of automatic dispatch against reachability graph exploration on the parametrized families, by structural class.],
+  caption: [
+    Performance summary of automatic dispatch against RG exploration on the parametrized families, by structural class.
+  ],
 ) <tab-h2>
 
 *Speedup by size.*
@@ -80,7 +83,7 @@ Four patterns show:
   for `ac-cycle` at size 64 (the automatic dispatch takes about
   #fmt(1 / float(find("e2_speedup_by_size.csv", family: "ac_cycle", size: "64").median_speedup)) times as long), and
   #dec(float(find("e2_speedup_by_size.csv", family: "general_cycle", size: "64").median_speedup), d: 2) for `general-cycle`.
-  The slowdown is consistent with the nontrivial cost of the Commoner-Hack criterion and the Karp-Miller coverability graph,
+  The slowdown is consistent with the nontrivial cost of the Commoner/Hack criterion and the Karp-Miller coverability graph,
   which are used by the automatic dispatch on these nets.
   Only at size 1,024 does the automatic dispatch return a verdict where brute force times out.
 
@@ -100,12 +103,16 @@ and @fig-scatter illustrates every pair of runs individually, colored by family.
 
 #figure(
   image(export-dir + "figures/e2_scaling.svg", width: 100%),
-  caption: [Response times by family as the net grows: the automatic dispatch (blue) and RG exploration (orange)],
+  caption: [
+    Response times by family as the net grows: the automatic dispatch (blue) and RG exploration (orange)
+  ],
 ) <fig-scaling>
 
 #figure(
   image(export-dir + "figures/e2_paired_scatter.svg", width: 85%),
-  caption: [Every dot is a pair of runs: the time of the automatic dispatch (x-axis) against the time of RG exploration (y-axis), colored by family.],
+  caption: [
+    Every dot is a pair of runs: the time of the automatic dispatch (x-axis) against the time of RG exploration (y-axis), colored by family.
+  ],
 ) <fig-scatter>
 
 #let frontier-raw(f, s) = find("e2_frontier.csv", family: f, solver_id: s).max_size_solved
@@ -150,8 +157,13 @@ while the automatic dispatch answered all queries at size 1,024.
 
 #figure(
   image(export-dir + "figures/e2_memory_by_size.svg", width: 100%),
-  caption: [Peak memory of the automatic choice (blue) and plain exploration (orange) per family and size, as the median over the questions that have a memory value (logarithmic axes).
-    The dashed line is the memory limit of 8 GiB; circled points are medians in which the run was ended by the memory limit, so their value is the limit and not the memory the run would have needed.],
+  caption: [
+    Peak memory of the automatic choice (blue) and plain exploration (orange) per family and size,
+    as the median over the runs that reported a memory value.
+    The shape of the symbol indicates the property being checked,
+    an outlined symbol means that the run timed out at that memory value,
+    and a blackened symbol means that the run ran out of memory.
+  ], // TODO: Add borders to the symbols to better visually distinguish overlaps
 ) <fig-memory>
 
 *The competition models.*
@@ -209,11 +221,11 @@ Deadlock-freedom queries are nearly unaffected, presumably because of the second
 ) <fig-dispatch-mcc>
 
 The second cause remains in the codebase at the time of writing:
-for free-choice and asymmetric-choice nets, the automatic dispatch attempts to use the Commoner-Hack criterion to decide
+for free-choice and asymmetric-choice nets, the automatic dispatch attempts to use the Commoner/Hack criterion to decide
 the property where applicable (free-choice liveness, deadlock-freedom), but this does not pay off for the majority of Petri nets.
-On one asymmetric-choice net with only 204 reachable states, the Commoner-Hack criterion took 32 seconds to return,
+On one asymmetric-choice net with only 204 reachable states, the Commoner/Hack criterion took 32 seconds to return,
 while the reachability graph took 1.7 milliseconds.
-Further investigation is needed to determine when the Commoner-Hack criterion is worth using, and the dispatch should be
+Further investigation is needed to determine when the Commoner/Hack criterion is worth using, and the dispatch should be
 adjusted accordingly in a future version of the library.
 
 *Summary.*

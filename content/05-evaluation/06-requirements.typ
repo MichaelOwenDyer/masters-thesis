@@ -22,3 +22,4 @@ rust-bindgen #footnote[https://github.com/rust-lang/rust-bindgen] for C/C++,
 ts-rs #footnote[https://github.com/aleph-alpha/ts-rs] for TypeScript, and
 wasm-bindgen #footnote[https://github.com/wasm-bindgen/wasm-bindgen] for WebAssembly,
 among others.
+
