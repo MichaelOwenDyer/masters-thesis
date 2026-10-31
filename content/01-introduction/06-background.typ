@@ -12,31 +12,34 @@ A *net* $N = (P, T, F)$ is a connected
 bipartite directed graph consisting of:
 - a finite set of *places* $P$,
   #footnote[The set of places is often denoted $S$ in classical literature, from the German word "Stellen". In this thesis, I choose to use $P$ for consistency with the English word "Place".]
-- a finite set of *transitions* $T$ disjoint from $S$, and
+- a finite set of *transitions* $T$ disjoint from $P$, and
 - a *flow relation* $F ⊆ (P × T) ∪ (T × P)$.
 
 The places (often drawn as circles) and transitions (rectangles or squares) are the nodes of the graph,
-and the flow relation defines directed edges (often called arcs) between them.
+and the flow relation defines directed edges (often called arcs) between them (@fig-bg-structure).
 
 #figure(
   image("/figures/nets/background/structure.svg"),
   caption: [A net with one place $P_1$, one transition $T_1$, and one arc from $P_1$ to $T_1$.],
 ) <fig-bg-structure>
 
-The *preset of a place* $p in P$, denoted $pre(p)$, is defined as ${ t in T : (t, s) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $t$ to $p$).
+The *preset of a place* $p in P$, denoted $pre(p)$, is defined as ${ t in T : (t, p) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $t$ to $p$).
 
 The *postset of a place* $p in P$, denoted $post(p)$, is defined as ${ t in T : (p, t) ∈ F }$ \ (the set of transitions $t$ such that there is a directed edge from $p$ to $t$).
 
 The *preset of a transition* $t in T$, denoted $pre(t)$, is defined as ${ p in P : (p, t) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $p$ to $t$).
 
-The *postset of a transition* $t in T$, denoted $post(t)$, is defined as ${ p in P : (t, s) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $t$ to $p$).
+The *postset of a transition* $t in T$, denoted $post(t)$, is defined as ${ p in P : (t, p) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $t$ to $p$).
+
+For a set of nodes $X$, the preset and postset are defined as the union of the presets and postsets of the individual nodes in the set: \
+$ pre(X) := union.big_(x in X) pre(x) "     "  post(X) := union.big_(x in X) post(x) $
 
 In this thesis, the terms *input* and *output* are also used to refer to the preset and postset, respectively.
 
 === Tokens and Markings
 
 A *marking* is a mapping $M: P → ℕ$ that assigns a non-negative integer number of tokens to each place.
-Tokens are often drawn as black dots inside the places.
+Tokens are often drawn as black dots inside the places (@fig-bg-token).
 Tokens are anonymous and indistinguishable from one another.
 #footnote[
   See Colored Petri nets (CPNs) for tokens which carry data values.
@@ -52,9 +55,11 @@ Tokens are anonymous and indistinguishable from one another.
 A marking $M$ *covers* another marking $M'$ if $M(p) ≥ M'(p)$ for all $p in P$, that is,
 $M$ has at least as many tokens in every place as $M'$.
 
+For a set of places $X subset.eq P$, $M(X) := sum_(p in X) M(p)$ denotes the total number of tokens in $X$.
+
 A place $p in P$ is called *marked* if it contains at least one token, and *unmarked* otherwise.
 
-A set of places $X subset.eq S$ is called marked if at least one place in the set is marked, and unmarked otherwise.
+A set of places $X subset.eq P$ is called marked if at least one place in the set is marked, and unmarked otherwise.
 
 The *support* of a marking $M$, denoted $supp(M)$, is the set of marked places in the marking: ${ p in P : M(p) > 0 }$.
 
@@ -96,7 +101,7 @@ A marking is called a *deadlock* if it enables no transitions.
 
 A *firing sequence* is a sequence of transitions $σ = t_1 t_2 ... t_n$.
 A marking $M$ enables a firing sequence if $t_1$ is enabled in $M$,
-and for each $i = 2, ..., n$, $t_i$ is enabled at the marking resulting from firing $t_1, ..., t_{i-1}$ in order.
+and for each $i = 2, ..., n$, $t_i$ is enabled at the marking resulting from firing $t_1, ..., t_(i-1)$ in order.
 
 The *reachability set* (or reachable markings) of a Petri net $(N, M_0)$ is the set of all markings reachable
 from the initial marking $M_0$ by firing some sequence of transitions.
@@ -139,6 +144,7 @@ which relates the initial marking $M_0$, the incidence matrix $C$, and a vector 
 any reachable marking $M$ can be expressed as $M = M_0 + C X$ for some non-negative integer vector $X$ (the *Parikh vector* of the firing sequence leading to $M$).
 In other words, any reachable marking is a linear combination of transition effects added to the initial marking.
 The marking equation is a necessary condition for reachability, but not sufficient in general.
+@fig-bg-marking-equation shows the marking equation of the net in @fig-bg-incidence.
 
 #figure(
   $
@@ -165,13 +171,13 @@ and the movement of tokens through the net.
 ==== (K-)Boundedness <background-boundedness>
 
 The boundedness problem asks whether the reachability set of a Petri net is finite.
-This is the case if and only if there exists a finite integer `k`
-such that no reachable marking contains more than `k` tokens in any place.
-A place $p in P$ is said to be k-bounded iff (if and only if)
+This is the case if and only if there exists a finite integer $k$
+such that no reachable marking contains more than $k$ tokens in any place.
+A place $p in P$ is said to be $k$-bounded iff (if and only if)
 $M(p) ≤ k$ for all reachable markings $M$,
-and a Petri net is k-bounded iff all of its places are k-bounded.
-If any place is not k-bounded for any finite `k`, it is said to be unbounded,
-and the Petri net as a whole is unbounded.
+and a Petri net is $k$-bounded iff all of its places are $k$-bounded.
+If any place is not $k$-bounded for any finite $k$, it is said to be unbounded,
+and the Petri net as a whole is unbounded (@fig-bg-unbounded).
 
 #figure(
   image("/figures/nets/background/unbounded.svg"),
@@ -184,7 +190,7 @@ Less frequently, boundedness and safety are used synonymously.
 ==== Reachability <background-reachability>
 
 The reachability problem asks whether there exists an enabled firing sequence $σ$
-that leads from the initial marking $M_0$ to a given target marking $M$.
+that leads from the initial marking $M_0$ to a given target marking $M$ (@fig-bg-reachability).
 
 #figure(
   grid(
@@ -201,12 +207,12 @@ that leads from the initial marking $M_0$ to a given target marking $M$.
   ],
 ) <fig-bg-reachability>
 
-Reachability was shown to be decidable independently by Ernst W. Mayr @mayr_algorithm_1981 (1981) and
-S. R. Kosaraju @kosaraju_decidability_1982 (1982),
-but an upper bound for its complexity was not established until 2020 by Czerwinski, Lasota, Lazić, Leroux, and Mazowiecki
-@czerwinski_reachability_2020, who showed that it is non-elementary
-#footnote[Computational effort grows _faster_ than a tower of exponentials $n^n^n^n^...$ of height proportional to the size of the input.]
-and Ackermann-complete #footnote[https://en.wikipedia.org/wiki/Ackermann_function].
+Reachability was shown to be decidable independently by Ernst W. Mayr (1981) @mayr_algorithm_1981 and
+S. R. Kosaraju (1982) @kosaraju_decidability_1982, but an its complexity was settled only recently:
+in 2020, Czerwiński, Lasota, Lazić, Leroux, and Mazowiecki @czerwinski_reachability_2020 showed that the problem is non-elementary
+#footnote[Computational effort is not bounded by any tower of exponentials $n^n^n^n^...$ of fixed height.]
+and Czerwiński and Orlikowski @czerwinski_reachability_2022 later showed that it is Ackermann-complete
+#footnote[https://en.wikipedia.org/wiki/Ackermann_function].
 It is one of the most difficult decidable problems in computer science, sitting at the frontier of what is known to be computable.
 
 The naive approach to the reachability problem is to construct the *reachability graph* of the Petri net:
@@ -227,12 +233,12 @@ an enabled firing sequence $σ$ that leads from the initial marking $M_0$ to som
 _covers_ a given target marking $M$.
 
 This was shown to be decidable by Karp and Miller (1969) @karp_parallel_1969
-and EXPSPACE-complete by Rackoff (1978) @rackoff_covering_1978.
+and EXPSPACE-complete by Lipton (1976) @lipton_reachability_1976 (hardness) and Rackoff (1978) @rackoff_covering_1978 (upper bound).
 
-The analog of the reachability graph for the coverability problem is the *coverability graph* (or Karp-Miller graph).
+The analog of the reachability graph for the coverability problem is the *coverability graph* (or Karp-Miller graph) @karp_parallel_1969.
 The coverability graph is always finite, even for unbounded Petri nets, because it uses a special symbol $omega$
 to represent an unbounded number of tokens in a place, rather than hopelessly enumerating infinitely many markings.
-By doing so however, it loses some information about the exact number of tokens in unbounded places.
+By doing so, however, it loses some information about the exact number of tokens in unbounded places.
 The coverability graph can be used to decide coverability and boundedness, but not reachability, liveness,
 or deadlock-freedom.
 
@@ -256,21 +262,22 @@ A transition is said to be *live* iff every reachable marking enables a firing s
 that is, there is always a way to fire the transition again, no matter what has happened in the past.
 A Petri net is said to be live iff all of its transitions are live.
 
-Liveness can be further classified into four levels, #lv(0) through #lv(4) @murata_petri_1989, which I summarize here:
+Liveness can be further classified into five levels, #lv(0) through #lv(4) @murata_petri_1989, which I summarize here:
 
 - $lv(0)$ ("dead"): No firing sequence contains the transition. The transition is not enabled in any reachable marking.
 - $lv(1)$ ("not dead"): There exists a firing sequence containing the transition. The transition is enabled in at least
   one reachable marking.
-- $lv(2) supset.eq lv(1)$: For any finite integer $k$, there exists a firing sequence containing the transition $k$ times.
-- $lv(3) supset.eq lv(2)$: There exists an infinite firing sequence containing the transition infinitely many times
+- $lv(2) subset.eq lv(1)$: For any finite integer $k$, there exists a firing sequence containing the transition $k$ times.
+- $lv(3) subset.eq lv(2)$: There exists an infinite firing sequence containing the transition infinitely many times
   (there may also be reachable markings where this is no longer possible).
-- $lv(4) supset.eq lv(3)$ ("live"): From every reachable marking, there exists a firing sequence containing the transition.
+- $lv(4) subset.eq lv(3)$ ("live"): From every reachable marking, there exists a firing sequence containing the transition.
   The transition can always be fired again.
 
 A transition is called *strictly* #lv[k]-live if it is #lv[k]-live but not #lv[k+1]-live. \
 A Petri net is #lv[k]-live if all of its transitions are #lv[k]-live, and strictly #lv[k]-live if it is #lv[k]-live
 but not #lv[k+1]-live.
 The "default" notion of liveness is #lv(4)-liveness, which is often simply called "liveness".
+@fig-bg-liveness gives an example of each level.
 
 #figure(
   image("/figures/nets/background/liveness.svg"),
@@ -278,14 +285,14 @@ The "default" notion of liveness is #lv(4)-liveness, which is often simply calle
     A Petri net in which each transition $T_k$ is strictly #lv[k]-live.
     $T_0$ is dead because $P_0$ is never marked.
     $T_1$ can fire at most once, since it consumes the only token in $P_1$.
-    $T_3$ can fire indefinitely, but only until $T_1$ fires, adding a token to $P_2$ each time.
-    $T_2$ can then fire once for each of those tokens, so any finite number of times, but not infinitely often.
+    $T_3$ can fire arbitrarily many times, adding a token to $P_2$ each time, but never again after $T_1$ fires.
+    $T_2$ can then fire once for each token in $P_2$, so any finite number of times, but not infinitely often.
     $T_4$ can always eventually fire in every reachable marking, so it is live.
   ],
 ) <fig-bg-liveness>
 
 Note that strict #lv(2)-liveness is exceptionally rare due to the combination of conditions which are required to
-produce it: a #lv(3)-live transition producing an unbounded number of tokens on some place(s) and an #lv(1)-live
+produce it: an #lv(3)-live transition producing an unbounded number of tokens on some place(s) and an #lv(1)-live
 transition which stops the production of tokens and enables the #lv(2)-live transition.
 
 ==== Deadlock-freedom <background-deadlock-freedom>
@@ -310,9 +317,9 @@ and are often used to prove behavioral properties.
 ==== Traps and Siphons <background-traps-siphons>
 
 *Traps.*
-A trap is a set of places $Q subset.eq S$ with $post(Q) subset.eq pre(Q)$:
-every transition which consumes a token from some place in the trap also produces a token to some place in the trap.
-Once a trap becomes marked, it is impossible to completely unmark it.
+A trap is a set of places $Q subset.eq P$ with $post(Q) subset.eq pre(Q)$:
+every transition which consumes a token from some place in the trap also produces a token in some place in the trap.
+Once a trap becomes marked, it is impossible to completely unmark it (@fig-bg-trap).
 A trap is called *proper* if it is non-empty (the empty set is trivially a trap).
 The union of two traps is also a trap, so every set of places $S subset.eq P$ contains a single maximal trap.
 
@@ -322,9 +329,9 @@ The union of two traps is also a trap, so every set of places $S subset.eq P$ co
 ) <fig-bg-trap>
 
 *Siphons.*
-A siphon is a set of places $D subset.eq S$ with $pre(D) subset.eq post(D)$:
-every transition which produces a token to a place in the siphon also consumes a token from some place in the siphon.
-Once a siphon becomes unmarked, it is impossible to mark it again.
+A siphon is a set of places $D subset.eq P$ with $pre(D) subset.eq post(D)$:
+every transition which produces a token in a place in the siphon also consumes a token from some place in the siphon.
+Once a siphon becomes unmarked, it is impossible to mark it again (@fig-bg-siphon).
 A siphon is called *proper* if it is non-empty (the empty set is trivially a siphon).
 The union of two siphons is also a siphon, so every set of places $S subset.eq P$ contains a single maximal siphon.
 
@@ -339,10 +346,10 @@ every transition is dead because at least one of its input places is unmarked, a
 marked again because no transition is enabled to produce a token into them.
 
 *The Commoner/Hack Criterion.*
-A Petri net satisfies the or Commoner/Hack Criterion (CHC, also known as the *siphon-trap property*)
-if every siphon contains a trap marked in the initial marking.
+A Petri net satisfies the Commoner/Hack criterion (CHC, also known as the *siphon-trap property*)
+if every proper siphon contains a trap marked in the initial marking.
 The overlap of these properties implies that no siphon can ever become unmarked,
-and therefore no deadlock can ever occur.
+and therefore no deadlock can ever occur (@fig-bg-chc).
 This characteristic yields even more powerful insights into the behavior of more restricted subclasses of Petri nets,
 as discussed in @background-structural-classes.
 
@@ -359,8 +366,8 @@ as discussed in @background-structural-classes.
   ],
 ) <fig-bg-chc>
 
-However, deciding whether the CHC holds is a co-NP-complete problem.
-The number of minimal siphons in a net scales exponentially with the number of places,
+However, deciding whether the CHC holds is a co-NP-complete problem @jones_complexity_1977.
+The number of minimal siphons in a net can grow exponentially with the number of places,
 making the naive approach of enumerating all siphons and checking for a marked trap intractable for large nets.
 But the problem of finding a counterexample (a siphon without a marked trap) maps directly to the Boolean satisfiability
 problem (SAT), which allows us to leverage the power of modern constraint solvers.
@@ -368,12 +375,13 @@ problem (SAT), which allows us to leverage the power of modern constraint solver
 ==== P-invariants and T-invariants <background-invariants>
 
 *P-invariants.*
-A P-invariant is a weighted sum of token counts of places which is monotonic under transition firing. \
-A standard P-invariant is a vector $y in ℕ^{|P|}$ such that $y^T C = 0$ (the weighted sum is constant). Less restrictively, \
-a *P-subinvariant* is a vector $y in ℕ^{|P|}$ such that $y^T C ≤ 0$ (non-increasing), and \
-a *P-surinvariant* #footnote[Also called a *superinvariant*.] is a vector $y in ℕ^{|P|}$ such that $y^T C ≥ 0$ (non-decreasing). \
+A P-invariant is a weighted sum of token counts of places which is constant under transition firing.
+Formally, a P-invariant is a vector $y in NN^(|P|)$ such that $y^T C = 0$ (the weighted sum is constant). Less restrictively, \
+a *P-subinvariant* is a vector $y in NN^(|P|)$ such that $y^T C ≤ 0$ (non-increasing), and \
+a *P-surinvariant* #footnote[Also called a *superinvariant*.] is a vector $y in NN^(|P|)$ such that $y^T C ≥ 0$ (non-decreasing). \
 P-invariants allow us to reason about the number of tokens in a set of places across all reachable markings,
 and can be used to prove (un)boundedness and conservation properties of the net, or regions of it.
+@fig-bg-p-invariants shows an example of each kind.
 
 #figure(
   image("/figures/nets/background/p_invariants.svg"),
@@ -387,8 +395,9 @@ and can be used to prove (un)boundedness and conservation properties of the net,
 
 *T-invariants.*
 A T-invariant is a weighted sum of transition firings which has zero net effect on the marking of the net. \
-Formally, it is a vector $x in ℕ^{|T|}$ such that $C x = 0$ (the net token change is zero).
+Formally, it is a vector $x in NN^(|T|)$ such that $C x = 0$ (the net token change is zero).
 T-invariants allow us to reason about liveness properties of nets.
+@fig-bg-t-invariant shows an example.
 
 #figure(
   image("/figures/nets/background/t_invariant.svg"),
@@ -404,12 +413,12 @@ The structure of a net can be classified into various subclasses,
 which are defined by restrictions on the flow relation.
 These subclasses are important because they allow for more efficient analysis of many behavioral properties.
 
-Some notable net subclasses include, in order of increasing generality:
+Some notable net subclasses include, in order of increasing generality (@fig-bg-classes):
 
 *Circuits.*
 A net $N = (P, T, F)$ is called a *circuit* if \
 $forall p in P: |pre(p)| = |post(p)| = 1$ and $forall t in T: |pre(t)| = |post(t)| = 1$. \
-Intuitively: the entire net forms a single directed cycle.
+Intuitively: the entire net forms a single directed cycle (@fig-bg-circuit).
 The behavioral properties of circuits are trivial.
 They inherit the properties of state machines and marked graphs, discussed next.
 
@@ -421,7 +430,7 @@ They inherit the properties of state machines and marked graphs, discussed next.
 *State Machines.*
 A net $N = (P, T, F)$ is called a *state machine* (or *S-net*) if \
 $forall t in T: |pre(t)| = |post(t)| = 1$. \
-Intuitively: every transition has exactly one input and one output place.
+Intuitively: every transition has exactly one input and one output place (@fig-bg-sm-block).
 
 The behavioral properties of state machines are also trivial.
 Most notably, the number of tokens in a state machine is invariant under transition firing: \
@@ -429,6 +438,7 @@ $M(P) = M_0(P)$ for every reachable marking $M$.
 This is a special case of boundedness called *conservation*.
 Additionally, reachability, coverability, liveness, and deadlock-freedom all have linear-time algorithms
 in state machines @murata_petri_1989.
+@fig-bg-sm shows a state machine which is not a circuit.
 
 #figure(
   image("/figures/nets/background/sm_block.svg"),
@@ -442,17 +452,18 @@ in state machines @murata_petri_1989.
 *Marked Graphs.*
 A net $N = (P, T, F)$ is called a *marked graph* (or *T-net*) if \
 $forall p in P: |pre(p)| = |post(p)| = 1$. \
-Intuitively: every place has exactly one input and one output transition.
+Intuitively: every place has exactly one input and one output transition (@fig-bg-mg-block).
 
-Marked graphs are the structural dual of state machines,
-however they are not quite as trivial to analyze.
+Marked graphs are the structural dual of state machines;
+however, they are not quite as trivial to analyze.
 The fundamental property of marked graphs is that the sum of tokens in a contained _circuit_
 is invariant under transition firings, where a circuit is a directed cycle in the net.
 An unmarked circuit can never become marked, making the transitions in that circuit dead (#lv(0)-live).
-A place in a marked graph is bounded if and only if it is contained in a circuit.
+A place in a live marked graph is bounded if and only if it is contained in a circuit.
 Boundedness, liveness and deadlock-freedom can be decided in linear time in marked graphs.
-K-boundedness (finding the exact bound), reachability and coverability are also decidable in polynomial time,
+$k$-boundedness (finding the exact bound), reachability and coverability are also decidable in polynomial time,
 though the algorithms are more complex @murata_petri_1989.
+@fig-bg-mg shows a marked graph which is not a circuit.
 
 #figure(
   image("/figures/nets/background/mg_block.svg"),
@@ -463,10 +474,10 @@ though the algorithms are more complex @murata_petri_1989.
   caption: [A marked graph which is not a circuit: the left transition has two output places and the right transition has two input places.],
 ) <fig-bg-mg>
 
-*(Extended) Free Choice Nets.*
+*(Extended) Free-Choice Nets.*
 A net $N = (P, T, F)$ is called *free-choice* if \
-$forall t_1, t_2 in T: pre(t_1) inter pre(t_2) != emptyset => |pre(t_1)| = |pre(t_2)| = 1$. \
-Intuitively: if two transitions share an input place, then that is their only input place.
+$forall t_1, t_2 in T: t_1 != t_2 and pre(t_1) inter pre(t_2) != emptyset => |pre(t_1)| = |pre(t_2)| = 1$. \
+Intuitively: if two transitions share an input place, then that is their only input place (@fig-bg-fc).
 
 #figure(
   image("/figures/nets/background/fc.svg"),
@@ -475,20 +486,20 @@ Intuitively: if two transitions share an input place, then that is their only in
 
 A net $N = (P, T, F)$ is called *extended free-choice* if \
 $forall t_1, t_2 in T: pre(t_1) inter pre(t_2) != emptyset => pre(t_1) = pre(t_2)$. \
-Intuitively: if two transitions share an input place, then they share all input places.
+Intuitively: if two transitions share an input place, then they share all input places (@fig-bg-efc).
 
 #figure(
   image("/figures/nets/background/efc.svg"),
   caption: [An extended free-choice net which is not an ordinary free-choice net: the two transitions share both of their input places.],
 ) <fig-bg-efc>
 
-An fundamental consequence of these properties is that if a set of transitions shares any input places
-(so-called "confusion"), then no marking can enable one transition without also enabling the others.
+A fundamental consequence of these properties is that if a set of transitions shares any input places
+(a so-called "conflict"), then no marking can enable one transition without also enabling the others.
 
 This has powerful analytical implications.
-For instance, the Commoner/Hack Criterion is both necessary and sufficient for liveness in free-choice nets
+For instance, the Commoner/Hack criterion is both necessary and sufficient for liveness in free-choice nets
 @hack_analysis_1972,
-and deciding whether a FCN is simultaneously live and bounded (properties which are often desirable together)
+and deciding whether a free-choice net is simultaneously live and bounded (properties which are often desirable together)
 can be done in polynomial time @esparza_synthesis_1990 @kemper_efficient_1992.
 
 For purposes of analysis, free-choice nets and extended free-choice nets are equivalent.
@@ -501,25 +512,28 @@ They are listed separately for historical reasons, as the free-choice property w
 In modern Petri net literature, the term "free-choice" now almost universally refers to the extended free-choice property,
 and the original free-choice property is now often called "ordinary" or "simple" free-choice.
 
-*Asymmetric Choice Nets.*
-A net $N = (P, T, F)$ is an asymmetric choice net if $forall t_1, t_2 in T:
-pre(t_1) inter pre(t_2) != emptyset => pre(t_1) subset.eq pre(t_2) or pre(t_2) subset.eq pre(t_1)$. \
-Intuitively: if two transitions share an input place, then the input places of one transition
-are a subset of the input places of the other transition.
+*Asymmetric-Choice Nets.*
+A net $N = (P, T, F)$ is an asymmetric-choice net if $forall p_1, p_2 in P:
+post(p_1) inter post(p_2) != emptyset => post(p_1) subset.eq post(p_2) or post(p_2) subset.eq post(p_1)$. \
+Intuitively: if two places share an output transition, then the output transitions of one place
+are a subset of the output transitions of the other place.
 
-The asymmetric choice property is only a marginal restriction on general nets,
+The asymmetric-choice property is only a marginal restriction on general nets,
 and is not as analytically useful as the free-choice property.
-However, the Commoner/Hack Criterion is still sufficient (but not necessary) to show liveness in asymmetric choice nets
+However, the Commoner/Hack criterion is still sufficient (but not necessary) to show liveness in asymmetric-choice nets
 @murata_petri_1989.
+@fig-bg-ac shows an asymmetric choice net which is not an extended free-choice net.
 
 #figure(
   image("/figures/nets/background/ac.svg"),
-  caption: [An asymmetric choice net which is not an extended free-choice net: the input places of the upper transition are a proper subset of those of the lower transition.],
+  caption: [An asymmetric-choice net which is not an extended free-choice net: the input places of the upper transition are a proper subset of those of the lower transition.],
 ) <fig-bg-ac>
+
+Nets without any of these restrictions are called general nets, or just nets (@fig-bg-general).
 
 #figure(
   image("/figures/nets/background/general.svg"),
-  caption: [A general net which is not an asymmetric choice net: the two transitions share the middle input place, but neither preset contains the other.],
+  caption: [A general net which is not an asymmetric-choice net: the two places share the middle output transition, but neither postset contains the other.],
 ) <fig-bg-general>
 
 #figure(

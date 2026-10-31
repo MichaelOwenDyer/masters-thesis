@@ -99,9 +99,9 @@ FIGURES = {
     # the preset of T1 is a proper subset of the preset of T2
     "ac": (net({"P1": (0, -0.6), "P2": (0, 0.6), "P3": (2, -0.6), "P4": (2, 0.6)}, {"T1": (1, -0.6), "T2": (1, 0.6)},
                "P1>T1 P1>T2 P2>T2 T1>P3 T2>P4"), False, []),
-    # T1 and T2 share P2, and neither preset contains the other
-    "general": (net({"P1": (0, -1.2), "P2": (0, 0), "P3": (0, 1.2), "P4": (2, -0.6), "P5": (2, 0.6)},
-                    {"T1": (1, -0.6), "T2": (1, 0.6)}, "P1>T1 P2>T1 P2>T2 P3>T2 T1>P4 T2>P5"), False, []),
+    # P1 and P2 share the output transition T2, and neither postset contains the other
+    "general": (net({"P1": (0, -0.6), "P2": (0, 0.6), "P4": (2, -1.2), "P5": (2, 0), "P6": (2, 1.2)},
+                    {"T1": (1, -1.2), "T2": (1, 0), "T3": (1, 1.2)}, "P1>T1 P1>T2 P2>T2 P2>T3 T1>P4 T2>P5 T3>P6"), False, []),
 }
 
 
@@ -115,7 +115,7 @@ def classes_venn(scale: float = 1.3) -> str:
         out.append(f'<text x="{x:.1f}" y="{y:.1f}" font-size="9" text-anchor="{anchor}" font-family="{FONT}">{s}</text>')
 
     # outermost first; each box is inset by 10 at the sides and bottom and by 20 at the top, to leave room for its name
-    for i, (name, fill) in enumerate((("General nets", "#fff"), ("Asymmetric choice nets", "#f4f4f4"),
+    for i, (name, fill) in enumerate((("General nets", "#fff"), ("Asymmetric-choice nets", "#f4f4f4"),
                                       ("Extended free-choice nets", "#e9e9e9"), ("Free-choice nets", "#dedede"))):
         x0, y0 = 1 + 10 * i, 1 + 20 * i
         out.append(f'<rect x="{x0}" y="{y0}" width="{W - 2 * x0:.1f}" height="{H - y0 - 1 - 10 * i:.1f}" rx="8" '

@@ -1,7 +1,7 @@
 #import "../01-introduction/03-research-questions.typ": *
 #import "../eval-data.typ": *
 
-== Comparison with established tools <eval-comparison>
+== Comparison with Established Tools <eval-comparison>
 
 #rqs.comparison asks how `petrivet` compares with established tools in speed and memory.
 The comparison is performed with LoLA, TINA, and ITS-Tools,

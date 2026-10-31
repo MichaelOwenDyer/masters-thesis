@@ -56,7 +56,7 @@ I propose two mechanisms aimed to address this issue, which can be used independ
 
 *Wall-clock timeout.*
 The user can specify a maximum duration to wait for an answer.
-The analysis will be interrupted if it exceeds this time limit, and the user will receive a timeout error.
+The analysis will be interrupted if it exceeds this time limit, and the analysis will return "unknown".
 This mechanism is useful when the user has a hard limit on how long they can wait for an answer,
 and is willing to accept that the analysis may not complete in time.
 
@@ -66,8 +66,9 @@ The analysis will return "unknown" early if no polynomial-time procedure is know
 for the given Petri net.
 This mechanism is useful when the user does not have a hard limit on how long they can wait for an answer,
 but just wants to avoid the risk of waiting effectively indefinitely for an answer.
-A return value of "unknown" is preferable to a timeout error in this case, as the user can receive it almost immediately,
-and then re-evaluate whether they want to attempt the analysis again with a different cost control mechanism.
+An early "unknown" is preferable to waiting for a time limit,
+as the user can immediately re-evaluate whether they want to attempt the analysis again
+with a different cost-control mechanism.
 
 Beyond these considerations, it is up to the implementation to determine how best to answer the user's query,
 and the implementation should be free to use any combination of procedures with the aim of providing the answer
@@ -80,9 +81,9 @@ as quickly and efficiently as possible.
 - The tool must be able to export Petri nets from the internal representation into PNML files.
 - The tool must distinguish between the pure structure ("net") and a net paired with an initial marking ("Petri net").
 - The tool must support manual simulation of Petri net models: transition firing.
-- The tool must support a variety of significant Petri net structural subclasses: Circuit, State Machine, Marked Graph, (Extended) Free Choice, Asymmetric Choice, and General nets.
+- The tool must support a variety of significant Petri net structural subclasses: Circuit, State Machine, Marked Graph, (Extended) Free-Choice, Asymmetric-Choice, and General nets.
 - The tool must automatically dispatch to the most efficient procedure based on the detected net subclass.
-- The tool must support decide the fundamental properties (k-)boundedness, deadlock-freedom, liveness, coverability, and reachability.
+- The tool must support deciding the fundamental properties (k-)boundedness, deadlock-freedom, liveness, coverability, and reachability.
 - The tool must support automatic state space exploration and generation of the reachability and Karp-Miller coverability graphs.
 
 == Non-Functional Requirements and Pseudo-Requirements

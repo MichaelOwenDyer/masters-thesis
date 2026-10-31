@@ -1,26 +1,27 @@
-
-== Survey Methodology
+== Methodology
 
 I followed a structured literature review protocol @kitchenham_systematic_2009 to identify relevant Petri net analysis tools.
 The protocol was fixed before the survey was conducted.
 
 I searched four sources for academic papers:
-- Google Scholar #footnote[scholar.google.com, last accessed: 2026-10-27],
-- DBLP #footnote[dblp.org, last accessed: 2026-10-14],
-- the ACM Digital Library #footnote[dl.acm.org, last accessed: 2026-10-14], and
-- SpringerLink #footnote[link.springer.com, last accessed: 2026-10-14];
+- Google Scholar #footnote[https://scholar.google.com, last accessed: 2026-10-27],
+- DBLP #footnote[https://dblp.org, last accessed: 2026-10-14],
+- the ACM Digital Library #footnote[https://dl.acm.org, last accessed: 2026-10-14], and
+- SpringerLink #footnote[https://link.springer.com, last accessed: 2026-10-14];
 
 three sources for software packages:
-- crates.io #footnote[crates.io, last accessed: 2026-10-14],
-- PyPI #footnote[pypi.org, last accessed: 2026-10-14], and
-- GitHub #footnote[github.com, last accessed: 2026-10-14];
+- crates.io #footnote[https://crates.io, last accessed: 2026-10-14],
+- PyPI #footnote[https://pypi.org, last accessed: 2026-10-14], and
+- GitHub #footnote[https://github.com, last accessed: 2026-10-14];
 
 and three sources for curated lists of Petri net tools:
-- the Hamburg Petri Nets Tool Database #footnote[www2.informatik.uni-hamburg.de/tgi/PetriNets/tools/db.html, last accessed: 2026-10-14], and
+- the Hamburg Petri Nets Tool Database #footnote[https://www2.informatik.uni-hamburg.de/tgi/PetriNets/tools/db.html, last accessed: 2026-10-14], and
 - the Model Checking Contest (MCC) participant lists for 2025 #footnote[https://mcc.lip6.fr/2025/results.php, last accessed: 2026-10-14] and 2026 #footnote[https://mcc.lip6.fr/2026/results.php, last accessed: 2026-10-14].
 
 In addition, the tools already known through prior experience were included in the survey.
-A set of search queries was defined for each source, and the top N search results by relevance were collected.
+A set of search queries was defined for each source.
+For relevance-ranked sources (Google Scholar, ACM DL, SpringerLink, PyPI), the first 50
+results per query were screened; all other sources were screened in their entirety.
 
 A record entered the review in two stages.
 
@@ -47,5 +48,5 @@ and a random sample of 20% (157) of the records was filtered by hand to verify t
 Agreement between the two filtering methods was 94.3%, and Cohen's kappa was a moderate 0.50, which is explained
 by the low pass rate (most results did not contain a relevant tool).
 No disagreement was responsible for adding or removing a tool from stage 2.
-46 records passed stage 1 and were filtered by hand in stage 2,
+Forty-six records passed stage 1 and were filtered by hand in stage 2,
 resulting in 37 tools which finally entered the survey.

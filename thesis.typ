@@ -215,7 +215,8 @@
 
   show figure: it => {
     it
-    v(1.5em)
+    // lovelace draws line labels as invisible figures next to the line numbers; they get no space
+    if it.kind != "lovelace-line-number" { v(1.5em) }
   }
 
   show raw.where(block: true): it => {

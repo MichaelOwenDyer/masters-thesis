@@ -1,4 +1,4 @@
-== Assessment against the remaining requirements <eval-requirements>
+== Assessment against the Remaining Requirements <eval-requirements>
 
 Of the requirements R1-R8 that were established in @motivation,
 R3 (cost control) was evaluated in @eval-cost-control,

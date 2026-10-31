@@ -122,6 +122,3 @@ It remains to translate "$poststar(q) subset.eq prestar(s_t)$" into a property o
   _Proof._ A fed transition is either $lv(1)$ and not $lv(2)$, or $lv(3)$ and hence $lv(2)$.
   A strongly connected net has one SCC, which is terminal and contains the only terminal SCC reachable from any marked place.
 ]
-
-marked graph reachability and coverability: remove dead circuits, marking equation (check) -> prove by induction in the size of the parikh vector
-state machine k-boundedness: topological order condensation graph m0

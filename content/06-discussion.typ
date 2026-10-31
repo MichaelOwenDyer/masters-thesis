@@ -37,3 +37,6 @@ and map the results back to the user-facing data structures.
 This pattern has proven to be a successful strategy for segregating the translation layer from the core logic,
 but comes with the cost of additional boilerplate code and a more complex project structure.
 
+Generic marking type: regular tokens and omega tokens
+Generic state space exploration: reachability graph and coverability graph share implementation
+

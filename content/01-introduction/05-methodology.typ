@@ -14,7 +14,7 @@ The experience gained from the design and evaluation of the artifact feeds back 
 contributing to the academic foundations of the field.
 
 At the center of the model is the Design Cycle, which represents the iterative process of building and
-evaluating the artifact. The design cycle is informed by the problem domain and the knowledge base,
+evaluating the artifact. The Design Cycle is informed by the problem domain and the knowledge base,
 and in turn informs both of them.
 
 Hevner, March, Park, and Ram @hevner_design_2004 establish seven critical guidelines for conducting design science research.
@@ -26,7 +26,7 @@ methods (algorithms/practices), or instantiations (implemented systems).
 2. Problem Relevance: The research must address a problem that is relevant to the real world.
 
 3. Design Evaluation: The mere construction of an artifact does not constitute research.
-It must be shown that the artifact solves the problem in a way that is superior to existing alternatives.
+The utility, quality, and efficacy of the artifact must be demonstrated by well-executed evaluation methods.
 
 4. Research Contributions: The research must provide clear and verifiable contributions to the existing knowledge base.
 

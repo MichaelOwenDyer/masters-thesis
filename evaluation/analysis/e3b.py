@@ -1,4 +1,4 @@
-"""E3b: cost control by timeout. Campaign C records of ``pv-dispatch`` with ``timeout_ms`` set.
+"""E3b: cost-control by timeout. Campaign C records of ``pv-dispatch`` with ``timeout_ms`` set.
 
 overshoot = analyze_ms - timeout_ms (parse time excluded). Per (instance, query, target, t) the median over repetitions is
 one observation (a "cell"). A cell is *triggered* when the library deadline actually fired: verdict UNKNOWN, or

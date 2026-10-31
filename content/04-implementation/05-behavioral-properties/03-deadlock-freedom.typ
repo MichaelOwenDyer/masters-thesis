@@ -2,21 +2,28 @@
 #import "../../lib.typ": *
 #import "../../../lib/tum/elements.typ": *
 
-== Deadlock-Freedom
+=== Deadlock-Freedom
 
 This section describes the implementation of the deadlock-freedom property of Petri nets within `petrivet`.
 See @background-deadlock-freedom for a discussion of the property itself.
 
-*Scope.* Deadlock-freedom, unlike boundedness and liveness, is a property of the entire Petri net only,
+==== Scope and Granularity
+
+*Scope.*
+Deadlock-freedom, unlike boundedness and liveness, is a property of the entire Petri net only,
 and not of any individual node.
 
-*Granularity.* Deadlock-freedom can be framed as a yes/no question ("is the Petri net deadlock-free?"),
+*Granularity.*
+Deadlock-freedom can be framed as a yes/no question ("is the Petri net deadlock-free?"),
 or as a search for all reachable deadlocks.
+
+==== API
 
 `petrivet` offers two entry points for checking deadlock-freedom of a `PetriNet`, covering both combinations:
 
-+ `PetriNet::is_deadlock_free() -> Option<bool>` returns true if the Petri net is deadlock-free and false otherwise.
-+ `PetriNet::deadlocks() -> Deadlocks` returns an iterator over all reachable deadlock markings, if any exist.
++ `is_deadlock_free() -> Option<bool>` returns Some(true) if the Petri net is deadlock-free,
+  Some(false) if it is not deadlock-free, and None if the analysis was inconclusive.
++ `deadlocks() -> Deadlocks` returns an iterator over all reachable deadlock markings, if any exist.
 
 The former supports both cost-control mechanisms, while the latter only supports a timeout.
 This is because currently no efficient procedures are implemented for enumerating all reachable deadlocks,
@@ -24,7 +31,7 @@ and so the efficiency restriction would always return `None` for this method.
 Future work may implement efficient procedures for enumerating deadlocks,
 in which case the efficiency restriction could be supported.
 
-=== Procedure Dispatch
+==== Implementation
 
 The following procedures are utilized for `PetriNet::is_deadlock_free()`, in order of increasing computational cost.
 
@@ -43,7 +50,7 @@ because such a transition is vacuously enabled at every reachable marking @thier
 A deadlock in a state machine puts all tokens on sink places (places with an empty postset), or has no tokens at all.
 A natural consequence of this is that a strongly connected state machine, where every place has a non-empty postset,
 will always be deadlock-free if it has at least one token.
-A non strongly-connected state machine may have sink places,
+A state machine that is not strongly connected may have sink places,
 but a deadlock is only reachable if all tokens can reach a sink.
 Tokens move independently, so a deadlock is reachable iff every marked place can reach a sink.
 The algorithm therefore computes the set of places that can reach a sink by a backward search from the sink places,
@@ -72,10 +79,10 @@ and reports deadlock-freedom iff some marked place is not among them.
 A proof of correctness is given in @proof-state-machine-deadlock-freedom.
 
 *Marked Graphs.*
-For strongly connected marked graphs, live, deadlock-freedom, and the existence of an infinite firing sequence
+For strongly connected marked graphs, liveness, deadlock-freedom, and the existence of an infinite firing sequence
 perfectly coincide @esparza_petri_2026[Thm. 5.2.8].
 All hold iff every circuit is marked in the initial marking @murata_petri_1989[Thm. 7].
-For non strongly-connected marked graphs, deadlock-freedom can hold even if liveness does not,
+For marked graphs that are not strongly connected, deadlock-freedom can hold even if liveness does not,
 and it only requires that some transition is not downstream of an unmarked circuit.
 Because the transitions on an unmarked circuit are dead @murata_petri_1989,
 any transition downstream of an unmarked circuit will eventually die too,
@@ -93,8 +100,8 @@ and report deadlock-freedom iff one is found.
   supplement: [Algorithm],
   caption: [Deadlock-freedom of a marked graph.],
   pseudocode-list(numbered-title: [`DeadlockFreeMarkedGraph`$(N, M_0)$])[
-    + $G_0 <- G[T union {p in P | M_0(p) = 0}]$
-    + $Z <-$ #h(0.3em) $op("SCC")(G_0)$
+    + $N_0 <- N[T union {p in P | M_0(p) = 0}]$
+    + $Z <-$ #h(0.3em) $op("SCC")(N_0)$
       $pipe op("filter")(|C| > 1)$
       $pipe op("flat_map")(C |-> C)$
       $pipe op("filter_map")(v |-> v "if" v in T)$

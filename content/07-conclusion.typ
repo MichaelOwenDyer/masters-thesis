@@ -3,7 +3,7 @@
 #pagebreak(weak: true)
 = Conclusion <conclusion>
 
-I have presented `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet].
+I have presented `petrivet` #footnote(<petrivet>).
 This paper aimed to answer the following research questions:
 
 #rqs.existing-tools (#rqs.existing-tools-text) was answered in @related-work.

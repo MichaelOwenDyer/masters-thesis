@@ -1,10 +1,12 @@
 #import "../lib.typ": *
+#import "../01-introduction/03-research-questions.typ": *
 
-== Survey Results
+== Survey of Tools
 
 The 37 tools fall into five categories based on their primary purpose:
 
-*Performance-oriented model checkers* (9) are built with LTL and CTL properties in mind:
+*Performance-oriented model checkers* (9) are built with
+linear temporal logic (LTL) and computation tree logic (CTL) properties in mind:
 - TAPAAL/VerifyPN #footnote[https://www.tapaal.net/, last accessed: 2026-10-27] @jensen_tapaal_2016,
 - TINA #footnote[https://projects.laas.fr/tina/, last accessed: 2026-10-25] @berthomieu__tool_2004 @vernadat_time_2006,
 - ITS-Tools #footnote[https://lip6.github.io/ITSTools-web/, last accessed: 2026-10-27] @thierry-mieg_symbolic_2015,
@@ -17,7 +19,8 @@ The 37 tools fall into five categories based on their primary purpose:
 They scale through reductions @thierry-mieg_structural_2020, decision diagrams @couvreur_hierarchical_2005 and partial-order methods @valmari_stubborn_1991.
 Most are written in C or C++ and accept queries in the form of temporal-logic formulae.
 
-*Constraint-based analyzers* (6) formulate Petri net properties in a constraint language and dispatch to a SAT or SMT solver:
+*Constraint-based checkers* (6) formulate Petri net properties in a constraint language and dispatch to a SAT or
+satisfiability modulo theories (SMT) solver:
 - SMPT #footnote[https://github.com/nicolasAmat/SMPT, last accessed: 2026-10-14],
 - Petrinizer #footnote[https://github.com/cryptica/pnerf, last accessed: 2026-10-14] @esparza_smt-based_2014,
 - QCover #footnote[https://github.com/michaelblondin/qcover, last accessed: 2026-10-14],
@@ -34,7 +37,7 @@ Their results tend to include independently verifiable certificates as a by-prod
   They are commonly used to model and analyze business processes.
 ]:
 - WoPeD #footnote[https://github.com/woped/WoPeD, last accessed: 2026-10-14] @freytag_woped_2017,
-- ProM with Woflan #footnote[https://github.com/promworkbench, last accessed: 2026-10-14]
+- ProM with Woflan #footnote[https://github.com/promworkbench, last accessed: 2026-10-14],
 - PM4Py #footnote[https://github.com/process-intelligence-solutions/pm4py, last accessed: 2026-10-14],
 - Wolfgang #footnote[https://github.com/iig-uni-freiburg/WOLFGANG, last accessed: 2026-10-27],
 - jBPT #footnote[https://github.com/jbpt/codebase, last accessed: 2026-10-14],
@@ -43,7 +46,7 @@ Their results tend to include independently verifiable certificates as a by-prod
 - bpmn2pnml-ltl-analyzer #footnote[https://github.com/Research-MCI/BPMN2PNML-LTL-Analyzer, last accessed: 2026-10-14].
 They answer a single composite query: "Is this workflow net sound
 #footnote[
-  Soundness is a composite property of workflow nets requiring
+  Soundness is a composite property of workflow nets requiring that
   (1) there is exactly one reachable deadlock (final marking) which puts one token in the end place and no tokens elsewhere,
   (2) the final marking is reachable from every reachable marking, and
   (3) every transition is at least #lv(1)-live in the initial marking.
@@ -60,7 +63,7 @@ and can point out particular transitions or places which violate soundness.
 - petricheck #footnote[https://github.com/erwanM974/petricheck, last accessed: 2026-10-14].
 They are generally limited in scope (capped state space, only one property, etc.) and their documentation is overall sparse.
 
-*Teaching, desktop and web analysers* (7) place a graphical user interface in front of classical algorithms (mostly Karp-Miller coverability tree @karp_parallel_1969):
+*Teaching, desktop and web analyzers* (7) place a graphical user interface in front of classical algorithms (mostly Karp-Miller coverability tree @karp_parallel_1969):
 - APT #footnote[https://github.com/CvO-Theory/apt, last accessed: 2026-10-14],
 - Charlie #footnote[https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Charlie, last accessed: 2026-10-14] @heiner_charlie_2015,
 - the MATLAB Petri Net Toolbox #footnote[https://www.pntool.ac.tuiasi.ro/, last accessed: 2026-10-14],
@@ -74,18 +77,28 @@ They are generally limited in scope (capped state space, only one property, etc.
 I assigned each tool a score on a four-point scale for each requirement based on my reading of the documentation
 and source code: "✓" = fully meets the requirement, "(✓)" = partly meets the requirement, "✗" = does not meet the
 requirement, and "?" = not determined.
+@tab:landscape lists the scores of all 37 tools.
 These scores are a subjective, qualitative assessment of the tools' capabilities and can be disputed.
 R6 is rated by what a tool returns as evidence for an answer:
 "✓" if it can return a witness (for example a firing sequence or a counterexample) or an independently verifiable certificate,
 "(✓)" if it can only name the net elements responsible for a negative result,
 and "✗" if it offers neither (naming the technique is recorded in the table but does not count).
+In the column "Evidence offered",
+"method" means that the tool names the technique it used,
+"witness" and "certificate" are as above,
+"culprits" means that the tool names the net elements responsible for a negative result,
+and "theorem" means that the tool can name the theoretical foundation of its answer
+(for example a theorem from the literature).
 The column "Dispatch by net class" records whether the documentation says that the tool selects its procedure by the structure of the net;
 it is not a rated requirement and is discussed separately below.
 
 #show figure: set block(breakable: true)
 #figure(
   kind: table,
-  caption: "Table of the 37 tools surveyed, their properties, and the scores for each requirement.",
+  caption: [
+    Table of the 37 tools surveyed, their properties, and the scores for each requirement.
+    Properties: B = boundedness, D = deadlock-freedom, L = liveness, R = reachability, C = coverability.
+  ],
   text(size: 8pt, table(
     columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto, auto),
     align: (left, left, left, left, center, center, center, center, center, center, left, center, center, left),
@@ -93,7 +106,7 @@ it is not a rated requirement and is discussed separately below.
     stroke: 0.4pt + luma(170),
     table.header([*\#*], [*Tool*], [*Properties decided*], [*Dispatch by net class*], [*R1*], [*R2*], [*R3*], [*R4*], [*R5*], [*R6*], [*Evidence offered*], [*R7*], [*R8*], [*Last release or commit*]),
     table.cell(colspan: 14, fill: luma(235))[*Performance-oriented model checkers*],
-    [1], [TAPAAL / verifypn], [R, CTL, LTL (query language)], [by query type], [(✓)], [✗], [(✓)], [(✓)], [✓], [✓], [method, witness], [(✓)], [✓], [2026-06],
+    [1], [TAPAAL/VerifyPN], [R, CTL, LTL (query language)], [by query type], [(✓)], [✗], [(✓)], [(✓)], [✓], [✓], [method, witness], [(✓)], [✓], [2026-06],
     [2], [TINA], [B, D, L, R, C (graphs, model checker)], [by net features (time, priorities)], [✓], [✓], [✓], [(✓)], [✓], [✓], [method, witness, culprits], [✗], [✗], [2026-04],
     [3], [ITS-Tools], [R, D, B (MCC examinations)], [not documented], [(✓)], [✗], [✓], [✓], [✓], [✓], [method, witness], [(✓)], [(✓)], [2026-09],
     [5], [LoLA], [B, D, L, R, C (graph)], [per property only], [✓], [✗], [✓], [✗], [✓], [✓], [method, witness, theorem], [(✓)], [✗], [2020-07],
@@ -126,16 +139,18 @@ it is not a rated requirement and is discussed separately below.
     [32], [visualpetri-mcp], [R, D (bounded graph)], [not documented], [✓], [✓], [✓], [✗], [✗], [✓], [witness, culprits], [(✓)], [(✓)], [2026-10],
     [33], [libpetri], [D, place bound, unreachability, mutual exclusion], [by net features], [✓], [(✓)], [✓], [✗], [✗], [✓], [method, witness, certificate, theorem], [✓], [(✓)], [2026-10],
     [34], [petricheck], [k-safeness; R, D, L via user CTL], [no], [✓], [✓], [(✓)], [(✓)], [✗], [(✓)], [culprits], [✓], [(✓)], [2026-02],
-    table.cell(colspan: 14, fill: luma(235))[*Teaching, desktop and web analysers*],
+    table.cell(colspan: 14, fill: luma(235))[*Teaching, desktop and web analyzers*],
     [8], [APT], [B, C, weak L], [not documented], [✓], [✓], [✓], [(✓)], [✗], [✓], [method, witness, culprits], [✓], [(✓)], [2026-02],
     [9], [Charlie], [B, L, C, dead states, R via CTL/LTL], [class detected, not a switch], [(✓)], [✓], [(✓)], [✗], [✗], [✓], [method, theorem, witness, culprits], [✗], [✗], [2017-06],
     [19], [Petri Net Toolbox], [B, L, D, C (omega tree)], [not documented], [(✓)], [(✓)], [✗], [✗], [✗], [(✓)], [method, culprits], [✗], [✗], [2025-09],
-    [20], [Hippo-CPS], [B, L], [user chooses method], [✗], [?], [(✓)], [?], [(✓)], [(✓)], [method, culprits], [✗], [✗], [no date],
+    [20], [Hippo-CPS], [B, L], [user chooses method], [✗], [?], [(✓)], [?], [(✓)], [(✓)], [method, culprits], [✗], [✗], [2023-06],
     [28], [petri-nets-tool-reactjs], [R, B, L, invariants, siphons, traps], [not documented], [✗], [✓], [(✓)], [✗], [✗], [✗], [none], [(✓)], [(✓)], [2023-02],
     [29], [PnAT], [B, weak termination, k-bound], [not documented], [✗], [✓], [(✓)], [(✓)], [✗], [✓], [witness], [(✓)], [✗], [2023-12],
     [37], [GPenSIM], [B, D, C, R (capped)], [user picks cotree vs cotreei], [✓], [(✓)], [(✓)], [✓], [✗], [(✓)], [method, culprits], [✗], [✗], [2025-08],
   )),
 ) <tab:landscape>
+
+@fig:landscape-bars shows, for each requirement, how many tools meet it fully, partly or not.
 
 #show figure: set block(breakable: false)
 #figure(
@@ -158,7 +173,7 @@ it is not a rated requirement and is discussed separately below.
     )
   },
   caption: [
-    Number of the 37 tools that meet each requirement fully (dark), partly (medium) or not (light).
+    Number of the 37 tools that meet each requirement fully (dark), partly (medium), or not/not determined (light).
     The ratings for R6 follow the evidence rule given above.
   ],
 ) <fig:landscape-bars>
@@ -167,12 +182,11 @@ it is not a rated requirement and is discussed separately below.
 and seventeen tools can only be scripted by parsing textual output or reading exit codes.
 Five tools provide no interface other than a GUI.
 Among the performance-oriented model checkers, only TINA, LoLA and pnmc document a JSON output format;
-the others print text lines (ITS-Tools, SMPT) or XML traces and exit codes (VerifyPN).
-Libraries exist, but they sit mostly at the weak end of the spectrum.
+the others print text lines (ITS-Tools) or XML traces and exit codes (VerifyPN).
 
-*R2, safe portability.* Sixteen tools are written in a memory-safe language and do not depend on native code.
+*R2, safe portability.* Seventeen tools are written in a memory-safe language and do not depend on native code.
 Seven of the nine performance-oriented checkers have a native C or C++ core and so sacrifice memory safety for performance
-(this is not a judgement of the quality of their implementation).
+(this is not a judgment of the quality of their implementation).
 TINA is implemented in Standard ML, which is memory-safe, and mcc4mcc containerizes other (not memory-safe) tools within Docker.
 Four of the six constraint-based checkers depend on the Z3 SMT solver, which is written in C++ and has a history of
 memory-safety issues @winterer_validating_2020 @park_generative_2021.
@@ -181,11 +195,14 @@ audit their use of `unsafe` or of native dependencies.
 
 *R3, cost control.* Ten tools allow the user to bound a query with a timeout, memory limit, state-space cap, or choice
 of procedure. Seventeen offer partial control (a fixed cap, timeout, or depth bound).
-Ten tools offer no cost control mechanism at all.
+Ten tools offer no cost-control mechanism at all.
 
-*R4, model interchange.* Eight tools read and write PNML.
+*R4, model interchange.* Eight tools read and write Petri Net Markup Language #footnote[https://www.pnml.org/] (PNML),
+the standardized XML interchange format for Petri net models.
+Fifteen tools use only proprietary formats, and partially meet the requirement.
 LoLA documents that it deliberately uses a proprietary format instead of PNML.
-Thirteen tools have a proprietary format only, or none documented.
+Thirteen tools only allow manual construction of nets or do not document any interchange format,
+and so fail the requirement.
 
 *R5, performance and memory efficiency.* Ten tools have independent evidence from the Model Checking Contest;
 five more have a published evaluation, mostly by their authors.
@@ -210,19 +227,20 @@ a documented build from a clean checkout with a standard toolchain,
 automated tests or continuous integration,
 contribution guidelines or developer documentation,
 and commits by at least two distinct human authors between 2024-10-14 and 2026-10-14 (bots and AI accounts excluded).
-Seven tools (TAPAAL/verifypn, GreatSPN, PM4Py, WoPeD, YAPNE, LTSmin and jBPT) meet at least four, including the first and the last.
+Seven tools (TAPAAL/VerifyPN, GreatSPN, PM4Py, WoPeD, YAPNE, LTSmin and jBPT) meet at least four, including the first and the last.
 Eighteen meet two or three, or lack one of the first and the last.
 Twelve meet at most one indicator or have no public repository.
 Only PM4Py, LTSmin and jBPT are rated as met on both R7 and R8, and each of them fails another requirement
 (R5 for PM4Py and jBPT, R2 for LTSmin).
 
 *Across the requirements,* no tool fully meets all of R1 to R8.
-The most requirements met in full is five of the eight (TINA, PM4Py, jBPT and APT), followed by four (ITS-Tools, LoLA, LTSmin and pnmc).
+The most requirements met in full is five of the eight (TINA, PM4Py, jBPT and APT),
+followed by four (ITS-Tools, LoLA, LTSmin, pnmc, YAPNE, go-pflow, visualpetri-mcp and pnmclibpetri).
 Only SMPT and Petrinizer fail none of the eight requirements outright, and both meet only some of them partly.
 
-== Dispatching by net structure
+== Dispatching by Net Structure
 
-The answer to RQ2 depends on whether tools choose a decision procedure by the structure of the net, so I looked at what the documentation says about this.
+The answer to #rqs.procedure-dispatch depends on whether tools choose a decision procedure by the structure of the net, so I looked at what the documentation says about this.
 Most tools do not say anything: for twenty-one tools I found no documentation of any selection, and for four more the documentation states
 explicitly that there is none.
 Some tools select by something other than the net structure: TAPAAL chooses by query type, LoLA applies a procedure per property,
@@ -237,18 +255,21 @@ No tool documents a dispatch that spans the net classes (for example free-choice
 These counts depend on the verification noted with the table.
 It is a gap in documentation as much as in implementation, but a user can only rely on what is documented.
 
-== The gap
+== The Gap
 
 The requirements pull in different directions in the surveyed tools.
 The tools with performance evidence (R5) mostly give up safe portability or extensibility:
 of the ten tools with independent contest results, only TINA is rated fully on R2, and TINA publishes no source and offers no
 contribution path (R7 and R8 not met), while LoLA fails R2 and R4, and LTSmin fails R2.
 In the other direction, the libraries that provide programmatic access, extensibility and at least partly safe portability (SNAKES, go-pflow, libpetri and petricheck)
-have no performance evidence (R5 is not met by any of the seven libraries), and their cost control is at best partial for three of them
+have no performance evidence (R5 is not met by any of the seven libraries), and their cost control is full only for libpetri,
+partial for go-pflow and petricheck,
 and absent for SNAKES.
-Workflow tools and teaching tools return the most helpful evidence, but they answer a narrow set of questions on small nets and show no performance evidence either.
+Workflow tools and teaching tools return the most helpful evidence, but they answer a narrow set of questions on small nets and, except for Hippo-CPS, show no performance evidence either.
 Finally, almost no tool documents choosing its procedure by the structure of the net, so a user who wants the cheapest applicable procedure has to know the
 theory and pick the tool, or the option, themselves.
-This is the gap that `petrivet` aims to fill: a library that is programmatically accessible, memory-safe and extensible,
+This is the gap that `petrivet` aims to fill: a library that is programmatically accessible, memory-safe
+#footnote[When compiled with a pure-Rust SMT backend like oxiz (https://github.com/cool-japan/oxiz), `petrivet` is memory-safe. By default it links to the Z3 SMT solver, which is written in C++.],
+and extensible,
 that decides each question with the cheapest procedure applicable to the net, that lets the caller bound the cost, and that is measured against the
 established tools in @evaluation.

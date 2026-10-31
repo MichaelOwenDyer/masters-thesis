@@ -1,5 +1,5 @@
 
-== Threats to validity
+== Threats to Validity
 
 - The sample is selected by search and not exhaustive; tools without English or German documentation or without a public page are not included.
 - R7 and R8 were added after the survey had begun, as an amendment to the protocol.
@@ -11,8 +11,8 @@
   their ratings rest on a later manual look or default to "not met".
   Commits by AI accounts are not counted as a second author, which lowers the R8 rating of tools maintained by one human with an AI assistant.
 - Correctness of the surveyed tools is not rated and is assumed.
-  For the contest participants it is supported by their participation in the Model Checking Contest, whose results are cross-checked,
-  but for the other tools no evidence was collected.
+  For the contest participants it is supported by their participation in the Model Checking Contest,
+  whose results are cross-checked @kordon_results_2026 but for the other tools no evidence was collected.
 - R6 and R8 were defined more narrowly than in the first version of the protocol:
   R6 started as "traceability to theory" and was reduced to evidence for answers, and R8 is rated only through contributor indicators.
   The ratings in the table follow the narrower definitions.

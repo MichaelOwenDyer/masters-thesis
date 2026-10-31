@@ -1,11 +1,11 @@
-== Behavioral Properties (Overview) <impl-behavioral-properties>
+== Behavioral Properties <impl-behavioral-properties>
 
 The following sections discuss the API design and implementation of `petrivet`
 for the behavioral properties discussed in @background-behavioral-properties,
 following the guiding principles outlined in @solution-design.
 
 `petrivet` attempts to dispatch to the most efficient known procedure to answer the user's query,
-while respecting the specified cost control mechanisms (timeout and/or efficiency restriction).
+while respecting the specified cost-control mechanisms (timeout and/or efficiency restriction).
 This is done on a best-effort basis: which procedure will yield the answer fastest is generally not known for sure,
 and we must rely on heuristics.
 Some procedures are complete, meaning they will always return a definitive answer, while others are incomplete,

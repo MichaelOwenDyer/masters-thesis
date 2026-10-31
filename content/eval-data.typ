@@ -79,7 +79,7 @@
   "sm": "state machine",
   "mg": "marked graph",
   "efc": "extended free-choice",
-  "ac": "asymmetric choice",
+  "ac": "asymmetric-choice",
   "general": "general",
 )
 

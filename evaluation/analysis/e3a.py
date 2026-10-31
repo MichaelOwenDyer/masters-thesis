@@ -1,4 +1,4 @@
-"""E3a: cost control by effort: what `pv-poly` (efficient effort only) answers.
+"""E3a: cost-control by effort: what `pv-poly` (efficient effort only) answers.
 
 Over campaign B (rep 0), solver ``pv-poly``, per source (``mcc-large`` is exploratory, flagged in the CSV):
   n_runs      applicable runs = all runs except NOT_SUPPORTED, INPUT_REJECTED, RUNNER_ERROR, OUT_OF_SCOPE

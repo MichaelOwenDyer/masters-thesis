@@ -33,12 +33,10 @@ The questions above correspond to the following properties of Petri nets:
 These properties are the reason Petri nets are used in business process management, manufacturing,
 and other domains where the correctness of a process is critical.
 
-=== Requirements for a Petri net analyzer <motivation-requirements>
+=== Requirements for a Petri net Analyzer <motivation-requirements>
 
-The Chair of Information Systems develops and applies the Cloud Process Execution Engine (CPEE) @mangler_cpee_2014
-@mangler_cloud_2022, which orchestrates calls to heterogeneous software tools and human actors.
-Over time the chair has assembled a collection of software tools for various use cases,
-and a Petri net analyzer is a natural addition, to check the correctness of process models before they are deployed.
+Over time the Chair of Information Systems has assembled a collection of software tools for various use cases
+in process orchestration. A Petri net analyzer is a natural addition, to check the correctness of process models before they are deployed.
 
 We would like a Petri net analyzer to meet the following requirements:
 
@@ -64,7 +62,7 @@ so that it can be used correctly and extended with little effort.
 Every requirement above presupposes that the analyzer is correct.
 Where the analyzer cannot decide, which is unavoidable for some questions, it must say "unknown" instead of guessing.
 
-Correctness and R1 to R8 are the requirements against which the survey in @related-work rates existing tools,
+The survey in @related-work rates existing tools against the requirements R1-R8,
 and finds that none of them meet all of them together.
 
 The project was initiated by the chair's need rather than by an observed failure of existing

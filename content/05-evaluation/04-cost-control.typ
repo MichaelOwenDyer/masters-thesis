@@ -1,7 +1,7 @@
 #import "../01-introduction/03-research-questions.typ": *
 #import "../eval-data.typ": *
 
-== Cost Control <eval-cost-control>
+== Cost-Control <eval-cost-control>
 
 #rqs.cost-control asks whether a caller can effectively bound the cost of an analysis.
 Two mechanisms are examined.

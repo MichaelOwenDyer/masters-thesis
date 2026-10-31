@@ -192,7 +192,7 @@ These timings were taken by hand and are not part of the figures and tables.
 
 The first cause was in the implementation of the Karp-Miller coverability graph,
 which requires updating token counts of every discovered marking to $omega$
-where there exists a predecessor marking that it covers (so-called "omega acceleration").
+where there exists a predecessor marking that it covers (so-called "$omega$-acceleration").
 This necessarily brings increasing overhead as the graph grows in size,
 but the implementation was not optimized for the bounded case:
 it always checked all predecessors, even those which were added after the marking was first discovered.
@@ -217,7 +217,7 @@ Deadlock-freedom queries are nearly unaffected, presumably because of the second
 
 #figure(
   image(export-dir + "figures/e2b_scatter.svg", width: 100%),
-  caption: [The automatic choice against RG exploration on the 90 small competition models, one panel per query, before and after the optimization of omega-acceleration described above.],
+  caption: [The automatic choice against RG exploration on the 90 small competition models, one panel per query, before and after the optimization of $omega$-acceleration described above.],
 ) <fig-dispatch-mcc>
 
 The second cause remains in the codebase at the time of writing:

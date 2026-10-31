@@ -22,7 +22,7 @@ The properties are listed here:
 - State space size: How many nodes and edges (markings and transition firings) are in the reachability graph of $(N, M_0)$?
 - Stable place: Does $(N, M_0)$ contain a place whose marking is constant in all reachable markings?
 
-=== Net collections <eval-collections>
+=== Net Collections <eval-collections>
 
 Four sources of Petri nets were used in the evaluation.
 Results are reported separately for each collection because they have different characteristics and are used for different purposes.
@@ -54,7 +54,7 @@ They serve two purposes: to validate the measurement setup for the various tools
 ) <fig-eval-calibration>
 
 *Randomized nets.* A pseudorandom number generator was used to generate 100 nets each across six structural subclasses
-(circuits, state machines, marked graphs, extended free-choice nets, asymmetric choice nets, and general nets) (@background-structural-classes),
+(circuits, state machines, marked graphs, extended free-choice nets, asymmetric-choice nets, and general nets) (@background-structural-classes),
 and three size ranges (2-5 places, 6-8 places, 9-12 places). This produced 100 x 6 x 3 = 1800 nets.
 Duplicates were identified by their content hash and pruned,
 and a few combinations of structural class and size range yielded fewer than 100 nets,
@@ -210,7 +210,7 @@ The large MCC model with the largest known state space used in the evaluation is
 This shows that net size has very little correlation with state space size,
 and that the evaluation includes a wide range of net sizes and state space sizes.
 
-=== Tools under comparison <eval-tools>
+=== Tools under Comparison <eval-tools>
 
 `petrivet` enters the evaluation in three different configurations:
 + In the default configuration ("automatic dispatch"), `petrivet`
@@ -244,7 +244,7 @@ Using a command-line interface for all tools places them on equal footing, inclu
 The start-up time of each tool is measured on a trivial net and reported in the results,
 so that the overhead can be subtracted from the measured times.
 
-=== Reference verdicts <eval-reference>
+=== Reference Verdicts <eval-reference>
 
 For the authoritative reference verdicts, I used a different strategy for each of the four collections.
 The calibration nets were analyzed by hand (and cross-checked by all tools during the evaluation),
@@ -292,7 +292,7 @@ Because this was so frequent, and because I saw no reason to doubt the correctne
 I used LoLA's verdicts alone as the reference verdict in these cases.
 These cases are labeled separately in the results for transparency.
 
-=== Measurement setup <eval-setup>
+=== Measurement Setup <eval-setup>
 
 Measurements were conducted on a single desktop machine with a four-core, eight-thread Intel i7-4790K CPU @ 4.00GHz and 32 GiB of RAM.
 At most three runs were executed at a time, each pinned to a unique physical CPU core with the sibling hyperthread left idle.

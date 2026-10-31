@@ -151,7 +151,7 @@ and each is compared with the 2025 copy where one exists, to report how many mod
 
 ### 5.3 Generators (`gen`)
 
-Classes: general, circuit, state machine (SM), marked graph (MG), extended free choice (EFC), asymmetric choice (AC),
+Classes: general, circuit, state machine (SM), marked graph (MG), extended free choice (EFC), asymmetric-choice (AC),
 built by construction following the generator specification the author supplied (verbatim in `petrivet-testkit/GENERATORS.md`).
 Decisions the supplied specification left open:
 

@@ -3,7 +3,7 @@
 Counts the lines of every manifest per source (``source`` of the record), and for the generated nets (``gen``) the nets per
 generator class and size range together with the number whose class, as detected by petrivet, equals the class the
 generator aimed at. The library reports the narrowest class of a net, so a net generated for a wider class (general,
-asymmetric choice) is detected as a narrower one when it happens to be: ``n_same_class`` is less than ``n`` for those
+asymmetric-choice) is detected as a narrower one when it happens to be: ``n_same_class`` is less than ``n`` for those
 classes and that is no finding. The testkit writes a net once even if it was drawn twice (identical files have one content
 hash), so a size range of a class can hold fewer nets than were drawn.
 A net that is listed in two manifests (identical files drawn into two collections) is counted in each manifest and
