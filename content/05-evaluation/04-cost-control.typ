@@ -8,16 +8,16 @@ Two mechanisms are examined.
 
 The first mechanism is the ability to restrict `petrivet` to polynomial procedures only,
 and the hypothesis is that there are nets for which these procedures return a verdict within the time limit
-while the general RG exploration procedure times out.
+while the general brute-force procedure times out.
 The experiment reports the proportion of runs where the polynomial procedures are able to provide a verdict.
 
 The second mechanism is the ability to set a deadline for the analysis,
 and the hypothesis is that `petrivet` returns "close" to the requested deadline.
-The definition of "close" was fixed as "within 200ms" before the measured runs began, so that the data cannot influence the definition.
+The definition of "close" was fixed as "within 200 ms" before the measured runs began, so that the data cannot influence the definition.
 The experiment measures how long beyond the requested deadline the library's automatic dispatch actually returns,
-for deadlines of 10, 100, and 1000 milliseconds,
-in those runs where a verdict was known to take more than 2 seconds to compute.
-The distribution of the overshoot is reported, together with the proportion of runs which lie within the 200ms threshold.
+for deadlines of 10, 100, and 1,000 milliseconds,
+in those runs the automatic dispatch without a deadline took more than 2 seconds or timed out.
+The distribution of the overshoot is reported, together with the proportion of runs which lie within the 200 ms threshold.
 The nets which trigger the largest overshoots are reported as well, because they indicate parts of the implementation
 which check the deadline too infrequently and could be improved.
 
@@ -30,17 +30,17 @@ which check the deadline too infrequently and could be improved.
 @tab-h3a shows how often the polynomial procedures are able to produce a verdict.
 On the parametrized families they give a verdict for #cell(h3a("fam").n_definite) of #cell(h3a("fam").n_runs)
 runs (#pct(float(h3a("fam").share_definite), d: 0)) and decline in the rest.
-In #h3a("fam").n_poly_answers_general_timeout of the runs the polynomial methods answer where RG exploration times out,
+In #h3a("fam").n_poly_answers_general_timeout of the runs the polynomial methods answer where brute-force times out or runs out of memory,
 so the hypothesis is supported.
 The same happens for #h3a("mcc-large").n_poly_answers_general_timeout runs of the large competition models.
 On the small competition models the efficient methods answer only #pct(float(h3a("mcc-small").share_definite), d: 0)
-of the runs, and in none of them does RG exploration time out.
+of the runs, and in none of them does brute-force time out.
 For MCC nets the restriction usually prevents a verdict from being returned at all.
 
 #figure(
   eval-table(
     (2.4fr, 1fr, 1fr, 1fr, 1fr, 1.8fr),
-    ("Collection", "Runs", "Verdict", "No verdict", "Incorrect", "Verdict where RG exploration times out"),
+    ("Collection", "Runs", "Verdict", "No verdict", "Incorrect", "Verdict where brute-force times out"),
     ..("calibration", "fam", "mcc-small", "mcc-large").map(c => (
       source-name.at(c),
       cell(h3a(c).n_runs),
@@ -52,13 +52,15 @@ For MCC nets the restriction usually prevents a verdict from being returned at a
   ),
   caption: [
     The number of runs where the efficient methods return a verdict, where they do not, where they return an incorrect verdict,
-    and where they return a verdict while RG exploration times out, for each collection of nets.
+    and where they return a verdict while brute-force times out, for each collection of nets.
   ],
 ) <tab-h3a>
 
 *The deadline.*
-#cell(e3b-row(10.0).n_cells) runs which were known to be computable and take >2 seconds were repeated with deadlines
+#cell(e3b-row(10.0).n_cells) runs for which the automatic dispatch without a deadline took more than 2 seconds or timed out were repeated with deadlines
 of 10, 100 and 1,000 milliseconds.
+These counts and the statistics below leave out the runs that did not return before the 30-second limit
+(#wall-cap(10) per deadline), because they report no overshoot.
 @tab-deadline and @fig-overshoot show how long after the deadline the library returned.
 The typical overshoot is small: the median is #dec(float(e3b-row(10.0).overshoot_median_ms), d: 1),
 #dec(float(e3b-row(100.0).overshoot_median_ms), d: 1)
@@ -73,7 +75,7 @@ The hypothesis holds for the typical run, but it is not guaranteed: the distribu
 #figure(
   eval-table(
     (1.3fr, 0.9fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1.1fr, 1fr),
-    ("Deadline (ms)", "Runs", "Timed out", "Median Overshoot (ms)", "90th percentile overshoot (ms)", "95th percentile overshoot (ms)", "Maximum overshoot (ms)", "Proportion within threshold", "Answered after deadline"),
+    ("Deadline (ms)", "Runs", "Timed out", "Median overshoot (ms)", "90th percentile overshoot (ms)", "95th percentile overshoot (ms)", "Maximum overshoot (ms)", "Proportion within threshold", "Answered after deadline"),
     ..(10.0, 100.0, 1000.0).map(t => (
       cell(t),
       cell(e3b-row(t).n_cells),
@@ -109,7 +111,7 @@ and then gives the correct verdict, so the deadline was ignored and not enforced
 The liveness and quasi-liveness questions on one MCC model of the RERS2020 family,
 and the deadlock question on a ServersAndClients net, overshoot by about half a second to a second and then give no verdict.
 Worse than a late return is no return: for #wall-cap(10) runs at every deadline,
-the 1-safety question on one large MCC model (FamilyReunion) and on two small ones (ServersAndClients),
+on the 1-safety property for one large MCC model (FamilyReunion) and on two small ones (ServersAndClients),
 `petrivet` did not return at all, and timed out after 30 seconds.
 These are blind spots in the implementation which should be fixed.
 Thankfully, the fix is straightforward: the deadline needs to be checked more frequently in those procedures.
@@ -133,7 +135,7 @@ Thankfully, the fix is straightforward: the deadline needs to be checked more fr
 
 *Summary.*
 The evidence generally supports the hypotheses of #rqs.cost-control, with some caveats.
-The polynomial procedures are able to answer some queries where the general RG exploration times out,
+The polynomial procedures are able to answer some queries where the general brute-force times out,
 but for many real-world Petri nets they are too limited to answer at all.
 The deadline mechanism is effective for the typical run, but there are blind spots in the implementation which
 allow `petrivet` to overshoot the deadline by a second or more, and even to not return at all.

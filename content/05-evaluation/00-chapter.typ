@@ -17,7 +17,8 @@ The research questions that concern the artifact are the following (#rqs.existin
 - *#rqs.cost-control.* #rqs.cost-control-text (@eval-cost-control)
 - *#rqs.comparison.* #rqs.comparison-text (@eval-comparison)
 
-A hypothesis for each question was established before the evaluation began.
+A hypothesis for each question was established before the evaluation began
+except the comparison with established tools, which is descriptive.
 The requirements that cannot be reduced to a measurement, such as the availability of a programmatic interface
 or the support for standard model formats, are assessed in @eval-requirements, using the same rubric as the survey.
 @eval-threats collects the threats to validity of all parts.

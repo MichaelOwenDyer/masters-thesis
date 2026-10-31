@@ -5,12 +5,12 @@
 
 #rqs.procedure-dispatch asks whether `petrivet`'s internal dispatch of procedures, instead of always using one
 general procedure, reduces the cost of analysis. The hypothesis is that, for nets of restricted structural class,
-`petrivet`'s automatic choice is cheaper than the RG exploration of the state space,
+`petrivet`'s automatic dispatch is cheaper than the brute-force configuration,
 with a positive paired effect after correction for the number of structural classes tested.
 The experiment uses the parametrized families of nets, which are constructed to be of a specific structural class
 and have a high complexity ceiling. The randomized nets are not used because they are too small for reliable timings.
-The MCC models are used, but only the cases where dispatch can select a specialized procedure over the general approach.
-Two of the nine queries (state space size and stable place) are only implemented in `petrivet` via state space exploration,
+The MCC models are used as well, although on many of them dispatch cannot select a specialized procedure over the general approach.
+Two of the nine properties (state space size and stable place) are only implemented in `petrivet` via state space exploration,
 and are therefore excluded from this experiment.
 
 #let classes = ("circuit", "sm", "mg", "efc", "ac", "general")
@@ -21,30 +21,31 @@ and are therefore excluded from this experiment.
 #assert(not supported("ac") and not supported("general"), message: "the text says that asymmetric-choice and general nets are not supported")
 
 *Method.*
-Every query is run twice: once with `petrivet`'s automatic dispatch and once with RG exploration.
+Every query is run twice: once with `petrivet`'s automatic dispatch and once with brute-force.
 The time taken by the two runs is compared.
-The "performance ratio" is the time of the RG exploration divided by the time of the automatic dispatch:
+The "performance ratio" is the time of the brute-force divided by the time of the automatic dispatch:
 greater than 1 means that the automatic dispatch is faster, and less than 1 means that it is slower.
 The performance ratio of a structural net class depends on which net sizes happened to be tried and on the time limit,
 so a single number per class would be arbitrary: a larger ceiling for the net sizes would produce larger ratios wherever brute force gets stuck.
 For that reason the performance ratio is reported per family and per size, and the per-class comparison only asks whether the automatic dispatch is faster or slower.
-Runs which time out at 30 seconds are counted as 30 seconds, which is an underestimation of the true time.
-The comparisons are therefore additionally repeated excluding the runs that timed out in either mode.
+Runs which time out at 30 seconds or exhaust the memory limit are counted as 30 seconds, which is an underestimation of the true time.
+The comparisons are therefore additionally repeated excluding the runs that timed out or ran out of memory in either mode.
 
 *Results on the parametrized families.*
 @tab-h2 shows a summary of which mode is faster for each structural class and the associated p-value
-after Holm-Bonferroni correction for the number of classes tested.
-The automatic dispatch is clearly faster than RG exploration for
+after Holm-Bonferroni correction for the number of classes tested
+(one-sided Wilcoxon signed-rank test; a class counts as faster when the corrected p-value is below 0.05)
+The automatic dispatch is clearly faster than brute-force for
 #classes.filter(c => supported(c) and supported-without-stopped(c)).map(c => class-name.at(c)).join(", ", last: " and ")
-nets, and this holds with and without the timed out runs.
-For extended free-choice nets, the automatic dispatch is faster only when the timed out runs are counted,
-and RG exploration is generally faster on the queries that both modes finish.
+nets, and this holds with and without the timed-out runs.
+For extended free-choice nets, the automatic dispatch is faster only when the timed-out runs are counted,
+and brute-force is generally faster on the queries that both modes finish.
 For asymmetric-choice and general nets the automatic dispatch is not faster.
 
 #figure(
   eval-table(
     (1.6fr, 0.8fr, 1fr, 1fr, 0.9fr, 1.2fr),
-    ("Class", "Paired Runs", "One or both runs timed out", "p-value", "Faster", "Faster without timeouts"),
+    ("Class", "Paired runs", "One or both runs timed out or ran out of memory", "p-value", "Faster", "Faster without timeouts"),
     ..classes.map(c => (
       class-name.at(c),
       cell(h2(c).n_pairs),
@@ -55,29 +56,30 @@ For asymmetric-choice and general nets the automatic dispatch is not faster.
     )).flatten(),
   ),
   caption: [
-    Performance summary of automatic dispatch against RG exploration on the parametrized families, by structural class.
+    Performance summary of automatic dispatch against brute-force on the parametrized families, by structural class.
   ],
 ) <tab-h2>
 
-*Speedup by size.*
+*Performance ratio by size.*
 @fig-performance-ratios shows the median performance ratios of every family at every size that was tried.
-A filled-in circle means that every run at that net size finished.
-an outlined upward triangle means that RG exploration timed out (the real ratio is higher than shown),
+A filled-in circle means that every run at that net size finished,
+an outlined upward triangle means that brute-force timed out (the real ratio is higher than shown),
 an outlined downward triangle means that the automatic dispatch timed out (the real ratio is lower than shown),
 and an outlined diamond means that at least one run of both modes timed out (the real ratio is unknown).
 Paired runs in which both runs timed out say nothing about the difference and are left out of the comparison.
 Four patterns show:
 - For `circuit`, `sm-choice-ring`, `sm-two-cycles`, `mg-buffer-ring` and `mg-buffer-ring-unmarked-circuit`,
   the performance ratio is constant and modest, between about 1 and 2 at every size. The dispatch helps marginally,
-  but the number of reachable markings is small enough that RG exploration is not a problem.
+  but the number of reachable markings is small enough that brute-force is not a problem.
 - For families with exponentially growing state spaces (`sm-hub-and-spokes`, `sm-ring-with-sink`, `sm-two-cycles-n-tokens`,
   and `mg-forkjoin-cycle`), the performance ratio grows significantly with the size of the net, and from size 16 or 32,
-  RG exploration times out on most or all questions while the automatic dispatch still answers in milliseconds.
+  brute-force times out on most or all questions while the automatic dispatch still answers in milliseconds.
   The ratio is at least several hundred.
-  `mg-forkjoin-unbounded` is a special case: RG exploration hopelessly enumerates an infinite state space,
-  and never reaches a conclusion.
-- For extended free-choice nets, the dispatch is about even with RG exploration at small sizes,
-  until RG exploration begins to time out, and then the dispatch is faster until it also begins to time out.
+  `mg-forkjoin-unbounded` is a special case: brute-force hopelessly enumerates an infinite state space
+  and never reaches a conclusion on deadlock-freedom, liveness or quasi-liveness
+  (it answers boundedness within milliseconds).
+- For extended free-choice nets, the dispatch is about even with brute-force at small sizes,
+  until brute-force begins to time out, and then the dispatch is faster until it also begins to time out.
 - For asymmetric-choice and general nets, the dispatch is slower than brute force as the nets grow,
   down to a ratio of about #dec(float(find("e2_speedup_by_size.csv", family: "ac_cycle", size: "64").median_speedup), d: 3)
   for `ac-cycle` at size 64 (the automatic dispatch takes about
@@ -85,14 +87,15 @@ Four patterns show:
   #dec(float(find("e2_speedup_by_size.csv", family: "general_cycle", size: "64").median_speedup), d: 2) for `general-cycle`.
   The slowdown is consistent with the nontrivial cost of the Commoner/Hack criterion and the Karp-Miller coverability graph,
   which are used by the automatic dispatch on these nets.
-  Only at size 1,024 does the automatic dispatch return a verdict where brute force times out.
+  Only on boundedness, from size 256 for `ac-cycle` and from size 128 for `general-cycle`,
+  does the automatic dispatch return a verdict where brute force times out.
 
 #figure(
   image(export-dir + "figures/e2_speedup_by_size.svg", width: 100%),
   caption: [
     Median performance ratios per family as the net grows.
     A filled-in symbol means that both runs finished,
-    an outlined upward triangle means that RG exploration timed out,
+    an outlined upward triangle means that brute-force timed out,
     an outlined downward triangle means that the automatic dispatch timed out,
     and an outlined diamond means that at least one run of both modes timed out.
   ],
@@ -104,14 +107,14 @@ and @fig-scatter illustrates every pair of runs individually, colored by family.
 #figure(
   image(export-dir + "figures/e2_scaling.svg", width: 100%),
   caption: [
-    Response times by family as the net grows: the automatic dispatch (blue) and RG exploration (orange)
+    Response times by family as the net grows: the automatic dispatch (blue) and brute-force (orange).
   ],
 ) <fig-scaling>
 
 #figure(
   image(export-dir + "figures/e2_paired_scatter.svg", width: 85%),
   caption: [
-    Every dot is a pair of runs: the time of the automatic dispatch (x-axis) against the time of RG exploration (y-axis), colored by family.
+    Every dot is a pair of runs: the time of the automatic dispatch (x-axis) against the time of brute-force (y-axis), colored by family.
   ],
 ) <fig-scatter>
 
@@ -124,18 +127,18 @@ and @fig-scatter illustrates every pair of runs individually, colored by family.
 
 *How large a net can be handled.*
 @tab-frontier shows the largest size ($n$) of each family that a mode answers every query for within 30 seconds.
-The automatic dispatch handles larger nets than RG exploration in #larger.len() of the #families.len() families,
-and RG exploration handles larger nets in #smaller.len() families.
+The automatic dispatch handles larger nets than brute-force in #larger.len() of the #families.len() families,
+and brute-force handles larger nets in #smaller.len() families.
 In the remaining families both modes reach the same size, and in
 #families.filter(f => frontier(f, "pv-dispatch") == frontier(f, "pv-general") and frontier(f, "pv-dispatch") == largest-tried).len()
 of those it is the largest size that was tried, #fmt(largest-tried).
-Note that `mg-forkjoin-unbounded` is unbounded, so the RG exploration was unable to finish at any size,
+Note that `mg-forkjoin-unbounded` is unbounded, so the brute-force was unable to finish at any size,
 while the automatic dispatch answered all queries at size 1,024.
 
 #figure(
   eval-table(
     (3fr, 1fr, 1fr, 1fr, 1fr),
-    ("Family", "Largest size without timeouts for automatic dispatch", "Largest size without timeouts for RG exploration", "Largest size without a timeout in either mode", "Speedup at that size"),
+    ("Family", "Largest size without timeouts for automatic dispatch", "Largest size without timeouts for brute-force", "Largest size without a timeout in either mode", "Performance ratio at that size"),
     ..families.map(f => (
       [#family-name.at(f)],
       cell(frontier-raw(f, "pv-dispatch")),
@@ -148,7 +151,7 @@ while the automatic dispatch answered all queries at size 1,024.
   caption: [
     The largest size parameters that each mode answers every query for without timing out,
     and the performance ratio of the two modes at the highest size where neither mode times out.
-    The sizes tried are the powers of two from 2 to 1,024. A dash means that there is no such size.
+    A dash means that there is no such size.
   ],
 ) <tab-frontier>
 
@@ -158,7 +161,7 @@ while the automatic dispatch answered all queries at size 1,024.
 #figure(
   image(export-dir + "figures/e2_memory_by_size.svg", width: 100%),
   caption: [
-    Peak memory of the automatic choice (blue) and plain exploration (orange) per family and size,
+    Peak memory of the automatic dispatch (blue) and brute-force exploration (orange) per family and size,
     as the median over the runs that reported a memory value.
     The shape of the symbol indicates the property being checked,
     an outlined symbol means that the run timed out at that memory value,
@@ -176,17 +179,18 @@ non-general class (#find("e2_mcc_small_classes.csv", cls: "ac").n_instances asym
 and #find("e2_mcc_small_classes.csv", cls: "sm").n_instances state machine),
 and the other #find("e2_mcc_small_classes.csv", cls: "general").n_instances are general nets.
 For #val("e2.mcc_small.n_dispatch_differs") of the #val("e2.mcc_small.n_instances") models
-(#pct(val("e2.mcc_small.share_dispatch_differs"), d: 0)) the automatic choice can do something other than explore,
+(#pct(val("e2.mcc_small.share_dispatch_differs"), d: 0)) the automatic dispatch can do something other than explore,
 either because the net belongs to a restricted class or because the efficient methods alone answer at least one query
 (#val("e2.mcc_small.n_poly_definite") models).
-For all other models it can only explore, and any difference to the general mode is then pure overhead of the
-Karp-Miller coverability graph vs. the reachability graph.
+For all other models it can only run its structural checks and then explore,
+and any difference to the brute-force mode is then the overhead of these checks and,
+except for deadlock-freedom, of the Karp-Miller coverability graph vs. the reachability graph.
 
 The first measurement on these models was bad for the automatic dispatch.
 On liveness it answered only
 #find("e2b_dispatch_mcc.csv", state: "before", source: "mcc-small", query: "Q3").n_dispatch_answered of #find("e2b_dispatch_mcc.csv", state: "before", source: "mcc-small", query: "Q3").n_cells
 models, against #find("e2b_dispatch_mcc.csv", state: "before", source: "mcc-small", query: "Q3").n_general_answered for
-RG exploration, and where both answered, it took a median #dec(float(find("e2b_dispatch_mcc.csv", state: "before", source: "mcc-small", query: "Q3").ratio_median), d: 1) times as long.
+brute-force, and where both answered, it took a median #dec(float(find("e2b_dispatch_mcc.csv", state: "before", source: "mcc-small", query: "Q3").ratio_median), d: 1) times as long.
 I timed the individual stages of the library on single models to find out why, and found two causes.
 These timings were taken by hand and are not part of the figures and tables.
 
@@ -208,23 +212,27 @@ but what it produces is still a sound coverability graph.
 
 @fig-dispatch-mcc shows the two modes on every small model, before and after the optimization.
 Several runs which automatic dispatch previously timed out on now finish:
-after the optimization the automatic choice verdicts
+after the optimization the automatic dispatch returns verdicts on
 #e2b("after", "Q3", "n_dispatch_answered") of #e2b("after", "Q3", "n_cells") liveness cells
-(before: #e2b("before", "Q3", "n_dispatch_answered")), and on the models that both modes answer it is at least twice as
+(before: #e2b("before", "Q3", "n_dispatch_answered")), and on the models that both modes answer, it is at least twice as
 slow on #e2b("after", "Q3", "n_slower2"), about equal on #e2b("after", "Q3", "n_equal2") and at least twice as fast on
 #e2b("after", "Q3", "n_faster2").
-Deadlock-freedom queries are nearly unaffected, presumably because of the second cause, explained next.
+Deadlock-freedom queries are nearly unaffected, because the automatic dispatch explores the reachability graph,
+not the coverability graph, as its fallback for that property.
+The second cause, explained next, also applies to the deadlock-freedom queries.
 
 #figure(
   image(export-dir + "figures/e2b_scatter.svg", width: 100%),
-  caption: [The automatic choice against RG exploration on the 90 small competition models, one panel per query, before and after the optimization of $omega$-acceleration described above.],
+  caption: [The automatic dispatch against brute-force on the 90 small competition models, one panel per query, before and after the optimization of $omega$-acceleration described above.],
 ) <fig-dispatch-mcc>
 
 The second cause remains in the codebase at the time of writing:
-for free-choice and asymmetric-choice nets, the automatic dispatch attempts to use the Commoner/Hack criterion to decide
-the property where applicable (free-choice liveness, deadlock-freedom), but this does not pay off for the majority of Petri nets.
-On one asymmetric-choice net with only 204 reachable states, the Commoner/Hack criterion took 32 seconds to return,
+for free-choice, asymmetric-choice, and general nets, the automatic dispatch attempts to use the Commoner/Hack criterion to decide
+the property where applicable (liveness of free-choice and asymmetric-choice nets, deadlock-freedom of all three),
+but this does not pay off for the majority of Petri nets.
+On one asymmetric-choice net with only 204 reachable states, the automatic dispatch took 32 seconds to return,
 while the reachability graph took 1.7 milliseconds.
+The Commoner/Hack criterion is the only other stage on that path, so it is the likely cause.
 Further investigation is needed to determine when the Commoner/Hack criterion is worth using, and the dispatch should be
 adjusted accordingly in a future version of the library.
 

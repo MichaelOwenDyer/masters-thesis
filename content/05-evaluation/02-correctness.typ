@@ -25,6 +25,8 @@ then presents the agreement rate and the upper bound on the disagreement rate.
 could be compared with a reference verdict.
 Over all collections and modes, #fmt(total-compared) runs could be compared, and #fmt(total-disagreeing)
 of them disagreed with the reference verdict.
+In addition, #fmt(val("e1.n_truth_excluded")) queries on the randomized nets were excluded before any `petrivet` run,
+because the reference tools gave no authoritative verdict for them (see @eval-reference).
 The statistical strength of this result depends on the net collection.
 For `petrivet`'s automatic dispatch operating mode, the one-sided 95 percent upper bound on the rate of disagreement is
 #pct(auto-ub("gen"), d: 3) on the randomized nets (the two-tool group),
@@ -37,7 +39,7 @@ On the large competition models the automatic mode gave a verdict in only #int(a
 #figure(
   eval-table(
     (2.4fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
-    ("Collection", "Automatic dispatch", "RG exploration", "Efficient methods only", "Disagree-ments", "Upper bound (dispatch)", "No verdict (dispatch)"),
+    ("Collection", "Automatic dispatch", "Brute-force", "Efficient methods only", "Disagree-ments", "Upper bound (dispatch)", "No verdict (dispatch)"),
     ..collections.map(c => (
       source-name.at(c),
       cell(agreement("pv-dispatch", c).n_conclusive),
@@ -53,12 +55,12 @@ On the large competition models the automatic mode gave a verdict in only #int(a
 ) <tab-agreement>
 
 For the automatic dispatch mode with the small MCC models, #fmt(int(find("e4.csv", source: "mcc-small", query: "Q0", solver_id: "pv-dispatch").n_cells) + int(find("e4.csv", source: "mcc-small", query: "Q6", solver_id: "pv-dispatch").n_cells))
-of the runs are the two properties for which it has no procedure other than plain exploration
-(state space size and stable place), and most of the rest are time-outs or memory-outs due to the library's
+of the runs concern the two properties for which it has no procedure other than brute-force exploration
+(state space size and stable place), and most of the rest are timeouts or memory-outs due to the library's
 defensive construction of the coverability graph instead of the faster to construct,
 but potentially infinite, reachability graph.
 
-For reachability and coverability, which are checked on the randomized nets only, @tab-qrqc separates the cases by the verdict and by the kind of reference.
+For reachability and coverability on the randomized nets, @tab-qrqc separates the cases by the verdict and by the kind of reference.
 The group confirmed by LoLA alone is skewed: for coverability, #fmt(int(find("e5a.csv", solver_id: "pv-dispatch", query: "QC", tier: "lola_only", stratum: "yes").n_conclusive))
 of its verdicts are positive and only #fmt(int(find("e5a.csv", solver_id: "pv-dispatch", query: "QC", tier: "lola_only", stratum: "no").n_conclusive)) negative,
 because a reachable or coverable target of an unbounded net is much easier to find than an unreachable one is to refute.
@@ -101,7 +103,7 @@ and every one of these verdicts contradicts the construction truth:
 it reports a reachable deadlock where there is none.
 That is an observation about the tool, not about the comparison.
 
-All three `petrivet` modes were also checked for cache-coherence.
+The automatic dispatch mode of `petrivet` was also checked for cache-coherence.
 `petrivet` caches intermediate results about deadlock-freedom, boundedness, and liveness properties,
 which represents a potential source of error:
 if the cache is not coherent, the verdict to one property may vary depending on which properties were decided before.
@@ -109,7 +111,10 @@ On #val("e1b.n_nets") randomized nets, the properties were decided in several or
 verdict to the same property on a fresh `PetriNet` and, where the reachability graph is small, with an explicit-state
 computation. There were #val("e1b.n_differences") differences (upper bound #pct(val("e1b.cp_upper_95"), d: 1)).
 
-*What the evaluation found.*
+No verdict of the three modes of `petrivet` contradicts a reference verdict, so the data support the hypothesis of
+#rqs.correctness within the upper bounds given above.
+
+*Bugs discovered during the evaluation.*
 Three bugs were discovered and fixed during the correctness evaluation, which is a good sign that the evaluation is meaningful.
 
 In the first runs of the randomized nets, the automatic dispatch mode of `petrivet` answered nine reachability and coverability

@@ -3,49 +3,58 @@
 #pagebreak(weak: true)
 = Conclusion <conclusion>
 
-I have presented `petrivet` #footnote(<petrivet>).
-This paper aimed to answer the following research questions:
+This thesis presented `petrivet` #footnote(<petrivet>),
+a Rust library for analyzing place/transition Petri nets
+designed to meet the requirements of a process-orchestration setting.
+It is called from code,
+supports model interchange via PNML,
+allows bounding the cost of every query,
+returns evidence with its answers,
+and returns "unknown" where it has no answer.
+It has procedures for k-boundedness, liveness, deadlock-freedom, reachability, and coverability,
+dispatching each query to the most efficient known procedure that can answer it.
 
-#rqs.existing-tools (#rqs.existing-tools-text) was answered in @related-work.
+The research questions were answered as follows.
 
-#rqs.correctness (#rqs.correctness-text) was answered in @eval-correctness.
+- *#rqs.existing-tools*: "#rqs.existing-tools-text" \
+  No surveyed tool meets all eight requirements (@related-work).
+- *#rqs.correctness*: "#rqs.correctness-text" \
+  No verdict of `petrivet` contradicts a reference verdict across all evaluated queries (@eval-correctness),
+  after fixing the three bugs found during the evaluation.
+- *#rqs.procedure-dispatch*: "#rqs.procedure-dispatch-text" \
+  Dispatch makes the more restricted net classes easier to analyze, often by orders of magnitude,
+  but costs time on the more general nets (@eval-dispatch).
+- *#rqs.cost-control*: "#rqs.cost-control-text" \
+  The restriction to polynomial procedures can return verdicts where brute-force times out,
+  and deadlines are kept within 200 ms for the typical query,
+  though some stages which do not check the deadline internally can cause overshoot (@eval-cost-control).
+- *#rqs.comparison*: "#rqs.comparison-text" \
+  `petrivet` is competitive with LoLA, TINA, and ITS-Tools for liveness and on the parametrized families,
+  but behind them on deadlock-freedom and quasi-liveness on MCC models (@eval-comparison).
 
-#rqs.procedure-dispatch (#rqs.procedure-dispatch-text) was answered in @eval-dispatch.
-
-#rqs.cost-control (#rqs.cost-control-text) was answered in @eval-dispatch.
-
-#rqs.comparison (#rqs.comparison-text) was answered in @eval-comparison.
+The interpretation of these results, and lessons learned during implementation, are discussed in @discussion.
 
 == Future Work
 
-The future work on `petrivet` will include extensions to both its core procedures, unlocking new levels of performance,
-and additions to its scope, adding support for extensions on the basic Petri net model.
+The most direct improvements to `petrivet` concern performance on nets of less restricted structure.
+Known procedures that are not yet implemented, among them structural reductions,
+the rank theorem for free-choice nets, partial-order reductions, and minimal coverability set algorithms,
+are listed in @impl-closing-remarks.
+Property-directed reachability (IC3) @hassan_better_2013 @kloos_incremental_2013
+would add a complementary approach to the existing CEGAR engine.
 
-- IC3 is a model checking procedure that has been applied to Petri nets @hassan_better_2013 @kloos_incremental_2013
-  which takes a different approach to model checking than explored so far. This would be one more tool in the toolbox
-  for analyzing Petri nets, and it would be interesting to see how it performs compared to the existing procedures.
-- The current implementation of `petrivet` only supports ordinary Petri nets.
-  There are many extensions to the basic model which could be supported in the future.
-  In particular arc weights and place capacities are two common extensions which do not increase the complexity of the
-  underlying theory (every Petri net with arc weights and / or place capacities can be transformed into an equivalent ordinary Petri net),
-  but do increase the expressiveness of the model (that transformation may result in a significant increase in the size of the net).
-  This would allow for a more natural representation of certain systems, but would also require additional work to support these extensions in the core logic.
-  In particular, the various structural properties of Petri nets do not apply in general to Petri nets with arc weights and
-  place capacities, so the current optimizations for specific subclasses of nets would not be correct.
+The scope of `petrivet` can be extended beyond just ordinary Petri nets.
+Arc weights and place capacities are common extensions with the same analytical expressiveness as ordinary nets,
+but enhanced succinctness, and would allow for a more natural representation of certain systems.
+Colored Petri nets @van_der_aalst_strategies_2013 are particularly useful in the context
+of business process orchestration, and would allow for a more direct representation of the systems
+that motivated this work.
+Temporal-logic model checking (LTL and CTL) would cover a wider range of queries than the
+current set of behavioral properties can express.
+Symbolic representations of the state space, such as decision diagrams @couvreur_hierarchical_2005,
+would allow for more efficient exploration of large bounded systems.
 
-- structural reductions @berthelot_reduction_1976 @thierry-mieg_structural_2020
-
-- Model checking is a formal verification technique that systematically explores the state space of a system to verify
-  whether certain properties hold. It involves constructing a model of the system, specifying properties in a formal
-  language (such as temporal logic), and using algorithms to check if the model satisfies these properties.
-  Model checking can be applied to various types of systems, including hardware circuits, software programs, and
-  concurrent systems modeled by Petri nets.
-  - Partial Order Reduction
-  - LTL and CTL formula checking
-  - Binary Decision Diagrams / Hierarchical Set Decision Diagrams for state space representation @couvreur_hierarchical_2005.
-- More targeted procedures for general liveness and deadlock-freedom which do not require the construction of the
-  entire reachability graph, perhaps by reducing to a reachability problem @hack_recursive_1974 @hack_decidability_1976.
-- For Free-Choice Nets, checking liveness and boundedness simultaneously is cheaper than checking them separately, and
-  is in fact polynomial time @esparza_synthesis_1990 @kemper_efficient_1992.
-- Optimization: when a Petri net is known to be bounded, the automatic dispatch does not need to defensively construct
-  the coverability graph and incur the associated overhead - the reachability graph will produce the same verdict, faster.
+Finally, `petrivet` should be validated again outside this thesis
+by participating in upcoming editions of the Model Checking Contest @kordon_results_2026,
+by language bindings that allow it to be used from other programming languages,
+and by adoption in real-world applications.

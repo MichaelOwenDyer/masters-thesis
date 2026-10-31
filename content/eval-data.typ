@@ -3,7 +3,7 @@
 // evaluation/analysis), tables are the CSV files of the export.
 
 // `typst compile --input export-dir=/target/export-dev/ ...` reads another export (for development)
-#let export-dir = sys.inputs.at("export-dir", default: "/target/export-dev/")
+#let export-dir = sys.inputs.at("export-dir", default: "/evaluation/export/")
 #let nums = json(export-dir + "numbers.json")
 
 // the value of a key of numbers.json; fails loudly (at compile time) if the key does not exist
@@ -58,7 +58,7 @@
 // names of the tools and the collections, in plain language
 #let solver-name = (
   "pv-dispatch": "petrivet: automatic dispatch",
-  "pv-general": "petrivet: RG exploration",
+  "pv-general": "petrivet: brute-force",
   "pv-poly": "petrivet: efficient methods only",
   "lola": "LoLA",
   "tina": "TINA",

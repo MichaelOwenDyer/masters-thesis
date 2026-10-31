@@ -1,0 +1,17 @@
+source,query,reference,n_cells,n_both,n_faster2,n_equal2,n_slower2,n_only_petrivet,n_only_reference,n_neither
+mcc-large,Q1,lola,20,3,0,0,3,1,12,4
+mcc-large,Q3,lola,20,2,1,0,1,2,7,9
+mcc-large,Q4,lola,20,3,1,2,0,1,9,7
+mcc-large,Q5,lola,20,3,0,3,0,1,0,16
+mcc-large,Q1,tina,20,0,0,0,0,4,0,16
+mcc-large,Q3,tina,20,0,0,0,0,4,0,16
+mcc-large,Q4,tina,20,0,0,0,0,4,0,16
+mcc-large,Q5,tina,20,4,0,4,0,0,0,16
+mcc-small,Q1,lola,90,76,2,21,53,0,13,1
+mcc-small,Q3,lola,90,75,23,25,27,7,4,4
+mcc-small,Q4,lola,90,81,30,22,29,1,5,3
+mcc-small,Q5,lola,90,85,5,63,17,2,0,3
+mcc-small,Q1,tina,90,74,25,25,24,2,12,2
+mcc-small,Q3,tina,90,80,8,54,18,2,6,2
+mcc-small,Q4,tina,90,80,9,54,17,2,6,2
+mcc-small,Q5,tina,90,87,0,75,12,0,2,1

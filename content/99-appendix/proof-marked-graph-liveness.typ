@@ -7,7 +7,7 @@ The proof reduces to four known facts about marked graphs (T-systems).
 
 + _Token invariance_ @murata_petri_1989[Thm. 6] @esparza_petri_2026[Prop. 5.2.2]:
   $M(gamma) = M_0(gamma)$ for every circuit $gamma$ and every reachable marking $M$.
-  Hence an unmarked circuit stays unmarked, so $Z := {t in T | exists gamma : v in gamma and M_0(gamma) = 0}$
+  Hence an unmarked circuit stays unmarked, so $Z := {t in T : exists gamma : t in gamma and M_0(gamma) = 0}$
   does not depend on the marking, and no transition of $Z$ is ever enabled (this is the (⇒) direction of @esparza_petri_2026[Thm. 5.2.3]).
 + _Necessity of firing_ (@murata_petri_1989[§VII-D]): if $N$ has a token-free directed path from $i$ to $j$ at $M_0$, then $i$ must fire before $j$ can first become enabled.
 + _Local liveness_ (the (⇐) direction of @esparza_petri_2026[Thm. 5.2.3]):
@@ -27,11 +27,11 @@ The proof reduces to four known facts about marked graphs (T-systems).
 
 #lemma(title: "Classification")[
 
+  Let $D_0 := {t in T : exists z in Z : z reachz t}$ be the set of transitions reachable from an unmarked circuit via a token-free path at $M_0$.
+
+  Let $D_(>=) := {t in T : exists z in Z : z reach t}$ be the set of transitions reachable from an unmarked circuit via any path at $M_0$.
+
   Let $t in T$.
-
-  Let $D_0 := {t in T | exists z in Z: z reachz t}$ be the set of transitions reachable from an unmarked circuit via a token-free path at $M_0$.
-
-  Let $D_(>=) := {t in T | exists z in Z: z reach t}$ be the set of transitions reachable from an unmarked circuit via any path at $M_0$.
 
   + If $t in D_0$, then $t$ is dead.
   + If $t in.not D_0$, then $t$ is potentially firable ($lv(1)$-live).
@@ -45,7 +45,9 @@ The proof reduces to four known facts about marked graphs (T-systems).
 
   (2) Apply Fact 3 to $M = M_0$: the hypothesis is exactly $t in.not D_0$.
 
-  (3) Let $z = t_0, p_1, t_1, dots, p_k, t_k = t$ be a path with $z in Z$ and let $sigma$ be a firing sequence.
+  (3) Let $z = t_0, p_1, t_1, dots, p_k, t_k = t$ be a path with $z in Z$,
+  let $sigma$ be a firing sequence leading from $M_0$ to $M$,
+  and let $arrow(sigma)$ be the Parikh vector of $sigma$.
   Since $t_(i-1)$ and $t_i$ are the only producer and consumer of $p_i$, the marking equation gives $0 <= M(p_i) = M_0(p_i) + arrow(sigma) (t_(i-1)) - arrow(sigma) (t_i)$.
   As $z$ is dead by (1), $arrow(sigma) (t_0) = 0$, and induction yields $arrow(sigma) (t) <= sum_i M_0(p_i)$.
 
@@ -59,12 +61,14 @@ The proof reduces to four known facts about marked graphs (T-systems).
 
   _Proof._
 
-  A call $"Dfs"(t, b)$ passes the `match` without returning only if $ell[t] = lv(4)$, or $ell[t] = lv(1)$ and $b = bot$; in both cases the assignment strictly lowers $ell[t]$.
+  A call $"Dfs"(t, b)$ passes the `match` without returning only if $ell(t) = lv(4)$, or $ell(t) = lv(1)$ and $b = bot$; in both cases the assignment strictly lowers $ell(t)$.
   So every transition is expanded at most twice, which bounds the work by $O(|F|)$, and together with Fact 4 the total is linear.
   The search explores the product graph on states $(t, b)$ with $b in {bot, top}$, where passing a marked place sets $b$ to $top$.
-  Arriving at $t$ through unmarked places only ($bot$) is at least as strong as arriving through a path that crossed a marked place ($top$), because the same continuation from $(t, bot)$ reaches every transition that $(t, top)$ reaches, with a flag that is never high.
-  The pruning in the `match` discards exactly the states that were already visited with a high flag.
-  Therefore the algorithm computes reachability in the product graph from the states ${(z, bot) | z in Z}$ @tarjan_depth-first_1972, and $ell(t)$ is $lv(0)$ iff some $(t, bot)$ is reachable (i.e. $t in D_0$), $lv(1)$ iff only $(t, top)$ is reachable, and $lv(4)$ iff no state of $t$ is reachable.
+  Arriving at $t$ through unmarked places only ($bot$) is at least as strong as arriving through a path that crossed a marked place ($top$),
+  because the same continuation from $(t, bot)$ reaches every transition that $(t, top)$ reaches,
+  with a flag that is never higher than the flag of the same continuation from $(t, top)$.
+  The pruning in the `match` discards a state $(t, b)$ exactly when $(t, bot)$ or $(t, b)$ was already visited.
+  Therefore the algorithm computes reachability in the product graph from the states ${(z, bot) : z in Z}$ @tarjan_depth-first_1972, and $ell(t)$ is $lv(0)$ iff some $(t, bot)$ is reachable (i.e. $t in D_0$), $lv(1)$ iff only $(t, top)$ is reachable, and $lv(4)$ iff no state of $t$ is reachable.
 ]
 
 #theorem(title: "Correctness")[

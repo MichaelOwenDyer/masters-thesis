@@ -16,7 +16,16 @@ three sources for software packages:
 
 and three sources for curated lists of Petri net tools:
 - the Hamburg Petri Nets Tool Database #footnote[https://www2.informatik.uni-hamburg.de/tgi/PetriNets/tools/db.html, last accessed: 2026-10-14], and
-- the Model Checking Contest (MCC) participant lists for 2025 #footnote[https://mcc.lip6.fr/2025/results.php, last accessed: 2026-10-14] and 2026 #footnote[https://mcc.lip6.fr/2026/results.php, last accessed: 2026-10-14].
+- the Model Checking Contest (MCC) participant lists for
+  2025 #footnote[https://mcc.lip6.fr/2025/results.php, last accessed: 2026-10-14] and
+  2026 #footnote[https://mcc.lip6.fr/2026/results.php, last accessed: 2026-10-14] $ $
+  #footnote[
+    An early version of `petrivet` participated in the 2026 MCC
+    (revision `c5af7627d5e016c4c7294a62db7591379e875e0a`, committed 25.05.2026).
+    It placed last in every examination it entered,
+    but the version predated the majority of `petrivet`'s current procedures
+    and is not representative of the tool evaluated in this thesis.
+  ]
 
 In addition, the tools already known through prior experience were included in the survey.
 A set of search queries was defined for each source.

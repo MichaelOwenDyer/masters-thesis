@@ -77,7 +77,7 @@ They are generally limited in scope (capped state space, only one property, etc.
 I assigned each tool a score on a four-point scale for each requirement based on my reading of the documentation
 and source code: "✓" = fully meets the requirement, "(✓)" = partly meets the requirement, "✗" = does not meet the
 requirement, and "?" = not determined.
-@tab:landscape lists the scores of all 37 tools.
+@tab-tool-survey lists the scores of all 37 tools.
 These scores are a subjective, qualitative assessment of the tools' capabilities and can be disputed.
 R6 is rated by what a tool returns as evidence for an answer:
 "✓" if it can return a witness (for example a firing sequence or a counterexample) or an independently verifiable certificate,
@@ -148,7 +148,7 @@ it is not a rated requirement and is discussed separately below.
     [29], [PnAT], [B, weak termination, k-bound], [not documented], [✗], [✓], [(✓)], [(✓)], [✗], [✓], [witness], [(✓)], [✗], [2023-12],
     [37], [GPenSIM], [B, D, C, R (capped)], [user picks cotree vs cotreei], [✓], [(✓)], [(✓)], [✓], [✗], [(✓)], [method, culprits], [✗], [✗], [2025-08],
   )),
-) <tab:landscape>
+) <tab-tool-survey>
 
 @fig:landscape-bars shows, for each requirement, how many tools meet it fully, partly or not.
 

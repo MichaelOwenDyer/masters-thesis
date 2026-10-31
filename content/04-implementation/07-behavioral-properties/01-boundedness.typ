@@ -1,7 +1,7 @@
 #import "../../lib.typ": *
 #import "../../../lib/tum/elements.typ": *
 
-=== (K-)Boundedness
+=== (K-)Boundedness <impl-boundedness>
 
 This section describes the implementation of the (k-)boundedness property of Petri nets within `petrivet`.
 See @background-boundedness for a discussion of the property itself.
@@ -49,8 +49,6 @@ then all tokens can reach any place, and so every place is exactly k-bounded for
 If the net is not strongly connected, then not all tokens can reach every place.
 We can determine the exact bound of a place $p$ by computing $M_0(prestar(p))$:
 the number of tokens in the initial marking that can reach $p$ @murata_petri_1989.
-Here $prestar(p)$ denotes the set of places from which $p$
-can be reached by a directed path in $N$ (including $p$ itself).
 
 *Marked Graphs.*
 Live marked graphs, as discussed in @background-structural-classes,
@@ -66,16 +64,19 @@ See @impl-liveness-implementation for the procedure used to determine liveness o
 
 *Structural Boundedness.*
 If the query has not been answered by the above procedures,
-then `petrivet` checks for the existence of a P-subinvariant which covers the places of interest.
-This is formulated as a linear programming problem, and can be solved in polynomial time.
-If such a P-subinvariant $y in NN^(|P|)$ exists, then the places in its support are (upper) bounded by $⌊(y · M_0) / y(p)⌋$
-@best_petri_2024 @murata_petri_1989.
-However, it is only a semi-decision procedure: the lack of a P-subinvariant gives us no information.
+then `petrivet` searches for a P-subinvariant which covers the places of interest $S subset.eq P$,
+using the encoding $phi_"kind" and phi_"cover"(S)$ from @impl-p-invariants with $bowtie = {<=}$.
+For queries about the entire Petri net, $S = P$.
+This is a linear programming problem, and can be solved in polynomial time by an SMT solver.
+If a solution $y$ exists, then the weighted token sum $y dot M$ can never exceed its initial value $y dot M_0$,
+and since every place $p in S$ has weight $y_p >= 1$, it is bounded by $⌊(y dot M_0) / y_p⌋$ for any $M_0$
+(_structural_ boundedness) @best_petri_2024 @murata_petri_1989.
+This is only a semi-decision procedure: the lack of a P-subinvariant gives us no information.
 
 *Exploring the Coverability Graph.*
 As a last resort, `petrivet` can explore the coverability graph of the Petri net, which is guaranteed to provide full
 information about the boundedness of every place, but is expensive to compute.
 The stopping condition for the exploration depends on the query:
-`is_bounded()` queries can stop as soon as a (or the) place is found to be unbounded (or not k-bounded)
-with the verdict `false`; otherwise the whole graph must be explored.
+`is_bounded()` queries can stop with the verdict `false` as soon as a (or the) place is found to be unbounded
+(or not k-bounded); otherwise the whole graph must be explored.
 `boundedness()` queries must explore the entire coverability graph to find the exact bounds.

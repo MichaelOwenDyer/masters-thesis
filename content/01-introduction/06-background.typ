@@ -31,10 +31,18 @@ The *preset of a transition* $t in T$, denoted $pre(t)$, is defined as ${ p in P
 
 The *postset of a transition* $t in T$, denoted $post(t)$, is defined as ${ p in P : (t, p) ∈ F }$ \ (the set of places $p$ such that there is a directed edge from $t$ to $p$).
 
-For a set of nodes $X$, the preset and postset are defined as the union of the presets and postsets of the individual nodes in the set: \
+For a set of nodes $X$, the preset and postset are the union of $pre(x)$ and $post(x)$ \ over $x in X$: \
 $ pre(X) := union.big_(x in X) pre(x) "     "  post(X) := union.big_(x in X) post(x) $
 
 In this thesis, the terms *input* and *output* are also used to refer to the preset and postset, respectively.
+
+For nodes $x$ and $y$ of $N$, we write $x reach y$ if $N$ has a directed path of length zero or more from $x$ to $y$.
+
+For a node $x$, \
+$poststar(x) := {y : x reach y}$ is the set of nodes reachable from $x$, and \
+$prestar(x) := {y : y reach x}$ is the set of nodes from which $x$ is reachable.
+
+For a set of nodes $X$, $prestar(X)$ and $poststar(X)$ are the unions of $prestar(x)$ and $poststar(x)$ over $x in X$.
 
 === Tokens and Markings
 
@@ -136,6 +144,11 @@ because it does not capture the enabling conditions of transitions.
     the matrix does not show that $T_2$ needs a token in $P_3$ to be enabled.
   ],
 ) <fig-bg-incidence>
+
+One can also separately define the *pre-incidence matrix* $C^-$ and *post-incidence matrix* $C^+$,
+which contain only the negative and positive entries of $C$, respectively.
+This allows us to express the incidence matrix as $C = C^+ - C^-$,
+and provides a view that does not obscure read arcs (transitions that consume and produce into the same place).
 
 ==== Marking Equation <background-marking-equation>
 
@@ -428,7 +441,7 @@ They inherit the properties of state machines and marked graphs, discussed next.
 ) <fig-bg-circuit>
 
 *State Machines.*
-A net $N = (P, T, F)$ is called a *state machine* (or *S-net*) if \
+A net $N = (P, T, F)$ is called a *state machine* if \
 $forall t in T: |pre(t)| = |post(t)| = 1$. \
 Intuitively: every transition has exactly one input and one output place (@fig-bg-sm-block).
 
@@ -450,7 +463,7 @@ in state machines @murata_petri_1989.
 ) <fig-bg-sm>
 
 *Marked Graphs.*
-A net $N = (P, T, F)$ is called a *marked graph* (or *T-net*) if \
+A net $N = (P, T, F)$ is called a *marked graph* if \
 $forall p in P: |pre(p)| = |post(p)| = 1$. \
 Intuitively: every place has exactly one input and one output transition (@fig-bg-mg-block).
 
@@ -522,7 +535,7 @@ The asymmetric-choice property is only a marginal restriction on general nets,
 and is not as analytically useful as the free-choice property.
 However, the Commoner/Hack criterion is still sufficient (but not necessary) to show liveness in asymmetric-choice nets
 @murata_petri_1989.
-@fig-bg-ac shows an asymmetric choice net which is not an extended free-choice net.
+@fig-bg-ac shows an asymmetric-choice net which is not an extended free-choice net.
 
 #figure(
   image("/figures/nets/background/ac.svg"),

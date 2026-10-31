@@ -18,9 +18,9 @@ rather than to rank the tools against each other.
 
 *Queries answered.*
 @tab-solved-fam, @tab-solved-mcc-small and @tab-solved-mcc-large show how many queries each tool answers within the
-30 second time limit, per property and collection.
+30-second time limit, per property and collection.
 Under each count is the penalized average time (PAR-2) in seconds,
-in which a timeout, memout, or crash counts as twice the time limit;
+in which a timeout, memory-out, or crash counts as twice the time limit;
 "unknown" results returned before the limit count as the time it took.
 A dash means that the tool has no procedure for the query.
 No counted verdict of any tool contradicts the reference verdict;
@@ -46,7 +46,7 @@ where ITS-Tools gives incorrect verdicts (@eval-correctness).
     align: (left, right, right, right, right),
   ),
   caption: [
-    Queries answered by each tool on the scaling families (144 per property),
+    Queries answered by each tool on the parametrized families (144 per property),
     and the penalized average time in seconds under each count.
   ],
 ) <tab-solved-fam>
@@ -127,7 +127,7 @@ and TINA none; these are 20 models, so the comparison on them is a first impress
 The cactus plots in @fig-cactus-small and @fig-cactus-fam show, for each property, the times of the answered queries sorted from the fastest to the slowest, one curve per tool.
 A curve ends early for a tool that answers fewer queries, and the left end of a curve is the cost of the smallest model,
 which is dominated by the tool's start-up overhead (@tab-startup).
-ITS-Tools high start-up overhead is explained by its JVM-based implementation.
+The high start-up overhead of ITS-Tools is explained by its JVM-based implementation.
 @fig-cactus-large shows the same for the large competition models.
 
 #figure(
@@ -217,7 +217,7 @@ and LoLA on #frontier.filter(r => r.solver_id == "lola" and r.max_size_all_solve
 On the families whose state spaces grow exponentially with net size
 (`sm-hub-and-spokes`, `sm-two-cycles-n-tokens`, `sm-ring-with-sink`, `mg-forkjoin-cycle`, `fc-forkjoin`),
 LoLA and TINA time out from size 8 to 16, whereas `petrivet` dispatch reaches size 1,024 (64 on `fc-forkjoin`),
-because it decides these properties from the structure of the net alone.
+because it decides these properties from the structure and the initial marking of the net alone, without exploring the state space.
 `mg-forkjoin-unbounded` has no size at which the tools decide all four properties.
 The picture reverses on `ac-cycle`, `ac-cycle-no-low-token` and `general-cycle`,
 whose number of reachable markings grows only polynomially (about $n^2$ for `ac-cycle` and `general-cycle`):
@@ -268,7 +268,7 @@ Against TINA the models are split: for liveness `petrivet` uses at least twice a
 #mem-h2h.find(r => r.source == "mcc-small" and r.query == "Q3" and r.reference == "tina").n_petrivet_more2
 models and at most half on #mem-h2h.find(r => r.source == "mcc-small" and r.query == "Q3" and r.reference == "tina").n_petrivet_less2.
 I did not verify where the additional memory of `petrivet` goes; it includes the fixed cost of the structural
-analysis found in the dispatch section.
+analysis found in @eval-dispatch.
 
 #figure(
   image(export-dir + "figures/e4b_memory_scatter_mcc_small.svg", width: 100%),
@@ -285,7 +285,7 @@ analysis found in the dispatch section.
   caption: [The same as @fig-memory-small for the 20 large MCC models.],
 ) <fig-memory-large>
 
-On the parametric families, @fig-memory-scaling shows the same effect as the time:
+On the parametrized families, @fig-memory-scaling shows the same effect as the time:
 on the families with an exponential number of markings LoLA and TINA run into the memory or the time limit with several
 GiB in use, whereas `petrivet` dispatch stays at a few tens of MiB.
 On the asymmetric-choice and general cycles the order is reversed, and `petrivet` is the tool with the largest memory.
@@ -320,7 +320,7 @@ A clear positive correlation is visible for `petrivet`, LoLA, and TINA, the expl
 the more places, the more memory per marking.
 For ITS-Tools, there is seemingly no correlation between the number of places and the memory per marking,
 which is explainable by its use of SDDs to store the state space:
-depending on how successful the SDD compression is, the memory per marking can be higher or lower than other tools.
+depending on how successful the SDD compression is, the memory per marking can be higher or lower than that of other tools.
 
 It should be noted that `petrivet` is currently unable to generate the set of reachable markings
 (the nodes of the reachability graph) without also generating the edges, which is theoretically possible,

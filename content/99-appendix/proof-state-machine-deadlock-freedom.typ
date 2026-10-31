@@ -8,9 +8,9 @@ The proof uses the following known facts.
 + _Token movement_ @esparza_petri_2026[Thm. 5.1.3]: if $q$ is marked and $q reach r$, the transitions on the path can be fired in order, which moves one token from $q$ to $r$ and leaves the other tokens in place.
 + _Enabledness in state machines_: a transition $t$ is enabled at $M$ iff $M(p_t) > 0$, where ${p_t} := pre(t)$ (the unique input place of $t$).
 
-Let $supp(M_0) = {p in P | M_0(p) > 0}$ be the support of the initial marking $M_0$.
+Let $supp(M_0) = {p in P : M_0(p) > 0}$ be the support of the initial marking $M_0$.
 
-Let $Sigma = {p in P | post(p) = emptyset}$ be the set of sink places.
+Let $Sigma = {p in P : post(p) = emptyset}$ be the set of sink places.
 
 #lemma(title: "Deadlock markings")[
 

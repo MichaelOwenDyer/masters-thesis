@@ -1,0 +1,16 @@
+cls,family,last_clean_size,last_clean_speedup,general_first_stop_size,dispatch_first_stop_size
+circuit,circuit,1024,1.444862,,
+sm,sm_hub_and_spokes,4,1.383723,8,
+sm,sm_two_cycles,1024,1.440664,,
+sm,sm_two_cycles_n_tokens,8,1.509789,16,
+sm,sm_choice_ring,1024,1.900003,,
+sm,sm_ring_with_sink,8,1.207549,16,
+mg,mg_buffer_ring,1024,1.923486,,
+mg,mg_buffer_ring_unmarked_circuit,1024,1.459631,,
+mg,mg_forkjoin_cycle,8,1.249971,16,
+mg,mg_forkjoin_unbounded,,,2,
+efc,efc_forkjoin,8,0.827245,16,128
+efc,efc_forkjoin_leaky,8,0.406446,16,16
+ac,ac_cycle,64,0.003577,256,128
+ac,ac_cycle_no_low_token,64,1.124696,,128
+general,general_cycle,64,0.327707,128,128

@@ -23,10 +23,10 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--truth", type=Path, required=True, help="results/truth.jsonl")
     ap.add_argument("--out", type=Path, required=True, help="export directory (numbers.json, *.csv, figures/*.svg)")
     ap.add_argument("--config", type=Path, help="eval.toml (default: <results>/../eval.toml)")
-    ap.add_argument("--manifest", type=Path, action="append", default=[], help="corpus manifest JSONL (repeatable; default: corpus/manifest.jsonl and corpus/mcc/manifest.jsonl next to results/)")
+    ap.add_argument("--manifest", type=Path, action="append", default=[], help="corpus manifest JSONL (repeatable; default: the gen, mcc, fam and calibration manifests next to results/, in that order: an instance in several manifests takes the source of the last)")
     ap.add_argument("--adjudication", type=Path, help="adjudication.jsonl (default: <results>/adjudication.jsonl; used for patterns and a cross-check)")
     ap.add_argument("--latency", type=Path, help="latency.jsonl (default: <results>/latency.jsonl)")
-    ap.add_argument("--cache-coherence", type=Path, help="file with the cache_coherence difference count (E1b); skipped when absent")
+    ap.add_argument("--cache-coherence", type=Path, help="file with the cache_coherence difference count (E1b; default: <results>/cache-coherence.json); skipped when absent")
     ap.add_argument("--subject", default="pv-dispatch")
     ap.add_argument("--cap-ms", type=float, help="common wall cap for PAR-2 / censoring (default eval.toml [run].wall_cap_secs)")
     ap.add_argument("--overshoot-threshold-ms", type=float, help="H3b threshold (default eval.toml [e3].overshoot_threshold_ms)")
@@ -50,13 +50,15 @@ def main(argv: list[str] | None = None) -> int:
     adj_path = a.adjudication or a.results / "adjudication.jsonl"
     adj_rows = read_jsonl(adj_path)[0] if adj_path.is_file() else None
     base = a.results.resolve().parent
-    manifests = a.manifest or [base / "corpus" / "manifest.jsonl", base / "corpus" / "mcc" / "manifest.jsonl"]
+    manifests = a.manifest or [base / "corpus" / "gen" / "manifest.jsonl", base / "corpus" / "mcc" / "manifest.jsonl",
+                               base / "corpus" / "fam" / "manifest.jsonl", base / "calibration" / "manifest.jsonl"]
     meta = load_meta(manifests, truth, adj_rows)
     excl_path = a.results / "truth_excluded.jsonl"
     excluded = read_jsonl(excl_path)[0] if excl_path.is_file() else []
+    cc_path = a.cache_coherence or (a.results / "cache-coherence.json" if (a.results / "cache-coherence.json").is_file() else None)
 
     ctx = Ctx(results=a.results, truth_path=a.truth, out=a.out, runs=runs, truth=truth, meta=meta, cfg=cfg, subject=a.subject,
-              adj_rows=adj_rows, cache_coherence=a.cache_coherence, latency_path=a.latency or a.results / "latency.jsonl",
+              adj_rows=adj_rows, cache_coherence=cc_path, latency_path=a.latency or a.results / "latency.jsonl",
               truth_excluded=excluded, overshoot_threshold_ms=a.overshoot_threshold_ms, cap_ms=a.cap_ms, manifests=[Path(m) for m in manifests])
     a.out.mkdir(parents=True, exist_ok=True)
 

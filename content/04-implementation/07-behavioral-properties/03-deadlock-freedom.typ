@@ -2,7 +2,7 @@
 #import "../../lib.typ": *
 #import "../../../lib/tum/elements.typ": *
 
-=== Deadlock-Freedom
+=== Deadlock-Freedom <impl-deadlock-freedom>
 
 This section describes the implementation of the deadlock-freedom property of Petri nets within `petrivet`.
 See @background-deadlock-freedom for a discussion of the property itself.
@@ -94,13 +94,12 @@ The following algorithm implements this reasoning:
 we search for a transition which is not on or downstream of an unmarked circuit,
 and report deadlock-freedom iff one is found.
 
-
 #figure(
   kind: "algorithm",
   supplement: [Algorithm],
   caption: [Deadlock-freedom of a marked graph.],
   pseudocode-list(numbered-title: [`DeadlockFreeMarkedGraph`$(N, M_0)$])[
-    + $N_0 <- N[T union {p in P | M_0(p) = 0}]$
+    + $N_0 <- N[T union {p in P : M_0(p) = 0}]$
     + $Z <-$ #h(0.3em) $op("SCC")(N_0)$
       $pipe op("filter")(|C| > 1)$
       $pipe op("flat_map")(C |-> C)$
@@ -122,9 +121,12 @@ then at this point `petrivet` will give up and return `None`.
 Otherwise, it will continue to the expensive fallback procedures.
 
 *Commoner/Hack Criterion.*
-The Commoner/Hack criterion is a sufficient condition for deadlock-freedom
-of general Petri nets.
-If it holds, then the Petri net is deadlock-free, but if it does not hold, we know little to nothing more of use.
+Every dead marking has a proper siphon which is unmarked @esparza_petri_2026[Prop. 4.4.6].
+If the Commoner/Hack criterion holds, every proper siphon contains a trap which is marked initially,
+and a marked trap stays marked (see @background-traps-siphons), so no siphon can ever become unmarked
+and no dead marking is reachable.
+The Commoner/Hack criterion is therefore a sufficient condition for deadlock-freedom of general Petri nets.
+However, if it does not hold, we know little to nothing more of use.
 
 *Reachability Graph Exploration.*
 As a last resort, `petrivet` can explore the reachability graph of the Petri net,

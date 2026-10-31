@@ -11,7 +11,6 @@
     ]
     #body
     #h(1fr)
-    #sym.qed
   ]
 }
 

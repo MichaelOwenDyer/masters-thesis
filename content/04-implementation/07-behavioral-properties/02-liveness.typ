@@ -2,7 +2,7 @@
 #import "../../lib.typ": *
 #import "../../../lib/tum/elements.typ": *
 
-=== Liveness
+=== Liveness <impl-liveness>
 
 This section describes the implementation of the liveness property of Petri nets within `petrivet`.
 See @background-liveness for a discussion of the property itself.
@@ -40,8 +40,11 @@ Therefore, `petrivet` tracks a lower and upper bound on the true liveness level 
 and can conclude the exact level when the lower and upper bounds meet.
 
 *Unmarked Siphon.*
-The first procedure checks for the existence of a (maximal) proper siphon unmarked in the Petri net's initial marking.
-This is a cheap preliminary check which can immediately prove the transitions in the postset of this siphon to be #lv(0).
+The first procedure computes the maximal siphon contained in the places unmarked in $M_0$,
+using the algorithm of @impl-traps-siphons with $S = P without supp(M_0)$.
+If it is non-empty, it stays unmarked in every reachable marking,
+so every transition in its postset has an input place that never holds a token and can never fire.
+This cheaply proves those transitions to be #lv(0).
 
 *State Machines.*
 The liveness of transitions in state machines is determined by the structure of the strongly connected components (SCCs)
@@ -81,7 +84,7 @@ and a nontrivial SCC that is the unique terminal SCC reachable from some marked 
     + *for each* $K in op("rev")(pi)$:
       + *if* $K$ has no successor: $sigma[K] <- "One"(K)$
       + *else* $sigma[K] <- op("succ")(K) pipe op("map")(K' |-> sigma[K']) pipe op("reduce")(union.sq)$
-    + $Sigma <- {K' | exists K in cal(C): m[K] and sigma[K] = "One"(K')}$
+    + $Sigma <- {K' : exists K in cal(C): m[K] and sigma[K] = "One"(K')}$
     + $ell <- cal(C) pipe op("map")(K |-> cases(lv(0) & "if" not r[K], lv(1) & "if" |K| = 1, lv(4) & "if" K in Sigma, lv(3) & "otherwise"))$
     + *return* $cal(C) pipe op("flat_map")(K |-> K pipe op("filter_map")(v |-> (v, ell[K]) "if" v in T))$
   ]
@@ -111,7 +114,7 @@ and #lv(0) otherwise.
   supplement: [Algorithm],
   caption: [Liveness levels of a marked graph.],
   pseudocode-list(numbered-title: [`MarkedGraphLiveness`$(N, M_0)$])[
-    + $N_0 <- N[T union {p in P | M_0(p) = 0}]$
+    + $N_0 <- N[T union {p in P : M_0(p) = 0}]$
     + $Z <-$ #h(0.3em) $op("SCC")(N_0)$
       $pipe op("filter")(|C| > 1)$
       $pipe op("flat_map")(C |-> C)$
@@ -137,7 +140,7 @@ A formal proof of correctness is given in @proof-marked-graph-liveness.
 
 *Commoner/Hack Criterion.*
 For free-choice and asymmetric-choice nets,
-the Commoner/Hack criterion is sufficient to show that all transitions are #lv(4).
+the Commoner/Hack criterion (checked as described in @impl-chc) is sufficient to show that all transitions are #lv(4).
 If it does not hold, we know that at least one transition in a free-choice net is not #lv(4),
 but not which one, and we know nothing additional for asymmetric-choice nets.
 
@@ -159,4 +162,4 @@ which is a particularly difficult case for liveness analysis.
 `petrivet` therefore does not have a complete decision procedure for liveness in unbounded Petri nets,
 and will invariably return "unknown" for some queries.
 Future work may improve this situation, for example by reformulating a liveness query as a reachability query,
-and then applying the reachability procedures described in @implementation-reachability-coverability.
+and then applying the reachability procedures described in @impl-reachability-coverability.

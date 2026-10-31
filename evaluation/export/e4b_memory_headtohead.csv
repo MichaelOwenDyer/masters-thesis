@@ -1,0 +1,17 @@
+source,query,reference,n_cells,n_points,n_with_timeout_value,n_with_memout,n_without_value,n_petrivet_less2,n_similar2,n_petrivet_more2
+mcc-large,Q1,lola,20,20,14,3,0,1,2,17
+mcc-large,Q3,lola,20,20,15,6,0,3,1,16
+mcc-large,Q4,lola,20,20,15,5,0,1,2,17
+mcc-large,Q5,lola,20,18,15,3,2,0,3,15
+mcc-large,Q1,tina,20,20,19,3,0,6,8,6
+mcc-large,Q3,tina,20,20,18,5,0,3,12,5
+mcc-large,Q4,tina,20,20,18,5,0,3,11,6
+mcc-large,Q5,tina,20,20,16,3,0,0,10,10
+mcc-small,Q1,lola,90,90,14,0,0,0,4,86
+mcc-small,Q3,lola,90,90,13,4,0,1,24,65
+mcc-small,Q4,lola,90,89,7,4,1,0,22,67
+mcc-small,Q5,lola,90,86,1,1,4,1,57,28
+mcc-small,Q1,tina,90,90,16,0,0,25,17,48
+mcc-small,Q3,tina,90,90,7,4,0,18,42,30
+mcc-small,Q4,tina,90,90,7,4,0,18,42,30
+mcc-small,Q5,tina,90,90,3,1,0,0,66,24

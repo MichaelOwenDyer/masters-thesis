@@ -1,1 +1,0 @@
-=== Siphons and Traps <impl-siphon-trap>

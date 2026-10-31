@@ -1,3 +1,5 @@
+#import "./03-research-questions.typ": *
+
 == Methodology
 
 Hevner @hevner_three_2007 visualizes design science as an engine sitting between the problem space and the academic foundations,
@@ -41,6 +43,26 @@ and a higher level for a broader audience of stakeholders and decision makers.
 
 *Relevance*
 
-Here is how the research questions and contributions of this thesis fit into Hevner's design science framework:
+The guidelines of Hevner et al. @hevner_design_2004 are addressed in this research as follows:
+The artifact (_Design as an Artifact_) is a software instantiation `petrivet`,
+together with the methods and design principles that underpin it (@solution-design, @implementation).
+Its _Problem Relevance_ is established by the chair's need for an embeddable analyzer (@motivation),
+while the survey in @related-work shows that no existing tool completely satisfies this need (#rqs.existing-tools).
 
-// TODO
+The _Design Evaluation_ performed in @evaluation assesses correctness, the benefit of procedure dispatch,
+cost control, and the artifact's standing in the context of existing tools (#rqs.correctness to #rqs.comparison).
+It also assesses the remaining requirements of @motivation with the same rubric as the survey (@eval-requirements).
+The library and the evaluation harness are publicly available, so the results can be checked.
+_Research Rigor_ is maintained throughout.
+The survey protocol was fixed before the survey was conducted,
+the verdicts of `petrivet` were checked against independent reference verdicts,
+and threats to validity are discussed for both the survey and the evaluation.
+
+The _Design as a Search Process_ is reflected in the iterative development of `petrivet` and its procedures,
+in a search space of possible API designs and algorithms for the backing implementation.
+The available resources also limited the search:
+the scope was restricted to ordinary Petri nets and the five behavioral properties discussed in @background-behavioral-properties,
+while temporal logic and broader Petri net schemas were left for future work.
+Finally, the _Communication of Research_ is aimed at two audiences:
+this thesis addresses researchers and practitioners in the field of Petri nets,
+while the artifact itself is aimed at software engineers.

@@ -1,6 +1,6 @@
 #let metadata = (
-  title: "",
-  german-title: "",
+  title: [Structure-Aware, Cost-Controlled \ Petri Net Analysis in Rust],
+  german-title: [Struktur- und Kostenbewusste Analyse von \ Petri-Netzen in Rust],
   author: "Michael Dyer",
   chair: "Chair of Information Systems and Business Process Management (i17)",
   school: "TUM School of Computation, Information and Technology",

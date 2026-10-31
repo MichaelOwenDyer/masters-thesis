@@ -1,1 +1,0 @@
-=== P-Invariants <impl-p-invariants>

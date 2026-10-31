@@ -8,13 +8,14 @@ following the guiding principles outlined in @solution-design.
 while respecting the specified cost-control mechanisms (timeout and/or efficiency restriction).
 This is done on a best-effort basis: which procedure will yield the answer fastest is generally not known for sure,
 and we must rely on heuristics.
-Some procedures are complete, meaning they will always return a definitive answer, while others are incomplete,
-meaning they may not provide an answer and we must fall back to a more expensive procedure to try to obtain an answer.
+Some procedures are complete and will always return a definitive answer,
+while others are incomplete, and we might need to fall back on a more expensive procedure if the first one does not yield a definitive answer.
 
 `petrivet` also caches the results of some property checks to save time on subsequent queries.
 
-For each property, the scope and granularity dimensions are listed,
-yielding the total number of variants of the check that the API provides.
+Each of the next sections describes the scope and granularity of a behavioral property,
+followed by the design of `petrivet`'s API for checking that property,
+and then the implementation backing the API, including the algorithms and data structures used.
 
 #include "01-boundedness.typ"
 #include "02-liveness.typ"

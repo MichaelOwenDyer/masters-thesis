@@ -10,10 +10,11 @@
 The Commoner/Hack criterion (CHC), also called the Siphon-Trap Criterion, states that every proper siphon contains a marked trap.
 We encode the search for a CHC counterexample as a SAT problem following the approach of @oanea_new_2010 et al.
 
-The CHC fails iff there exists a siphon such that all traps contained in it are unmarked.
+The CHC fails iff there exists a proper siphon such that all traps contained in it are unmarked.
 Because this is an $exists forall$ statement, we cannot encode it directly.
-Instead we exploit that every set of places $D$ contains a unique maximal trap (the union of all traps in $D$),
-and compute it within the SAT encoding.
+Instead we exploit that every set of places $D$ contains a unique maximal trap,
+which the shrinking algorithm in @impl-traps-siphons computes,
+and we run that algorithm symbolically in the SAT encoding.
 We then assert that this maximal trap is unmarked, which is equivalent to asserting that all traps in $D$ are unmarked.
 
 *Siphons.*
@@ -31,23 +32,18 @@ In the implementation the inner conjunction over $p in post(t)$ is folded into t
 $or.big_(p in post(t)) x_p^((0)) -> or.big_(q in pre(t)) x_q^((0))$, which is logically equivalent.
 
 *Maximal trap.*
-Given a siphon $D$, define the sequence
-$ D_0 := D, quad D_(i+1) := { p in D_i | forall t in post(p): thin post(t) inter D_i != emptyset }. $
-That is, $D_(i+1)$ removes every place that has a consuming transition producing nothing into $D_i$.
-This is the unrolling of the iterative algorithm for computing the maximal trap contained in $D$
-as described (in its siphon dual form) in @best_petri_2024[Alg. 6.19].
+The siphon $D$ is not known when the formula is built, so we cannot run the worklist algorithm of @impl-traps-siphons on it.
+Instead we use a round-based variant, in which each round removes _all_ places that currently violate the trap property:
+$ D_0 := D, quad D_(i+1) := { p in D_i : forall t in post(p): thin post(t) inter D_i != emptyset }. $
 
-#emph[Lemma.] For every $D subset.eq P$, $D_(|P|)$ is the maximal trap contained in $D$ if it is nonempty, and no trap is contained in $D$ if $D_(|P|) = emptyset$.
+#emph[Lemma.] $D_(|P|)$ is the maximal trap contained in $D$ (empty if $D$ contains no proper trap).
 
 #emph[Proof.]
-The sequence is non-increasing, so it either strictly shrinks or stays the same at each step.
-Since $|D_0| <= |P|$, it reaches a fixpoint at the latest at $D_(|P|)$, i.e. $D_(|P|+1) = D_(|P|)$.
-A fixpoint $D_(|P|)$ satisfies $post(D_(|P|)) subset.eq pre(D_(|P|))$ by construction, so it is a trap when nonempty.
-Conversely, let $Q subset.eq D$ be any trap. We show $Q subset.eq D_i$ by induction on $i$.
-The base case is $Q subset.eq D_0$.
-For the step, let $p in Q$ and $t in post(p)$. Since $Q$ is a trap, $t in pre(Q)$, so $post(t) inter Q != emptyset$.
-By the induction hypothesis $post(t) inter D_i != emptyset$, hence $p in D_(i+1)$.
-Therefore $Q subset.eq D_(|P|)$, which makes $D_(|P|)$ maximal. $qed$
+Each round removes the same places that the worklist algorithm could remove,
+so by the argument in @impl-traps-siphons no place of a trap $Q subset.eq D$ is ever removed.
+The sequence is non-increasing and starts with at most $|P|$ places,
+so it reaches a fixpoint after at most $|P|$ rounds,
+and a fixpoint contains no violating place, so it is a trap. $qed$
 
 We unroll this iteration inside the formula.
 For each stage $i in {1, dots, |P|}$ and place $p in P$ we define the term
@@ -66,7 +62,7 @@ The formula $phi := phi_"siphon" and phi_"unmarked"$ is satisfiable iff $N$ has 
 Equivalently, $phi$ is unsatisfiable iff the CHC holds.
 
 #emph[Proof.]
-($arrow.r.double$) Let $beta$ satisfy $phi$ and set $D := {p | beta(x_p^((0))) = top}$.
+($arrow.r.double$) Let $beta$ satisfy $phi$ and set $D := {p : beta(x_p^((0))) = top}$.
 By $phi_"siphon"$, $D$ is a proper siphon.
 By the Lemma, $D_(|P|)$ is the maximal trap in $D$, and $phi_"unmarked"$ gives $M_0(D_(|P|)) = 0$.
 Any trap $Q subset.eq D$ satisfies $Q subset.eq D_(|P|)$, so $M_0(Q) = 0$. \
@@ -94,8 +90,8 @@ which returns a counterexample if one exists, or $bot$ if the CHC holds.
     + *for each* $p in P$ *with* $M_0(p) > 0$:
       + *assert* $not x^((|P|))_p$
     + *if* the solver reports UNSAT: *return* $bot$
-    + $D <- {p in P | beta(x^((0))_p) = top}$
-    + $Q <- {p in P | beta(x^((|P|))_p) = top}$
+    + $D <- {p in P : beta(x^((0))_p) = top}$
+    + $Q <- {p in P : beta(x^((|P|))_p) = top}$
     + *return* $(D, Q)$
   ]
 )
