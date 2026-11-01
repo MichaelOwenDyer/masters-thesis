@@ -104,8 +104,8 @@ def run(ctx: Ctx) -> None:
     _scatter(ctx, gen, states)
 
 
-OUTCOME = (("both", "both answered", "#0072B2"), ("only_general", "only plain exploration answered", "#D55E00"),
-           ("only_dispatch", "only the automatic choice answered", "#009E73"), ("neither", "neither answered", "#000000"))
+OUTCOME = (("both", "both answered", "#0072B2"), ("only_general", "only brute-force answered", "#D55E00"),
+           ("only_dispatch", "only automatic dispatch answered", "#009E73"), ("neither", "neither answered", "#000000"))
 
 
 def _scatter(ctx: Ctx, gen: dict, states: list) -> None:
@@ -152,7 +152,7 @@ def _scatter(ctx: Ctx, gen: dict, states: list) -> None:
     for ax in axs[-1]:
         ax.set_xlabel("time with automatic dispatch (ms, log scale)", fontsize=8)
     for ax in axs[:, 0]:
-        ax.set_ylabel("time with reachability graph\nexploration (ms, log scale)", fontsize=8)
+        ax.set_ylabel("time with brute-force\nexploration (ms, log scale)", fontsize=8)
     from matplotlib.lines import Line2D
     fig.legend(handles=[Line2D([], [], marker="x" if k == "neither" else "o", color=col, ls="none", label=label) for k, label, col in OUTCOME if k in used],  # only the outcomes that occur
                loc="outside lower center", ncol=4, frameon=False, fontsize=8)

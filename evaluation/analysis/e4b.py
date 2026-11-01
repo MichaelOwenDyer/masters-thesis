@@ -182,8 +182,8 @@ def _memory_scatter(ctx: Ctx, src: str, pts: dict) -> None:
     for r, ref in enumerate(REFERENCES):
         axs[r][0].set_ylabel(f"memory of {TOOL_NAME[ref]} (MiB, log scale)", fontsize=8)
     fig.legend(handles=[Line2D([], [], marker="o", color="#0072B2", ls="none", ms=5, label="answered"),
-                        Line2D([], [], marker="o", mfc="#0072B2", mec="#000000", color="#0072B2", ls="none", ms=5, label="ended by the memory limit"),
-                        Line2D([], [], marker="o", mfc="white", mec="#0072B2", color="#0072B2", ls="none", ms=5, label="stopped by the time limit (memory when stopped)")],
+                        Line2D([], [], marker="o", mfc="#0072B2", mec="#000000", color="#0072B2", ls="none", ms=5, label="memory at memout"),
+                        Line2D([], [], marker="o", mfc="white", mec="#0072B2", color="#0072B2", ls="none", ms=5, label="memory at timeout")],
                loc="outside lower center", ncol=3, frameon=False, fontsize=8)
     save_svg(fig, ctx.fig_path(f"e4b_memory_scatter_{src.replace('-', '_')}"))
 

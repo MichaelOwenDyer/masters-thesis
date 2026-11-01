@@ -65,6 +65,50 @@ he or she can also construct a `PetriNet` with a `&Net` reference,
 creating a lightweight secondary structure that merely points to the structure of the net without carrying its data.
 This is achieved by making the `PetriNet` generic over any type that implements the `AsRef<Net>` trait,
 allowing for both owned and borrowed #footnote[and reference-counted, if desired.] nets to be used.
+@fig-impl-petri-net-ownership shows an example of constructing two `PetriNet` instances
+that share the same underlying `Net` structure but have different initial markings.
+
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new();
+    let [p0, p1, p2] = b.add_places();
+    // ... construct the net ...
+    let net = b.build().expect("valid net");
+    // Two Petri nets can share the same net structure
+    // with different initial markings.
+    let petri_net_a = PetriNet::new(&net, [(p0, 1)]);
+    let petri_net_b = PetriNet::new(&net, [(p1, 2)]);
+    ```
+  ],
+  caption: [
+    A `PetriNet` can either own the underlying `Net` structure or borrow it,
+    allowing the user to simulate multiple initial markings on the same static net structure without cloning the structure.
+  ]
+) <fig-impl-petri-net-ownership>
+
+Because it is just as valid to ask a structural question about a Petri net as about the static net structure,
+`PetriNet` dereferences `Net` via the `Deref` trait,
+allowing the user to seamlessly call any of the `Net` methods directly on a `PetriNet` (@fig-impl-deref-net).
+
+#figure(
+  [
+    ```
+    // ... construct the net ...
+    let petri_net = PetriNet::new(net, [(p0, 1)]);
+    // The '.' operator dereferences to the underlying Net structure
+    assert_eq!(petri_net.class(), NetClass::StateMachine);
+    assert_eq!(petri_net.is_strongly_connected(), false);
+    ```
+  ],
+  caption: [
+    A `PetriNet` dereferences to the underlying `Net` structure,
+    allowing the user to seamlessly call any of the `Net` methods directly on a `PetriNet`.
+  ]
+) <fig-impl-deref-net>
+
+A `PetriNet` can also be deconstructed into the underlying `Net` and the current `Marking`
+using the `into_parts()` method.
 
 === Basic Simulation
 
@@ -111,3 +155,24 @@ which returns the transition that was fired, or `None` if the Petri net is in a 
     A `PetriNet` can be used to simulate the behavior of a Petri net by firing transitions and observing the resulting markings.
   ]
 ) <fig-impl-simulation-basic>
+
+`PetriNet` also holds an immutable snapshot of the marking it was created with,
+so that the user can always reset the Petri net to its initial state by calling the `reset()` method,
+as shown in @fig-impl-simulation-reset.
+
+#figure(
+  [
+    ```
+    petri_net.reset();
+    assert_eq!(petri_net.marking(), Marking::from([(p0, 1)]));
+    ```
+  ],
+  caption: [
+    Continuation of @fig-impl-simulation-basic:
+    a `PetriNet` can be reset to its initial marking by calling the `reset()` method.
+  ]
+) <fig-impl-simulation-reset>
+
+For all upcoming behavioral property checks (@impl-state-space, @impl-behavioral-properties),
+the `PetriNet`'s current marking is used as the context for the analysis.
+This is the "initial marking" of the analysis, even if it is not the marking that the `PetriNet` was constructed with.

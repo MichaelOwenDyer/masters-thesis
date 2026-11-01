@@ -1051,7 +1051,7 @@ L 0 2
      </g>
     </g>
     <g id="text_7">
-     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="217.213203" y="246.332703" transform="rotate(-0 217.213203 246.332703)">how long after the time limit the library stopped (ms, log scale)</text>
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="217.213203" y="246.332703" transform="rotate(-0 217.213203 246.332703)">how long after the time limit the library returned (ms, log scale)</text>
     </g>
    </g>
    <g id="matplotlib.axis_2">

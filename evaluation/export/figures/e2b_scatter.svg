@@ -808,7 +808,7 @@ L -2 0
      </g>
     </g>
     <g id="text_5">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(14.079531 169.347003) rotate(-90)">time with reachability graph</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(14.079531 155.167003) rotate(-90)">time with brute-force</text>
      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(23.681719 166.043878) rotate(-90)">exploration (ms, log scale)</text>
     </g>
    </g>
@@ -3818,7 +3818,7 @@ L 268.067801 270.914593
      </g>
     </g>
     <g id="text_19">
-     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(14.079531 377.665318) rotate(-90)">time with reachability graph</text>
+     <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(14.079531 363.485318) rotate(-90)">time with brute-force</text>
      <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(23.681719 374.362193) rotate(-90)">exploration (ms, log scale)</text>
     </g>
    </g>
@@ -6188,11 +6188,11 @@ z
 " style="stroke: #0072b2"/>
     </defs>
     <g>
-     <use xlink:href="#md153b0f7f2" x="309.135385" y="456.277885" style="fill: #0072b2; stroke: #0072b2"/>
+     <use xlink:href="#md153b0f7f2" x="320.505385" y="456.277885" style="fill: #0072b2; stroke: #0072b2"/>
     </g>
    </g>
    <g id="text_39">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="323.535385" y="459.077885" transform="rotate(-0 323.535385 459.077885)">both answered</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="334.905385" y="459.077885" transform="rotate(-0 334.905385 459.077885)">both answered</text>
    </g>
    <g id="line2d_714">
     <defs>
@@ -6209,11 +6209,11 @@ z
 " style="stroke: #d55e00"/>
     </defs>
     <g>
-     <use xlink:href="#mee42960fdd" x="406.976635" y="456.277885" style="fill: #d55e00; stroke: #d55e00"/>
+     <use xlink:href="#mee42960fdd" x="418.346635" y="456.277885" style="fill: #d55e00; stroke: #d55e00"/>
     </g>
    </g>
    <g id="text_40">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="421.376635" y="459.077885" transform="rotate(-0 421.376635 459.077885)">only plain exploration answered</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="432.746635" y="459.077885" transform="rotate(-0 432.746635 459.077885)">only brute-force answered</text>
    </g>
    <g id="line2d_715">
     <defs>
@@ -6224,11 +6224,11 @@ L 3 3
 " style="stroke: #000000"/>
     </defs>
     <g>
-     <use xlink:href="#mb3620dd91a" x="573.370385" y="456.277885" style="stroke: #000000"/>
+     <use xlink:href="#mb3620dd91a" x="562.000385" y="456.277885" style="stroke: #000000"/>
     </g>
    </g>
    <g id="text_41">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="587.770385" y="459.077885" transform="rotate(-0 587.770385 459.077885)">neither answered</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="576.400385" y="459.077885" transform="rotate(-0 576.400385 459.077885)">neither answered</text>
    </g>
   </g>
  </g>

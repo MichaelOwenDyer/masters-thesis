@@ -32,8 +32,8 @@ On the parametrized families they give a verdict for #cell(h3a("fam").n_definite
 runs (#pct(float(h3a("fam").share_definite), d: 0)) and decline in the rest.
 In #h3a("fam").n_poly_answers_general_timeout of the runs the polynomial methods answer where brute-force times out or runs out of memory,
 so the hypothesis is supported.
-The same happens for #h3a("mcc-large").n_poly_answers_general_timeout runs of the large competition models.
-On the small competition models the efficient methods answer only #pct(float(h3a("mcc-small").share_definite), d: 0)
+The same happens for #h3a("mcc-large").n_poly_answers_general_timeout runs of the large MCC models.
+On the small MCC models the efficient methods answer only #pct(float(h3a("mcc-small").share_definite), d: 0)
 of the runs, and in none of them does brute-force time out.
 For MCC nets the restriction usually prevents a verdict from being returned at all.
 

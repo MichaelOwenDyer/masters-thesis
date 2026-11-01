@@ -15,5 +15,3 @@ and in its current state it has no chance of outperforming existing model checke
 The comparison is meant to place `petrivet` relative to the state of the art.
 I will continue to improve the library over time, adding new procedures and optimizations.
 The evaluation is described in detail in @evaluation.
-
-// TODO (author): example API design evaluation; implement the same thing in other libraries (not part of the current evaluation chapter)

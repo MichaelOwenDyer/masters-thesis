@@ -95,10 +95,10 @@ When the MCC models for the evaluation were drawn,
 44 of the 134 drawn small models (33%) were rejected for this reason,
 22 because of arc weights and 22 because they are not connected (corpus/mcc/selected.json).
 The rubric grades reading PNML at all, so the grade is unaffected,
-but in practice a third of the competition models cannot be loaded.
+but in practice a third of the MCC models cannot be loaded.
 
 R5, adequate performance and memory: ✓.
-`petrivet` participated in the Model Checking Contest 2026 @kordon_results_2026,
+`petrivet` participated in the Model Checking Contest 2026 @kordon_complete_2026,
 which, by the rubric, is independent evidence on non-trivial models;
 like for the other tools in the surveyed, the grade reflects that this evidence exists, not how good it is.
 The result was poor: `petrivet` placed last in every examination it entered.
@@ -107,7 +107,7 @@ so the contest measured an early version of the library and says little about th
 The current version is evaluated against LoLA, TINA, and ITS-Tools in @eval-comparison,
 but that evaluation was conducted by the author of the tool, and its models and limits were chosen by him.
 It shows `petrivet` competitive on liveness and on the parametrized families,
-but behind LoLA and TINA on deadlock-freedom and quasi-liveness on the small competition models.
+but behind LoLA and TINA on deadlock-freedom and quasi-liveness on the small MCC models.
 Independent evidence for the current version would require participation in a later contest.
 
 *R6, evidence with answers: ✓ (method, witness, certificate, theorem, culprits).*

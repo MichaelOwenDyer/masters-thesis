@@ -1,6 +1,5 @@
 #import "../01-introduction/03-research-questions.typ": *
 
-#pagebreak(weak: true)
 = Related Work <related-work>
 
 This chapter answers #rqs.existing-tools: to what extent do existing Petri net analysis tools meet the requirements

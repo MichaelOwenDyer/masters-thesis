@@ -19,7 +19,7 @@ class Stub:
 
 
 def row(size, td, tg, cd=False, cg=False, cls="sm"):
-    return {"cls": cls, "family": "sm_x", "size": float(size), "t_d": td, "t_g": tg, "cens_d": cd, "cens_g": cg}
+    return {"cls": cls, "family": "sm_x", "size": float(size), "query": "Q1", "t_d": td, "t_g": tg, "cens_d": cd, "cens_g": cg}
 
 
 def test_speedup_summary_does_not_depend_on_the_sizes_tried(tmp_path):
@@ -35,7 +35,8 @@ def test_speedup_summary_does_not_depend_on_the_sizes_tried(tmp_path):
     assert d.filter(pl.col("size") == 16)["median_speedup"][0] is None  # excluded, not counted as 1
     assert c.numbers["e2.family.sm_x.last_clean_size"] == 4 and c.numbers["e2.family.sm_x.last_clean_speedup"] == 4.0
     assert c.numbers["e2.family.sm_x.general_first_stop_size"] == 8 and c.numbers["e2.family.sm_x.dispatch_first_stop_size"] == 16
-    assert (tmp_path / "e2_speedup_by_size.svg").exists()
+    q = c.csvs["e2_speedup_by_size_query"]
+    assert q.filter(pl.col("size") == 8)["bound"][0] == "lower bound" and q.filter(pl.col("size") == 16)["speedup"][0] is None
 
 
 def test_memory_runs_use_b_memory_for_timeouts_and_never_pool_questions(tmp_path):
@@ -58,3 +59,25 @@ def test_memory_runs_use_b_memory_for_timeouts_and_never_pool_questions(tmp_path
     assert row("Q2", "pv-general")["status"] == "answered" and abs(row("Q2", "pv-general")["rss_mib"] - 7000 / 1024) < 1e-9  # M's value, not B's
     assert row("Q3", "pv-general")["status"] == "memory-out" and row("Q3", "pv-general")["rss_mib"] == 8192.0
     assert (tmp_path / "e2_memory_by_size.svg").exists()
+
+
+def test_time_runs_keep_both_modes_and_the_time_a_run_was_stopped(tmp_path):
+    from analysis.e2 import _time_by_size
+    base = {"cls": "mg", "family": "mg_x", "size": 4.0, "source": "fam", "instance_id": "i", "tid": ""}
+    runs = pl.DataFrame([
+        {**base, "rep": 0, "query": "Q1", "solver_id": "pv-general", "verdict": "TIMEOUT", "wall_ms": 30010.0},
+        {**base, "rep": 0, "query": "Q1", "solver_id": "pv-dispatch", "verdict": "TRUE", "wall_ms": 12.0},
+        {**base, "rep": 1, "query": "Q1", "solver_id": "pv-dispatch", "verdict": "TRUE", "wall_ms": 14.0},
+        {**base, "rep": 0, "query": "Q2", "solver_id": "pv-general", "verdict": "MEMOUT", "wall_ms": 9000.0},
+    ])
+    c = Stub(tmp_path)
+    c.runs_meta = lambda campaign=None: runs
+    c.cap = lambda: 30000.0
+    _time_by_size(c, ["mg"])
+    d = c.csvs["e2_time_by_size"]
+    row = lambda q, s: d.filter((pl.col("query") == q) & (pl.col("solver_id") == s)).row(0, named=True)
+    assert d.height == 3  # one row per question and mode
+    assert row("Q1", "pv-dispatch")["wall_ms"] == 13.0  # median over the repetitions
+    assert row("Q1", "pv-general")["status"] == "time-out" and row("Q1", "pv-general")["wall_ms"] == 30010.0
+    assert row("Q2", "pv-general")["status"] == "memory-out" and row("Q2", "pv-general")["wall_ms"] == 9000.0
+    assert (tmp_path / "e2_time_by_size.svg").exists()

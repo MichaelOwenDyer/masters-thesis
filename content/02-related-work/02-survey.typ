@@ -8,7 +8,7 @@ The 37 tools fall into five categories based on their primary purpose:
 *Performance-oriented model checkers* (9) are built with
 linear temporal logic (LTL) and computation tree logic (CTL) properties in mind:
 - TAPAAL/VerifyPN #footnote[https://www.tapaal.net/, last accessed: 2026-10-27] @jensen_tapaal_2016,
-- TINA #footnote[https://projects.laas.fr/tina/, last accessed: 2026-10-25] @berthomieu__tool_2004 @vernadat_time_2006,
+- TINA #footnote[https://projects.laas.fr/tina/, last accessed: 2026-10-25] @berthomieu_tool_2004 @berthomieu_time_2006,
 - ITS-Tools #footnote[https://lip6.github.io/ITSTools-web/, last accessed: 2026-10-27] @thierry-mieg_symbolic_2015,
 - LoLA #footnote[https://theo.informatik.uni-rostock.de/theo-forschung/tools/lola/, last accessed: 2026-10-27] @schmidt_lola_2000,
 - Marcie #footnote[https://www-dssz.informatik.tu-cottbus.de/DSSZ/Software/Marcie, last accessed: 2026-10-14],

@@ -1,7 +1,7 @@
 == NetBuilder <impl-builder>
 
 The builder API serves as `petrivet`'s entry point for programmatically defining the structure of a net:
-places, transitions, and the arcs between them.
+places, transitions, and the arcs between them (FR1).
 
 A builder can be created with `NetBuilder::new()`,
 and places and transitions can be added with `add_place()` and `add_transition()`.
@@ -158,9 +158,49 @@ Otherwise, it returns a fully constructed, read-only `Net` object that is ready 
   ]
 ) <fig-impl-build-result>
 
+The user can check the net's structural class and whether it is strongly connected
+via the `class()` and `is_strongly_connected()` methods, respectively (@fig-impl-query-class)
+
+#figure(
+  [
+    ```
+    let mut b = NetBuilder::new();
+    let [p0, p1] = b.add_places();
+    let t0 = b.add_transition();
+    b.add_arcs((p0, t0, p1));
+    let net = b.build()?;
+    assert_eq!(net.class(), NetClass::StateMachine);
+    assert_eq!(net.is_strongly_connected(), false);
+    ```
+  ],
+  caption: [
+    The `class()` and `is_strongly_connected()` methods allow the user to query the net's structural class
+    and whether it is strongly connected, respectively.
+  ]
+) <fig-impl-query-class>
+
 If the user wishes to modify the net after construction,
 they can convert a `Net` back into a `NetBuilder` and continue to add or remove nodes and arcs.
 Building the net again will re-evaluate the canonical internal representation and the validation checks,
 ensuring that the unique story of how a net was constructed does not affect its analysis properties.
+
+#figure(
+  [
+    ```
+    // ... construct the net ...
+    let net = b.build()?;
+    // Convert the net back into a builder to modify it
+    let mut b2 = NetBuilder::from(net);
+    let t1 = b2.add_transition();
+    b2.add_arc((p1, t1));
+    let net2 = b2.build()?;
+    ```
+  ],
+  caption: [
+    A `Net` can be converted back into a `NetBuilder` to allow further modifications.
+    The canonical internal representation and validation checks are re-evaluated when the net is built again.
+  ]
+) <fig-impl-net-into-builder>
+
 
 

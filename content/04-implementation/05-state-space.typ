@@ -14,7 +14,7 @@
   )
 }
 
-== State Space Exploration
+== State Space Exploration <impl-state-space>
 
 The natural successor to firing transitions manually is the automatic exploration of a Petri net's state space.
 The basic idea is to fire all enabled transitions in a marking,
@@ -39,11 +39,14 @@ following either a breadth-first (FIFO) or depth-first (LIFO) strategy.
 It also provides methods to search for a marking fulfilling a user-specified predicate,
 and accepts an optional deadline to halt exploration, which is particularly useful for infinite state spaces.
 The `build_graph()` method runs the exploration to completion
-#footnote[or attempts to do so: the documentation heavily warns the user that the reachability graph might be infinite, and so this method might not terminate.]
+#footnote[or attempts to do so: the documentation heavily warns the user that an unbounded reachability graph is infinite, and so this method might not terminate.]
 and returns a `StateGraph` structure
 (with concrete instantiations `ReachabilityGraph` and `CoverabilityGraph`)
 representing the fully-explored state space,
-which offers more advanced methods to query the graph for properties that the given type of state space can answer.
+which offers more advanced methods to query the graph for properties
+(coverability and k-boundedness for the coverability graph,
+and additionally reachability, liveness, and deadlock-freedom for the reachability graph).
+@fig-state-space-api visualizes `petrivet`'s state space API.
 
 Furthermore, since the coverability graph and the reachability graph coincide for bounded Petri nets,
 a fully-explored `CoverabilityGraph` containing no $omega$-markings can be converted into a `ReachabilityGraph`,
@@ -183,3 +186,10 @@ Then the new marking is registered as usual, and the exploration continues.
 
 The performance of this algorithm, and an optimization which was applied to it,
 is discussed in the section preceding @fig-dispatch-mcc.
+
+*Summary.*
+The state space exploration algorithm is a generic implementation shared by both the reachability and coverability graph explorers.
+It separates the partially-explored graph from the full state space in the type system,
+providing a clear distinction between the two and allowing the user to explore the state space incrementally.
+This serves as a foundational, if expensive, procedure for the analysis of behavioral properties,
+which will be expanded upon in the following sections.

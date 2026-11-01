@@ -3616,7 +3616,7 @@
  "meta.analysis_version": "1",
  "meta.cap_ms": 30000.0,
  "meta.eval_toml_sha256": "3315a39eb7bf8a7e33f947840da42ebe95c2057aa6fdc9fe7e208d87d32ba66c",
- "meta.generated_at": "2026-10-31T23:37:48Z",
+ "meta.generated_at": "2026-11-01T14:47:04Z",
  "meta.memory_source": "campaign M (runs started through the rss wrapper)",
  "meta.n_manifest_instances": 1976,
  "meta.n_runs": 115128,

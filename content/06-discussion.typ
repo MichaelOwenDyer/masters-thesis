@@ -29,7 +29,7 @@ Unit tests did not find it, because they encoded the same misunderstanding as th
 The evaluation was therefore not only a measurement of correctness but a necessary part of achieving it,
 and the zero disagreements hold for the version after these fixes.
 The price of soundness is the share of queries answered with "unknown":
-on the small competition models the automatic dispatch gives no verdict for a large share of runs,
+on the small MCC models the automatic dispatch gives no verdict for a large share of runs,
 mostly because it defensively builds the coverability graph where the reachability graph would have sufficed.
 That is the intended trade-off, but the trade-off is currently more conservative than it needs to be (@impl-closing-remarks).
 
@@ -47,13 +47,13 @@ Second, dispatch is not free: its preliminary checks cost time on exactly the ne
 A cheaper order of checks for general nets, or a polynomial procedure for free-choice nets such as the rank theorem,
 would address the two classes where dispatch currently loses.
 The evaluation also improved the library directly:
-investigating the poor first results on the competition models led to the optimization of $omega$-acceleration,
+investigating the poor first results on the MCC models led to the optimization of $omega$-acceleration,
 without which the coverability graph was orders of magnitude slower than the reachability graph on bounded nets.
 
 *#rqs.cost-control: cost control.*
 Both mechanisms work as intended for the typical query, with known limits (@eval-cost-control).
-The restriction to polynomial procedures answers queries on the parametrized families and the large competition models
-where brute force times out, but rarely gives a verdict on the small competition models,
+The restriction to polynomial procedures answers queries on the parametrized families and the large MCC models
+where brute force times out, but rarely gives a verdict on the small MCC models,
 for the same reason that dispatch rarely helps there:
 few of them belong to a class with a polynomial procedure.
 The deadline is kept within a few milliseconds in the median,
@@ -64,7 +64,7 @@ the causes are named, and closing them is a matter of passing the deadline into 
 
 *#rqs.comparison: comparison with established tools.*
 `petrivet` is competitive with LoLA and TINA on liveness and on the parametrized families,
-and behind them on deadlock-freedom and quasi-liveness on the small competition models (@eval-comparison).
+and behind them on deadlock-freedom and quasi-liveness on the small MCC models (@eval-comparison).
 Given that LoLA and TINA have been developed for decades and optimized for exactly these benchmarks,
 being in the same range on some properties is a positive result,
 but `petrivet` is not a replacement for a dedicated model checker on hard instances.
@@ -85,7 +85,7 @@ and its procedures are documented with their theoretical foundation.
 
 Its weaknesses are, first, performance on general nets,
 where it falls back to state space exploration without the reductions that make the established tools fast;
-second, its restriction to ordinary, connected nets, which excluded a third of the competition models drawn for the evaluation;
+second, its restriction to ordinary, connected nets, which excluded a third of the MCC models drawn for the evaluation;
 third, the uneven evidence returned by its API, where some properties return only a verdict;
 and fourth, its development by a single author, which shows in the partial rating for approachability.
 
@@ -168,6 +168,6 @@ since many structural results, such as the Commoner/Hack criterion, are stated f
 But the choice is reflected in the data layout of the core:
 presets and postsets are stored as adjacency lists of indices, not as maps from indices to weights,
 which is why adding arc weights is not a small change,
-and it excluded a third of the competition models drawn for the evaluation (@eval-requirements).
+and it excluded a third of the MCC models drawn for the evaluation (@eval-requirements).
 In hindsight, deciding early which model extensions a library will eventually support
 determines how much of it has to be rewritten later.

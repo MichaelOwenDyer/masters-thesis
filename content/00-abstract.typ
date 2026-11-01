@@ -1,6 +1,8 @@
-Title
 Abstract
-re-check the "Dispatch by net class" entry of every row against the tool's documentation and source. The column was filled in as a side note when the survey was done, but dispatching by net structure has since become a central claim of the thesis (RQ2), so each entry must be verified before the finding below is relied on.
+re-check the "Dispatch by net class" entry of every row against the tool's documentation and source.
+The column was filled in as a side note when the survey was done,
+but dispatching by net structure has since become a central claim of the thesis (RQ2),
+so each entry must be verified before the finding below is relied on.
 Related Work Protocol Appendix
 Eval tool adapters combining queries like LoLA liveness appendix
 Evaluation figures avoid median for performance

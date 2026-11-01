@@ -368,8 +368,8 @@ def color_map(names) -> dict[str, str]:
 # Names used in titles, axes and legends: plain language, no internal ids. The CSVs and numbers.json keep the ids.
 SOLVER_LABEL = {
     "pv-dispatch": "petrivet: automatic dispatch",
-    "pv-general": "petrivet: reachability graph exploration",
-    "pv-poly": "petrivet: polynomial methods only",
+    "pv-general": "petrivet: brute-force",
+    "pv-poly": "petrivet: efficient methods only",
     "lola": "LoLA",
     "tina": "TINA",
     "its-tools": "ITS-Tools",
@@ -422,8 +422,8 @@ def family_rank(family: str) -> int:
 
 # short names for tick labels
 SOLVER_SHORT = {
-    "pv-dispatch": "petrivet\nautomatic",
-    "pv-general": "petrivet\nexploration",
+    "pv-dispatch": "petrivet\ndispatch",
+    "pv-general": "petrivet\nbrute-force",
     "pv-poly": "petrivet\nfast only",
     "lola": "LoLA",
     "tina": "TINA",

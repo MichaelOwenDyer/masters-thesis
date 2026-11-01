@@ -23,11 +23,6 @@ and are therefore excluded from this experiment.
 *Method.*
 Every query is run twice: once with `petrivet`'s automatic dispatch and once with brute-force.
 The time taken by the two runs is compared.
-The "performance ratio" is the time of the brute-force divided by the time of the automatic dispatch:
-greater than 1 means that the automatic dispatch is faster, and less than 1 means that it is slower.
-The performance ratio of a structural net class depends on which net sizes happened to be tried and on the time limit,
-so a single number per class would be arbitrary: a larger ceiling for the net sizes would produce larger ratios wherever brute force gets stuck.
-For that reason the performance ratio is reported per family and per size, and the per-class comparison only asks whether the automatic dispatch is faster or slower.
 Runs which time out at 30 seconds or exhaust the memory limit are counted as 30 seconds, which is an underestimation of the true time.
 The comparisons are therefore additionally repeated excluding the runs that timed out or ran out of memory in either mode.
 
@@ -60,27 +55,27 @@ For asymmetric-choice and general nets the automatic dispatch is not faster.
   ],
 ) <tab-h2>
 
-*Performance ratio by size.*
-@fig-performance-ratios shows the median performance ratios of every family at every size that was tried.
-A filled-in circle means that every run at that net size finished,
-an outlined upward triangle means that brute-force timed out (the real ratio is higher than shown),
-an outlined downward triangle means that the automatic dispatch timed out (the real ratio is lower than shown),
-and an outlined diamond means that at least one run of both modes timed out (the real ratio is unknown).
-Paired runs in which both runs timed out say nothing about the difference and are left out of the comparison.
+*Performance by size.*
+@fig-time-by-size shows the analysis time taken by dispatch and brute-force for every property on each parametrized family
+as the net grows in size.
+Outlined symbols indicate that the run timed out at that time value, and blackened symbols indicate that the run ran out of memory.
+Queries where neither dispatch nor brute force returned a verdict say nothing about the difference and are left out of the comparison.
+The performance ratio is the time of the brute-force divided by the time of the automatic dispatch:
+greater than 1 means that the automatic dispatch is faster, and less than 1 means that it is slower.
 Four patterns show:
 - For `circuit`, `sm-choice-ring`, `sm-two-cycles`, `mg-buffer-ring` and `mg-buffer-ring-unmarked-circuit`,
   the performance ratio is constant and modest, between about 1 and 2 at every size. The dispatch helps marginally,
   but the number of reachable markings is small enough that brute-force is not a problem.
 - For families with exponentially growing state spaces (`sm-hub-and-spokes`, `sm-ring-with-sink`, `sm-two-cycles-n-tokens`,
-  and `mg-forkjoin-cycle`), the performance ratio grows significantly with the size of the net, and from size 16 or 32,
-  brute-force times out on most or all questions while the automatic dispatch still answers in milliseconds.
+  and `mg-forkjoin-cycle`), the performance ratio grows significantly with the size of the net,
+  and from size 16 or 32, brute-force times out on most or all questions while the automatic dispatch still answers in milliseconds.
   The ratio is at least several hundred.
   `mg-forkjoin-unbounded` is a special case: brute-force hopelessly enumerates an infinite state space
   and never reaches a conclusion on deadlock-freedom, liveness or quasi-liveness
   (it answers boundedness within milliseconds).
 - For extended free-choice nets, the dispatch is about even with brute-force at small sizes,
   until brute-force begins to time out, and then the dispatch is faster until it also begins to time out.
-- For asymmetric-choice and general nets, the dispatch is slower than brute force as the nets grow,
+- For asymmetric-choice and general nets, the median performance ratio over the properties is less than one as the nets grow,
   down to a ratio of about #dec(float(find("e2_speedup_by_size.csv", family: "ac_cycle", size: "64").median_speedup), d: 3)
   for `ac-cycle` at size 64 (the automatic dispatch takes about
   #fmt(1 / float(find("e2_speedup_by_size.csv", family: "ac_cycle", size: "64").median_speedup)) times as long), and
@@ -91,25 +86,19 @@ Four patterns show:
   does the automatic dispatch return a verdict where brute force times out.
 
 #figure(
-  image(export-dir + "figures/e2_speedup_by_size.svg", width: 100%),
+  image(export-dir + "figures/e2_time_by_size.svg", width: 100%),
   caption: [
-    Median performance ratios per family as the net grows.
-    A filled-in symbol means that both runs finished,
-    an outlined upward triangle means that brute-force timed out,
-    an outlined downward triangle means that the automatic dispatch timed out,
-    and an outlined diamond means that at least one run of both modes timed out.
+    Analysis time of automatic dispatch (blue) against brute-force (orange) per parametrized family.
+    Net size is on the x-axis, and time in milliseconds is on the y-axis (log scale, lower is better).
+    The shape of the symbol indicates the property being checked,
+    an outlined symbol means that the run timed out at that time value,
+    and a blackened symbol means that the run ran out of memory.
+    Symbols of different properties are offset slightly on the x-axis for visibility.
   ],
-) <fig-performance-ratios>
+) <fig-time-by-size>
 
-@fig-scaling shows how the times of each mode grow with the size of the net,
-and @fig-scatter illustrates every pair of runs individually, colored by family.
-
-#figure(
-  image(export-dir + "figures/e2_scaling.svg", width: 100%),
-  caption: [
-    Response times by family as the net grows: the automatic dispatch (blue) and brute-force (orange).
-  ],
-) <fig-scaling>
+@fig-scatter illustrates every query as a dot in a scatter plot,
+with the time taken by automatic dispatch on the x-axis and the time taken by brute-force on the y-axis.
 
 #figure(
   image(export-dir + "figures/e2_paired_scatter.svg", width: 85%),
@@ -117,6 +106,10 @@ and @fig-scatter illustrates every pair of runs individually, colored by family.
     Every dot is a pair of runs: the time of the automatic dispatch (x-axis) against the time of brute-force (y-axis), colored by family.
   ],
 ) <fig-scatter>
+
+The tail of queries under the diagonal, primarily of the asymmetric-choice and general classes,
+is where the automatic dispatch is currently slower than brute force:
+this is consistent with the overhead of the Commoner/Hack criterion and the Karp-Miller coverability graph.
 
 #let frontier-raw(f, s) = find("e2_frontier.csv", family: f, solver_id: s).max_size_solved
 #let frontier(f, s) = if frontier-raw(f, s) == "" { 0.0 } else { float(frontier-raw(f, s)) }
@@ -161,13 +154,21 @@ while the automatic dispatch answered all queries at size 1,024.
 #figure(
   image(export-dir + "figures/e2_memory_by_size.svg", width: 100%),
   caption: [
-    Peak memory of the automatic dispatch (blue) and brute-force exploration (orange) per family and size,
-    as the median over the runs that reported a memory value.
+    Peak memory of the automatic dispatch (blue) and brute-force exploration (orange) per family.
+    The net size is on the x-axis, and the peak memory in MiB is on the y-axis (lower is better).
     The shape of the symbol indicates the property being checked,
     an outlined symbol means that the run timed out at that memory value,
     and a blackened symbol means that the run ran out of memory.
-  ], // TODO: Add borders to the symbols to better visually distinguish overlaps
+    Symbols of different properties are offset slightly on the x-axis for visibility.
+  ],
 ) <fig-memory>
+
+For deadlock-freedom, liveness, and quasi-liveness queries in the free-choice and asymmetric-choice families,
+and for deadlock-freedom in the one general family,
+a significant increase in memory usage starting at the smallest size is immediately apparent.
+This is consistent with the overhead of the Commoner/Hack criterion, which is used in exactly these cases.
+The Commoner/Hack criterion is therefore a likely cause of the
+reduced performance and increased memory usage of the automatic dispatch on these families.
 
 *The competition models.*
 Unlike the parametrized families, the MCC models are not designed to be of a specific structural class,
@@ -223,7 +224,7 @@ The second cause, explained next, also applies to the deadlock-freedom queries.
 
 #figure(
   image(export-dir + "figures/e2b_scatter.svg", width: 100%),
-  caption: [The automatic dispatch against brute-force on the 90 small competition models, one panel per query, before and after the optimization of $omega$-acceleration described above.],
+  caption: [The automatic dispatch against brute-force on the 90 small MCC models, one panel per query, before and after the optimization of $omega$-acceleration described above.],
 ) <fig-dispatch-mcc>
 
 The second cause remains in the codebase at the time of writing:

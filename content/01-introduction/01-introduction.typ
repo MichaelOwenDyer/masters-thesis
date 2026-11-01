@@ -1,4 +1,3 @@
-#pagebreak(weak: true)
 = Introduction
 
 Petri nets are a well-established mathematical and graphical formalism for modeling concurrent systems,
@@ -12,7 +11,7 @@ to derive efficient decision and semi-decision procedures #footnote[A semi-decis
 in broad contexts @murata_petri_1989 @best_petri_2024.
 Mature Petri net analysis tools apply these shortcuts instead of the general case procedures where they can @schmidt_lola_2000,
 and higher-level tools are built on top of Petri net analyzers to fit more specific use cases, such as business process
-model editors @dijkman_formal_2007, verification services, and teaching platforms. // cite specific tools
+model editors @dijkman_semantics_2008, verification services, and teaching platforms. // cite specific tools
 
 The Chair of Information Systems at the TU Munich develops infrastructure for business process management,
 including the Cloud Process Execution Engine (CPEE) @mangler_cpee_2014 @mangler_cloud_2022,
@@ -20,7 +19,7 @@ in which processes orchestrate heterogeneous software services and human actors.
 A Petri net analyzer is a natural fit for this domain: process models such as Business Process Model Notation (BPMN) diagrams @chinosi_bpmn_2012
 can be translated into Petri nets, and the properties of those nets (such as boundedness, liveness, deadlock-freedom,
 reachability, and coverability) can be used to verify the correctness of the process model @van_der_aalst_workflow_2000
-@dijkman_formal_2007.
+@dijkman_semantics_2008.
 
 It is paramount that a Petri net analysis tool is correct: it must give the right answer,
 and where it cannot decide, it must say so instead of guessing.
@@ -43,5 +42,3 @@ including some that are novel to this work.
 I evaluate whether its answers are correct, whether dispatching to the cheapest procedure pays off,
 how well the cost of an analysis can be bounded, and how `petrivet` compares with established tools in speed and memory.
 I also assess it against the requirements above and discuss the design principles that emerged during development.
-
-TODO: Mention `petrivet` participated in MCC 2026

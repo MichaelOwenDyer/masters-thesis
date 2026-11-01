@@ -1,5 +1,7 @@
-#pagebreak(weak: true)
 = Solution Design <solution-design>
+
+This chapter discusses the high-level design of a Petri net analysis tool
+which aims to meet the requirements derived in @motivation-requirements.
 
 == Design Goals
 
@@ -17,19 +19,21 @@ The API of the tool and the underlying implementation should be able to evolve i
 allowing for future extensibility and maintainability.
 
 *Closeness to the theory.*
-The tool should mirror the theory of Petri nets as faithfully as possible and make frequent references to the theory in its documentation.
+The tool should be strongly rooted in the theoretical foundations of Petri nets, and its design should be guided by the study of the theory.
 Idiomatic formalisms and notations should be used whenever possible, and the tool should not introduce unnecessary
 abstractions or concepts that are not present in the theory.
-The tool should serve not only as a practical implementation of Petri nets, but also as a didactic tool for learning and understanding the theory.
+The tool should serve not only as a practical implementation of the theory,
+but also as a didactic tool for learning and understanding it.
 
 *Usable for both experts and non-experts.*
 The user of the library should not need to have a deep understanding of the underlying theory in order to use the tool effectively.
-The tool should automatically dispatch to the most efficient procedure available for the net being analyzed.
+The tool should pick sensible defaults and provide a simple interface for common use cases,
+while still allowing experts to access the full range of functionality.
 At the same time, it should do so in a way which is transparent to the user, so that they can understand what is happening and why.
 
 === API Design
 
-The API of `petrivet` aims to mirror Petri net theory as closely as possible,
+The API a Petri net analysis tool should aim to mirror Petri net theory as closely as possible,
 and so its design should be grounded in the study of the theory.
 The five behavioral properties discussed in this thesis do not correspond to just one question each.
 I identified two dimensions along which the behavioral properties can vary.
@@ -76,16 +80,22 @@ as quickly and efficiently as possible.
 
 == Functional Requirements
 
-- The tool must provide a native builder API for programmatically constructing Petri net models.
-- The tool must be able to parse PNML files into the internal Petri net representation.
-- The tool must be able to export Petri nets from the internal representation into PNML files.
-- The tool must distinguish between the pure structure ("net") and a net paired with an initial marking ("Petri net").
-- The tool must support manual simulation of Petri net models: transition firing.
-- The tool must support a variety of significant Petri net structural subclasses: Circuit, State Machine, Marked Graph, (Extended) Free-Choice, Asymmetric-Choice, and General nets.
-- The tool must automatically dispatch to the most efficient procedure based on the detected net subclass.
-- The tool must support deciding the fundamental properties (k-)boundedness, deadlock-freedom, liveness, coverability, and reachability.
-- The tool must support automatic state space exploration and generation of the reachability and Karp-Miller coverability graphs.
+- *FR1.* The tool must provide a native builder API for programmatically constructing Petri net models.
+- *FR2.* The tool must be able to parse PNML files into the internal Petri net representation.
+- *FR3.* The tool must be able to export Petri nets from the internal representation into PNML files.
+- *FR4.* The tool must distinguish between the pure structure ("net") and a net paired with an initial marking ("Petri net").
+- *FR5.* The tool must support manual simulation of Petri net models via transition firing.
+- *FR6.* The tool must support a variety of significant Petri net structural subclasses:
+  Circuit, State Machine, Marked Graph, (Extended) Free-Choice, Asymmetric-Choice, and General nets.
+- *FR7.* The tool must provide an API to analyze the fundamental properties
+  (k-)boundedness, deadlock-freedom, liveness, coverability, and reachability.
+- *FR8.* The tool must support automatic state space exploration and generation of the reachability and Karp-Miller coverability graphs.
+- *FR9.* The tool must return evidence with its answers, such as witnesses and counterexamples.
+- *FR10.* The tool must return "unknown" when it cannot answer a query, rather than guessing or returning an incorrect answer.
+- *FR11.* The tool must provide a mechanism for the user to control the cost of analysis,
+  either by specifying a wall-clock timeout or by restricting the analysis to polynomial-time procedures.
 
 == Non-Functional Requirements and Pseudo-Requirements
 
-- The tool must be implemented in a modern programming language with a strong type system and support for functional programming paradigms.
+- *NFR1.* The tool must be implemented in a modern programming language with a strong type system and memory safety guarantees.
+- *NFR2.* The tool must be implemented as a library, not a standalone application.

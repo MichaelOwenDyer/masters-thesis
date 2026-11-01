@@ -346,15 +346,15 @@ the figures then show the peak memory recorded by the timing run at the moment i
 
 Every table and figure below is generated from the raw measurement data by a Python script.
 Timings are summarized by medians and percentiles.
-For head-to-head comparisons of running times I use the one-sided paired Wilcoxon signed-rank test at significance level
-0.05, which makes no assumption about the distribution of times,
-with Holm's correction across the structural classes.
+For head-to-head comparisons of running times I use the one-sided paired Wilcoxon signed-rank test @wilcoxon_individual_1945
+at significance level 0.05, which makes no assumption about the distribution of times,
+with Holm's correction @holm_simple_1979 across the structural classes.
 Timeouts are treated as censored data: their number is reported, and the comparison is repeated without them to see if
 the conclusion is robust to their presence.
 For the tool comparisons, I report the number of solved instances, the penalized average runtime where a failed run
 counts as twice the time limit, and cactus plots.
 Where no disagreement with the reference verdict is found, I provide the one-sided 95 percent upper bound on the true
-rate of disagreement (Clopper-Pearson interval). // TODO Cite
+rate of disagreement (Clopper-Pearson interval @clopper_use_1934).
 
 *Terminology.* The following sections use the following terminology:
 - A *property* is a Petri net property as described in @eval-properties.

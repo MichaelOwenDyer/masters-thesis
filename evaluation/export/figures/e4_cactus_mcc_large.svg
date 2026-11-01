@@ -1865,58 +1865,58 @@ L 269.776239 427.799135
   <g id="axes_6"/>
   <g id="legend_1">
    <g id="line2d_226">
-    <path d="M 178.74476 10.47875 
-L 186.74476 10.47875 
-L 194.74476 10.47875 
+    <path d="M 206.361635 10.47875 
+L 214.361635 10.47875 
+L 222.361635 10.47875 
 " style="fill: none; stroke: #56b4e9; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_50">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="201.14476" y="13.27875" transform="rotate(-0 201.14476 13.27875)">ITS-Tools</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="228.761635" y="13.27875" transform="rotate(-0 228.761635 13.27875)">ITS-Tools</text>
    </g>
    <g id="line2d_227">
-    <path d="M 178.74476 22.479375 
-L 186.74476 22.479375 
-L 194.74476 22.479375 
+    <path d="M 206.361635 22.479375 
+L 214.361635 22.479375 
+L 222.361635 22.479375 
 " style="fill: none; stroke: #009e73; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_51">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="201.14476" y="25.279375" transform="rotate(-0 201.14476 25.279375)">LoLA</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="228.761635" y="25.279375" transform="rotate(-0 228.761635 25.279375)">LoLA</text>
    </g>
    <g id="line2d_228">
-    <path d="M 251.32976 10.47875 
-L 259.32976 10.47875 
-L 267.32976 10.47875 
+    <path d="M 278.946635 10.47875 
+L 286.946635 10.47875 
+L 294.946635 10.47875 
 " style="fill: none; stroke: #0072b2; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_52">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="273.72976" y="13.27875" transform="rotate(-0 273.72976 13.27875)">petrivet: automatic dispatch</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="301.346635" y="13.27875" transform="rotate(-0 301.346635 13.27875)">petrivet: automatic dispatch</text>
    </g>
    <g id="line2d_229">
-    <path d="M 251.32976 22.479375 
-L 259.32976 22.479375 
-L 267.32976 22.479375 
+    <path d="M 278.946635 22.479375 
+L 286.946635 22.479375 
+L 294.946635 22.479375 
 " style="fill: none; stroke: #d55e00; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_53">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="273.72976" y="25.279375" transform="rotate(-0 273.72976 25.279375)">petrivet: reachability graph exploration</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="301.346635" y="25.279375" transform="rotate(-0 301.346635 25.279375)">petrivet: brute-force</text>
    </g>
    <g id="line2d_230">
-    <path d="M 447.06851 10.47875 
-L 455.06851 10.47875 
-L 463.06851 10.47875 
+    <path d="M 431.080385 10.47875 
+L 439.080385 10.47875 
+L 447.080385 10.47875 
 " style="fill: none; stroke: #cc79a7; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_54">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="469.46851" y="13.27875" transform="rotate(-0 469.46851 13.27875)">petrivet: polynomial methods only</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="453.480385" y="13.27875" transform="rotate(-0 453.480385 13.27875)">petrivet: efficient methods only</text>
    </g>
    <g id="line2d_231">
-    <path d="M 447.06851 22.479375 
-L 455.06851 22.479375 
-L 463.06851 22.479375 
+    <path d="M 431.080385 22.479375 
+L 439.080385 22.479375 
+L 447.080385 22.479375 
 " style="fill: none; stroke: #e69f00; stroke-width: 1.5; stroke-linecap: square"/>
    </g>
    <g id="text_55">
-    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="469.46851" y="25.279375" transform="rotate(-0 469.46851 25.279375)">TINA</text>
+    <text style="font-size: 8px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="453.480385" y="25.279375" transform="rotate(-0 453.480385 25.279375)">TINA</text>
    </g>
   </g>
  </g>

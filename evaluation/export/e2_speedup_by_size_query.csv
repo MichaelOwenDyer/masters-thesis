@@ -1,0 +1,577 @@
+cls,family,size,query,speedup,bound
+ac,ac_cycle,2,Q1,0.716645,exact
+ac,ac_cycle,2,Q2,0.884573,exact
+ac,ac_cycle,2,Q3,0.882696,exact
+ac,ac_cycle,2,Q4,0.765933,exact
+ac,ac_cycle,4,Q1,0.888762,exact
+ac,ac_cycle,4,Q2,1.124550,exact
+ac,ac_cycle,4,Q3,0.779731,exact
+ac,ac_cycle,4,Q4,0.777555,exact
+ac,ac_cycle,8,Q1,0.698632,exact
+ac,ac_cycle,8,Q2,0.801919,exact
+ac,ac_cycle,8,Q3,0.717218,exact
+ac,ac_cycle,8,Q4,0.675039,exact
+ac,ac_cycle,16,Q1,0.335830,exact
+ac,ac_cycle,16,Q2,1.031969,exact
+ac,ac_cycle,16,Q3,0.400707,exact
+ac,ac_cycle,16,Q4,0.311634,exact
+ac,ac_cycle,32,Q1,0.041737,exact
+ac,ac_cycle,32,Q2,2.181963,exact
+ac,ac_cycle,32,Q3,0.043204,exact
+ac,ac_cycle,32,Q4,0.044192,exact
+ac,ac_cycle,64,Q1,0.003366,exact
+ac,ac_cycle,64,Q2,18.300476,exact
+ac,ac_cycle,64,Q3,0.003501,exact
+ac,ac_cycle,64,Q4,0.003652,exact
+ac,ac_cycle,128,Q1,0.002158,upper bound
+ac,ac_cycle,128,Q2,571.425593,exact
+ac,ac_cycle,128,Q3,0.002011,upper bound
+ac,ac_cycle,128,Q4,0.002053,upper bound
+ac,ac_cycle,256,Q1,0.009811,upper bound
+ac,ac_cycle,256,Q2,512.487300,lower bound
+ac,ac_cycle,256,Q3,0.009261,upper bound
+ac,ac_cycle,256,Q4,0.009023,upper bound
+ac,ac_cycle,512,Q1,0.062607,upper bound
+ac,ac_cycle,512,Q2,168.682229,lower bound
+ac,ac_cycle,512,Q3,0.058645,upper bound
+ac,ac_cycle,512,Q4,0.059469,upper bound
+ac,ac_cycle,1024,Q1,,none
+ac,ac_cycle,1024,Q2,34.612350,lower bound
+ac,ac_cycle,1024,Q3,,none
+ac,ac_cycle,1024,Q4,,none
+ac,ac_cycle_no_low_token,2,Q1,1.048485,exact
+ac,ac_cycle_no_low_token,2,Q2,0.811603,exact
+ac,ac_cycle_no_low_token,2,Q3,1.298577,exact
+ac,ac_cycle_no_low_token,2,Q4,1.205052,exact
+ac,ac_cycle_no_low_token,4,Q1,0.924190,exact
+ac,ac_cycle_no_low_token,4,Q2,1.127348,exact
+ac,ac_cycle_no_low_token,4,Q3,1.107962,exact
+ac,ac_cycle_no_low_token,4,Q4,1.457264,exact
+ac,ac_cycle_no_low_token,8,Q1,0.931871,exact
+ac,ac_cycle_no_low_token,8,Q2,1.170159,exact
+ac,ac_cycle_no_low_token,8,Q3,1.144024,exact
+ac,ac_cycle_no_low_token,8,Q4,1.210573,exact
+ac,ac_cycle_no_low_token,16,Q1,0.289563,exact
+ac,ac_cycle_no_low_token,16,Q2,1.239753,exact
+ac,ac_cycle_no_low_token,16,Q3,1.067418,exact
+ac,ac_cycle_no_low_token,16,Q4,0.997362,exact
+ac,ac_cycle_no_low_token,32,Q1,0.034114,exact
+ac,ac_cycle_no_low_token,32,Q2,1.187830,exact
+ac,ac_cycle_no_low_token,32,Q3,1.082102,exact
+ac,ac_cycle_no_low_token,32,Q4,1.249005,exact
+ac,ac_cycle_no_low_token,64,Q1,0.003372,exact
+ac,ac_cycle_no_low_token,64,Q2,1.070581,exact
+ac,ac_cycle_no_low_token,64,Q3,1.187002,exact
+ac,ac_cycle_no_low_token,64,Q4,1.178812,exact
+ac,ac_cycle_no_low_token,128,Q1,0.001023,upper bound
+ac,ac_cycle_no_low_token,128,Q2,0.785188,exact
+ac,ac_cycle_no_low_token,128,Q3,1.138775,exact
+ac,ac_cycle_no_low_token,128,Q4,1.222385,exact
+ac,ac_cycle_no_low_token,256,Q1,0.001192,upper bound
+ac,ac_cycle_no_low_token,256,Q2,0.817856,exact
+ac,ac_cycle_no_low_token,256,Q3,1.175004,exact
+ac,ac_cycle_no_low_token,256,Q4,1.187611,exact
+ac,ac_cycle_no_low_token,512,Q1,0.001701,upper bound
+ac,ac_cycle_no_low_token,512,Q2,1.072666,exact
+ac,ac_cycle_no_low_token,512,Q3,1.081991,exact
+ac,ac_cycle_no_low_token,512,Q4,1.170618,exact
+ac,ac_cycle_no_low_token,1024,Q1,0.004049,upper bound
+ac,ac_cycle_no_low_token,1024,Q2,1.359933,exact
+ac,ac_cycle_no_low_token,1024,Q3,1.131733,exact
+ac,ac_cycle_no_low_token,1024,Q4,1.080331,exact
+circuit,circuit,2,Q1,1.284342,exact
+circuit,circuit,2,Q2,1.032030,exact
+circuit,circuit,2,Q3,1.264629,exact
+circuit,circuit,2,Q4,1.518878,exact
+circuit,circuit,4,Q1,1.076872,exact
+circuit,circuit,4,Q2,1.194863,exact
+circuit,circuit,4,Q3,1.279896,exact
+circuit,circuit,4,Q4,1.408525,exact
+circuit,circuit,8,Q1,1.083702,exact
+circuit,circuit,8,Q2,1.221922,exact
+circuit,circuit,8,Q3,1.067186,exact
+circuit,circuit,8,Q4,1.014885,exact
+circuit,circuit,16,Q1,1.314106,exact
+circuit,circuit,16,Q2,1.475465,exact
+circuit,circuit,16,Q3,1.264137,exact
+circuit,circuit,16,Q4,1.347650,exact
+circuit,circuit,32,Q1,1.118317,exact
+circuit,circuit,32,Q2,1.175432,exact
+circuit,circuit,32,Q3,1.091095,exact
+circuit,circuit,32,Q4,1.012818,exact
+circuit,circuit,64,Q1,1.053275,exact
+circuit,circuit,64,Q2,1.194163,exact
+circuit,circuit,64,Q3,1.224197,exact
+circuit,circuit,64,Q4,1.255977,exact
+circuit,circuit,128,Q1,1.300965,exact
+circuit,circuit,128,Q2,1.633309,exact
+circuit,circuit,128,Q3,1.227527,exact
+circuit,circuit,128,Q4,0.997908,exact
+circuit,circuit,256,Q1,0.957801,exact
+circuit,circuit,256,Q2,1.785597,exact
+circuit,circuit,256,Q3,1.115635,exact
+circuit,circuit,256,Q4,1.097174,exact
+circuit,circuit,512,Q1,1.347804,exact
+circuit,circuit,512,Q2,4.630025,exact
+circuit,circuit,512,Q3,1.288955,exact
+circuit,circuit,512,Q4,1.824643,exact
+circuit,circuit,1024,Q1,1.440217,exact
+circuit,circuit,1024,Q2,18.882887,exact
+circuit,circuit,1024,Q3,1.367762,exact
+circuit,circuit,1024,Q4,1.449506,exact
+efc,efc_forkjoin,2,Q1,0.518652,exact
+efc,efc_forkjoin,2,Q2,0.938245,exact
+efc,efc_forkjoin,2,Q3,0.738851,exact
+efc,efc_forkjoin,2,Q4,0.863167,exact
+efc,efc_forkjoin,4,Q1,0.853062,exact
+efc,efc_forkjoin,4,Q2,0.990640,exact
+efc,efc_forkjoin,4,Q3,0.876561,exact
+efc,efc_forkjoin,4,Q4,0.724397,exact
+efc,efc_forkjoin,8,Q1,0.832363,exact
+efc,efc_forkjoin,8,Q2,101.762961,exact
+efc,efc_forkjoin,8,Q3,0.661882,exact
+efc,efc_forkjoin,8,Q4,0.822127,exact
+efc,efc_forkjoin,16,Q1,388.238817,lower bound
+efc,efc_forkjoin,16,Q2,1640.093956,lower bound
+efc,efc_forkjoin,16,Q3,392.798485,lower bound
+efc,efc_forkjoin,16,Q4,363.973050,lower bound
+efc,efc_forkjoin,32,Q1,52.178940,lower bound
+efc,efc_forkjoin,32,Q2,1439.892273,lower bound
+efc,efc_forkjoin,32,Q3,52.611093,lower bound
+efc,efc_forkjoin,32,Q4,50.649356,lower bound
+efc,efc_forkjoin,64,Q1,1.741013,lower bound
+efc,efc_forkjoin,64,Q2,1057.512388,lower bound
+efc,efc_forkjoin,64,Q3,1.876553,lower bound
+efc,efc_forkjoin,64,Q4,1.937232,lower bound
+efc,efc_forkjoin,128,Q1,,none
+efc,efc_forkjoin,128,Q2,455.442172,lower bound
+efc,efc_forkjoin,128,Q3,,none
+efc,efc_forkjoin,128,Q4,,none
+efc,efc_forkjoin,256,Q1,,none
+efc,efc_forkjoin,256,Q2,125.378516,lower bound
+efc,efc_forkjoin,256,Q3,,none
+efc,efc_forkjoin,256,Q4,,none
+efc,efc_forkjoin,512,Q1,,none
+efc,efc_forkjoin,512,Q2,21.807170,lower bound
+efc,efc_forkjoin,512,Q3,,none
+efc,efc_forkjoin,512,Q4,,none
+efc,efc_forkjoin,1024,Q1,,none
+efc,efc_forkjoin,1024,Q2,3.081308,lower bound
+efc,efc_forkjoin,1024,Q3,,none
+efc,efc_forkjoin,1024,Q4,,none
+efc,efc_forkjoin_leaky,2,Q1,0.840373,exact
+efc,efc_forkjoin_leaky,2,Q2,0.930011,exact
+efc,efc_forkjoin_leaky,2,Q3,0.651259,exact
+efc,efc_forkjoin_leaky,2,Q4,0.823480,exact
+efc,efc_forkjoin_leaky,4,Q1,0.765570,exact
+efc,efc_forkjoin_leaky,4,Q2,1.343603,exact
+efc,efc_forkjoin_leaky,4,Q3,0.928118,exact
+efc,efc_forkjoin_leaky,4,Q4,1.013689,exact
+efc,efc_forkjoin_leaky,8,Q1,0.490016,exact
+efc,efc_forkjoin_leaky,8,Q2,415.590976,exact
+efc,efc_forkjoin_leaky,8,Q3,0.322876,exact
+efc,efc_forkjoin_leaky,8,Q4,0.279549,exact
+efc,efc_forkjoin_leaky,16,Q1,0.152337,exact
+efc,efc_forkjoin_leaky,16,Q2,1581.139327,lower bound
+efc,efc_forkjoin_leaky,16,Q3,,none
+efc,efc_forkjoin_leaky,16,Q4,,none
+efc,efc_forkjoin_leaky,32,Q1,0.018998,exact
+efc,efc_forkjoin_leaky,32,Q2,1465.659166,lower bound
+efc,efc_forkjoin_leaky,32,Q3,,none
+efc,efc_forkjoin_leaky,32,Q4,,none
+efc,efc_forkjoin_leaky,64,Q1,0.085504,upper bound
+efc,efc_forkjoin_leaky,64,Q2,1086.492361,lower bound
+efc,efc_forkjoin_leaky,64,Q3,,none
+efc,efc_forkjoin_leaky,64,Q4,,none
+efc,efc_forkjoin_leaky,128,Q1,,none
+efc,efc_forkjoin_leaky,128,Q2,466.510436,lower bound
+efc,efc_forkjoin_leaky,128,Q3,,none
+efc,efc_forkjoin_leaky,128,Q4,,none
+efc,efc_forkjoin_leaky,256,Q1,,none
+efc,efc_forkjoin_leaky,256,Q2,131.113369,lower bound
+efc,efc_forkjoin_leaky,256,Q3,,none
+efc,efc_forkjoin_leaky,256,Q4,,none
+efc,efc_forkjoin_leaky,512,Q1,,none
+efc,efc_forkjoin_leaky,512,Q2,22.408517,lower bound
+efc,efc_forkjoin_leaky,512,Q3,,none
+efc,efc_forkjoin_leaky,512,Q4,,none
+efc,efc_forkjoin_leaky,1024,Q1,,none
+efc,efc_forkjoin_leaky,1024,Q2,3.070534,lower bound
+efc,efc_forkjoin_leaky,1024,Q3,,none
+efc,efc_forkjoin_leaky,1024,Q4,,none
+general,general_cycle,2,Q1,0.818529,exact
+general,general_cycle,2,Q2,1.474488,exact
+general,general_cycle,2,Q3,0.726693,exact
+general,general_cycle,2,Q4,1.378609,exact
+general,general_cycle,4,Q1,0.679670,exact
+general,general_cycle,4,Q2,1.174602,exact
+general,general_cycle,4,Q3,1.864277,exact
+general,general_cycle,4,Q4,1.002196,exact
+general,general_cycle,8,Q1,0.635300,exact
+general,general_cycle,8,Q2,1.443590,exact
+general,general_cycle,8,Q3,1.179690,exact
+general,general_cycle,8,Q4,1.821666,exact
+general,general_cycle,16,Q1,0.263676,exact
+general,general_cycle,16,Q2,1.169926,exact
+general,general_cycle,16,Q3,1.184963,exact
+general,general_cycle,16,Q4,1.134140,exact
+general,general_cycle,32,Q1,0.026144,exact
+general,general_cycle,32,Q2,3.538943,exact
+general,general_cycle,32,Q3,0.951653,exact
+general,general_cycle,32,Q4,0.969055,exact
+general,general_cycle,64,Q1,0.001941,exact
+general,general_cycle,64,Q2,49.569283,exact
+general,general_cycle,64,Q3,0.328240,exact
+general,general_cycle,64,Q4,0.327174,exact
+general,general_cycle,128,Q1,0.002174,upper bound
+general,general_cycle,128,Q2,994.817201,lower bound
+general,general_cycle,128,Q3,0.069570,exact
+general,general_cycle,128,Q4,0.068269,exact
+general,general_cycle,256,Q1,0.011004,upper bound
+general,general_cycle,256,Q2,400.354891,lower bound
+general,general_cycle,256,Q3,0.028278,exact
+general,general_cycle,256,Q4,0.027497,exact
+general,general_cycle,512,Q1,0.078543,upper bound
+general,general_cycle,512,Q2,122.689883,lower bound
+general,general_cycle,512,Q3,0.076440,upper bound
+general,general_cycle,512,Q4,0.073796,upper bound
+general,general_cycle,1024,Q1,,none
+general,general_cycle,1024,Q2,27.791495,lower bound
+general,general_cycle,1024,Q3,,none
+general,general_cycle,1024,Q4,,none
+mg,mg_buffer_ring,4,Q1,1.285540,exact
+mg,mg_buffer_ring,4,Q2,1.229106,exact
+mg,mg_buffer_ring,4,Q3,1.494102,exact
+mg,mg_buffer_ring,4,Q4,0.682273,exact
+mg,mg_buffer_ring,8,Q1,1.296602,exact
+mg,mg_buffer_ring,8,Q2,0.720002,exact
+mg,mg_buffer_ring,8,Q3,1.309890,exact
+mg,mg_buffer_ring,8,Q4,0.977390,exact
+mg,mg_buffer_ring,16,Q1,1.309467,exact
+mg,mg_buffer_ring,16,Q2,1.250816,exact
+mg,mg_buffer_ring,16,Q3,1.185393,exact
+mg,mg_buffer_ring,16,Q4,1.066582,exact
+mg,mg_buffer_ring,32,Q1,1.162985,exact
+mg,mg_buffer_ring,32,Q2,1.455202,exact
+mg,mg_buffer_ring,32,Q3,1.194741,exact
+mg,mg_buffer_ring,32,Q4,1.588527,exact
+mg,mg_buffer_ring,64,Q1,1.184358,exact
+mg,mg_buffer_ring,64,Q2,1.411447,exact
+mg,mg_buffer_ring,64,Q3,1.733560,exact
+mg,mg_buffer_ring,64,Q4,1.056866,exact
+mg,mg_buffer_ring,128,Q1,0.994866,exact
+mg,mg_buffer_ring,128,Q2,1.405401,exact
+mg,mg_buffer_ring,128,Q3,1.138180,exact
+mg,mg_buffer_ring,128,Q4,1.046127,exact
+mg,mg_buffer_ring,256,Q1,1.333445,exact
+mg,mg_buffer_ring,256,Q2,1.566182,exact
+mg,mg_buffer_ring,256,Q3,1.331292,exact
+mg,mg_buffer_ring,256,Q4,1.193577,exact
+mg,mg_buffer_ring,512,Q1,1.307470,exact
+mg,mg_buffer_ring,512,Q2,1.635402,exact
+mg,mg_buffer_ring,512,Q3,1.473295,exact
+mg,mg_buffer_ring,512,Q4,1.466267,exact
+mg,mg_buffer_ring,1024,Q1,1.893546,exact
+mg,mg_buffer_ring,1024,Q2,3.482233,exact
+mg,mg_buffer_ring,1024,Q3,1.953427,exact
+mg,mg_buffer_ring,1024,Q4,1.885470,exact
+mg,mg_buffer_ring_unmarked_circuit,4,Q1,1.638603,exact
+mg,mg_buffer_ring_unmarked_circuit,4,Q2,1.323823,exact
+mg,mg_buffer_ring_unmarked_circuit,4,Q3,0.904060,exact
+mg,mg_buffer_ring_unmarked_circuit,4,Q4,1.317664,exact
+mg,mg_buffer_ring_unmarked_circuit,8,Q1,1.180128,exact
+mg,mg_buffer_ring_unmarked_circuit,8,Q2,1.319686,exact
+mg,mg_buffer_ring_unmarked_circuit,8,Q3,1.228393,exact
+mg,mg_buffer_ring_unmarked_circuit,8,Q4,1.446880,exact
+mg,mg_buffer_ring_unmarked_circuit,16,Q1,1.500411,exact
+mg,mg_buffer_ring_unmarked_circuit,16,Q2,1.279858,exact
+mg,mg_buffer_ring_unmarked_circuit,16,Q3,0.917525,exact
+mg,mg_buffer_ring_unmarked_circuit,16,Q4,1.459945,exact
+mg,mg_buffer_ring_unmarked_circuit,32,Q1,1.284585,exact
+mg,mg_buffer_ring_unmarked_circuit,32,Q2,1.374522,exact
+mg,mg_buffer_ring_unmarked_circuit,32,Q3,1.547093,exact
+mg,mg_buffer_ring_unmarked_circuit,32,Q4,1.113439,exact
+mg,mg_buffer_ring_unmarked_circuit,64,Q1,0.864646,exact
+mg,mg_buffer_ring_unmarked_circuit,64,Q2,1.276455,exact
+mg,mg_buffer_ring_unmarked_circuit,64,Q3,1.038716,exact
+mg,mg_buffer_ring_unmarked_circuit,64,Q4,1.094256,exact
+mg,mg_buffer_ring_unmarked_circuit,128,Q1,1.230068,exact
+mg,mg_buffer_ring_unmarked_circuit,128,Q2,1.058542,exact
+mg,mg_buffer_ring_unmarked_circuit,128,Q3,1.176511,exact
+mg,mg_buffer_ring_unmarked_circuit,128,Q4,1.044725,exact
+mg,mg_buffer_ring_unmarked_circuit,256,Q1,1.187125,exact
+mg,mg_buffer_ring_unmarked_circuit,256,Q2,0.907084,exact
+mg,mg_buffer_ring_unmarked_circuit,256,Q3,1.353160,exact
+mg,mg_buffer_ring_unmarked_circuit,256,Q4,1.186917,exact
+mg,mg_buffer_ring_unmarked_circuit,512,Q1,1.220261,exact
+mg,mg_buffer_ring_unmarked_circuit,512,Q2,1.009090,exact
+mg,mg_buffer_ring_unmarked_circuit,512,Q3,1.040980,exact
+mg,mg_buffer_ring_unmarked_circuit,512,Q4,1.444386,exact
+mg,mg_buffer_ring_unmarked_circuit,1024,Q1,1.376468,exact
+mg,mg_buffer_ring_unmarked_circuit,1024,Q2,1.153296,exact
+mg,mg_buffer_ring_unmarked_circuit,1024,Q3,1.558029,exact
+mg,mg_buffer_ring_unmarked_circuit,1024,Q4,1.542794,exact
+mg,mg_forkjoin_cycle,4,Q1,1.104812,exact
+mg,mg_forkjoin_cycle,4,Q2,1.540199,exact
+mg,mg_forkjoin_cycle,4,Q3,1.252557,exact
+mg,mg_forkjoin_cycle,4,Q4,1.051465,exact
+mg,mg_forkjoin_cycle,8,Q1,1.104928,exact
+mg,mg_forkjoin_cycle,8,Q2,1.564892,exact
+mg,mg_forkjoin_cycle,8,Q3,1.276892,exact
+mg,mg_forkjoin_cycle,8,Q4,1.223050,exact
+mg,mg_forkjoin_cycle,16,Q1,7.459499,exact
+mg,mg_forkjoin_cycle,16,Q2,1626.788125,lower bound
+mg,mg_forkjoin_cycle,16,Q3,8.654868,exact
+mg,mg_forkjoin_cycle,16,Q4,8.831310,exact
+mg,mg_forkjoin_cycle,32,Q1,1582.611030,lower bound
+mg,mg_forkjoin_cycle,32,Q2,1319.937087,lower bound
+mg,mg_forkjoin_cycle,32,Q3,1587.879945,lower bound
+mg,mg_forkjoin_cycle,32,Q4,1619.633762,lower bound
+mg,mg_forkjoin_cycle,64,Q1,1531.408734,lower bound
+mg,mg_forkjoin_cycle,64,Q2,1424.639288,lower bound
+mg,mg_forkjoin_cycle,64,Q3,1454.672549,lower bound
+mg,mg_forkjoin_cycle,64,Q4,1275.197314,lower bound
+mg,mg_forkjoin_cycle,128,Q1,1430.443061,lower bound
+mg,mg_forkjoin_cycle,128,Q2,1074.993711,lower bound
+mg,mg_forkjoin_cycle,128,Q3,1376.937960,lower bound
+mg,mg_forkjoin_cycle,128,Q4,1329.573595,lower bound
+mg,mg_forkjoin_cycle,256,Q1,1412.337284,lower bound
+mg,mg_forkjoin_cycle,256,Q2,971.278863,lower bound
+mg,mg_forkjoin_cycle,256,Q3,1722.020143,lower bound
+mg,mg_forkjoin_cycle,256,Q4,1309.564676,lower bound
+mg,mg_forkjoin_cycle,512,Q1,831.886913,lower bound
+mg,mg_forkjoin_cycle,512,Q2,461.230097,lower bound
+mg,mg_forkjoin_cycle,512,Q3,1108.401930,lower bound
+mg,mg_forkjoin_cycle,512,Q4,958.458370,lower bound
+mg,mg_forkjoin_cycle,1024,Q1,748.431960,lower bound
+mg,mg_forkjoin_cycle,1024,Q2,157.773036,lower bound
+mg,mg_forkjoin_cycle,1024,Q3,773.593898,lower bound
+mg,mg_forkjoin_cycle,1024,Q4,625.111804,lower bound
+mg,mg_forkjoin_unbounded,2,Q1,1975.662863,lower bound
+mg,mg_forkjoin_unbounded,2,Q2,0.858221,exact
+mg,mg_forkjoin_unbounded,2,Q3,1471.749113,lower bound
+mg,mg_forkjoin_unbounded,2,Q4,1459.735318,lower bound
+mg,mg_forkjoin_unbounded,4,Q1,1413.608317,lower bound
+mg,mg_forkjoin_unbounded,4,Q2,1.170571,exact
+mg,mg_forkjoin_unbounded,4,Q3,1840.950245,lower bound
+mg,mg_forkjoin_unbounded,4,Q4,1538.423275,lower bound
+mg,mg_forkjoin_unbounded,8,Q1,1903.708278,lower bound
+mg,mg_forkjoin_unbounded,8,Q2,1.082819,exact
+mg,mg_forkjoin_unbounded,8,Q3,1489.933118,lower bound
+mg,mg_forkjoin_unbounded,8,Q4,1690.815457,lower bound
+mg,mg_forkjoin_unbounded,16,Q1,1765.098565,lower bound
+mg,mg_forkjoin_unbounded,16,Q2,1.239982,exact
+mg,mg_forkjoin_unbounded,16,Q3,1709.867904,lower bound
+mg,mg_forkjoin_unbounded,16,Q4,1573.695697,lower bound
+mg,mg_forkjoin_unbounded,32,Q1,1382.450000,lower bound
+mg,mg_forkjoin_unbounded,32,Q2,1.406242,exact
+mg,mg_forkjoin_unbounded,32,Q3,1634.500603,lower bound
+mg,mg_forkjoin_unbounded,32,Q4,1386.885033,lower bound
+mg,mg_forkjoin_unbounded,64,Q1,1348.722315,lower bound
+mg,mg_forkjoin_unbounded,64,Q2,1.240136,exact
+mg,mg_forkjoin_unbounded,64,Q3,1790.417328,lower bound
+mg,mg_forkjoin_unbounded,64,Q4,1547.788911,lower bound
+mg,mg_forkjoin_unbounded,128,Q1,2132.334377,lower bound
+mg,mg_forkjoin_unbounded,128,Q2,1.342270,exact
+mg,mg_forkjoin_unbounded,128,Q3,1553.292776,lower bound
+mg,mg_forkjoin_unbounded,128,Q4,1439.852674,lower bound
+mg,mg_forkjoin_unbounded,256,Q1,1373.630022,lower bound
+mg,mg_forkjoin_unbounded,256,Q2,1.293192,exact
+mg,mg_forkjoin_unbounded,256,Q3,1588.276571,lower bound
+mg,mg_forkjoin_unbounded,256,Q4,1348.077587,lower bound
+mg,mg_forkjoin_unbounded,512,Q1,1823.702331,lower bound
+mg,mg_forkjoin_unbounded,512,Q2,1.194483,exact
+mg,mg_forkjoin_unbounded,512,Q3,1307.573667,lower bound
+mg,mg_forkjoin_unbounded,512,Q4,1241.899452,lower bound
+mg,mg_forkjoin_unbounded,1024,Q1,987.481272,lower bound
+mg,mg_forkjoin_unbounded,1024,Q2,1.146642,exact
+mg,mg_forkjoin_unbounded,1024,Q3,1292.510231,lower bound
+mg,mg_forkjoin_unbounded,1024,Q4,1138.435071,lower bound
+sm,sm_choice_ring,2,Q1,1.362463,exact
+sm,sm_choice_ring,2,Q2,1.455813,exact
+sm,sm_choice_ring,2,Q3,1.581768,exact
+sm,sm_choice_ring,2,Q4,1.362461,exact
+sm,sm_choice_ring,4,Q1,1.243460,exact
+sm,sm_choice_ring,4,Q2,1.345064,exact
+sm,sm_choice_ring,4,Q3,1.265329,exact
+sm,sm_choice_ring,4,Q4,1.217432,exact
+sm,sm_choice_ring,8,Q1,1.221424,exact
+sm,sm_choice_ring,8,Q2,1.037073,exact
+sm,sm_choice_ring,8,Q3,1.761421,exact
+sm,sm_choice_ring,8,Q4,1.100636,exact
+sm,sm_choice_ring,16,Q1,1.492289,exact
+sm,sm_choice_ring,16,Q2,1.224711,exact
+sm,sm_choice_ring,16,Q3,1.296307,exact
+sm,sm_choice_ring,16,Q4,1.263192,exact
+sm,sm_choice_ring,32,Q1,1.189734,exact
+sm,sm_choice_ring,32,Q2,1.237298,exact
+sm,sm_choice_ring,32,Q3,1.026105,exact
+sm,sm_choice_ring,32,Q4,0.965055,exact
+sm,sm_choice_ring,64,Q1,1.279455,exact
+sm,sm_choice_ring,64,Q2,1.322108,exact
+sm,sm_choice_ring,64,Q3,1.401817,exact
+sm,sm_choice_ring,64,Q4,1.223826,exact
+sm,sm_choice_ring,128,Q1,1.249758,exact
+sm,sm_choice_ring,128,Q2,2.850312,exact
+sm,sm_choice_ring,128,Q3,1.152740,exact
+sm,sm_choice_ring,128,Q4,1.123133,exact
+sm,sm_choice_ring,256,Q1,1.255406,exact
+sm,sm_choice_ring,256,Q2,10.888149,exact
+sm,sm_choice_ring,256,Q3,1.251422,exact
+sm,sm_choice_ring,256,Q4,1.240542,exact
+sm,sm_choice_ring,512,Q1,1.478670,exact
+sm,sm_choice_ring,512,Q2,61.667599,exact
+sm,sm_choice_ring,512,Q3,1.327082,exact
+sm,sm_choice_ring,512,Q4,1.535344,exact
+sm,sm_choice_ring,1024,Q1,1.881730,exact
+sm,sm_choice_ring,1024,Q2,367.815828,exact
+sm,sm_choice_ring,1024,Q3,1.918277,exact
+sm,sm_choice_ring,1024,Q4,1.621147,exact
+sm,sm_hub_and_spokes,4,Q1,1.413600,exact
+sm,sm_hub_and_spokes,4,Q2,1.340788,exact
+sm,sm_hub_and_spokes,4,Q3,1.353845,exact
+sm,sm_hub_and_spokes,4,Q4,1.466206,exact
+sm,sm_hub_and_spokes,8,Q1,1.557036,exact
+sm,sm_hub_and_spokes,8,Q2,1583.456720,lower bound
+sm,sm_hub_and_spokes,8,Q3,1.889766,exact
+sm,sm_hub_and_spokes,8,Q4,2.023265,exact
+sm,sm_hub_and_spokes,16,Q1,1505.390125,lower bound
+sm,sm_hub_and_spokes,16,Q2,1602.885793,lower bound
+sm,sm_hub_and_spokes,16,Q3,1479.779844,lower bound
+sm,sm_hub_and_spokes,16,Q4,1481.856007,lower bound
+sm,sm_hub_and_spokes,32,Q1,1537.151964,lower bound
+sm,sm_hub_and_spokes,32,Q2,1474.253924,lower bound
+sm,sm_hub_and_spokes,32,Q3,1567.253840,lower bound
+sm,sm_hub_and_spokes,32,Q4,1674.531195,lower bound
+sm,sm_hub_and_spokes,64,Q1,1623.999068,lower bound
+sm,sm_hub_and_spokes,64,Q2,1487.489617,lower bound
+sm,sm_hub_and_spokes,64,Q3,1650.780836,lower bound
+sm,sm_hub_and_spokes,64,Q4,1149.820411,lower bound
+sm,sm_hub_and_spokes,128,Q1,1155.793622,lower bound
+sm,sm_hub_and_spokes,128,Q2,1550.684270,lower bound
+sm,sm_hub_and_spokes,128,Q3,1420.655940,lower bound
+sm,sm_hub_and_spokes,128,Q4,2057.106511,lower bound
+sm,sm_hub_and_spokes,256,Q1,1145.111639,lower bound
+sm,sm_hub_and_spokes,256,Q2,1147.320635,lower bound
+sm,sm_hub_and_spokes,256,Q3,1345.288041,lower bound
+sm,sm_hub_and_spokes,256,Q4,1211.292443,lower bound
+sm,sm_hub_and_spokes,512,Q1,1234.732939,lower bound
+sm,sm_hub_and_spokes,512,Q2,958.415318,lower bound
+sm,sm_hub_and_spokes,512,Q3,1252.929506,lower bound
+sm,sm_hub_and_spokes,512,Q4,1226.847446,lower bound
+sm,sm_hub_and_spokes,1024,Q1,722.838773,lower bound
+sm,sm_hub_and_spokes,1024,Q2,867.370493,lower bound
+sm,sm_hub_and_spokes,1024,Q3,904.624231,lower bound
+sm,sm_hub_and_spokes,1024,Q4,784.588116,lower bound
+sm,sm_ring_with_sink,2,Q1,1.099405,exact
+sm,sm_ring_with_sink,2,Q2,1.170437,exact
+sm,sm_ring_with_sink,2,Q3,1.549512,exact
+sm,sm_ring_with_sink,2,Q4,1.175868,exact
+sm,sm_ring_with_sink,4,Q1,1.464457,exact
+sm,sm_ring_with_sink,4,Q2,1.254904,exact
+sm,sm_ring_with_sink,4,Q3,0.989037,exact
+sm,sm_ring_with_sink,4,Q4,1.124263,exact
+sm,sm_ring_with_sink,8,Q1,1.210316,exact
+sm,sm_ring_with_sink,8,Q2,1.853401,exact
+sm,sm_ring_with_sink,8,Q3,1.187110,exact
+sm,sm_ring_with_sink,8,Q4,1.204782,exact
+sm,sm_ring_with_sink,16,Q1,0.938380,exact
+sm,sm_ring_with_sink,16,Q2,1586.451115,lower bound
+sm,sm_ring_with_sink,16,Q3,73.341276,exact
+sm,sm_ring_with_sink,16,Q4,69.355756,exact
+sm,sm_ring_with_sink,32,Q1,1.537356,exact
+sm,sm_ring_with_sink,32,Q2,1768.646948,lower bound
+sm,sm_ring_with_sink,32,Q3,1908.122866,lower bound
+sm,sm_ring_with_sink,32,Q4,1515.248629,lower bound
+sm,sm_ring_with_sink,64,Q1,20.835110,exact
+sm,sm_ring_with_sink,64,Q2,1444.537558,lower bound
+sm,sm_ring_with_sink,64,Q3,1585.144198,lower bound
+sm,sm_ring_with_sink,64,Q4,1717.414647,lower bound
+sm,sm_ring_with_sink,128,Q1,1385.280810,lower bound
+sm,sm_ring_with_sink,128,Q2,1493.579103,lower bound
+sm,sm_ring_with_sink,128,Q3,1303.407106,lower bound
+sm,sm_ring_with_sink,128,Q4,1560.202277,lower bound
+sm,sm_ring_with_sink,256,Q1,1550.000217,lower bound
+sm,sm_ring_with_sink,256,Q2,1294.813383,lower bound
+sm,sm_ring_with_sink,256,Q3,1233.843589,lower bound
+sm,sm_ring_with_sink,256,Q4,1397.512316,lower bound
+sm,sm_ring_with_sink,512,Q1,1199.598998,lower bound
+sm,sm_ring_with_sink,512,Q2,1185.880761,lower bound
+sm,sm_ring_with_sink,512,Q3,1150.679616,lower bound
+sm,sm_ring_with_sink,512,Q4,1049.449611,lower bound
+sm,sm_ring_with_sink,1024,Q1,1148.917915,lower bound
+sm,sm_ring_with_sink,1024,Q2,822.671353,lower bound
+sm,sm_ring_with_sink,1024,Q3,1046.696881,lower bound
+sm,sm_ring_with_sink,1024,Q4,847.447070,lower bound
+sm,sm_two_cycles,4,Q1,1.347706,exact
+sm,sm_two_cycles,4,Q2,1.039397,exact
+sm,sm_two_cycles,4,Q3,1.172455,exact
+sm,sm_two_cycles,4,Q4,0.647100,exact
+sm,sm_two_cycles,8,Q1,1.134126,exact
+sm,sm_two_cycles,8,Q2,1.027566,exact
+sm,sm_two_cycles,8,Q3,0.943667,exact
+sm,sm_two_cycles,8,Q4,1.398185,exact
+sm,sm_two_cycles,16,Q1,1.338943,exact
+sm,sm_two_cycles,16,Q2,1.124472,exact
+sm,sm_two_cycles,16,Q3,1.411448,exact
+sm,sm_two_cycles,16,Q4,1.306314,exact
+sm,sm_two_cycles,32,Q1,1.369040,exact
+sm,sm_two_cycles,32,Q2,1.397703,exact
+sm,sm_two_cycles,32,Q3,0.838964,exact
+sm,sm_two_cycles,32,Q4,1.198334,exact
+sm,sm_two_cycles,64,Q1,1.295309,exact
+sm,sm_two_cycles,64,Q2,1.508376,exact
+sm,sm_two_cycles,64,Q3,1.328263,exact
+sm,sm_two_cycles,64,Q4,1.235747,exact
+sm,sm_two_cycles,128,Q1,1.038586,exact
+sm,sm_two_cycles,128,Q2,1.282574,exact
+sm,sm_two_cycles,128,Q3,1.207677,exact
+sm,sm_two_cycles,128,Q4,1.129951,exact
+sm,sm_two_cycles,256,Q1,1.288302,exact
+sm,sm_two_cycles,256,Q2,1.520095,exact
+sm,sm_two_cycles,256,Q3,1.270102,exact
+sm,sm_two_cycles,256,Q4,1.318995,exact
+sm,sm_two_cycles,512,Q1,0.971496,exact
+sm,sm_two_cycles,512,Q2,2.683412,exact
+sm,sm_two_cycles,512,Q3,1.481455,exact
+sm,sm_two_cycles,512,Q4,1.284086,exact
+sm,sm_two_cycles,1024,Q1,1.259593,exact
+sm,sm_two_cycles,1024,Q2,7.588929,exact
+sm,sm_two_cycles,1024,Q3,1.506217,exact
+sm,sm_two_cycles,1024,Q4,1.375111,exact
+sm,sm_two_cycles_n_tokens,4,Q1,1.079338,exact
+sm,sm_two_cycles_n_tokens,4,Q2,1.348645,exact
+sm,sm_two_cycles_n_tokens,4,Q3,1.063096,exact
+sm,sm_two_cycles_n_tokens,4,Q4,1.597035,exact
+sm,sm_two_cycles_n_tokens,8,Q1,1.468626,exact
+sm,sm_two_cycles_n_tokens,8,Q2,216.417036,exact
+sm,sm_two_cycles_n_tokens,8,Q3,1.527718,exact
+sm,sm_two_cycles_n_tokens,8,Q4,1.491860,exact
+sm,sm_two_cycles_n_tokens,16,Q1,2106.459923,lower bound
+sm,sm_two_cycles_n_tokens,16,Q2,1666.355058,lower bound
+sm,sm_two_cycles_n_tokens,16,Q3,1778.142257,lower bound
+sm,sm_two_cycles_n_tokens,16,Q4,1642.557572,lower bound
+sm,sm_two_cycles_n_tokens,32,Q1,1575.339178,lower bound
+sm,sm_two_cycles_n_tokens,32,Q2,1522.026385,lower bound
+sm,sm_two_cycles_n_tokens,32,Q3,1610.431905,lower bound
+sm,sm_two_cycles_n_tokens,32,Q4,1761.680248,lower bound
+sm,sm_two_cycles_n_tokens,64,Q1,1517.142343,lower bound
+sm,sm_two_cycles_n_tokens,64,Q2,1502.433266,lower bound
+sm,sm_two_cycles_n_tokens,64,Q3,1663.890835,lower bound
+sm,sm_two_cycles_n_tokens,64,Q4,1768.797632,lower bound
+sm,sm_two_cycles_n_tokens,128,Q1,1662.084484,lower bound
+sm,sm_two_cycles_n_tokens,128,Q2,1923.989585,lower bound
+sm,sm_two_cycles_n_tokens,128,Q3,1398.405426,lower bound
+sm,sm_two_cycles_n_tokens,128,Q4,1706.400778,lower bound
+sm,sm_two_cycles_n_tokens,256,Q1,1566.935079,lower bound
+sm,sm_two_cycles_n_tokens,256,Q2,1374.499848,lower bound
+sm,sm_two_cycles_n_tokens,256,Q3,1340.946812,lower bound
+sm,sm_two_cycles_n_tokens,256,Q4,1122.421797,lower bound
+sm,sm_two_cycles_n_tokens,512,Q1,1251.082395,lower bound
+sm,sm_two_cycles_n_tokens,512,Q2,1321.529724,lower bound
+sm,sm_two_cycles_n_tokens,512,Q3,1463.116230,lower bound
+sm,sm_two_cycles_n_tokens,512,Q4,1184.125004,lower bound
+sm,sm_two_cycles_n_tokens,1024,Q1,1094.910411,lower bound
+sm,sm_two_cycles_n_tokens,1024,Q2,794.556735,lower bound
+sm,sm_two_cycles_n_tokens,1024,Q3,1092.772606,lower bound
+sm,sm_two_cycles_n_tokens,1024,Q4,1046.440214,lower bound

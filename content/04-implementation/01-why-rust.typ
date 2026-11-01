@@ -1,13 +1,13 @@
 == Why Rust
 
-`petrivet` is implemented in Rust @klabnik_rust_2023,
+`petrivet` is implemented as a Rust library (NFR2) @klabnik_rust_2023,
 a systems programming language whose design addresses several of the requirements
 in @motivation-requirements directly.
 Rust compiles to native code without a garbage collector or runtime,
 which places its performance in the same class as C and C++ (R5).
 Unlike those languages, however, the Rust compiler's ownership and borrowing rules
 guarantee freedom from use-after-free errors, data races, and other classes of memory errors
-before the program ever runs (R2) @jung_rustbelt_2017.
+before the program ever runs (R2) (NFR1) @jung_rustbelt_2017.
 `petrivet` forbids `unsafe` code entirely (`#![forbid(unsafe_code)]`),
 so these guarantees apply to the entire codebase.
 They do not, however, extend to the C++ code of the underlying Z3 solver,
@@ -20,7 +20,7 @@ wrapped for languages such as Python or TypeScript,
 compiled to WebAssembly,
 or shipped as a single static command-line binary (R1, R2).
 
-Beyond safety and speed, Rust's type system helps to make the library both correct and approachable.
+Beyond safety and speed, Rust's type system helps to make the library both correct and approachable (NFR1).
 Algebraic data types and exhausive pattern matching let the API state the possible outcomes of a query precisely,
 and force the caller to handle each of them:
 an answer of `None` for "unknown" cannot be confused with `Some(false)`,

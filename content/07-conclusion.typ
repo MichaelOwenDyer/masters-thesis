@@ -55,6 +55,6 @@ Symbolic representations of the state space, such as decision diagrams @couvreur
 would allow for more efficient exploration of large bounded systems.
 
 Finally, `petrivet` should be validated again outside this thesis
-by participating in upcoming editions of the Model Checking Contest @kordon_results_2026,
+by participating in upcoming editions of the Model Checking Contest @kordon_complete_2026,
 by language bindings that allow it to be used from other programming languages,
 and by adoption in real-world applications.

@@ -79,7 +79,7 @@ against #e4.find(r => r.source == "fam" and r.query == "Q4" and r.solver_id == "
     align: (left, right, right, right, right, right, right),
   ),
   caption: [
-    Queries answered by each tool on the 90 small competition models,
+    Queries answered by each tool on the 90 small MCC models,
     and the penalized average time in seconds under each count.
   ],
 ) <tab-solved-mcc-small>
@@ -113,7 +113,7 @@ and for 1-safety all tools are within a few models of each other.
     align: (left, right, right, right, right),
   ),
   caption: [
-    Queries answered by each tool on the 20 large competition models,
+    Queries answered by each tool on the 20 large MCC models,
     and the penalized average time in seconds under each count.
   ],
 ) <tab-solved-mcc-large>
@@ -128,7 +128,7 @@ The cactus plots in @fig-cactus-small and @fig-cactus-fam show, for each propert
 A curve ends early for a tool that answers fewer queries, and the left end of a curve is the cost of the smallest model,
 which is dominated by the tool's start-up overhead (@tab-startup).
 The high start-up overhead of ITS-Tools is explained by its JVM-based implementation.
-@fig-cactus-large shows the same for the large competition models.
+@fig-cactus-large shows the same for the large MCC models.
 
 #figure(
   image(export-dir + "figures/e4_cactus_mcc_small.svg", width: 100%),
@@ -148,11 +148,11 @@ The high start-up overhead of ITS-Tools is explained by its JVM-based implementa
 #figure(
   image(export-dir + "figures/e4_cactus_mcc_large.svg", width: 100%),
   caption: [
-    Cactus plots for the 20 large competition models, one panel per property, as in @fig-cactus-small.
+    Cactus plots for the 20 large MCC models, one panel per property, as in @fig-cactus-small.
   ],
 ) <fig-cactus-large>
 
-*Head to head on the competition models.*
+*Head to head on the MCC models.*
 A cactus plot compares the distributions of the query times, but hides how the tools compare on the same model.
 @fig-time-small and @fig-time-large therefore plot, for every model and property, the time of `petrivet`
 against the time of LoLA and against the time of TINA.
@@ -199,12 +199,12 @@ deadlock-freedom models that `petrivet` does not, and `petrivet`
 #figure(
   image(export-dir + "figures/e4b_time_scatter_mcc_large.svg", width: 100%),
   caption: [
-    The same as @fig-time-small for the 20 large competition models.
+    The same as @fig-time-small for the 20 large MCC models.
   ],
 ) <fig-time-large>
 
 *Scaling on the parametrized families.*
-While the competition models vary in structure and size at once,
+While the MCC models vary in structure and size at once,
 the parametrized families elicit the same structure at differing sizes.
 @fig-scaling-time shows, for each family, the time to decide four properties by net size, and
 @tab-frontier-all the largest net size at which every property is decided within the time limit.
@@ -253,8 +253,8 @@ and times out at size 64 on `ac-cycle` and `general-cycle`.
 ) <tab-frontier-all>
 
 *Memory.*
-Every tool needs about #dec(float(startup.find(r => r.solver_id == "lola").baseline_rss_kib) / 1024, d: 1) MiB
-for a trivial net, except ITS-Tools, which needs #dec(float(startup.find(r => r.solver_id == "its-tools").baseline_rss_kib) / 1024, d: 0) MiB
+Every tool has a start-up memory footprint below the measurement floor of the wrapper, 7.5 MiB,
+except ITS-Tools, which measured at #dec(float(startup.find(r => r.solver_id == "its-tools").baseline_rss_kib) / 1024, d: 0) MiB
 because of the Java Virtual Machine (see @tab-startup).
 @fig-memory-small and @fig-memory-large plot the peak memory of `petrivet` against that of LoLA and TINA for each
 MCC model and property, in the same way as @fig-time-small and @fig-time-large for the time.
@@ -267,8 +267,6 @@ models for liveness and quasi-liveness.
 Against TINA the models are split: for liveness `petrivet` uses at least twice as much on
 #mem-h2h.find(r => r.source == "mcc-small" and r.query == "Q3" and r.reference == "tina").n_petrivet_more2
 models and at most half on #mem-h2h.find(r => r.source == "mcc-small" and r.query == "Q3" and r.reference == "tina").n_petrivet_less2.
-I did not verify where the additional memory of `petrivet` goes; it includes the fixed cost of the structural
-analysis found in @eval-dispatch.
 
 #figure(
   image(export-dir + "figures/e4b_memory_scatter_mcc_small.svg", width: 100%),
@@ -305,7 +303,7 @@ for those runs where the tools report the number of markings.
   image(export-dir + "figures/e7_bytes_per_state.svg", width: 100%),
   caption: [
     Memory footprint per reachable marking against the number of places,
-    for each tool and each MCC competition model on which the tool reports a verdict on the number of markings.
+    for each tool and each MCC model on which the tool reports a verdict on the number of markings.
     The start-up memory of the tool is subtracted.
   ],
 ) <fig-bytes-per-state>
@@ -327,12 +325,10 @@ It should be noted that `petrivet` is currently unable to generate the set of re
 and would reduce the memory footprint by a nontrivial factor.
 
 *Start-up.*
-@tab-startup shows the time and memory taken by each tool to decide deadlock-freedom for a trivial net.
-They are the floor of every measurement above.
-The measurement floor of the wrapper is roughly #dec(val("e9.lola.baseline_rss_kib") / 1024, d: 1) MiB,
-which unfortunately obscures the true start-up memory of every tool except ITS-Tools.
-
-// TODO: Recheck the measurement floor whether it was subtracted here
+@tab-startup shows the time and memory taken by each tool to decide deadlock-freedom for a trivial net
+as measured by the separate low-overhead wrapper described in @eval-method.
+Unfortunately, the measurement floor of the wrapper is roughly 7.5 MiB,
+which obscures the true start-up memory of every tool except ITS-Tools.
 
 #figure(
   eval-table(
@@ -341,7 +337,8 @@ which unfortunately obscures the true start-up memory of every tool except ITS-T
     ..startup.map(r => (
       [#solver-name.at(r.solver_id)],
       [#dec(float(r.baseline_wall_ms), d: 1)],
-      [#dec(float(r.baseline_rss_kib) / 1024, d: 1)],
+      // below the wrapper's own footprint the value only says "smaller than the wrapper"
+      if float(r.baseline_rss_kib) / 1024 < 7.5 [< 7.5] else [#dec(float(r.baseline_rss_kib) / 1024, d: 1)],
     )).flatten(),
     align: (left, right, right),
   ),

@@ -32,8 +32,8 @@ For `petrivet`'s automatic dispatch operating mode, the one-sided 95 percent upp
 #pct(auto-ub("gen"), d: 3) on the randomized nets (the two-tool group),
 #pct(auto-ub("gen-lola-only"), d: 2) on the group confirmed by LoLA alone,
 #pct(auto-ub("fam"), d: 2) on the parametrized families and
-#pct(auto-ub("mcc-small"), d: 2) on the small competition models.
-On the large competition models the automatic mode gave a verdict in only #int(agreement("pv-dispatch", "mcc-large").n_conclusive) of
+#pct(auto-ub("mcc-small"), d: 2) on the small MCC models.
+On the large MCC models the automatic mode gave a verdict in only #int(agreement("pv-dispatch", "mcc-large").n_conclusive) of
 #auto-cells("mcc-large") runs, so the bound is #pct(auto-ub("mcc-large"), d: 0) and the large models say little about correctness.
 
 #figure(

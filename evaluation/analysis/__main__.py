@@ -23,7 +23,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--truth", type=Path, required=True, help="results/truth.jsonl")
     ap.add_argument("--out", type=Path, required=True, help="export directory (numbers.json, *.csv, figures/*.svg)")
     ap.add_argument("--config", type=Path, help="eval.toml (default: <results>/../eval.toml)")
-    ap.add_argument("--manifest", type=Path, action="append", default=[], help="corpus manifest JSONL (repeatable; default: the gen, mcc, fam and calibration manifests next to results/, in that order: an instance in several manifests takes the source of the last)")
+    ap.add_argument("--manifest", type=Path, action="append", default=[], help="corpus manifest JSONL (repeatable; default: corpus/manifest.jsonl and the gen, mcc, fam and calibration manifests next to results/, in that order: an instance in several manifests takes the source of the last)")
     ap.add_argument("--adjudication", type=Path, help="adjudication.jsonl (default: <results>/adjudication.jsonl; used for patterns and a cross-check)")
     ap.add_argument("--latency", type=Path, help="latency.jsonl (default: <results>/latency.jsonl)")
     ap.add_argument("--cache-coherence", type=Path, help="file with the cache_coherence difference count (E1b; default: <results>/cache-coherence.json); skipped when absent")
@@ -50,7 +50,8 @@ def main(argv: list[str] | None = None) -> int:
     adj_path = a.adjudication or a.results / "adjudication.jsonl"
     adj_rows = read_jsonl(adj_path)[0] if adj_path.is_file() else None
     base = a.results.resolve().parent
-    manifests = a.manifest or [base / "corpus" / "gen" / "manifest.jsonl", base / "corpus" / "mcc" / "manifest.jsonl",
+    # a missing file is skipped: corpus/manifest.jsonl is the single manifest of the fake data (analysis/fake.py)
+    manifests = a.manifest or [base / "corpus" / "manifest.jsonl", base / "corpus" / "gen" / "manifest.jsonl", base / "corpus" / "mcc" / "manifest.jsonl",
                                base / "corpus" / "fam" / "manifest.jsonl", base / "calibration" / "manifest.jsonl"]
     meta = load_meta(manifests, truth, adj_rows)
     excl_path = a.results / "truth_excluded.jsonl"
