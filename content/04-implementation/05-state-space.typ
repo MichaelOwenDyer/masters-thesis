@@ -28,7 +28,7 @@ in a process called _$omega$-acceleration_.
 See @background-reachability and @background-coverability for background on the reachability and coverability graphs.
 
 `petrivet` contains a implementation of state space exploration that is generic over the marking type,
-allowing it to be shared by the two types of state space graphs.
+allowing it to be shared by the two types of state space graphs (FR8)
 The implementation allows the user to construct the state space incrementally:
 a `StateGraphExplorer` structure (with concrete instantiations `ReachabilityGraphExplorer` and `CoverabilityGraphExplorer`)
 represents an in-progress exploration,
@@ -37,7 +37,7 @@ The explorer tracks the "frontier" of the state space and provides methods to ad
 or to run it to completion,
 following either a breadth-first (FIFO) or depth-first (LIFO) strategy.
 It also provides methods to search for a marking fulfilling a user-specified predicate,
-and accepts an optional deadline to halt exploration, which is particularly useful for infinite state spaces.
+and accepts an optional timeout to halt exploration (FR11), which is particularly useful for infinite state spaces.
 The `build_graph()` method runs the exploration to completion
 #footnote[or attempts to do so: the documentation heavily warns the user that an unbounded reachability graph is infinite, and so this method might not terminate.]
 and returns a `StateGraph` structure

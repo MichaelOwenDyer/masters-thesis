@@ -21,7 +21,7 @@ leaving the unmentioned places to be implicitly zero.
 where the `Place` is a handle to a place in the net and the `u32` is the number of tokens in that place.
 
 @fig-impl-marking-api shows an example of constructing a `Marking` from an array of `(Place, u32)` pairs,
-and then using that marking to construct a `PetriNet` from a `Net`.
+and then using that marking to construct a `PetriNet` from a `Net` (FR4).
 
 #figure(
   [
@@ -112,7 +112,7 @@ using the `into_parts()` method.
 
 === Basic Simulation
 
-A `PetriNet` can be used to simulate the behavior of a Petri net by firing transitions and observing the resulting markings.
+A `PetriNet` can be used to simulate the behavior of a Petri net by firing transitions and observing the resulting markings (FR5).
 `PetriNet` is a stateful structure; the marking contained within it is mutable and can be modified by firing transitions.
 
 The `is_enabled()` method can be used to check if a transition is enabled,

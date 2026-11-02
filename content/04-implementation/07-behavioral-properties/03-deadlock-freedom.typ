@@ -25,7 +25,7 @@ or as a search for all reachable deadlocks.
   Some(false) if it is not deadlock-free, and None if the analysis was inconclusive.
 + `deadlocks() -> Deadlocks` returns an iterator over all reachable deadlock markings, if any exist.
 
-The former supports both cost-control mechanisms, while the latter only supports a timeout.
+The former supports both cost-control mechanisms, while the latter only supports a timeout (FR11).
 This is because currently no efficient procedures are implemented for enumerating all reachable deadlocks,
 and so the efficiency restriction would always return `None` for this method.
 Future work may implement efficient procedures for enumerating deadlocks,

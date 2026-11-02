@@ -24,8 +24,8 @@ reachability, and coverability) can be used to verify the correctness of the pro
 It is paramount that a Petri net analysis tool is correct: it must give the right answer,
 and where it cannot decide, it must say so instead of guessing.
 An analyzer that reports a wrong result is actively harmful because it can lead to the deployment of unsafe processes.
-Beyond correctness, this context of use yields a set of further requirements for a Petri net analysis tool:
-It must be callable programmatically, ideally in-process (or at least via a command-line interface with structured input and output),
+Beyond correctness, this usage context yields a set of further requirements for a Petri net analysis tool:
+it must be callable programmatically, ideally in-process (or at least via a command-line interface with structured input and output),
 for flexible integration into a larger software system.
 It must be portable and memory-safe, so that it can be embedded without introducing security vulnerabilities or memory leaks.
 The cost of analysis must be controllable by a caller that cannot wait indefinitely for a result,
@@ -34,11 +34,11 @@ It should read and write standard model formats, return evidence with its answer
 as new procedures and model extensions are needed, and be approachable for the users and contributors
 who will build on it, including for students and the AI agents which increasingly assist in software development.
 
-To my knowledge no existing Petri net analysis tool meets all of these requirements together (see @related-work).
+@related-work shows that no existing Petri net analysis tool meets all of these requirements together.
 This thesis presents `petrivet` #footnote[https://github.com/MichaelOwenDyer/petrivet] <petrivet>, a Rust library designed to fill this gap.
-Its central design idea is that each question is answered by the cheapest procedure that is applicable to the net at hand.
+Its central design idea is that each question is answered by the cheapest procedure that is applicable to the Petri net at hand.
 `petrivet` implements a variety of decision and semi-decision procedures for Petri net analysis,
 including some that are novel to this work.
-I evaluate whether its answers are correct, whether dispatching to the cheapest procedure pays off,
+I evaluate whether its answers are correct, whether dispatching to the cheapest procedure benefits performance,
 how well the cost of an analysis can be bounded, and how `petrivet` compares with established tools in speed and memory.
 I also assess it against the requirements above and discuss the design principles that emerged during development.

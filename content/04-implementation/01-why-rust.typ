@@ -10,10 +10,12 @@ guarantee freedom from use-after-free errors, data races, and other classes of m
 before the program ever runs (R2) (NFR1) @jung_rustbelt_2017.
 `petrivet` forbids `unsafe` code entirely (`#![forbid(unsafe_code)]`),
 so these guarantees apply to the entire codebase.
-They do not, however, extend to the C++ code of the underlying Z3 solver,
-which is linked by default;
-the pure-Rust solver `OxiZ` can be selected instead via a compile-time feature flag,
-but it is not yet as mature as Z3 and is not used in the evaluation.
+#footnote[
+  They do not, however, extend to the C++ code of the underlying Z3 solver,
+  which is linked by default;
+  the pure-Rust solver `OxiZ` can be selected instead via a compile-time feature flag,
+  but it is not yet as mature as Z3 and is not used in the evaluation.
+]
 Because Rust does not need a runtime, a Rust library can be embedded almost anywhere:
 it can be linked into native applications through a C-compatible interface,
 wrapped for languages such as Python or TypeScript,

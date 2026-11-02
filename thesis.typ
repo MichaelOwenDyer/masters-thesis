@@ -80,9 +80,11 @@
     it
     // lovelace draws line labels as invisible figures next to the line numbers; they get no space
     if it.kind != "lovelace-line-number" {
-      v(1.5em)
+      v(1em)
     }
   }
+
+  show figure.caption: set text(size: 10.5pt)
 
   show raw.where(block: true): it => {
     block(

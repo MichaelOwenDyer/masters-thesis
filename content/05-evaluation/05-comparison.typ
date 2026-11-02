@@ -118,10 +118,11 @@ and for 1-safety all tools are within a few models of each other.
   ],
 ) <tab-solved-mcc-large>
 
-On the large MCC models, `petrivet` dispatch answers #e4.find(r => r.source == "mcc-large" and r.query == "Q1" and r.solver_id == "pv-dispatch").n_solved
+On the 20 large MCC models, `petrivet` dispatch answers #e4.find(r => r.source == "mcc-large" and r.query == "Q1" and r.solver_id == "pv-dispatch").n_solved
 of #e4.find(r => r.source == "mcc-large" and r.query == "Q1" and r.solver_id == "lola").n_cells
 deadlock-freedom queries where LoLA and ITS-Tools answer #e4.find(r => r.source == "mcc-large" and r.query == "Q1" and r.solver_id == "lola").n_solved,
-and TINA none; these are 20 models, so the comparison on them is a first impression and not a measurement of a distribution.
+and TINA none.
+On such a small set of models, the comparison is a first impression and not a measurement of a distribution.
 
 *Time per property.*
 The cactus plots in @fig-cactus-small and @fig-cactus-fam show, for each property, the times of the answered queries sorted from the fastest to the slowest, one curve per tool.

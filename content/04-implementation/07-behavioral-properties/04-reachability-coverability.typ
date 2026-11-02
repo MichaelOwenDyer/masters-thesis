@@ -30,15 +30,15 @@ or for evidence that no such firing sequence can possibly exist.
   and None if the analysis was inconclusive.
 + `reachability(target: Marking<u32>) -> Option<Reachability>`
   returns Some(Reachability::Reachable { firing_sequence }) with a witness firing sequence if the target marking is reachable,
-  Some(Reachability::Unreachable { contradiction }) with a set of contradictory lemmas if it is not reachable,
+  Some(Reachability::Unreachable { contradiction }) with a set of contradictory lemmas if it is not reachable (FR9),
   and None if the analysis was inconclusive.
 + `coverability(target: Marking<u32>) -> Option<Coverability>`
   returns Some(Coverability::Coverable { marking, firing_sequence }) with a witness covering marking and firing sequence if the target marking is coverable,
-  Some(Coverability::Uncoverable { contradiction }) with a set of contradictory lemmas if it is not coverable,
+  Some(Coverability::Uncoverable { contradiction }) with a set of contradictory lemmas if it is not coverable (FR9),
   and None if the analysis was inconclusive.
 
 `is_reachable()` and `is_coverable()` support both cost-control mechanisms,
-while `reachability()` and `coverability()` only support a timeout.
+while `reachability()` and `coverability()` only support a timeout (FR11).
 This is because currently no efficient procedures are implemented which can return a witness firing sequence or evidence
 of unreachability/uncoverability, and so the efficiency restriction would always return `None` for these methods.
 This could be added in the future.

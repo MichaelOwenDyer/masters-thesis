@@ -5,14 +5,6 @@ A faulty model can lead to a system that fails in practice, and the cost of such
 
 Some common questions that arise when reasoning about a process model are:
 
-- Can the process ever get stuck in a state from which it cannot proceed?
-
-  *Example*: a service that waits for a human to fill out a form, but the human never receives the form.
-
-- Can the process ever reach a state in which some activity is permanently disabled?
-
-  *Example*: a machine cannot be started because a required part has been removed, and the part cannot be replaced because the machine is not running.
-
 - Can the process accumulate an unbounded amount of resources?
 
   *Example*: a printer that receives more print jobs than it can handle, and eventually runs out of paper.
@@ -21,26 +13,35 @@ Some common questions that arise when reasoning about a process model are:
 
   *Example*: two trains are routed onto the same track, or two perpendicular traffic lights both show green.
 
+- Can the process ever get stuck in a state from which it cannot proceed?
+
+  *Example*: a service that waits for a human to fill out a form, but the human never receives the form.
+
+- Can the process ever reach a state in which some activity is permanently disabled?
+
+  *Example*: a machine cannot be started because its battery is dead
+  and the battery cannot be recharged because the charging lid requires battery power to open.
+
 Process models can be translated into Petri nets, which provide a mathematical model for reasoning about these questions,
 and the analysis results can offer rich insights into the behavior of the system @van_der_aalst_workflow_2000 @murata_petri_1989.
 The questions above correspond to the following properties of Petri nets:
 
-- *Deadlock-freedom* (@background-deadlock-freedom) can prove that a process can always proceed, or identify problematic states in which it cannot.
-- *Liveness* (@background-liveness) can provide granular insight into the long-term availability of activities in a process.
 - *Boundedness* (@background-boundedness) can verify upper limits on the amount of resources a process can accumulate, or identify problematic resource consumption patterns.
 - *Reachability* (@background-reachability) and *Coverability* (@background-coverability) can prove the impossibility of undesirable configurations, or provide a concrete example of how they can be reached.
+- *Deadlock-freedom* (@background-deadlock-freedom) can prove that a process can always proceed, or identify problematic states in which it cannot.
+- *Liveness* (@background-liveness) can provide granular insight into the long-term availability of activities in a process.
 
 These properties are the reason Petri nets are used in business process management, manufacturing,
 and other domains where the correctness of a process is critical.
 
 === Requirements for a Petri net Analyzer <motivation-requirements>
 
-Over time the Chair of Information Systems has assembled a collection of software tools for various use cases
-in process orchestration. A Petri net analyzer is a natural addition, to check the correctness of process models before they are deployed.
+Over time, the Chair of Information Systems has assembled a collection of software tools for various use cases
+in process orchestration. A Petri net analyzer is a natural addition to check the correctness of process models before they are deployed.
 
 We would like a Petri net analyzer to meet the following requirements:
 
-*R1.* be callable programmatically, either in-process or through a command-line interface
+*R1.* be callable programmatically, ideally in-process or through a command-line interface
 with structured input and output;
 
 *R2.* be portable and memory-safe, so that it can be embedded into larger software systems without introducing
@@ -52,7 +53,7 @@ security vulnerabilities or memory leaks;
 
 *R5.* perform adequately in time and memory;
 
-*R6.* return evidence with its answers, such as a witness or counterexample where the question has one;
+*R6.* return evidence with its answers, such as a witness or counterexample where the property has one;
 
 *R7.* be extensible, so that new procedures and model extensions can be added as the need arises; and
 
@@ -60,7 +61,8 @@ security vulnerabilities or memory leaks;
 so that it can be used correctly and extended with little effort.
 
 Every requirement above presupposes that the analyzer is correct.
-Where the analyzer cannot decide, which is unavoidable for some questions, it must say "unknown" instead of guessing.
+Where the analyzer cannot decide, which is unavoidable for some queries,
+it must say "unknown" instead of guessing.
 
 The survey in @related-work rates existing tools against the requirements R1-R8,
 and finds that none of them meet all of them together.

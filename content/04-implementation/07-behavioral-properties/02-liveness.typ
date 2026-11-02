@@ -27,7 +27,7 @@ but also as a search for the _strict_ liveness level (the maximum $k$).
   e.g. "is this transition at least #lv(3)-live?". If no level is specified, #lv(4) is assumed.
 
 Furthermore, both methods also accept an optional restriction to only efficient procedures and/or
-a timeout to limit the maximum duration of the analysis.
+a timeout to limit the maximum duration of the analysis (FR11).
 
 ==== Implementation <impl-liveness-implementation>
 

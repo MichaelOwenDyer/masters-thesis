@@ -8,13 +8,13 @@ The first concerns the problem, and the others concern the artifact, with one qu
   existing-tools: "RQ1",
   existing-tools-text: "To what extent do existing Petri net analysis tools meet the requirements R1 to R8?",
   correctness: "RQ2",
-  correctness-text: "Does the implementation give correct answers, and does it return \"unknown\" where it cannot decide?",
+  correctness-text: "Does the implementation return correct verdicts, and does it return \"unknown\" where it cannot decide?",
   procedure-dispatch: "RQ3",
   procedure-dispatch-text: "How much does answering each question with the cheapest applicable procedure, instead of one general procedure, reduce the cost of analysis?",
   cost-control: "RQ4",
   cost-control-text: "Can a caller effectively bound the cost of an analysis, either by restricting the effort or by setting a deadline?",
   comparison: "RQ5",
-  comparison-text: [How does `petrivet` compare with established tools in speed and memory?]
+  comparison-text: [How does the artifact compare with established tools in speed and memory?]
 )
 
 - RQ1: #rqs.existing-tools-text

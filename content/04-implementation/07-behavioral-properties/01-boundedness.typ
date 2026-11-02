@@ -26,7 +26,7 @@ but also as a search for the minimal `k` (the exact bound).
 
 Furthermore, both methods also allow specifying a restriction to only use efficient procedures,
 in which case they return `None` if no efficient procedure is known for the given net,
-and an optional timeout to limit the maximum duration of the analysis.
+and an optional timeout to limit the maximum duration of the analysis (FR11).
 
 ==== Implementation
 

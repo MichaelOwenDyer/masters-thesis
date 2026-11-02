@@ -13,5 +13,5 @@ The goal is _not_ to best existing model checkers, which have had sometimes deca
 this project is a starting point for a new library in the Rust ecosystem,
 and in its current state it has no chance of outperforming existing model checkers in several areas.
 The comparison is meant to place `petrivet` relative to the state of the art.
-I will continue to improve the library over time, adding new procedures and optimizations.
+I plan to continue to improve the library over time, adding new procedures and optimizations.
 The evaluation is described in detail in @evaluation.

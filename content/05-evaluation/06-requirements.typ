@@ -89,15 +89,15 @@ There is no way to cancel a running query other than its deadline, which the rub
 
 *R4, model interchange: ✓.*
 petrivet reads and writes PNML for place/transition nets
-(`PnmlDocument::from_xml`, `PetriNet::to_pnml`), behind the default feature `pnml`.
-It only accepts ordinary nets that are connected, however.
+(`PetriNet::from_pnml`, `PetriNet::to_pnml`), behind the default feature `pnml`.
+However, it only accepts ordinary, connected nets.
 When the MCC models for the evaluation were drawn,
 44 of the 134 drawn small models (33%) were rejected for this reason,
 22 because of arc weights and 22 because they are not connected (corpus/mcc/selected.json).
 The rubric grades reading PNML at all, so the grade is unaffected,
 but in practice a third of the MCC models cannot be loaded.
 
-R5, adequate performance and memory: ✓.
+*R5, adequate performance and memory: ✓.*
 `petrivet` participated in the Model Checking Contest 2026 @kordon_complete_2026,
 which, by the rubric, is independent evidence on non-trivial models;
 like for the other tools in the surveyed, the grade reflects that this evidence exists, not how good it is.
@@ -108,7 +108,7 @@ The current version is evaluated against LoLA, TINA, and ITS-Tools in @eval-comp
 but that evaluation was conducted by the author of the tool, and its models and limits were chosen by him.
 It shows `petrivet` competitive on liveness and on the parametrized families,
 but behind LoLA and TINA on deadlock-freedom and quasi-liveness on the small MCC models.
-Independent evidence for the current version would require participation in a later contest.
+Independent evidence for the current version would require participation in a future contest.
 
 *R6, evidence with answers: ✓ (method, witness, certificate, theorem, culprits).*
 Reachability and coverability return a firing sequence as a witness for a positive answer,
@@ -138,7 +138,8 @@ Of the five repository indicators, `petrivet` meets four:
 - a build from a clean checkout with the standard Rust toolchain (cargo build),
 - automated tests (173 unit and integration tests, and a benchmark workflow in continuous integration),
 - a `README.md` with a roadmap, and a `CONTRIBUTING.md` with contribution guidelines and a checklist for adding a new procedure,
-- only one author and maintainer, so the rubric's requirement for a team is not met.
+
+With only one author and maintainer, the rubric's requirement for a team is not met.
 Like the other tools maintained by a single person, `petrivet` therefore partly meets the requirement.
 
 *Conclusion.*

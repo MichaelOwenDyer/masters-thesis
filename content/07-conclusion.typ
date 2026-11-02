@@ -45,9 +45,9 @@ would add a complementary approach to the existing CEGAR engine.
 
 The scope of `petrivet` can be extended beyond just ordinary Petri nets.
 Arc weights and place capacities are common extensions with the same analytical expressiveness as ordinary nets,
-but enhanced succinctness, and would allow for a more natural representation of certain systems.
+but with enhanced succinctness, and would allow for a more natural representation of certain systems.
 Colored Petri nets @van_der_aalst_strategies_2013 are particularly useful in the context
-of business process orchestration, and would allow for a more direct representation of the systems
+of business process modeling, and would allow for a more direct representation of the systems
 that motivated this work.
 Temporal-logic model checking (LTL and CTL) would cover a wider range of queries than the
 current set of behavioral properties can express.

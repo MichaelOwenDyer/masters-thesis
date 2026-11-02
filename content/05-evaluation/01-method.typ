@@ -220,7 +220,7 @@ both have an unknown number of reachable markings:
 no participant tool in the 2026 MCC was able to compute the state space size of either model.
 They are suspected to be bounded.
 The large MCC model with the largest known state space used in the evaluation is `BusinessProcesses-PT-09`
-(403 places, 374 transitions, roughly $7.5 dot 10^18$ reachable markings).
+(403 places, 374 transitions, $7,522,568,986,194,230,709$ reachable markings).
 This shows that net size is a poor predictor of state space size,
 and that the evaluation includes a wide range of net sizes and state space sizes.
 
@@ -254,7 +254,7 @@ and translates the tool's output back.
 Every adapter was validated against the calibration nets to ensure correct translation and invocation of the tool.
 Where a tool does not directly support a property (for example, LoLA has no direct API for the liveness of a whole net),
 the adapter combines several smaller queries to produce the verdict.
-These are described in the appendix. TODO reference
+These are described in @eval-adapters.
 
 All tools run as separate processes, under the same time and memory limits, on the same machine (see @eval-setup).
 Using a command-line interface for all tools places them on equal footing, including process start-up overhead.
@@ -271,7 +271,7 @@ and the MCC model verdicts were taken from the official oracle #footnote[https:/
 
 #let its = rows("e8_its_q1_90s.csv").first()  // the ITS-Tools deadlock-freedom check with a 90 s limit
 
-ITS-Tools is not used as a correctness reference for the randomized nets due to difficulties supporting
+ITS-Tools was not used as a correctness reference for the randomized nets due to difficulties supporting
 all of the properties. It decides five of the six properties which overlap with the MCC's examinations
 (state space size, deadlock-freedom, quasi-liveness, 1-safety, and stable place);
 the others are either not supported or cannot be answered in time: for liveness it spends a fixed 30 seconds on an
@@ -302,8 +302,7 @@ entered the correctness evaluation.
 For unbounded Petri nets, the reference tools gave particularly unreliable verdicts (or often no verdict at all)
 for the properties liveness, quasi-liveness, and deadlock-freedom.
 For this reason, the correctness evaluation is restricted to bounded nets for these three properties.
-The unbounded results are nonetheless reported where available for completeness, but they do not influence
-the outcome of the evaluation.
+The unbounded results are nonetheless reported where available for completeness.
 
 Furthermore, for the reachability and coverability properties, TINA timed out on every unbounded calibration net.
 For this reason, and because I saw no reason to doubt the correctness of LoLA's verdicts,
@@ -361,6 +360,6 @@ rate of disagreement (Clopper-Pearson interval @clopper_use_1934).
 - A *collection* is a set of Petri nets as described in @eval-collections.
 - A *query* is a combination of a Petri net and a property (and, for reachability and coverability, a target marking).
 - A *run* is a single invocation of a tool on a query.
-- A *verdict* is a definite answer (yes or no, or for state space size the two counts) produced by a run.
+- A *verdict* is a definite answer (yes or no, or, for state space size, the two counts) produced by a run.
   A verdict may be correct or incorrect with respect to the reference verdict.
   A run may also produce no verdict, because it timed out, ran out of memory, crashed, or answered "unknown".

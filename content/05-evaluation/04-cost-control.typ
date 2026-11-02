@@ -69,7 +69,7 @@ and #pct(float(e3b-row(10.0).share_within_threshold), d: 1),
 #pct(float(e3b-row(100.0).share_within_threshold), d: 1) and
 #pct(float(e3b-row(1000.0).share_within_threshold), d: 1) of the runs return within the target threshold of
 #val("e3b.threshold_ms") milliseconds.
-The overshoot grows with the deadline.
+The overshoot increases with the deadline.
 The hypothesis holds for the typical run, but it is not guaranteed: the distribution has a tail.
 
 #figure(

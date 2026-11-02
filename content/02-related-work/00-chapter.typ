@@ -19,11 +19,7 @@ Correctness is a precondition for any tool, but it is not evaluated here.
 See @eval-correctness for a correctness evaluation of `petrivet` compared to a small set of established tools.
 
 I first describe the methodology used to select the tools to survey,
-and then present the 37 selected tools with regard to their support for the requirements.
-
-Beyond the ratings, I look at one more feature that matters for #rqs.procedure-dispatch:
-whether a tool documents that it chooses its procedure by the structure of the net.
-
+and then rate the 37 selected tools on their support for the requirements.
 Finally, I state the conclusions drawn from the survey and state the gap that `petrivet` aims to fill.
 
 #include "./01-methodology.typ"

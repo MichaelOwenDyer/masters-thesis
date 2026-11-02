@@ -1,7 +1,7 @@
 == Behavioral Properties <impl-behavioral-properties>
 
 The following sections discuss the API design and implementation of `petrivet`
-for the behavioral properties discussed in @background-behavioral-properties,
+for the behavioral properties discussed in @background-behavioral-properties (FR7),
 following the guiding principles outlined in @solution-design.
 
 A `PetriNet` provides methods for behavioral properties which attempt to answer the query as quickly as possible
@@ -11,6 +11,8 @@ and we must rely on heuristics.
 Some procedures are complete and will always return a definitive answer,
 while others are incomplete, and we might need to fall back on a more expensive procedure
 if the first one does not yield a definitive answer.
+All property APIs return an `Option` type, which is `None` if no verdict could be reached
+within the constraints of the query or the capabilities of the implementation (FR10).
 
 A `PetriNet` also caches the results of some property checks to save time on subsequent queries.
 This cache is invalidated if the Petri net's marking is modified,

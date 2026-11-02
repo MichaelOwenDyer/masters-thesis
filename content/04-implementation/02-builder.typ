@@ -7,7 +7,7 @@ A builder can be created with `NetBuilder::new()`,
 and places and transitions can be added with `add_place()` and `add_transition()`.
 These methods return opaque handles to the created nodes,
 which are wrapper types (_newtypes_) around ascending integer IDs.
-Rust's type system allows distinct concepts to have distinct types at no additional runtime cost,
+Rust allows distinct concepts to have distinct types at no additional runtime cost,
 preventing accidental misuse of the API at compile time,
 such as passing a place where a transition is expected.
 
@@ -60,8 +60,8 @@ that the invalidated handles do not accidentally refer to a new node that has be
 with the goal of reducing boilerplate code.
 Rust's type system can be leveraged to provide ergonomic syntax here as well.
 
-For bulk adding nodes, _const generics_ and _array destructuring_ allow the user to create an arbitrary number of
-places or transitions at once without having to specify the desired number explicitly @fig-impl-bulk-nodes.
+For adding several nodes at once, _const generics_ and _array destructuring_ allow the user to create an arbitrary number of
+places or transitions at once without having to explicitly specify the desired number (@fig-impl-bulk-nodes).
 
 #figure(
   [
@@ -74,16 +74,15 @@ places or transitions at once without having to specify the desired number expli
     ```
   ],
   caption: [
-    Bulk adding of places and transitions is supported via const generics,
+    Bulk-adding of places and transitions is supported via const generics,
     allowing the user to add an arbitrary number of nodes at once.
   ]
 ) <fig-impl-bulk-nodes>
 
-For adding multiple arcs at once, the `add_arcs()` method accepts a tuple of 3-12
-#footnote[The maximum length of 12 was chosen arbitrarily, and could be increased if desired. Rust's lack of variadic generics prevents a more general solution.]
-alternating places and transitions,
-which is semantically interpreted as a path through the net,
-with an arc created between each neighboring pair of nodes in the path @fig-impl-add-arcs.
+For adding multiple arcs at once, the `add_arcs()` method accepts a tuple of 3-12 alternating places and transitions
+#footnote[The maximum length of 12 was chosen arbitrarily, and could be increased if desired. Rust's lack of variadic generics prevents a more general solution.].
+These are semantically interpreted as a path through the net,
+and an arc is added between each neighboring pair of nodes in the path (@fig-impl-add-arcs).
 
 #figure(
   [
@@ -113,21 +112,21 @@ into a densely packed representation optimized for analysis.
 - Every place and transition is assigned a unique index in the internal arrays,
   removing any gaps in the ID space which might have arisen via removals of nodes during construction.
   This creates a canonicalized internal layout decoupled from the API construction order,
-  which allows for optimizations such as sorting the nodes by their degree or other properties to improve cache locality.
+  allowing for optimizations such as sorting the nodes by their degree or other properties to improve cache locality.
   This also allows any data associated with places or transitions to be stored in a CPU cache-friendly contiguous array
   in the canonical order (as opposed to a hash map or other associative data structure).
   Sets of places or transitions can be represented as bitsets, which is especially data-dense.
   A mapping is maintained between the user-facing semantic labels of the nodes and their internal canonical indices,
-  which allows the user to continue to refer to nodes by their original handles without knowing the internal representation.
+  allowing the user to continue to refer to nodes by their original handles.
 - Arcs are no longer represented as separate objects, but rather as adjacency lists of node indices.
   This allows for cache-friendly iteration over the preset and postset of a node,
-  which is a common operation in many analysis algorithms.
+  a common operation in many analysis algorithms.
 - The structural class of the net is evaluated once and cached, along with the net's incidence matrix
   and whether the net is strongly connected.
   All of these properties will be useful for analysis later, and since the net is immutable,
   will not need to be recomputed for the lifetime of the net.
 
-The `build()` method additionally performs two validation checks on the net to ensure that it is a valid net:
+The `build()` method additionally performs two validation checks on the net:
 - The net must be connected.
   A non-connected net, in the opinion of the author, is not a net at all, but rather a collection of nets.
 - The net must contain at least one place and one transition.
@@ -153,12 +152,11 @@ Otherwise, it returns a fully constructed, read-only `Net` object that is ready 
   caption: [
     The `build()` method returns a `Result<Net, NetError>`, which is either a fully constructed,
     read-only net model that can be analyzed,
-    or a `NetError` if the net violates one of two rules: it must be connected and
-    contain at least one place and one transition.
+    or a `NetError` if the net is not connected or degenerate (i.e. contains no places or no transitions).
   ]
 ) <fig-impl-build-result>
 
-The user can check the net's structural class and whether it is strongly connected
+The user can check the net's structural class (FR6) and whether it is strongly connected
 via the `class()` and `is_strongly_connected()` methods, respectively (@fig-impl-query-class)
 
 #figure(
@@ -175,7 +173,7 @@ via the `class()` and `is_strongly_connected()` methods, respectively (@fig-impl
   ],
   caption: [
     The `class()` and `is_strongly_connected()` methods allow the user to query the net's structural class
-    and whether it is strongly connected, respectively.
+    and whether it is strongly connected.
   ]
 ) <fig-impl-query-class>
 
@@ -201,6 +199,3 @@ ensuring that the unique story of how a net was constructed does not affect its 
     The canonical internal representation and validation checks are re-evaluated when the net is built again.
   ]
 ) <fig-impl-net-into-builder>
-
-
-

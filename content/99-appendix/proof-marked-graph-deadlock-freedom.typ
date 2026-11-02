@@ -3,7 +3,7 @@
 
 == Proof of Correctness of @algorithm-marked-graph-deadlock-freedom <proof-marked-graph-deadlock-freedom>
 
-The proof reuses two results of the liveness section for marked graphs, stated there as parts (3) and (4) of the Classification lemma:
+The proof reuses two results of @proof-marked-graph-liveness, stated there as parts (3) and (4) of the Classification lemma:
 
 + If $t in D_(>=)$, there is a bound $B_t$ such that $t$ occurs at most $B_t$ times in every firing sequence.
 + If $t in.not D_(>=)$, then $t$ is live.
@@ -13,7 +13,7 @@ The proof reuses two results of the liveness section for marked graphs, stated t
 
   _Proof._
   ($arrow.l.double$) Let $t$ be live and suppose a deadlock $M$ were reachable.
-  Then $M$ enables no transition, so $[M chevron.r = {M}$ and $t$ is dead at $M$, contradicting liveness.
+  Then $M$ enables no transition, so $t$ is dead at $M$, contradicting liveness.
   ($arrow.r.double$) Suppose no transition is live.
   By Fact 2 every transition lies in $D_(>=)$, so by Fact 1 every firing sequence has length at most $sum_t B_t$.
   Take a firing sequence of maximal length.
@@ -42,8 +42,8 @@ The proof reuses two results of the liveness section for marked graphs, stated t
   It runs in time $O(|P| + |T|)$.
 
   _Proof._ By the Deadlock-freedom and liveness lemma, $(N, M_0)$ is deadlock-free iff some transition is live.
-  By Facts 1 and 2 a transition is live iff $t in.not D_(>=)$: if $t in D_(>=)$, it fires at most $B_t$ times and is not live, and otherwise it is live.
-  By the Downstream search lemma @algorithm-marked-graph-deadlock-freedom-return returns true iff $D_(>=) != T$.
+  By Facts 1 and 2 a transition $t$ is live iff $t in.not D_(>=)$: if $t in D_(>=)$, it fires at most $B_t$ times and is not live, and otherwise it is live.
+  By the Downstream search lemma, @algorithm-marked-graph-deadlock-freedom-return returns true iff $D_(>=) != T$.
   The set $Z$ is computed in linear time by the Unmarked circuits lemma of the liveness section and Tarjan's algorithm @tarjan_depth-first_1972.
 ]
 

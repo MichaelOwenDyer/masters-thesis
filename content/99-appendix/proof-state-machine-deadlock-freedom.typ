@@ -50,7 +50,7 @@ Let $Sigma = {p in P : post(p) = emptyset}$ be the set of sink places.
 
   _Complexity._ Each place is pushed and popped at most once.
   Popping $p$ scans $pre(p)$ and, for each $t in pre(p)$, the single place $p_t$.
-  Since every transition has exactly one output place, each transition $t$ is scanned exactly once over the whole run, so the total work is $O(|P| + |T| + |F|)$.
+  Since every transition has exactly one output place, each transition $t$ is scanned at most once over the whole run, so the total work is $O(|P| + |T| + |F|)$.
 ]
 
 #theorem(title: "Correctness")[

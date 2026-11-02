@@ -33,8 +33,8 @@ For `petrivet`'s automatic dispatch operating mode, the one-sided 95 percent upp
 #pct(auto-ub("gen-lola-only"), d: 2) on the group confirmed by LoLA alone,
 #pct(auto-ub("fam"), d: 2) on the parametrized families and
 #pct(auto-ub("mcc-small"), d: 2) on the small MCC models.
-On the large MCC models the automatic mode gave a verdict in only #int(agreement("pv-dispatch", "mcc-large").n_conclusive) of
-#auto-cells("mcc-large") runs, so the bound is #pct(auto-ub("mcc-large"), d: 0) and the large models say little about correctness.
+On the large MCC models the automatic dispatch returned a verdict in only #int(agreement("pv-dispatch", "mcc-large").n_conclusive) of
+#auto-cells("mcc-large") runs, so the bound is #pct(auto-ub("mcc-large"), d: 0) and the large models convey little information about correctness.
 
 #figure(
   eval-table(
@@ -50,15 +50,19 @@ On the large MCC models the automatic mode gave a verdict in only #int(agreement
       [#pct(float(agreement("pv-dispatch", c).inconclusive_rate), d: 1)],
     )).flatten(),
   ),
-  caption: [Verdicts of the three modes of `petrivet` that could be compared with a reference verdict, per collection, the disagreements,
-    the one-sided 95 percent upper bound on the disagreement rate of the automatic mode, and the share of runs without a verdict.],
+  caption: [
+    Verdicts of the three modes of `petrivet` that could be compared with a reference verdict, per collection;
+    the disagreements;
+    the one-sided 95 percent upper bound on the disagreement rate of the automatic mode;
+    and the proportion of runs without a verdict.
+  ],
 ) <tab-agreement>
 
 For the automatic dispatch mode with the small MCC models, #fmt(int(find("e4.csv", source: "mcc-small", query: "Q0", solver_id: "pv-dispatch").n_cells) + int(find("e4.csv", source: "mcc-small", query: "Q6", solver_id: "pv-dispatch").n_cells))
 of the runs concern the two properties for which it has no procedure other than brute-force exploration
-(state space size and stable place), and most of the rest are timeouts or memory-outs due to the library's
-defensive construction of the coverability graph instead of the faster to construct,
-but potentially infinite, reachability graph.
+(state space size, and stable place).
+Most of the rest of the runs are timeouts or memory-outs due to the library's
+defensive construction of the coverability graph.
 
 For reachability and coverability on the randomized nets, @tab-qrqc separates the cases by the verdict and by the kind of reference.
 The group confirmed by LoLA alone is skewed: for coverability, #fmt(int(find("e5a.csv", solver_id: "pv-dispatch", query: "QC", tier: "lola_only", stratum: "yes").n_conclusive))
@@ -109,26 +113,24 @@ which represents a potential source of error:
 if the cache is not coherent, the verdict to one property may vary depending on which properties were decided before.
 On #val("e1b.n_nets") randomized nets, the properties were decided in several orders, and every verdict was compared with the
 verdict to the same property on a fresh `PetriNet` and, where the reachability graph is small, with an explicit-state
-computation. There were #val("e1b.n_differences") differences (upper bound #pct(val("e1b.cp_upper_95"), d: 1)).
+computation. There were zero differences (upper bound #pct(val("e1b.cp_upper_95"), d: 1)).
 
 No verdict of the three modes of `petrivet` contradicts a reference verdict, so the data support the hypothesis of
 #rqs.correctness within the upper bounds given above.
 
-*Bugs discovered during the evaluation.*
+*Bugs discovered.*
 Three bugs were discovered and fixed during the correctness evaluation, which is a good sign that the evaluation is meaningful.
 
 In the first runs of the randomized nets, the automatic dispatch mode of `petrivet` answered nine reachability and coverability
 queries incorrectly: it falsely proved targets unreachable/uncoverable where they were in fact reachable/coverable.
 Eight of the nine runs had a reference verdict (five confirmed by both tools, three by LoLA alone) and one had none;
 all but one net belonged to the general class.
-The cause was a misinterpretation of "increment constraints" as described by @wimmel_applying_2011:
-added to the SMT problem to steer the search for a realizable firing sequence, they are not a fact about the net but
-a navigation step that can be helpful in finding a solution.
-An SMT solver may return UNSAT in the presence of an increment constraint even if the target is reachable/coverable,
-but the library trusted that as a definite refutation.
+The cause was a misinterpretation of "increment constraints" as described by Wimmel and Wolf (2011) @wimmel_applying_2011:
+an SMT solver may return UNSAT in the presence of an increment constraint even if the target is reachable/coverable,
+but the library interpreted that as a definite refutation.
 The library now reports "unknown" for such a refutation; the 5,315 negative verdicts of the automatic dispatch mode
 for these properties were removed and run again, and no disagreement remains:
-the nine problematic runs are now "unknown", and the other 5,306 runs are unchanged.
+the nine problematic runs are now labeled "unknown", and the other 5,306 runs are unchanged.
 
 The second discovered bug was a stack overflow in a dependency during reachability graph analysis.
 `petrivet` computes the strongly connected components of the reachability graph for liveness, using Tarjan's algorithm

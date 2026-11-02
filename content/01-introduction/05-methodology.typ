@@ -22,24 +22,24 @@ and in turn informs both of them.
 Hevner, March, Park, and Ram @hevner_design_2004 establish seven critical guidelines for conducting design science research.
 
 1. Design as an Artifact: The research must produce a viable artifact.
-Hevner et al. define artifacts as constructs (vocabulary/symbols), models (abstractions/representations),
-methods (algorithms/practices), or instantiations (implemented systems).
+  Hevner et al. define artifacts as constructs (vocabulary/symbols), models (abstractions/representations),
+  methods (algorithms/practices), or instantiations (implemented systems).
 
 2. Problem Relevance: The research must address a problem that is relevant to the real world.
 
 3. Design Evaluation: The mere construction of an artifact does not constitute research.
-The utility, quality, and efficacy of the artifact must be demonstrated by well-executed evaluation methods.
+  The utility, quality, and efficacy of the artifact must be demonstrated by well-executed evaluation methods.
 
 4. Research Contributions: The research must provide clear and verifiable contributions to the existing knowledge base.
 
 5. Research Rigor: The research must apply strict, academically sound methods in both the construction and evaluation phases.
 
 6. Design as a Search Process: The research must acknowledge the iterative nature of the design process within
-a search space of possible solutions, while constrained by available resources, computational limits,
-and environmental factors.
+  a search space of possible solutions, while constrained by available resources, computational limits,
+  and environmental factors.
 
 7. Communication of Research: The research must be presented effectively on both a technical level for other researchers
-and a higher level for a broader audience of stakeholders and decision makers.
+  and a higher level for a broader audience of stakeholders and decision makers.
 
 *Relevance*
 
@@ -52,7 +52,9 @@ while the survey in @related-work shows that no existing tool completely satisfi
 The _Design Evaluation_ performed in @evaluation assesses correctness, the benefit of procedure dispatch,
 cost control, and the artifact's standing in the context of existing tools (#rqs.correctness to #rqs.comparison).
 It also assesses the remaining requirements of @motivation with the same rubric as the survey (@eval-requirements).
-The library and the evaluation harness are publicly available, so the results can be checked.
+The library and the evaluation harness are publicly available in the thesis repository
+#footnote[https://github.com/MichaelOwenDyer/masters-thesis]<thesis-repo>,
+so the results can be independently verified.
 _Research Rigor_ is maintained throughout.
 The survey protocol was fixed before the survey was conducted,
 the verdicts of `petrivet` were checked against independent reference verdicts,

@@ -10,7 +10,7 @@ with a positive paired effect after correction for the number of structural clas
 The experiment uses the parametrized families of nets, which are constructed to be of a specific structural class
 and have a high complexity ceiling. The randomized nets are not used because they are too small for reliable timings.
 The MCC models are used as well, although on many of them dispatch cannot select a specialized procedure over the general approach.
-Two of the nine properties (state space size and stable place) are only implemented in `petrivet` via state space exploration,
+Two of the nine properties (state space size, and stable place) are only implemented in `petrivet` via state space exploration,
 and are therefore excluded from this experiment.
 
 #let classes = ("circuit", "sm", "mg", "efc", "ac", "general")
@@ -32,7 +32,7 @@ after Holm-Bonferroni correction for the number of classes tested
 (one-sided Wilcoxon signed-rank test; a class counts as faster when the corrected p-value is below 0.05)
 The automatic dispatch is clearly faster than brute-force for
 #classes.filter(c => supported(c) and supported-without-stopped(c)).map(c => class-name.at(c)).join(", ", last: " and ")
-nets, and this holds with and without the timed-out runs.
+nets, and this holds both with and without the timed-out runs.
 For extended free-choice nets, the automatic dispatch is faster only when the timed-out runs are counted,
 and brute-force is generally faster on the queries that both modes finish.
 For asymmetric-choice and general nets the automatic dispatch is not faster.
@@ -40,13 +40,13 @@ For asymmetric-choice and general nets the automatic dispatch is not faster.
 #figure(
   eval-table(
     (1.6fr, 0.8fr, 1fr, 1fr, 0.9fr, 1.2fr),
-    ("Class", "Paired runs", "One or both runs timed out or ran out of memory", "p-value", "Faster", "Faster without timeouts"),
+    ("Class", "Paired runs", "One or both runs timed out or ran out of memory", "Faster", "p-value", "Faster without timeouts"),
     ..classes.map(c => (
       class-name.at(c),
       cell(h2(c).n_pairs),
       cell(h2(c).n_censored),
-      p-value(h2(c).holm_p),
       if supported(c) [yes] else [no],
+      p-value(h2(c).holm_p),
       if supported-without-stopped(c) [yes] else [no],
     )).flatten(),
   ),
@@ -73,7 +73,7 @@ Four patterns show:
   `mg-forkjoin-unbounded` is a special case: brute-force hopelessly enumerates an infinite state space
   and never reaches a conclusion on deadlock-freedom, liveness or quasi-liveness
   (it answers boundedness within milliseconds).
-- For extended free-choice nets, the dispatch is about even with brute-force at small sizes,
+- For extended free-choice nets, the dispatch is about even with brute-force as $n$ grows
   until brute-force begins to time out, and then the dispatch is faster until it also begins to time out.
 - For asymmetric-choice and general nets, the median performance ratio over the properties is less than one as the nets grow,
   down to a ratio of about #dec(float(find("e2_speedup_by_size.csv", family: "ac_cycle", size: "64").median_speedup), d: 3)
@@ -183,8 +183,8 @@ For #val("e2.mcc_small.n_dispatch_differs") of the #val("e2.mcc_small.n_instance
 (#pct(val("e2.mcc_small.share_dispatch_differs"), d: 0)) the automatic dispatch can do something other than explore,
 either because the net belongs to a restricted class or because the efficient methods alone answer at least one query
 (#val("e2.mcc_small.n_poly_definite") models).
-For all other models it can only run its structural checks and then explore,
-and any difference to the brute-force mode is then the overhead of these checks and,
+For all other models dispatch can only run its structural checks and then explore the state space.
+Any difference to the brute-force mode is then the overhead of these checks and,
 except for deadlock-freedom, of the Karp-Miller coverability graph vs. the reachability graph.
 
 The first measurement on these models was bad for the automatic dispatch.
@@ -203,19 +203,20 @@ but the implementation was not optimized for the bounded case:
 it always checked all predecessors, even those which were added after the marking was first discovered.
 On a bounded net with 16,587 reachable states this took 51 seconds, whereas constructing the reachability graph took just
 12 milliseconds.
-This was addressed by initially only comparing each new marking to the markings on the path by which it was first discovered,
-and only falling back to checking all predecessors if/when an $omega$ is found.
+This was addressed by initially comparing each new marking only to the markings on the path by which it was first discovered,
+and resorting to checking all predecessors if/when an $omega$ is found.
 This produces identical results in my testing, and the construction time dropped to 130 milliseconds on the same net.
-I did not prove that the new approach produces identical results in general,
-but what it produces is still a sound coverability graph.
+I did not prove that the new approach produces identical coverability graphs in all cases,
+but the coverability graphs it produces are still sound.
 
 #let e2b(state, q, field) = find("e2b_dispatch_mcc.csv", state: state, source: "mcc-small", query: q).at(field)
 
 @fig-dispatch-mcc shows the two modes on every small model, before and after the optimization.
 Several runs which automatic dispatch previously timed out on now finish:
 after the optimization the automatic dispatch returns verdicts on
-#e2b("after", "Q3", "n_dispatch_answered") of #e2b("after", "Q3", "n_cells") liveness cells
-(before: #e2b("before", "Q3", "n_dispatch_answered")), and on the models that both modes answer, it is at least twice as
+#e2b("after", "Q3", "n_dispatch_answered") of #e2b("after", "Q3", "n_cells") liveness runs
+(before the optimization: #e2b("before", "Q3", "n_dispatch_answered")),
+and on the queries that both modes answer, it is at least twice as
 slow on #e2b("after", "Q3", "n_slower2"), about equal on #e2b("after", "Q3", "n_equal2") and at least twice as fast on
 #e2b("after", "Q3", "n_faster2").
 Deadlock-freedom queries are nearly unaffected, because the automatic dispatch explores the reachability graph,
@@ -230,7 +231,7 @@ The second cause, explained next, also applies to the deadlock-freedom queries.
 The second cause remains in the codebase at the time of writing:
 for free-choice, asymmetric-choice, and general nets, the automatic dispatch attempts to use the Commoner/Hack criterion to decide
 the property where applicable (liveness of free-choice and asymmetric-choice nets, deadlock-freedom of all three),
-but this does not pay off for the majority of Petri nets.
+but this is not worth the cost for the majority of Petri nets.
 On one asymmetric-choice net with only 204 reachable states, the automatic dispatch took 32 seconds to return,
 while the reachability graph took 1.7 milliseconds.
 The Commoner/Hack criterion is the only other stage on that path, so it is the likely cause.
@@ -238,7 +239,7 @@ Further investigation is needed to determine when the Commoner/Hack criterion is
 adjusted accordingly in a future version of the library.
 
 *Summary.*
-Dispatching to specialized procedures by the structure of the net pays off where the structure allows a shortcut,
+Dispatching to specialized procedures by the structure of the net is beneficial for performance where the structure allows a shortcut,
 and where the number of states explodes.
 On unstructured benchmark nets it costs time, because structural checks and the conservative coverability-graph fallback
 add overhead to what is otherwise the same exploration.

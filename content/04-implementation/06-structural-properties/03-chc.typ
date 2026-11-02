@@ -7,8 +7,10 @@
 
 === Commoner/Hack Criterion <impl-chc>
 
-The Commoner/Hack criterion (CHC), also called the Siphon-Trap Criterion, states that every proper siphon contains a marked trap.
-We encode the search for a CHC counterexample as a SAT problem following the approach of @oanea_new_2010 et al.
+The Commoner/Hack criterion (CHC) states that every proper siphon contains a marked trap.
+Rather than showing this for all (exponentially many) proper siphons,
+we search for a counterexample: a proper siphon that contains no marked trap.
+We encode the search as a SAT problem following the approach of Oanea et al. @oanea_new_2010.
 
 The CHC fails iff there exists a proper siphon such that all traps contained in it are unmarked.
 Because this is an $exists forall$ statement, we cannot encode it directly.
@@ -25,7 +27,7 @@ The assignments satisfying
 
 $ phi_"siphon" := or.big_(p in P) x_p^((0)) and and.big_(t in T) and.big_(p in post(t)) (x_p^((0)) -> or.big_(q in pre(t)) x_q^((0))) $
 
-correspond exactly to the siphons of $N$ @oanea_new_2010[Lemma 1].
+correspond exactly to the proper siphons of $N$ @oanea_new_2010[Lem. 1].
 The first conjunct enforces $D != emptyset$ (at least one place is in the siphon).
 The second states $pre(D) subset.eq post(D)$: if a transition $t$ produces into $D$, it must also consume from $D$.
 In the implementation the inner conjunction over $p in post(t)$ is folded into the premise
@@ -50,7 +52,7 @@ For each stage $i in {1, dots, |P|}$ and place $p in P$ we define the term
 $ x_p^((i)) := x_p^((i-1)) and and.big_(t in post(p)) or.big_(q in post(t)) x_q^((i-1)). $
 The term $x_p^((i))$ is true iff $p in D_i$.
 This unrolling uses only the original $|P|$ free variables and no auxiliary variables.
-Stage $i$ adds one term per place, and each term has size $O(|post(p)| dot max_t |post(t)|)$, so the total size is $O(|P| dot (|P| + |T| + |F|))$.
+Stage $i$ adds one term per place, and each term has size $O(|post(p)| dot max_t |post(t)|)$, so the total size is $O(|P| + |F| dot max_t |post(t)|)$.
 
 *Unmarked trap.*
 The maximal trap must be unmarked or empty:
@@ -89,9 +91,13 @@ which returns a counterexample if one exists, or $bot$ if the CHC holds.
     + $bold(x)^((|P|)) <- fold(bold(x)^((0)), thin |P| "times", "Step")$ #h(1em) // `in_trap`
     + *for each* $p in P$ *with* $M_0(p) > 0$:
       + *assert* $not x^((|P|))_p$
+    + *check* the conjunction of all asserted formulas with the solver
     + *if* the solver reports UNSAT: *return* $bot$
+    + $beta <-$ the satisfying assignment returned by the solver
     + $D <- {p in P : beta(x^((0))_p) = top}$
     + $Q <- {p in P : beta(x^((|P|))_p) = top}$
     + *return* $(D, Q)$
   ]
 )
+
+The API also accepts an optional timeout, which is passed to the SMT solver (FR11).

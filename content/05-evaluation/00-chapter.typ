@@ -5,12 +5,13 @@
 = Evaluation <evaluation>
 
 This chapter assesses the extent to which `petrivet` fulfills the objectives established in the introduction.
-The requirements derived from the chair's needs are listed in @motivation,
-and the survey in @related-work applies them to existing tools.
-Here I ask whether the library gives correct verdicts, whether its central design decisions pay off,
+The requirements derived from the needs of the Chair of Information Systems are listed in @motivation,
+and the survey in @related-work applies them to existing tools (#rqs.existing-tools).
+Here I ask whether the library gives correct verdicts,
+whether its central design decisions benefit performance,
 and how it compares with established tools.
 Parts of the evaluation are measured, and parts are assessed against the requirements by inspection and demonstration.
-The research questions that concern the artifact are the following (#rqs.existing-tools is answered by the survey in @related-work):
+The research questions that concern the artifact are the following:
 
 - *#rqs.correctness.* #rqs.correctness-text (@eval-correctness)
 - *#rqs.procedure-dispatch.* #rqs.procedure-dispatch-text (@eval-dispatch)

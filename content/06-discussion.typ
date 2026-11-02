@@ -34,7 +34,7 @@ mostly because it defensively builds the coverability graph where the reachabili
 That is the intended trade-off, but the trade-off is currently more conservative than it needs to be (@impl-closing-remarks).
 
 *#rqs.procedure-dispatch: procedure dispatch.*
-Dispatching to the cheapest applicable procedure pays off where the theory promises it:
+Dispatching to the cheapest applicable procedure benefits performance where the theory promises it:
 for circuits, state machines and marked graphs, the automatic dispatch is faster than brute force,
 and for families with exponentially growing state spaces it answers in milliseconds where brute force times out (@eval-dispatch).
 For extended free-choice nets the benefit is marginal, and for asymmetric-choice and general nets the dispatch is slower,
